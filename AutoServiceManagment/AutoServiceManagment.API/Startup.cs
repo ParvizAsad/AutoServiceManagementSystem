@@ -11,6 +11,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+<<<<<<< Updated upstream
+=======
+using AutoServiceManagment.Repository.DataContext;
+using AutoServiceManagment.Services.Mapping;
+using AutoServiceManagment.Repository.Repository.Contracts;
+using AutoServiceManagment.Repository.Repository;
+using P320.Services.Services.Contracts;
+using P320.Services.Services;
+>>>>>>> Stashed changes
 
 namespace AutoServiceManagment.API
 {
@@ -23,9 +32,25 @@ namespace AutoServiceManagment.API
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+<<<<<<< Updated upstream
+=======
+            var connectionString = Configuration.GetConnectionString("DefaultConnection");
+
+            services.AddDbContext<AppDbContext>(options =>
+            {
+                options.UseSqlServer(connectionString, builder =>
+                {
+                    builder.MigrationsAssembly("AutoServiceManagment.Repository");
+                });
+            });
+>>>>>>> Stashed changes
+
+            services.AddAutoMapper(typeof(MapperProfile));
+
+            services.AddScoped(typeof(IRepository<>), typeof(EfCoreRepository<>));
+            services.AddScoped<IProductService, ProductService>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

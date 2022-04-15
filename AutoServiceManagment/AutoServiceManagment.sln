@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32317.152
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoServiceManagment.API", "AutoServiceManagment.API\AutoServiceManagment.API.csproj", "{D507A6A7-12F0-49D4-AB0A-A8F644F19D6B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoServiceManagment.API", "AutoServiceManagment.API\AutoServiceManagment.API.csproj", "{D507A6A7-12F0-49D4-AB0A-A8F644F19D6B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoServiceManagment.DomainModels", "AutoServiceManagment.DomainModels\AutoServiceManagment.DomainModels.csproj", "{8EB17093-7756-4DE8-8D36-8944C7FD14DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoServiceManagment.DomainModels", "AutoServiceManagment.DomainModels\AutoServiceManagment.DomainModels.csproj", "{8EB17093-7756-4DE8-8D36-8944C7FD14DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoServiceManagment.Repository", "AutoServiceManagment.Repository\AutoServiceManagment.Repository.csproj", "{E03CBA52-6C1A-4DD5-9FDC-417DD743AE89}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoServiceManagment.Repository", "AutoServiceManagment.Repository\AutoServiceManagment.Repository.csproj", "{E03CBA52-6C1A-4DD5-9FDC-417DD743AE89}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoServiceManagment.Services", "AutoServiceManagment.Services\AutoServiceManagment.Services.csproj", "{FCA0C59E-9A3E-4CB1-90AA-9B04A225C032}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{E03CBA52-6C1A-4DD5-9FDC-417DD743AE89}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E03CBA52-6C1A-4DD5-9FDC-417DD743AE89}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E03CBA52-6C1A-4DD5-9FDC-417DD743AE89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCA0C59E-9A3E-4CB1-90AA-9B04A225C032}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCA0C59E-9A3E-4CB1-90AA-9B04A225C032}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCA0C59E-9A3E-4CB1-90AA-9B04A225C032}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCA0C59E-9A3E-4CB1-90AA-9B04A225C032}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
