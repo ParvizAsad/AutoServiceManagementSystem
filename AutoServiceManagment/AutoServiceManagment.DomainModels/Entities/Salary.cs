@@ -3,7 +3,7 @@ using System;
 
 namespace AutoServiceManagment.DomainModels.Entities
 {
-    internal class Salary : IEntity
+    public class Salary : IEntity
     {
         public int Id { get; set; }
         public int EmployeeID { get; set; }

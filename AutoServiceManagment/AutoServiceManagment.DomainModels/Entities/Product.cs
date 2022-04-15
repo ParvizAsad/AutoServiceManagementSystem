@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace AutoServiceManagment.DomainModels.Entities
 {
-    internal class Product : IEntity
+    public class Product : IEntity
     {
         public int Id { get; set; }
         public decimal BasePrice { get; set; }

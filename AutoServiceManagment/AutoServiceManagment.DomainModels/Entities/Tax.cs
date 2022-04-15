@@ -3,7 +3,7 @@ using System;
 
 namespace AutoServiceManagment.DomainModels.Entities
 {
-    internal class Tax : IEntity
+    public class Tax : IEntity
     {
         public int Id { get; set; }
         public decimal IncomeTax { get; set; }

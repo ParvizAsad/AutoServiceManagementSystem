@@ -2,7 +2,7 @@
 
 namespace AutoServiceManagment.DomainModels.Entities
 {
-    internal class CustomerProduct : IEntity
+    public class CustomerProduct : IEntity
     {
         public int Id { get; set; }
         public int ProductID { get; set; }
