@@ -1,19 +1,19 @@
 {
   "version": 2,
-<<<<<<< Updated upstream
-  "dgSpecHash": "4bZU8B5QebNr8jbIs5yYnfIC3t7tLvJlLx9jqJqSh67vl1rHkw83yzTa8lpFQsPwKj/w8f7tbOYmMdw3NCzgFg==",
+  "dgSpecHash": "z8Ni6j2EL+RBskHOdZAVOm/1p/VuVy+rArpY5GO/p45uobCDmIqAqE0Hg4qfqebtR+sG0LbxoqEm8PsLPstLrw==",
   "success": true,
-  "projectFilePath": "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\AutoServiceManagment.DomainModels.csproj",
-  "expectedPackageFiles": [],
-=======
-  "dgSpecHash": "B8Z6p8LPNhzKW+c0YR78qDOu/x53+7SgTaEMBPGoD+TrAgZHgTC4YUUcXIiXv6mRrR7k5FmXauZMi+g1SA0JbQ==",
-  "success": true,
-  "projectFilePath": "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\AutoServiceManagment.DomainModels.csproj",
+  "projectFilePath": "C:\\Users\\AZC167387\\Desktop\\New folder\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\AutoServiceManagment.DomainModels.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.16\\microsoft.aspnetcore.http.features.5.0.16.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.1\\microsoft.extensions.primitives.5.0.1.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\system.io.pipelines\\5.0.2\\system.io.pipelines.5.0.2.nupkg.sha512"
+    "C:\\Users\\AZC167387\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.16\\microsoft.aspnetcore.http.features.5.0.16.nupkg.sha512",
+    "C:\\Users\\AZC167387\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.1\\microsoft.extensions.primitives.5.0.1.nupkg.sha512",
+    "C:\\Users\\AZC167387\\.nuget\\packages\\system.io.pipelines\\5.0.2\\system.io.pipelines.5.0.2.nupkg.sha512"
   ],
->>>>>>> Stashed changes
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\AZC167387\\Desktop\\New folder\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
