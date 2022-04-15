@@ -1,0 +1,17 @@
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\obj\Debug\net5.0\AutoServiceManagment.Services.csproj.AssemblyReference.cache
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\obj\Debug\net5.0\AutoServiceManagment.Services.GeneratedMSBuildEditorConfig.editorconfig
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\obj\Debug\net5.0\AutoServiceManagment.Services.AssemblyInfoInputs.cache
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\obj\Debug\net5.0\AutoServiceManagment.Services.AssemblyInfo.cs
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\obj\Debug\net5.0\AutoServiceManagment.Services.csproj.CoreCompileInputs.cache
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\bin\Debug\net5.0\AutoServiceManagment.Services.deps.json
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\bin\Debug\net5.0\AutoServiceManagment.Services.dll
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\bin\Debug\net5.0\AutoServiceManagment.Services.pdb
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\bin\Debug\net5.0\AutoServiceManagment.DomainModels.dll
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\bin\Debug\net5.0\AutoServiceManagment.DomainModels.pdb
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\obj\Debug\net5.0\AutoServiceManagment.Services.csproj.CopyComplete
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\obj\Debug\net5.0\AutoServiceManagment.Services.dll
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\obj\Debug\net5.0\refint\AutoServiceManagment.Services.dll
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\obj\Debug\net5.0\AutoServiceManagment.Services.pdb
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\obj\Debug\net5.0\ref\AutoServiceManagment.Services.dll
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\bin\Debug\net5.0\AutoServiceManagment.Repository.dll
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\bin\Debug\net5.0\AutoServiceManagment.Repository.pdb

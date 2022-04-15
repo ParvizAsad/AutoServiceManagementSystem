@@ -4,8 +4,11 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+<<<<<<< Updated upstream
+=======
   <ItemGroup>
-    <Folder Include="DTOs\" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.16" />
   </ItemGroup>
 
+>>>>>>> Stashed changes
 </Project>

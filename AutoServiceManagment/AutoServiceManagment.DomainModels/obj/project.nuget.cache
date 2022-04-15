@@ -1,8 +1,19 @@
 {
   "version": 2,
-  "dgSpecHash": "Ery4Uv3vJ31JruiHltqYGYB7yZEgFRaxIOxc4hj0d+lZ6aQPxVE9frw1uSYXmMFeWf9kh1VeUMn6x8/g/2pQVQ==",
+<<<<<<< Updated upstream
+  "dgSpecHash": "4bZU8B5QebNr8jbIs5yYnfIC3t7tLvJlLx9jqJqSh67vl1rHkw83yzTa8lpFQsPwKj/w8f7tbOYmMdw3NCzgFg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\AutoServiceManagment.DomainModels.csproj",
+  "projectFilePath": "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\AutoServiceManagment.DomainModels.csproj",
   "expectedPackageFiles": [],
+=======
+  "dgSpecHash": "B8Z6p8LPNhzKW+c0YR78qDOu/x53+7SgTaEMBPGoD+TrAgZHgTC4YUUcXIiXv6mRrR7k5FmXauZMi+g1SA0JbQ==",
+  "success": true,
+  "projectFilePath": "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\AutoServiceManagment.DomainModels.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.16\\microsoft.aspnetcore.http.features.5.0.16.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.1\\microsoft.extensions.primitives.5.0.1.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\system.io.pipelines\\5.0.2\\system.io.pipelines.5.0.2.nupkg.sha512"
+  ],
+>>>>>>> Stashed changes
   "logs": []
 }
