@@ -3,7 +3,7 @@ using System;
 
 namespace AutoServiceManagment.DomainModels.Entities
 {
-    internal class Discount : IEntity
+    public class Discount : IEntity
     {
         public int Id { get; set; }
         public string Name { get; set; }

@@ -3,7 +3,7 @@ using System;
 
 namespace AutoServiceManagment.DomainModels.Entities
 {
-    internal class Finance : IEntity
+    public class Finance : IEntity
     {
         public int Id { get; set; }
         public decimal CommunalCost { get; set; }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace AutoServiceManagment.DomainModels.Entities
 {
-    internal class Service : IEntity
+    public class Service : IEntity
     {
         public int Id { get; set; }
         public string Name { get; set; }

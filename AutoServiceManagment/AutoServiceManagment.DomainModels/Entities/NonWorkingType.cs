@@ -2,7 +2,7 @@
 
 namespace AutoServiceManagment.DomainModels.Entities
 {
-    internal class NonWorkingType : IEntity
+    public class NonWorkingType : IEntity
     {
         public int Id { get; set; }
         public string Name { get; set; }

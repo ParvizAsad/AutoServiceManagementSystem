@@ -2,7 +2,7 @@
 
 namespace AutoServiceManagment.DomainModels.Entities
 {
-    internal class CashBox : IEntity
+    public class CashBox : IEntity
     {
         public int Id { get; set; }
         public int ProductID { get; set; }

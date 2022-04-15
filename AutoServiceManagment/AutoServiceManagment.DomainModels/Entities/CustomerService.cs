@@ -2,7 +2,7 @@
 
 namespace AutoServiceManagment.DomainModels.Entities
 {
-    internal class CustomerService : IEntity
+    public class CustomerService : IEntity
     {
         public int Id { get; set; }
         public int ServiceID { get; set; }
