@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AutoServiceManagment.DomainModels.DTOs
 {
-    public class ProductDto : IDto
+    public class CashBoxDto : IDto
     {
         public int Id { get; set; }
         public string Name { get; set; }

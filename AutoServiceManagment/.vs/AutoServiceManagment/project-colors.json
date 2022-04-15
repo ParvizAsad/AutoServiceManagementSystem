@@ -15,7 +15,17 @@
       "ProjectGuid": "fca0c59e-9a3e-4cb1-90aa-9b04a225c032",
       "DisplayName": "AutoServiceManagment.Services",
       "ColorIndex": 1
+    },
+    "8eb17093-7756-4de8-8d36-8944c7fd14dc": {
+      "ProjectGuid": "8eb17093-7756-4de8-8d36-8944c7fd14dc",
+      "DisplayName": "AutoServiceManagment.DomainModels",
+      "ColorIndex": 2
+    },
+    "d507a6a7-12f0-49d4-ab0a-a8f644f19d6b": {
+      "ProjectGuid": "d507a6a7-12f0-49d4-ab0a-a8f644f19d6b",
+      "DisplayName": "AutoServiceManagment.API",
+      "ColorIndex": 3
     }
   },
-  "NextColorIndex": 2
+  "NextColorIndex": 4
 }

@@ -18,3 +18,7 @@ C:\Users\AZC167387\Desktop\New folder\AutoServiceManagmentSystem\AutoServiceMana
 C:\Users\AZC167387\Desktop\New folder\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.DomainModels\obj\Debug\net5.0\AutoServiceManagment.DomainModels.dll
 C:\Users\AZC167387\Desktop\New folder\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.DomainModels\obj\Debug\net5.0\ref\AutoServiceManagment.DomainModels.dll
 C:\Users\AZC167387\Desktop\New folder\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.DomainModels\obj\Debug\net5.0\AutoServiceManagment.DomainModels.pdb
+C:\Users\AZC167387\Desktop\New folder\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.DomainModels\bin\Debug\net5.0\AutoServiceManagment.DomainModels.deps.json
+C:\Users\AZC167387\Desktop\New folder\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.DomainModels\bin\Debug\net5.0\AutoServiceManagment.DomainModels.dll
+C:\Users\AZC167387\Desktop\New folder\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.DomainModels\bin\Debug\net5.0\ref\AutoServiceManagment.DomainModels.dll
+C:\Users\AZC167387\Desktop\New folder\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.DomainModels\bin\Debug\net5.0\AutoServiceManagment.DomainModels.pdb

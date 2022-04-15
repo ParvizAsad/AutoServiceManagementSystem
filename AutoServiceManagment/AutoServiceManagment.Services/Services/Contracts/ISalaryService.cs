@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace P320.Services.Services.Contracts
 {
-    public interface IProductService : IRepository<Product>
+    public interface ISalaryService : IRepository<Salary>
     {
         object GetTest();
 
-        Task<IList<ProductDto>> GetAllProductsAsync();
+        Task<IList<SalaryDto>> GetAllSalarysAsync();
     }
 }
