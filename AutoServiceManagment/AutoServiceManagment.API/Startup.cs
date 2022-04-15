@@ -11,15 +11,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-<<<<<<< Updated upstream
-=======
 using AutoServiceManagment.Repository.DataContext;
 using AutoServiceManagment.Services.Mapping;
 using AutoServiceManagment.Repository.Repository.Contracts;
 using AutoServiceManagment.Repository.Repository;
 using P320.Services.Services.Contracts;
 using P320.Services.Services;
->>>>>>> Stashed changes
+using Microsoft.EntityFrameworkCore;
 
 namespace AutoServiceManagment.API
 {
@@ -34,8 +32,6 @@ namespace AutoServiceManagment.API
 
         public void ConfigureServices(IServiceCollection services)
         {
-<<<<<<< Updated upstream
-=======
             var connectionString = Configuration.GetConnectionString("DefaultConnection");
 
             services.AddDbContext<AppDbContext>(options =>
@@ -45,7 +41,6 @@ namespace AutoServiceManagment.API
                     builder.MigrationsAssembly("AutoServiceManagment.Repository");
                 });
             });
->>>>>>> Stashed changes
 
             services.AddAutoMapper(typeof(MapperProfile));
 

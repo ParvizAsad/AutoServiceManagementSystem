@@ -15,3 +15,11 @@ D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceMa
 D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\obj\Debug\net5.0\ref\AutoServiceManagment.Services.dll
 D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\bin\Debug\net5.0\AutoServiceManagment.Repository.dll
 D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\bin\Debug\net5.0\AutoServiceManagment.Repository.pdb
+C:\Users\AZC167387\Desktop\New folder\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\obj\Debug\net5.0\AutoServiceManagment.Services.csproj.AssemblyReference.cache
+C:\Users\AZC167387\Desktop\New folder\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\obj\Debug\net5.0\AutoServiceManagment.Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\AZC167387\Desktop\New folder\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\obj\Debug\net5.0\AutoServiceManagment.Services.AssemblyInfoInputs.cache
+C:\Users\AZC167387\Desktop\New folder\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\obj\Debug\net5.0\AutoServiceManagment.Services.AssemblyInfo.cs
+C:\Users\AZC167387\Desktop\New folder\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\obj\Debug\net5.0\AutoServiceManagment.Services.csproj.CoreCompileInputs.cache
+C:\Users\AZC167387\Desktop\New folder\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\obj\Debug\net5.0\AutoServiceManagment.Services.dll
+C:\Users\AZC167387\Desktop\New folder\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\obj\Debug\net5.0\ref\AutoServiceManagment.Services.dll
+C:\Users\AZC167387\Desktop\New folder\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\obj\Debug\net5.0\AutoServiceManagment.Services.pdb

@@ -13,3 +13,11 @@ D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceMa
 D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Repository\obj\Debug\net5.0\refint\AutoServiceManagment.Repository.dll
 D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Repository\obj\Debug\net5.0\AutoServiceManagment.Repository.pdb
 D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Repository\obj\Debug\net5.0\ref\AutoServiceManagment.Repository.dll
+C:\Users\AZC167387\Desktop\New folder\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Repository\obj\Debug\net5.0\AutoServiceManagment.Repository.csproj.AssemblyReference.cache
+C:\Users\AZC167387\Desktop\New folder\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Repository\obj\Debug\net5.0\AutoServiceManagment.Repository.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\AZC167387\Desktop\New folder\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Repository\obj\Debug\net5.0\AutoServiceManagment.Repository.AssemblyInfoInputs.cache
+C:\Users\AZC167387\Desktop\New folder\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Repository\obj\Debug\net5.0\AutoServiceManagment.Repository.AssemblyInfo.cs
+C:\Users\AZC167387\Desktop\New folder\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Repository\obj\Debug\net5.0\AutoServiceManagment.Repository.csproj.CoreCompileInputs.cache
+C:\Users\AZC167387\Desktop\New folder\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Repository\obj\Debug\net5.0\AutoServiceManagment.Repository.dll
+C:\Users\AZC167387\Desktop\New folder\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Repository\obj\Debug\net5.0\ref\AutoServiceManagment.Repository.dll
+C:\Users\AZC167387\Desktop\New folder\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Repository\obj\Debug\net5.0\AutoServiceManagment.Repository.pdb

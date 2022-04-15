@@ -97,3 +97,13 @@ D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceMa
 D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\obj\Debug\net5.0\refint\AutoServiceManagment.API.dll
 D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\obj\Debug\net5.0\AutoServiceManagment.API.genruntimeconfig.cache
 D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\obj\Debug\net5.0\ref\AutoServiceManagment.API.dll
+C:\Users\AZC167387\Desktop\New folder\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\obj\Debug\net5.0\AutoServiceManagment.API.csproj.AssemblyReference.cache
+C:\Users\AZC167387\Desktop\New folder\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\obj\Debug\net5.0\AutoServiceManagment.API.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\AZC167387\Desktop\New folder\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\obj\Debug\net5.0\AutoServiceManagment.API.AssemblyInfoInputs.cache
+C:\Users\AZC167387\Desktop\New folder\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\obj\Debug\net5.0\AutoServiceManagment.API.AssemblyInfo.cs
+C:\Users\AZC167387\Desktop\New folder\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\obj\Debug\net5.0\AutoServiceManagment.API.csproj.CoreCompileInputs.cache
+C:\Users\AZC167387\Desktop\New folder\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\obj\Debug\net5.0\AutoServiceManagment.API.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\AZC167387\Desktop\New folder\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\obj\Debug\net5.0\AutoServiceManagment.API.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\AZC167387\Desktop\New folder\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\obj\Debug\net5.0\AutoServiceManagment.API.dll
+C:\Users\AZC167387\Desktop\New folder\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\obj\Debug\net5.0\ref\AutoServiceManagment.API.dll
+C:\Users\AZC167387\Desktop\New folder\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\obj\Debug\net5.0\AutoServiceManagment.API.pdb
