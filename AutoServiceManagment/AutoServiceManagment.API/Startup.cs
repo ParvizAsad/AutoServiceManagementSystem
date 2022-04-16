@@ -15,8 +15,8 @@ using AutoServiceManagment.Repository.DataContext;
 using AutoServiceManagment.Services.Mapping;
 using AutoServiceManagment.Repository.Repository.Contracts;
 using AutoServiceManagment.Repository.Repository;
-using P320.Services.Services.Contracts;
-using P320.Services.Services;
+using AutoServiceManagment.Services.Services.Contracts;
+using AutoServiceManagment.Services.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace AutoServiceManagment.API

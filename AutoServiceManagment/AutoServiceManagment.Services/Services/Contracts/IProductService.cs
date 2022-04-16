@@ -4,7 +4,7 @@ using AutoServiceManagment.Repository.Repository.Contracts;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace P320.Services.Services.Contracts
+namespace AutoServiceManagment.Services.Services.Contracts
 {
     public interface IProductService : IRepository<Product>
     {

@@ -4,7 +4,7 @@ using AutoServiceManagment.DomainModels.Entities;
 using AutoServiceManagment.Repository.Repository.Contracts;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using P320.Services.Services.Contracts;
+using AutoServiceManagment.Services.Services.Contracts;
 using System.Threading.Tasks;
 
 namespace AutoServiceManagment.API.Controllers
