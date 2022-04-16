@@ -9,20 +9,20 @@ using System.Threading.Tasks;
 
 namespace P320.Services.Services
 {
-    public class TaxService : EfCoreRepository<Tax>, ITaxService
+    public class CustomerService : EfCoreRepository<Customer>, ICustomerService
     {
         private readonly IMapper _mapper;
 
-        public TaxService(AppDbContext dbContext, IMapper mapper):base(dbContext)
+        public CustomerService(AppDbContext dbContext, IMapper mapper):base(dbContext)
         {
             _mapper = mapper;
         }
 
-        public async Task<IList<TaxDto>> GetAllTaxesAsync()
+        public async Task<IList<CustomerDto>> GetAllCustomersAsync()
         {
             var students = await GetAllAsync();
 
-            return _mapper.Map<List<TaxDto>>(students);
+            return _mapper.Map<List<CustomerDto>>(students);
         }
     }
 }

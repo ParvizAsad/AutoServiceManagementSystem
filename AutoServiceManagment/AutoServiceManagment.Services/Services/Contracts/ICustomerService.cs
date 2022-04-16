@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace P320.Services.Services.Contracts
 {
-    public interface ITaxService : IRepository<Tax>
+    public interface ICustomerService : IRepository<Customer>
     {
-        Task<IList<TaxDto>> GetAllTaxesAsync();
+        Task<IList<CustomerDto>> GetAllCustomersAsync();
     }
 }

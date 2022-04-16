@@ -9,20 +9,20 @@ using System.Threading.Tasks;
 
 namespace P320.Services.Services
 {
-    public class TaxService : EfCoreRepository<Tax>, ITaxService
+    public class NonWorkingTypeService : EfCoreRepository<NonWorkingType>, INonWorkingTypeService
     {
         private readonly IMapper _mapper;
 
-        public TaxService(AppDbContext dbContext, IMapper mapper):base(dbContext)
+        public NonWorkingTypeService(AppDbContext dbContext, IMapper mapper):base(dbContext)
         {
             _mapper = mapper;
         }
 
-        public async Task<IList<TaxDto>> GetAllTaxesAsync()
+        public async Task<IList<NonWorkingTypeDto>> GetAllNonWorkingTypesAsync()
         {
             var students = await GetAllAsync();
 
-            return _mapper.Map<List<TaxDto>>(students);
+            return _mapper.Map<List<NonWorkingTypeDto>>(students);
         }
     }
 }
