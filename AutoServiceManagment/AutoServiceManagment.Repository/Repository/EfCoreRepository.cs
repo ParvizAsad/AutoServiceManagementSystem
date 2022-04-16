@@ -32,14 +32,22 @@ namespace AutoServiceManagment.Repository.Repository
             await DbContext.SaveChangesAsync();
         }
 
-        public Task AddAsync(IEnumerable<T> entity)
+        public async Task AddAsync(IEnumerable<T> entity)
         {
-            throw new System.NotImplementedException();
+            foreach (var item in entity)
+            {
+                await DbContext.Set<T>().AddAsync(item);
+                await DbContext.SaveChangesAsync();
+            }
         }
 
-        public Task AddAsync(params T[] entity)
+        public async Task AddAsync(params T[] entity)
         {
-            throw new System.NotImplementedException();
+            foreach (var item in entity)
+            {
+                await DbContext.Set<T>().AddAsync(item);
+                await DbContext.SaveChangesAsync();
+            }
         }
 
         public async Task DeleteAsync(T entity)
@@ -48,14 +56,22 @@ namespace AutoServiceManagment.Repository.Repository
             await DbContext.SaveChangesAsync();
         }
 
-        public Task DeleteAsync(IEnumerable<T> entity)
+        public async Task DeleteAsync(IEnumerable<T> entity)
         {
-            throw new System.NotImplementedException();
+            foreach (var item in entity)
+            {
+                DbContext.Set<T>().Remove(item);
+                await DbContext.SaveChangesAsync();
+            }
         }
 
-        public Task DeleteAsync(params T[] entity)
+        public async Task DeleteAsync(params T[] entity)
         {
-            throw new System.NotImplementedException();
+            foreach (var item in entity)
+            {
+                DbContext.Set<T>().Remove(item);
+                await DbContext.SaveChangesAsync();
+            }
         }
 
         public async Task UpdateAsync(T entity)
@@ -64,14 +80,22 @@ namespace AutoServiceManagment.Repository.Repository
             await DbContext.SaveChangesAsync();
         }
 
-        public Task UpdateAsync(IEnumerable<T> entity)
+        public async Task UpdateAsync(IEnumerable<T> entity)
         {
-            throw new System.NotImplementedException();
+            foreach (var item in entity)
+            {
+                DbContext.Set<T>().Update(item);
+                await DbContext.SaveChangesAsync();
+            }
         }
 
-        public Task UpdateAsync(params T[] entity)
+        public async Task UpdateAsync(params T[] entity)
         {
-            throw new System.NotImplementedException();
+            foreach (var item in entity)
+            {
+                DbContext.Set<T>().Update(item);
+                await DbContext.SaveChangesAsync();
+            }
         }
     }
 }
