@@ -20,9 +20,9 @@ namespace P320.Services.Services
 
         public async Task<IList<NonWorkingTypeDto>> GetAllNonWorkingTypesAsync()
         {
-            var students = await GetAllAsync();
+            var nonWorkingTypes = await GetAllAsync();
 
-            return _mapper.Map<List<NonWorkingTypeDto>>(students);
+            return _mapper.Map<List<NonWorkingTypeDto>>(nonWorkingTypes);
         }
     }
 }

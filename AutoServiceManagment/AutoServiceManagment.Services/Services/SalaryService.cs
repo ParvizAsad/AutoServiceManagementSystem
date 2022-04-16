@@ -20,9 +20,9 @@ namespace P320.Services.Services
 
         public async Task<IList<SalaryDto>> GetAllSalarysAsync()
         {
-            var students = await GetAllAsync();
+            var salaries = await GetAllAsync();
 
-            return _mapper.Map<List<SalaryDto>>(students);
+            return _mapper.Map<List<SalaryDto>>(salaries);
         }
     }
 }

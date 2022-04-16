@@ -20,9 +20,9 @@ namespace P320.Services.Services
 
         public async Task<IList<BrandDto>> GetAllBrandsAsync()
         {
-            var students = await GetAllAsync();
+            var brands = await GetAllAsync();
 
-            return _mapper.Map<List<BrandDto>>(students);
+            return _mapper.Map<List<BrandDto>>(brands);
         }
 
     }

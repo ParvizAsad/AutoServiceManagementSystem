@@ -20,9 +20,9 @@ namespace P320.Services.Services
 
         public async Task<IList<PositionDto>> GetAllPositionsAsync()
         {
-            var students = await GetAllAsync();
+            var positions = await GetAllAsync();
 
-            return _mapper.Map<List<PositionDto>>(students);
+            return _mapper.Map<List<PositionDto>>(positions);
         }
     }
 }
