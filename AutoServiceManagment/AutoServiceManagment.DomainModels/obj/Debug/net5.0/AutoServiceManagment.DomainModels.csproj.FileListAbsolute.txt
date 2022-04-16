@@ -22,3 +22,15 @@ C:\Users\AZC167387\Desktop\New folder\AutoServiceManagmentSystem\AutoServiceMana
 C:\Users\AZC167387\Desktop\New folder\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.DomainModels\bin\Debug\net5.0\AutoServiceManagment.DomainModels.dll
 C:\Users\AZC167387\Desktop\New folder\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.DomainModels\bin\Debug\net5.0\ref\AutoServiceManagment.DomainModels.dll
 C:\Users\AZC167387\Desktop\New folder\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.DomainModels\bin\Debug\net5.0\AutoServiceManagment.DomainModels.pdb
+C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.DomainModels\bin\Debug\net5.0\AutoServiceManagment.DomainModels.deps.json
+C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.DomainModels\bin\Debug\net5.0\AutoServiceManagment.DomainModels.dll
+C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.DomainModels\bin\Debug\net5.0\ref\AutoServiceManagment.DomainModels.dll
+C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.DomainModels\bin\Debug\net5.0\AutoServiceManagment.DomainModels.pdb
+C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.DomainModels\obj\Debug\net5.0\AutoServiceManagment.DomainModels.csproj.AssemblyReference.cache
+C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.DomainModels\obj\Debug\net5.0\AutoServiceManagment.DomainModels.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.DomainModels\obj\Debug\net5.0\AutoServiceManagment.DomainModels.AssemblyInfoInputs.cache
+C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.DomainModels\obj\Debug\net5.0\AutoServiceManagment.DomainModels.AssemblyInfo.cs
+C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.DomainModels\obj\Debug\net5.0\AutoServiceManagment.DomainModels.csproj.CoreCompileInputs.cache
+C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.DomainModels\obj\Debug\net5.0\AutoServiceManagment.DomainModels.dll
+C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.DomainModels\obj\Debug\net5.0\ref\AutoServiceManagment.DomainModels.dll
+C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.DomainModels\obj\Debug\net5.0\AutoServiceManagment.DomainModels.pdb

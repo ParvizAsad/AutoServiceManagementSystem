@@ -11,13 +11,13 @@ namespace AutoServiceManagment.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SalariesController : ControllerBase
+    public class FinancesController : ControllerBase
     {
-        private readonly IRepository<Salary> _repository;
+        private readonly IRepository<Finance> _repository;
         private readonly IMapper _mapper;
-        private readonly ISalaryService _service;
+        private readonly IFinanceService _service;
 
-        public SalariesController(IMapper mapper, IRepository<Salary> repository, ISalaryService service)
+        public FinancesController(IMapper mapper, IRepository<Finance> repository, IFinanceService service)
         {
             _mapper = mapper;
             _repository = repository;
@@ -27,7 +27,7 @@ namespace AutoServiceManagment.API.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            return Ok(await _service.GetAllSalarysAsync());
+            return Ok(await _service.GetAllFinancesAsync());
         }
 
         [HttpGet("{id?}")]
@@ -36,39 +36,39 @@ namespace AutoServiceManagment.API.Controllers
             if (id == null)
                 return NotFound();
 
-            var salary = await _repository.GetAsync(id.Value);
-            if (salary == null)
+            var Finance = await _repository.GetAsync(id.Value);
+            if (Finance == null)
                 return NotFound();
 
-            return Ok(_mapper.Map<SalaryDto>(salary));
+            return Ok(_mapper.Map<FinanceDto>(Finance));
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] SalaryDto salaryDto)
+        public async Task<IActionResult> Post([FromBody] FinanceDto financeDto)
         {
-            var salary = _mapper.Map<Salary>(salaryDto);
+            var Finance = _mapper.Map<Finance>(financeDto);
 
-            await _repository.AddAsync(salary);
+            await _repository.AddAsync(Finance);
 
-            return Ok(salary);
+            return Ok(Finance);
         }
 
         [HttpPut("{id?}")]
-        public async Task<IActionResult> Put([FromRoute] int? id, [FromBody] SalaryDto salaryDto)
+        public async Task<IActionResult> Put([FromRoute] int? id, [FromBody] FinanceDto financeDto)
         {
             if (id == null)
                 return NotFound();
 
-            if (id != salaryDto.Id)
+            if (id != financeDto.Id)
                 return BadRequest();
 
-            var existSalary = await _repository.GetAsync(id.Value);
-            if (existSalary == null)
+            var existFinance = await _repository.GetAsync(id.Value);
+            if (existFinance == null)
                 return NotFound();
 
-            var Salary = _mapper.Map<Salary>(salaryDto);
+            var Finance = _mapper.Map<Finance>(financeDto);
 
-            await _repository.UpdateAsync(Salary);
+            await _repository.UpdateAsync(Finance);
 
             return Ok();
         }
@@ -79,11 +79,11 @@ namespace AutoServiceManagment.API.Controllers
             if (id == null)
                 return NotFound();
 
-            var salary = await _repository.GetAsync(id.Value);
-            if (salary == null)
+            var Finance = await _repository.GetAsync(id.Value);
+            if (Finance == null)
                 return NotFound();
 
-            await _repository.DeleteAsync(salary);
+            await _repository.DeleteAsync(Finance);
 
             return NoContent();
         }
