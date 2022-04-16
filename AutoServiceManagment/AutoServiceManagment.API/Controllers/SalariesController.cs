@@ -11,13 +11,13 @@ namespace AutoServiceManagment.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductsController : ControllerBase
+    public class SalariesController : ControllerBase
     {
         private readonly IRepository<Product> _repository;
         private readonly IMapper _mapper;
-        private readonly IProductService _service;
+        private readonly ISalaryService _service;
 
-        public ProductsController(IMapper mapper, IRepository<Product> repository, IProductService service)
+        public SalariesController(IMapper mapper, IRepository<Product> repository, ISalaryService service)
         {
             _mapper = mapper;
             _repository = repository;
@@ -27,7 +27,7 @@ namespace AutoServiceManagment.API.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            return Ok(await _service.GetAllProductsAsync());
+            return Ok(await _service.GetAllSalarysAsync());
         }
 
         [HttpGet("{id?}")]

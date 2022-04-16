@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "J4/VcekH2iJTKWuyQmc8q2m0dPnb2StAeZnjOP10A+qkvtDxURgKNaCIhLF36n/rlHB83m0TYbixeDkYVtBuVQ==",
+  "dgSpecHash": "aKl2oNK4NKuBh3dTVYjQ6rXB+OizfA+uL5FbAHs7N2o1Zw4TAEEvzWSFXMYrwwceaO51361jZ23kNvXKDJ9gwg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\AZC167387\\Desktop\\New folder\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.API\\AutoServiceManagment.API.csproj",
+  "projectFilePath": "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.API\\AutoServiceManagment.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\AZC167387\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
     "C:\\Users\\AZC167387\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",

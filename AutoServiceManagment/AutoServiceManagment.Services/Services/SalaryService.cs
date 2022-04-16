@@ -24,10 +24,5 @@ namespace P320.Services.Services
 
             return _mapper.Map<List<SalaryDto>>(students);
         }
-
-        public object GetTest()
-        {
-            return "Test";
-        }
     }
 }

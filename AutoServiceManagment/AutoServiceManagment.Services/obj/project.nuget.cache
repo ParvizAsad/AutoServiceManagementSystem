@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Uk6l/NeiTRWZJZd3PbvFgO6vGVDvtEAWrxe/42e8Ql4TYgSyaBFJehbn+Ac2A9SxBR26Qku0v6Ac4qT2SFwuKw==",
+  "dgSpecHash": "s9H4dT9bqZbDLwjwOTOJPnAsUHpKtSwqmNVMnVvW/AekqE6ySI+1LUdArR8ea1VT4CAIKNWljDhvpzvkwelwXQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\AZC167387\\Desktop\\New folder\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Services\\AutoServiceManagment.Services.csproj",
+  "projectFilePath": "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Services\\AutoServiceManagment.Services.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\AZC167387\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
     "C:\\Users\\AZC167387\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.16\\microsoft.aspnetcore.http.features.5.0.16.nupkg.sha512",

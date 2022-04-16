@@ -8,8 +8,6 @@ namespace P320.Services.Services.Contracts
 {
     public interface IBrandService : IRepository<Brand>
     {
-        object GetTest();
-
         Task<IList<BrandDto>> GetAllBrandsAsync();
     }
 }

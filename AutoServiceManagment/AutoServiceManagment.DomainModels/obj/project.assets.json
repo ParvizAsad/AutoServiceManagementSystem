@@ -115,11 +115,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\AZC167387\\Desktop\\New folder\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\AutoServiceManagment.DomainModels.csproj",
+      "projectUniqueName": "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\AutoServiceManagment.DomainModels.csproj",
       "projectName": "AutoServiceManagment.DomainModels",
-      "projectPath": "C:\\Users\\AZC167387\\Desktop\\New folder\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\AutoServiceManagment.DomainModels.csproj",
+      "projectPath": "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\AutoServiceManagment.DomainModels.csproj",
       "packagesPath": "C:\\Users\\AZC167387\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\AZC167387\\Desktop\\New folder\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\obj\\",
+      "outputPath": "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\AZC167387\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -171,13 +171,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Users\\AZC167387\\Desktop\\New folder\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }

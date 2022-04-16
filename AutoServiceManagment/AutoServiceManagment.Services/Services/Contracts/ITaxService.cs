@@ -8,8 +8,6 @@ namespace P320.Services.Services.Contracts
 {
     public interface ITaxService : IRepository<Tax>
     {
-        object GetTest();
-
         Task<IList<TaxDto>> GetAllTaxsAsync();
     }
 }

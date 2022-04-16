@@ -25,9 +25,5 @@ namespace P320.Services.Services
             return _mapper.Map<List<BrandDto>>(students);
         }
 
-        public object GetTest()
-        {
-            return "Test";
-        }
     }
 }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\AZC167387\\Desktop\\New folder\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\AutoServiceManagment.DomainModels.csproj": {}
+    "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\AutoServiceManagment.DomainModels.csproj": {}
   },
   "projects": {
-    "C:\\Users\\AZC167387\\Desktop\\New folder\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\AutoServiceManagment.DomainModels.csproj": {
+    "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\AutoServiceManagment.DomainModels.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\AZC167387\\Desktop\\New folder\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\AutoServiceManagment.DomainModels.csproj",
+        "projectUniqueName": "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\AutoServiceManagment.DomainModels.csproj",
         "projectName": "AutoServiceManagment.DomainModels",
-        "projectPath": "C:\\Users\\AZC167387\\Desktop\\New folder\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\AutoServiceManagment.DomainModels.csproj",
+        "projectPath": "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\AutoServiceManagment.DomainModels.csproj",
         "packagesPath": "C:\\Users\\AZC167387\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\AZC167387\\Desktop\\New folder\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\obj\\",
+        "outputPath": "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\AZC167387\\AppData\\Roaming\\NuGet\\NuGet.Config",

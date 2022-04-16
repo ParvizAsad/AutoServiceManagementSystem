@@ -5792,11 +5792,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\AZC167387\\Desktop\\New folder\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.API\\AutoServiceManagment.API.csproj",
+      "projectUniqueName": "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.API\\AutoServiceManagment.API.csproj",
       "projectName": "AutoServiceManagment.API",
-      "projectPath": "C:\\Users\\AZC167387\\Desktop\\New folder\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.API\\AutoServiceManagment.API.csproj",
+      "projectPath": "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.API\\AutoServiceManagment.API.csproj",
       "packagesPath": "C:\\Users\\AZC167387\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\AZC167387\\Desktop\\New folder\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.API\\obj\\",
+      "outputPath": "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\AZC167387\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -5813,11 +5813,11 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\AZC167387\\Desktop\\New folder\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Repository\\AutoServiceManagment.Repository.csproj": {
-              "projectPath": "C:\\Users\\AZC167387\\Desktop\\New folder\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Repository\\AutoServiceManagment.Repository.csproj"
+            "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Repository\\AutoServiceManagment.Repository.csproj": {
+              "projectPath": "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Repository\\AutoServiceManagment.Repository.csproj"
             },
-            "C:\\Users\\AZC167387\\Desktop\\New folder\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Services\\AutoServiceManagment.Services.csproj": {
-              "projectPath": "C:\\Users\\AZC167387\\Desktop\\New folder\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Services\\AutoServiceManagment.Services.csproj"
+            "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Services\\AutoServiceManagment.Services.csproj": {
+              "projectPath": "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Services\\AutoServiceManagment.Services.csproj"
             }
           }
         }

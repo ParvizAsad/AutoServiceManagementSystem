@@ -8,8 +8,6 @@ namespace P320.Services.Services.Contracts
 {
     public interface IPositionService : IRepository<Position>
     {
-        object GetTest();
-
         Task<IList<PositionDto>> GetAllPositionsAsync();
     }
 }

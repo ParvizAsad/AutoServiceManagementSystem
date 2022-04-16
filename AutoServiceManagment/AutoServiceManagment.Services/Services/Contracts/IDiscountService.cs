@@ -8,8 +8,6 @@ namespace P320.Services.Services.Contracts
 {
     public interface IDiscountService : IRepository<Discount>
     {
-        object GetTest();
-
         Task<IList<DiscountDto>> GetAllDiscountsAsync();
     }
 }

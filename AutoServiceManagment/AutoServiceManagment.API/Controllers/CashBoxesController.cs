@@ -11,13 +11,13 @@ namespace AutoServiceManagment.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductsController : ControllerBase
+    public class CashBoxesController : ControllerBase
     {
-        private readonly IRepository<Product> _repository;
+        private readonly IRepository<CashBox> _repository;
         private readonly IMapper _mapper;
-        private readonly IProductService _service;
+        private readonly ICashBoxService _service;
 
-        public ProductsController(IMapper mapper, IRepository<Product> repository, IProductService service)
+        public CashBoxesController(IMapper mapper, IRepository<CashBox> repository, ICashBoxService service)
         {
             _mapper = mapper;
             _repository = repository;
@@ -27,7 +27,7 @@ namespace AutoServiceManagment.API.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            return Ok(await _service.GetAllProductsAsync());
+            return Ok(await _service.GetAllCashBoxsAsync());
         }
 
         [HttpGet("{id?}")]
@@ -36,39 +36,39 @@ namespace AutoServiceManagment.API.Controllers
             if (id == null)
                 return NotFound();
 
-            var product = await _repository.GetAsync(id.Value);
-            if (product == null)
+            var cashBox = await _repository.GetAsync(id.Value);
+            if (cashBox == null)
                 return NotFound();
 
-            return Ok(_mapper.Map<ProductDto>(product));
+            return Ok(_mapper.Map<CashBoxDto>(cashBox));
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] ProductDto productDto)
+        public async Task<IActionResult> Post([FromBody] CashBoxDto cashBoxDto)
         {
-            var product = _mapper.Map<Product>(productDto);
+            var cashBox = _mapper.Map<CashBox>(cashBoxDto);
 
-            await _repository.AddAsync(product);
+            await _repository.AddAsync(cashBox);
 
-            return Ok(product);
+            return Ok(cashBox);
         }
 
         [HttpPut("{id?}")]
-        public async Task<IActionResult> Put([FromRoute] int? id, [FromBody] ProductDto productDto)
+        public async Task<IActionResult> Put([FromRoute] int? id, [FromBody] CashBoxDto cashBoxDto)
         {
             if (id == null)
                 return NotFound();
 
-            if (id != productDto.Id)
+            if (id != cashBoxDto.Id)
                 return BadRequest();
 
-            var existProduct = await _repository.GetAsync(id.Value);
-            if (existProduct == null)
+            var existcashBox = await _repository.GetAsync(id.Value);
+            if (existcashBox == null)
                 return NotFound();
 
-            var product = _mapper.Map<Product>(productDto);
+            var cashBox = _mapper.Map<CashBox>(cashBoxDto);
 
-            await _repository.UpdateAsync(product);
+            await _repository.UpdateAsync(cashBox);
 
             return Ok();
         }
@@ -79,11 +79,11 @@ namespace AutoServiceManagment.API.Controllers
             if (id == null)
                 return NotFound();
 
-            var product = await _repository.GetAsync(id.Value);
-            if (product == null)
+            var cashBox = await _repository.GetAsync(id.Value);
+            if (cashBox == null)
                 return NotFound();
 
-            await _repository.DeleteAsync(product);
+            await _repository.DeleteAsync(cashBox);
 
             return NoContent();
         }

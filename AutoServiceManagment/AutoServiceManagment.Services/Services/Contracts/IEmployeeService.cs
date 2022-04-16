@@ -8,8 +8,6 @@ namespace P320.Services.Services.Contracts
 {
     public interface IEmployeeService : IRepository<Employee>
     {
-        object GetTest();
-
         Task<IList<EmployeeDto>> GetAllEmployeesAsync();
     }
 }

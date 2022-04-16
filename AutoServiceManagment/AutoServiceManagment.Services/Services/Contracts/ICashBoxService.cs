@@ -8,8 +8,6 @@ namespace P320.Services.Services.Contracts
 {
     public interface ICashBoxService : IRepository<CashBox>
     {
-        object GetTest();
-
         Task<IList<CashBoxDto>> GetAllCashBoxsAsync();
     }
 }

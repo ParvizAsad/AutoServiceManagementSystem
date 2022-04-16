@@ -8,8 +8,6 @@ namespace P320.Services.Services.Contracts
 {
     public interface IProductService : IRepository<Product>
     {
-        object GetTest();
-
         Task<IList<ProductDto>> GetAllProductsAsync();
     }
 }

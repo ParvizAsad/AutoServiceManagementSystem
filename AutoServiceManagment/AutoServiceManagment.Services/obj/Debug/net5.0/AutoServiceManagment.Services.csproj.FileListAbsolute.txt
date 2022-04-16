@@ -23,3 +23,20 @@ C:\Users\AZC167387\Desktop\New folder\AutoServiceManagmentSystem\AutoServiceMana
 C:\Users\AZC167387\Desktop\New folder\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\obj\Debug\net5.0\AutoServiceManagment.Services.dll
 C:\Users\AZC167387\Desktop\New folder\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\obj\Debug\net5.0\ref\AutoServiceManagment.Services.dll
 C:\Users\AZC167387\Desktop\New folder\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\obj\Debug\net5.0\AutoServiceManagment.Services.pdb
+C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\bin\Debug\net5.0\AutoServiceManagment.Services.deps.json
+C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\bin\Debug\net5.0\AutoServiceManagment.Services.dll
+C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\bin\Debug\net5.0\ref\AutoServiceManagment.Services.dll
+C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\bin\Debug\net5.0\AutoServiceManagment.Services.pdb
+C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\bin\Debug\net5.0\AutoServiceManagment.DomainModels.dll
+C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\bin\Debug\net5.0\AutoServiceManagment.Repository.dll
+C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\bin\Debug\net5.0\AutoServiceManagment.DomainModels.pdb
+C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\bin\Debug\net5.0\AutoServiceManagment.Repository.pdb
+C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\obj\Debug\net5.0\AutoServiceManagment.Services.csproj.AssemblyReference.cache
+C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\obj\Debug\net5.0\AutoServiceManagment.Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\obj\Debug\net5.0\AutoServiceManagment.Services.AssemblyInfoInputs.cache
+C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\obj\Debug\net5.0\AutoServiceManagment.Services.AssemblyInfo.cs
+C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\obj\Debug\net5.0\AutoServiceManagment.Services.csproj.CoreCompileInputs.cache
+C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\obj\Debug\net5.0\AutoServiceManagment.Services.csproj.CopyComplete
+C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\obj\Debug\net5.0\AutoServiceManagment.Services.dll
+C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\obj\Debug\net5.0\ref\AutoServiceManagment.Services.dll
+C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\obj\Debug\net5.0\AutoServiceManagment.Services.pdb

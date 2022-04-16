@@ -8,8 +8,6 @@ namespace P320.Services.Services.Contracts
 {
     public interface ICategoryService : IRepository<Category>
     {
-        object GetTest();
-
         Task<IList<CategoryDto>> GetAllCategoriesAsync();
     }
 }
