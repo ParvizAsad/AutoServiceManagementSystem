@@ -30,12 +30,15 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task AddBrandAsync(BrandDto brandDto)
         {
-            var brands = await _repository.AddAsync(BrandDto brandDto);
+            var brand = _mapper.Map<Brand>(brandDto);
+            await _repository.AddAsync(brand);
         }
 
-        public Task DeleteBrandAsync(int Id)
+        public async Task DeleteBrandAsync(int? id)
         {
-            throw new System.NotImplementedException();
+            var brand = await _repository.GetAsync(id.Value);
+
+            brand.IsDeleted = true;
         }
 
         public Task UpdateBrandAsync(BrandDto brandDto)

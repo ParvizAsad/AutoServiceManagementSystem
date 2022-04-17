@@ -51,7 +51,8 @@ namespace AutoServiceManagment.API.Controllers
         public async Task<IActionResult> Delete([FromRoute] int? id)
         {
             await _service.DeleteBrandAsync(id.Value);
-            return Ok();
+
+            return NoContent();
         }
 
 

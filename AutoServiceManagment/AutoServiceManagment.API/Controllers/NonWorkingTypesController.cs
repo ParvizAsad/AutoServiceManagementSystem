@@ -13,14 +13,10 @@ namespace AutoServiceManagment.API.Controllers
     [ApiController]
     public class NonWorkingTypesController : ControllerBase
     {
-        private readonly IRepository<NonWorkingType> _repository;
-        private readonly IMapper _mapper;
         private readonly INonWorkingTypeService _service;
 
-        public NonWorkingTypesController(IMapper mapper, IRepository<NonWorkingType> repository, INonWorkingTypeService service)
+        public NonWorkingTypesController(INonWorkingTypeService service)
         {
-            _mapper = mapper;
-            _repository = repository;
             _service = service;
         }
 
@@ -30,61 +26,30 @@ namespace AutoServiceManagment.API.Controllers
             return Ok(await _service.GetAllNonWorkingTypesAsync());
         }
 
-        [HttpGet("{id?}")]
-        public async Task<IActionResult> Get([FromRoute] int? id)
-        {
-            if (id == null)
-                return NotFound();
-
-            var nonWorkingType = await _repository.GetAsync(id.Value);
-            if (nonWorkingType == null)
-                return NotFound();
-
-            return Ok(_mapper.Map<NonWorkingTypeDto>(nonWorkingType));
-        }
+        //[HttpGet("{id?}")]
+        //public async Task<IActionResult> Get([FromRoute] int? id)
+        //{
+        //    return Ok(await _service.GetNonWorkingTypeAsync(id.Value));
+        //}
 
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] NonWorkingTypeDto nonWorkingTypeDto)
         {
-            var nonWorkingType = _mapper.Map<NonWorkingType>(nonWorkingTypeDto);
-
-            await _repository.AddAsync(nonWorkingType);
-
-            return Ok(nonWorkingType);
+            await _service.AddNonWorkingTypeAsync(nonWorkingTypeDto);
+            return Ok();
         }
 
         [HttpPut("{id?}")]
         public async Task<IActionResult> Put([FromRoute] int? id, [FromBody] NonWorkingTypeDto nonWorkingTypeDto)
         {
-            if (id == null)
-                return NotFound();
-
-            if (id != nonWorkingTypeDto.Id)
-                return BadRequest();
-
-            var existNonWorkingType = await _repository.GetAsync(id.Value);
-            if (existNonWorkingType == null)
-                return NotFound();
-
-            var nonWorkingType = _mapper.Map<NonWorkingType>(nonWorkingTypeDto);
-
-            await _repository.UpdateAsync(nonWorkingType);
-
+            await _service.UpdateNonWorkingTypeAsync(nonWorkingTypeDto);
             return Ok();
         }
 
         [HttpDelete("{id?}")]
         public async Task<IActionResult> Delete([FromRoute] int? id)
         {
-            if (id == null)
-                return NotFound();
-
-            var nonWorkingType = await _repository.GetAsync(id.Value);
-            if (nonWorkingType == null)
-                return NotFound();
-
-            await _repository.DeleteAsync(nonWorkingType);
-
+            await _service.DeleteNonWorkingTypeAsync(id.Value);
             return NoContent();
         }
     }

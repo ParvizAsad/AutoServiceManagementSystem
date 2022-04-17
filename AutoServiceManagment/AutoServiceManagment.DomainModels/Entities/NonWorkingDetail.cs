@@ -15,5 +15,6 @@ namespace AutoServiceManagment.DomainModels.Entities
         [ForeignKey("NonWorkingType")]
         public int NonWorkingTypeId { get; set; }
         public NonWorkingType NonWorkingType { get; set; }
+        public bool IsDeleted { get; set; } = false;
     }
 }

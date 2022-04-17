@@ -13,78 +13,43 @@ namespace AutoServiceManagment.API.Controllers
     [ApiController]
     public class CashBoxesController : ControllerBase
     {
-        private readonly IRepository<CashBox> _repository;
-        private readonly IMapper _mapper;
         private readonly ICashBoxService _service;
 
-        public CashBoxesController(IMapper mapper, IRepository<CashBox> repository, ICashBoxService service)
+        public CashBoxesController(ICashBoxService service)
         {
-            _mapper = mapper;
-            _repository = repository;
             _service = service;
         }
 
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            return Ok(await _service.GetAllCashBoxsAsync());
+            return Ok(await _service.GetAllCashBoxesAsync());
         }
 
-        [HttpGet("{id?}")]
-        public async Task<IActionResult> Get([FromRoute] int? id)
-        {
-            if (id == null)
-                return NotFound();
-
-            var cashBox = await _repository.GetAsync(id.Value);
-            if (cashBox == null)
-                return NotFound();
-
-            return Ok(_mapper.Map<CashBoxDto>(cashBox));
-        }
+        //[HttpGet("{id?}")]
+        //public async Task<IActionResult> Get([FromRoute] int? id)
+        //{
+        //    return Ok(await _service.GetCashBoxAsync(id.Value));
+        //}
 
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] CashBoxDto cashBoxDto)
         {
-            var cashBox = _mapper.Map<CashBox>(cashBoxDto);
-
-            await _repository.AddAsync(cashBox);
-
-            return Ok(cashBox);
+            await _service.AddCashBoxAsync(cashBoxDto);
+            return Ok();
         }
 
         [HttpPut("{id?}")]
         public async Task<IActionResult> Put([FromRoute] int? id, [FromBody] CashBoxDto cashBoxDto)
         {
-            if (id == null)
-                return NotFound();
-
-            if (id != cashBoxDto.Id)
-                return BadRequest();
-
-            var existcashBox = await _repository.GetAsync(id.Value);
-            if (existcashBox == null)
-                return NotFound();
-
-            var cashBox = _mapper.Map<CashBox>(cashBoxDto);
-
-            await _repository.UpdateAsync(cashBox);
-
+            await _service.UpdateCashBoxAsync(cashBoxDto);
             return Ok();
         }
 
         [HttpDelete("{id?}")]
         public async Task<IActionResult> Delete([FromRoute] int? id)
         {
-            if (id == null)
-                return NotFound();
-
-            var cashBox = await _repository.GetAsync(id.Value);
-            if (cashBox == null)
-                return NotFound();
-
-            await _repository.DeleteAsync(cashBox);
-
+            await _service.DeleteCashBoxAsync(id.Value);
             return NoContent();
         }
 

@@ -9,5 +9,15 @@ namespace AutoServiceManagment.Services.Services.Contracts
     public interface IFinanceService : IRepository<Finance>
     {
         Task<IList<FinanceDto>> GetAllFinancesAsync();
+        // Task<FinanceDto> GetFinanceAsync(int id);
+        Task AddFinanceAsync(FinanceDto FinanceDto);
+        // Task AddFinancesAsync(IEnumerable<FinanceDto> financeDtos);
+        //  Task AddFinancesAsync(params FinanceDto[] financeDtos);
+        Task UpdateFinanceAsync(FinanceDto FinanceDto);
+        // Task UpdateFinancesAsync(IEnumerable<FinanceDto> financeDtos);
+        // Task UpdateFinancesAsync(params FinanceDto[] financeDtos);
+        Task DeleteFinanceAsync(int? Id);
+        // Task DeleteFinancesAsync(IEnumerable<int> Id);
+        //  Task DeleteFinancesAsync(params int[] Id);
     }
 }

@@ -34,6 +34,7 @@
       "AutoServiceManagment.API/1.0.0": {
         "dependencies": {
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "11.0.0",
+          "AutoServiceManagment.DomainModels": "1.0.0",
           "AutoServiceManagment.Repository": "1.0.0",
           "AutoServiceManagment.Services": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "5.0.16",

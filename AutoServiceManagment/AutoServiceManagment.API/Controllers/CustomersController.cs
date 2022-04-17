@@ -11,79 +11,46 @@ namespace AutoServiceManagment.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TaxesController : ControllerBase
+    public class CustomersController : ControllerBase
     {
-        private readonly IRepository<Tax> _repository;
-        private readonly IMapper _mapper;
-        private readonly ITaxService _service;
+        private readonly ICustomerService _service;
 
-        public TaxesController(IMapper mapper, IRepository<Tax> repository, ITaxService service)
+        public CustomersController(ICustomerService service)
         {
-            _mapper = mapper;
-            _repository = repository;
             _service = service;
         }
 
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            return Ok(await _service.GetAllTaxesAsync());
+            return Ok(await _service.GetAllCustomersAsync());
         }
 
-        [HttpGet("{id?}")]
-        public async Task<IActionResult> Get([FromRoute] int? id)
-        {
-            if (id == null)
-                return NotFound();
-
-            var Tax = await _repository.GetAsync(id.Value);
-            if (Tax == null)
-                return NotFound();
-
-            return Ok(_mapper.Map<TaxDto>(Tax));
-        }
+        //[HttpGet("{id?}")]
+        //public async Task<IActionResult> Get([FromRoute] int? id)
+        //{
+        //    return Ok(await _service.GetCustomerAsync(id.Value));
+        //}
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] TaxDto taxDto)
+        public async Task<IActionResult> Post([FromBody] CustomerDto customerDto)
         {
-            var tax = _mapper.Map<Tax>(taxDto);
+            await _service.AddCustomerAsync(customerDto);
+            return Ok();
 
-            await _repository.AddAsync(tax);
-
-            return Ok(tax);
         }
 
         [HttpPut("{id?}")]
-        public async Task<IActionResult> Put([FromRoute] int? id, [FromBody] TaxDto taxDto)
+        public async Task<IActionResult> Put([FromRoute] int? id, [FromBody] CustomerDto customerDto)
         {
-            if (id == null)
-                return NotFound();
-
-            if (id != taxDto.Id)
-                return BadRequest();
-
-            var existTax = await _repository.GetAsync(id.Value);
-            if (existTax == null)
-                return NotFound();
-
-            var tax = _mapper.Map<Tax>(taxDto);
-
-            await _repository.UpdateAsync(tax);
-
+            await _service.UpdateCustomerAsync(customerDto);
             return Ok();
         }
 
         [HttpDelete("{id?}")]
         public async Task<IActionResult> Delete([FromRoute] int? id)
         {
-            if (id == null)
-                return NotFound();
-
-            var tax = await _repository.GetAsync(id.Value);
-            if (tax == null)
-                return NotFound();
-
-            await _repository.DeleteAsync(tax);
+            await _service.DeleteCustomerAsync(id.Value);
 
             return NoContent();
         }

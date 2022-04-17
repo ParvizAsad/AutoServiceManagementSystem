@@ -13,14 +13,10 @@ namespace AutoServiceManagment.API.Controllers
     [ApiController]
     public class NonWorkingDetailsController : ControllerBase
     {
-        private readonly IRepository<NonWorkingDetail> _repository;
-        private readonly IMapper _mapper;
         private readonly INonWorkingDetailService _service;
 
-        public NonWorkingDetailsController(IMapper mapper, IRepository<NonWorkingDetail> repository, INonWorkingDetailService service)
+        public NonWorkingDetailsController(INonWorkingDetailService service)
         {
-            _mapper = mapper;
-            _repository = repository;
             _service = service;
         }
 
@@ -30,61 +26,30 @@ namespace AutoServiceManagment.API.Controllers
             return Ok(await _service.GetAllNonWorkingDetailsAsync());
         }
 
-        [HttpGet("{id?}")]
-        public async Task<IActionResult> Get([FromRoute] int? id)
-        {
-            if (id == null)
-                return NotFound();
-
-            var nonWorkingDetail = await _repository.GetAsync(id.Value);
-            if (nonWorkingDetail == null)
-                return NotFound();
-
-            return Ok(_mapper.Map<NonWorkingDetailDto>(nonWorkingDetail));
-        }
+        //[HttpGet("{id?}")]
+        //public async Task<IActionResult> Get([FromRoute] int? id)
+        //{
+        //    return Ok(await _service.GetNonWorkingDetailAsync(id.Value));
+        //}
 
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] NonWorkingDetailDto nonWorkingDetailDto)
         {
-            var nonWorkingDetail = _mapper.Map<NonWorkingDetail>(nonWorkingDetailDto);
-
-            await _repository.AddAsync(nonWorkingDetail);
-
-            return Ok(nonWorkingDetail);
+            await _service.AddNonWorkingDetailAsync(nonWorkingDetailDto);
+            return Ok();
         }
 
         [HttpPut("{id?}")]
         public async Task<IActionResult> Put([FromRoute] int? id, [FromBody] NonWorkingDetailDto nonWorkingDetailDto)
         {
-            if (id == null)
-                return NotFound();
-
-            if (id != nonWorkingDetailDto.Id)
-                return BadRequest();
-
-            var existNonWorkingDetail = await _repository.GetAsync(id.Value);
-            if (existNonWorkingDetail == null)
-                return NotFound();
-
-            var nonWorkingDetail = _mapper.Map<NonWorkingDetail>(nonWorkingDetailDto);
-
-            await _repository.UpdateAsync(nonWorkingDetail);
-
+            await _service.UpdateNonWorkingDetailAsync(nonWorkingDetailDto);
             return Ok();
         }
 
         [HttpDelete("{id?}")]
         public async Task<IActionResult> Delete([FromRoute] int? id)
         {
-            if (id == null)
-                return NotFound();
-
-            var nonWorkingDetail = await _repository.GetAsync(id.Value);
-            if (nonWorkingDetail == null)
-                return NotFound();
-
-            await _repository.DeleteAsync(nonWorkingDetail);
-
+            await _service.DeleteNonWorkingDetailAsync(id.Value);
             return NoContent();
         }
     }

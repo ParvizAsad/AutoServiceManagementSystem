@@ -9,5 +9,15 @@ namespace AutoServiceManagment.Services.Services.Contracts
     public interface ICustomerService : IRepository<Customer>
     {
         Task<IList<CustomerDto>> GetAllCustomersAsync();
+        // Task<CustomerDto> GetCustomerAsync(int id);
+        Task AddCustomerAsync(CustomerDto CustomerDto);
+        // Task AddCustomersAsync(IEnumerable<CustomerDto> CustomerDtos);
+        //  Task AddCustomersAsync(params CustomerDto[] CustomerDtos);
+        Task UpdateCustomerAsync(CustomerDto CustomerDto);
+        // Task UpdateCustomersAsync(IEnumerable<CustomerDto> CustomerDtos);
+        // Task UpdateCustomersAsync(params CustomerDto[] CustomerDtos);
+        Task DeleteCustomerAsync(int? Id);
+        // Task DeleteCustomersAsync(IEnumerable<int> Id);
+        //  Task DeleteCustomersAsync(params int[] Id);
     }
 }

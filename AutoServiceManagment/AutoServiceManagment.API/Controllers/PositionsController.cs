@@ -13,14 +13,10 @@ namespace AutoServiceManagment.API.Controllers
     [ApiController]
     public class PositionsController : ControllerBase
     {
-        private readonly IRepository<Position> _repository;
-        private readonly IMapper _mapper;
         private readonly IPositionService _service;
 
-        public PositionsController(IMapper mapper, IRepository<Position> repository, IPositionService service)
+        public PositionsController(IPositionService service)
         {
-            _mapper = mapper;
-            _repository = repository;
             _service = service;
         }
 
@@ -30,60 +26,30 @@ namespace AutoServiceManagment.API.Controllers
             return Ok(await _service.GetAllPositionsAsync());
         }
 
-        [HttpGet("{id?}")]
-        public async Task<IActionResult> Get([FromRoute] int? id)
-        {
-            if (id == null)
-                return NotFound();
-
-            var position = await _repository.GetAsync(id.Value);
-            if (position == null)
-                return NotFound();
-
-            return Ok(_mapper.Map<PositionDto>(position));
-        }
+        //[HttpGet("{id?}")]
+        //public async Task<IActionResult> Get([FromRoute] int? id)
+        //{
+        //    return Ok(await _service.GetEmployeeAsync(id.Value));
+        //}
 
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] PositionDto positionDto)
         {
-            var position = _mapper.Map<Position>(positionDto);
-
-            await _repository.AddAsync(position);
-
-            return Ok(position);
+            await _service.AddPositionAsync(positionDto);
+            return Ok();
         }
 
         [HttpPut("{id?}")]
         public async Task<IActionResult> Put([FromRoute] int? id, [FromBody] PositionDto positionDto)
         {
-            if (id == null)
-                return NotFound();
-
-            if (id != positionDto.Id)
-                return BadRequest();
-
-            var existPosition = await _repository.GetAsync(id.Value);
-            if (existPosition == null)
-                return NotFound();
-
-            var position = _mapper.Map<Position>(positionDto);
-
-            await _repository.UpdateAsync(position);
-
+            await _service.UpdatePositionAsync(positionDto);
             return Ok();
         }
 
         [HttpDelete("{id?}")]
         public async Task<IActionResult> Delete([FromRoute] int? id)
         {
-            if (id == null)
-                return NotFound();
-
-            var position = await _repository.GetAsync(id.Value);
-            if (position == null)
-                return NotFound();
-
-            await _repository.DeleteAsync(position);
+            await _service.DeletePositionAsync(id.Value);
 
             return NoContent();
         }

@@ -11,13 +11,13 @@ namespace AutoServiceManagment.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CustomersController : ControllerBase
+    public class TaxesController : ControllerBase
     {
         private readonly IRepository<Customer> _repository;
         private readonly IMapper _mapper;
         private readonly ICustomerService _service;
 
-        public CustomersController(IMapper mapper, IRepository<Customer> repository, ICustomerService service)
+        public TaxesController(IMapper mapper, IRepository<Customer> repository, ICustomerService service)
         {
             _mapper = mapper;
             _repository = repository;

@@ -13,14 +13,10 @@ namespace AutoServiceManagment.API.Controllers
     [ApiController]
     public class CategoriesController : ControllerBase
     {
-        private readonly IRepository<Category> _repository;
-        private readonly IMapper _mapper;
         private readonly ICategoryService _service;
 
-        public CategoriesController(IMapper mapper, IRepository<Category> repository, ICategoryService service)
+        public CategoriesController(ICategoryService service)
         {
-            _mapper = mapper;
-            _repository = repository;
             _service = service;
         }
 
@@ -30,61 +26,30 @@ namespace AutoServiceManagment.API.Controllers
             return Ok(await _service.GetAllCategoriesAsync());
         }
 
-        [HttpGet("{id?}")]
-        public async Task<IActionResult> Get([FromRoute] int? id)
-        {
-            if (id == null)
-                return NotFound();
-
-            var category = await _repository.GetAsync(id.Value);
-            if (category == null)
-                return NotFound();
-
-            return Ok(_mapper.Map<CategoryDto>(category));
-        }
+        //[HttpGet("{id?}")]
+        //public async Task<IActionResult> Get([FromRoute] int? id)
+        //{
+        //    return Ok(await _service.GetCategoryAsync(id.Value));
+        //}
 
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] CategoryDto categoryDto)
         {
-            var category = _mapper.Map<Category>(categoryDto);
-
-            await _repository.AddAsync(category);
-
-            return Ok(category);
+            await _service.AddCategoryAsync(categoryDto);
+            return Ok();
         }
 
         [HttpPut("{id?}")]
         public async Task<IActionResult> Put([FromRoute] int? id, [FromBody] CategoryDto categoryDto)
         {
-            if (id == null)
-                return NotFound();
-
-            if (id != categoryDto.Id)
-                return BadRequest();
-
-            var existcategory = await _repository.GetAsync(id.Value);
-            if (existcategory == null)
-                return NotFound();
-
-            var category = _mapper.Map<Category>(categoryDto);
-
-            await _repository.UpdateAsync(category);
-
+            await _service.UpdateCategoryAsync(categoryDto);
             return Ok();
         }
 
         [HttpDelete("{id?}")]
         public async Task<IActionResult> Delete([FromRoute] int? id)
         {
-            if (id == null)
-                return NotFound();
-
-            var category = await _repository.GetAsync(id.Value);
-            if (category == null)
-                return NotFound();
-
-            await _repository.DeleteAsync(category);
-
+            await _service.DeleteCategoryAsync(id.Value);
             return NoContent();
         }
 

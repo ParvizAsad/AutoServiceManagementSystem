@@ -13,14 +13,10 @@ namespace AutoServiceManagment.API.Controllers
     [ApiController]
     public class EmployeesController : ControllerBase
     {
-        private readonly IRepository<Employee> _repository;
-        private readonly IMapper _mapper;
         private readonly IEmployeeService _service;
 
         public EmployeesController(IMapper mapper, IRepository<Employee> repository, IEmployeeService service)
         {
-            _mapper = mapper;
-            _repository = repository;
             _service = service;
         }
 
@@ -30,60 +26,30 @@ namespace AutoServiceManagment.API.Controllers
             return Ok(await _service.GetAllEmployeesAsync());
         }
 
-        [HttpGet("{id?}")]
-        public async Task<IActionResult> Get([FromRoute] int? id)
-        {
-            if (id == null)
-                return NotFound();
-
-            var Employee = await _repository.GetAsync(id.Value);
-            if (Employee == null)
-                return NotFound();
-
-            return Ok(_mapper.Map<EmployeeDto>(Employee));
-        }
+        //[HttpGet("{id?}")]
+        //public async Task<IActionResult> Get([FromRoute] int? id)
+        //{
+        //    return Ok(await _service.GetEmployeeAsync(id.Value));
+        //}
 
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] EmployeeDto employeeDto)
         {
-            var employee = _mapper.Map<Employee>(employeeDto);
-
-            await _repository.AddAsync(employee);
-
-            return Ok(employee);
+            await _service.AddEmployeeAsync(employeeDto);
+            return Ok();
         }
 
         [HttpPut("{id?}")]
         public async Task<IActionResult> Put([FromRoute] int? id, [FromBody] EmployeeDto employeeDto)
         {
-            if (id == null)
-                return NotFound();
-
-            if (id != employeeDto.Id)
-                return BadRequest();
-
-            var existEmployee = await _repository.GetAsync(id.Value);
-            if (existEmployee == null)
-                return NotFound();
-
-            var Employee = _mapper.Map<Employee>(employeeDto);
-
-            await _repository.UpdateAsync(Employee);
-
+            await _service.UpdateEmployeeAsync(employeeDto);
             return Ok();
         }
 
         [HttpDelete("{id?}")]
         public async Task<IActionResult> Delete([FromRoute] int? id)
         {
-            if (id == null)
-                return NotFound();
-
-            var employee = await _repository.GetAsync(id.Value);
-            if (employee == null)
-                return NotFound();
-
-            await _repository.DeleteAsync(employee);
+            await _service.DeleteEmployeeAsync(id.Value);
 
             return NoContent();
         }
