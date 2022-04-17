@@ -46,6 +46,7 @@ namespace AutoServiceManagment.API
 
             services.AddScoped(typeof(IRepository<>), typeof(EfCoreRepository<>));
             services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IBrandService, BrandService>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -54,7 +55,6 @@ namespace AutoServiceManagment.API
             });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())

@@ -11,6 +11,7 @@ namespace AutoServiceManagment.Services.Mapping
         public MapperProfile()
         {
             CreateMap<Product, ProductDto>().ReverseMap();
+            CreateMap<Brand, BrandDto>().ReverseMap();
         }
     }
 }
