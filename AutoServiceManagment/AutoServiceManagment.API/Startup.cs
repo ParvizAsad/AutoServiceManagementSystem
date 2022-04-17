@@ -47,6 +47,30 @@ namespace AutoServiceManagment.API
             services.AddScoped(typeof(IRepository<>), typeof(EfCoreRepository<>));
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IBrandService, BrandService>();
+            services.AddScoped<ICashBoxService, CashBoxService>();
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<ICustomerService, CustomerService>();
+            services.AddScoped<IDiscountService, DiscountService>();
+            services.AddScoped<IEmployeeService, EmployeeService>();
+            services.AddScoped<IFinanceService, FinanceService>();
+            services.AddScoped<INonWorkingDetailService, NonWorkingDetailService>();
+            services.AddScoped<INonWorkingTypeService, NonWorkingTypeService>();
+            services.AddScoped<IPositionService, PositionService>();
+            services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<ISalaryService, SalaryService>();
+            services.AddScoped<IServiceService, ServiceService>();
+            services.AddScoped<ITaxService, TaxService>();
+
+
+            services.AddCors(
+                options => options.AddPolicy("AllowCors",
+                     builder =>
+                     {
+                         builder.AllowAnyOrigin()
+                                 .WithMethods("GET", "PUT", "POST", "DELETE")
+                                 .AllowAnyHeader();
+                     })
+             );
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -69,6 +93,8 @@ namespace AutoServiceManagment.API
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseCors("AllowCors");
+
 
             app.UseEndpoints(endpoints =>
             {

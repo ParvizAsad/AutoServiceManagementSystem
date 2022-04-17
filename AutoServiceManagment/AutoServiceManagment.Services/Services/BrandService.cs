@@ -21,7 +21,7 @@ namespace AutoServiceManagment.Services.Services
             _repository = repository;
         }
 
-         public async Task<IList<BrandDto>> GetAllBrandsAsync()
+        public async Task<IList<BrandDto>> GetAllBrandsAsync()
         {
             var brands = await GetAllAsync();
 
@@ -37,14 +37,15 @@ namespace AutoServiceManagment.Services.Services
         public async Task DeleteBrandAsync(int? id)
         {
             var brand = await _repository.GetAsync(id.Value);
-
             brand.IsDeleted = true;
         }
 
-        public Task UpdateBrandAsync(BrandDto brandDto)
+        public async Task UpdateBrandAsync(BrandDto brandDto)
         {
-            throw new System.NotImplementedException();
+            var brand = await _repository.GetAsync(brandDto.Id);
+            await _repository.UpdateAsync(brand);
         }
-
     }
+
+    
 }

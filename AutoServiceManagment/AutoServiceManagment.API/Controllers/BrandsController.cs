@@ -6,10 +6,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using AutoServiceManagment.Services.Services.Contracts;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 
 namespace AutoServiceManagment.API.Controllers
 {
-    [Route("api/[controller]")]
+    [EnableCors("AllowCors"), Route("api/[controller]")]
     [ApiController]
     public class BrandsController : ControllerBase
     {
@@ -26,18 +27,11 @@ namespace AutoServiceManagment.API.Controllers
             return Ok(await _service.GetAllBrandsAsync());
         }
 
-        //[HttpGet("{id?}")]
-        //public async Task<IActionResult> Get([FromRoute] int? id)
-        //{
-        //    return Ok(await _service.GetBrandAsync(id.Value));
-        //}
-
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] BrandDto brandDto)
         {
             await _service.AddBrandAsync(brandDto);
             return Ok();
-
         }
 
         [HttpPut("{id?}")]
@@ -52,7 +46,7 @@ namespace AutoServiceManagment.API.Controllers
         {
             await _service.DeleteBrandAsync(id.Value);
 
-            return NoContent();
+            return Ok();
         }
 
 
