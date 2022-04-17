@@ -6,10 +6,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using AutoServiceManagment.Services.Services.Contracts;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 
 namespace AutoServiceManagment.API.Controllers
 {
-    [Route("api/[controller]")]
+    [EnableCors("AllowCors"), Route("api/[controller]")]
     [ApiController]
     public class CategoriesController : ControllerBase
     {
