@@ -28,6 +28,13 @@ namespace AutoServiceManagment.Services.Services
             return _mapper.Map<List<BrandDto>>(brands);
         }
 
+        public async Task<BrandDto> GetBrandAsync(int id)
+        {
+            var brand = await GetAsync(id);
+
+            return _mapper.Map<BrandDto>(brand);
+        }
+
         public async Task AddBrandAsync(BrandDto brandDto)
         {
             var brand = _mapper.Map<Brand>(brandDto);

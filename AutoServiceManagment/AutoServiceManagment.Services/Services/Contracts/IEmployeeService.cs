@@ -9,7 +9,7 @@ namespace AutoServiceManagment.Services.Services.Contracts
     public interface IEmployeeService : IRepository<Employee>
     {
         Task<IList<EmployeeDto>> GetAllEmployeesAsync();
-        // Task<EmployeeDto> GetEmployeeAsync(int id);
+        Task<EmployeeDto> GetEmployeeAsync(int id);
         Task AddEmployeeAsync(EmployeeDto employeeDto);
         // Task AddEmployeesAsync(IEnumerable<EmployeeDto> employeeDtos);
         //  Task AddEmployeesAsync(params EmployeeDto[] employeeDtos);

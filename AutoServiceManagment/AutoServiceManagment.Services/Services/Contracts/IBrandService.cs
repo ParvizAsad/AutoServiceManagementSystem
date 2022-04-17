@@ -9,7 +9,7 @@ namespace AutoServiceManagment.Services.Services.Contracts
     public interface IBrandService : IRepository<Brand>
     {
         Task<IList<BrandDto>> GetAllBrandsAsync();
-       // Task<BrandDto> GetBrandAsync(int id);
+        Task<BrandDto> GetBrandAsync(int id);
         Task AddBrandAsync(BrandDto brandDto);
        // Task AddBrandsAsync(IEnumerable<BrandDto> brandDtos);
       //  Task AddBrandsAsync(params BrandDto[] brandDtos);

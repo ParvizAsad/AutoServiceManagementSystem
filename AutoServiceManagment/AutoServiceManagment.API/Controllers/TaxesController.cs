@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using AutoServiceManagment.Services.Services.Contracts;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Cors;
+using AutoTaxManagment.Service.Services.Contracts;
 
 namespace AutoServiceManagment.API.Controllers
 {
@@ -14,77 +15,37 @@ namespace AutoServiceManagment.API.Controllers
     [ApiController]
     public class TaxesController : ControllerBase
     {
-        private readonly IRepository<Customer> _repository;
-        private readonly IMapper _mapper;
-        private readonly ICustomerService _service;
+        private readonly ITaxService _service;
 
-        public TaxesController(IMapper mapper, IRepository<Customer> repository, ICustomerService service)
+        public TaxesController(ITaxService service)
         {
-            _mapper = mapper;
-            _repository = repository;
             _service = service;
         }
 
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            return Ok(await _service.GetAllCustomersAsync());
-        }
-
-        [HttpGet("{id?}")]
-        public async Task<IActionResult> Get([FromRoute] int? id)
-        {
-            if (id == null)
-                return NotFound();
-
-            var customer = await _repository.GetAsync(id.Value);
-            if (customer == null)
-                return NotFound();
-
-            return Ok(_mapper.Map<CustomerDto>(customer));
+            return Ok(await _service.GetAllTaxesAsync());
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] CustomerDto customerDto)
+        public async Task<IActionResult> Post([FromBody] TaxDto taxDto)
         {
-            var customer = _mapper.Map<Customer>(customerDto);
-
-            await _repository.AddAsync(customer);
-
-            return Ok(customer);
+            await _service.AddTaxAsync(taxDto);
+            return Ok();
         }
 
         [HttpPut("{id?}")]
-        public async Task<IActionResult> Put([FromRoute] int? id, [FromBody] CustomerDto customerDto)
+        public async Task<IActionResult> Put([FromRoute] int? id, [FromBody] TaxDto taxDto)
         {
-            if (id == null)
-                return NotFound();
-
-            if (id != customerDto.Id)
-                return BadRequest();
-
-            var existCustomer = await _repository.GetAsync(id.Value);
-            if (existCustomer == null)
-                return NotFound();
-
-            var Customer = _mapper.Map<Customer>(customerDto);
-
-            await _repository.UpdateAsync(Customer);
-
+            await _service.UpdateTaxAsync(taxDto);
             return Ok();
         }
 
         [HttpDelete("{id?}")]
         public async Task<IActionResult> Delete([FromRoute] int? id)
         {
-            if (id == null)
-                return NotFound();
-
-            var customer = await _repository.GetAsync(id.Value);
-            if (customer == null)
-                return NotFound();
-
-            await _repository.DeleteAsync(customer);
+            await _service.DeleteTaxAsync(id.Value);
 
             return NoContent();
         }

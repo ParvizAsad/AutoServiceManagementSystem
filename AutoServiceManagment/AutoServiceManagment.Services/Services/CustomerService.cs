@@ -28,6 +28,12 @@ namespace AutoServiceManagment.Services.Services
             return _mapper.Map<List<CustomerDto>>(customers);
         }
 
+        public async Task<CustomerDto> GetCustomerAsync(int id)
+        {
+            var customer = await GetAsync(id);
+
+            return _mapper.Map<CustomerDto>(customer);
+        }
         public async Task AddCustomerAsync(CustomerDto customerDto)
         {
             var customer = _mapper.Map<Customer>(customerDto);

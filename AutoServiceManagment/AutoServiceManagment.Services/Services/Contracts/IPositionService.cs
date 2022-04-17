@@ -9,7 +9,7 @@ namespace AutoServiceManagment.Services.Services.Contracts
     public interface IPositionService : IRepository<Position>
     {
         Task<IList<PositionDto>> GetAllPositionsAsync();
-        // Task<PositionDto> GetPositionAsync(int id);
+        Task<PositionDto> GetPositionAsync(int id);
         Task AddPositionAsync(PositionDto positionDto);
         // Task AddPositionsAsync(IEnumerable<PositionDto> positionDtos);
         //  Task AddPositionsAsync(params PositionDto[] positionDtos);

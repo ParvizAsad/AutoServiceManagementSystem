@@ -2,7 +2,7 @@
 
 namespace AutoServiceManagment.DomainModels.Entities
 {
-    public class CashBox : IEntity
+    public class CashBox : TimestampableObject, IEntity
     {
         public int Id { get; set; }
         public int ProductID { get; set; }

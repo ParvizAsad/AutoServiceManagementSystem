@@ -28,6 +28,13 @@ namespace AutoServiceManagment.Services.Services
             return _mapper.Map<List<CashBoxDto>>(cashBoxes);
         }
 
+        public async Task<CashBoxDto> GetCashBoxAsync(int id)
+        {
+            var cashBox = await GetAsync(id);
+
+            return _mapper.Map<CashBoxDto>(cashBox);
+        }
+
         public async Task AddCashBoxAsync(CashBoxDto cashBoxDto)
         {
             var cashBox = _mapper.Map<CashBox>(cashBoxDto);

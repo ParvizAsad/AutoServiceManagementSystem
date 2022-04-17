@@ -28,6 +28,13 @@ namespace AutoServiceManagment.Services.Services
             return _mapper.Map<List<CategoryDto>>(categories);
         }
 
+        public async Task<CategoryDto> GetCategoryAsync(int id)
+        {
+            var category = await GetAsync(id);
+
+            return _mapper.Map<CategoryDto>(category);
+        }
+
         public async Task AddCategoryAsync(CategoryDto categoryDto)
         {
             var category = _mapper.Map<Category>(categoryDto);

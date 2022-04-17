@@ -3,7 +3,7 @@ using System;
 
 namespace AutoServiceManagment.DomainModels.Entities
 {
-    public class Discount : IEntity
+    public class Discount : TimestampableObject, IEntity
     {
         public int Id { get; set; }
         public string Name { get; set; }

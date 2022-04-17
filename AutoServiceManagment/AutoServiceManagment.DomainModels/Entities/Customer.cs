@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace AutoServiceManagment.DomainModels.Entities
 {
-    public class Customer : IEntity
+    public class Customer : TimestampableObject, IEntity
     {
         public int Id { get; set; }
         public string FullName { get; set; }

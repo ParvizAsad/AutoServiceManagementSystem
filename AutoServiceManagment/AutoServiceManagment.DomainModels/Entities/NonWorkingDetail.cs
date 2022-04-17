@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AutoServiceManagment.DomainModels.Entities
 {
-    public class NonWorkingDetail : IEntity
+    public class NonWorkingDetail : TimestampableObject, IEntity
     {
         public int Id { get; set; }
         public DateTime StartTime { get; set; }

@@ -27,6 +27,13 @@ namespace AutoServiceManagment.Services.Services
 
             return _mapper.Map<List<EmployeeDto>>(employees);
         }
+
+        public async Task<EmployeeDto> GetEmployeeAsync(int id)
+        {
+            var employee = await GetAsync(id);
+
+            return _mapper.Map<EmployeeDto>(employee);
+        }
         public async Task AddEmployeeAsync(EmployeeDto employeeDto)
         {
             var employee = _mapper.Map<Employee>(employeeDto);

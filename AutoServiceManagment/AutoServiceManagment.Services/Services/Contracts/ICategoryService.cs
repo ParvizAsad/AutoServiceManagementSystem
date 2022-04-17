@@ -9,7 +9,7 @@ namespace AutoServiceManagment.Services.Services.Contracts
     public interface ICategoryService : IRepository<Category>
     {
         Task<IList<CategoryDto>> GetAllCategoriesAsync();
-        // Task<CategoryDto> GetCategoryAsync(int id);
+        Task<CategoryDto> GetCategoryAsync(int id);
         Task AddCategoryAsync(CategoryDto categoryDto);
         // Task AddCategoriesAsync(IEnumerable<CategoryDto> categoryDtos);
         //  Task AddCategoriesAsync(params CategoryDto[] categoryDtos);

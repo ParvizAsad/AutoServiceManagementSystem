@@ -18,6 +18,7 @@ using AutoServiceManagment.Repository.Repository;
 using AutoServiceManagment.Services.Services.Contracts;
 using AutoServiceManagment.Services.Services;
 using Microsoft.EntityFrameworkCore;
+using AutoTaxManagment.Service.Services.Contracts;
 
 namespace AutoServiceManagment.API
 {

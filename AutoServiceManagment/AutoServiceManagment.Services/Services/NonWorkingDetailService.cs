@@ -28,6 +28,13 @@ namespace AutoServiceManagment.Services.Services
             return _mapper.Map<List<NonWorkingDetailDto>>(nonWorkingDetails);
         }
 
+        public async Task<NonWorkingDetailDto> GetNonWorkingDetailAsync(int id)
+        {
+            var nonWorkingDetail = await GetAsync(id);
+
+            return _mapper.Map<NonWorkingDetailDto>(nonWorkingDetail);
+        }
+
         public async Task AddNonWorkingDetailAsync(NonWorkingDetailDto nonWorkingDetailDto)
         {
             var nonWorkingDetail = _mapper.Map<NonWorkingDetail>(nonWorkingDetailDto);

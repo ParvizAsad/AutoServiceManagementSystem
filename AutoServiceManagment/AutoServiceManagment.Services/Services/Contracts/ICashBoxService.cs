@@ -9,7 +9,7 @@ namespace AutoServiceManagment.Services.Services.Contracts
     public interface ICashBoxService : IRepository<CashBox>
     {
         Task<IList<CashBoxDto>> GetAllCashBoxesAsync();
-        // Task<CashBoxDto> GetCashBoxAsync(int id);
+        Task<CashBoxDto> GetCashBoxAsync(int id);
         Task AddCashBoxAsync(CashBoxDto cashBoxDto);
         // Task AddCashBoxesAsync(IEnumerable<CashBoxDto> cashBoxDtos);
         //  Task AddCashBoxesAsync(params CashBoxDto[] cashBoxDtos);

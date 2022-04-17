@@ -9,7 +9,7 @@ namespace AutoServiceManagment.Services.Services.Contracts
     public interface INonWorkingTypeService : IRepository<NonWorkingType>
     {
         Task<IList<NonWorkingTypeDto>> GetAllNonWorkingTypesAsync();
-        // Task<NonWorkingTypeDto> GetNonWorkingTypeAsync(int id);
+        Task<NonWorkingTypeDto> GetNonWorkingTypeAsync(int id);
         Task AddNonWorkingTypeAsync(NonWorkingTypeDto nonWorkingTypeDto);
         // Task AddNonWorkingTypesAsync(IEnumerable<NonWorkingTypeDto> nonWorkingTypeDtos);
         //  Task AddNonWorkingTypesAsync(params NonWorkingTypeDto[] nonWorkingTypeDtos);

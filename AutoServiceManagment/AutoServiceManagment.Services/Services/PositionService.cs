@@ -28,6 +28,12 @@ namespace AutoServiceManagment.Services.Services
             return _mapper.Map<List<PositionDto>>(positions);
         }
 
+        public async Task<PositionDto> GetPositionAsync(int id)
+        {
+            var position = await GetAsync(id);
+
+            return _mapper.Map<PositionDto>(position);
+        }
         public async Task AddPositionAsync(PositionDto positionDto)
         {
             var position = _mapper.Map<Position>(positionDto);

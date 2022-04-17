@@ -26,6 +26,13 @@ namespace AutoServiceManagment.Services.Services
 
             return _mapper.Map<List<NonWorkingTypeDto>>(nonWorkingTypes);
         }
+
+        public async Task<NonWorkingTypeDto> GetNonWorkingTypeAsync(int id)
+        {
+            var nonWorkingType = await GetAsync(id);
+
+            return _mapper.Map<NonWorkingTypeDto>(nonWorkingType);
+        }
         public async Task AddNonWorkingTypeAsync(NonWorkingTypeDto nonWorkingTypeDto)
         {
             var nonWorkingType = _mapper.Map<NonWorkingType>(nonWorkingTypeDto);

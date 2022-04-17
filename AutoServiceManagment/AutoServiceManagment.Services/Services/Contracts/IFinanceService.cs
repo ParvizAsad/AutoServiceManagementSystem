@@ -9,7 +9,7 @@ namespace AutoServiceManagment.Services.Services.Contracts
     public interface IFinanceService : IRepository<Finance>
     {
         Task<IList<FinanceDto>> GetAllFinancesAsync();
-        // Task<FinanceDto> GetFinanceAsync(int id);
+        Task<FinanceDto> GetFinanceAsync(int id);
         Task AddFinanceAsync(FinanceDto FinanceDto);
         // Task AddFinancesAsync(IEnumerable<FinanceDto> financeDtos);
         //  Task AddFinancesAsync(params FinanceDto[] financeDtos);

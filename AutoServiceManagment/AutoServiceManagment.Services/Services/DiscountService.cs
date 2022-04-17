@@ -28,6 +28,12 @@ namespace AutoServiceManagment.Services.Services
             return _mapper.Map<List<DiscountDto>>(discounts);
         }
 
+        public async Task<DiscountDto> GetDiscountAsync(int id)
+        {
+            var discount = await GetAsync(id);
+
+            return _mapper.Map<DiscountDto>(discount);
+        }
         public async Task AddDiscountAsync(DiscountDto discountDto)
         {
             var discount = _mapper.Map<Discount>(discountDto);

@@ -9,7 +9,7 @@ namespace AutoServiceManagment.Services.Services.Contracts
     public interface INonWorkingDetailService : IRepository<NonWorkingDetail>
     {
         Task<IList<NonWorkingDetailDto>> GetAllNonWorkingDetailsAsync();
-        // Task<NonWorkingDetailDto> GetNonWorkingDetailAsync(int id);
+        Task<NonWorkingDetailDto> GetNonWorkingDetailAsync(int id);
         Task AddNonWorkingDetailAsync(NonWorkingDetailDto nonWorkingDetailDto);
         // Task AddNonWorkingDetailsAsync(IEnumerable<NonWorkingDetailDto> nonWorkingDetailDtos);
         //  Task AddNonWorkingDetailsAsync(params NonWorkingDetailDto[] nonWorkingDetailDtos);

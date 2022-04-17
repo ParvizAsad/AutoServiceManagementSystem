@@ -3,7 +3,7 @@ using System;
 
 namespace AutoServiceManagment.DomainModels.Entities
 {
-    public class Employee : IEntity
+    public class Employee : TimestampableObject, IEntity
     {
         public int Id { get; set; }
         public string FullName { get; set; }
@@ -13,7 +13,7 @@ namespace AutoServiceManagment.DomainModels.Entities
         public string PhoneNumber { get; set; }
         public string OrderNumber { get; set; }
         public int PositionId { get; set; }
-        //public Position Position { get; set; }
+        public Position Position { get; set; }
         public string PersonalDetails { get; set; }
         public string EducationLevel { get; set; }
         public int NonWorkingDetailId { get; set; }

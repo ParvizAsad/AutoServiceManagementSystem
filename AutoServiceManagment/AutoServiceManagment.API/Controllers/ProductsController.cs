@@ -14,14 +14,10 @@ namespace AutoServiceManagment.API.Controllers
     [ApiController]
     public class ProductsController : ControllerBase
     {
-        private readonly IRepository<Product> _repository;
-        private readonly IMapper _mapper;
         private readonly IProductService _service;
 
-        public ProductsController(IMapper mapper, IRepository<Product> repository, IProductService service)
+        public ProductsController(IProductService service)
         {
-            _mapper = mapper;
-            _repository = repository;
             _service = service;
         }
 
@@ -31,64 +27,33 @@ namespace AutoServiceManagment.API.Controllers
             return Ok(await _service.GetAllProductsAsync());
         }
 
-        [HttpGet("{id?}")]
-        public async Task<IActionResult> Get([FromRoute] int? id)
-        {
-            if (id == null)
-                return NotFound();
-
-            var product = await _repository.GetAsync(id.Value);
-            if (product == null)
-                return NotFound();
-
-            return Ok(_mapper.Map<ProductDto>(product));
-        }
+        //[HttpGet("{id?}")]
+        //public async Task<IActionResult> Get([FromRoute] int? id)
+        //{
+        //    return Ok(await _service.GetEmployeeAsync(id.Value));
+        //}
 
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] ProductDto productDto)
         {
-            var product = _mapper.Map<Product>(productDto);
-
-            await _repository.AddAsync(product);
-
-            return Ok(product);
+            await _service.AddProductAsync(productDto);
+            return Ok();
         }
 
         [HttpPut("{id?}")]
         public async Task<IActionResult> Put([FromRoute] int? id, [FromBody] ProductDto productDto)
         {
-            if (id == null)
-                return NotFound();
-
-            if (id != productDto.Id)
-                return BadRequest();
-
-            var existProduct = await _repository.GetAsync(id.Value);
-            if (existProduct == null)
-                return NotFound();
-
-            var product = _mapper.Map<Product>(productDto);
-
-            await _repository.UpdateAsync(product);
-
+            await _service.UpdateProductAsync(productDto);
             return Ok();
         }
 
         [HttpDelete("{id?}")]
         public async Task<IActionResult> Delete([FromRoute] int? id)
         {
-            if (id == null)
-                return NotFound();
-
-            var product = await _repository.GetAsync(id.Value);
-            if (product == null)
-                return NotFound();
-
-            await _repository.DeleteAsync(product);
+            await _service.DeleteProductAsync(id.Value);
 
             return NoContent();
         }
-
 
     }
 }

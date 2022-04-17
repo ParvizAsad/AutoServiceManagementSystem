@@ -9,7 +9,7 @@ namespace AutoServiceManagment.Services.Services.Contracts
     public interface IDiscountService : IRepository<Discount>
     {
         Task<IList<DiscountDto>> GetAllDiscountsAsync();
-        // Task<DiscountDto> GetDiscountAsync(int id);
+        Task<DiscountDto> GetDiscountAsync(int id);
         Task AddDiscountAsync(DiscountDto DiscountDto);
         // Task AddDiscountsAsync(IEnumerable<DiscountDto> DiscountDtos);
         //  Task AddDiscountsAsync(params DiscountDto[] DiscountDtos);

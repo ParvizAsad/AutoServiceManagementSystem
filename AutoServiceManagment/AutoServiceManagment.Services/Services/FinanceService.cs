@@ -28,6 +28,13 @@ namespace AutoServiceManagment.Services.Services
             return _mapper.Map<List<FinanceDto>>(finances);
         }
 
+        public async Task<FinanceDto> GetFinanceAsync(int id)
+        {
+            var finance = await GetAsync(id);
+
+            return _mapper.Map<FinanceDto>(finance);
+        }
+
         public async Task AddFinanceAsync(FinanceDto financeDto)
         {
             var finance = _mapper.Map<Finance>(financeDto);
