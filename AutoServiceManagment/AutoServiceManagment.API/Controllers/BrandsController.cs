@@ -26,11 +26,11 @@ namespace AutoServiceManagment.API.Controllers
             return Ok(await _service.GetAllBrandsAsync());
         }
 
-        [HttpGet("{id?}")]
-        public async Task<IActionResult> Get([FromRoute] int? id)
-        {
-            return Ok(await _service.GetBrandAsync(id.Value));
-        }
+        //[HttpGet("{id?}")]
+        //public async Task<IActionResult> Get([FromRoute] int? id)
+        //{
+        //    return Ok(await _service.GetBrandAsync(id.Value));
+        //}
 
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] BrandDto brandDto)
