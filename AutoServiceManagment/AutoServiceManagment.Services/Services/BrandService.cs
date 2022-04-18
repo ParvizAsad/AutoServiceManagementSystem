@@ -21,7 +21,7 @@ namespace AutoServiceManagment.Services.Services
         private readonly AppDbContext _dbContext;
 
 
-        public BrandService(AppDbContext dbContext, IMapper mapper, IRepository<Brand> repository) : base(dbContext)
+        public BrandService(AppDbContext dbContext, LocalizationManager translation, IMapper mapper, IRepository<Brand> repository) : base(dbContext, translation)
         {
             _dbContext = dbContext;
             _mapper = mapper;
@@ -55,7 +55,7 @@ namespace AutoServiceManagment.Services.Services
         public async Task UpdateBrandAsyncid(int? id, BrandDto brandDto)
         {
             var ad = await _dbContext.Brands.FirstOrDefaultAsync(x => x.Id == id);
-            //if (ad == null) return new ErrorResult(_translation["DataIsNotFound"]);
+            if (ad == null) return new ErrorResult(_translation["DataIsNotFound"]);
 
             var adType = await _dbContext.Brands.FirstOrDefaultAsync();
            // if (adType is null) return new ErrorResult(_translation["AdTypeNotFound"]);

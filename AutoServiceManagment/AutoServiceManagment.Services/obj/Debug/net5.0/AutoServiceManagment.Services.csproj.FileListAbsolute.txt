@@ -40,3 +40,19 @@ C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoS
 C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\obj\Debug\net5.0\AutoServiceManagment.Services.dll
 C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\obj\Debug\net5.0\ref\AutoServiceManagment.Services.dll
 C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\obj\Debug\net5.0\AutoServiceManagment.Services.pdb
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\obj\Debug\net5.0\AutoServiceManagment.Services.csproj.GenerateResource.cache
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\obj\Debug\net5.0\AutoServiceManagment.Services.Resources.AdminResource.az.resources
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\obj\Debug\net5.0\AutoServiceManagment.Services.Resources.AdminResource.en.resources
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\obj\Debug\net5.0\AutoServiceManagment.Services.Resources.AdminResource.ru.resources
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\obj\Debug\net5.0\AutoServiceManagment.Services.Resources.HomeResource.az.resources
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\obj\Debug\net5.0\AutoServiceManagment.Services.Resources.HomeResource.en.resources
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\obj\Debug\net5.0\AutoServiceManagment.Services.Resources.HomeResource.ru.resources
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\obj\Debug\net5.0\AutoServiceManagment.Services.Resources.StaticResource.az.resources
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\obj\Debug\net5.0\AutoServiceManagment.Services.Resources.StaticResource.en.resources
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\obj\Debug\net5.0\AutoServiceManagment.Services.Resources.StaticResource.ru.resources
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\bin\Debug\net5.0\az\AutoServiceManagment.Services.resources.dll
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\bin\Debug\net5.0\en\AutoServiceManagment.Services.resources.dll
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\bin\Debug\net5.0\ru\AutoServiceManagment.Services.resources.dll
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\obj\Debug\net5.0\az\AutoServiceManagment.Services.resources.dll
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\obj\Debug\net5.0\en\AutoServiceManagment.Services.resources.dll
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\obj\Debug\net5.0\ru\AutoServiceManagment.Services.resources.dll

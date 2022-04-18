@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "cw0uV4OGEONZvlz6i1Rd6sNbM5ZD6Iwita85r9zs5ZA2MmZLI3Vjd/G1xPQ7Y/hyUT0fOLBSEhh4OQ/Q/DGWQA==",
+  "dgSpecHash": "nnNLvhqBGOsB7xlnyQCSIXL8QJDzHQ12H3iMf3p7USpezmeEZdEiwOPr8Mb/Mv1U5bvTCShVqDZqgrGbIZlGKQ==",
   "success": true,
   "projectFilePath": "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Services\\AutoServiceManagment.Services.csproj",
   "expectedPackageFiles": [
@@ -19,6 +19,7 @@
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\5.0.0\\microsoft.extensions.configuration.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\5.0.2\\microsoft.extensions.dependencyinjection.5.0.2.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0\\microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.localization.abstractions\\5.0.16\\microsoft.extensions.localization.abstractions.5.0.16.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.logging\\5.0.0\\microsoft.extensions.logging.5.0.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\5.0.0\\microsoft.extensions.logging.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.options\\5.0.0\\microsoft.extensions.options.5.0.0.nupkg.sha512",

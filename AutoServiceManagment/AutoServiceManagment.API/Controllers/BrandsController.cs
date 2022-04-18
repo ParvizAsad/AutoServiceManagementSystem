@@ -49,6 +49,5 @@ namespace AutoServiceManagment.API.Controllers
             return Ok();
         }
 
-
     }
 }
