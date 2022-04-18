@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoServiceManagment.Base;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
+
 
 namespace AutoServiceManagment.Repository.Repository
 {
@@ -96,6 +98,11 @@ namespace AutoServiceManagment.Repository.Repository
                 DbContext.Set<T>().Update(item);
                 await DbContext.SaveChangesAsync();
             }
+        }
+
+        public Task GetAsync(object value)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
