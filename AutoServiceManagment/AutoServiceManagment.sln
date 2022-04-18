@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoServiceManagment.Domain
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoServiceManagment.Repository", "AutoServiceManagment.Repository\AutoServiceManagment.Repository.csproj", "{E03CBA52-6C1A-4DD5-9FDC-417DD743AE89}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoServiceManagment.Services", "AutoServiceManagment.Services\AutoServiceManagment.Services.csproj", "{FCA0C59E-9A3E-4CB1-90AA-9B04A225C032}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoServiceManagment.Services", "AutoServiceManagment.Services\AutoServiceManagment.Services.csproj", "{FCA0C59E-9A3E-4CB1-90AA-9B04A225C032}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

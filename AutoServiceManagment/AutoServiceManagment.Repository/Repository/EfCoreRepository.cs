@@ -97,5 +97,10 @@ namespace AutoServiceManagment.Repository.Repository
                 await DbContext.SaveChangesAsync();
             }
         }
+
+        public Task GetAsync(object value)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
