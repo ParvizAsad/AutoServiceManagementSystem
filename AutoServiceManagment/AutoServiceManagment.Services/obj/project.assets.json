@@ -228,6 +228,15 @@
           "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
         }
       },
+      "Microsoft.Extensions.Localization.Abstractions/5.0.16": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0/Microsoft.Extensions.Localization.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Microsoft.Extensions.Localization.Abstractions.dll": {}
+        }
+      },
       "Microsoft.Extensions.Logging/5.0.0": {
         "type": "package",
         "dependencies": {
@@ -1903,6 +1912,25 @@
         "microsoft.extensions.dependencyinjection.abstractions.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
+      ]
+    },
+    "Microsoft.Extensions.Localization.Abstractions/5.0.16": {
+      "sha512": "yXTc+3mW9e10h3XUoebXz1H+cmS0ZwGYfe6HnT/cxbsfXXkBxZ9jgWz6YrF65KZ3lz4uvdqb83GOXnGypGR92A==",
+      "type": "package",
+      "path": "microsoft.extensions.localization.abstractions/5.0.16",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/Microsoft.Extensions.Localization.Abstractions.dll",
+        "lib/net461/Microsoft.Extensions.Localization.Abstractions.xml",
+        "lib/net5.0/Microsoft.Extensions.Localization.Abstractions.dll",
+        "lib/net5.0/Microsoft.Extensions.Localization.Abstractions.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Localization.Abstractions.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Localization.Abstractions.xml",
+        "microsoft.extensions.localization.abstractions.5.0.16.nupkg.sha512",
+        "microsoft.extensions.localization.abstractions.nuspec"
       ]
     },
     "Microsoft.Extensions.Logging/5.0.0": {
@@ -5832,7 +5860,8 @@
     "net5.0": [
       "AutoMapper >= 11.0.1",
       "AutoServiceManagment.DomainModels >= 1.0.0",
-      "AutoServiceManagment.Repository >= 1.0.0"
+      "AutoServiceManagment.Repository >= 1.0.0",
+      "Microsoft.Extensions.Localization.Abstractions >= 5.0.16"
     ]
   },
   "packageFolders": {
@@ -5884,6 +5913,10 @@
           "AutoMapper": {
             "target": "Package",
             "version": "[11.0.1, )"
+          },
+          "Microsoft.Extensions.Localization.Abstractions": {
+            "target": "Package",
+            "version": "[5.0.16, )"
           }
         },
         "imports": [

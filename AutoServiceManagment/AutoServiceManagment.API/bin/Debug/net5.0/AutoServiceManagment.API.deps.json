@@ -143,7 +143,6 @@
           "Microsoft.Extensions.Http": "5.0.0.0",
           "Microsoft.Extensions.Identity.Core": "5.0.0.0",
           "Microsoft.Extensions.Identity.Stores": "5.0.0.0",
-          "Microsoft.Extensions.Localization.Abstractions": "5.0.0.0",
           "Microsoft.Extensions.Localization": "5.0.0.0",
           "Microsoft.Extensions.Logging.Abstractions.Reference": "5.0.0.0",
           "Microsoft.Extensions.Logging.Configuration": "5.0.0.0",
@@ -596,6 +595,17 @@
         },
         "compile": {
           "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Localization.Abstractions/5.0.16": {
+        "runtime": {
+          "lib/net5.0/Microsoft.Extensions.Localization.Abstractions.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.1622.16706"
+          }
+        },
+        "compile": {
+          "lib/net5.0/Microsoft.Extensions.Localization.Abstractions.dll": {}
         }
       },
       "Microsoft.Extensions.Logging/5.0.0": {
@@ -1413,10 +1423,22 @@
         "dependencies": {
           "AutoMapper": "11.0.1",
           "AutoServiceManagment.DomainModels": "1.0.0",
-          "AutoServiceManagment.Repository": "1.0.0"
+          "AutoServiceManagment.Repository": "1.0.0",
+          "Microsoft.Extensions.Localization.Abstractions": "5.0.16"
         },
         "runtime": {
           "AutoServiceManagment.Services.dll": {}
+        },
+        "resources": {
+          "az/AutoServiceManagment.Services.resources.dll": {
+            "locale": "az"
+          },
+          "en/AutoServiceManagment.Services.resources.dll": {
+            "locale": "en"
+          },
+          "ru/AutoServiceManagment.Services.resources.dll": {
+            "locale": "ru"
+          }
         },
         "compile": {
           "AutoServiceManagment.Services.dll": {}
@@ -2031,12 +2053,6 @@
       "Microsoft.Extensions.Identity.Stores/5.0.0.0": {
         "compile": {
           "Microsoft.Extensions.Identity.Stores.dll": {}
-        },
-        "compileOnly": true
-      },
-      "Microsoft.Extensions.Localization.Abstractions/5.0.0.0": {
-        "compile": {
-          "Microsoft.Extensions.Localization.Abstractions.dll": {}
         },
         "compileOnly": true
       },
@@ -3227,6 +3243,13 @@
       "path": "microsoft.extensions.dependencyinjection.abstractions/6.0.0",
       "hashPath": "microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512"
     },
+    "Microsoft.Extensions.Localization.Abstractions/5.0.16": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-yXTc+3mW9e10h3XUoebXz1H+cmS0ZwGYfe6HnT/cxbsfXXkBxZ9jgWz6YrF65KZ3lz4uvdqb83GOXnGypGR92A==",
+      "path": "microsoft.extensions.localization.abstractions/5.0.16",
+      "hashPath": "microsoft.extensions.localization.abstractions.5.0.16.nupkg.sha512"
+    },
     "Microsoft.Extensions.Logging/5.0.0": {
       "type": "package",
       "serviceable": true,
@@ -4329,11 +4352,6 @@
       "sha512": ""
     },
     "Microsoft.Extensions.Identity.Stores/5.0.0.0": {
-      "type": "referenceassembly",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Microsoft.Extensions.Localization.Abstractions/5.0.0.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""
