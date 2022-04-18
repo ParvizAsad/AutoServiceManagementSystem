@@ -43,7 +43,7 @@ namespace AutoServiceManagment.API.Controllers
         [HttpPut("{id?}")]
         public async Task<IActionResult> Put([FromRoute] int? id, [FromBody] CashBoxDto cashBoxDto)
         {
-            await _service.UpdateCashBoxAsync(cashBoxDto);
+            await _service.UpdateCashBoxAsyncId(id, cashBoxDto);
             return Ok();
         }
 

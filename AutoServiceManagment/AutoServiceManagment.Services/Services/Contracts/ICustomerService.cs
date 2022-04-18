@@ -10,10 +10,11 @@ namespace AutoServiceManagment.Services.Services.Contracts
     {
         Task<IList<CustomerDto>> GetAllCustomersAsync();
         Task<CustomerDto> GetCustomerAsync(int id);
-        Task AddCustomerAsync(CustomerDto CustomerDto);
+        Task AddCustomerAsync(CustomerDto customerDto);
         // Task AddCustomersAsync(IEnumerable<CustomerDto> CustomerDtos);
         //  Task AddCustomersAsync(params CustomerDto[] CustomerDtos);
-        Task UpdateCustomerAsync(CustomerDto CustomerDto);
+        Task UpdateCustomerAsync(CustomerDto customerDto);
+        Task UpdateCustomerAsyncId(int? id, CustomerDto customerDto);
         // Task UpdateCustomersAsync(IEnumerable<CustomerDto> CustomerDtos);
         // Task UpdateCustomersAsync(params CustomerDto[] CustomerDtos);
         Task DeleteCustomerAsync(int? Id);

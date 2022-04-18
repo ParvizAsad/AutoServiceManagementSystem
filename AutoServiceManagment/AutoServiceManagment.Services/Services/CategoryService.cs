@@ -5,6 +5,8 @@ using AutoServiceManagment.Repository.DataContext;
 using AutoServiceManagment.Repository.Repository;
 using AutoServiceManagment.Repository.Repository.Contracts;
 using AutoServiceManagment.Services.Services.Contracts;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -43,12 +45,28 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task DeleteCategoryAsync(int? id)
         {
-            var category = await _repository.GetAsync(id.Value);
+            var category = await DbContext.Categories.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == true);
+
+            if (category == null) { throw new Exception("Category not found!"); }
 
             category.IsDeleted = true;
 
+            await DbContext.SaveChangesAsync();
+
         }
 
+        public async Task UpdateCategoryAsyncId(int? id, CategoryDto categoryDto)
+        {
+            var category = await DbContext.Categories.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == true);
+
+            if (category == null) { throw new Exception("Category not found!"); }
+
+            category = _mapper.Map<Category>(categoryDto);
+
+            DbContext.Categories.Update(category);
+
+            await DbContext.SaveChangesAsync();
+        }
         public Task UpdateCategoryAsync(CategoryDto categoryDto)
         {
             throw new System.NotImplementedException();

@@ -6,6 +6,8 @@ using AutoServiceManagment.Repository.Repository;
 using AutoServiceManagment.Repository.Repository.Contracts;
 using AutoServiceManagment.Services.Services.Contracts;
 using AutoTaxManagment.Service.Services.Contracts;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -42,9 +44,26 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task DeleteTaxAsync(int? id)
         {
-            var tax = await _repository.GetAsync(id.Value);
+            var tax = await DbContext.Taxes.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == true);
+
+            if (tax == null) { throw new Exception("Tax not found!"); }
 
             tax.IsDeleted = true;
+
+            await DbContext.SaveChangesAsync();
+        }
+
+        public async Task UpdateTaxAsyncId(int? id, TaxDto taxDto)
+        {
+            var tax = await DbContext.Taxes.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == true);
+
+            if (tax == null) { throw new Exception("Tax not found!"); }
+
+            tax = _mapper.Map<Tax>(taxDto);
+
+            DbContext.Taxes.Update(tax);
+
+            await DbContext.SaveChangesAsync();
         }
         public Task UpdateTaxAsync(TaxDto taxDto)
         {

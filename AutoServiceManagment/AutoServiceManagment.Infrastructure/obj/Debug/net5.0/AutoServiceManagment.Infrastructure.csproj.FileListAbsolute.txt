@@ -10,3 +10,15 @@ D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceMa
 D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Infrastructure\obj\Debug\net5.0\refint\AutoServiceManagment.Infrastructure.dll
 D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Infrastructure\obj\Debug\net5.0\AutoServiceManagment.Infrastructure.pdb
 D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Infrastructure\obj\Debug\net5.0\ref\AutoServiceManagment.Infrastructure.dll
+C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Infrastructure\bin\Debug\net5.0\AutoServiceManagment.Infrastructure.deps.json
+C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Infrastructure\bin\Debug\net5.0\AutoServiceManagment.Infrastructure.dll
+C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Infrastructure\bin\Debug\net5.0\ref\AutoServiceManagment.Infrastructure.dll
+C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Infrastructure\bin\Debug\net5.0\AutoServiceManagment.Infrastructure.pdb
+C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Infrastructure\obj\Debug\net5.0\AutoServiceManagment.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Infrastructure\obj\Debug\net5.0\AutoServiceManagment.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Infrastructure\obj\Debug\net5.0\AutoServiceManagment.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Infrastructure\obj\Debug\net5.0\AutoServiceManagment.Infrastructure.AssemblyInfo.cs
+C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Infrastructure\obj\Debug\net5.0\AutoServiceManagment.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Infrastructure\obj\Debug\net5.0\AutoServiceManagment.Infrastructure.dll
+C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Infrastructure\obj\Debug\net5.0\ref\AutoServiceManagment.Infrastructure.dll
+C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Infrastructure\obj\Debug\net5.0\AutoServiceManagment.Infrastructure.pdb

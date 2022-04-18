@@ -5,6 +5,8 @@ using AutoServiceManagment.Repository.DataContext;
 using AutoServiceManagment.Repository.Repository;
 using AutoServiceManagment.Repository.Repository.Contracts;
 using AutoServiceManagment.Services.Services.Contracts;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -37,16 +39,33 @@ namespace AutoServiceManagment.Services.Services
         public async Task AddDiscountAsync(DiscountDto discountDto)
         {
             var discount = _mapper.Map<Discount>(discountDto);
+         
             await _repository.AddAsync(discount);
         }
 
         public async Task DeleteDiscountAsync(int? id)
         {
-            var discount = await _repository.GetAsync(id.Value);
+            var discount = await DbContext.Discounts.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == true);
+
+            if (discount == null) { throw new Exception("Discount not found!"); }
 
             discount.IsDeleted = true;
+
+            await DbContext.SaveChangesAsync();
         }
 
+        public async Task UpdateDiscountAsyncId(int? id, DiscountDto discountDto)
+        {
+            var discount = await DbContext.Discounts.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == true);
+
+            if (discount == null) { throw new Exception("Discount not found!"); }
+
+            discount = _mapper.Map<Discount>(discountDto);
+
+            DbContext.Discounts.Update(discount);
+
+            await DbContext.SaveChangesAsync();
+        }
         public Task UpdateDiscountAsync(DiscountDto discountDto)
         {
             throw new System.NotImplementedException();

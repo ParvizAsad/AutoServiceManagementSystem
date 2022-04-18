@@ -14,6 +14,7 @@ namespace AutoServiceManagment.Services.Services.Contracts
         // Task AddNonWorkingTypesAsync(IEnumerable<NonWorkingTypeDto> nonWorkingTypeDtos);
         //  Task AddNonWorkingTypesAsync(params NonWorkingTypeDto[] nonWorkingTypeDtos);
         Task UpdateNonWorkingTypeAsync(NonWorkingTypeDto nonWorkingTypeDto);
+        Task UpdateNonWorkingTypeAsyncId(int? id, NonWorkingTypeDto nonWorkingTypeDto);
         // Task UpdateNonWorkingTypesAsync(IEnumerable<NonWorkingTypeDto> nonWorkingTypeDtos);
         // Task UpdateNonWorkingTypesAsync(params NonWorkingTypeDto[] nonWorkingTypeDtos);
         Task DeleteNonWorkingTypeAsync(int? Id);

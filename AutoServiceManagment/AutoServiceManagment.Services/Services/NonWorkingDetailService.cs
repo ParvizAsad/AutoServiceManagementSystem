@@ -5,6 +5,8 @@ using AutoServiceManagment.Repository.DataContext;
 using AutoServiceManagment.Repository.Repository;
 using AutoServiceManagment.Repository.Repository.Contracts;
 using AutoServiceManagment.Services.Services.Contracts;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -43,9 +45,26 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task DeleteNonWorkingDetailAsync(int? id)
         {
-            var nonWorkingDetail = await _repository.GetAsync(id.Value);
+            var nonWorkingDetail = await DbContext.NonWorkingDetails.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == true);
+
+            if (nonWorkingDetail == null) { throw new Exception("NonWorkingDetail not found!"); }
 
             nonWorkingDetail.IsDeleted = true;
+
+            await DbContext.SaveChangesAsync();
+        }
+
+        public async Task UpdateNonWorkingDetailAsyncId(int? id, NonWorkingDetailDto nonWorkingDetailDto)
+        {
+            var nonWorkingDetail = await DbContext.NonWorkingDetails.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == true);
+
+            if (nonWorkingDetail == null) { throw new Exception("NonWorkingDetail not found!"); }
+
+            nonWorkingDetail = _mapper.Map<NonWorkingDetail>(nonWorkingDetailDto);
+
+            DbContext.NonWorkingDetails.Update(nonWorkingDetail);
+
+            await DbContext.SaveChangesAsync();
         }
 
         public Task UpdateNonWorkingDetailAsync(NonWorkingDetailDto nonWorkingDetailDto)

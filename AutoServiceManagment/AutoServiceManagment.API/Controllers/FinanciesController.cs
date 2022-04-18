@@ -27,23 +27,25 @@ namespace AutoServiceManagment.API.Controllers
             return Ok(await _service.GetAllFinancesAsync());
         }
 
-        //[HttpGet("{id?}")]
-        //public async Task<IActionResult> Get([FromRoute] int? id)
-        //{
-        //    return Ok(await _service.GetFinanceAsync(id.Value));
-        //}
+        [HttpGet("{id?}")]
+        public async Task<IActionResult> Get([FromRoute] int? id)
+        {
+            return Ok(await _service.GetFinanceAsync(id.Value));
+        }
 
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] FinanceDto financeDto)
         {
             await _service.AddFinanceAsync(financeDto);
+
             return Ok();
         }
 
         [HttpPut("{id?}")]
         public async Task<IActionResult> Put([FromRoute] int? id, [FromBody] FinanceDto financeDto)
         {
-            await _service.UpdateFinanceAsync(financeDto);
+            await _service.UpdateFinanceAsyncId(id, financeDto);
+
             return Ok();
         }
 

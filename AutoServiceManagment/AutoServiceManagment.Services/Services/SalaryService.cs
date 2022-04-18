@@ -5,6 +5,8 @@ using AutoServiceManagment.Repository.DataContext;
 using AutoServiceManagment.Repository.Repository;
 using AutoServiceManagment.Repository.Repository.Contracts;
 using AutoServiceManagment.Services.Services.Contracts;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -41,9 +43,26 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task DeleteSalaryAsync(int? id)
         {
-            var salary = await _repository.GetAsync(id.Value);
+            var salary = await DbContext.Salaries.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == true);
+
+            if (salary == null) { throw new Exception("Salary not found!"); }
 
             salary.IsDeleted = true;
+
+            await DbContext.SaveChangesAsync();
+        }
+
+        public async Task UpdateSalaryAsyncId(int? id, SalaryDto salaryDto)
+        {
+            var salary = await DbContext.Salaries.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == true);
+
+            if (salary == null) { throw new Exception("Salary not found!"); }
+
+            salary = _mapper.Map<Salary>(salaryDto);
+
+            DbContext.Salaries.Update(salary);
+
+            await DbContext.SaveChangesAsync();
         }
         public Task UpdateSalaryAsync(SalaryDto salaryDto)
         {

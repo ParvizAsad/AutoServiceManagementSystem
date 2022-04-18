@@ -10,10 +10,11 @@ namespace AutoServiceManagment.Services.Services.Contracts
     {
         Task<IList<DiscountDto>> GetAllDiscountsAsync();
         Task<DiscountDto> GetDiscountAsync(int id);
-        Task AddDiscountAsync(DiscountDto DiscountDto);
+        Task AddDiscountAsync(DiscountDto discountDto);
         // Task AddDiscountsAsync(IEnumerable<DiscountDto> DiscountDtos);
         //  Task AddDiscountsAsync(params DiscountDto[] DiscountDtos);
-        Task UpdateDiscountAsync(DiscountDto DiscountDto);
+        Task UpdateDiscountAsync(DiscountDto discountDto);
+        Task UpdateDiscountAsyncId(int? id, DiscountDto discountDto);
         // Task UpdateDiscountsAsync(IEnumerable<DiscountDto> DiscountDtos);
         // Task UpdateDiscountsAsync(params DiscountDto[] DiscountDtos);
         Task DeleteDiscountAsync(int? Id);

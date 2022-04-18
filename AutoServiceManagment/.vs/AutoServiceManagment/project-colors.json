@@ -25,7 +25,12 @@
       "ProjectGuid": "d507a6a7-12f0-49d4-ab0a-a8f644f19d6b",
       "DisplayName": "AutoServiceManagment.API",
       "ColorIndex": 3
+    },
+    "22341830-5044-4563-88ae-68ccc7223e79": {
+      "ProjectGuid": "22341830-5044-4563-88ae-68ccc7223e79",
+      "DisplayName": "AutoServiceManagment.Infrastructure",
+      "ColorIndex": 4
     }
   },
-  "NextColorIndex": 4
+  "NextColorIndex": 5
 }

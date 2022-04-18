@@ -14,6 +14,7 @@ namespace AutoServiceManagment.Services.Services.Contracts
         // Task AddCashBoxesAsync(IEnumerable<CashBoxDto> cashBoxDtos);
         //  Task AddCashBoxesAsync(params CashBoxDto[] cashBoxDtos);
         Task UpdateCashBoxAsync(CashBoxDto cashBoxDto);
+        Task UpdateCashBoxAsyncId(int? id, CashBoxDto cashBoxDto);
         // Task UpdateCashBoxesAsync(IEnumerable<CashBoxDto> cashBoxDtos);
         // Task UpdateCashBoxesAsync(params CashBoxDto[] cashBoxDtos);
         Task DeleteCashBoxAsync(int? Id);

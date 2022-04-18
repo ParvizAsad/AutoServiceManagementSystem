@@ -27,11 +27,11 @@ namespace AutoServiceManagment.API.Controllers
             return Ok(await _service.GetAllSalarysAsync());
         }
 
-        //[HttpGet("{id?}")]
-        //public async Task<IActionResult> Get([FromRoute] int? id)
-        //{
-        //    return Ok(await _service.GetSalaryAsync(id.Value));
-        //}
+        [HttpGet("{id?}")]
+        public async Task<IActionResult> Get([FromRoute] int? id)
+        {
+            return Ok(await _service.GetSalaryAsync(id.Value));
+        }
 
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] SalaryDto salaryDto)
@@ -43,7 +43,7 @@ namespace AutoServiceManagment.API.Controllers
         [HttpPut("{id?}")]
         public async Task<IActionResult> Put([FromRoute] int? id, [FromBody] SalaryDto salaryDto)
         {
-            await _service.UpdateSalaryAsync(salaryDto);
+            await _service.UpdateSalaryAsyncId(id, salaryDto);
             return Ok();
         }
 

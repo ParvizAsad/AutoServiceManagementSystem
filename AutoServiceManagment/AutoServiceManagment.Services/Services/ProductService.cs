@@ -5,6 +5,8 @@ using AutoServiceManagment.Repository.DataContext;
 using AutoServiceManagment.Repository.Repository;
 using AutoServiceManagment.Repository.Repository.Contracts;
 using AutoServiceManagment.Services.Services.Contracts;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -43,11 +45,27 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task DeleteProductAsync(int? id)
         {
-            var product = await _repository.GetAsync(id.Value);
+            var product = await DbContext.Products.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == true);
+
+            if (product == null) { throw new Exception("Product not found!"); }
 
             product.IsDeleted = true;
+
+            await DbContext.SaveChangesAsync();
         }
 
+        public async Task UpdateProductAsyncId(int? id, ProductDto productDto)
+        {
+            var product = await DbContext.Products.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == true);
+
+            if (product == null) { throw new Exception("Finance not found!"); }
+
+            product = _mapper.Map<Product>(productDto);
+
+            DbContext.Products.Update(product);
+
+            await DbContext.SaveChangesAsync();
+        }
         public Task UpdateProductAsync(ProductDto productDto)
         {
             throw new System.NotImplementedException();

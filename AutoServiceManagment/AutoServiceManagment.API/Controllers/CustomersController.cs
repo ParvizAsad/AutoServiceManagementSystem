@@ -27,11 +27,11 @@ namespace AutoServiceManagment.API.Controllers
             return Ok(await _service.GetAllCustomersAsync());
         }
 
-        //[HttpGet("{id?}")]
-        //public async Task<IActionResult> Get([FromRoute] int? id)
-        //{
-        //    return Ok(await _service.GetCustomerAsync(id.Value));
-        //}
+        [HttpGet("{id?}")]
+        public async Task<IActionResult> Get([FromRoute] int? id)
+        {
+            return Ok(await _service.GetCustomerAsync(id.Value));
+        }
 
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] CustomerDto customerDto)
@@ -44,7 +44,7 @@ namespace AutoServiceManagment.API.Controllers
         [HttpPut("{id?}")]
         public async Task<IActionResult> Put([FromRoute] int? id, [FromBody] CustomerDto customerDto)
         {
-            await _service.UpdateCustomerAsync(customerDto);
+            await _service.UpdateCustomerAsyncId(id, customerDto);
             return Ok();
         }
 
@@ -55,7 +55,5 @@ namespace AutoServiceManagment.API.Controllers
 
             return NoContent();
         }
-
-
     }
 }

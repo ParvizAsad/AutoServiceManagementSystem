@@ -16,7 +16,7 @@ namespace AutoServiceManagment.API.Controllers
     {
         private readonly IEmployeeService _service;
 
-        public EmployeesController(IMapper mapper, IRepository<Employee> repository, IEmployeeService service)
+        public EmployeesController(IEmployeeService service)
         {
             _service = service;
         }
@@ -27,11 +27,11 @@ namespace AutoServiceManagment.API.Controllers
             return Ok(await _service.GetAllEmployeesAsync());
         }
 
-        //[HttpGet("{id?}")]
-        //public async Task<IActionResult> Get([FromRoute] int? id)
-        //{
-        //    return Ok(await _service.GetEmployeeAsync(id.Value));
-        //}
+        [HttpGet("{id?}")]
+        public async Task<IActionResult> Get([FromRoute] int? id)
+        {
+            return Ok(await _service.GetEmployeeAsync(id.Value));
+        }
 
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] EmployeeDto employeeDto)
@@ -43,7 +43,7 @@ namespace AutoServiceManagment.API.Controllers
         [HttpPut("{id?}")]
         public async Task<IActionResult> Put([FromRoute] int? id, [FromBody] EmployeeDto employeeDto)
         {
-            await _service.UpdateEmployeeAsync(employeeDto);
+            await _service.UpdateEmployeeAsyncId(id, employeeDto);
             return Ok();
         }
 

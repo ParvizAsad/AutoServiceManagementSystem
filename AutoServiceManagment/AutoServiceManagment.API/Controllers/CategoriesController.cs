@@ -27,11 +27,11 @@ namespace AutoServiceManagment.API.Controllers
             return Ok(await _service.GetAllCategoriesAsync());
         }
 
-        //[HttpGet("{id?}")]
-        //public async Task<IActionResult> Get([FromRoute] int? id)
-        //{
-        //    return Ok(await _service.GetCategoryAsync(id.Value));
-        //}
+        [HttpGet("{id?}")]
+        public async Task<IActionResult> Get([FromRoute] int? id)
+        {
+            return Ok(await _service.GetCategoryAsync(id.Value));
+        }
 
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] CategoryDto categoryDto)
@@ -43,7 +43,7 @@ namespace AutoServiceManagment.API.Controllers
         [HttpPut("{id?}")]
         public async Task<IActionResult> Put([FromRoute] int? id, [FromBody] CategoryDto categoryDto)
         {
-            await _service.UpdateCategoryAsync(categoryDto);
+            await _service.UpdateCategoryAsyncId(id, categoryDto);
             return Ok();
         }
 

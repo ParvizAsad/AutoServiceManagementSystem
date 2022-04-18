@@ -27,23 +27,25 @@ namespace AutoServiceManagment.API.Controllers
             return Ok(await _service.GetAllNonWorkingTypesAsync());
         }
 
-        //[HttpGet("{id?}")]
-        //public async Task<IActionResult> Get([FromRoute] int? id)
-        //{
-        //    return Ok(await _service.GetNonWorkingTypeAsync(id.Value));
-        //}
+        [HttpGet("{id?}")]
+        public async Task<IActionResult> Get([FromRoute] int? id)
+        {
+            return Ok(await _service.GetNonWorkingTypeAsync(id.Value));
+        }
 
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] NonWorkingTypeDto nonWorkingTypeDto)
         {
             await _service.AddNonWorkingTypeAsync(nonWorkingTypeDto);
+
             return Ok();
         }
 
         [HttpPut("{id?}")]
         public async Task<IActionResult> Put([FromRoute] int? id, [FromBody] NonWorkingTypeDto nonWorkingTypeDto)
         {
-            await _service.UpdateNonWorkingTypeAsync(nonWorkingTypeDto);
+            await _service.UpdateNonWorkingTypeAsyncId(id, nonWorkingTypeDto);
+
             return Ok();
         }
 
@@ -51,6 +53,7 @@ namespace AutoServiceManagment.API.Controllers
         public async Task<IActionResult> Delete([FromRoute] int? id)
         {
             await _service.DeleteNonWorkingTypeAsync(id.Value);
+
             return NoContent();
         }
     }

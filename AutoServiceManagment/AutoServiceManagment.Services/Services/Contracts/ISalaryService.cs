@@ -14,6 +14,7 @@ namespace AutoServiceManagment.Services.Services.Contracts
         // Task AddSalarysAsync(IEnumerable<SalaryDto> salaryDtos);
         //  Task AddSalarysAsync(params SalaryDto[] salaryDtos);
         Task UpdateSalaryAsync(SalaryDto salaryDto);
+        Task UpdateSalaryAsyncId(int? id, SalaryDto salaryDto);
         // Task UpdateSalarysAsync(IEnumerable<SalaryDto> salaryDtos);
         // Task UpdateSalarysAsync(params SalaryDto[] salaryDtos);
         Task DeleteSalaryAsync(int? Id);

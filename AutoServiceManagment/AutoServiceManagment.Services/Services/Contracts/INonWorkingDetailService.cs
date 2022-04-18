@@ -14,6 +14,7 @@ namespace AutoServiceManagment.Services.Services.Contracts
         // Task AddNonWorkingDetailsAsync(IEnumerable<NonWorkingDetailDto> nonWorkingDetailDtos);
         //  Task AddNonWorkingDetailsAsync(params NonWorkingDetailDto[] nonWorkingDetailDtos);
         Task UpdateNonWorkingDetailAsync(NonWorkingDetailDto nonWorkingDetailDto);
+        Task UpdateNonWorkingDetailAsyncId(int? id, NonWorkingDetailDto nonWorkingDetailDto);
         // Task UpdateNonWorkingDetailsAsync(IEnumerable<NonWorkingDetailDto> nonWorkingDetailDtos);
         // Task UpdateNonWorkingDetailsAsync(params NonWorkingDetailDto[] nonWorkingDetailDtos);
         Task DeleteNonWorkingDetailAsync(int? Id);

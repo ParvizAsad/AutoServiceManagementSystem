@@ -15,7 +15,8 @@ namespace AutoServiceManagment.Repository.DataContext
 
         }
         public DbSet<Brand> Brands { get; set; }
-        public DbSet<CashBox> CashBoxs { get; set; }
+        public DbSet<CashBox> CashBoxes { get; set; }
+        public DbSet<Category> Categories { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Discount> Discounts { get; set; }
         public DbSet<Employee> Employees { get; set; }

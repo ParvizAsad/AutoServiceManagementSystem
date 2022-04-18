@@ -27,11 +27,11 @@ namespace AutoServiceManagment.API.Controllers
             return Ok(await _service.GetAllNonWorkingDetailsAsync());
         }
 
-        //[HttpGet("{id?}")]
-        //public async Task<IActionResult> Get([FromRoute] int? id)
-        //{
-        //    return Ok(await _service.GetNonWorkingDetailAsync(id.Value));
-        //}
+        [HttpGet("{id?}")]
+        public async Task<IActionResult> Get([FromRoute] int? id)
+        {
+            return Ok(await _service.GetNonWorkingDetailAsync(id.Value));
+        }
 
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] NonWorkingDetailDto nonWorkingDetailDto)
@@ -43,7 +43,8 @@ namespace AutoServiceManagment.API.Controllers
         [HttpPut("{id?}")]
         public async Task<IActionResult> Put([FromRoute] int? id, [FromBody] NonWorkingDetailDto nonWorkingDetailDto)
         {
-            await _service.UpdateNonWorkingDetailAsync(nonWorkingDetailDto);
+            await _service.UpdateNonWorkingDetailAsyncId(id, nonWorkingDetailDto);
+
             return Ok();
         }
 
@@ -51,6 +52,7 @@ namespace AutoServiceManagment.API.Controllers
         public async Task<IActionResult> Delete([FromRoute] int? id)
         {
             await _service.DeleteNonWorkingDetailAsync(id.Value);
+            
             return NoContent();
         }
     }

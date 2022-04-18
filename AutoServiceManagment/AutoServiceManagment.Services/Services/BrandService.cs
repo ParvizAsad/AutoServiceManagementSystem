@@ -53,16 +53,16 @@ namespace AutoServiceManagment.Services.Services
              await DbContext.SaveChangesAsync();
         }
 
-        public async Task UpdateBrandAsyncid(int? id, BrandDto brandDto)
+        public async Task UpdateBrandAsyncId(int? id, BrandDto brandDto)
         {
             var brand = await DbContext.Brands.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted==true);
             if (brand == null) { throw new Exception("Brand not found!"); }
 
-            brand.Name = brandDto.Name;
+            brand = _mapper.Map<Brand>(brandDto);
 
             DbContext.Brands.Update(brand);
 
-            var updated = await DbContext.SaveChangesAsync();
+            await DbContext.SaveChangesAsync();
         }
 
         public Task UpdateBrandAsync(BrandDto brandDto)

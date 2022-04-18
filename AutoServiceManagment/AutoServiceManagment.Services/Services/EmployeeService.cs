@@ -5,6 +5,8 @@ using AutoServiceManagment.Repository.DataContext;
 using AutoServiceManagment.Repository.Repository;
 using AutoServiceManagment.Repository.Repository.Contracts;
 using AutoServiceManagment.Services.Services.Contracts;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -42,11 +44,27 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task DeleteEmployeeAsync(int? id)
         {
-            var employee = await _repository.GetAsync(id.Value);
+            var employee = await DbContext.Employees.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == true);
+
+            if (employee == null) { throw new Exception("Employee not found!"); }
 
             employee.IsDeleted = true;
+
+            await DbContext.SaveChangesAsync();
         }
 
+        public async Task UpdateEmployeeAsyncId(int? id, EmployeeDto employeeDto)
+        {
+            var employee = await DbContext.Employees.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == true);
+
+            if (employee == null) { throw new Exception("Employee not found!"); }
+
+            employee = _mapper.Map<Employee>(employeeDto);
+
+            DbContext.Employees.Update(employee);
+
+            await DbContext.SaveChangesAsync();
+        }
         public Task UpdateEmployeeAsync(EmployeeDto employeeDto)
         {
             throw new System.NotImplementedException();

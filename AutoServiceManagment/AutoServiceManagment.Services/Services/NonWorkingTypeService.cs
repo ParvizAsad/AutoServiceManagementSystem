@@ -5,6 +5,8 @@ using AutoServiceManagment.Repository.DataContext;
 using AutoServiceManagment.Repository.Repository;
 using AutoServiceManagment.Repository.Repository.Contracts;
 using AutoServiceManagment.Services.Services.Contracts;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -15,9 +17,10 @@ namespace AutoServiceManagment.Services.Services
         private readonly IMapper _mapper;
         private readonly IRepository<NonWorkingType> _repository;
 
-        public NonWorkingTypeService(AppDbContext dbContext, IMapper mapper):base(dbContext)
+        public NonWorkingTypeService(AppDbContext dbContext, IMapper mapper, IRepository<NonWorkingType> repository) :base(dbContext)
         {
             _mapper = mapper;
+            _repository = repository;
         }
 
         public async Task<IList<NonWorkingTypeDto>> GetAllNonWorkingTypesAsync()
@@ -41,9 +44,26 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task DeleteNonWorkingTypeAsync(int? id)
         {
-            var nonWorkingType = await _repository.GetAsync(id.Value);
+            var nonWorkingType = await DbContext.NonWorkingTypes.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == true);
+
+            if (nonWorkingType == null) { throw new Exception("NonWorkingType not found!"); }
 
             nonWorkingType.IsDeleted = true;
+
+            await DbContext.SaveChangesAsync();
+        }
+
+        public async Task UpdateNonWorkingTypeAsyncId(int? id, NonWorkingTypeDto nonWorkingTypeDto)
+        {
+            var nonWorkingType = await DbContext.NonWorkingTypes.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == true);
+
+            if (nonWorkingType == null) { throw new Exception("NonWorkingType not found!"); }
+
+            nonWorkingType = _mapper.Map<NonWorkingType>(nonWorkingTypeDto);
+
+            DbContext.NonWorkingTypes.Update(nonWorkingType);
+
+            await DbContext.SaveChangesAsync();
         }
 
         public Task UpdateNonWorkingTypeAsync(NonWorkingTypeDto nonWorkingTypeDto)

@@ -5,6 +5,8 @@ using AutoServiceManagment.Repository.DataContext;
 using AutoServiceManagment.Repository.Repository;
 using AutoServiceManagment.Repository.Repository.Contracts;
 using AutoServiceManagment.Services.Services.Contracts;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -38,14 +40,32 @@ namespace AutoServiceManagment.Services.Services
         public async Task AddFinanceAsync(FinanceDto financeDto)
         {
             var finance = _mapper.Map<Finance>(financeDto);
+
             await _repository.AddAsync(finance);
         }
 
         public async Task DeleteFinanceAsync(int? id)
         {
-            var finance = await _repository.GetAsync(id.Value);
+            var finance = await DbContext.Finances.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == true);
+
+            if (finance == null) { throw new Exception("Finance not found!"); }
 
             finance.IsDeleted = true;
+
+            await DbContext.SaveChangesAsync();
+        }
+
+        public async Task UpdateFinanceAsyncId(int? id, FinanceDto financeDto)
+        {
+            var finance = await DbContext.Finances.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == true);
+
+            if (finance == null) { throw new Exception("Finance not found!"); }
+
+            finance = _mapper.Map<Finance>(financeDto);
+
+            DbContext.Finances.Update(finance);
+
+            await DbContext.SaveChangesAsync();
         }
 
         public Task UpdateFinanceAsync(FinanceDto financeDto)

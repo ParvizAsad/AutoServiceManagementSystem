@@ -15,17 +15,6 @@
         },
         "runtime": {
           "AutoServiceManagment.Services.dll": {}
-        },
-        "resources": {
-          "az/AutoServiceManagment.Services.resources.dll": {
-            "locale": "az"
-          },
-          "en/AutoServiceManagment.Services.resources.dll": {
-            "locale": "en"
-          },
-          "ru/AutoServiceManagment.Services.resources.dll": {
-            "locale": "ru"
-          }
         }
       },
       "AutoMapper/11.0.1": {

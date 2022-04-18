@@ -28,6 +28,12 @@ namespace AutoServiceManagment.API.Controllers
             return Ok(await _service.GetAllTaxesAsync());
         }
 
+        [HttpGet("{id?}")]
+        public async Task<IActionResult> Get([FromRoute] int? id)
+        {
+            return Ok(await _service.GetTaxAsync(id.Value));
+        }
+
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] TaxDto taxDto)
         {
@@ -38,7 +44,7 @@ namespace AutoServiceManagment.API.Controllers
         [HttpPut("{id?}")]
         public async Task<IActionResult> Put([FromRoute] int? id, [FromBody] TaxDto taxDto)
         {
-            await _service.UpdateTaxAsync(taxDto);
+            await _service.UpdateTaxAsyncId(id, taxDto);
             return Ok();
         }
 

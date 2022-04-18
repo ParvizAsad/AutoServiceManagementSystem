@@ -5,7 +5,10 @@ using AutoServiceManagment.Repository.DataContext;
 using AutoServiceManagment.Repository.Repository;
 using AutoServiceManagment.Repository.Repository.Contracts;
 using AutoServiceManagment.Services.Services.Contracts;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace AutoServiceManagment.Services.Services
@@ -23,7 +26,7 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task<IList<CashBoxDto>> GetAllCashBoxesAsync()
         {
-            var cashBoxes = await GetAllAsync();
+            var cashBoxes = await DbContext.CashBoxes.Where(x => x.IsDeleted == false).ToListAsync();
 
             return _mapper.Map<List<CashBoxDto>>(cashBoxes);
         }
@@ -38,17 +41,34 @@ namespace AutoServiceManagment.Services.Services
         public async Task AddCashBoxAsync(CashBoxDto cashBoxDto)
         {
             var cashBox = _mapper.Map<CashBox>(cashBoxDto);
+            
             await _repository.AddAsync(cashBox);
         }
 
         public async Task DeleteCashBoxAsync(int? id)
         {
-            var cashBox = await _repository.GetAsync(id.Value);
+            var cashBox = await DbContext.CashBoxes.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == true);
+
+            if (cashBox == null) { throw new Exception("CashBox not found!"); }
 
             cashBox.IsDeleted = true;
+            
+            await DbContext.SaveChangesAsync();
 
         }
 
+        public async Task UpdateCashBoxAsyncId(int? id, CashBoxDto cashBoxDto)
+        {
+            var cashBox = await DbContext.CashBoxes.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == true);
+            
+            if (cashBox == null) { throw new Exception("CashBox not found!"); }
+
+            cashBox = _mapper.Map<CashBox>(cashBoxDto);
+
+            DbContext.CashBoxes.Update(cashBox);
+
+            await DbContext.SaveChangesAsync();
+        }
         public Task UpdateCashBoxAsync(CashBoxDto cashBoxDto)
         {
             throw new System.NotImplementedException();

@@ -19,6 +19,7 @@ using AutoServiceManagment.Services.Services.Contracts;
 using AutoServiceManagment.Services.Services;
 using Microsoft.EntityFrameworkCore;
 using AutoServiceManagment.Infrastructure.Middlewares;
+using AutoTaxManagment.Service.Services.Contracts;
 
 namespace AutoServiceManagment.API
 {

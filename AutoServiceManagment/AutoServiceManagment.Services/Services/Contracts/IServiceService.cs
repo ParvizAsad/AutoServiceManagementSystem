@@ -14,6 +14,7 @@ namespace AutoServiceManagment.Services.Services.Contracts
         // Task AddServicesAsync(IEnumerable<ServiceDto> ServiceDtos);
         //  Task AddServicesAsync(params ServiceDto[] ServiceDtos);
         Task UpdateServiceAsync(ServiceDto serviceDto);
+        Task UpdateServiceAsyncId(int? id, ServiceDto serviceDto);
         // Task UpdateServicesAsync(IEnumerable<ServiceDto> ServiceDtos);
         // Task UpdateServicesAsync(params ServiceDto[] ServiceDtos);
         Task DeleteServiceAsync(int? Id);
