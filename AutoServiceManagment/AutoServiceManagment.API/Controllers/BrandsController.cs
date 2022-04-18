@@ -37,7 +37,7 @@ namespace AutoServiceManagment.API.Controllers
         [HttpPut("{id?}")]
         public async Task<IActionResult> Put([FromRoute] int? id, [FromBody] BrandDto brandDto)
         {
-            await _service.UpdateBrandAsync(brandDto);
+            await _service.UpdateBrandAsyncid(id, brandDto);
             return Ok();
         }
 
