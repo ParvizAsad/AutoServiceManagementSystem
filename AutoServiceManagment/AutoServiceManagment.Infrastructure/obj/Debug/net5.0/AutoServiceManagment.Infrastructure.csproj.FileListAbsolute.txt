@@ -1,0 +1,12 @@
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Infrastructure\bin\Debug\net5.0\AutoServiceManagment.Infrastructure.deps.json
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Infrastructure\bin\Debug\net5.0\AutoServiceManagment.Infrastructure.dll
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Infrastructure\bin\Debug\net5.0\AutoServiceManagment.Infrastructure.pdb
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Infrastructure\obj\Debug\net5.0\AutoServiceManagment.Infrastructure.csproj.AssemblyReference.cache
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Infrastructure\obj\Debug\net5.0\AutoServiceManagment.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Infrastructure\obj\Debug\net5.0\AutoServiceManagment.Infrastructure.AssemblyInfoInputs.cache
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Infrastructure\obj\Debug\net5.0\AutoServiceManagment.Infrastructure.AssemblyInfo.cs
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Infrastructure\obj\Debug\net5.0\AutoServiceManagment.Infrastructure.csproj.CoreCompileInputs.cache
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Infrastructure\obj\Debug\net5.0\AutoServiceManagment.Infrastructure.dll
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Infrastructure\obj\Debug\net5.0\refint\AutoServiceManagment.Infrastructure.dll
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Infrastructure\obj\Debug\net5.0\AutoServiceManagment.Infrastructure.pdb
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Infrastructure\obj\Debug\net5.0\ref\AutoServiceManagment.Infrastructure.dll

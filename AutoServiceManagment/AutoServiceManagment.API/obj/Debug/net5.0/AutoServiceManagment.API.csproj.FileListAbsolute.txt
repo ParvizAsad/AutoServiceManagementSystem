@@ -155,6 +155,5 @@ C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoS
 C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\bin\Debug\net5.0\AutoServiceManagment.Services.pdb
 C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\bin\Debug\net5.0\AutoServiceManagment.DomainModels.pdb
 D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\bin\Debug\net5.0\Microsoft.Extensions.Localization.Abstractions.dll
-D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\bin\Debug\net5.0\az\AutoServiceManagment.Services.resources.dll
-D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\bin\Debug\net5.0\en\AutoServiceManagment.Services.resources.dll
-D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\bin\Debug\net5.0\ru\AutoServiceManagment.Services.resources.dll
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\bin\Debug\net5.0\AutoServiceManagment.Infrastructure.dll
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\bin\Debug\net5.0\AutoServiceManagment.Infrastructure.pdb

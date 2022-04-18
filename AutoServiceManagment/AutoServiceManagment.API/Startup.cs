@@ -18,7 +18,7 @@ using AutoServiceManagment.Repository.Repository;
 using AutoServiceManagment.Services.Services.Contracts;
 using AutoServiceManagment.Services.Services;
 using Microsoft.EntityFrameworkCore;
-using AutoTaxManagment.Service.Services.Contracts;
+using AutoServiceManagment.Infrastructure.Middlewares;
 
 namespace AutoServiceManagment.API
 {
@@ -90,6 +90,7 @@ namespace AutoServiceManagment.API
             }
 
             app.UseHttpsRedirection();
+            app.ConfigureExceptionHandler();
 
             app.UseRouting();
 
