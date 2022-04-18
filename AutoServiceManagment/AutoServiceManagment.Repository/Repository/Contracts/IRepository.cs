@@ -17,5 +17,6 @@ namespace AutoServiceManagment.Repository.Repository.Contracts
         Task DeleteAsync(T entity);
         Task DeleteAsync(IEnumerable<T> entity);
         Task DeleteAsync(params T[] entity);
+        Task GetAsync(object value);
     }
 }

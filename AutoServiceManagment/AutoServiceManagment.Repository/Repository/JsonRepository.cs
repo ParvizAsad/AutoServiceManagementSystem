@@ -47,6 +47,11 @@ namespace AutoServiceManagment.Repository.Repository
             throw new System.NotImplementedException();
         }
 
+        public Task GetAsync(object value)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public Task UpdateAsync(T entity)
         {
             throw new System.NotImplementedException();
