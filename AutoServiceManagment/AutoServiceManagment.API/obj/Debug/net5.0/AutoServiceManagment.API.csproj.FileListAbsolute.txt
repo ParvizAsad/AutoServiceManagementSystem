@@ -160,3 +160,13 @@ D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceMa
 C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\bin\Debug\net5.0\Microsoft.Extensions.Localization.Abstractions.dll
 C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\bin\Debug\net5.0\AutoServiceManagment.Infrastructure.dll
 C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\bin\Debug\net5.0\AutoServiceManagment.Infrastructure.pdb
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\bin\Debug\net5.0\Microsoft.Extensions.DependencyModel.dll
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\bin\Debug\net5.0\Serilog.dll
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\bin\Debug\net5.0\Serilog.AspNetCore.dll
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\bin\Debug\net5.0\Serilog.Extensions.Hosting.dll
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\bin\Debug\net5.0\Serilog.Extensions.Logging.dll
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\bin\Debug\net5.0\Serilog.Formatting.Compact.dll
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\bin\Debug\net5.0\Serilog.Settings.Configuration.dll
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\bin\Debug\net5.0\Serilog.Sinks.Console.dll
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\bin\Debug\net5.0\Serilog.Sinks.Debug.dll
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\bin\Debug\net5.0\Serilog.Sinks.File.dll
