@@ -64,9 +64,5 @@ namespace AutoServiceManagment.Services.Services
 
             await DbContext.SaveChangesAsync();
         }
-        public Task UpdateSalaryAsync(SalaryDto salaryDto)
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

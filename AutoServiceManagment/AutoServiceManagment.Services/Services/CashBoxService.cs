@@ -69,10 +69,5 @@ namespace AutoServiceManagment.Services.Services
 
             await DbContext.SaveChangesAsync();
         }
-        public Task UpdateCashBoxAsync(CashBoxDto cashBoxDto)
-        {
-            throw new System.NotImplementedException();
-        }
-
     }
 }

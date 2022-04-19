@@ -65,9 +65,5 @@ namespace AutoServiceManagment.Services.Services
 
             await DbContext.SaveChangesAsync();
         }
-        public Task UpdatePositionAsync(PositionDto positionDto)
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

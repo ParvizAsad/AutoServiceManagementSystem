@@ -65,9 +65,5 @@ namespace AutoServiceManagment.Services.Services
 
             await DbContext.SaveChangesAsync();
         }
-        public Task UpdateTaxAsync(TaxDto taxDto)
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

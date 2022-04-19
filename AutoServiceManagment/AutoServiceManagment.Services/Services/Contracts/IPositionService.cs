@@ -13,7 +13,6 @@ namespace AutoServiceManagment.Services.Services.Contracts
         Task AddPositionAsync(PositionDto positionDto);
         // Task AddPositionsAsync(IEnumerable<PositionDto> positionDtos);
         //  Task AddPositionsAsync(params PositionDto[] positionDtos);
-        Task UpdatePositionAsync(PositionDto positionDto);
         Task UpdatePositionAsyncId(int? id, PositionDto positionDto);
         // Task UpdatePositionsAsync(IEnumerable<PositionDto> positionDtos);
         // Task UpdatePositionsAsync(params PositionDto[] positionDtos);

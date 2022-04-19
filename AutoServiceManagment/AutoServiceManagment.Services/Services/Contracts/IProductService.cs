@@ -13,7 +13,6 @@ namespace AutoServiceManagment.Services.Services.Contracts
         Task AddProductAsync(ProductDto productDto);
         // Task AddProductsAsync(IEnumerable<ProductDto> productDtos);
         //  Task AddProductsAsync(params ProductDto[] productDtos);
-        Task UpdateProductAsync(ProductDto productDto);
         Task UpdateProductAsyncId(int? id, ProductDto productDto);
         // Task UpdateProductsAsync(IEnumerable<ProductDto> productDtos);
         // Task UpdateProductsAsync(params ProductDto[] productDtos);

@@ -67,10 +67,5 @@ namespace AutoServiceManagment.Services.Services
 
             await DbContext.SaveChangesAsync();
         }
-
-        public Task UpdateFinanceAsync(FinanceDto financeDto)
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

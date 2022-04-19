@@ -13,7 +13,6 @@ namespace AutoServiceManagment.Services.Services.Contracts
         Task AddCategoryAsync(CategoryDto categoryDto);
         // Task AddCategoriesAsync(IEnumerable<CategoryDto> categoryDtos);
         //  Task AddCategoriesAsync(params CategoryDto[] categoryDtos);
-        Task UpdateCategoryAsync(CategoryDto categoryDto);
         Task UpdateCategoryAsyncId(int? id, CategoryDto categoryDto);
         // Task UpdateCategoriesAsync(IEnumerable<CategoryDto> categoryDtos);
         // Task UpdateCategoriesAsync(params CategoryDto[] categoryDtos);

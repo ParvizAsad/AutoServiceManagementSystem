@@ -64,10 +64,5 @@ namespace AutoServiceManagment.Services.Services
 
             await DbContext.SaveChangesAsync();
         }
-
-        public Task UpdateBrandAsync(BrandDto brandDto)
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

@@ -13,7 +13,6 @@ namespace AutoTaxManagment.Service.Services.Contracts
         Task AddTaxAsync(TaxDto TaxDto);
         // Task AddTaxsAsync(IEnumerable<TaxDto> TaxDtos);
         //  Task AddTaxsAsync(params TaxDto[] TaxDtos);
-        Task UpdateTaxAsync(TaxDto TaxDto);
         Task UpdateTaxAsyncId(int? id, TaxDto taxDto);
         // Task UpdateTaxsAsync(IEnumerable<TaxDto> TaxDtos);
         // Task UpdateTaxsAsync(params TaxDto[] TaxDtos);

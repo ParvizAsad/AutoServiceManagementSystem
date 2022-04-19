@@ -65,10 +65,5 @@ namespace AutoServiceManagment.Services.Services
 
             await DbContext.SaveChangesAsync();
         }
-
-        public Task UpdateNonWorkingTypeAsync(NonWorkingTypeDto nonWorkingTypeDto)
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

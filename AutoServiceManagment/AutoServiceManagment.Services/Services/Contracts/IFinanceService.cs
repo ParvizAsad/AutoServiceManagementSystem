@@ -13,7 +13,6 @@ namespace AutoServiceManagment.Services.Services.Contracts
         Task AddFinanceAsync(FinanceDto financeDto);
         // Task AddFinancesAsync(IEnumerable<FinanceDto> financeDtos);
         //  Task AddFinancesAsync(params FinanceDto[] financeDtos);
-        Task UpdateFinanceAsync(FinanceDto financeDto);
         Task UpdateFinanceAsyncId(int? id, FinanceDto financeDto);
         // Task UpdateFinancesAsync(IEnumerable<FinanceDto> financeDtos);
         // Task UpdateFinancesAsync(params FinanceDto[] financeDtos);

@@ -66,10 +66,5 @@ namespace AutoServiceManagment.Services.Services
 
             await DbContext.SaveChangesAsync();
         }
-        public Task UpdateDiscountAsync(DiscountDto discountDto)
-        {
-            throw new System.NotImplementedException();
-        }
-
     }
 }

@@ -67,10 +67,5 @@ namespace AutoServiceManagment.Services.Services
 
             await DbContext.SaveChangesAsync();
         }
-        public Task UpdateCategoryAsync(CategoryDto categoryDto)
-        {
-            throw new System.NotImplementedException();
-        }
-
     }
 }

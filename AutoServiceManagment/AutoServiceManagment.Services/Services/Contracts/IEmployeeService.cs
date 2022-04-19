@@ -13,7 +13,6 @@ namespace AutoServiceManagment.Services.Services.Contracts
         Task AddEmployeeAsync(EmployeeDto employeeDto);
         // Task AddEmployeesAsync(IEnumerable<EmployeeDto> employeeDtos);
         //  Task AddEmployeesAsync(params EmployeeDto[] employeeDtos);
-        Task UpdateEmployeeAsync(EmployeeDto employeeDto);
         Task UpdateEmployeeAsyncId(int? id, EmployeeDto employeeDto);
         // Task UpdateEmployeesAsync(IEnumerable<EmployeeDto> employeeDtos);
         // Task UpdateEmployeesAsync(params EmployeeDto[] employeeDtos);

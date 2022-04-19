@@ -66,9 +66,5 @@ namespace AutoServiceManagment.Services.Services
 
             await DbContext.SaveChangesAsync();
         }
-        public Task UpdateServiceAsync(ServiceDto serviceDto)
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }
