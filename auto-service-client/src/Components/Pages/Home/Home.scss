@@ -1,0 +1,35 @@
+*{
+    background-color: rgb(255, 255, 255);
+}
+#moduleCards{
+    margin-top: 18vh;
+    display: flex;
+    justify-content: space-evenly;
+    .moduleCard{
+        background-color: rgb(255, 255, 255);
+        border-color: red;
+        border-width: 1px;
+        max-width: 26vh;
+        min-height: 32vh;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        border-radius: 15px;
+    }
+    .moduleCardBody{
+        background-color: rgb(255, 0, 0);
+    }
+}
+
+#HeadingForModules{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+    font-size: 35px;
+    color: rgb(10, 91, 129);
+    background-color: white;
+    h1{
+        background-color: white;
+    }
+}
