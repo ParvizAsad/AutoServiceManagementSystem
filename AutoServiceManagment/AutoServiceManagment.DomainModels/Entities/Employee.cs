@@ -1,5 +1,6 @@
 ﻿using AutoServiceManagment.Base;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AutoServiceManagment.DomainModels.Entities
@@ -17,7 +18,10 @@ namespace AutoServiceManagment.DomainModels.Entities
         public Position Position { get; set; }
         public string PersonalDetails { get; set; }
         public string EducationLevel { get; set; }
-        public NonWorkingDetail NonWorkingDetail { get; set; }
+        public ICollection<NonWorkingDetail> NonWorkingDetails { get; set; }
+        //[ForeignKey("NonWorkingDetail")]
+        //public int NonWorkingDetailId { get; set; }
+        //public NonWorkingDetail NonWorkingDetail { get; set; }
         public bool IsDeleted { get; set; } = false;
     }
 }

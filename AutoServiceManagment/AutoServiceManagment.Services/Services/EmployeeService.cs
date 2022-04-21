@@ -56,8 +56,11 @@ namespace AutoServiceManagment.Services.Services
         public async Task UpdateEmployeeAsyncId(int? id, EmployeeDto employeeDto)
         {
             var employee = await DbContext.Employees.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == true);
-
             if (employee == null) { throw new Exception("Employee not found!"); }
+            
+            var orderNumber = await DbContext.Employees.FirstOrDefaultAsync(x => x.OrderNumber == employeeDto.OrderNumber);
+            if (orderNumber != null) { throw new Exception("Check OrderNumber!"); }
+
 
             employee = _mapper.Map<Employee>(employeeDto);
 

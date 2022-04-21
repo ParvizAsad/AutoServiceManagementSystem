@@ -45,8 +45,7 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task DeleteCategoryAsync(int? id)
         {
-            var category = await DbContext.Categories.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == true);
-
+            var category = await DbContext.Categories.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted != true);
             if (category == null) { throw new Exception("Category not found!"); }
 
             category.IsDeleted = true;
@@ -57,9 +56,12 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task UpdateCategoryAsyncId(int? id, CategoryDto categoryDto)
         {
-            var category = await DbContext.Categories.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == true);
-
+            var category = await DbContext.Categories.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted != true);
             if (category == null) { throw new Exception("Category not found!"); }
+
+            var categorys = await DbContext.Categories.FirstOrDefaultAsync(x => x.Name == categoryDto.Name);
+            if (categorys != null) { throw new Exception("There is a Category with this name!"); }
+
 
             category = _mapper.Map<Category>(categoryDto);
 

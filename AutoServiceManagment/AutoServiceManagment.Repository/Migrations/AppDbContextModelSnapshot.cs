@@ -377,8 +377,7 @@ namespace AutoServiceManagment.Repository.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EmployeeId")
-                        .IsUnique();
+                    b.HasIndex("EmployeeId");
 
                     b.HasIndex("NonWorkingTypeId");
 
@@ -685,13 +684,13 @@ namespace AutoServiceManagment.Repository.Migrations
             modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.NonWorkingDetail", b =>
                 {
                     b.HasOne("AutoServiceManagment.DomainModels.Entities.Employee", "Employee")
-                        .WithOne("NonWorkingDetail")
-                        .HasForeignKey("AutoServiceManagment.DomainModels.Entities.NonWorkingDetail", "EmployeeId")
+                        .WithMany("NonWorkingDetails")
+                        .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("AutoServiceManagment.DomainModels.Entities.NonWorkingType", "NonWorkingType")
-                        .WithMany()
+                        .WithMany("NonWorkingDetails")
                         .HasForeignKey("NonWorkingTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -748,7 +747,12 @@ namespace AutoServiceManagment.Repository.Migrations
 
             modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.Employee", b =>
                 {
-                    b.Navigation("NonWorkingDetail");
+                    b.Navigation("NonWorkingDetails");
+                });
+
+            modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.NonWorkingType", b =>
+                {
+                    b.Navigation("NonWorkingDetails");
                 });
 
             modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.Product", b =>

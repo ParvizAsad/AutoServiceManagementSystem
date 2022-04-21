@@ -26,7 +26,9 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task<IList<BrandDto>> GetAllBrandsAsync()
         {
+
             var brands = await DbContext.Brands.Where(x=>x.IsDeleted==false).ToListAsync();
+
 
             return _mapper.Map<List<BrandDto>>(brands);
         }
@@ -40,13 +42,16 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task AddBrandAsync(BrandDto brandDto)
         {
+            var brands = await DbContext.Brands.Where(x => x.Name == brandDto.Name).FirstOrDefaultAsync();
+            if (brands != null) { throw new Exception("There is a brand with this name!"); }
+
             var brand = _mapper.Map<Brand>(brandDto);
             await _repository.AddAsync(brand);
         }
 
         public async Task DeleteBrandAsync(int? id)
         {
-            var brand = await DbContext.Brands.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == true);
+            var brand = await DbContext.Brands.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted != true);
             if (brand == null) { throw new Exception("Brand not found!"); }
 
             brand.IsDeleted = true;
@@ -55,14 +60,18 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task UpdateBrandAsyncId(int? id, BrandDto brandDto)
         {
-            var brand = await DbContext.Brands.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == true);
-            //if (brand == null) { throw new Exception("Brand not found!"); }
+            var brand = await DbContext.Brands.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted !=true);
+            if (brand == null) { throw new Exception("Brand not found!"); }
+           
+            var brands = await DbContext.Brands.FirstOrDefaultAsync(x => x.Name == brandDto.Name);
+            if (brands != null) { throw new Exception("There is a brand with this name!"); }
 
             brand = _mapper.Map<Brand>(brandDto);
 
             DbContext.Brands.Update(brand);
 
             await DbContext.SaveChangesAsync();
+            return;
         }
     }
 }
