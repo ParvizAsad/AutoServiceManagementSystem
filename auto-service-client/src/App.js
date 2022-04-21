@@ -4,7 +4,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Redirect
 } from "react-router-dom";
 import Home from './Components/Pages/Home/Home';
 import Header from './Components/Layout/Header/Header';
@@ -20,34 +20,21 @@ function App() {
   return (
     <>
     <Router>
+    <Header/>
     <div>
       <Switch>
-        <Route path="/home">
-          <Home />
-        </Route>
-        <Route path="/stock">
-          <Stock />
-        </Route>
-        <Route path="/error">
-          <Error />
-        </Route>
-        <Route path="/director">
-          <Director />
-        </Route>
-        <Route path="/registration">
-          <Registration/>
-        </Route>
-        <Route path="/hr">
-          <HR/>
-        </Route>
-        <Route path="/finance">
-          <Finance/>
-        </Route>
+        <Route path={"/"} exact component={Home} />
+        <Route path={"/stock"} exact component={Stock} />
+        <Route path={"/finance"} exact component={Finance} />
+        <Route path={"/director"} exact component={Director} />
+        <Route path={"/registration"} exact component={Registration} />
+        <Route path={"/hr"} exact component={HR} />
+        <Route path={"/error"} exact component={Error} />
+        <Redirect to={"/error"} exact />
       </Switch>
     </div>
   </Router>
-  <Header/>
-  <Home/>
+
     </>
   );
 }

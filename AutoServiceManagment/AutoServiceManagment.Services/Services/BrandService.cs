@@ -55,8 +55,8 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task UpdateBrandAsyncId(int? id, BrandDto brandDto)
         {
-            var brand = await DbContext.Brands.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted==true);
-            if (brand == null) { throw new Exception("Brand not found!"); }
+            var brand = await DbContext.Brands.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == true);
+            //if (brand == null) { throw new Exception("Brand not found!"); }
 
             brand = _mapper.Map<Brand>(brandDto);
 

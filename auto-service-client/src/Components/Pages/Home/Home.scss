@@ -1,23 +1,43 @@
 *{
     background-color: rgb(255, 255, 255);
 }
+
 #moduleCards{
     margin-top: 18vh;
     display: flex;
     justify-content: space-evenly;
+    font-style: none;
     .moduleCard{
         background-color: rgb(255, 255, 255);
         border-color: red;
         border-width: 1px;
-        max-width: 26vh;
+        min-width: 26vh;
         min-height: 32vh;
         justify-content: center;
         align-items: center;
         text-align: center;
         border-radius: 15px;
+        .moduleCardBody{
+            background-color: rgb(210, 2, 2);
+            width: 140px;
+            .moduleCardTitle{
+                background-color: rgb(220, 220, 205);
+                border-radius: 5px;
+                margin-top: 20px;
+
+            }
+            .text-muted{
+                background-color: rgb(220, 220, 205);
+                border-radius: 5px;
+                margin-top: 20px;
+            }
+            Button{
+                margin-top: 40px;
+                background-color: rgb(153, 209, 188);
+                color: black;
+                width: 100px;
+            }
     }
-    .moduleCardBody{
-        background-color: rgb(255, 0, 0);
     }
 }
 

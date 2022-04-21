@@ -2,7 +2,7 @@ import React from 'react'
 
 function Finance() {
   return (
-    <div>Finance</div>
+    <h1>Finance</h1>
   )
 }
 

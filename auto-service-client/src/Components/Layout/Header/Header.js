@@ -21,8 +21,12 @@ function Header() {
     <Navbar id='NavbarId'
     >
       <img src='dd'></img>
-  <h1>             Car-Tool-Network Auto Service
-</h1>
+  <h1>Car-Tool-Network Auto Service</h1>
+  <div>
+    <h4>
+      Your Profile
+    </h4>
+  </div>
     </Navbar>
   </div>
   )

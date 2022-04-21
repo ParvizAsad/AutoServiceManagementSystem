@@ -17,8 +17,6 @@ namespace AutoServiceManagment.DomainModels.Entities
         public Position Position { get; set; }
         public string PersonalDetails { get; set; }
         public string EducationLevel { get; set; }
-        [ForeignKey("NonWorkingDetail")]
-        public int NonWorkingDetailId { get; set; }
         public NonWorkingDetail NonWorkingDetail { get; set; }
         public bool IsDeleted { get; set; } = false;
     }
