@@ -17,6 +17,10 @@ class BrandService extends HttpClient {
     createBrand(body){
       return this.post("Brands", body)
     }
+
+    updateBrand(id,body){
+      return this.post("Brands", id, body)
+    }
     
     deleteBrand(id){
       return this.delete("Brands", id);

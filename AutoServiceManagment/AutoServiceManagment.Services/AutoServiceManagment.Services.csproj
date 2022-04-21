@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AutoServiceManagment.DomainModels\AutoServiceManagment.DomainModels.csproj" />
+    <ProjectReference Include="..\AutoServiceManagment.Infrastructure\AutoServiceManagment.Infrastructure.csproj" />
     <ProjectReference Include="..\AutoServiceManagment.Repository\AutoServiceManagment.Repository.csproj" />
   </ItemGroup>
 
