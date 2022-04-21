@@ -1979,6 +1979,7 @@
         "dependencies": {
           "AutoMapper": "11.0.1",
           "AutoServiceManagment.DomainModels": "1.0.0",
+          "AutoServiceManagment.Infrastructure": "1.0.0",
           "AutoServiceManagment.Repository": "1.0.0",
           "Microsoft.Extensions.Localization.Abstractions": "5.0.16"
         },

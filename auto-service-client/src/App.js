@@ -18,7 +18,6 @@ import Finance from './Components/Pages/Finance/Finance';
 
 function App() {
   return (
-    <>
     <Router>
     <Header/>
     <div>
@@ -35,7 +34,7 @@ function App() {
     </div>
   </Router>
 
-    </>
+   
   );
 }
 

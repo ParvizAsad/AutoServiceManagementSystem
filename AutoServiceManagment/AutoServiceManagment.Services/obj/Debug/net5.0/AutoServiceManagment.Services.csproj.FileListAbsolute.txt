@@ -40,3 +40,5 @@ C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoS
 C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\obj\Debug\net5.0\AutoServiceManagment.Services.dll
 C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\obj\Debug\net5.0\ref\AutoServiceManagment.Services.dll
 C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\obj\Debug\net5.0\AutoServiceManagment.Services.pdb
+C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\bin\Debug\net5.0\AutoServiceManagment.Infrastructure.dll
+C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\bin\Debug\net5.0\AutoServiceManagment.Infrastructure.pdb
