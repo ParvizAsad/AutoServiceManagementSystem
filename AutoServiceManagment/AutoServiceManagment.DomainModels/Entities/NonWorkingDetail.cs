@@ -9,10 +9,10 @@ namespace AutoServiceManagment.DomainModels.Entities
         public int Id { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
-        [ForeignKey("Employee")]
+       // [ForeignKey("Employee")]
         public int EmployeeId { get; set; }
         public Employee Employee { get; set; }
-        [ForeignKey("NonWorkingType")]
+        //[ForeignKey("NonWorkingType")]
         public int NonWorkingTypeId { get; set; }
         public NonWorkingType NonWorkingType { get; set; }
         public bool IsDeleted { get; set; } = false;
