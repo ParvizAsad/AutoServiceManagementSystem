@@ -8,6 +8,7 @@ using AutoServiceManagment.Services.Services.Contracts;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace AutoServiceManagment.Services.Services
@@ -25,7 +26,8 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task<IList<EmployeeDto>> GetAllEmployeesAsync()
         {
-            var employees = await GetAllAsync();
+
+            var employees = await DbContext.Brands.Where(x => x.IsDeleted == false).ToListAsync();
 
             return _mapper.Map<List<EmployeeDto>>(employees);
         }
@@ -36,37 +38,45 @@ namespace AutoServiceManagment.Services.Services
 
             return _mapper.Map<EmployeeDto>(employee);
         }
+
         public async Task AddEmployeeAsync(EmployeeDto employeeDto)
         {
+            var employees = await DbContext.Employees.Where(x => x.FullName == employeeDto.FullName).FirstOrDefaultAsync();
+            if (employees != null) { throw new Exception("There is a brand with this name!"); }
+
             var employee = _mapper.Map<Employee>(employeeDto);
             await _repository.AddAsync(employee);
         }
 
         public async Task DeleteEmployeeAsync(int? id)
         {
-            var employee = await DbContext.Employees.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == true);
-
-            if (employee == null) { throw new Exception("Employee not found!"); }
+            var employee = await DbContext.Brands.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted != true);
+            if (employee == null) { throw new Exception("Brand not found!"); }
 
             employee.IsDeleted = true;
-
             await DbContext.SaveChangesAsync();
         }
 
+    
+
         public async Task UpdateEmployeeAsyncId(int? id, EmployeeDto employeeDto)
         {
-            var employee = await DbContext.Employees.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == true);
-            if (employee == null) { throw new Exception("Employee not found!"); }
-            
-            var orderNumber = await DbContext.Employees.FirstOrDefaultAsync(x => x.OrderNumber == employeeDto.OrderNumber);
-            if (orderNumber != null) { throw new Exception("Check OrderNumber!"); }
+            var employee = await DbContext.Employees.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted != true);
+            if (employee == null) { throw new Exception("Brand not found!"); }
 
+            var employees = await DbContext.Brands.FirstOrDefaultAsync(x => x.Name == employeeDto.FullName);
+            if (employees != null) { throw new Exception("There is a brand with this name!"); }
 
-            employee = _mapper.Map<Employee>(employeeDto);
+            employee.FullName = employeeDto.FullName;
 
             DbContext.Employees.Update(employee);
 
             await DbContext.SaveChangesAsync();
         }
+
+
+
+
+
     }
 }

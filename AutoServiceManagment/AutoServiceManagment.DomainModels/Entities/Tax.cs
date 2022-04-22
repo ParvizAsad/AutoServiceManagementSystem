@@ -1,5 +1,6 @@
 ﻿using AutoServiceManagment.Base;
 using System;
+using System.Collections.Generic;
 
 namespace AutoServiceManagment.DomainModels.Entities
 {
@@ -8,6 +9,8 @@ namespace AutoServiceManagment.DomainModels.Entities
         public int Id { get; set; }
         public decimal IncomeTax { get; set; }
         public decimal SocialTax { get; set; }
+        public ICollection<Tax> Taxs { get; set; }
+
         public bool IsDeleted { get; set; } = false;
     }
 }

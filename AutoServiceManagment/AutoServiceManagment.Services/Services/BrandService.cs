@@ -27,7 +27,7 @@ namespace AutoServiceManagment.Services.Services
         public async Task<IList<BrandDto>> GetAllBrandsAsync()
         {
 
-            var brands = await DbContext.Brands.Where(x=>x.IsDeleted==false).ToListAsync();
+            var brands = await DbContext.Brands.Where(x => x.IsDeleted == false).ToListAsync();
 
 
             return _mapper.Map<List<BrandDto>>(brands);
@@ -55,23 +55,23 @@ namespace AutoServiceManagment.Services.Services
             if (brand == null) { throw new Exception("Brand not found!"); }
 
             brand.IsDeleted = true;
-             await DbContext.SaveChangesAsync();
+            await DbContext.SaveChangesAsync();
         }
 
         public async Task UpdateBrandAsyncId(int? id, BrandDto brandDto)
         {
-            var brand = await DbContext.Brands.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted !=true);
+            var brand = await DbContext.Brands.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted != true);
             if (brand == null) { throw new Exception("Brand not found!"); }
-           
+
             var brands = await DbContext.Brands.FirstOrDefaultAsync(x => x.Name == brandDto.Name);
             if (brands != null) { throw new Exception("There is a brand with this name!"); }
 
-            brand = _mapper.Map<Brand>(brandDto);
+            brand.Name = brandDto.Name;
 
             DbContext.Brands.Update(brand);
 
             await DbContext.SaveChangesAsync();
-            return;
+
         }
     }
 }
