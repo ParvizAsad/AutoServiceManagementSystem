@@ -15,12 +15,15 @@ import {
     CardImg
   } from "reactstrap";
   import "./Header.scss";
+import logo from '../../../Assets/Images/Logo/logo.webp';
+// import logo from '../../../Assets/Images/Logo/toyota_logo_icon_169445.png';
+
 function Header() {
   return (
     <div>
     <Navbar id='NavbarId'
     >
-      <img src='./src/Assets/Images/Logo/logo.webp' alt='Logo'/>
+      <img src={logo} alt='Logo'/>
   <h1>Car-Tool-Network Auto Service</h1>
   <div>
     <h4>

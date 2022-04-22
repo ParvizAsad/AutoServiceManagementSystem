@@ -8,15 +8,15 @@ constructor(){
 }
 
 async getAllEmployee(){
-    return await this.get("Product");
+    return await this.get("Employees");
 };
 
 async getProductByID(id){
-    return await this.getProductByID("Product");
+    return await this.getProductByID("Employees");
 };
 
 async postProduct(product){
-  return await this.post("Product/Create", product).then(response => { 
+  return await this.post("Employees", product).then(response => { 
     console.log(response)
   })
 };
