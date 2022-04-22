@@ -1,0 +1,32 @@
+.AddingAndSearching{
+    display: flex;
+    justify-content:space-between;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-right: 20px;
+    .Adding{
+        padding-left: 20px;
+        Button{
+            margin-left: 30px;
+        }
+    }
+}
+
+.TableForItems{
+    background-color: red;
+    color: red;
+    th{
+        color: black;
+        text-align: center;
+    }
+    td{
+        text-align: center;
+    }
+    .Actions{
+        Button{
+            margin-left: 20px;
+        }
+    }
+
+}
+
