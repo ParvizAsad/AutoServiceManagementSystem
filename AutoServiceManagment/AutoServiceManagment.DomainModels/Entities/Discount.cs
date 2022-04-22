@@ -7,7 +7,7 @@ namespace AutoServiceManagment.DomainModels.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public DateTime ExpireDate { get; set; }
+        public DateTime ExpireDate { get; set; }= DateTime.Now;
         public decimal Percentage { get; set; }
         public bool IsDeleted { get; set; } = false;
 

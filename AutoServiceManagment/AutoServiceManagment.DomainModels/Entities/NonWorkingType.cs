@@ -9,7 +9,6 @@ namespace AutoServiceManagment.DomainModels.Entities
         public string Name { get; set; }
         public bool IsDeleted { get; set; }=false;
         public ICollection<NonWorkingDetail> NonWorkingDetails { get; set; }
-        //public ICollection<Employee> Employees { get; set; }
 
     }
 }

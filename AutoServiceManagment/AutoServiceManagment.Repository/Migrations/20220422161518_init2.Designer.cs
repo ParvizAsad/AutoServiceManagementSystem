@@ -4,14 +4,16 @@ using AutoServiceManagment.Repository.DataContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AutoServiceManagment.Repository.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220422161518_init2")]
+    partial class init2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -613,7 +615,7 @@ namespace AutoServiceManagment.Repository.Migrations
             modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.CashBox", b =>
                 {
                     b.HasOne("AutoServiceManagment.DomainModels.Entities.Customer", "Customer")
-                        .WithMany("CashBoxes")
+                        .WithMany("CashBoxs")
                         .HasForeignKey("CustomerID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -746,7 +748,7 @@ namespace AutoServiceManagment.Repository.Migrations
             modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.Tax", b =>
                 {
                     b.HasOne("AutoServiceManagment.DomainModels.Entities.Tax", null)
-                        .WithMany("Taxes")
+                        .WithMany("Taxs")
                         .HasForeignKey("TaxId");
                 });
 
@@ -762,7 +764,7 @@ namespace AutoServiceManagment.Repository.Migrations
 
             modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.Customer", b =>
                 {
-                    b.Navigation("CashBoxes");
+                    b.Navigation("CashBoxs");
 
                     b.Navigation("CustomerProducts");
 
@@ -797,7 +799,7 @@ namespace AutoServiceManagment.Repository.Migrations
 
             modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.Tax", b =>
                 {
-                    b.Navigation("Taxes");
+                    b.Navigation("Taxs");
                 });
 #pragma warning restore 612, 618
         }

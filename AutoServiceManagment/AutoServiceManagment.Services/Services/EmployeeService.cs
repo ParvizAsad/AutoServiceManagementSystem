@@ -43,12 +43,7 @@ namespace AutoServiceManagment.Services.Services
         {
             var employees = await DbContext.Employees.Where(x => x.FullName == employeeDto.FullName).FirstOrDefaultAsync();
             if (employees != null) { throw new Exception("There is a employee with this name!"); }
-
-            //var positions = await DbContext.Positions.Where(x => x.Name == positionId.Name).FirstOrDefaultAsync();
-            //if (positions != null) { throw new Exception("There is a Employee with this name!"); }
-
             var employee = _mapper.Map<Employee>(employeeDto);
-            //employee.PositionId = positionId;
             await _repository.AddAsync(employee);
         }
 

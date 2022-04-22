@@ -11,5 +11,7 @@ namespace AutoServiceManagment.DomainModels.DTOs
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public DateTime ExpireDate { get; set; } = DateTime.Now;
+        public decimal Percentage { get; set; }
     }
 }

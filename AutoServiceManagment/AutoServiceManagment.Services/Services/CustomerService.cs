@@ -38,6 +38,7 @@ namespace AutoServiceManagment.Services.Services
         }
         public async Task AddCustomerAsync(CustomerDto customerDto)
         {
+
             var customer = _mapper.Map<Customer>(customerDto);
             await _repository.AddAsync(customer);
         }

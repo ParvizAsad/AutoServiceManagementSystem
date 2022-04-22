@@ -7,12 +7,10 @@ namespace AutoServiceManagment.DomainModels.Entities
     public class NonWorkingDetail : TimestampableObject, IEntity
     {
         public int Id { get; set; }
-        public DateTime StartTime { get; set; }
-        public DateTime EndTime { get; set; }
-       // [ForeignKey("Employee")]
+        public DateTime StartTime { get; set; }=DateTime.Now;
+        public DateTime EndTime { get; set; }= DateTime.Now;
         public int EmployeeId { get; set; }
         public Employee Employee { get; set; }
-        //[ForeignKey("NonWorkingType")]
         public int NonWorkingTypeId { get; set; }
         public NonWorkingType NonWorkingType { get; set; }
         public bool IsDeleted { get; set; } = false;

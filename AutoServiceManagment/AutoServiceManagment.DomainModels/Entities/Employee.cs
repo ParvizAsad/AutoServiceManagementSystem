@@ -9,7 +9,7 @@ namespace AutoServiceManagment.DomainModels.Entities
     {
         public int Id { get; set; }
         public string FullName { get; set; }
-        public DateTime BirthDate { get; set; }
+        public DateTime BirthDate { get; set; } = DateTime.Now;
         public int BaseSalary { get; set; }
         public string Location { get; set; }
         public string PhoneNumber { get; set; }

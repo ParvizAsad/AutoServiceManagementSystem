@@ -3,9 +3,11 @@ import {
 Table,
 Button
 } from "reactstrap";
+import { INITIAL_ASYNC_VALUES } from '../../../Consts/const';
 import "./HR.scss";
 
 function HR() {
+  const [employeesData, setEmployeesData]=React.useState(INITIAL_ASYNC_VALUES)
 
   return (
     <>
