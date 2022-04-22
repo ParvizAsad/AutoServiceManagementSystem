@@ -28,7 +28,7 @@ function Home() {
 
   return (
 <>
-<div id='HeadingForModules'>
+<div className ='ForHeading'>
     <h1>Auto Service System Modules</h1>
 </div>
 <CardGroup id='moduleCards'>
@@ -122,7 +122,7 @@ function Home() {
                 </CardBody>
               </Card>
           </Link>
-          <Link to="reception">
+          <Link to="registration">
           <Card className='moduleCard'>
                 <CardBody className='moduleCardBody'>
                   <CardTitle tag="h5"  className='moduleCardTitle'>

@@ -3,18 +3,18 @@ import {
 Table,
 Button
 } from "reactstrap";
-import "./Registration.scss";
+import "./Service.scss";
 
-function Registration() {
-
+function Service() {
   return (
     <>
-<div className ='ForHeading'>
-    <h1>Registration</h1>
-</div>
+    <div className ='ForHeading'>
+    <h1>Services</h1>
+    </div>
 <div className='AddingAndSearching'>
   <div className='Adding'>
-<Button>Create Customer</Button>
+<Button>Add Service</Button>
+<Button>Add Product</Button>
   </div>
   <input type="text" placeholder="Search.."/>
 </div>
@@ -26,13 +26,16 @@ function Registration() {
           #
         </th>
         <th>
-          Customer Name
+          Name
         </th>
         <th>
-          Service 
+          Date
         </th>
         <th>
-          Status
+          Detail
+        </th>
+        <th>
+          Price
         </th>
         <th>
           Actions
@@ -44,6 +47,9 @@ function Registration() {
         <th scope="row">
           1
         </th>
+        <td>
+          xx
+        </td>
         <td>
           xx
         </td>
@@ -73,4 +79,4 @@ function Registration() {
   )
 }
 
-export default Registration
+export default Service
