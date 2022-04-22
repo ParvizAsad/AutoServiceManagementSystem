@@ -10,13 +10,15 @@ namespace AutoServiceManagment.DomainModels.Entities
         public decimal BasePrice { get; set; }
         public decimal SalePrice { get; set; }
         public double Count { get; set; }
-       // [ForeignKey("Category")]
+
         public int CategoryID { get; set; }
         public Category Category { get; set; }
-      //  [ForeignKey("Brand")]
+
         public int BrandID { get; set; }
         public Brand Brand { get; set; }
+
         public ICollection<CustomerProduct> CustomerProducts { get; set; }
+        public ICollection<CashBox> CashBoxes { get; set; }
         public bool IsDeleted { get; set; } = false;
 
     }

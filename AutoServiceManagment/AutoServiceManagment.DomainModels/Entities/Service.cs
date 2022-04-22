@@ -10,6 +10,7 @@ namespace AutoServiceManagment.DomainModels.Entities
         public string Detail { get; set; }
         public decimal Price { get; set; }
         public ICollection<CustomerService> CustomerServices { get; set; }
+        public ICollection<CashBox> CashBoxes { get; set; }
         public bool IsDeleted { get; set; }=false;
     }
 }

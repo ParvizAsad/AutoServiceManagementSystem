@@ -594,6 +594,9 @@ namespace AutoServiceManagment.Repository.Migrations
                     b.Property<decimal>("SocialTax")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<int?>("TaxId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
 
@@ -602,25 +605,27 @@ namespace AutoServiceManagment.Repository.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("TaxId");
+
                     b.ToTable("Taxes");
                 });
 
             modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.CashBox", b =>
                 {
                     b.HasOne("AutoServiceManagment.DomainModels.Entities.Customer", "Customer")
-                        .WithMany()
+                        .WithMany("CashBoxs")
                         .HasForeignKey("CustomerID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("AutoServiceManagment.DomainModels.Entities.Product", "Product")
-                        .WithMany()
+                        .WithMany("CashBoxes")
                         .HasForeignKey("ProductID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("AutoServiceManagment.DomainModels.Entities.Service", "Service")
-                        .WithMany()
+                        .WithMany("CashBoxes")
                         .HasForeignKey("ServiceID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -703,13 +708,13 @@ namespace AutoServiceManagment.Repository.Migrations
             modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.Product", b =>
                 {
                     b.HasOne("AutoServiceManagment.DomainModels.Entities.Brand", "Brand")
-                        .WithMany()
+                        .WithMany("Product")
                         .HasForeignKey("BrandID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("AutoServiceManagment.DomainModels.Entities.Category", "Category")
-                        .WithMany()
+                        .WithMany("Product")
                         .HasForeignKey("CategoryID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -722,7 +727,7 @@ namespace AutoServiceManagment.Repository.Migrations
             modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.Salary", b =>
                 {
                     b.HasOne("AutoServiceManagment.DomainModels.Entities.Employee", "Employee")
-                        .WithMany()
+                        .WithMany("Salaries")
                         .HasForeignKey("EmployeeID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -738,8 +743,27 @@ namespace AutoServiceManagment.Repository.Migrations
                     b.Navigation("Tax");
                 });
 
+            modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.Tax", b =>
+                {
+                    b.HasOne("AutoServiceManagment.DomainModels.Entities.Tax", null)
+                        .WithMany("Taxs")
+                        .HasForeignKey("TaxId");
+                });
+
+            modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.Brand", b =>
+                {
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.Category", b =>
+                {
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.Customer", b =>
                 {
+                    b.Navigation("CashBoxs");
+
                     b.Navigation("CustomerProducts");
 
                     b.Navigation("CustomerServices");
@@ -748,6 +772,8 @@ namespace AutoServiceManagment.Repository.Migrations
             modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.Employee", b =>
                 {
                     b.Navigation("NonWorkingDetails");
+
+                    b.Navigation("Salaries");
                 });
 
             modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.NonWorkingType", b =>
@@ -757,12 +783,21 @@ namespace AutoServiceManagment.Repository.Migrations
 
             modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.Product", b =>
                 {
+                    b.Navigation("CashBoxes");
+
                     b.Navigation("CustomerProducts");
                 });
 
             modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.Service", b =>
                 {
+                    b.Navigation("CashBoxes");
+
                     b.Navigation("CustomerServices");
+                });
+
+            modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.Tax", b =>
+                {
+                    b.Navigation("Taxs");
                 });
 #pragma warning restore 612, 618
         }
