@@ -17,9 +17,10 @@ namespace AutoServiceManagment.Services.Services
         private readonly IMapper _mapper;
         private readonly IRepository<Salary> _repository;
 
-        public SalaryService(AppDbContext dbContext, IMapper mapper):base(dbContext)
+        public SalaryService(AppDbContext dbContext, IMapper mapper, IRepository<Salary> repository) : base(dbContext)
         {
             _mapper = mapper;
+            _repository = repository;
         }
         public async Task<IList<SalaryDto>> GetAllSalarysAsync()
         {
@@ -39,6 +40,7 @@ namespace AutoServiceManagment.Services.Services
         {
             var salary = _mapper.Map<Salary>(salaryDto);
             await _repository.AddAsync(salary);
+
         }
 
         public async Task DeleteSalaryAsync(int? id)

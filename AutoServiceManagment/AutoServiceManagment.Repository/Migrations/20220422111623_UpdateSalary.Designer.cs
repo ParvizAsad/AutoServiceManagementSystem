@@ -4,14 +4,16 @@ using AutoServiceManagment.Repository.DataContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AutoServiceManagment.Repository.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220422111623_UpdateSalary")]
+    partial class UpdateSalary
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -728,7 +730,7 @@ namespace AutoServiceManagment.Repository.Migrations
                         .IsRequired();
 
                     b.HasOne("AutoServiceManagment.DomainModels.Entities.Tax", "Tax")
-                        .WithMany("Salaries")
+                        .WithMany()
                         .HasForeignKey("TaxID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -781,11 +783,6 @@ namespace AutoServiceManagment.Repository.Migrations
                     b.Navigation("CashBoxes");
 
                     b.Navigation("CustomerServices");
-                });
-
-            modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.Tax", b =>
-                {
-                    b.Navigation("Salaries");
                 });
 #pragma warning restore 612, 618
         }
