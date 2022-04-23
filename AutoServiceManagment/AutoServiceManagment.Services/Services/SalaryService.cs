@@ -40,6 +40,7 @@ namespace AutoServiceManagment.Services.Services
         {
             var salary = _mapper.Map<Salary>(salaryDto);
             await _repository.AddAsync(salary);
+
         }
 
         public async Task DeleteSalaryAsync(int? id)

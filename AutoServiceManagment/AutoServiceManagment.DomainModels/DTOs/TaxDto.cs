@@ -10,7 +10,7 @@ namespace AutoServiceManagment.DomainModels.DTOs
     public class TaxDto : IDto
     {
         public int Id { get; set; }
-        public decimal IncomeTax { get; set; }
-        public decimal SocialTax { get; set; }
+        public string Name { get; set; }
+        public decimal TaxValue { get; set; }
     }
 }

@@ -47,6 +47,7 @@ namespace AutoServiceManagment.API
             services.AddAutoMapper(typeof(MapperProfile));
 
             services.AddScoped(typeof(IRepository<>), typeof(EfCoreRepository<>));
+            services.AddScoped<ISalaryService, SalaryService>();
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IBrandService, BrandService>();
             services.AddScoped<ICashBoxService, CashBoxService>();
@@ -59,7 +60,6 @@ namespace AutoServiceManagment.API
             services.AddScoped<INonWorkingTypeService, NonWorkingTypeService>();
             services.AddScoped<IPositionService, PositionService>();
             services.AddScoped<IProductService, ProductService>();
-            services.AddScoped<ISalaryService, SalaryService>();
             services.AddScoped<IServiceService, ServiceService>();
             services.AddScoped<ITaxService, TaxService>();
 
