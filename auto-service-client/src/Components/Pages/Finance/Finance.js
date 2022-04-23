@@ -17,6 +17,10 @@ import {
   DropdownMenu,
   NavbarText
 } from "reactstrap";
+import { GiMoneyStack } from 'react-icons/gi';
+import { RiAdvertisementLine } from 'react-icons/ri';
+
+
 
 function Finance() {
   return (
@@ -31,12 +35,9 @@ function Finance() {
         <CardTitle tag="h5" className='moduleCardTitle'>
           Acounting
         </CardTitle>
-        <CardSubtitle
-          className="mb-2 text-muted"
-          tag="h6"
-        >
-          Card subtitle
-        </CardSubtitle>
+        <div className="Icon">
+        <GiMoneyStack/>
+        </div>
         <Button>
           Enter
         </Button>
@@ -49,12 +50,9 @@ function Finance() {
                   <CardTitle tag="h5"  className='moduleCardTitle'>
                     Marketing
                   </CardTitle>
-                  <CardSubtitle
-                    className="mb-2 text-muted"
-                    tag="h6"
-                  >
-                    Card subtitle
-                  </CardSubtitle>
+                  <div className="Icon">
+        <RiAdvertisementLine/>
+        </div>
                   <Button>
                     Enter
                   </Button>

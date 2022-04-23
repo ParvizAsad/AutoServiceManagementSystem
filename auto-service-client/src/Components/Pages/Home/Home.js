@@ -18,8 +18,14 @@ import {
   } from "reactstrap";
   import "./Home.scss";
   import { useHistory, Link } from "react-router-dom";
+  import { FaPeopleArrows } from 'react-icons/fa';
+  import { GrUserAdmin } from 'react-icons/gr';
+  import { GiDirectorChair } from 'react-icons/gi';
+  import { GrMoney } from 'react-icons/gr';
+  import { FaSitemap } from 'react-icons/fa';
+  import { MdAppRegistration } from 'react-icons/md';
 
-function Home() {
+  function Home() {
 
   const { push } = useHistory();
   // const handleChangeDirector = React.useCallback(() => {
@@ -38,12 +44,9 @@ function Home() {
         <CardTitle tag="h5" className='moduleCardTitle'>
           Director
         </CardTitle>
-        <CardSubtitle
-          className="mb-2 text-muted"
-          tag="h6"
-        >
-          Card subtitle
-        </CardSubtitle>
+        <div className="Icon">
+            <GiDirectorChair/>
+            </div>
         <Button>
           Enter
         </Button>
@@ -56,12 +59,9 @@ function Home() {
                   <CardTitle tag="h5"  className='moduleCardTitle'>
                     Admin
                   </CardTitle>
-                  <CardSubtitle
-                    className="mb-2 text-muted"
-                    tag="h6"
-                  >
-                    Card subtitle
-                  </CardSubtitle>
+                  <div className="Icon">
+                  <GrUserAdmin/>
+                  </div>
                   <Button>
                     Enter
                   </Button>
@@ -74,12 +74,9 @@ function Home() {
                   <CardTitle tag="h5"  className='moduleCardTitle'>
                     HR
                   </CardTitle>
-                  <CardSubtitle
-                    className="mb-2 text-muted"
-                    tag="h6"
-                  >
-                    Card subtitle
-                  </CardSubtitle>
+                  <div className="Icon">
+                  <FaPeopleArrows/>
+                  </div>
                   <Button>
                     Enter
                   </Button>
@@ -92,12 +89,9 @@ function Home() {
                   <CardTitle tag="h5"  className='moduleCardTitle'>
                     Finance
                   </CardTitle>
-                  <CardSubtitle
-                    className="mb-2 text-muted"
-                    tag="h6"
-                  >
-                    Card subtitle
-                  </CardSubtitle>
+                  <div className="Icon">
+                  <GrMoney/>
+                  </div>
                   <Button>
                     Enter
                   </Button>
@@ -110,12 +104,9 @@ function Home() {
                   <CardTitle tag="h5"  className='moduleCardTitle'>
                     Stock
                   </CardTitle>
-                  <CardSubtitle
-                    className="mb-2 text-muted"
-                    tag="h6"
-                  >
-                    Card subtitle
-                  </CardSubtitle>
+                  <div className="Icon">
+                  <FaSitemap/>
+                  </div>
                   <Button>
                     Enter
                   </Button>
@@ -128,12 +119,9 @@ function Home() {
                   <CardTitle tag="h5"  className='moduleCardTitle'>
                     Reception
                   </CardTitle>
-                  <CardSubtitle
-                    className="mb-2 text-muted"
-                    tag="h6"
-                  >
-                    Card subtitle
-                  </CardSubtitle>
+                  <div className="Icon">
+                  <MdAppRegistration/>
+                  </div>
                   <Button>
                     Enter
                   </Button>

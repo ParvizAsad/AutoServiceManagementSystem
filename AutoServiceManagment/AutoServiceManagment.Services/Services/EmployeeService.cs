@@ -39,10 +39,10 @@ namespace AutoServiceManagment.Services.Services
             return _mapper.Map<EmployeeDto>(employee);
         }
 
-        public async Task AddEmployeeAsync(EmployeeDto employeeDto/*, int positionId*/)
+        public async Task AddEmployeeAsync(EmployeeDto employeeDto)
         {
-            var employees = await DbContext.Employees.Where(x => x.FullName == employeeDto.FullName).FirstOrDefaultAsync();
-            if (employees != null) { throw new Exception("There is a employee with this name!"); }
+            var existEmployee = await DbContext.Employees.Where(x => x.FullName == employeeDto.FullName).FirstOrDefaultAsync();
+            if (existEmployee != null) { throw new Exception("There is an employee with this name!"); }
             var employee = _mapper.Map<Employee>(employeeDto);
             await _repository.AddAsync(employee);
         }
@@ -62,10 +62,11 @@ namespace AutoServiceManagment.Services.Services
             var employee = await DbContext.Employees.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted != true);
             if (employee == null) { throw new Exception("Employee not found!"); }
 
-            var employees = await DbContext.Employees.FirstOrDefaultAsync(x => x.FullName == employeeDto.FullName);
-            if (employees != null) { throw new Exception("There is a Employee with this name!"); }
+            var existEmployee = await DbContext.Employees.FirstOrDefaultAsync(x => x.FullName == employeeDto.FullName);
+            if (existEmployee != null) { throw new Exception("There is an employee with this name!"); }
 
             employee.FullName = employeeDto.FullName;
+            employee.BirthDate = employeeDto.BirthDate;
 
             DbContext.Employees.Update(employee);
 

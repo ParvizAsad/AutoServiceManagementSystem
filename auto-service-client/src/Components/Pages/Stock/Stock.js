@@ -55,13 +55,13 @@ function Stock() {
           xx
         </td>
         <td className='Actions'>
-        <Button>
+        <Button className='Edit'>
           Edit
         </Button>
-        <Button>
+        <Button className='Delete'>
           Delete
         </Button>
-        <Button>
+        <Button className='Detail'>
           Detail
         </Button>
         </td>

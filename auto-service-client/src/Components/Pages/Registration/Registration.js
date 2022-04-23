@@ -3,6 +3,7 @@ import {
 Table,
 Button
 } from "reactstrap";
+import Service from '../Service/Service';
 import "./Registration.scss";
 
 function Registration() {
@@ -54,13 +55,13 @@ function Registration() {
           xx
         </td>
         <td className='Actions'>
-        <Button>
+        <Button className='Edit'>
           Edit
         </Button>
-        <Button>
+        <Button className='Delete'>
           Delete
         </Button>
-        <Button>
+        <Button className='Detail'>
           Detail
         </Button>
         </td>

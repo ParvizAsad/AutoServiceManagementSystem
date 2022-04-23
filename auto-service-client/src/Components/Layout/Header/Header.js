@@ -16,7 +16,8 @@ import {
   } from "reactstrap";
   import "./Header.scss";
 import logo from '../../../Assets/Images/Logo/logo.webp';
-// import logo from '../../../Assets/Images/Logo/toyota_logo_icon_169445.png';
+import Icon from '../../../Assets/Images/Icon/profile-icon.jpg';
+import { AiOutlineUserAdd } from 'react-icons/ai';
 
 function Header() {
   return (
@@ -29,6 +30,9 @@ function Header() {
     <h4>
       Your Profile
     </h4>
+    <div>
+      <AiOutlineUserAdd/>
+    </div>
   </div>
     </Navbar>
   </div>

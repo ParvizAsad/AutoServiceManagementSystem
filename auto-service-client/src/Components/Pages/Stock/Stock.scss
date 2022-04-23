@@ -8,6 +8,7 @@
         padding-left: 20px;
         Button{
             margin-left: 30px;
+            background-color: rgb(3, 139, 3);
         }
     }
 }
@@ -25,6 +26,15 @@
     .Actions{
         Button{
             margin-left: 20px;
+        }
+        .Edit{
+            background-color: gray;
+        }
+        .Delete{
+            background-color: rgb(209, 44, 44);
+        }
+        .Detail{
+            background-color: rgb(242, 246, 35);
         }
     }
 

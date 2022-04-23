@@ -18,8 +18,8 @@ function HR() {
   <div className='Adding'>
 <Button>Create Employee</Button>
   </div>
-  <input type="text" placeholder="Search.."/>
   <Button>Export</Button>
+  <input type="text" placeholder="Search.."/>
 </div>
 <div>
     <Table className='TableForItems'>
@@ -57,13 +57,13 @@ function HR() {
           xx
         </td>
         <td className='Actions'>
-        <Button>
+        <Button className='Edit'>
           Edit
         </Button>
-        <Button>
+        <Button className='Delete'>
           Delete
         </Button>
-        <Button>
+        <Button className='Detail'>
           Detail
         </Button>
         </td>
