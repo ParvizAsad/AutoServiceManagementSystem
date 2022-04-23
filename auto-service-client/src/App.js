@@ -18,6 +18,7 @@ import Service from './Components/Pages/Service/Service';
 import Login from './Components/Pages/Login/Login';
 import Accounting from './Components/Pages/Finance/Accounting/Accounting';
 import Marketing from './Components/Pages/Finance/Marketing/Marketing';
+import EmployeeDetail from './Components/Pages/HR/EmployeeDetail';
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
         <Route path={"/login"} exact component={Login} />
         <Route path={"/accounting"} exact component={Accounting} />
         <Route path={"/marketing"} exact component={Marketing} />
+        <Route path={"/employeedetail"} exact component={EmployeeDetail} />
         <Route path={"/error"} exact component={Error} />
         <Redirect to={"/error"} exact />
         
