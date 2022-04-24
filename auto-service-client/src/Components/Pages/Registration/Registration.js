@@ -5,8 +5,14 @@ Button
 } from "reactstrap";
 import Service from '../Service/Service';
 import "./Registration.scss";
+import { useHistory } from "react-router-dom";
 
 function Registration() {
+
+  const { push } = useHistory();
+  const handleChangeDetail = React.useCallback(() => {
+    push("employeedetail", true);
+  }, [push]);
 
   return (
     <>
@@ -61,7 +67,7 @@ function Registration() {
         <Button className='Delete'>
           Delete
         </Button>
-        <Button className='Detail'>
+        <Button onClick={handleChangeDetail} className='Detail'>
           Detail
         </Button>
         </td>
