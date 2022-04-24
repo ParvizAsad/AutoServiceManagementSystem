@@ -1,22 +1,19 @@
 import React from 'react'
 import {
-  CardGroup,
   Card,
   CardImg,
   CardBody,
   CardSubtitle,
   CardTitle,
   CardText,
-  Button
 } from "reactstrap";
-import "./EmployeeDetail.scss";
 
-function EmployeeDetail() {
+function CustomerDetail() {
 
   return (
     <>
       <div className ='ForHeading'>
-          <h1>Employee Detail</h1>
+          <h1>Customer Detail</h1>
       </div>
       <div className='DetailPage'>
       <Card>
@@ -28,60 +25,34 @@ function EmployeeDetail() {
         />
         <CardBody>
           <CardTitle tag="h5">
-            Employee FullName:
+            Customer FullName:
           </CardTitle>
           <CardSubtitle
             className="mb-2 text-muted"
             tag="h6"
           >
-            Position: 
-          </CardSubtitle>
-          <CardSubtitle
-            className="mb-2 text-muted"
-            tag="h6"
-          >
             Phone Number: 
           </CardSubtitle>
           <CardSubtitle
             className="mb-2 text-muted"
             tag="h6"
           >
-            Order Number: 
+            Email: 
           </CardSubtitle>
           <CardSubtitle
             className="mb-2 text-muted"
             tag="h6"
           >
-            Phone Number: 
+            isNotificationAllowed: 
           </CardSubtitle>
           <CardSubtitle
             className="mb-2 text-muted"
             tag="h6"
           >
-            Location: 
+            Debt: 
           </CardSubtitle>
-          <CardSubtitle
-            className="mb-2 text-muted"
-            tag="h6"
-          >
-            BaseSalary: 
-          </CardSubtitle>
-          <CardSubtitle
-            className="mb-2 text-muted"
-            tag="h6"
-          >
-            Education Level: 
-          </CardSubtitle>
-          <CardSubtitle
-            className="mb-2 text-muted"
-            tag="h6"
-          >
-            Birthdate: 
-          </CardSubtitle>
-
-
           <CardText>
-          Non-working-detail: 
+          Additional: 
           </CardText>
         </CardBody>
       </Card>
@@ -91,4 +62,4 @@ function EmployeeDetail() {
   )
 }
 
-export default EmployeeDetail
+export default CustomerDetail

@@ -4,8 +4,14 @@ Table,
 Button
 } from "reactstrap";
 import "./Stock.scss";
-
+import { useHistory } from "react-router-dom";
 function Stock() {
+
+  const { push } = useHistory();
+  const handleChangeDetail = React.useCallback(() => {
+    push("productdetail", true);
+  }, [push]);
+
   return (
     <>
     <div className ='ForHeading'>
@@ -61,7 +67,7 @@ function Stock() {
         <Button className='Delete'>
           Delete
         </Button>
-        <Button className='Detail'>
+        <Button onClick={handleChangeDetail} className='Detail'>
           Detail
         </Button>
         </td>

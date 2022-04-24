@@ -19,6 +19,9 @@ import Login from './Components/Pages/Login/Login';
 import Accounting from './Components/Pages/Finance/Accounting/Accounting';
 import Marketing from './Components/Pages/Finance/Marketing/Marketing';
 import EmployeeDetail from './Components/Pages/HR/EmployeeDetail';
+import ProductDetail from './Components/Pages/Stock/ProductDetail';
+import CustomerDetail from './Components/Pages/Registration/CustomerDetail';
+import CreateEmployee from './Components/Pages/HR/CreateEmployee';
 
 
 function App() {
@@ -38,6 +41,9 @@ function App() {
         <Route path={"/accounting"} exact component={Accounting} />
         <Route path={"/marketing"} exact component={Marketing} />
         <Route path={"/employeedetail"} exact component={EmployeeDetail} />
+        <Route path={"/createemployee"} exact component={CreateEmployee} />
+        <Route path={"/productdetail"} exact component={ProductDetail} />
+        <Route path={"/customerdetail"} exact component={CustomerDetail} />
         <Route path={"/error"} exact component={Error} />
         <Redirect to={"/error"} exact />
         

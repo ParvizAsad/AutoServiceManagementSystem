@@ -2,19 +2,9 @@ import React from 'react'
 import {
     CardGroup,
     Card,
-    CardImg,
     CardBody,
-    CardSubtitle,
     CardTitle,
-    CardText,
     Button,
-    NavLink,
-    NavItem,
-    UncontrolledDropdown,
-    DropdownItem,
-    DropdownToggle,
-    DropdownMenu,
-    NavbarText
   } from "reactstrap";
   import "./Home.scss";
   import { useHistory, Link } from "react-router-dom";

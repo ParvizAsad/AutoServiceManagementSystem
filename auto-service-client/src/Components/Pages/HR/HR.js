@@ -15,6 +15,10 @@ function HR() {
     push("employeedetail", true);
   }, [push]);
 
+  const handleCreateDetail = React.useCallback(() => {
+    push("createemployee", true);
+  }, [push]);
+
   return (
     <>
       <div className ='ForHeading'>
@@ -22,7 +26,7 @@ function HR() {
       </div>
       <div className='AddingAndSearching'>
         <div className='Adding'>
-      <Button>Create Employee</Button>
+      <Button onClick={handleCreateDetail}>Create Employee</Button>
         </div>
         <Button>Export</Button>
         <input type="text" placeholder="Search.."/>

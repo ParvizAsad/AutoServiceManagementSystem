@@ -9,14 +9,15 @@ import {
   CardText,
   Button
 } from "reactstrap";
-import "./EmployeeDetail.scss";
+import "./ProductDetail.scss";
 
-function EmployeeDetail() {
+function ProductDetail() {
+
 
   return (
     <>
       <div className ='ForHeading'>
-          <h1>Employee Detail</h1>
+          <h1>Product Detail</h1>
       </div>
       <div className='DetailPage'>
       <Card>
@@ -28,37 +29,37 @@ function EmployeeDetail() {
         />
         <CardBody>
           <CardTitle tag="h5">
-            Employee FullName:
+            Product Name:
           </CardTitle>
           <CardSubtitle
             className="mb-2 text-muted"
             tag="h6"
           >
-            Position: 
+            Category: 
           </CardSubtitle>
           <CardSubtitle
             className="mb-2 text-muted"
             tag="h6"
           >
-            Phone Number: 
+            Brand: 
           </CardSubtitle>
           <CardSubtitle
             className="mb-2 text-muted"
             tag="h6"
           >
-            Order Number: 
+            Base Price: 
           </CardSubtitle>
           <CardSubtitle
             className="mb-2 text-muted"
             tag="h6"
           >
-            Phone Number: 
+            Sale Proce: 
           </CardSubtitle>
           <CardSubtitle
             className="mb-2 text-muted"
             tag="h6"
           >
-            Location: 
+            Count: 
           </CardSubtitle>
           <CardSubtitle
             className="mb-2 text-muted"
@@ -66,23 +67,6 @@ function EmployeeDetail() {
           >
             BaseSalary: 
           </CardSubtitle>
-          <CardSubtitle
-            className="mb-2 text-muted"
-            tag="h6"
-          >
-            Education Level: 
-          </CardSubtitle>
-          <CardSubtitle
-            className="mb-2 text-muted"
-            tag="h6"
-          >
-            Birthdate: 
-          </CardSubtitle>
-
-
-          <CardText>
-          Non-working-detail: 
-          </CardText>
         </CardBody>
       </Card>
       </div>
@@ -91,4 +75,4 @@ function EmployeeDetail() {
   )
 }
 
-export default EmployeeDetail
+export default ProductDetail
