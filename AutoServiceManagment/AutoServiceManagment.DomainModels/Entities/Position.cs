@@ -1,4 +1,5 @@
 ﻿using AutoServiceManagment.Base;
+using System.Collections.Generic;
 
 namespace AutoServiceManagment.DomainModels.Entities
 {
@@ -7,6 +8,7 @@ namespace AutoServiceManagment.DomainModels.Entities
         public int Id { get; set; }
         public string Name { get; set; }
         public bool IsDeleted { get; set; } = false;
+        public ICollection<Employee> Employees { get; set; }
 
     }
 }

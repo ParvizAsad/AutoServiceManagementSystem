@@ -27,8 +27,8 @@ import CreateEmployee from './Components/Pages/HR/CreateEmployee';
 function App() {
   return (
     <Router>
-    <Header/>
     <div>
+    <Header/>
       <Switch>
         <Route path={"/"} exact component={Home} />
         <Route path={"/stock"} exact component={Stock} />
@@ -46,7 +46,6 @@ function App() {
         <Route path={"/customerdetail"} exact component={CustomerDetail} />
         <Route path={"/error"} exact component={Error} />
         <Redirect to={"/error"} exact />
-        
       </Switch>
     </div>
   </Router>

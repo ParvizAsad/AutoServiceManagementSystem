@@ -1,6 +1,6 @@
 import { HttpClient } from "../HttpClient";
 
-class ProductService extends HttpClient{
+class EmployeeService extends HttpClient{
 
 constructor(){
     super("https://localhost:44330/api");
@@ -11,21 +11,21 @@ async getAllEmployee(){
     return await this.get("Employees");
 };
 
-async getProductByID(id){
+async getEmployeeByID(id){
     return await this.getProductByID("Employees");
 };
 
-async postProduct(product){
-  return await this.post("Employees", product).then(response => { 
+async postEmployee(employee){
+  return await this.post("Employees", employee).then(response => { 
     console.log(response)
   })
 };
 
-async deleteProduct(id){
-  return await this.delete(`Product/${id}`);
+async deleteEmployee(id){
+  return await this.delete(`Employees/${id}`);
 };
 
 }
 
-export const productService = new ProductService()
+export const employeeService = new EmployeeService()
 

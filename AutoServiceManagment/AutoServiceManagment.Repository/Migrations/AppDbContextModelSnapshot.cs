@@ -608,7 +608,7 @@ namespace AutoServiceManagment.Repository.Migrations
             modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.CashBox", b =>
                 {
                     b.HasOne("AutoServiceManagment.DomainModels.Entities.Customer", "Customer")
-                        .WithMany("CashBoxs")
+                        .WithMany("CashBoxes")
                         .HasForeignKey("CustomerID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -750,7 +750,7 @@ namespace AutoServiceManagment.Repository.Migrations
 
             modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.Customer", b =>
                 {
-                    b.Navigation("CashBoxs");
+                    b.Navigation("CashBoxes");
 
                     b.Navigation("CustomerProducts");
 

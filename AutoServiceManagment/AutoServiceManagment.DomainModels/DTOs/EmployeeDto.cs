@@ -22,7 +22,7 @@ namespace AutoServiceManagment.DomainModels.DTOs
         public string EducationLevel { get; set; }
         [ForeignKey(nameof(Position))]
         public int PositionId { get; set; }
-        public Position Positions { get; set; }
+        public Position Position { get; set; }
 
     }
 }

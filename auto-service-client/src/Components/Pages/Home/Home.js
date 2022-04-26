@@ -43,7 +43,7 @@ import {
       </CardBody>
     </Card>
          </Link>
-          <Link to="admin">
+          <Link to={"admin"}>
           <Card className='moduleCard'>
                 <CardBody className='moduleCardBody'>
                   <CardTitle tag="h5"  className='moduleCardTitle'>
@@ -73,7 +73,7 @@ import {
                 </CardBody>
               </Card>
           </Link>
-          <Link to="finance">
+          <Link to={"finance"} >
           <Card className='moduleCard'>
                 <CardBody className='moduleCardBody'>
                   <CardTitle tag="h5"  className='moduleCardTitle'>

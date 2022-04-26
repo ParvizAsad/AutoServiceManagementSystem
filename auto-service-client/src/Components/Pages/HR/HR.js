@@ -1,89 +1,73 @@
-import React from 'react'
-import {
-Table,
-Button
-} from "reactstrap";
-import { INITIAL_ASYNC_VALUES } from '../../../Consts/const';
+import React from "react";
+import { Table, Button } from "reactstrap";
+import { INITIAL_ASYNC_VALUES } from "../../../Consts/const";
 import "./HR.scss";
 import { useHistory } from "react-router-dom";
+import { useState } from "react";
+import { employeeService } from "../../../Api/services/Employee";
+import { useCallback } from "react";
 
 function HR() {
-  const [employeesData, setEmployeesData]=React.useState(INITIAL_ASYNC_VALUES)
-  const { push } = useHistory();
 
-  const handleChangeDetail = React.useCallback(() => {
-    push("employeedetail", true);
-  }, [push]);
+  const [employee, setEmployee] = React.useState([]);
+  const [employeeData, setEmployeeData] = useState();
+  const history = useHistory();
 
-  const handleCreateDetail = React.useCallback(() => {
-    push("createemployee", true);
-  }, [push]);
+  React.useEffect(() => {
+    employeeService.getAllEmployee().then(({ data }) => {
+      console.log(data);
+      setEmployee(data);
+    });
+  }, []);
+
+  const getAllEmployee = useCallback(() => {
+    employeeService.getAllEmployee().then(({ data }) => {
+      setEmployeeData(data);
+    });
+  }, [setEmployeeData]);
 
   return (
     <>
-      <div className ='ForHeading'>
-          <h1>Human Resourses</h1>
+      <div className="ForHeading">
+        <h1>Human Resourses</h1>
       </div>
-      <div className='AddingAndSearching'>
-        <div className='Adding'>
-      <Button onClick={handleCreateDetail}>Create Employee</Button>
+      <div className="AddingAndSearching">
+        <div className="Adding">
+          <Button onClick={() => history.push("/createemployee")} >Create Employee</Button>
         </div>
         <Button>Export</Button>
-        <input type="text" placeholder="Search.."/>
+        <input type="text" placeholder="Search.." />
       </div>
       <div>
-          <Table className='TableForItems'>
+        <Table className="TableForItems">
           <thead>
             <tr>
-              <th>
-                #
-              </th>
-              <th>
-                FullName
-              </th>
-              <th>
-                Position 
-              </th>
-              <th>
-                Status
-              </th>
-              <th>
-                Actions
-              </th>
+              <th>#</th>
+              <th>FullName</th>
+              <th>Position</th>
+              <th>Status</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">
-                1
-              </th>
-              <td>
-                xx
-              </td>
-              <td>
-                xx
-              </td>
-              <td>
-                xx
-              </td>
-              <td className='Actions'>
-              <Button className='Edit'>
-                Edit
-              </Button>
-              <Button className='Delete'>
-                Delete
-              </Button>
-              <Button onClick={handleChangeDetail} className='Detail'>
-                Detail
-              </Button>
-              </td>
-            </tr>
+            {employee?.map((item, idx) => (
+              <tr key={idx}>
+                <th scope="row">{idx}</th>
+                <td>{item.fullName}</td>
+                <td>xx</td>
+                <td>xx</td>
+                <td className="Actions">
+                  <Button className="Edit">Edit</Button>
+                  <Button className="Delete">Delete</Button>
+                  <Button className="Detail">Detail</Button>
+                </td>
+              </tr>
+            ))}
           </tbody>
-          </Table>
+        </Table>
       </div>
     </>
-
-  )
+  );
 }
 
-export default HR
+export default HR;

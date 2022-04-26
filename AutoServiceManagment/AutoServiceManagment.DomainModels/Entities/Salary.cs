@@ -13,7 +13,6 @@ namespace AutoServiceManagment.DomainModels.Entities
         public DateTime Date { get; set; }= DateTime.Now;
         public decimal Bonus { get; set; }
         public decimal NetSalary { get; set; }
-
         [ForeignKey(nameof(Tax))]
         public int TaxID { get; set; }
         public Tax Tax { get; set; }

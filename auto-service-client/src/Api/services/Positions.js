@@ -1,30 +1,26 @@
 import { HttpClient } from "../HttpClient";
 
 class PositionService extends HttpClient {
-    
-    constructor(){
-        super("");
-    }
+  constructor() {
+    super("https://localhost:44330/api");
+  }
+  async getAllPositions() {
+    return await this.get("Positions");
+  }
 
-    getAllPositions(){
-      return this.get("Positions");
-    }
+  async getPositionById(id) {
+    return await this.getProductByID("Positions");
+  }
 
-    getPositionById(id){
-      return this.getById("Positions", id);
-    }
+  async postPosition(employee) {
+    return await this.post("Positions", employee).then((response) => {
+      console.log(response);
+    });
+  }
 
-    createPosition(body){
-      return this.post("Positions", body)
-    }
-
-    updatePosition(id,body){
-      return this.post("Positions", id, body)
-    }
-    
-    deletePosition(id){
-      return this.delete("Positions", id);
+  async deletePosition(id) {
+    return await this.delete(`Positions/${id}`);
   }
 }
 
-export const PositionService = new PositionService();
+export const positionService = new PositionService();

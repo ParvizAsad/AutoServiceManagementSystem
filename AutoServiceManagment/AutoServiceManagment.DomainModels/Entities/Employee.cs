@@ -14,10 +14,8 @@ namespace AutoServiceManagment.DomainModels.Entities
         public string Location { get; set; }
         public string PhoneNumber { get; set; }
         public string OrderNumber { get; set; }
-
         public int PositionId { get; set; }
         public Position Position { get; set; }
-
         public string PersonalDetails { get; set; }
         public string EducationLevel { get; set; }
         public ICollection<NonWorkingDetail> NonWorkingDetails { get; set; }
