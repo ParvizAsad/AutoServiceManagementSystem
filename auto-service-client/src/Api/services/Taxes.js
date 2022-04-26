@@ -6,25 +6,25 @@ class TaxService extends HttpClient {
         super("");
     }
 
-    getAllTaxes(){
-      return this.get("Taxes");
+    async getAllTaxes(){
+      return await this.get("Taxes");
     }
 
-    getTaxById(id){
-      return this.getById("Taxes", id);
+    async getTaxById(id){
+      return await this.getById("Taxes", id);
     }
 
-    createTax(body){
-      return this.post("Taxes", body)
+    async postTax(body){
+      return await this.post("Taxes", body)
     }
 
-    updateTax(id,body){
-      return this.post("Taxes", id, body)
+    async updateTax(id,body){
+      return await this.post("Taxes", id, body)
     }
     
-    deleteTax(id){
-      return this.delete("Taxes", id);
+    async deleteTax(id){
+      return await this.delete("Taxes", id);
   }
 }
 
-export const TaxService = new TaxService();
+export const taxService = new TaxService();

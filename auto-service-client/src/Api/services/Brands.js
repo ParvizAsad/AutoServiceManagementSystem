@@ -6,25 +6,25 @@ class BrandService extends HttpClient {
         super("");
     }
 
-    getAllBrands(){
-      return this.get("Brands");
+    async getAllBrands(){
+      return await this.get("Brands");
     }
 
-    getBrandById(id){
-      return this.getById("Brands", id);
+    async getBrandById(id){
+      return await this.getById("Brands", id);
     }
 
-    createBrand(body){
-      return this.post("Brands", body)
+    async postBrand(body){
+      return await this.post("Brands", body)
     }
 
-    updateBrand(id,body){
-      return this.post("Brands", id, body)
+    async updateBrand(id,body){
+      return await this.post("Brands", id, body)
     }
     
-    deleteBrand(id){
-      return this.delete("Brands", id);
+    async deleteBrand(id){
+      return await this.delete("Brands", id);
   }
 }
 
-export const BrandService = new BrandService();
+export const brandService = new BrandService();

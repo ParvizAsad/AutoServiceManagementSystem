@@ -9,14 +9,18 @@ class PositionService extends HttpClient {
   }
 
   async getPositionById(id) {
-    return await this.getById(`Positions/${id}`);
+    return await this.getProductByID("Positions", id);
   }
 
-  async postPosition(employee) {
-    return await this.post("Positions", employee).then((response) => {
+  async postPosition(position) {
+    return await this.post("Positions", position).then((response) => {
       console.log(response);
     });
   }
+
+  // async updatePosition(id,body){
+  //   return await this.post("Positions", id, body)
+  // }
 
   async deletePosition(id) {
     return await this.delete(`Positions/${id}`);

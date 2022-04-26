@@ -3,28 +3,28 @@ import { HttpClient } from "../HttpClient";
 class CustomerService extends HttpClient {
     
     constructor(){
-        super("");
+        super("https://localhost:44330/api");
     }
 
-    getAllCustomers(){
-      return this.get("Customers");
+    async getAllCustomers(){
+      return await this.get("Customers");
     }
 
-    getCustomerById(id){
-      return this.getById("Customers", id);
+    async getCustomerById(id){
+      return await this.getById("Customers", id);
     }
 
-    createCustomer(body){
-      return this.post("Customers", body)
+    async postCustomer(body){
+      return await this.post("Customers", body)
     }
 
-    updateCustomer(id,body){
-      return this.post("Customers", id, body)
+    async updateCustomer(id,body){
+      return await this.post("Customers", id, body)
     }
     
-    deleteCustomer(id){
-      return this.delete("Customers", id);
+    async deleteCustomer(id){
+      return await this.delete("Customers", id);
   }
 }
 
-export const CustomerService = new CustomerService();
+export const customerService = new CustomerService();
