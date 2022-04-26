@@ -14,7 +14,7 @@ const employees = {
   location: "",
   personalDetails: "",
   educationLevel: "",
-  positionId: ""
+  positionId: "",
 };
 
 function CreateEmployee() {
@@ -36,7 +36,7 @@ function CreateEmployee() {
       e.preventDefault();
       employeeService.postEmployee(employee).then(() => {
         getAllEmployee();
-        history.push("/Employees");
+        history.push("/hr");
       });
     },
     [employee, history.push, getAllEmployee]
@@ -110,18 +110,21 @@ function CreateEmployee() {
           </FormGroup>
           <FormGroup>
             <Label for="positionId">Select Position</Label>
-            <select className="form-control" name="positionId" id="positionId">
-                            <option value="0">--Select Category--</option>
-                            {position?.map((item, idx) => (
-                            <option key={idx} value={idx}>{item.name}</option>
-                            ))}
-                    </select>
+            <select className="positionId" onChange={getElementValues}  name="positionId" id="positionId">
+              <option value="0">--Select Category--</option>
+              {position?.map((item, idx) => (
+                <option key={item.id} value={item.id}>
+                  {item.name}
+                  {console.log("test1" + item)}
+                  {console.log("test123" + idx+1)}
+                </option>
+              ))}
+            </select>
 
-
-            {/* <Input id="positionId" name="positionId" type="select">
+            {/* <Input id="positionId"  name="positionId" type="select">
               <option key={0}>Select Position</option>
               {position?.map((item, idx) => (
-                <option key={idx} value={idx}>{item.name}</option>
+                <option  key={idx} onChange={getElementValues} value={idx}>{item.name}</option>
               ))}
             </Input> */}
           </FormGroup>

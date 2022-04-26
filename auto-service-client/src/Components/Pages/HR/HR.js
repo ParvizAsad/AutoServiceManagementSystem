@@ -6,11 +6,16 @@ import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import { employeeService } from "../../../Api/services/Employee";
 import { useCallback } from "react";
+import { positionService } from "../../../Api/services/Positions";
 
 function HR() {
 
   const [employee, setEmployee] = React.useState([]);
   const [employeeData, setEmployeeData] = useState();
+  const [position, setPosition] = React.useState([]);
+  const [positionData, setPositionData] = useState();
+const [{id}] =useState();
+
   const history = useHistory();
 
   React.useEffect(() => {
@@ -20,11 +25,36 @@ function HR() {
     });
   }, []);
 
+  React.useEffect(() => {
+    positionService.getAllPositions().then(({ data }) => {
+      console.log(data);
+      setPosition(data);
+    });
+  }, []);
+
   const getAllEmployee = useCallback(() => {
     employeeService.getAllEmployee().then(({ data }) => {
       setEmployeeData(data);
     });
   }, [setEmployeeData]);
+
+  const getAllPositions = useCallback(() => {
+    positionService.getAllPositions().then(({ data }) => {
+      setPositionData(data);
+    });
+  }, [setPositionData]);
+
+const getPositionById = useCallback(
+  (e) => {
+    //e.preventDefault();
+    positionService.getPositionById(id).then(() => {
+      getAllPositions();
+      history.push("/hr");
+    });
+  },
+  [id, history.push, getAllPositions]
+);
+
 
   return (
     <>
@@ -54,7 +84,7 @@ function HR() {
               <tr key={idx}>
                 <th scope="row">{idx}</th>
                 <td>{item.fullName}</td>
-                <td>xx</td>
+                <td>{this.useState.id=item.id} {getPositionById(item.positionId)}</td>
                 <td>xx</td>
                 <td className="Actions">
                   <Button className="Edit">Edit</Button>
