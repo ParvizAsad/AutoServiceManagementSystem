@@ -2,8 +2,8 @@ import { FormGroup, Form, Label, Input, Button, FormText } from "reactstrap";
 import React, { useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./CreateEmployee.scss";
-import { employeeService } from "../../../Api/services/Employee";
-import { positionService } from "../../../Api/services/Positions";
+import { employeeService } from "../../../../Api/services/Employee";
+import { positionService } from "../../../../Api/services/Positions";
 
 const employees = {
   fullName: "",
@@ -14,7 +14,7 @@ const employees = {
   location: "",
   personalDetails: "",
   educationLevel: "",
-  positionId: "",
+  positionId: ""
 };
 
 function CreateEmployee() {
@@ -36,10 +36,10 @@ function CreateEmployee() {
       e.preventDefault();
       employeeService.postEmployee(employee).then(() => {
         getAllEmployee();
-        history.push("/hr");
+        history.push("/Employees");
       });
     },
-    [employee, history.push, getAllEmployee]
+    [employee, history, getAllEmployee]
   );
 
   const getElementValues = (e) => {
@@ -55,11 +55,11 @@ function CreateEmployee() {
     });
   }, []);
 
-  const getAllPositions = useCallback(() => {
-    positionService.getAllPositions().then(({ data }) => {
-      setPositionData(data);
-    });
-  }, [setPositionData]);
+  // const getAllPositions = useCallback(() => {
+  //   positionService.getAllPositions().then(({ data }) => {
+  //     setPositionData(data);
+  //   });
+  // }, [setPositionData]);
 
   return (
     <>
@@ -110,23 +110,13 @@ function CreateEmployee() {
           </FormGroup>
           <FormGroup>
             <Label for="positionId">Select Position</Label>
-            <select className="positionId" onChange={getElementValues}  name="positionId" id="positionId">
-              <option value="0">--Select Category--</option>
-              {position?.map((item, idx) => (
-                <option key={item.id} value={item.id}>
-                  {item.name}
-                  {console.log("test1" + item)}
-                  {console.log("test123" + idx+1)}
-                </option>
-              ))}
-            </select>
+            <select className="form-control" name="positionId" id="positionId">
+                            <option value="0">--Select Category--</option>
+                            {position?.map((item, idx) => (
+                            <option key={idx} value={idx}>{item.name}</option>
+                            ))}
+                    </select>
 
-            {/* <Input id="positionId"  name="positionId" type="select">
-              <option key={0}>Select Position</option>
-              {position?.map((item, idx) => (
-                <option  key={idx} onChange={getElementValues} value={idx}>{item.name}</option>
-              ))}
-            </Input> */}
           </FormGroup>
           <FormGroup>
             <Label for="orderNumber">Order Number</Label>

@@ -18,10 +18,12 @@ import Service from './Components/Pages/Service/Service';
 import Login from './Components/Pages/Login/Login';
 import Accounting from './Components/Pages/Finance/Accounting/Accounting';
 import Marketing from './Components/Pages/Finance/Marketing/Marketing';
-import EmployeeDetail from './Components/Pages/HR/EmployeeDetail';
+import EmployeeDetail from './Components/Pages/HR/Employees/EmployeeDetail';
 import ProductDetail from './Components/Pages/Stock/ProductDetail';
 import CustomerDetail from './Components/Pages/Registration/CustomerDetail';
-import CreateEmployee from './Components/Pages/HR/CreateEmployee';
+import CreateEmployee from './Components/Pages/HR/Employees/CreateEmployee';
+import Position from './Components/Pages/HR/Positions/Positions';
+import CreatePosition from './Components/Pages/HR/Positions/CreatePosition';
 
 
 function App() {
@@ -41,9 +43,11 @@ function App() {
         <Route path={"/accounting"} exact component={Accounting} />
         <Route path={"/marketing"} exact component={Marketing} />
         <Route path={"/employeedetail"} exact component={EmployeeDetail} />
+        <Route path={"/createposition"} exact component={CreatePosition} />
         <Route path={"/createemployee"} exact component={CreateEmployee} />
         <Route path={"/productdetail"} exact component={ProductDetail} />
         <Route path={"/customerdetail"} exact component={CustomerDetail} />
+        <Route path={"/position"} exact component={Position} />
         <Route path={"/error"} exact component={Error} />
         <Redirect to={"/error"} exact />
       </Switch>

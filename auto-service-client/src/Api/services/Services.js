@@ -6,25 +6,25 @@ class ServiceService extends HttpClient {
         super("");
     }
 
-    getAllServices(){
-      return this.get("Services");
+    async getAllServices(){
+      return await this.get("Services");
     }
 
-    getServiceById(id){
-      return this.getById("Services", id);
+    async getServiceById(id){
+      return await this.getById("Services", id);
     }
 
-    createService(body){
-      return this.post("Services", body)
+    async postService(body){
+      return await this.post("Services", body)
     }
 
-    updateService(id,body){
-      return this.post("Services", id, body)
+    async updateService(id,body){
+      return await this.post("Services", id, body)
     }
     
-    deleteService(id){
-      return this.delete("Services", id);
+    async deleteService(id){
+      return await this.delete("Services", id);
   }
 }
 
-export const ServiceService = new ServiceService();
+export const serviceService = new ServiceService();

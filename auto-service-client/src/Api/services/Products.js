@@ -6,25 +6,25 @@ class ProductService extends HttpClient {
         super("");
     }
 
-    getAllProducts(){
-      return this.get("Products");
+    async getAllProducts(){
+      return await this.get("Products");
     }
 
-    getProductById(id){
-      return this.getById("Products", id);
+    async getProductById(id){
+      return await this.getById("Products", id);
     }
 
-    createProduct(body){
-      return this.post("Products", body)
+    async postProduct(body){
+      return await this.post("Products", body)
     }
 
-    updateProduct(id,body){
-      return this.post("Products", id, body)
+    async updateProduct(id,body){
+      return await this.post("Products", id, body)
     }
     
-    deleteProduct(id){
-      return this.delete("Products", id);
+    async deleteProduct(id){
+      return await this.delete("Products", id);
   }
 }
 
-export const ProductService = new ProductService();
+export const productService = new ProductService();

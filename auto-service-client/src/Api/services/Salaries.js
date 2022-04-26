@@ -6,25 +6,25 @@ class SalaryService extends HttpClient {
         super("");
     }
 
-    getAllSalaries(){
-      return this.get("Salaries");
+    async getAllSalaries(){
+      return await this.get("Salaries");
     }
 
-    getSalaryById(id){
-      return this.getById("Salaries", id);
+    async getSalaryById(id){
+      return await this.getById("Salaries", id);
     }
 
-    createSalary(body){
-      return this.post("Salaries", body)
+    async postSalary(body){
+      return await this.post("Salaries", body)
     }
 
-    updateSalary(id,body){
-      return this.post("Salaries", id, body)
+    async updateSalary(id,body){
+      return await this.post("Salaries", id, body)
     }
     
-    deleteSalary(id){
-      return this.delete("Salaries", id);
+    async deleteSalary(id){
+      return await this.delete("Salaries", id);
   }
 }
 
-export const SalaryService = new SalaryService();
+export const salaryService = new SalaryService();

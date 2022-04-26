@@ -25,7 +25,7 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task<IList<CustomerDto>> GetAllCustomersAsync()
         {
-            var customers = await GetAllAsync();
+            var customers = await DbContext.Customers.Include(x => x.CustomerServices).ThenInclude(x => x.Service).ToListAsync();
 
             return _mapper.Map<List<CustomerDto>>(customers);
         }

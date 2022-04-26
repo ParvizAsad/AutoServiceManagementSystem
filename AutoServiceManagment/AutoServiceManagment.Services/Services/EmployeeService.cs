@@ -27,7 +27,7 @@ namespace AutoServiceManagment.Services.Services
         public async Task<IList<EmployeeDto>> GetAllEmployeesAsync()
         {
 
-            var employees = await DbContext.Employees.Where(x => x.IsDeleted == false).ToListAsync();
+            var employees = await DbContext.Employees.Where(x => x.IsDeleted == false).Include(x=>x.Position).ToListAsync();
             
             return _mapper.Map<List<EmployeeDto>>(employees);
         }
@@ -39,21 +39,21 @@ namespace AutoServiceManagment.Services.Services
             return _mapper.Map<EmployeeDto>(employee);
         }
 
-        public async Task AddEmployeeAsync(EmployeeDto employeeDto/*, int positionId*/)
+        public async Task AddEmployeeAsync(EmployeeDto employeeDto, int positionId)
         {
             var existEmployee = await DbContext.Employees.Where(x => x.FullName == employeeDto.FullName).FirstOrDefaultAsync();
             if (existEmployee != null) { throw new Exception("There is an employee with this name!"); }
 
-            //var positions = await DbContext.Positions.Where(x => x.IsDeleted == false).ToListAsync();
-            //if (positionId == 0)
-            //{
-            //    throw new Exception("Select Position!");
-            //}
+            var positions = await DbContext.Positions.Where(x => x.IsDeleted == false).ToListAsync();
+            if (positionId == 0)
+            {
+                throw new Exception("Select Position!");
+            }
 
-            //var parentCategory = positions.FirstOrDefault(x => x.Id == positionId);
-            //if (parentCategory == null)
-            //    throw new Exception("Select Position!");
-            //employeeDto.PositionId = positionId;
+            var existPosition = positions.FirstOrDefault(x => x.Id == positionId);
+            if (existPosition == null)
+                throw new Exception("Select Position!");
+            employeeDto.PositionId = positionId;
 
             var employee = _mapper.Map<Employee>(employeeDto);
             await _repository.AddAsync(employee);
