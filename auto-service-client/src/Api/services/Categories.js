@@ -6,25 +6,25 @@ class CategoryService extends HttpClient {
         super("");
     }
 
-    getAllCategories(){
-      return this.get("Categories");
+    async getAllCategories(){
+      return await this.get("Categories");
     }
 
-    getCategoryById(id){
-      return this.getById("Categories", id);
+    async getCategoryById(id){
+      return await this.getById("Categories", id);
     }
 
-    createCategory(body){
-      return this.post("Categories", body)
+    async postCategory(body){
+      return await this.post("Categories", body)
     }
 
-    updateCategory(id,body){
-      return this.post("Categories", id, body)
+    async updateCategory(id,body){
+      return await this.post("Categories", id, body)
     }
     
-    deleteCategory(id){
-      return this.delete("Categories", id);
+    async deleteCategory(id){
+      return await this.delete("Categories", id);
   }
 }
 
-export const CategoryService = new CategoryService();
+export const categoryService = new CategoryService();

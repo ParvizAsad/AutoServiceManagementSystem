@@ -6,13 +6,19 @@ Button
 import Service from '../Service/Service';
 import "./Registration.scss";
 import { useHistory } from "react-router-dom";
+import { customerService } from '../../../Api/services/Customers';
+
 
 function Registration() {
 
-  const { push } = useHistory();
-  const handleChangeDetail = React.useCallback(() => {
-    push("employeedetail", true);
-  }, [push]);
+  const [customer, setCustomer] = React.useState([]);
+  const history = useHistory();
+
+  React.useEffect(() => {
+    customerService.getAllCustomers().then(({ data }) => {
+      setCustomer(data);
+    });
+  }, []);
 
   return (
     <>
@@ -39,39 +45,23 @@ function Registration() {
           Service 
         </th>
         <th>
-          Status
-        </th>
-        <th>
           Actions
         </th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">
-          1
-        </th>
-        <td>
-          xx
-        </td>
-        <td>
-          xx
-        </td>
-        <td>
-          xx
-        </td>
-        <td className='Actions'>
-        <Button className='Edit'>
-          Edit
-        </Button>
-        <Button className='Delete'>
-          Delete
-        </Button>
-        <Button onClick={handleChangeDetail} className='Detail'>
-          Detail
-        </Button>
-        </td>
-      </tr>
+    {customer?.map((item, idx) => (
+              <tr key={idx}>
+                <th scope="row">{idx}</th>
+                <td>{item.fullName}</td>
+                <td>{item.Service}</td>
+                <td className="Actions">
+                  <Button className="Edit">Edit</Button>
+                  <Button className="Delete">Delete</Button>
+                  <Button className="Detail">Detail</Button>
+                </td>
+              </tr>
+            ))}
     </tbody>
     </Table>
 </div>

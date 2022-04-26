@@ -27,7 +27,7 @@ namespace AutoServiceManagment.Services.Services
         public async Task<IList<EmployeeDto>> GetAllEmployeesAsync()
         {
 
-            var employees = await DbContext.Employees.Where(x => x.IsDeleted == false).ToListAsync();
+            var employees = await DbContext.Employees.Where(x => x.IsDeleted == false).Include(x=>x.Position).ToListAsync();
             
             return _mapper.Map<List<EmployeeDto>>(employees);
         }
@@ -50,8 +50,8 @@ namespace AutoServiceManagment.Services.Services
                 throw new Exception("Select Position!");
             }
 
-            var parentCategory = positions.FirstOrDefault(x => x.Id == positionId);
-            if (parentCategory == null)
+            var existPosition = positions.FirstOrDefault(x => x.Id == positionId);
+            if (existPosition == null)
                 throw new Exception("Select Position!");
             employeeDto.PositionId = positionId;
 

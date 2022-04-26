@@ -12,14 +12,18 @@ async getAllEmployee(){
 };
 
 async getEmployeeByID(id){
-    return await this.getProductByID("Employees");
+    return await this.getProductByID("Employees", id);
 };
 
 async postEmployee(employee){
   return await this.post("Employees", employee).then(response => { 
-    console.log(response)
+    console.log(response);
   })
 };
+
+// async updateEmployee(id,body){
+//   return await this.post("Employees", id, body)
+// }
 
 async deleteEmployee(id){
   return await this.delete(`Employees/${id}`);

@@ -2,8 +2,8 @@ import { FormGroup, Form, Label, Input, Button, FormText } from "reactstrap";
 import React, { useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./CreateEmployee.scss";
-import { employeeService } from "../../../Api/services/Employee";
-import { positionService } from "../../../Api/services/Positions";
+import { employeeService } from "../../../../Api/services/Employee";
+import { positionService } from "../../../../Api/services/Positions";
 
 const employees = {
   fullName: "",
@@ -39,7 +39,7 @@ function CreateEmployee() {
         history.push("/Employees");
       });
     },
-    [employee, history.push, getAllEmployee]
+    [employee, history, getAllEmployee]
   );
 
   const getElementValues = (e) => {
@@ -55,11 +55,11 @@ function CreateEmployee() {
     });
   }, []);
 
-  const getAllPositions = useCallback(() => {
-    positionService.getAllPositions().then(({ data }) => {
-      setPositionData(data);
-    });
-  }, [setPositionData]);
+  // const getAllPositions = useCallback(() => {
+  //   positionService.getAllPositions().then(({ data }) => {
+  //     setPositionData(data);
+  //   });
+  // }, [setPositionData]);
 
   return (
     <>
@@ -117,13 +117,6 @@ function CreateEmployee() {
                             ))}
                     </select>
 
-
-            {/* <Input id="positionId" name="positionId" type="select">
-              <option key={0}>Select Position</option>
-              {position?.map((item, idx) => (
-                <option key={idx} value={idx}>{item.name}</option>
-              ))}
-            </Input> */}
           </FormGroup>
           <FormGroup>
             <Label for="orderNumber">Order Number</Label>
