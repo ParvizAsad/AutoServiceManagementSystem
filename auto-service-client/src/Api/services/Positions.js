@@ -9,7 +9,7 @@ class PositionService extends HttpClient {
   }
 
   async getPositionById(id) {
-    return await this.getProductByID("Positions");
+    return await this.getById(`Positions/${id}`);
   }
 
   async postPosition(employee) {
