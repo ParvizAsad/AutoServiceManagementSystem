@@ -26,7 +26,7 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task<IList<CashBoxDto>> GetAllCashBoxesAsync()
         {
-            var cashBoxes = await DbContext.CashBoxes.Where(x => x.IsDeleted == false).ToListAsync();
+            var cashBoxes = await DbContext.CashBoxes.Where(x => x.IsDeleted == false).Include(x => x.Product).Include(x => x.Service).ToListAsync();
 
             return _mapper.Map<List<CashBoxDto>>(cashBoxes);
         }

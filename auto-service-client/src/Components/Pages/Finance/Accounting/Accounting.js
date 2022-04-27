@@ -3,8 +3,20 @@ import {
   Table,
   Button
   } from "reactstrap";
+import { financeService } from '../../../../Api/services/Finances';
+import { useHistory } from "react-router-dom";
 
 function Accounting() {
+
+  const [finance, setFinance] = React.useState([]);
+  const history = useHistory();
+
+  React.useEffect(() => {
+    financeService.getAllFinances().then(({ data }) => {
+      setFinance(data);
+    });
+  }, []);
+
   return (
     <>
     <div className ='ForHeading'>
@@ -12,7 +24,7 @@ function Accounting() {
     </div>
     <div className='AddingAndSearching'>
       <div className='Adding'>
-    <Button>Add xxx</Button>
+      <Button onClick={() => history.push("/createaccounting")} >Create a new Financial Line</Button>
       </div>
       <input type="text" placeholder="Search.."/>
     </div>
@@ -24,45 +36,32 @@ function Accounting() {
               #
             </th>
             <th>
-              xxxx
+              Communal Cost
             </th>
             <th>
-              xxx
+              Additional Cost
             </th>
             <th>
-              xxxx
+              Date
+            </th>
+            <th>
+              Actions
             </th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">
-              1
-            </th>
-            <td>
-              xx
-            </td>
-            <td>
-              xx
-            </td>
-            <td>
-              xx
-            </td>
-            <td>
-              xx
-            </td>
-            <td className='Actions'>
-            <Button className='Edit'>
-              Edit
-            </Button>
-            <Button className='Delete'>
-              Delete
-            </Button>
-            <Button className='Detail'>
-              Detail
-            </Button>
-            </td>
-          </tr>
+        {finance?.map((item, idx) => (
+              <tr key={idx}>
+                <th scope="row">{idx}</th>
+                <td>{item.CommunalCost}</td>
+                <td>{item.AdditionalCost}</td>
+                <td>{item.Date}</td>
+                <td className="Actions">
+                  <Button className="Edit">Edit</Button>
+                  <Button className="Delete">Delete</Button>
+                </td>
+              </tr>
+            ))}
         </tbody>
         </Table>
     </div>

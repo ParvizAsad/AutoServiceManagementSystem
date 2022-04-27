@@ -9,7 +9,7 @@ import {
 import Home from './Components/Pages/Home/Home';
 import Header from './Components/Layout/Header/Header';
 import Stock from './Components/Pages/Stock/Stock';
-import Error from './Components/Pages/Error/Error';
+import Error from './Components/Pages/Errors/404/Error404';
 import Director from './Components/Pages/Director/Director';
 import Registration from './Components/Pages/Registration/Registration';
 import HR from './Components/Pages/HR/HR';
@@ -24,6 +24,7 @@ import CustomerDetail from './Components/Pages/Registration/CustomerDetail';
 import CreateEmployee from './Components/Pages/HR/Employees/CreateEmployee';
 import Position from './Components/Pages/HR/Positions/Positions';
 import CreatePosition from './Components/Pages/HR/Positions/CreatePosition';
+import CreateAccounting from './Components/Pages/Finance/Accounting/CreateAccounting';
 
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
         <Route path={"/marketing"} exact component={Marketing} />
         <Route path={"/employeedetail"} exact component={EmployeeDetail} />
         <Route path={"/createposition"} exact component={CreatePosition} />
+        <Route path={"/createaccounting"} exact component={CreateAccounting} />
         <Route path={"/createemployee"} exact component={CreateEmployee} />
         <Route path={"/productdetail"} exact component={ProductDetail} />
         <Route path={"/customerdetail"} exact component={CustomerDetail} />
