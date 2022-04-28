@@ -4,11 +4,21 @@ import { INITIAL_ASYNC_VALUES } from "../../../Consts/const";
 import "./HR.scss";
 import { useHistory } from "react-router-dom";
 import { employeeService } from "../../../Api/services/Employee";
+import Swal from "sweetalert2";
+import { useState } from "react";
+import { useCallback } from "react";
 
 function HR() {
 
   const [employee, setEmployee] = React.useState([]);
+  const [employeeData, setEmployeeData] = useState();
   const history = useHistory();
+
+  const getAllEmployee = useCallback(() => {
+    employeeService.getAllEmployee().then(({ data }) => {
+      setEmployeeData(data);
+    });
+  }, [setEmployeeData]);
 
   React.useEffect(() => {
     employeeService.getAllEmployee().then(({ data }) => {
@@ -16,6 +26,62 @@ function HR() {
       setEmployee(data);
     });
   }, []);
+
+const deleteButton = (id) => {
+  const swalWithBootstrapButtons = Swal.mixin({
+    customClass: {
+      confirmButton: 'btn btn-success',
+      cancelButton: 'btn btn-danger'
+    },
+    buttonsStyling: false
+  })
+  
+  swalWithBootstrapButtons.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Yes, delete it!',
+    cancelButtonText: 'No, cancel!',
+    reverseButtons: true
+  }).then((result) => {
+    if (result.isConfirmed) {
+      deleteEmplyee(id);
+      swalWithBootstrapButtons.fire(
+        'Deleted!',
+        'Your file has been deleted.',
+        'success'
+      )
+    } else if (
+      /* Read more about handling dismissals below */
+      result.dismiss === Swal.DismissReason.cancel
+    ) {
+      swalWithBootstrapButtons.fire(
+        'Cancelled',
+        'Your imaginary file is safe :)',
+        'error'
+      )
+    }
+  })
+}
+
+function deleteEmplyee(id){
+ fetch(`https://localhost:44330/api/Employees/${id}`, {
+   method:'DELETE'
+ }).then((result)=>{
+result.json().then((resp)=>{
+  console.warn(resp)
+  getAllEmployee();
+})})}
+
+function getPosition(id){
+  fetch(`https://localhost:44330/api/Position/${id}`, {
+    method:'GET'
+  }).then((result)=>{
+ result.json().then((resp)=>{
+   console.warn(resp)
+   getAllEmployee();
+ })})}
 
   return (
     <>
@@ -47,11 +113,13 @@ function HR() {
               <tr key={idx}>
                 <th scope="row">{idx}</th>
                 <td>{item.fullName}</td>
+               {/* <td>{if(item.positonId==position.ID)}</td> */}
+                <td>{item.Status}</td>
                 <td>{item.Status}</td>
                 <td className="Actions">
                   <Button className="Edit">Edit</Button>
-                  <Button className="Delete">Delete</Button>
-                  <Button className="Detail">Detail</Button>
+                  <Button onClick={()=>deleteButton(item.id) } className="Delete">Delete</Button>
+                  <Button  className="Detail">Detail</Button>
                 </td>
               </tr>
             ))}

@@ -34,9 +34,9 @@ namespace AutoServiceManagment.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] EmployeeDto employeeDto, int positionId)
+        public async Task<IActionResult> Post([FromBody] EmployeeDto employeeDto)
         {
-            await _service.AddEmployeeAsync(employeeDto, positionId);
+            await _service.AddEmployeeAsync(employeeDto);
             return Ok();
         }
 

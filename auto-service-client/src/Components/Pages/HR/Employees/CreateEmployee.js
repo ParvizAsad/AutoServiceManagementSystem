@@ -14,7 +14,7 @@ const employees = {
   location: "",
   personalDetails: "",
   educationLevel: "",
-  positionId: ""
+  positionId: "",
 };
 
 function CreateEmployee() {
@@ -55,11 +55,11 @@ function CreateEmployee() {
     });
   }, []);
 
-  // const getAllPositions = useCallback(() => {
-  //   positionService.getAllPositions().then(({ data }) => {
-  //     setPositionData(data);
-  //   });
-  // }, [setPositionData]);
+  const getAllPositions = useCallback(() => {
+    positionService.getAllPositions().then(({ data }) => {
+      setPositionData(data);
+    });
+  }, [setPositionData]);
 
   return (
     <>
@@ -110,13 +110,16 @@ function CreateEmployee() {
           </FormGroup>
           <FormGroup>
             <Label for="positionId">Select Position</Label>
-            <select className="form-control" name="positionId" id="positionId">
-                            <option value="0">--Select Category--</option>
-                            {position?.map((item, idx) => (
-                            <option key={idx} value={idx}>{item.name}</option>
-                            ))}
-                    </select>
-
+            <select className="positionId" onChange={getElementValues}  name="positionId" id="positionId">
+              <option value="0">--Select Category--</option>
+              {position?.map((item, idx) => (
+                <option key={item.id} value={item.id}>
+                  {item.name}
+                  {console.log("test1" + item)}
+                  {console.log("test123" + idx+1)}
+                </option>
+              ))}
+            </select>
           </FormGroup>
           <FormGroup>
             <Label for="orderNumber">Order Number</Label>
