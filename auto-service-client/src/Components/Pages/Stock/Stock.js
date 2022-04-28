@@ -5,12 +5,17 @@ Button
 } from "reactstrap";
 import "./Stock.scss";
 import { useHistory } from "react-router-dom";
+import { productService } from '../../../Api/services/Products';
 function Stock() {
 
-  const { push } = useHistory();
-  const handleChangeDetail = React.useCallback(() => {
-    push("productdetail", true);
-  }, [push]);
+  const [product, setProduct] = React.useState([]);
+  const history = useHistory();
+
+  React.useEffect(() => {
+    productService.getAllProducts().then(({ data }) => {
+      setProduct(data);
+    });
+  }, []);
 
   return (
     <>
@@ -19,9 +24,9 @@ function Stock() {
     </div>
 <div className='AddingAndSearching'>
   <div className='Adding'>
-<Button>Add Product</Button>
-<Button>Add Category</Button>
-<Button>Add Brand</Button>
+<Button onClick={() => history.push("/createproduct")}>Add Product</Button>
+<Button onClick={() => history.push("/createcategory")}>Add Category</Button>
+<Button onClick={() => history.push("/createbrand")}>Add Brand</Button>
   </div>
   <input type="text" placeholder="Search.."/>
 </div>
@@ -47,31 +52,19 @@ function Stock() {
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">
-          1
-        </th>
-        <td>
-          xx
-        </td>
-        <td>
-          xx
-        </td>
-        <td>
-          xx
-        </td>
-        <td className='Actions'>
-        <Button className='Edit'>
-          Edit
-        </Button>
-        <Button className='Delete'>
-          Delete
-        </Button>
-        <Button onClick={handleChangeDetail} className='Detail'>
-          Detail
-        </Button>
-        </td>
-      </tr>
+    {product?.map((item, idx) => (
+              <tr key={idx}>
+                <th scope="row">{idx}</th>
+                <td>{item.Name}</td>
+                <td>{item.Amount}</td>
+                <td>{item.Status}</td>
+                <td className="Actions">
+                  <Button className="Edit">Edit</Button>
+                  <Button className="Delete">Delete</Button>
+                  <Button className="Detail">Detail</Button>
+                </td>
+              </tr>
+            ))}
     </tbody>
     </Table>
 </div>
