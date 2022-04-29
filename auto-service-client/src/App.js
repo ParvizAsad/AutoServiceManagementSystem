@@ -4,7 +4,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect
+  Redirect,
+  Link
 } from "react-router-dom";
 import Home from './Components/Pages/Home/Home';
 import Header from './Components/Layout/Header/Header';
@@ -34,7 +35,6 @@ import CreateCategory from './Components/Pages/Stock/CreateCategory';
 
 function App() {
   return (
-    <Router>
     <div>
     <Header/>
       <Switch>
@@ -63,9 +63,6 @@ function App() {
         <Redirect to={"/error"} exact />
       </Switch>
     </div>
-  </Router>
-
-   
   );
 }
 

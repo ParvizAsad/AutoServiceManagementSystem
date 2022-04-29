@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useReducer } from "react";
 import { Table, Button } from "reactstrap";
 import { INITIAL_ASYNC_VALUES } from "../../../Consts/const";
 import "./HR.scss";
@@ -13,6 +13,7 @@ function HR() {
   const [employee, setEmployee] = React.useState([]);
   const [employeeData, setEmployeeData] = useState();
   const history = useHistory();
+  // const [, forceUpdate] = useReducer(x => x + 1, 0);
 
   const getAllEmployee = useCallback(() => {
     employeeService.getAllEmployee().then(({ data }) => {
@@ -90,7 +91,7 @@ function getPosition(id){
       </div>
       <div className="AddingAndSearching">
         <div className="Adding">
-          <Button onClick={() => history.push("/createemployee")} >Create Employee</Button>
+          {/* <Button onClick={() => history.push("/createemployee") & forceUpdate()} >Create Employee</Button> */}
           <Button onClick={() => history.push("/position")} >Positions</Button>
           <Button onClick={() => history.push("/createposition")} >Create Position</Button>
         </div>
