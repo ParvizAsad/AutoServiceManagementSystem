@@ -35,11 +35,10 @@ function CreateEmployee() {
     (e) => {
       e.preventDefault();
       employeeService.postEmployee(employee).then(() => {
-        getAllEmployee();
-        history.push("/Employees");
+        history.push("/hr");
       });
     },
-    [employee, history, getAllEmployee]
+    [employee, history]
   );
 
   const getElementValues = (e) => {

@@ -26,7 +26,7 @@ async postEmployee(employee){
 // }
 
 async deleteEmployee(id){
-  return await this.delete(`Employees/${id}`);
+  return await this.delete("Employees", id);
 };
 
 }

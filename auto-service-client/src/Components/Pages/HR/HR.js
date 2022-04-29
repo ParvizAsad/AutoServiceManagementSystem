@@ -47,13 +47,15 @@ const deleteButton = (id) => {
     reverseButtons: true
   }).then((result) => {
     if (result.isConfirmed) {
-      deleteEmplyee(id);
       swalWithBootstrapButtons.fire(
         'Deleted!',
         'Your file has been deleted.',
         'success'
       )
-    } else if (
+        {employeeService.deleteEmployee(id) &&
+        history.push("/")};
+    } 
+    else if (
       /* Read more about handling dismissals below */
       result.dismiss === Swal.DismissReason.cancel
     ) {
@@ -66,14 +68,15 @@ const deleteButton = (id) => {
   })
 }
 
-function deleteEmplyee(id){
- fetch(`https://localhost:44330/api/Employees/${id}`, {
-   method:'DELETE'
- }).then((result)=>{
-result.json().then((resp)=>{
-  console.warn(resp)
-  getAllEmployee();
-})})}
+// function deleteEmplyee(id){
+//  fetch(`https://localhost:44330/api/Employees/${id}`, {
+//    method:'DELETE'
+//  }).then((result)=>{
+// result.json().then((resp)=>{
+//   console.warn(resp)
+//   getAllEmployee();
+//   history.push("/hr");
+// })})}
 
 function getPosition(id){
   fetch(`https://localhost:44330/api/Position/${id}`, {
@@ -91,7 +94,7 @@ function getPosition(id){
       </div>
       <div className="AddingAndSearching">
         <div className="Adding">
-          {/* <Button onClick={() => history.push("/createemployee") & forceUpdate()} >Create Employee</Button> */}
+          <Button onClick={() => history.push("/createemployee")} >Create Employee</Button>
           <Button onClick={() => history.push("/position")} >Positions</Button>
           <Button onClick={() => history.push("/createposition")} >Create Position</Button>
         </div>
@@ -114,8 +117,7 @@ function getPosition(id){
               <tr key={idx}>
                 <th scope="row">{idx}</th>
                 <td>{item.fullName}</td>
-               {/* <td>{if(item.positonId==position.ID)}</td> */}
-                <td>{item.Status}</td>
+                <td>{item.Position}</td>
                 <td>{item.Status}</td>
                 <td className="Actions">
                   <Button className="Edit">Edit</Button>
