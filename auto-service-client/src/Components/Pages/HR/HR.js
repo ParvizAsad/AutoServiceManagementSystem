@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 import { useState } from "react";
 import { useCallback } from "react";
 
-function HR() {
+function HR(props) {
 
   const [employee, setEmployee] = React.useState([]);
   const [employeeData, setEmployeeData] = useState();
@@ -83,6 +83,16 @@ function getPosition(id){
    getAllEmployee();
  })})}
 
+function EditEmployee(id){
+  console.log(id)
+ props.history.push("/EditEmployee/"+id)
+} 
+
+function EmployeeDetail(id){
+  console.log(id)
+ props.history.push("/EmployeeDetail/"+id)
+} 
+
   return (
     <>
       <div className="ForHeading">
@@ -117,9 +127,9 @@ function getPosition(id){
                 <td>{item.Status}</td>
                 <td>{item.Status}</td>
                 <td className="Actions">
-                  <Button className="Edit">Edit</Button>
+                  <Button onClick={()=>EditEmployee(item.id)} className="Edit">Edit</Button>
                   <Button onClick={()=>deleteButton(item.id) } className="Delete">Delete</Button>
-                  <Button  className="Detail">Detail</Button>
+                  <Button onClick={()=>EmployeeDetail(item.id) } className="Detail">Detail</Button>
                 </td>
               </tr>
             ))}

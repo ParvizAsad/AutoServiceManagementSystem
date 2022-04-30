@@ -41,9 +41,9 @@ function Position() {
             {positions?.map((item, idx) => (
               <tr key={idx}>
                 <th scope="row">{idx}</th>
-                <td>{item.Name}</td>
-                <td>xx</td>
-                <td>xx</td>
+                <td>{item.name}</td>
+                {/* <td>xx</td>
+                <td>xx</td> */}
                 <td className="Actions">
                   <Button className="Edit">Edit</Button>
                   <Button className="Delete">Delete</Button>

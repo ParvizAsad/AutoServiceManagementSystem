@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -29,7 +28,7 @@ import CreateDiscount from './Components/Pages/Finance/Marketing/CreateDiscount'
 import CreateProduct from './Components/Pages/Stock/CreateProduct';
 import CreateBrand from './Components/Pages/Stock/CreateBrand';
 import CreateCategory from './Components/Pages/Stock/CreateCategory';
-
+import EditEmployee from './Components/Pages/HR/Employees/EditEmployee'
 
 
 function App() {
@@ -38,13 +37,18 @@ function App() {
     <div>
     <Header/>
       <Switch>
-        <Route path={"/"} exact component={Home} />
+        <Route path="/" exact component={Home} />
         <Route path={"/stock"} exact component={Stock} />
         <Route path={"/registration"} exact component={Registration} />
         <Route path={"/finance"} exact component={Finance} />
         <Route path={"/director"} exact component={Director} />
         <Route path={"/service"} exact component={Service} />
-        <Route path={"/hr"} exact component={HR} />
+        <Route path="/HR" exact component={HR} />
+        <Route path="/EditEmployee/{id}" exact component={EditEmployee} />
+        <Route path="/EmployeeDetail/{id}" exact component={EmployeeDetail} />
+        {/* <Route path={`${EditEmployee}/:id`} exact component={EditEmployee} /> */}
+        <Route path="/EditEmployee/:id" exact component={EditEmployee} />
+        <Route path="/EditEmployee" exact component={EditEmployee} />
         <Route path={"/login"} exact component={Login} />
         <Route path={"/accounting"} exact component={Accounting} />
         <Route path={"/marketing"} exact component={Marketing} />
@@ -64,8 +68,6 @@ function App() {
       </Switch>
     </div>
   </Router>
-
-   
   );
 }
 

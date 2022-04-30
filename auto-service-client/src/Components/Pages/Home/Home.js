@@ -58,7 +58,7 @@ import {
                 </CardBody>
               </Card>
           </Link>
-          <Link to="hr">
+          <Link to="/HR">
           <Card className='moduleCard'>
                 <CardBody className='moduleCardBody'>
                   <CardTitle tag="h5"  className='moduleCardTitle'>

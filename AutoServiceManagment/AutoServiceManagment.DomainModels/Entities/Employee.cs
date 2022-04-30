@@ -1,6 +1,7 @@
 ﻿using AutoServiceManagment.Base;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AutoServiceManagment.DomainModels.Entities
@@ -9,7 +10,9 @@ namespace AutoServiceManagment.DomainModels.Entities
     {
         public int Id { get; set; }
         public string FullName { get; set; }
-        public DateTime BirthDate { get; set; } = DateTime.Now;
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{mm/dd/yyyy}")]
+        public DateTime BirthDate { get; set; } 
         public int BaseSalary { get; set; }
         public string Location { get; set; }
         public string PhoneNumber { get; set; }

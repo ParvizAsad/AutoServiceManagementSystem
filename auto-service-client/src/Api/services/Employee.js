@@ -21,9 +21,12 @@ async postEmployee(employee){
   })
 };
 
-// async updateEmployee(id,body){
-//   return await this.post("Employees", id, body)
-// }
+async putEmployee(id,employee){
+  return await this.put(`Employees/${id}`, employee)
+  // .then(response => { 
+  //   console.log(response);
+  // })
+};
 
 async deleteEmployee(id){
   return await this.delete(`Employees/${id}`);
