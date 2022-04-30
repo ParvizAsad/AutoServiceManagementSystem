@@ -56,8 +56,7 @@ namespace AutoServiceManagment.Services.Services
             employee.IsDeleted = true;
             await DbContext.SaveChangesAsync();
         }
-
-    
+   
         public async Task UpdateEmployeeAsyncId(int? id, EmployeeDto employeeDto)
         {
             var employee = await DbContext.Employees.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted != true);

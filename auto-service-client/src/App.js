@@ -1,11 +1,9 @@
-import logo from './logo.svg';
 import './App.css';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect,
-  Link
+  Redirect
 } from "react-router-dom";
 import Home from './Components/Pages/Home/Home';
 import Header from './Components/Layout/Header/Header';
@@ -30,24 +28,27 @@ import CreateDiscount from './Components/Pages/Finance/Marketing/CreateDiscount'
 import CreateProduct from './Components/Pages/Stock/CreateProduct';
 import CreateBrand from './Components/Pages/Stock/CreateBrand';
 import CreateCategory from './Components/Pages/Stock/CreateCategory';
-import Brand from './Components/Pages/Stock/Brands';
-import Category from './Components/Pages/Stock/Categories';
-import Tax from './Components/Pages/Finance/Taxes/Tax';
-
+import EditEmployee from './Components/Pages/HR/Employees/EditEmployee'
 
 
 function App() {
   return (
+    <Router>
     <div>
     <Header/>
       <Switch>
-        <Route path={"/"} exact component={Home} />
+        <Route path="/" exact component={Home} />
         <Route path={"/stock"} exact component={Stock} />
         <Route path={"/registration"} exact component={Registration} />
         <Route path={"/finance"} exact component={Finance} />
         <Route path={"/director"} exact component={Director} />
         <Route path={"/service"} exact component={Service} />
-        <Route path={"/hr"} exact component={HR} />
+        <Route path="/HR" exact component={HR} />
+        <Route path="/EditEmployee/{id}" exact component={EditEmployee} />
+        <Route path="/EmployeeDetail/{id}" exact component={EmployeeDetail} />
+        {/* <Route path={`${EditEmployee}/:id`} exact component={EditEmployee} /> */}
+        <Route path="/EditEmployee/:id" exact component={EditEmployee} />
+        <Route path="/EditEmployee" exact component={EditEmployee} />
         <Route path={"/login"} exact component={Login} />
         <Route path={"/accounting"} exact component={Accounting} />
         <Route path={"/marketing"} exact component={Marketing} />
@@ -62,13 +63,11 @@ function App() {
         <Route path={"/productdetail"} exact component={ProductDetail} />
         <Route path={"/customerdetail"} exact component={CustomerDetail} />
         <Route path={"/position"} exact component={Position} />
-        <Route path={"/brand"} exact component={Brand} />
-        <Route path={"/category"} exact component={Category} />
-        <Route path={"/tax"} exact component={Tax} />
         <Route path={"/error"} exact component={Error} />
         <Redirect to={"/error"} exact />
       </Switch>
     </div>
+  </Router>
   );
 }
 

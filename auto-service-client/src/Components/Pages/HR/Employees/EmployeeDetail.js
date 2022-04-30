@@ -1,17 +1,48 @@
-import React from 'react'
-import {
-  CardGroup,
-  Card,
+import React, { useCallback, useEffect, useState } from "react";
+import { useHistory, useParams } from "react-router-dom";
+import { FormGroup, Form, Label, Input,  FormText,  Card,
   CardImg,
   CardBody,
   CardSubtitle,
   CardTitle,
   CardText,
-  Button
-} from "reactstrap";
+  Button } from "reactstrap";
+import "./CreateEmployee.scss";
+import { employeeService } from "../../../../Api/services/Employee";
+import { positionService } from "../../../../Api/services/Positions";
+import axios, { Axios } from "axios";
 import "./EmployeeDetail.scss";
 
-function EmployeeDetail() {
+const employees = {
+  fullName: "",
+  phoneNumber: "",
+  orderNumber: "",
+  birthDate: "",
+  baseSalary: "",
+  location: "",
+  personalDetails: "",
+  educationLevel: "",
+  positionId: "",
+};
+
+function EmployeeDetail(props) {
+  const url = "https://localhost:44330/api/Employees/";
+  const [employee, setEmployee] = useState([]);
+  const [data, setData] = useState(employees);
+  const [position, setPosition] = React.useState([]);
+  const [positionData, setPositionData] = useState();
+  const history = useHistory();
+
+  useEffect(() => {
+    const id = props.match.params.id;
+    axios
+      .get(url + id)
+      .then((res) => {
+        setData(res.data);
+        console.log(res.data);
+      })
+    //   .catch((er) => console.error(err));
+  }, []);
 
   return (
     <>
@@ -28,55 +59,55 @@ function EmployeeDetail() {
         />
         <CardBody>
           <CardTitle tag="h5">
-            Employee FullName:
+            Employee FullName: {data.fullName}
           </CardTitle>
           <CardSubtitle
             className="mb-2 text-muted"
             tag="h6"
           >
-            Position: 
+            Position: {data.positionId}
           </CardSubtitle>
           <CardSubtitle
             className="mb-2 text-muted"
             tag="h6"
           >
-            Phone Number: 
+            Phone Number: {data.phoneNumber}
           </CardSubtitle>
           <CardSubtitle
             className="mb-2 text-muted"
             tag="h6"
           >
-            Order Number: 
+            Order Number: {data.orderNumber}
           </CardSubtitle>
           <CardSubtitle
             className="mb-2 text-muted"
             tag="h6"
           >
-            Phone Number: 
+            Phone Number: {data.phoneNumber}
           </CardSubtitle>
           <CardSubtitle
             className="mb-2 text-muted"
             tag="h6"
           >
-            Location: 
+            Location: {data.location}
           </CardSubtitle>
           <CardSubtitle
             className="mb-2 text-muted"
             tag="h6"
           >
-            BaseSalary: 
+            BaseSalary: {data.baseSalary}
           </CardSubtitle>
           <CardSubtitle
             className="mb-2 text-muted"
             tag="h6"
           >
-            Education Level: 
+            Education Level: {data.educationLevel}
           </CardSubtitle>
           <CardSubtitle
             className="mb-2 text-muted"
             tag="h6"
           >
-            Birthdate: 
+            Birthdate: {data.birthDate}
           </CardSubtitle>
 
 
