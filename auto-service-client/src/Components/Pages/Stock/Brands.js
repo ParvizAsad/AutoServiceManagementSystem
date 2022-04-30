@@ -3,17 +3,17 @@ import { Table, Button } from "reactstrap";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import { useCallback } from "react";
-import { positionService } from "../../../../Api/services/Positions";
 import Swal from "sweetalert2";
+import { brandService } from "../../../Api/services/Brands";
 
-function Position() {
+function Brand() {
 
-  const [positions, setPositions] = useState([]);
+  const [brands, setBrands] = useState([]);
   const history = useHistory();
 
   React.useEffect(() => {
-    positionService.getAllPositions().then(({ data }) => {
-      setPositions(data);
+    brandService.getAllBrands().then(({ data }) => {
+      setBrands(data);
     });
   }, []);
 
@@ -41,7 +41,7 @@ function Position() {
           'Your file has been deleted.',
           'success'
         )
-          {positionService.deletePosition(id) &&
+          {brandService.deleteBrand(id) &&
           history.push("/")};
       } 
       else if (
@@ -60,11 +60,11 @@ function Position() {
   return (
     <>
       <div className="ForHeading">
-        <h1>Positions</h1>
+        <h1>Brands</h1>
       </div>
       <div className="AddingAndSearching">
         <div className="Adding">
-          <Button onClick={() => history.push("/createposition")} >Create position</Button>
+          <Button onClick={() => history.push("/createbrand")} >Create brand</Button>
         </div>
         <Button>Export</Button>
         <input type="text" placeholder="Search.." />
@@ -74,12 +74,12 @@ function Position() {
           <thead>
             <tr>
               <th>#</th>
-              <th>Position</th>
+              <th>Brand</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-            {positions?.map((item, idx) => (
+            {brands?.map((item, idx) => (
               <tr key={idx}>
                 <th scope="row">{idx}</th>
                 <td>{item.Name}</td>
@@ -98,4 +98,4 @@ function Position() {
   );
 }
 
-export default Position;
+export default Brand;

@@ -52,7 +52,7 @@ namespace AutoServiceManagment.API.Controllers
         {
             await _service.DeletePositionAsync(id.Value);
 
-            return NoContent();
+            return Ok();
         }
 
 

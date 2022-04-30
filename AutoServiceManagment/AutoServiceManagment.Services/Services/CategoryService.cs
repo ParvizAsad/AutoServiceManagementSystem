@@ -8,6 +8,7 @@ using AutoServiceManagment.Services.Services.Contracts;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace AutoServiceManagment.Services.Services
@@ -25,7 +26,7 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task<IList<CategoryDto>> GetAllCategoriesAsync()
         {
-            var categories = await GetAllAsync();
+            var categories = await DbContext.Categories.Where(x => x.IsDeleted == false).ToListAsync();
 
             return _mapper.Map<List<CategoryDto>>(categories);
         }
@@ -39,6 +40,9 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task AddCategoryAsync(CategoryDto categoryDto)
         {
+            var categories = await DbContext.Categories.Where(x => x.Name == categoryDto.Name).FirstOrDefaultAsync();
+            if (categories != null) { throw new Exception("There is a category with this name!"); }
+
             var category = _mapper.Map<Category>(categoryDto);
             await _repository.AddAsync(category);
         }

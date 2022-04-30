@@ -13,7 +13,6 @@ function HR() {
   const [employee, setEmployee] = React.useState([]);
   const [employeeData, setEmployeeData] = useState();
   const history = useHistory();
-  // const [, forceUpdate] = useReducer(x => x + 1, 0);
 
   const getAllEmployee = useCallback(() => {
     employeeService.getAllEmployee().then(({ data }) => {
@@ -78,14 +77,14 @@ const deleteButton = (id) => {
 //   history.push("/hr");
 // })})}
 
-function getPosition(id){
-  fetch(`https://localhost:44330/api/Position/${id}`, {
-    method:'GET'
-  }).then((result)=>{
- result.json().then((resp)=>{
-   console.warn(resp)
-   getAllEmployee();
- })})}
+// function getPosition(id){
+//   fetch(`https://localhost:44330/api/Position/${id}`, {
+//     method:'GET'
+//   }).then((result)=>{
+//  result.json().then((resp)=>{
+//    console.warn(resp)
+//    getAllEmployee();
+//  })})}
 
   return (
     <>

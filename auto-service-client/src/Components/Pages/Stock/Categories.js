@@ -3,17 +3,18 @@ import { Table, Button } from "reactstrap";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import { useCallback } from "react";
-import { positionService } from "../../../../Api/services/Positions";
 import Swal from "sweetalert2";
+import { categoryService } from "../../../Api/services/Categories";
 
-function Position() {
 
-  const [positions, setPositions] = useState([]);
+function Category() {
+
+  const [Categorys, setCategories] = useState([]);
   const history = useHistory();
 
   React.useEffect(() => {
-    positionService.getAllPositions().then(({ data }) => {
-      setPositions(data);
+    categoryService.getAllCategories().then(({ data }) => {
+      setCategories(data);
     });
   }, []);
 
@@ -41,7 +42,7 @@ function Position() {
           'Your file has been deleted.',
           'success'
         )
-          {positionService.deletePosition(id) &&
+          {categoryService.deleteCategory(id) &&
           history.push("/")};
       } 
       else if (
@@ -60,11 +61,11 @@ function Position() {
   return (
     <>
       <div className="ForHeading">
-        <h1>Positions</h1>
+        <h1>Categories</h1>
       </div>
       <div className="AddingAndSearching">
         <div className="Adding">
-          <Button onClick={() => history.push("/createposition")} >Create position</Button>
+          <Button onClick={() => history.push("/createCategory")} >Create Category</Button>
         </div>
         <Button>Export</Button>
         <input type="text" placeholder="Search.." />
@@ -74,12 +75,12 @@ function Position() {
           <thead>
             <tr>
               <th>#</th>
-              <th>Position</th>
+              <th>Category</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-            {positions?.map((item, idx) => (
+            {Categorys?.map((item, idx) => (
               <tr key={idx}>
                 <th scope="row">{idx}</th>
                 <td>{item.Name}</td>
@@ -98,4 +99,4 @@ function Position() {
   );
 }
 
-export default Position;
+export default Category;

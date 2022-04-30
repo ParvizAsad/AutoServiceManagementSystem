@@ -1,19 +1,20 @@
-import React from "react";
-import { Table, Button } from "reactstrap";
+import React from 'react'
+import {
+  Table,
+  Button
+  } from "reactstrap";
 import { useHistory } from "react-router-dom";
-import { useState } from "react";
-import { useCallback } from "react";
-import { positionService } from "../../../../Api/services/Positions";
+import { taxService } from '../../../../Api/services/Taxes';
 import Swal from "sweetalert2";
 
-function Position() {
+function Tax() {
 
-  const [positions, setPositions] = useState([]);
+  const [taxes, setTaxes] = React.useState([]);
   const history = useHistory();
 
   React.useEffect(() => {
-    positionService.getAllPositions().then(({ data }) => {
-      setPositions(data);
+    taxService.getAllTaxes().then(({ data }) => {
+      setTaxes(data);
     });
   }, []);
 
@@ -41,7 +42,7 @@ function Position() {
           'Your file has been deleted.',
           'success'
         )
-          {positionService.deletePosition(id) &&
+          {taxService.deleteTax(id) &&
           history.push("/")};
       } 
       else if (
@@ -59,43 +60,54 @@ function Position() {
   
   return (
     <>
-      <div className="ForHeading">
-        <h1>Positions</h1>
+    <div className ='ForHeading'>
+    <h1>Tax</h1>
+    </div>
+    <div className='AddingAndSearching'>
+      <div className='Adding'>
+      <Button onClick={() => history.push("/createTax")} >Create a new Tax</Button>
       </div>
-      <div className="AddingAndSearching">
-        <div className="Adding">
-          <Button onClick={() => history.push("/createposition")} >Create position</Button>
-        </div>
-        <Button>Export</Button>
-        <input type="text" placeholder="Search.." />
-      </div>
-      <div>
-        <Table className="TableForItems">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Position</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {positions?.map((item, idx) => (
+      <input type="text" placeholder="Search.."/>
+    </div>
+    <div>
+        <Table className='TableForItems'>
+        <thead>
+          <tr>
+            <th>
+              #
+            </th>
+            <th>
+              Name
+            </th>
+            <th>
+            TaxValue
+            </th>
+            <th>
+            SocialTax
+            </th>
+            <th>
+              Actions
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+        {taxes?.map((item, idx) => (
               <tr key={idx}>
                 <th scope="row">{idx}</th>
                 <td>{item.Name}</td>
-                <td>xx</td>
-                <td>xx</td>
+                <td>{item.TaxValue}</td>
+                <td>{item.SocialTax}</td>
                 <td className="Actions">
                   <Button className="Edit">Edit</Button>
                   <Button onClick={()=>deleteButton(item.id) } className="Delete">Delete</Button>
                 </td>
               </tr>
             ))}
-          </tbody>
+        </tbody>
         </Table>
-      </div>
-    </>
-  );
+    </div>
+</>
+  )
 }
 
-export default Position;
+export default Tax

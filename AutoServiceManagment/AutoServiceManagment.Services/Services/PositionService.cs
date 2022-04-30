@@ -8,6 +8,7 @@ using AutoServiceManagment.Services.Services.Contracts;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace AutoServiceManagment.Services.Services
@@ -25,7 +26,7 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task<IList<PositionDto>> GetAllPositionsAsync()
         {
-            var positions = await GetAllAsync();
+            var positions = await DbContext.Positions.Where(x => x.IsDeleted == false).ToListAsync();
 
             return _mapper.Map<List<PositionDto>>(positions);
         }
@@ -44,18 +45,19 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task DeletePositionAsync(int? id)
         {
-            var position = await DbContext.Positions.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == true);
+            var position = await DbContext.Positions.FirstOrDefaultAsync(x => x.Id== id && x.IsDeleted != true);
 
             if (position == null) { throw new Exception("Position not found!"); }
 
             position.IsDeleted = true;
 
             await DbContext.SaveChangesAsync();
+
         }
 
         public async Task UpdatePositionAsyncId(int? id, PositionDto positionDto)
         {
-            var position = await DbContext.Positions.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == true);
+            var position = await DbContext.Positions.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted != true);
 
             if (position == null) { throw new Exception("Finance not found!"); }
 

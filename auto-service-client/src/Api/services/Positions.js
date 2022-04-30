@@ -23,7 +23,7 @@ class PositionService extends HttpClient {
   // }
 
   async deletePosition(id) {
-    return await this.delete(`Positions/${id}`);
+    return await this.delete("Positions", id);
   }
 }
 

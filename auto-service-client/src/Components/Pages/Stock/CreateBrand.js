@@ -9,9 +9,9 @@ const newBrand = {
 };
 
 function CreateBrand() {
-  const [Brand, setBrand] = useState(newBrand);
+  const [brand, setBrand] = useState(newBrand);
 
-  const [BrandData, setBrandData] = useState();
+  const [brandData, setBrandData] = useState();
   const history = useHistory();
 
   const getAllBrand = useCallback(() => {
@@ -23,17 +23,17 @@ function CreateBrand() {
   const createBrand = useCallback(
     (e) => {
       e.preventDefault();
-      brandService.postBrand(Brand).then(() => {
+      brandService.postBrand(brand).then(() => {
         getAllBrand();
-        history.push("/Brand");
+        history.push("/brand");
       });
     },
-    [Brand, history, getAllBrand]
+    [brand, history, getAllBrand]
   );
 
   const getElementValues = (e) => {
     const { name, value } = e.target;
-    setBrand({ ...Brand, [name]: value });
+    setBrand({ ...brand, [name]: value });
   };
 
   return (

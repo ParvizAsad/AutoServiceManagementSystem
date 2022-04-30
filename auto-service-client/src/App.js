@@ -30,6 +30,9 @@ import CreateDiscount from './Components/Pages/Finance/Marketing/CreateDiscount'
 import CreateProduct from './Components/Pages/Stock/CreateProduct';
 import CreateBrand from './Components/Pages/Stock/CreateBrand';
 import CreateCategory from './Components/Pages/Stock/CreateCategory';
+import Brand from './Components/Pages/Stock/Brands';
+import Category from './Components/Pages/Stock/Categories';
+import Tax from './Components/Pages/Finance/Taxes/Tax';
 
 
 
@@ -59,6 +62,9 @@ function App() {
         <Route path={"/productdetail"} exact component={ProductDetail} />
         <Route path={"/customerdetail"} exact component={CustomerDetail} />
         <Route path={"/position"} exact component={Position} />
+        <Route path={"/brand"} exact component={Brand} />
+        <Route path={"/category"} exact component={Category} />
+        <Route path={"/tax"} exact component={Tax} />
         <Route path={"/error"} exact component={Error} />
         <Redirect to={"/error"} exact />
       </Switch>

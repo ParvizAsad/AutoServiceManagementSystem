@@ -27,6 +27,9 @@ function Stock() {
 <Button onClick={() => history.push("/createproduct")}>Add Product</Button>
 <Button onClick={() => history.push("/createcategory")}>Add Category</Button>
 <Button onClick={() => history.push("/createbrand")}>Add Brand</Button>
+<Button onClick={() => history.push("/brand")}>Brands</Button>
+<Button onClick={() => history.push("/category")}>Categories</Button>
+
   </div>
   <input type="text" placeholder="Search.."/>
 </div>
