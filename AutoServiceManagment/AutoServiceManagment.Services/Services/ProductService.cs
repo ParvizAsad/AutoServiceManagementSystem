@@ -8,6 +8,7 @@ using AutoServiceManagment.Services.Services.Contracts;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace AutoServiceManagment.Services.Services
@@ -25,7 +26,7 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task<IList<ProductDto>> GetAllProductsAsync()
         {
-            var products = await GetAllAsync();
+            var products = await DbContext.Products.Where(x => x.IsDeleted == false).Include(x => x.Brand).Include(x => x.Category).Include(x => x.BasePrice).Include(x => x.SalePrice).ToListAsync();
 
             return _mapper.Map<List<ProductDto>>(products);
         }

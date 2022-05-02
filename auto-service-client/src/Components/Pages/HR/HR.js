@@ -131,7 +131,7 @@ function EmployeeDetail(id){
                 <td className="Actions">
                   <Button onClick={()=>EditEmployee(item.id)} className="Edit">Edit</Button>
                   <Button onClick={()=>deleteButton(item.id) } className="Delete">Delete</Button>
-                  <Button onClick={()=>EmployeeDetail(item.id) } className="Detail">Detail</Button>
+                  <Button onClick={()=>EmployeeDetail(item.id)} className="Detail">Detail</Button>
                 </td>
               </tr>
             ))}

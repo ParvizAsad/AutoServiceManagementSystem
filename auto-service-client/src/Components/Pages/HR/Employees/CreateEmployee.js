@@ -35,7 +35,7 @@ function CreateEmployee() {
     (e) => {
       e.preventDefault();
       employeeService.postEmployee(employee).then(() => {
-        history.push("/hr");
+        history.push("/HR");
       });
     },
     [employee, history]

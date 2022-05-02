@@ -29,6 +29,14 @@ import CreateProduct from './Components/Pages/Stock/CreateProduct';
 import CreateBrand from './Components/Pages/Stock/CreateBrand';
 import CreateCategory from './Components/Pages/Stock/CreateCategory';
 import EditEmployee from './Components/Pages/HR/Employees/EditEmployee'
+import Brand from './Components/Pages/Stock/Brands';
+import { categoryService } from './Api/services/Categories';
+import Category from './Components/Pages/Stock/Categories';
+import Tax from './Components/Pages/Finance/Taxes/Tax';
+import CreateTax from './Components/Pages/Finance/Taxes/CreateTax';
+import EditTax from './Components/Pages/Finance/Taxes/EditTax';
+import EditPosition from './Components/Pages/HR/Positions/EditPosition';
+import Createcustomer from './Components/Pages/Registration/CreateCustomer';
 
 
 function App() {
@@ -39,23 +47,24 @@ function App() {
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path={"/stock"} exact component={Stock} />
+        <Route path={"/brand"} exact component={Brand} />
+        <Route path={"/category"} exact component={Category} />
         <Route path={"/registration"} exact component={Registration} />
         <Route path={"/finance"} exact component={Finance} />
         <Route path={"/director"} exact component={Director} />
         <Route path={"/service"} exact component={Service} />
         <Route path="/HR" exact component={HR} />
-        <Route path="/EditEmployee/{id}" exact component={EditEmployee} />
-        <Route path="/EmployeeDetail/{id}" exact component={EmployeeDetail} />
-        {/* <Route path={`${EditEmployee}/:id`} exact component={EditEmployee} /> */}
         <Route path="/EditEmployee/:id" exact component={EditEmployee} />
-        <Route path="/EditEmployee" exact component={EditEmployee} />
+        <Route path="/EditTax/:id" exact component={EditTax} />
+        <Route path="/EditPosition/:id" exact component={EditPosition} />
+        <Route path="/EmployeeDetail/:id" exact component={EmployeeDetail} />
         <Route path={"/login"} exact component={Login} />
         <Route path={"/accounting"} exact component={Accounting} />
         <Route path={"/marketing"} exact component={Marketing} />
-        <Route path={"/employeedetail"} exact component={EmployeeDetail} />
         <Route path={"/createposition"} exact component={CreatePosition} />
         <Route path={"/createbrand"} exact component={CreateBrand} />
         <Route path={"/createcategory"} exact component={CreateCategory} />
+        <Route path={"/createcustomer"} exact component={Createcustomer} />
         <Route path={"/createaccounting"} exact component={CreateAccounting} />
         <Route path={"/createemployee"} exact component={CreateEmployee} />
         <Route path={"/creatediscount"} exact component={CreateDiscount} />
@@ -63,6 +72,9 @@ function App() {
         <Route path={"/productdetail"} exact component={ProductDetail} />
         <Route path={"/customerdetail"} exact component={CustomerDetail} />
         <Route path={"/position"} exact component={Position} />
+        <Route path={"/tax"} exact component={Tax} />
+        <Route path={"/createtax"} exact component={CreateTax} />
+
         <Route path={"/error"} exact component={Error} />
         <Redirect to={"/error"} exact />
       </Switch>

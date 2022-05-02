@@ -1,4 +1,3 @@
-import React from 'react'
 import {
   Card,
   CardImg,
@@ -7,8 +6,30 @@ import {
   CardTitle,
   CardText,
 } from "reactstrap";
+import { customerService } from '../../../Api/services/Customers';
+import React, { useCallback, useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 
-function CustomerDetail() {
+const customer = {
+  FullName: " ",
+  phoneNumber: " ",
+  email: " ",
+  isNotificationAllowed: " ",
+  baseSalary: " ",
+  debt: " ",
+  additional: " ",
+};
+function CustomerDetail(props) {
+
+  const [data, setData] = useState(customer);
+  const history = useHistory();
+  
+  useEffect(() => {
+    const id = props.match.params.id;
+    customerService.getCustomerById(id).then((res) => {
+      setData(res.data);
+      })
+  }, []);
 
   return (
     <>
@@ -25,7 +46,7 @@ function CustomerDetail() {
         />
         <CardBody>
           <CardTitle tag="h5">
-            Customer FullName:
+            Customer FullName: {data.FullName}
           </CardTitle>
           <CardSubtitle
             className="mb-2 text-muted"

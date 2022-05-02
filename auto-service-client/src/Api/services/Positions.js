@@ -9,7 +9,7 @@ class PositionService extends HttpClient {
   }
 
   async getPositionById(id) {
-    return await this.getProductByID("Positions", id);
+    return await this.getById("Positions", id);
   }
 
   async postPosition(position) {
@@ -18,9 +18,9 @@ class PositionService extends HttpClient {
     });
   }
 
-  // async updatePosition(id,body){
-  //   return await this.post("Positions", id, body)
-  // }
+  async updatePosition(id, body){
+    return await this.put("Positions", id, body)
+  }
 
   async deletePosition(id) {
     return await this.delete("Positions", id);

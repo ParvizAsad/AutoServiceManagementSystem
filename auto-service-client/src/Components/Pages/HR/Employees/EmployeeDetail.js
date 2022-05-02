@@ -14,15 +14,15 @@ import axios, { Axios } from "axios";
 import "./EmployeeDetail.scss";
 
 const employees = {
-  fullName: "",
-  phoneNumber: "",
-  orderNumber: "",
-  birthDate: "",
-  baseSalary: "",
-  location: "",
-  personalDetails: "",
-  educationLevel: "",
-  positionId: "",
+  fullName: " ",
+  phoneNumber: " ",
+  orderNumber: " ",
+  birthDate: " ",
+  baseSalary: " ",
+  location: " ",
+  personalDetails: " ",
+  educationLevel: " ",
+  positionId: " ",
 };
 
 function EmployeeDetail(props) {

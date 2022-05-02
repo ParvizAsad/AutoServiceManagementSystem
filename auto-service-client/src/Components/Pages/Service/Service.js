@@ -6,6 +6,7 @@ Button
 import { serviceService } from '../../../Api/services/Services';
 import "./Service.scss";
 import { useHistory } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 function Service() {
@@ -19,6 +20,47 @@ function Service() {
       
     });
   }, []);
+
+  const deleteButton = (id) => {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    })
+    
+    swalWithBootstrapButtons.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, cancel!',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        swalWithBootstrapButtons.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+          {serviceService.deleteService(id) &&
+          history.push("/")};
+      } 
+      else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire(
+          'Cancelled',
+          'Your imaginary file is safe :)',
+          'error'
+        )
+      }
+    })
+  }
+
   return (
     <>
     <div className ='ForHeading'>
@@ -60,7 +102,7 @@ function Service() {
                 <td>{item.Detail}</td>
                 <td className="Actions">
                   <Button className="Edit">Edit</Button>
-                  <Button className="Delete">Delete</Button>
+                  <Button onClick={()=>deleteButton(item.id) } className="Delete">Delete</Button>
                 </td>
               </tr>
             ))}

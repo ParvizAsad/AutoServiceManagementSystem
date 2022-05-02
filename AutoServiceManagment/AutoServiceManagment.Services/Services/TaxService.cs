@@ -9,6 +9,7 @@ using AutoTaxManagment.Service.Services.Contracts;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace AutoServiceManagment.Services.Services
@@ -26,7 +27,8 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task<IList<TaxDto>> GetAllTaxesAsync()
         {
-            var taxes = await GetAllAsync();
+
+            var taxes = await DbContext.Taxes.Where(x => x.IsDeleted == false).ToListAsync();
             return _mapper.Map<List<TaxDto>>(taxes);
         }
 
@@ -44,7 +46,7 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task DeleteTaxAsync(int? id)
         {
-            var tax = await DbContext.Taxes.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == true);
+            var tax = await DbContext.Taxes.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted != true);
 
             if (tax == null) { throw new Exception("Tax not found!"); }
 
@@ -55,12 +57,12 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task UpdateTaxAsyncId(int? id, TaxDto taxDto)
         {
-            var tax = await DbContext.Taxes.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == true);
+            var tax = await DbContext.Taxes.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted != true);
 
             if (tax == null) { throw new Exception("Tax not found!"); }
 
-            tax = _mapper.Map<Tax>(taxDto);
-
+            tax.Name = taxDto.Name;
+            tax.TaxValue = taxDto.TaxValue;
             DbContext.Taxes.Update(tax);
 
             await DbContext.SaveChangesAsync();

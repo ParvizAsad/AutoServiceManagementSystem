@@ -17,6 +17,10 @@ function Position() {
     });
   }, []);
 
+  function editPosition(id){
+    history.push("/EditPosition/"+id)
+   } 
+
   const deleteButton = (id) => {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
@@ -86,7 +90,7 @@ function Position() {
                 {/* <td>xx</td>
                 <td>xx</td> */}
                 <td className="Actions">
-                  <Button className="Edit">Edit</Button>
+                  <Button onClick={()=>editPosition(item.id)} className="Edit">Edit</Button>
                   <Button onClick={()=>deleteButton(item.id) } className="Delete">Delete</Button>
                 </td>
               </tr>

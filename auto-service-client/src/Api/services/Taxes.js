@@ -18,8 +18,8 @@ class TaxService extends HttpClient {
       return await this.post("Taxes", body)
     }
 
-    async updateTax(id,body){
-      return await this.post("Taxes", id, body)
+    async updateTax(id, body){
+      return await this.put("Taxes", id, body)
     }
     
     async deleteTax(id){

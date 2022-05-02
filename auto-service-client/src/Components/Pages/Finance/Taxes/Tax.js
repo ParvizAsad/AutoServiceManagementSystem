@@ -1,4 +1,3 @@
-import React from 'react'
 import {
   Table,
   Button
@@ -6,17 +5,31 @@ import {
 import { useHistory } from "react-router-dom";
 import { taxService } from '../../../../Api/services/Taxes';
 import Swal from "sweetalert2";
+import React, { useCallback, useState } from "react";
+
 
 function Tax() {
 
   const [taxes, setTaxes] = React.useState([]);
+  const [taxData, setTaxData] = useState();
+
   const history = useHistory();
+
+  const getAllTax = useCallback(() => {
+    taxService.getAllTaxes().then(({ data }) => {
+      setTaxData(data);
+    });
+  }, [setTaxData]);
 
   React.useEffect(() => {
     taxService.getAllTaxes().then(({ data }) => {
       setTaxes(data);
     });
   }, []);
+
+  function editTax(id){
+   history.push("/EditTax/"+id)
+  } 
 
   const deleteButton = (id) => {
     const swalWithBootstrapButtons = Swal.mixin({
@@ -42,8 +55,10 @@ function Tax() {
           'Your file has been deleted.',
           'success'
         )
-          {taxService.deleteTax(id) &&
-          history.push("/")};
+          taxService.deleteTax(id);
+          getAllTax();
+          history.push("/tax");
+          console.log("ss");
       } 
       else if (
         /* Read more about handling dismissals below */
@@ -61,11 +76,11 @@ function Tax() {
   return (
     <>
     <div className ='ForHeading'>
-    <h1>Tax</h1>
+    <h1>Taxes</h1>
     </div>
     <div className='AddingAndSearching'>
       <div className='Adding'>
-      <Button onClick={() => history.push("/createTax")} >Create a new Tax</Button>
+      <Button onClick={() => history.push("/createtax")} >Create a new Tax</Button>
       </div>
       <input type="text" placeholder="Search.."/>
     </div>
@@ -83,9 +98,6 @@ function Tax() {
             TaxValue
             </th>
             <th>
-            SocialTax
-            </th>
-            <th>
               Actions
             </th>
           </tr>
@@ -94,11 +106,10 @@ function Tax() {
         {taxes?.map((item, idx) => (
               <tr key={idx}>
                 <th scope="row">{idx}</th>
-                <td>{item.Name}</td>
-                <td>{item.TaxValue}</td>
-                <td>{item.SocialTax}</td>
+                <th>{item.name}</th>
+                <td>{item.taxValue}</td>
                 <td className="Actions">
-                  <Button className="Edit">Edit</Button>
+                  <Button onClick={()=>editTax(item.id)} className="Edit">Edit</Button>
                   <Button onClick={()=>deleteButton(item.id) } className="Delete">Delete</Button>
                 </td>
               </tr>

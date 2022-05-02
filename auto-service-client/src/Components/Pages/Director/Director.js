@@ -34,7 +34,7 @@ function Director() {
       </CardBody>
     </Card>
          </Link>
-          <Link to={"employees"}>
+          <Link to="HR">
           <Card className='moduleCard'>
                 <CardBody className='moduleCardBody'>
                   <CardTitle tag="h5"  className='moduleCardTitle'>
@@ -49,7 +49,7 @@ function Director() {
                 </CardBody>
               </Card>
           </Link>
-          <Link to="services">
+          <Link to="service">
           <Card className='moduleCard'>
                 <CardBody className='moduleCardBody'>
                   <CardTitle tag="h5"  className='moduleCardTitle'>

@@ -8,6 +8,7 @@ using AutoServiceManagment.Services.Services.Contracts;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace AutoServiceManagment.Services.Services
@@ -25,7 +26,7 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task<IList<CustomerDto>> GetAllCustomersAsync()
         {
-            var customers = await DbContext.Customers.Include(x => x.CustomerServices).ThenInclude(x => x.Service).ToListAsync();
+            var customers = await DbContext.Customers.Where(x => x.IsDeleted == false).Include(x => x.CustomerServices).ThenInclude(x => x.Service).ToListAsync();
 
             return _mapper.Map<List<CustomerDto>>(customers);
         }

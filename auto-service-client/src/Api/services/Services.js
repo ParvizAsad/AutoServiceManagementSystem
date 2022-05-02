@@ -3,7 +3,7 @@ import { HttpClient } from "../HttpClient";
 class ServiceService extends HttpClient {
     
     constructor(){
-        super("");
+        super("https://localhost:44330/api");
     }
 
     async getAllServices(){

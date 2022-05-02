@@ -20,28 +20,28 @@ const newProduct= {
 function CreateProduct() {
   const [product, setProduct] = useState(newProduct);
 
-  const [productData, setProductData] = useState();
+  // const [productData, setProductData] = useState();
 
   const [category, setCategory] = React.useState([]);
   const [brand, setBrand] = React.useState([]);
 
   const history = useHistory();
 
-  const getAllProduct = useCallback(() => {
-    productService.getAllProduct().then(({ data }) => {
-      setProductData(data);
-    });
-  }, [setProductData]);
+  // const getAllProduct = useCallback(() => {
+  //   productService.getAllProduct().then(({ data }) => {
+  //     setProductData(data);
+  //   });
+  // }, [setProductData]);
 
   const createProduct = useCallback(
     (e) => {
       e.preventDefault();
       productService.postProduct(product).then(() => {
-        getAllProduct();
+        // getAllProduct();
         history.push("/product");
       });
     },
-    [product, history, getAllProduct]
+    [product, history]
   );
 
   const getElementValues = (e) => {
@@ -51,13 +51,13 @@ function CreateProduct() {
 
   React.useEffect(() => {
     categoryService.getAllCategories().then(({ data }) => {
-      setBrand(data);
+      setCategory(data);
     });
   }, []);
 
   React.useEffect(() => {
     brandService.getAllBrands().then(({ data }) => {
-      setCategory(data);
+      setBrand(data);
     });
   }, []);
 

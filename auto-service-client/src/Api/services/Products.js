@@ -3,7 +3,7 @@ import { HttpClient } from "../HttpClient";
 class ProductService extends HttpClient {
     
     constructor(){
-        super("");
+        super("https://localhost:44330/api");
     }
 
     async getAllProducts(){

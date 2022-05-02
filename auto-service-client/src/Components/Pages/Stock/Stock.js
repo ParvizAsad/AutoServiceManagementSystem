@@ -6,6 +6,8 @@ Button
 import "./Stock.scss";
 import { useHistory } from "react-router-dom";
 import { productService } from '../../../Api/services/Products';
+import Swal from "sweetalert2";
+
 function Stock() {
 
   const [product, setProduct] = React.useState([]);
@@ -16,6 +18,46 @@ function Stock() {
       setProduct(data);
     });
   }, []);
+
+  const deleteButton = (id) => {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    })
+    
+    swalWithBootstrapButtons.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, cancel!',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        swalWithBootstrapButtons.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+          {productService.deleteProduct(id) &&
+          history.push("/")};
+      } 
+      else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire(
+          'Cancelled',
+          'Your imaginary file is safe :)',
+          'error'
+        )
+      }
+    })
+  }
 
   return (
     <>
@@ -63,8 +105,8 @@ function Stock() {
                 <td>{item.Status}</td>
                 <td className="Actions">
                   <Button className="Edit">Edit</Button>
-                  <Button className="Delete">Delete</Button>
-                  <Button className="Detail">Detail</Button>
+                  <Button onClick={()=>deleteButton(item.id) } className="Delete">Delete</Button>
+                  <Button  className="Detail">Detail</Button>
                 </td>
               </tr>
             ))}

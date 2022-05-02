@@ -73,7 +73,7 @@ function EditEmployee(props) {
   return (
     <>
       <div className="ForHeading">
-        <h1>Create a new Employee</h1>
+        <h1>Edit a new Employee</h1>
       </div>
       <div className="CreatePage">
         <Form onSubmit={updateEmployee}>

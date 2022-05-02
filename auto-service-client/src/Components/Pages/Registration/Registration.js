@@ -4,12 +4,13 @@ Table,
 Button
 } from "reactstrap";
 import Service from '../Service/Service';
-import "./Registration.scss";
+// import "./Registration.scss";
 import { useHistory } from "react-router-dom";
 import { customerService } from '../../../Api/services/Customers';
+import Swal from "sweetalert2";
 
 
-function Registration() {
+function Registration(props) {
 
   const [customer, setCustomer] = React.useState([]);
   const history = useHistory();
@@ -20,6 +21,55 @@ function Registration() {
     });
   }, []);
 
+  function EditCustomer(id){
+    console.log(id)
+   props.history.push("/EditCustomer/"+id)
+  } 
+
+  function CustomerDetail(id){
+   props.history.push("/CustomerDetail/"+id)
+  } 
+
+  const deleteButton = (id) => {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    })
+    
+    swalWithBootstrapButtons.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, cancel!',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        swalWithBootstrapButtons.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+          {customerService.deleteCustomer(id) &&
+          history.push("/")};
+      } 
+      else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire(
+          'Cancelled',
+          'Your imaginary file is safe :)',
+          'error'
+        )
+      }
+    })
+  }
+
   return (
     <>
 <div className ='ForHeading'>
@@ -27,7 +77,7 @@ function Registration() {
 </div>
 <div className='AddingAndSearching'>
   <div className='Adding'>
-<Button>Create Customer</Button>
+  <Button onClick={() => history.push("/createcustomer")} >Create Customer</Button>
   </div>
   <input type="text" placeholder="Search.."/>
 </div>
@@ -56,9 +106,9 @@ function Registration() {
                 <td>{item.fullName}</td>
                 <td>{item.Service}</td>
                 <td className="Actions">
-                  <Button className="Edit">Edit</Button>
-                  <Button className="Delete">Delete</Button>
-                  <Button className="Detail">Detail</Button>
+                  <Button onClick={()=>EditCustomer(item.id)} className="Edit">Edit</Button>
+                  <Button onClick={()=>deleteButton(item.id) } className="Delete">Delete</Button>
+                  <Button onClick={()=>CustomerDetail(item.id)} className="Detail">Detail</Button>
                 </td>
               </tr>
             ))}

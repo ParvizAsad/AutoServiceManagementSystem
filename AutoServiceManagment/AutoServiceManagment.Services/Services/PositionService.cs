@@ -61,7 +61,7 @@ namespace AutoServiceManagment.Services.Services
 
             if (position == null) { throw new Exception("Finance not found!"); }
 
-            position = _mapper.Map<Position>(positionDto);
+            position.Name = positionDto.Name;
 
             DbContext.Positions.Update(position);
 

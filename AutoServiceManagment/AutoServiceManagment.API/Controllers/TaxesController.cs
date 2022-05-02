@@ -53,7 +53,7 @@ namespace AutoServiceManagment.API.Controllers
         {
             await _service.DeleteTaxAsync(id.Value);
 
-            return NoContent();
+            return Ok();
         }
 
 

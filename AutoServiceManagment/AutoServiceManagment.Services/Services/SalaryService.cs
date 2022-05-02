@@ -8,6 +8,7 @@ using AutoServiceManagment.Services.Services.Contracts;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace AutoServiceManagment.Services.Services
@@ -24,7 +25,7 @@ namespace AutoServiceManagment.Services.Services
         }
         public async Task<IList<SalaryDto>> GetAllSalarysAsync()
         {
-            var salaries = await GetAllAsync();
+            var salaries = await DbContext.Salaries.Where(x => x.IsDeleted == false).ToListAsync();
 
             return _mapper.Map<List<SalaryDto>>(salaries);
         }

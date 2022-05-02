@@ -8,6 +8,7 @@ using AutoServiceManagment.Services.Services.Contracts;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace AutoServiceManagment.Services.Services
@@ -25,7 +26,7 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task<IList<NonWorkingTypeDto>> GetAllNonWorkingTypesAsync()
         {
-            var nonWorkingTypes = await GetAllAsync();
+            var nonWorkingTypes = await DbContext.NonWorkingTypes.Where(x => x.IsDeleted == false).ToListAsync();
 
             return _mapper.Map<List<NonWorkingTypeDto>>(nonWorkingTypes);
         }
