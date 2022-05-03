@@ -6,7 +6,7 @@ import { customerService } from "../../../Api/services/Customers";
 
 const initialCustomer = {
   FullName: " ",
-  phoneNumber: " ",
+  PhoneNumber: " ",
   Email: " ",
   Debt: " ",
 };

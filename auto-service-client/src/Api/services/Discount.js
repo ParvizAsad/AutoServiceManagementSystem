@@ -18,8 +18,8 @@ class DiscountService extends HttpClient {
       return await this.post("Discounts", body)
     }
 
-    async updateDiscount(id,body){
-      return await this.post("Discounts", id, body)
+    async putDiscount(id,body){
+      return await this.put("Discounts", id, body)
     }
     
     async deletediscount(id){

@@ -46,7 +46,7 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task DeleteDiscountAsync(int? id)
         {
-            var discount = await DbContext.Discounts.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == true);
+            var discount = await DbContext.Discounts.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted != true);
 
             if (discount == null) { throw new Exception("Discount not found!"); }
 
@@ -57,11 +57,13 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task UpdateDiscountAsyncId(int? id, DiscountDto discountDto)
         {
-            var discount = await DbContext.Discounts.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == true);
+            var discount = await DbContext.Discounts.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted != true);
 
             if (discount == null) { throw new Exception("Discount not found!"); }
 
-            discount = _mapper.Map<Discount>(discountDto);
+            discount.Name = discountDto.Name;
+            discount.Percentage = discountDto.Percentage;
+            discount.ExpireDate = discountDto.ExpireDate;
 
             DbContext.Discounts.Update(discount);
 

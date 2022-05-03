@@ -18,8 +18,8 @@ class ProductService extends HttpClient {
       return await this.post("Products", body)
     }
 
-    async updateProduct(id,body){
-      return await this.post("Products", id, body)
+    async putProduct(id,body){
+      return await this.put("Products", id, body)
     }
     
     async deleteProduct(id){

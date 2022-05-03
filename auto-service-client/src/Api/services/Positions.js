@@ -18,7 +18,7 @@ class PositionService extends HttpClient {
     });
   }
 
-  async updatePosition(id, body){
+  async putPosition(id, body){
     return await this.put("Positions", id, body)
   }
 

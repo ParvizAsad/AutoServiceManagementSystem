@@ -61,7 +61,7 @@ function EditEmployee(props) {
         history.push("/HR");
       });
     },
-    // [employee, history, getAllEmployee]
+    [employee, history]
   );
 
   function handle(e) {

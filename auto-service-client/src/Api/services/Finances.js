@@ -18,8 +18,8 @@ class FinanceService extends HttpClient {
       return await this.post("Finances", body)
     }
 
-    async updateFinance(id,body){
-      return await this.post("Finances", id, body)
+    async putFinance(id,body){
+      return await this.put("Finances", id, body)
     }
     
     async deleteFinance(id){
