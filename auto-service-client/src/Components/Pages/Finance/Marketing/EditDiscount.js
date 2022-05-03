@@ -1,57 +1,61 @@
 import { FormGroup, Form, Label, Input, Button, FormText } from "reactstrap";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { discountService } from "../../../../Api/services/Discount";
 // import "./Employees/Discounts/CreateEmployee.scss";
 
 const newDiscount= {
-  Name: " ",
-  Percentage: " ",
-  ExpireDate: " ",
+  name: " ",
+  percentage: " ",
+  expireDate: " ",
 };
 
-function CreateDiscount() {
-  const [Discount, setDiscount] = useState(newDiscount);
-
-  const [DiscountData, setDiscountData] = useState();
+function EditDiscount(props) {
+  const [discount, setDiscount] = useState(newDiscount);
+  
   const history = useHistory();
+  
+  useEffect(() => {
+    const id = props.match.params.id;
+    discountService.getDiscountById(id).then((res) => {
+      setDiscount(res.data);
+      })
+  }, []);
 
-  const getAllDiscount = useCallback(() => {
-    discountService.getAllDiscounts().then(({ data }) => {
-      setDiscountData(data);
-    });
-  }, [setDiscountData]);
-
-  const createDiscount = useCallback(
+  const editDiscount = useCallback(
     (e) => {
       e.preventDefault();
-      discountService.postDiscount(Discount).then(() => {
-        getAllDiscount();
+      const id = props.match.params.id;
+      discountService.putDiscount(id, discount).then(() => {
         history.push("/marketing");
       });
     },
-    [Discount, history, getAllDiscount]
+    [discount, history]
   );
 
-  const getElementValues = (e) => {
+
+
+  function handle(e) {
     const { name, value } = e.target;
-    setDiscount({ ...Discount, [name]: value });
-  };
+    setDiscount({ ...discount, [name]: value });
+
+  }
 
   return (
     <>
       <div className="ForHeading">
-        <h1>Create a new Discount</h1>
+        <h1>Edit the Discount</h1>
       </div>
       <div className="CreatePage">
-        <Form onSubmit={createDiscount}>
+        <Form onSubmit={editDiscount}>
           <FormGroup>
             <Label for="Name">Name</Label>
             <Input
               id="Name"
               name="Name"
               placeholder="Name"
-              onChange={getElementValues}
+              onChange={(e) => handle(e)}
+              value={discount.name}
               type="text"
             />
           </FormGroup>
@@ -61,7 +65,8 @@ function CreateDiscount() {
               id="Percentage"
               name="Percentage"
               placeholder="Percentage"
-              onChange={getElementValues}
+              onChange={(e) => handle(e)}
+              value={discount.percentage}
               type="number"
             />
           </FormGroup>
@@ -71,7 +76,8 @@ function CreateDiscount() {
               id="ExpireDate"
               name="ExpireDate"
               placeholder="ExpireDate"
-              onChange={getElementValues}
+              onChange={(e) => handle(e)}
+              value={discount.expireDate}
               type="Date"
             />
           </FormGroup>
@@ -81,5 +87,4 @@ function CreateDiscount() {
     </>
   );
 }
-
-export default CreateDiscount;
+export default EditDiscount;

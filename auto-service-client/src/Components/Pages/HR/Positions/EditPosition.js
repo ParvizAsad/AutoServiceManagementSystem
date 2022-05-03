@@ -15,12 +15,10 @@ function EditPosition(props) {
 
   const editPosition = useCallback(
     (e) => {
-      console.log("sdasd");
       e.preventDefault();
       const id = props.match.params.id;
-      positionService.updatePosition(id, position).then(() => {
+      positionService.putPosition(id, position).then(() => {
         history.push("/position");
-        console.log("sasasssssssssas");
       });
     },
     [position, history]

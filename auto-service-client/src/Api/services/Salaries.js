@@ -18,8 +18,8 @@ class SalaryService extends HttpClient {
       return await this.post("Salaries", body)
     }
 
-    async updateSalary(id,body){
-      return await this.post("Salaries", id, body)
+    async putSalary(id,body){
+      return await this.put("Salaries", id, body)
     }
     
     async deleteSalary(id){

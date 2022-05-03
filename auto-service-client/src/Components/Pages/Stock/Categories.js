@@ -9,7 +9,7 @@ import { categoryService } from "../../../Api/services/Categories";
 
 function Category() {
 
-  const [Categorys, setCategories] = useState([]);
+  const [Categories, setCategories] = useState([]);
   const history = useHistory();
 
   React.useEffect(() => {
@@ -17,6 +17,10 @@ function Category() {
       setCategories(data);
     });
   }, []);
+
+  function editCategory(id){
+    history.push("/EditCategory/"+id)
+   } 
 
   const deleteButton = (id) => {
     const swalWithBootstrapButtons = Swal.mixin({
@@ -80,14 +84,12 @@ function Category() {
             </tr>
           </thead>
           <tbody>
-            {Categorys?.map((item, idx) => (
+            {Categories?.map((item, idx) => (
               <tr key={idx}>
                 <th scope="row">{idx}</th>
-                <td>{item.Name}</td>
-                <td>xx</td>
-                <td>xx</td>
+                <td>{item.name}</td>
                 <td className="Actions">
-                  <Button className="Edit">Edit</Button>
+                  <Button onClick={()=>editCategory(item.id)} className="Edit">Edit</Button>
                   <Button onClick={()=>deleteButton(item.id) } className="Delete">Delete</Button>
                 </td>
               </tr>

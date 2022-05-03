@@ -17,6 +17,10 @@ function Brand() {
     });
   }, []);
 
+  function editBrand(id){
+    history.push("/EditBrand/"+id)
+   } 
+
   const deleteButton = (id) => {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
@@ -82,11 +86,9 @@ function Brand() {
             {brands?.map((item, idx) => (
               <tr key={idx}>
                 <th scope="row">{idx}</th>
-                <td>{item.Name}</td>
-                <td>xx</td>
-                <td>xx</td>
+                <td>{item.name}</td>
                 <td className="Actions">
-                  <Button className="Edit">Edit</Button>
+                  <Button onClick={()=>editBrand(item.id)} className="Edit">Edit</Button>
                   <Button onClick={()=>deleteButton(item.id) } className="Delete">Delete</Button>
                 </td>
               </tr>

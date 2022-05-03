@@ -18,8 +18,8 @@ class ServiceService extends HttpClient {
       return await this.post("Services", body)
     }
 
-    async updateService(id,body){
-      return await this.post("Services", id, body)
+    async putService(id,body){
+      return await this.put("Services", id, body)
     }
     
     async deleteService(id){

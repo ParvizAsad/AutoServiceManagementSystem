@@ -1,68 +1,51 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { FormGroup, Form, Label, Input, Button, FormText } from "reactstrap";
-import "./CreateCustomer.scss";
-import { CustomerService } from "../../../../Api/services/Customer";
-import { positionService } from "../../../../Api/services/Positions";
+// import "./CreateCustomer.scss";
+// import { positionService } from "../../../../Api/services/Positions";
 import { useParams } from "react-router-dom";
 import axios, { Axios } from "axios";
+import { customerService } from "../../../Api/services/Customers";
 
 const initialCustomer = {
   FullName: " ",
-  phoneNumber: " ",
+  PhoneNumber: " ",
   Email: " ",
   Debt: " ",
 };
 
 function EditCustomer(props) {
-    let { id } = useParams();
-  const url = "https://localhost:44330/api/Customers/";
-  const [Customer, setCustomer] = useState([]);
-  const [data, setData] = useState(Customers);
-  const [position, setPosition] = React.useState([]);
-  const [positionData, setPositionData] = useState();
+  const [data, setData] = useState(initialCustomer);
   const history = useHistory();
 
-  React.useEffect(() => {
-    positionService.getAllPositions().then(({ data }) => {
-      console.log(data);
-      setPosition(data);
-    });
-  }, []);
 
-  const getAllPositions = useCallback(() => {
-    positionService.getAllPositions().then(({ data }) => {
-      setPositionData(data);
-    });
-  }, [setPositionData]);
 
   useEffect(() => {
     const id = props.match.params.id;
-    axios
-      .get(url + id)
-      .then((res) => {
-        setData(res.data);
-        console.log(res.data);
+    customerService.getCustomerById(id).then((res) => {
+      setData(res.data);
       })
-    //   .catch((er) => console.error(err));
   }, []);
+
 
   const updateCustomer = useCallback(
     (e) => {
       e.preventDefault();
       const id = props.match.params.id;
-      CustomerService.putCustomer(id, data).then(() => {
+      customerService.putCustomer(id, data).then(() => {
         // getAllCustomer();
-        history.push("/HR");
+        history.push("/registration");
       });
     },
-    // [Customer, history, getAllCustomer]
+    [data, history]
   );
 
   function handle(e) {
-    const newdata = { ...data };
-    newdata[e.target.id] = e.target.value;
-    setData(newdata);
+    // const newdata = { ...data };
+    // newdata[e.target.id] = e.target.value;
+    // setData(newdata);
+    const { name, value } = e.target;
+    setData({ ...data, [name]: value });
   }
 
   return (
@@ -71,14 +54,15 @@ function EditCustomer(props) {
         <h1>Create a new customer</h1>
       </div>
       <div className="CreatePage">
-        <Form onSubmit={createCustomer}>
+        <Form onSubmit={updateCustomer}>
           <FormGroup>
             <Label for="fullName">FullName</Label>
             <Input
               id="fullName"
               name="fullName"
               placeholder="fullName"
-              onChange={getElementValues}
+              onChange={(e) => handle(e)}
+              value={data.FullName}
               type="text"
             />
           </FormGroup>
@@ -88,7 +72,8 @@ function EditCustomer(props) {
               id="phoneNumber"
               name="phoneNumber"
               placeholder="phoneNumber"
-              onChange={getElementValues}
+              onChange={(e) => handle(e)}
+              value={data.PhoneNumber}
               type="text"
             />
           </FormGroup>
@@ -98,7 +83,8 @@ function EditCustomer(props) {
               id="Email"
               name="Email"
               placeholder="Email"
-              onChange={getElementValues}
+              onChange={(e) => handle(e)}
+              value={data.Email}
               type="email"
             />
           </FormGroup>
@@ -108,7 +94,8 @@ function EditCustomer(props) {
               id="Debt"
               name="Debt"
               placeholder="Debt"
-              onChange={getElementValues}
+              onChange={(e) => handle(e)}
+              value={data.Debt}
               type="number"
             />
           </FormGroup>

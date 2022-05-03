@@ -11,29 +11,29 @@ const NewTax= {
 
 function EditTax(props) {
   const [tax, setTax] = useState(NewTax);
-
+  
   const history = useHistory();
-
-  const editTax = useCallback(
-    (e) => {
-      console.log("sdasd");
-      e.preventDefault();
-      const id = props.match.params.id;
-      taxService.updateTax(id, tax).then(() => {
-        history.push("/tax");
-        console.log("sasasssssssssas");
-      });
-    },
-    [tax, history]
-  );
-
-
+  
   useEffect(() => {
     const id = props.match.params.id;
     taxService.getTaxById(id).then((res) => {
       setTax(res.data);
       })
   }, []);
+
+  const editTax = useCallback(
+    (e) => {
+      console.log("sdasd");
+      e.preventDefault();
+      const id = props.match.params.id;
+      taxService.putTax(id, tax).then(() => {
+        history.push("/tax");
+      });
+    },
+    [tax, history]
+  );
+
+
 
   function handle(e) {
     // const newtax = { ...tax };

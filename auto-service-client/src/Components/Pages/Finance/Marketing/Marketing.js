@@ -9,7 +9,7 @@ import Swal from "sweetalert2";
 
 function Marketing() {
 
-  const [disocunt, setDiscount] = React.useState([]);
+  const [discounts, setDiscount] = React.useState([]);
   const history = useHistory();
 
   React.useEffect(() => {
@@ -17,6 +17,10 @@ function Marketing() {
       setDiscount(data);
     });
   }, []);
+
+  function editDiscount(id){
+    history.push("/EditDiscount/"+id)
+   } 
 
   const deleteButton = (id) => {
     const swalWithBootstrapButtons = Swal.mixin({
@@ -91,14 +95,14 @@ function Marketing() {
           </tr>
         </thead>
         <tbody>
-        {disocunt?.map((item, idx) => (
+        {discounts?.map((item, idx) => (
               <tr key={idx}>
                 <th scope="row">{idx}</th>
-                <td>{item.Name}</td>
-                <td>{item.Percetnage}</td>
-                <td>{item.ExpireDate}</td>
+                <td>{item.name}</td>
+                <td>{item.percentage}</td>
+                <td>{item.expireDate}</td>
                 <td className="Actions">
-                  <Button className="Edit">Edit</Button>
+                  <Button onClick={()=>editDiscount(item.id) } className="Edit">Edit</Button>
                   <Button onClick={()=>deleteButton(item.id) } className="Delete">Delete</Button>
                 </td>
               </tr>

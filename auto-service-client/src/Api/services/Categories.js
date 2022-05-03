@@ -18,8 +18,8 @@ class CategoryService extends HttpClient {
       return await this.post("Categories", body)
     }
 
-    async updateCategory(id,body){
-      return await this.post("Categories", id, body)
+    async putCategory(id,body){
+      return await this.put("Categories", id, body)
     }
     
     async deleteCategory(id){

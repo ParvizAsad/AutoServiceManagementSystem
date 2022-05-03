@@ -37,6 +37,10 @@ import CreateTax from './Components/Pages/Finance/Taxes/CreateTax';
 import EditTax from './Components/Pages/Finance/Taxes/EditTax';
 import EditPosition from './Components/Pages/HR/Positions/EditPosition';
 import Createcustomer from './Components/Pages/Registration/CreateCustomer';
+import EditCustomer from './Components/Pages/Registration/EditCustomer';
+import EditDiscount from './Components/Pages/Finance/Marketing/EditDiscount';
+import EditBrand from './Components/Pages/Stock/EditBrand';
+import EditCategory from './Components/Pages/Stock/EditCategory';
 
 
 function App() {
@@ -55,7 +59,11 @@ function App() {
         <Route path={"/service"} exact component={Service} />
         <Route path="/HR" exact component={HR} />
         <Route path="/EditEmployee/:id" exact component={EditEmployee} />
+        <Route path="/EditCustomer/:id" exact component={EditCustomer} />
         <Route path="/EditTax/:id" exact component={EditTax} />
+        <Route path="/EditBrand/:id" exact component={EditBrand} />
+        <Route path="/EditCategory/:id" exact component={EditCategory} />
+        <Route path="/EditDiscount/:id" exact component={EditDiscount} />
         <Route path="/EditPosition/:id" exact component={EditPosition} />
         <Route path="/EmployeeDetail/:id" exact component={EmployeeDetail} />
         <Route path={"/login"} exact component={Login} />
@@ -74,7 +82,6 @@ function App() {
         <Route path={"/position"} exact component={Position} />
         <Route path={"/tax"} exact component={Tax} />
         <Route path={"/createtax"} exact component={CreateTax} />
-
         <Route path={"/error"} exact component={Error} />
         <Redirect to={"/error"} exact />
       </Switch>
