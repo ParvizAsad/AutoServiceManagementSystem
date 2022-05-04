@@ -46,7 +46,7 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task DeleteServiceAsync(int? id)
         {
-            var service = await DbContext.Services.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == true);
+            var service = await DbContext.Services.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted != true);
 
             if (service == null) { throw new Exception("Service not found!"); }
 
@@ -57,10 +57,12 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task UpdateServiceAsyncId(int? id, ServiceDto serviceDto)
         {
-            var service = await DbContext.Services.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == true);
+            var service = await DbContext.Services.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted != true);
             if (service == null) { throw new Exception("Service not found!"); }
 
-            service = _mapper.Map<Service>(serviceDto);
+            service.Name = serviceDto.Name;
+            service.Detail = serviceDto.Detail;
+            service.Price = serviceDto.Price;
 
             DbContext.Services.Update(service);
 
