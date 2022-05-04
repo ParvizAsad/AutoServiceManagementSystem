@@ -7,6 +7,7 @@ import { serviceService } from '../../../Api/services/Services';
 import "./Service.scss";
 import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
+import EditService from './EditService';
 
 
 function Service() {
@@ -20,6 +21,10 @@ function Service() {
       
     });
   }, []);
+
+  function editService(id){
+    history.push("/EditService/"+id)
+   } 
 
   const deleteButton = (id) => {
     const swalWithBootstrapButtons = Swal.mixin({
@@ -68,7 +73,7 @@ function Service() {
     </div>
 <div className='AddingAndSearching'>
   <div className='Adding'>
-<Button>Add Service</Button>
+<Button onClick={() => history.push("/createservice")}>Add Service</Button>
   </div>
   <input type="text" placeholder="Search.."/>
 </div>
@@ -97,11 +102,11 @@ function Service() {
     {service?.map((item, idx) => (
               <tr key={idx}>
                 <th scope="row">{idx}</th>
-                <td>{item.Name}</td>
-                <td>{item.Price}</td>
-                <td>{item.Detail}</td>
+                <td>{item.name}</td>
+                <td>{item.price}</td>
+                <td>{item.detail}</td>
                 <td className="Actions">
-                  <Button className="Edit">Edit</Button>
+                  <Button onClick={()=>editService(item.id)} className="Edit">Edit</Button>
                   <Button onClick={()=>deleteButton(item.id) } className="Delete">Delete</Button>
                 </td>
               </tr>

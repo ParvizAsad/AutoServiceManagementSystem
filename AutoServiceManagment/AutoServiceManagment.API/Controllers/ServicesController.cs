@@ -52,7 +52,8 @@ namespace AutoServiceManagment.API.Controllers
         {
             await _service.DeleteServiceAsync(id.Value);
 
-            return NoContent();
+            return Ok();
+
         }
 
     }
