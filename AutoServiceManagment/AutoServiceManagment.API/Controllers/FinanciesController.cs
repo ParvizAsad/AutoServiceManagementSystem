@@ -54,7 +54,7 @@ namespace AutoServiceManagment.API.Controllers
         {
             await _service.DeleteFinanceAsync(id.Value);
 
-            return NoContent();
+            return Ok();
         }
 
 

@@ -41,6 +41,7 @@ import EditCustomer from './Components/Pages/Registration/EditCustomer';
 import EditDiscount from './Components/Pages/Finance/Marketing/EditDiscount';
 import EditBrand from './Components/Pages/Stock/EditBrand';
 import EditCategory from './Components/Pages/Stock/EditCategory';
+import EditAccounting from './Components/Pages/Finance/Accounting/EditAccounting';
 
 
 function App() {
@@ -64,6 +65,7 @@ function App() {
         <Route path="/EditBrand/:id" exact component={EditBrand} />
         <Route path="/EditCategory/:id" exact component={EditCategory} />
         <Route path="/EditDiscount/:id" exact component={EditDiscount} />
+        <Route path="/EditAccounting/:id" exact component={EditAccounting} />
         <Route path="/EditPosition/:id" exact component={EditPosition} />
         <Route path="/EmployeeDetail/:id" exact component={EmployeeDetail} />
         <Route path={"/login"} exact component={Login} />
