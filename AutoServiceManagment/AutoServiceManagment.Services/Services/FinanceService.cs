@@ -48,7 +48,7 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task DeleteFinanceAsync(int? id)
         {
-            var finance = await DbContext.Finances.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == true);
+            var finance = await DbContext.Finances.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted != true);
 
             if (finance == null) { throw new Exception("Finance not found!"); }
 
@@ -59,11 +59,14 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task UpdateFinanceAsyncId(int? id, FinanceDto financeDto)
         {
-            var finance = await DbContext.Finances.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == true);
+            var finance = await DbContext.Finances.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted != true);
 
             if (finance == null) { throw new Exception("Finance not found!"); }
 
-            finance = _mapper.Map<Finance>(financeDto);
+            finance.AdditionalCost = financeDto.AdditionalCost;
+            finance.CommunalCost = financeDto.CommunalCost;
+            finance.Date = financeDto.Date;
+
 
             DbContext.Finances.Update(finance);
 

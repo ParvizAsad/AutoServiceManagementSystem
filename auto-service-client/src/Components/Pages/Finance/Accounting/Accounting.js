@@ -6,6 +6,7 @@ import {
 import { financeService } from '../../../../Api/services/Finances';
 import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
+import EditAccounting from './EditAccounting';
 
 function Accounting() {
 
@@ -17,6 +18,10 @@ function Accounting() {
       setFinance(data);
     });
   }, []);
+
+  function editAccounting(id){
+    history.push("/EditAccounting/"+id)
+   } 
 
   const deleteButton = (id) => {
     const swalWithBootstrapButtons = Swal.mixin({
@@ -94,12 +99,12 @@ function Accounting() {
         {finance?.map((item, idx) => (
               <tr key={idx}>
                 <th scope="row">{idx}</th>
-                <td>{item.CommunalCost}</td>
-                <td>{item.AdditionalCost}</td>
-                <td>{item.Date}</td>
+                <td>{item.communalCost}</td>
+                <td>{item.additionalCost}</td>
+                <td>{item.date}</td>
                 <td className="Actions">
-                  <Button className="Edit">Edit</Button>
-                  <Button className="Delete">Delete</Button>
+                  <Button onClick={()=>editAccounting(item.id) }className="Edit">Edit</Button>
+                  <Button onClick={()=>deleteButton(item.id) } className="Delete">Delete</Button>
                 </td>
               </tr>
             ))}
