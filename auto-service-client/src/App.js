@@ -42,6 +42,8 @@ import EditDiscount from './Components/Pages/Finance/Marketing/EditDiscount';
 import EditBrand from './Components/Pages/Stock/EditBrand';
 import EditCategory from './Components/Pages/Stock/EditCategory';
 import EditAccounting from './Components/Pages/Finance/Accounting/EditAccounting';
+import CreateService from './Components/Pages/Service/CreateService';
+import EditService from './Components/Pages/Service/EditService';
 
 
 function App() {
@@ -65,6 +67,7 @@ function App() {
         <Route path="/EditBrand/:id" exact component={EditBrand} />
         <Route path="/EditCategory/:id" exact component={EditCategory} />
         <Route path="/EditDiscount/:id" exact component={EditDiscount} />
+        <Route path="/EditService/:id" exact component={EditService} />
         <Route path="/EditAccounting/:id" exact component={EditAccounting} />
         <Route path="/EditPosition/:id" exact component={EditPosition} />
         <Route path="/EmployeeDetail/:id" exact component={EmployeeDetail} />
@@ -77,6 +80,7 @@ function App() {
         <Route path={"/createcustomer"} exact component={Createcustomer} />
         <Route path={"/createaccounting"} exact component={CreateAccounting} />
         <Route path={"/createemployee"} exact component={CreateEmployee} />
+        <Route path={"/createservice"} exact component={CreateService} />
         <Route path={"/creatediscount"} exact component={CreateDiscount} />
         <Route path={"/createproduct"} exact component={CreateProduct} />
         <Route path={"/productdetail"} exact component={ProductDetail} />

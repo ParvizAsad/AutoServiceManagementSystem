@@ -6,7 +6,6 @@ import {
 import { financeService } from '../../../../Api/services/Finances';
 import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
-import EditAccounting from './EditAccounting';
 
 function Accounting() {
 
