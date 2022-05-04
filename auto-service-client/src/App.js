@@ -28,8 +28,8 @@ import CreateDiscount from './Components/Pages/Finance/Marketing/CreateDiscount'
 import CreateProduct from './Components/Pages/Stock/CreateProduct';
 import CreateBrand from './Components/Pages/Stock/CreateBrand';
 import CreateCategory from './Components/Pages/Stock/CreateCategory';
-import EditEmployee from './Components/Pages/HR/Employees/EditEmployee'
-
+import EditEmployee from './Components/Pages/HR/Employees/EditEmployee';
+import ExportEmployee from './Components/Pages/HR/Employees/ExportEmployee';
 
 function App() {
   return (
@@ -44,15 +44,13 @@ function App() {
         <Route path={"/director"} exact component={Director} />
         <Route path={"/service"} exact component={Service} />
         <Route path="/HR" exact component={HR} />
-        <Route path="/EditEmployee/{id}" exact component={EditEmployee} />
-        <Route path="/EmployeeDetail/{id}" exact component={EmployeeDetail} />
-        {/* <Route path={`${EditEmployee}/:id`} exact component={EditEmployee} /> */}
+        <Route path="/ExportEmployee" exact component={ExportEmployee} />
+        <Route path="/EmployeeDetail/:id" exact component={EmployeeDetail} />
+        
         <Route path="/EditEmployee/:id" exact component={EditEmployee} />
-        <Route path="/EditEmployee" exact component={EditEmployee} />
         <Route path={"/login"} exact component={Login} />
         <Route path={"/accounting"} exact component={Accounting} />
         <Route path={"/marketing"} exact component={Marketing} />
-        <Route path={"/employeedetail"} exact component={EmployeeDetail} />
         <Route path={"/createposition"} exact component={CreatePosition} />
         <Route path={"/createbrand"} exact component={CreateBrand} />
         <Route path={"/createcategory"} exact component={CreateCategory} />

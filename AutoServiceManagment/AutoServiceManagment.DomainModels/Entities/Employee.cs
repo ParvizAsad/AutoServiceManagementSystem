@@ -17,6 +17,7 @@ namespace AutoServiceManagment.DomainModels.Entities
         public string Location { get; set; }
         public string PhoneNumber { get; set; }
         public string OrderNumber { get; set; }
+        [ForeignKey(nameof(Position))]
         public int PositionId { get; set; }
         public Position Position { get; set; }
         public string PersonalDetails { get; set; }

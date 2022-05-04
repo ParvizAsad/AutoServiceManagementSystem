@@ -6,6 +6,7 @@ import { employeeService } from "../../../../Api/services/Employee";
 import { positionService } from "../../../../Api/services/Positions";
 import { useParams } from "react-router-dom";
 import axios, { Axios } from "axios";
+import moment from "moment";
 
 const employees = {
   fullName: "",
@@ -24,6 +25,7 @@ function EditEmployee(props) {
   const url = "https://localhost:44330/api/Employees/";
   const [employee, setEmployee] = useState([]);
   const [data, setData] = useState(employees);
+  const [newData, setNewData] = useState(employees);
   const [position, setPosition] = React.useState([]);
   const [positionData, setPositionData] = useState();
   const history = useHistory();
@@ -38,6 +40,7 @@ function EditEmployee(props) {
   const getAllPositions = useCallback(() => {
     positionService.getAllPositions().then(({ data }) => {
       setPositionData(data);
+      console.log("data"+ data)
     });
   }, [setPositionData]);
 
@@ -47,33 +50,38 @@ function EditEmployee(props) {
       .get(url + id)
       .then((res) => {
         setData(res.data);
-        console.log(res.data);
+      console.log("res.data"+ res.data.value)
       })
     //   .catch((er) => console.error(err));
   }, []);
+
+  function handle(e) {
+    const newdata = { ...data };
+    newdata[e.target.id] = e.target.value;
+    setNewData(newdata);
+    console.log("newdata"+ newdata)
+  }
 
   const updateEmployee = useCallback(
     (e) => {
       e.preventDefault();
       const id = props.match.params.id;
+      console.log("id"+ id)
+      console.log("id-data put"+ data)
       employeeService.putEmployee(id, data).then(() => {
         // getAllEmployee();
-        history.push("/HR");
+        history.push("/");
       });
     },
     // [employee, history, getAllEmployee]
   );
 
-  function handle(e) {
-    const newdata = { ...data };
-    newdata[e.target.id] = e.target.value;
-    setData(newdata);
-  }
+
 
   return (
     <>
       <div className="ForHeading">
-        <h1>Create a new Employee</h1>
+        <h1>Edit {data.fullName}</h1>
       </div>
       <div className="CreatePage">
         <Form onSubmit={updateEmployee}>
@@ -105,9 +113,13 @@ function EditEmployee(props) {
               id="birthDate"
               name="birthDate"
               placeholder="birthDate"
+              // bsDatepicker
+              // //[bsConfig]="{ dateInputFormat: 'MM/DD/YYYY' }">
               onChange={(e) => handle(e)}
-              value={data.birthDate}
-              type="date"
+              //format={ "yyyy-MM-dd"}
+              value={data.birthDate }
+             // value={moment(data.birthDate).format('yyyy-mm-dd')}
+              type="text"
             />
           </FormGroup>
           <FormGroup>
@@ -136,19 +148,6 @@ function EditEmployee(props) {
                 </option>
               ))}
             </select>
-
-            {/* <SelectInput
-        name="positionId"
-        label="positionId"
-        value={data.positionId || ""}
-        defaultOption="Seçiniz"
-        options={position?.map(item => ({
-          value: item.id,
-          text: item.name
-        }))}
-        onChange={(e) => handle(e)}
-        // error={errors.categoryId}
-      /> */}
           </FormGroup>
           <FormGroup>
             <Label for="orderNumber">Order Number</Label>
