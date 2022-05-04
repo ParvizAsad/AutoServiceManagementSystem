@@ -7,6 +7,7 @@ import { employeeService } from "../../../Api/services/Employee";
 import Swal from "sweetalert2";
 import { useState } from "react";
 import { useCallback } from "react";
+import { Link } from "react-router-dom";
 
 function HR(props) {
 
@@ -52,7 +53,10 @@ const deleteButton = (id) => {
         'success'
       )
         {employeeService.deleteEmployee(id) &&
-        history.push("/")};
+        // history.push("/hr") 
+        <Link to="/HR"></Link>
+      
+      };
     } 
     else if (
       /* Read more about handling dismissals below */
@@ -107,7 +111,7 @@ function EmployeeDetail(id){
           <Button onClick={() => history.push("/position")} >Positions</Button>
           <Button onClick={() => history.push("/createposition")} >Create Position</Button>
         </div>
-        <Button>Export</Button>
+        <Button onClick={() => history.push("/ExportEmployee")} >Export</Button>
         <input type="text" placeholder="Search.." />
       </div>
       <div>

@@ -24,9 +24,10 @@ namespace AutoServiceManagment.DomainModels.DTOs
         public string Location { get; set; }
         public string PersonalDetails { get; set; }
         public string EducationLevel { get; set; }
+
         [ForeignKey(nameof(Position))]
         public int PositionId { get; set; }
-       // public Position Position { get; set; }
+        public Position Position { get; set; }
 
     }
 }

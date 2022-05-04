@@ -15,14 +15,20 @@ async getEmployeeByID(id){
     return await this.getProductByID("Employees", id);
 };
 
+// async postEmployee(employee){
+//   return await this.post("Employees", employee).then(response => { 
+//     console.log(response);
+//   })
+// };
+
 async postEmployee(employee){
   return await this.post("Employees", employee).then(response => { 
     console.log(response);
   })
 };
 
-async putEmployee(id,employee){
-  return await this.put(`Employees/${id}`, employee)
+async putEmployee(id, data){
+  return await this.put(`Employees/${id}`, data)
   // .then(response => { 
   //   console.log(response);
   // })
