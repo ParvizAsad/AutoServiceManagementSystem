@@ -2,7 +2,7 @@
 
 namespace AutoServiceManagment.Repository.Migrations
 {
-    public partial class SalaryUpdate : Migration
+    public partial class init4 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

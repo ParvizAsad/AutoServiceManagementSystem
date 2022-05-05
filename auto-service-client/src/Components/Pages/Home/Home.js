@@ -43,7 +43,7 @@ import {
       </CardBody>
     </Card>
          </Link>
-          <Link to={"admin"}>
+          <Link to={"/"}>
           <Card className='moduleCard'>
                 <CardBody className='moduleCardBody'>
                   <CardTitle tag="h5"  className='moduleCardTitle'>

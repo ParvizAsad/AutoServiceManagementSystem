@@ -4,21 +4,21 @@ import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import { useCallback } from "react";
 import Swal from "sweetalert2";
-import { brandService } from "../../../Api/services/Brands";
+import { nonWorkingTypeService } from "../../../../Api/services/NonWorkingTypes";
 
-function Brand() {
+function NonWorkingType() {
 
-  const [brands, setBrands] = useState([]);
+  const [nonWorkingTypes, setNonWorkingTypes] = useState([]);
   const history = useHistory();
 
   React.useEffect(() => {
-    brandService.getAllBrands().then(({ data }) => {
-      setBrands(data);
+    nonWorkingTypeService.getAllNonWorkingTypes().then(({ data }) => {
+      setNonWorkingTypes(data);
     });
   }, []);
 
-  function editBrand(id){
-    history.push("/EditBrand/"+id)
+  function editNonWorkingType(id){
+    history.push("/EditNonWorkingType/"+id)
    } 
 
   const deleteButton = (id) => {
@@ -45,7 +45,7 @@ function Brand() {
           'Your file has been deleted.',
           'success'
         )
-          {brandService.deleteBrand(id) &&
+          {nonWorkingTypeService.deleteNonWorkingType(id) &&
           history.push("/")};
       } 
       else if (
@@ -64,11 +64,11 @@ function Brand() {
   return (
     <>
       <div className="ForHeading">
-        <h1>Brands</h1>
+        <h1>NonWorkingTypes</h1>
       </div>
       <div className="AddingAndSearching">
         <div className="Adding">
-          <Button onClick={() => history.push("/createbrand")} >Create brand</Button>
+          <Button onClick={() => history.push("/createNonWorkingType")} >Create NonWorkingType</Button>
         </div>
         <Button>Export</Button>
         <input type="text" placeholder="Search.." />
@@ -78,17 +78,19 @@ function Brand() {
           <thead>
             <tr>
               <th>#</th>
-              <th>Brand</th>
+              <th>NonWorkingType</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-            {brands?.map((item, idx) => (
+            {nonWorkingTypes?.map((item, idx) => (
               <tr key={idx}>
                 <th scope="row">{idx}</th>
                 <td>{item.name}</td>
+                {/* <td>xx</td>
+                <td>xx</td> */}
                 <td className="Actions">
-                  <Button onClick={()=>editBrand(item.id)} className="Edit">Edit</Button>
+                  <Button onClick={()=>editNonWorkingType(item.id)} className="Edit">Edit</Button>
                   <Button onClick={()=>deleteButton(item.id) } className="Delete">Delete</Button>
                 </td>
               </tr>
@@ -100,4 +102,4 @@ function Brand() {
   );
 }
 
-export default Brand;
+export default NonWorkingType;

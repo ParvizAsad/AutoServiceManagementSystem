@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AutoServiceManagment.Repository.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220422083054_UpdateEntityModel")]
-    partial class UpdateEntityModel
+    [Migration("20220505075725_init5")]
+    partial class init5
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -326,8 +326,8 @@ namespace AutoServiceManagment.Repository.Migrations
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("Date")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -587,17 +587,14 @@ namespace AutoServiceManagment.Repository.Migrations
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("IncomeTax")
-                        .HasColumnType("decimal(18,2)");
-
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<decimal>("SocialTax")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("TaxId")
-                        .HasColumnType("int");
+                    b.Property<decimal>("TaxValue")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
@@ -607,15 +604,13 @@ namespace AutoServiceManagment.Repository.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("TaxId");
-
                     b.ToTable("Taxes");
                 });
 
             modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.CashBox", b =>
                 {
                     b.HasOne("AutoServiceManagment.DomainModels.Entities.Customer", "Customer")
-                        .WithMany("CashBoxs")
+                        .WithMany("CashBoxes")
                         .HasForeignKey("CustomerID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -680,7 +675,7 @@ namespace AutoServiceManagment.Repository.Migrations
             modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.Employee", b =>
                 {
                     b.HasOne("AutoServiceManagment.DomainModels.Entities.Position", "Position")
-                        .WithMany()
+                        .WithMany("Employees")
                         .HasForeignKey("PositionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -735,7 +730,7 @@ namespace AutoServiceManagment.Repository.Migrations
                         .IsRequired();
 
                     b.HasOne("AutoServiceManagment.DomainModels.Entities.Tax", "Tax")
-                        .WithMany()
+                        .WithMany("Salaries")
                         .HasForeignKey("TaxID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -743,13 +738,6 @@ namespace AutoServiceManagment.Repository.Migrations
                     b.Navigation("Employee");
 
                     b.Navigation("Tax");
-                });
-
-            modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.Tax", b =>
-                {
-                    b.HasOne("AutoServiceManagment.DomainModels.Entities.Tax", null)
-                        .WithMany("Taxs")
-                        .HasForeignKey("TaxId");
                 });
 
             modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.Brand", b =>
@@ -764,7 +752,7 @@ namespace AutoServiceManagment.Repository.Migrations
 
             modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.Customer", b =>
                 {
-                    b.Navigation("CashBoxs");
+                    b.Navigation("CashBoxes");
 
                     b.Navigation("CustomerProducts");
 
@@ -783,6 +771,11 @@ namespace AutoServiceManagment.Repository.Migrations
                     b.Navigation("NonWorkingDetails");
                 });
 
+            modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.Position", b =>
+                {
+                    b.Navigation("Employees");
+                });
+
             modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.Product", b =>
                 {
                     b.Navigation("CashBoxes");
@@ -799,7 +792,7 @@ namespace AutoServiceManagment.Repository.Migrations
 
             modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.Tax", b =>
                 {
-                    b.Navigation("Taxs");
+                    b.Navigation("Salaries");
                 });
 #pragma warning restore 612, 618
         }

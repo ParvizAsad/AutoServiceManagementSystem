@@ -7,112 +7,76 @@ import "./Stock.scss";
 import { useHistory } from "react-router-dom";
 import { productService } from '../../../Api/services/Products';
 import Swal from "sweetalert2";
+import {
+  CardGroup,
+  Card,
+  CardImg,
+  CardBody,
+  CardSubtitle,
+  CardTitle,
+  CardText,
+  NavLink,
+  NavItem,
+  UncontrolledDropdown,
+  DropdownItem,
+  DropdownToggle,
+  DropdownMenu,
+  NavbarText
+} from "reactstrap";
+import { Link } from "react-router-dom";
+
 
 function Stock() {
 
-  const [product, setProduct] = React.useState([]);
-  const history = useHistory();
-
-  React.useEffect(() => {
-    productService.getAllProducts().then(({ data }) => {
-      setProduct(data);
-    });
-  }, []);
-
-  const deleteButton = (id) => {
-    const swalWithBootstrapButtons = Swal.mixin({
-      customClass: {
-        confirmButton: 'btn btn-success',
-        cancelButton: 'btn btn-danger'
-      },
-      buttonsStyling: false
-    })
-    
-    swalWithBootstrapButtons.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Yes, delete it!',
-      cancelButtonText: 'No, cancel!',
-      reverseButtons: true
-    }).then((result) => {
-      if (result.isConfirmed) {
-        swalWithBootstrapButtons.fire(
-          'Deleted!',
-          'Your file has been deleted.',
-          'success'
-        )
-          {productService.deleteProduct(id) &&
-          history.push("/")};
-      } 
-      else if (
-        /* Read more about handling dismissals below */
-        result.dismiss === Swal.DismissReason.cancel
-      ) {
-        swalWithBootstrapButtons.fire(
-          'Cancelled',
-          'Your imaginary file is safe :)',
-          'error'
-        )
-      }
-    })
-  }
-
   return (
-    <>
-    <div className ='ForHeading'>
-    <h1>Stock</h1>
-    </div>
-<div className='AddingAndSearching'>
-  <div className='Adding'>
-<Button onClick={() => history.push("/createproduct")}>Add Product</Button>
-<Button onClick={() => history.push("/createcategory")}>Add Category</Button>
-<Button onClick={() => history.push("/createbrand")}>Add Brand</Button>
-<Button onClick={() => history.push("/brand")}>Brands</Button>
-<Button onClick={() => history.push("/category")}>Categories</Button>
-
-  </div>
-  <input type="text" placeholder="Search.."/>
+<>
+<div className ='ForHeading'>
+    <h1>Finance</h1>
 </div>
-<div>
-    <Table className='TableForItems'>
-    <thead>
-      <tr>
-        <th>
-          #
-        </th>
-        <th>
-          Product
-        </th>
-        <th>
-          Amount
-        </th>
-        <th>
-          Status
-        </th>
-        <th>
-          Actions
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-    {product?.map((item, idx) => (
-              <tr key={idx}>
-                <th scope="row">{idx}</th>
-                <td>{item.Name}</td>
-                <td>{item.Amount}</td>
-                <td>{item.Status}</td>
-                <td className="Actions">
-                  <Button className="Edit">Edit</Button>
-                  <Button onClick={()=>deleteButton(item.id) } className="Delete">Delete</Button>
-                  <Button  className="Detail">Detail</Button>
-                </td>
-              </tr>
-            ))}
-    </tbody>
-    </Table>
-</div>
+    <CardGroup id='moduleCards'>
+         <Link to="product">
+         <Card className='moduleCard'>
+      <CardBody className='moduleCardBody'>
+        <CardTitle tag="h5" className='moduleCardTitle'>
+          Products
+        </CardTitle>
+        <div className="Icon">
+        </div>
+        <Button>
+          Enter
+        </Button>
+      </CardBody>
+    </Card>
+         </Link>
+          <Link to="brand">
+          <Card className='moduleCard'>
+                <CardBody className='moduleCardBody'>
+                  <CardTitle tag="h5"  className='moduleCardTitle'>
+                    Brands
+                  </CardTitle>
+                  <div className="Icon">
+        </div>
+                  <Button>
+                    Enter
+                  </Button>
+                </CardBody>
+              </Card>
+          </Link>
+          <Link to="category">
+          <Card className='moduleCard'>
+                <CardBody className='moduleCardBody'>
+                  <CardTitle tag="h5"  className='moduleCardTitle'>
+                    Categories
+                  </CardTitle>
+                  <div className="Icon">
+        </div>
+                  <Button>
+                    Enter
+                  </Button>
+                </CardBody>
+              </Card>
+          </Link>
+  </CardGroup>
 </>
 
   )

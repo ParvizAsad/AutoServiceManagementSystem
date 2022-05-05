@@ -1,7 +1,7 @@
 import { FormGroup, Form, Label, Input, Button, FormText } from "reactstrap";
 import React, { useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { brandService } from "../../../Api/services/Brands";
+import { brandService } from "../../../../Api/services/Brands";
 // import "./Employees/Brands/CreateEmployee.scss";
 
 const newBrand = {

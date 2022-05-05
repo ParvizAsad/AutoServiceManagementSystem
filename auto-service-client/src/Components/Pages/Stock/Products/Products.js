@@ -1,26 +1,22 @@
-import React from "react";
-import { Table, Button } from "reactstrap";
+import React from 'react'
+import {
+Table,
+Button
+} from "reactstrap";
+// import "./Product.scss";
 import { useHistory } from "react-router-dom";
-import { useState } from "react";
-import { useCallback } from "react";
 import Swal from "sweetalert2";
-import { categoryService } from "../../../Api/services/Categories";
+import { productService } from '../../../../Api/services/Products';
 
+function Product() {
 
-function Category() {
-
-  const [Categories, setCategories] = useState([]);
+  const [product, setProduct] = React.useState([]);
   const history = useHistory();
-
   React.useEffect(() => {
-    categoryService.getAllCategories().then(({ data }) => {
-      setCategories(data);
+    productService.getAllProducts().then(({ data }) => {
+      setProduct(data);
     });
   }, []);
-
-  function editCategory(id){
-    history.push("/EditCategory/"+id)
-   } 
 
   const deleteButton = (id) => {
     const swalWithBootstrapButtons = Swal.mixin({
@@ -46,7 +42,7 @@ function Category() {
           'Your file has been deleted.',
           'success'
         )
-          {categoryService.deleteCategory(id) &&
+          {productService.deleteProduct(id) &&
           history.push("/")};
       } 
       else if (
@@ -61,44 +57,59 @@ function Category() {
       }
     })
   }
-  
+
   return (
     <>
-      <div className="ForHeading">
-        <h1>Categories</h1>
-      </div>
-      <div className="AddingAndSearching">
-        <div className="Adding">
-          <Button onClick={() => history.push("/createCategory")} >Create Category</Button>
-        </div>
-        <Button>Export</Button>
-        <input type="text" placeholder="Search.." />
-      </div>
-      <div>
-        <Table className="TableForItems">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Category</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {Categories?.map((item, idx) => (
+    <div className ='ForHeading'>
+    <h1>Products</h1>
+    </div>
+<div className='AddingAndSearching'>
+  <div className='Adding'>
+<Button onClick={() => history.push("/createproduct")}>Add Product</Button>
+  </div>
+  <input type="text" placeholder="Search.."/>
+</div>
+<div>
+    <Table className='TableForItems'>
+    <thead>
+      <tr>
+        <th>
+          #
+        </th>
+        <th>
+          Product
+        </th>
+        <th>
+          Amount
+        </th>
+        <th>
+          Status
+        </th>
+        <th>
+          Actions
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+    {product?.map((item, idx) => (
               <tr key={idx}>
                 <th scope="row">{idx}</th>
-                <td>{item.name}</td>
+                <td>{item.Name}</td>
+                <td>{item.Amount}</td>
+                <td>{item.Status}</td>
                 <td className="Actions">
-                  <Button onClick={()=>editCategory(item.id)} className="Edit">Edit</Button>
+                  <Button className="Edit">Edit</Button>
                   <Button onClick={()=>deleteButton(item.id) } className="Delete">Delete</Button>
+                  <Button  className="Detail">Detail</Button>
                 </td>
               </tr>
             ))}
-          </tbody>
-        </Table>
-      </div>
-    </>
-  );
+    </tbody>
+    </Table>
+</div>
+</>
+
+  )
 }
 
-export default Category;
+export default Product

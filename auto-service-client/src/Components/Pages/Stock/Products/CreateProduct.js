@@ -1,9 +1,9 @@
 import { FormGroup, Form, Label, Input, Button } from "reactstrap";
 import React, { useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { categoryService } from "../../../Api/services/Categories";
-import { brandService } from "../../../Api/services/Brands";
-import { productService } from "../../../Api/services/Products";
+import { categoryService } from "../../../../Api/services/Categories";
+import { brandService } from "../../../../Api/services/Brands";
+import { productService } from "../../../../Api/services/Products";
 
 // import "./Employees/products/CreateEmployee.scss";
 

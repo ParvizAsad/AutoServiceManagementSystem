@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AutoServiceManagment.Repository.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220422134449_SalaryUpdate")]
-    partial class SalaryUpdate
+    [Migration("20220505070624_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -610,7 +610,7 @@ namespace AutoServiceManagment.Repository.Migrations
             modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.CashBox", b =>
                 {
                     b.HasOne("AutoServiceManagment.DomainModels.Entities.Customer", "Customer")
-                        .WithMany("CashBoxs")
+                        .WithMany("CashBoxes")
                         .HasForeignKey("CustomerID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -675,7 +675,7 @@ namespace AutoServiceManagment.Repository.Migrations
             modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.Employee", b =>
                 {
                     b.HasOne("AutoServiceManagment.DomainModels.Entities.Position", "Position")
-                        .WithMany()
+                        .WithMany("Employees")
                         .HasForeignKey("PositionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -752,7 +752,7 @@ namespace AutoServiceManagment.Repository.Migrations
 
             modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.Customer", b =>
                 {
-                    b.Navigation("CashBoxs");
+                    b.Navigation("CashBoxes");
 
                     b.Navigation("CustomerProducts");
 
@@ -769,6 +769,11 @@ namespace AutoServiceManagment.Repository.Migrations
             modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.NonWorkingType", b =>
                 {
                     b.Navigation("NonWorkingDetails");
+                });
+
+            modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.Position", b =>
+                {
+                    b.Navigation("Employees");
                 });
 
             modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.Product", b =>

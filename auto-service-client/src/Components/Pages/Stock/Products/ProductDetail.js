@@ -9,7 +9,7 @@ import {
   CardText,
   Button
 } from "reactstrap";
-import "./ProductDetail.scss";
+// import "./ProductDetail.scss";
 
 function ProductDetail() {
 

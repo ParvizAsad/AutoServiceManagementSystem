@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AutoServiceManagment.Repository.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220422111623_UpdateSalary")]
-    partial class UpdateSalary
+    [Migration("20220505074730_init4")]
+    partial class init4
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -326,8 +326,8 @@ namespace AutoServiceManagment.Repository.Migrations
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("Date")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -610,7 +610,7 @@ namespace AutoServiceManagment.Repository.Migrations
             modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.CashBox", b =>
                 {
                     b.HasOne("AutoServiceManagment.DomainModels.Entities.Customer", "Customer")
-                        .WithMany("CashBoxs")
+                        .WithMany("CashBoxes")
                         .HasForeignKey("CustomerID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -675,7 +675,7 @@ namespace AutoServiceManagment.Repository.Migrations
             modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.Employee", b =>
                 {
                     b.HasOne("AutoServiceManagment.DomainModels.Entities.Position", "Position")
-                        .WithMany()
+                        .WithMany("Employees")
                         .HasForeignKey("PositionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -730,7 +730,7 @@ namespace AutoServiceManagment.Repository.Migrations
                         .IsRequired();
 
                     b.HasOne("AutoServiceManagment.DomainModels.Entities.Tax", "Tax")
-                        .WithMany()
+                        .WithMany("Salaries")
                         .HasForeignKey("TaxID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -752,7 +752,7 @@ namespace AutoServiceManagment.Repository.Migrations
 
             modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.Customer", b =>
                 {
-                    b.Navigation("CashBoxs");
+                    b.Navigation("CashBoxes");
 
                     b.Navigation("CustomerProducts");
 
@@ -771,6 +771,11 @@ namespace AutoServiceManagment.Repository.Migrations
                     b.Navigation("NonWorkingDetails");
                 });
 
+            modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.Position", b =>
+                {
+                    b.Navigation("Employees");
+                });
+
             modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.Product", b =>
                 {
                     b.Navigation("CashBoxes");
@@ -783,6 +788,11 @@ namespace AutoServiceManagment.Repository.Migrations
                     b.Navigation("CashBoxes");
 
                     b.Navigation("CustomerServices");
+                });
+
+            modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.Tax", b =>
+                {
+                    b.Navigation("Salaries");
                 });
 #pragma warning restore 612, 618
         }

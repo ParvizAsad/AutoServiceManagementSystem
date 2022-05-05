@@ -45,7 +45,7 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task DeleteNonWorkingTypeAsync(int? id)
         {
-            var nonWorkingType = await DbContext.NonWorkingTypes.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == true);
+            var nonWorkingType = await DbContext.NonWorkingTypes.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted != true);
 
             if (nonWorkingType == null) { throw new Exception("NonWorkingType not found!"); }
 
@@ -56,7 +56,7 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task UpdateNonWorkingTypeAsyncId(int? id, NonWorkingTypeDto nonWorkingTypeDto)
         {
-            var nonWorkingType = await DbContext.NonWorkingTypes.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == true);
+            var nonWorkingType = await DbContext.NonWorkingTypes.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted != true);
 
             if (nonWorkingType == null) { throw new Exception("NonWorkingType not found!"); }
 

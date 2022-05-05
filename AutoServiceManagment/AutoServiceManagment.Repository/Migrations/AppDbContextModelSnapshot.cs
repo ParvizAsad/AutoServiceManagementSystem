@@ -324,8 +324,8 @@ namespace AutoServiceManagment.Repository.Migrations
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("Date")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -590,9 +590,6 @@ namespace AutoServiceManagment.Repository.Migrations
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("SocialTax")
-                        .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("TaxValue")
                         .HasColumnType("decimal(18,2)");

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AutoServiceManagment.Repository.Migrations
 {
-    public partial class UpdateEntityModel : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -167,10 +167,9 @@ namespace AutoServiceManagment.Repository.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    IncomeTax = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    SocialTax = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TaxValue = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    TaxId = table.Column<int>(type: "int", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -179,12 +178,6 @@ namespace AutoServiceManagment.Repository.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Taxes", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Taxes_Taxes_TaxId",
-                        column: x => x.TaxId,
-                        principalTable: "Taxes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -481,11 +474,6 @@ namespace AutoServiceManagment.Repository.Migrations
                 name: "IX_Salaries_TaxID",
                 table: "Salaries",
                 column: "TaxID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Taxes_TaxId",
-                table: "Taxes",
-                column: "TaxId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
