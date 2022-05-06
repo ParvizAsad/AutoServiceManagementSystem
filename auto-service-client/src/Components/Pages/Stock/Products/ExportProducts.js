@@ -8,7 +8,7 @@ import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
 import { productService } from '../../../../Api/services/Products';
 
-function Product() {
+function ExportProduct() {
 
   const [product, setProduct] = React.useState([]);
   const history = useHistory();
@@ -65,7 +65,7 @@ function Product() {
     </div>
 <div className='AddingAndSearching'>
   <div className='Adding'>
-  <Button onClick={() => history.push("/ExportEmployee")} >Export</Button>
+<Button onClick={() => history.push("/createproduct")}>Add Product</Button>
   </div>
   <input type="text" placeholder="Search.."/>
 </div>
@@ -85,9 +85,6 @@ function Product() {
         <th>
           Status
         </th>
-        <th>
-          Actions
-        </th>
       </tr>
     </thead>
     <tbody>
@@ -97,11 +94,6 @@ function Product() {
                 <td>{item.Name}</td>
                 <td>{item.Amount}</td>
                 <td>{item.Status}</td>
-                <td className="Actions">
-                  <Button className="Edit">Edit</Button>
-                  <Button onClick={()=>deleteButton(item.id) } className="Delete">Delete</Button>
-                  <Button  className="Detail">Detail</Button>
-                </td>
               </tr>
             ))}
     </tbody>
@@ -112,4 +104,4 @@ function Product() {
   )
 }
 
-export default Product
+export default ExportProduct

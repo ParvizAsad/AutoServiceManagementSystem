@@ -38,6 +38,11 @@ import CreateCategory from './Components/Pages/Stock/Categories/CreateCategory';
 import CreateBrand from './Components/Pages/Stock/Brands/CreateBrand';
 import ProductDetail from './Components/Pages/Stock/Products/ProductDetail';
 import Product from './Components/Pages/Stock/Products/Products';
+import ExportProduct from './Components/Pages/Stock/Products/ExportProducts';
+import Admin from './Components/Pages/Admin/Admin';
+import Role from './Components/Pages/Admin/Roles';
+import User from './Components/Pages/Admin/Users';
+import CreateRole from './Components/Pages/Admin/CreateRole';
 
 function App() {
   return (
@@ -55,11 +60,16 @@ function App() {
         <Route path={"/category"} exact component={Category} />
         <Route path={"/tax"} exact component={Tax} />
         <Route path={"/product"} exact component={Product} />
+        <Route path={"/admin"} exact component={Admin} />
+        <Route path={"/role"} exact component={Role} />
+        <Route path={"/user"} exact component={User} />
 
         <Route path="/HR" exact component={HR} />
         <Route path="/employee" exact component={Employee} />
 
         <Route path="/ExportEmployee" exact component={ExportEmployee} />
+        <Route path="/ExportProduct" exact component={ExportProduct} />
+
         <Route path="/EmployeeDetail/:id" exact component={EmployeeDetail} />
         
         <Route path="/EditEmployee/:id" exact component={EditEmployee} />
@@ -67,6 +77,8 @@ function App() {
         <Route path={"/accounting"} exact component={Accounting} />
         <Route path={"/marketing"} exact component={Marketing} />
         <Route path={"/createposition"} exact component={CreatePosition} />
+        <Route path={"/createrole"} exact component={CreateRole} />
+
         <Route path={"/createbrand"} exact component={CreateBrand} />
         <Route path={"/createcategory"} exact component={CreateCategory} />
         <Route path={"/createaccounting"} exact component={CreateAccounting} />

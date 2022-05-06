@@ -4,7 +4,7 @@ namespace AutoServiceManagment.Base
 {
     public class TimestampableObject : PersistentObject
     {
-        public string CreatedBy { get; set; }=String.Empty;
+        public string CreatedBy { get; set; }=string.Empty;
 
         public DateTime CreatedAt { get; set; }=DateTime.Now;
 

@@ -52,8 +52,8 @@ namespace AutoServiceManagment.API.Controllers
         public async Task<IActionResult> Delete([FromRoute] int? id)
         {
             await _service.DeleteNonWorkingDetailAsync(id.Value);
-            
-            return NoContent();
+
+            return Ok();
         }
     }
 }

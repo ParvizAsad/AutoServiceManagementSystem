@@ -53,7 +53,7 @@ namespace AutoServiceManagment.API.Controllers
         {
             await _service.DeleteCustomerAsync(id.Value);
 
-            return NoContent();
+            return Ok();
         }
     }
 }

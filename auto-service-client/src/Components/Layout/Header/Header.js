@@ -27,9 +27,10 @@ function Header() {
       <img src={logo} alt='Logo'/>
   <h1>Car-Tool-Network Auto Service</h1>
   <div>
-    <h4>
-      Your Profile
-    </h4>
+    <h4>Your Profile</h4>
+    <h4>@User.Identity.Name-Logout</h4>
+    <h4>Login</h4>
+
     <div>
       <AiOutlineUserAdd/>
     </div>
