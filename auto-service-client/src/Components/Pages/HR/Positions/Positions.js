@@ -1,21 +1,28 @@
 import React from "react";
-import { Table, Button } from "reactstrap";
+import { Table, Button, Spinner } from "reactstrap";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import { useCallback } from "react";
 import { positionService } from "../../../../Api/services/Positions";
 import Swal from "sweetalert2";
+import { INITIAL_ASYNC_VALUES } from "../../../../Consts/const";
 
 function Position() {
 
-  const [positions, setPositions] = useState([]);
+  const [positions, setPositions] = useState(INITIAL_ASYNC_VALUES);
   const history = useHistory();
 
   React.useEffect(() => {
+    setPositions(oldvalues=>({...oldvalues, loading:true}))
     positionService.getAllPositions().then(({ data }) => {
-      setPositions(data);
+      setPositions(oldvalues=>({...oldvalues, loading:false, data}))
+    }).catch((error)=>{
+      setPositions({data:undefined, loading:false, error})
     });
   }, []);
+
+
+
 
   function editPosition(id){
     history.push("/EditPosition/"+id)
@@ -83,6 +90,16 @@ function Position() {
             </tr>
           </thead>
           <tbody>
+
+          {positions.loading&&(
+               <div className="d-flex justify-content-center"><Spinner color="primary"/></div>
+            )}
+            {
+              positions.error&&(
+                  <div className="text-danger">Error occured...</div>
+              )  
+            }
+            
             {positions?.map((item, idx) => (
               <tr key={idx}>
                 <th scope="row">{idx}</th>
