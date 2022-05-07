@@ -180,3 +180,4 @@ C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoS
 C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\bin\Debug\net5.0\Serilog.Sinks.Console.dll
 C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\bin\Debug\net5.0\Serilog.Sinks.Debug.dll
 C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\bin\Debug\net5.0\Serilog.Sinks.File.dll
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\bin\Debug\net5.0\Newtonsoft.Json.dll

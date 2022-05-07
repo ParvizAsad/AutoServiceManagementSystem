@@ -28,11 +28,10 @@ import { GiMoneyStack } from 'react-icons/gi';
 import { RiAdvertisementLine } from 'react-icons/ri';
 
 function HR(props) {
-
   return (
 <>
 <div className ='ForHeading'>
-    <h1>Finance</h1>
+    <h1>HR module</h1>
 </div>
     <CardGroup id='moduleCards'>
          <Link to="employee">
