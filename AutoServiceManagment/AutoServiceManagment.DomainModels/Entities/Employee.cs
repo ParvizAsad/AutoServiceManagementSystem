@@ -10,8 +10,7 @@ namespace AutoServiceManagment.DomainModels.Entities
     {
         public int Id { get; set; }
         public string FullName { get; set; }
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{mm/dd/yyyy}")]
+
         public DateTime BirthDate { get; set; } 
         public int BaseSalary { get; set; }
         public string Location { get; set; }

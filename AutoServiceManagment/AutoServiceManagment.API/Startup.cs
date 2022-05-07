@@ -20,6 +20,7 @@ using AutoServiceManagment.Services.Services;
 using Microsoft.EntityFrameworkCore;
 using AutoServiceManagment.Infrastructure.Middlewares;
 using AutoTaxManagment.Service.Services.Contracts;
+using System.Text.Json.Serialization;
 
 namespace AutoServiceManagment.API
 {
@@ -73,6 +74,14 @@ namespace AutoServiceManagment.API
                                  .AllowAnyHeader();
                      })
              );
+
+//            services.AddControllersWithViews()
+//    .AddNewtonsoftJson(options =>
+//    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+//);
+
+   //         services.AddControllers().AddJsonOptions(x =>
+   //x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

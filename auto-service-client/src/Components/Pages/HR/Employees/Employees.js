@@ -70,25 +70,6 @@ const deleteButton = (id) => {
   })
 }
 
-// function deleteEmplyee(id){
-//  fetch(`https://localhost:44330/api/Employees/${id}`, {
-//    method:'DELETE'
-//  }).then((result)=>{
-// result.json().then((resp)=>{
-//   console.warn(resp)
-//   getAllEmployee();
-//   history.push("/Employee");
-// })})}
-
-// function getPosition(id){
-//   fetch(`https://localhost:44330/api/Position/${id}`, {
-//     method:'GET'
-//   }).then((result)=>{
-//  result.json().then((resp)=>{
-//    console.warn(resp)
-//    getAllEmployee();
-//  })})}
-
 function EditEmployee(id){
   console.log(id)
  props.history.push("/EditEmployee/"+id)
@@ -98,7 +79,6 @@ function EmployeeDetail(id){
   console.log(id)
  props.history.push("/EmployeeDetail/"+id)
 } 
-
   return (
     <>
       <div className="ForHeading">
