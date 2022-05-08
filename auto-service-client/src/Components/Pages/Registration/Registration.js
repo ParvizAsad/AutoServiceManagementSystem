@@ -1,123 +1,72 @@
-import React from 'react'
-import {
-Table,
-Button
-} from "reactstrap";
-import Service from '../Service/Service';
-// import "./Registration.scss";
+import React, { useReducer } from "react";
+import { Table, Button } from "reactstrap";
+import { INITIAL_ASYNC_VALUES } from "../../../Consts/const";
+// import "./HR.scss";
 import { useHistory } from "react-router-dom";
-import { customerService } from '../../../Api/services/Customers';
+import { employeeService } from "../../../Api/services/Employee";
 import Swal from "sweetalert2";
-
+import { useState } from "react";
+import { useCallback } from "react";
+import { Link } from "react-router-dom";
+import {
+  CardGroup,
+  Card,
+  CardImg,
+  CardBody,
+  CardSubtitle,
+  CardTitle,
+  CardText,
+  NavLink,
+  NavItem,
+  UncontrolledDropdown,
+  DropdownItem,
+  DropdownToggle,
+  DropdownMenu,
+  NavbarText
+} from "reactstrap";
+import { GiMoneyStack } from 'react-icons/gi';
+import { RiAdvertisementLine } from 'react-icons/ri';
 
 function Registration(props) {
-
-  const [customer, setCustomer] = React.useState([]);
-  const history = useHistory();
-
-  React.useEffect(() => {
-    customerService.getAllCustomers().then(({ data }) => {
-      setCustomer(data);
-    });
-  }, []);
-
-  function EditCustomer(id){
-    console.log(id)
-   props.history.push("/EditCustomer/"+id)
-  } 
-
-  function CustomerDetail(id){
-   props.history.push("/CustomerDetail/"+id)
-  } 
-
-  const deleteButton = (id) => {
-    const swalWithBootstrapButtons = Swal.mixin({
-      customClass: {
-        confirmButton: 'btn btn-success',
-        cancelButton: 'btn btn-danger'
-      },
-      buttonsStyling: false
-    })
-    
-    swalWithBootstrapButtons.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Yes, delete it!',
-      cancelButtonText: 'No, cancel!',
-      reverseButtons: true
-    }).then((result) => {
-      if (result.isConfirmed) {
-        swalWithBootstrapButtons.fire(
-          'Deleted!',
-          'Your file has been deleted.',
-          'success'
-        )
-          {customerService.deleteCustomer(id) &&
-          history.push("/")};
-      } 
-      else if (
-        /* Read more about handling dismissals below */
-        result.dismiss === Swal.DismissReason.cancel
-      ) {
-        swalWithBootstrapButtons.fire(
-          'Cancelled',
-          'Your imaginary file is safe :)',
-          'error'
-        )
-      }
-    })
-  }
-
   return (
-    <>
+<>
 <div className ='ForHeading'>
     <h1>Registration</h1>
 </div>
-<div className='AddingAndSearching'>
-  <div className='Adding'>
-  <Button onClick={() => history.push("/createcustomer")} >Create Customer</Button>
-  </div>
-  <input type="text" placeholder="Search.."/>
-</div>
-<div>
-    <Table className='TableForItems'>
-    <thead>
-      <tr>
-        <th>
-          #
-        </th>
-        <th>
-          Customer Name
-        </th>
-        <th>
-          Service 
-        </th>
-        <th>
-          Actions
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-    {customer?.map((item, idx) => (
-              <tr key={idx}>
-                <th scope="row">{idx}</th>
-                <td>{item.fullName}</td>
-                <td>{item.Service}</td>
-                <td className="Actions">
-                  <Button onClick={()=>EditCustomer(item.id)} className="Edit">Edit</Button>
-                  <Button onClick={()=>deleteButton(item.id) } className="Delete">Delete</Button>
-                  <Button onClick={()=>CustomerDetail(item.id)} className="Detail">Detail</Button>
-                </td>
-              </tr>
-            ))}
-    </tbody>
-    </Table>
-</div>
+    <CardGroup id='moduleCards'>
+         <Link to="customer">
+         <Card className='moduleCard'>
+      <CardBody className='moduleCardBody'>
+        <CardTitle tag="h5" className='moduleCardTitle'>
+          Customers
+        </CardTitle>
+        <div className="Icon">
+        <GiMoneyStack/>
+        </div>
+        <Button>
+          Enter
+        </Button>
+      </CardBody>
+    </Card>
+         </Link>
+          <Link to="service">
+          <Card className='moduleCard'>
+                <CardBody className='moduleCardBody'>
+                  <CardTitle tag="h5"  className='moduleCardTitle'>
+                    Services
+                  </CardTitle>
+                  <div className="Icon">
+        <RiAdvertisementLine/>
+        </div>
+                  <Button>
+                    Enter
+                  </Button>
+                </CardBody>
+              </Card>
+          </Link>
+  </CardGroup>
 </>
-
-  )
+  );
 }
 
-export default Registration
+export default Registration;

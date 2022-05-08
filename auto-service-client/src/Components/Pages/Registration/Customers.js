@@ -3,20 +3,32 @@ import {
 Table,
 Button
 } from "reactstrap";
-// import "./Product.scss";
+import Service from '../Service/Service';
+// import "./Customer.scss";
 import { useHistory } from "react-router-dom";
+import { customerService } from '../../../Api/services/Customers';
 import Swal from "sweetalert2";
-import { productService } from '../../../../Api/services/Products';
 
-function Product() {
 
-  const [product, setProduct] = React.useState([]);
+function Customer(props) {
+
+  const [customer, setCustomer] = React.useState([]);
   const history = useHistory();
+
   React.useEffect(() => {
-    productService.getAllProducts().then(({ data }) => {
-      setProduct(data);
+    customerService.getAllCustomers().then(({ data }) => {
+      setCustomer(data);
     });
   }, []);
+
+  function EditCustomer(id){
+    console.log(id)
+   props.history.push("/EditCustomer/"+id)
+  } 
+
+  function CustomerDetail(id){
+   props.history.push("/CustomerDetail/"+id)
+  } 
 
   const deleteButton = (id) => {
     const swalWithBootstrapButtons = Swal.mixin({
@@ -42,7 +54,7 @@ function Product() {
           'Your file has been deleted.',
           'success'
         )
-          {productService.deleteProduct(id) &&
+          {customerService.deleteCustomer(id) &&
           history.push("/")};
       } 
       else if (
@@ -60,14 +72,14 @@ function Product() {
 
   return (
     <>
-    <div className ='ForHeading'>
-    <h1>Products</h1>
-    </div>
-    <div className="AddingAndSearching">
+<div className ='ForHeading'>
+    <h1>Customer</h1>
+</div>
+<div className="AddingAndSearching">
         <div className="Adding">
-          <Button onClick={() => history.push("/createproduct")} >Create Product</Button>
+          <Button onClick={() => history.push("/createcustomer")} >Create Customer</Button>
         </div>
-        <Button onClick={() => history.push("/ExportProduct")} >Export</Button>
+        <Button onClick={() => history.push("/ExportCustomer")} >Export</Button>
         <input type="text" placeholder="Search.." />
       </div>
 <div>
@@ -78,13 +90,10 @@ function Product() {
           #
         </th>
         <th>
-          Product
+          Customer Name
         </th>
         <th>
-          Amount
-        </th>
-        <th>
-          Status
+          Service 
         </th>
         <th>
           Actions
@@ -92,16 +101,15 @@ function Product() {
       </tr>
     </thead>
     <tbody>
-    {product?.map((item, idx) => (
+    {customer?.map((item, idx) => (
               <tr key={idx}>
                 <th scope="row">{idx}</th>
-                <td>{item.Name}</td>
-                <td>{item.Amount}</td>
-                <td>{item.Status}</td>
+                <td>{item.fullName}</td>
+                <td>{item.Service}</td>
                 <td className="Actions">
-                  <Button className="Edit">Edit</Button>
+                  <Button onClick={()=>EditCustomer(item.id)} className="Edit">Edit</Button>
                   <Button onClick={()=>deleteButton(item.id) } className="Delete">Delete</Button>
-                  <Button  className="Detail">Detail</Button>
+                  <Button onClick={()=>CustomerDetail(item.id)} className="Detail">Detail</Button>
                 </td>
               </tr>
             ))}
@@ -113,4 +121,4 @@ function Product() {
   )
 }
 
-export default Product
+export default Customer

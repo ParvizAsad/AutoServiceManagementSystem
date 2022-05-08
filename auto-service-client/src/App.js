@@ -43,6 +43,8 @@ import Admin from './Components/Pages/Admin/Admin';
 import Role from './Components/Pages/Admin/Roles';
 import User from './Components/Pages/Admin/Users';
 import CreateRole from './Components/Pages/Admin/CreateRole';
+import ExportCustomer from './Components/Pages/Registration/ExportCustomer';
+import Customer from './Components/Pages/Registration/Customers';
 
 function App() {
   return (
@@ -66,9 +68,13 @@ function App() {
 
         <Route path="/HR" exact component={HR} />
         <Route path="/employee" exact component={Employee} />
+        <Route path="/customer" exact component={Customer} />
+
 
         <Route path="/ExportEmployee" exact component={ExportEmployee} />
         <Route path="/ExportProduct" exact component={ExportProduct} />
+        <Route path="/ExportCustomer" exact component={ExportCustomer} />
+
 
         <Route path="/EmployeeDetail/:id" exact component={EmployeeDetail} />
         

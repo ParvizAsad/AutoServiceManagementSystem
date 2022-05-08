@@ -18,29 +18,29 @@ import "datatables.net-buttons/js/buttons.print.js";
 // import "datatables.net-buttons/js/buttons.excel.js";
 import "datatables.net-dt/css/jquery.dataTables.min.css";
 import $ from "jquery";
-import { productService } from "../../../../Api/services/Products";
+import { customerService } from "../../../Api/services/Customers";
 
-function ExportProduct() {
-  const [Product, setProduct] = React.useState([]);
-  const [ProductData, setProductData] = useState();
+function ExportCustomer() {
+  const [Customer, setCustomer] = React.useState([]);
+  const [CustomerData, setCustomerData] = useState();
   const history = useHistory();
 
-  const getAllProduct = useCallback(() => {
-    productService.getAllProducts().then(({ data }) => {
-      setProductData(data);
+  const getAllCustomer = useCallback(() => {
+    customerService.getAllCustomers().then(({ data }) => {
+      setCustomerData(data);
     });
-  }, [setProductData]);
+  }, [setCustomerData]);
 
   React.useEffect(() => {
-    productService.getAllProducts().then(({ data }) => {
+    customerService.getAllCustomers().then(({ data }) => {
       console.log(data);
-      setProduct(data);
+      setCustomer(data);
     });
   }, []);
 
   $(document).ready(function () {
     setTimeout(function () {
-      $("#ProductData").DataTable({
+      $("#CustomerData").DataTable({
         pagingType: "full_numbers",
         pageLength: 5,
         processing: true,
@@ -51,7 +51,7 @@ function ExportProduct() {
   });
 
 //   $(document).ready(function() {
-//     var table = $('#ProductData').DataTable( {
+//     var table = $('#CustomerData').DataTable( {
 //         buttons: [ 'copy', 'excel', 'csv', 'pdf', 'print', 'colvis' ],
 //     } );
  
@@ -62,25 +62,23 @@ function ExportProduct() {
   return (
     <>
       <div className="ForHeading">
-        <h1>Products</h1>
+        <h1>Customers</h1>
       </div>
       <div>
-        <Table className="TableForItems" id="ProductData">
+        <Table className="TableForItems" id="CustomerData">
           <thead>
             <tr>
               <th>#</th>
-              <th>Name</th>
-              <th>Amount</th>
-              <th>Status</th>
+              <th>FullName</th>
+              <th>Service</th>
             </tr>
           </thead>
           <tbody>
-            {Product?.map((item, idx) => (
+            {Customer?.map((item, idx) => (
               <tr key={idx}>
                 <th scope="row">{idx}</th>
-                <td>{item.Name}</td>
-                <td>{item.Amount}</td>
-                <td>{item.Status}</td>
+                <td>{item.fullName}</td>
+                <td>{item.Serice}</td>
               </tr>
             ))}
           </tbody>
@@ -90,4 +88,4 @@ function ExportProduct() {
   );
 }
 
-export default ExportProduct;
+export default ExportCustomer;
