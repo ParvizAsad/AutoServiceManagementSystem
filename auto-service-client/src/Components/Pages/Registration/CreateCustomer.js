@@ -11,7 +11,7 @@ const initialCustomer = {
   Debt: " ",
 };
 
-function Createcustomer() {
+function CreateCustomer() {
   const [customer, setCustomer] = useState(initialCustomer);
 
   const [customerData, setCustomerData] = useState();
@@ -94,4 +94,4 @@ function Createcustomer() {
   );
 }
 
-export default Createcustomer;
+export default CreateCustomer;

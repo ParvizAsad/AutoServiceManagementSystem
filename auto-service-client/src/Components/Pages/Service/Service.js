@@ -75,6 +75,7 @@ function Service() {
   <div className='Adding'>
 <Button onClick={() => history.push("/createservice")}>Add Service</Button>
   </div>
+  <Button onClick={() => history.push("/ExportService")} >Export</Button>
   <input type="text" placeholder="Search.."/>
 </div>
 <div>

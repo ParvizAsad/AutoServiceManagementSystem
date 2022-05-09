@@ -79,6 +79,21 @@ function HR(props) {
                 </CardBody>
               </Card>
           </Link>
+          <Link to="nonworkingdetail">
+          <Card className='moduleCard'>
+                <CardBody className='moduleCardBody'>
+                  <CardTitle tag="h5"  className='moduleCardTitle'>
+                    Non-working details
+                  </CardTitle>
+                  <div className="Icon">
+        <RiAdvertisementLine/>
+        </div>
+                  <Button>
+                    Enter
+                  </Button>
+                </CardBody>
+              </Card>
+          </Link>
   </CardGroup>
 </>
   );

@@ -102,7 +102,6 @@ function RoleDetail(id){
         <div className="Adding">
           <Button onClick={() => history.push("/createrole")} >Create Role</Button>
         </div>
-        <Button onClick={() => history.push("/ExportRole")} >Export</Button>
         <input type="text" placeholder="Search.." />
       </div>
       <div>
