@@ -2,6 +2,7 @@
 using AutoServiceManagment.DomainModels.Entities;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +16,9 @@ namespace AutoServiceManagment.DomainModels.DTOs
         public decimal BasePrice { get; set; }
         public decimal SalePrice { get; set; }
         public double Count { get; set; }
-        public Category Category { get; set; }
-        public Brand Brand { get; set; }
+        [ForeignKey(nameof(Category))]
+        public int CategoryId { get; set; }
+        [ForeignKey(nameof(Brand))]
+        public int BrandId { get; set; }
     }
 }

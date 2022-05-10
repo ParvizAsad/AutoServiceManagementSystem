@@ -1,8 +1,8 @@
 import axios from "axios";
 
+const config = { headers: {'Content-Type': 'application/json'} };
 export class HttpClient{
     baseUrl;
-
     constructor(url){
         this.baseUrl=url;
     }
