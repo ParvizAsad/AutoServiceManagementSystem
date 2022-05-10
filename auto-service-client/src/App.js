@@ -51,6 +51,16 @@ import ExportService from './Components/Pages/Service/ExportService';
 import NonWorkingDetail from './Components/Pages/HR/NonWorkingDetails/NonWorkingDetails';
 import CreateNonWorkingDetail from './Components/Pages/HR/NonWorkingDetails/CreateNonWorkingDetail';
 import EditNonWorkingDetail from './Components/Pages/HR/NonWorkingDetails/EditNonWorkingDetail';
+import Salary from './Components/Pages/Finance/Salary/Salary';
+import CreateSalary from './Components/Pages/Finance/Salary/CreateSalary';
+import EditSalary from './Components/Pages/Finance/Salary/EditSalary';
+import CreateTax from './Components/Pages/Finance/Taxes/CreateTax';
+import EditTax from './Components/Pages/Finance/Taxes/EditTax';
+import EditDiscount from './Components/Pages/Finance/Marketing/EditDiscount';
+import EditAccounting from './Components/Pages/Finance/Accounting/EditAccounting';
+import EditBrand from './Components/Pages/Stock/Brands/EditBrand';
+import EditCategory from './Components/Pages/Stock/Categories/EditCategory';
+import EditService from './Components/Pages/Service/EditService';
 
 function App() {
   return (
@@ -79,6 +89,7 @@ function App() {
         <Route path="/HR" exact component={HR} />
         <Route path="/employee" exact component={Employee} />
         <Route path="/customer" exact component={Customer} />
+        <Route path="/salary" exact component={Salary} />
 
 
         <Route path="/ExportEmployee" exact component={ExportEmployee} />
@@ -103,11 +114,19 @@ function App() {
         <Route path={"/createservice"} exact component={CreateService} />
         <Route path={"/createnonworkingtype"} exact component={CreateNonWorkingType} />
         <Route path={"/createnonworkingdetail"} exact component={CreateNonWorkingDetail} />
+        <Route path={"/createsalary"} exact component={CreateSalary} />
+        <Route path={"/createtax"} exact component={CreateTax} />
 
         <Route path={"/EditNonWorkingType/:id"} exact component={EditNonWorkingType} />
         <Route path={"/EditNonWorkingDetail/:id"} exact component={EditNonWorkingDetail} />
         <Route path="/EditEmployee/:id" exact component={EditEmployee} />
-
+        <Route path="/EditSalary/:id" exact component={EditSalary} />
+        <Route path="/EditTax/:id" exact component={EditTax} />
+        <Route path="/EditDiscount/:id" exact component={EditDiscount} />
+        <Route path="/EditAccounting/:id" exact component={EditAccounting} />
+        <Route path="/EditBrand/:id" exact component={EditBrand} />
+        <Route path="/EditCategory/:id" exact component={EditCategory} />
+        <Route path="/EditService/:id" exact component={EditService} />
 
         <Route path={"/error"} exact component={Error} />
         <Redirect to={"/error"} exact />
