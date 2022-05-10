@@ -6,7 +6,6 @@ import { employeeService } from "../../../../Api/services/Employee";
 import { positionService } from "../../../../Api/services/Positions";
 import { useParams } from "react-router-dom";
 import axios, { Axios } from "axios";
-// import moment from "moment";
 
 const employees = {
   fullName: "",
@@ -32,7 +31,7 @@ function EditEmployee(props) {
 
   React.useEffect(() => {
     positionService.getAllPositions().then(({ data }) => {
-      console.log(data);
+    //  console.log(data);
       setPosition(data);
     });
   }, []);
@@ -40,7 +39,7 @@ function EditEmployee(props) {
   const getAllPositions = useCallback(() => {
     positionService.getAllPositions().then(({ data }) => {
       setPositionData(data);
-      console.log("data"+ data)
+     // console.log("data"+ data)
     });
   }, [setPositionData]);
 
@@ -50,7 +49,7 @@ function EditEmployee(props) {
       .get(url + id)
       .then((res) => {
         setData(res.data);
-      console.log("res.data"+ res.data.value)
+    //  console.log("res.data"+ res.data.value)
       })
     //   .catch((er) => console.error(err));
   }, []);
@@ -59,24 +58,22 @@ function EditEmployee(props) {
     const newdata = { ...data };
     newdata[e.target.id] = e.target.value;
     setNewData(newdata);
-    console.log("newdata"+ newdata)
+   // console.log("newdata"+ newdata)
   }
 
   const updateEmployee = useCallback(
     (e) => {
       e.preventDefault();
       const id = props.match.params.id;
-      console.log("id"+ id)
-      console.log("id-data put"+ data)
+     // console.log("id"+ id)
+      //console.log("id-data put"+ data)
       employeeService.putEmployee(id, data).then(() => {
         // getAllEmployee();
         history.push("/");
       });
     },
-    // [employee, history, getAllEmployee]
+    // [employee, history]
   );
-
-
 
   return (
     <>
@@ -113,12 +110,8 @@ function EditEmployee(props) {
               id="birthDate"
               name="birthDate"
               placeholder="birthDate"
-              // bsDatepicker
-              // //[bsConfig]="{ dateInputFormat: 'MM/DD/YYYY' }">
               onChange={(e) => handle(e)}
-              //format={ "yyyy-MM-dd"}
               value={data.birthDate }
-             // value={moment(data.birthDate).format('yyyy-mm-dd')}
               type="text"
             />
           </FormGroup>

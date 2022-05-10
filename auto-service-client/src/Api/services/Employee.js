@@ -1,5 +1,7 @@
 import { HttpClient } from "../HttpClient";
 
+const config = { headers: {'Content-Type': 'application/json'} };
+
 class EmployeeService extends HttpClient{
 
 constructor(){
@@ -28,7 +30,7 @@ async postEmployee(employee){
 };
 
 async putEmployee(id, data){
-  return await this.put(`Employees/${id}`, data)
+  return await this.put("Employees", id, data)
   // .then(response => { 
   //   console.log(response);
   // })

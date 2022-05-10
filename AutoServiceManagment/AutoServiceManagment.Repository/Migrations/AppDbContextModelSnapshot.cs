@@ -226,8 +226,8 @@ namespace AutoServiceManagment.Repository.Migrations
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("ExpireDate")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("ExpireDate")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -471,6 +471,9 @@ namespace AutoServiceManagment.Repository.Migrations
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("SalePrice")
                         .HasColumnType("decimal(18,2)");

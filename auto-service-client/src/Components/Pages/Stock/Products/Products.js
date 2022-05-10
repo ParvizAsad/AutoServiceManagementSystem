@@ -95,8 +95,8 @@ function Product() {
     {product?.map((item, idx) => (
               <tr key={idx}>
                 <th scope="row">{idx}</th>
-                <td>{item.Name}</td>
-                <td>{item.Amount}</td>
+                <td>{item.name}</td>
+                <td>{item.amount}</td>
                 <td>{item.Status}</td>
                 <td className="Actions">
                   <Button className="Edit">Edit</Button>

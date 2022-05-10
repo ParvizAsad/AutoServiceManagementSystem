@@ -26,7 +26,7 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task<IList<ProductDto>> GetAllProductsAsync()
         {
-            var products = await DbContext.Products.Where(x => x.IsDeleted == false).Include(x => x.Brand).Include(x => x.Category).Include(x => x.BasePrice).Include(x => x.SalePrice).ToListAsync();
+            var products = await DbContext.Products.Where(x => x.IsDeleted == false).ToListAsync();
 
             return _mapper.Map<List<ProductDto>>(products);
         }

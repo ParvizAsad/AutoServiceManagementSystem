@@ -7,14 +7,13 @@ import { productService } from "../../../../Api/services/Products";
 
 // import "./Employees/products/CreateEmployee.scss";
 
-const newProduct= {
-  Name: " ",
-  BasePrice: " ",
-  SalePrice: " ",
-  Count: " ",
-  Category: " ",
-  Brand: " ",
-  
+const newProduct = {
+  name: " ",
+  basePrice: " ",
+  salePrice: " ",
+  count: " ",
+  categoryId: " ",
+  brandId: " ",
 };
 
 function CreateProduct() {
@@ -47,6 +46,7 @@ function CreateProduct() {
   const getElementValues = (e) => {
     const { name, value } = e.target;
     setProduct({ ...product, [name]: value });
+    console.log(product);
   };
 
   React.useEffect(() => {
@@ -69,64 +69,72 @@ function CreateProduct() {
       <div className="CreatePage">
         <Form onSubmit={createProduct}>
           <FormGroup>
-            <Label for="Name">Name</Label>
+            <Label for="name">Name</Label>
             <Input
-              id="Name"
-              name="Name"
-              placeholder="Name"
+              id="name"
+              name="name"
+              placeholder="name"
               onChange={getElementValues}
               type="text"
             />
           </FormGroup>
           <FormGroup>
-            <Label for="BasePrice">BasePrice</Label>
+            <Label for="basePrice">BasePrice</Label>
             <Input
-              id="BasePrice"
-              name="BasePrice"
-              placeholder="BasePrice"
+              id="basePrice"
+              name="basePrice"
+              placeholder="basePrice"
               onChange={getElementValues}
               type="number"
             />
           </FormGroup>
           <FormGroup>
-            <Label for="SalePrice">SalePrice</Label>
+            <Label for="salePrice">SalePrice</Label>
             <Input
-              id="SalePrice"
-              name="SalePrice"
-              placeholder="SalePrice"
+              id="salePrice"
+              name="salePrice"
+              placeholder="salePrice"
               onChange={getElementValues}
               type="number"
             />
           </FormGroup>
           <FormGroup>
-            <Label for="Count">Count</Label>
+            <Label for="count">Count</Label>
             <Input
-              id="Count"
-              name="Count"
-              placeholder="Count"
+              id="count"
+              name="count"
+              placeholder="count"
               onChange={getElementValues}
               type="number"
             />
           </FormGroup>
           <FormGroup>
             <Label for="categoryId">Select Category</Label>
-            <select className="form-control" name="categoryId" id="categoryId">
-                            <option value="0">--Select Category--</option>
-                            {category?.map((item, idx) => (
-                            <option key={idx} value={idx}>{item.name}</option>
-                            ))}
-                    </select>
-
+            <select
+              className="form-control"
+              onChange={getElementValues}
+              name="categoryId"
+              id="categoryId"
+            >
+              <option value="0">--Select Category--</option>
+              {category?.map((item) => (
+                <option key={item.id} value={item.id}>
+                  {item.name}
+                </option>
+              ))}
+            </select>
           </FormGroup>
           <FormGroup>
             <Label for="brandId">Select Brand</Label>
-            <select className="form-control" name="brandId" id="brandId">
-                            <option value="0">--Select Category--</option>
-                            {brand?.map((item, idx) => (
-                            <option key={idx} value={idx}>{item.name}</option>
-                            ))}
-                    </select>
-
+            <select className="form-control"
+              onChange={getElementValues} name="brandId" id="brandId">
+              <option value="0">--Select Category--</option>
+              {brand?.map((item) => (
+                <option key={item.id} value={item.id}>
+                  {item.name}
+                </option>
+              ))}
+            </select>
           </FormGroup>
           <Button type="submit">Submit</Button>
         </Form>
