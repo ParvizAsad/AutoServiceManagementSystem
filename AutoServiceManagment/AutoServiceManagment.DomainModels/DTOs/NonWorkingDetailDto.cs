@@ -14,5 +14,6 @@ namespace AutoServiceManagment.DomainModels.DTOs
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
         public Employee Employee { get; set; }
+        public NonWorkingType NonWorkingType { get; set; }
     }
 }

@@ -10,6 +10,7 @@ const newNonWorkingDetail = {
   StartTime: " ",
   EndTime: " ",
   NonWokringType: " ",
+  EmployeeId: " ",
 };
 
 function CreateNonWorkingDetail() {
@@ -96,12 +97,12 @@ function CreateNonWorkingDetail() {
             </select>
           </FormGroup>
           <FormGroup>
-            <Label for="employeeId">Select employee</Label>
-            <select className="employeeId" onChange={getElementValues}  name="employeeId" id="employeeId">
+            <Label for="EmployeeId">Select employee</Label>
+            <select className="EmployeeId" onChange={getElementValues}  name="EmployeeId" id="EmployeeId">
               <option value="0">--Select employee--</option>
               {employee?.map((item, idx) => (
                 <option key={item.id} value={item.id}>
-                  {item.name}
+                  {item.fullName}
                 </option>
               ))}
             </select>

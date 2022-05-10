@@ -74,6 +74,21 @@ function Finance() {
                 </CardBody>
               </Card>
           </Link>
+          <Link to="salary">
+          <Card className='moduleCard'>
+                <CardBody className='moduleCardBody'>
+                  <CardTitle tag="h5"  className='moduleCardTitle'>
+                    Salaries
+                  </CardTitle>
+                  <div className="Icon">
+        <RiAdvertisementLine/>
+        </div>
+                  <Button>
+                    Enter
+                  </Button>
+                </CardBody>
+              </Card>
+          </Link>
   </CardGroup>
 </>
   )

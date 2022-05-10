@@ -110,12 +110,10 @@ function CreateEmployee() {
           <FormGroup>
             <Label for="positionId">Select Position</Label>
             <select className="positionId" onChange={getElementValues}  name="positionId" id="positionId">
-              <option value="0">--Select Category--</option>
+              <option value="0">--Select Position--</option>
               {position?.map((item, idx) => (
                 <option key={item.id} value={item.id}>
                   {item.name}
-                  {console.log("test1" + item)}
-                  {console.log("test123" + idx+1)}
                 </option>
               ))}
             </select>

@@ -66,8 +66,6 @@ function EditEmployee(props) {
     (e) => {
       e.preventDefault();
       const id = props.match.params.id;
-      console.log("id"+ id)
-      console.log("id-data put"+ data)
       employeeService.putEmployee(id, data).then(() => {
         // getAllEmployee();
         history.push("/");

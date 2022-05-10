@@ -34,7 +34,6 @@ function CreateNonWorkingType() {
   const getElementValues = (e) => {
     const { name, value } = e.target;
     setNonWorkingType({ ...NonWorkingType, [name]: value });
-    console.log(NonWorkingType);
   };
 
   return (

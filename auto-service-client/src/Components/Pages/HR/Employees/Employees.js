@@ -107,8 +107,8 @@ function EmployeeDetail(id){
               <tr key={idx}>
                 <th scope="row">{idx}</th>
                 <td>{item.fullName}</td>
-                <td>{item.Position}</td>
-                <td>{item.Status}</td>
+                <td>{item.positionId}</td>
+                <td>{item.status}</td>
                 <td className="Actions">
                   <Button onClick={()=>EditEmployee(item.id)} className="Edit">Edit</Button>
                   <Button onClick={()=>deleteButton(item.id) } className="Delete">Delete</Button>
