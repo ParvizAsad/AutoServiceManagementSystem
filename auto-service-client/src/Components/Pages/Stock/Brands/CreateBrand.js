@@ -10,6 +10,8 @@ const newBrand = {
 
 function CreateBrand() {
   const [brand, setBrand] = useState(newBrand);
+  const [error, setError] = useState();
+
 
   const [brandData, setBrandData] = useState();
   const history = useHistory();
@@ -26,7 +28,17 @@ function CreateBrand() {
       brandService.postBrand(brand).then(() => {
         getAllBrand();
         history.push("/brand");
-      });
+      }).catch(
+        e=>{
+          console.log(e.response)
+            if(e.response.status===400){
+              setError(e.response.data.errors.Name[0])
+            }
+            else if(e.response.status===500){
+              setError(e.response.data)
+            }
+      }
+      );
     },
     [brand, history, getAllBrand]
   );
@@ -36,6 +48,15 @@ function CreateBrand() {
     setBrand({ ...brand, [name]: value });
   };
 
+// let error= '';
+
+// if (this.state.message) {
+//   error=(<div className="alert alert-danger" role={alert}>
+// {this.state.message}
+
+//   </div>)
+// }
+
   return (
     <>
       <div className="ForHeading">
@@ -43,6 +64,7 @@ function CreateBrand() {
       </div>
       <div className="CreatePage">
         <Form onSubmit={createBrand}>
+        {error}
           <FormGroup>
             <Label for="Name">Name</Label>
             <Input

@@ -44,6 +44,9 @@ namespace AutoServiceManagment.Services.Services
         {
             var brands = await DbContext.Brands.Where(x => x.Name == brandDto.Name).FirstOrDefaultAsync();
             if (brands != null) { throw new Exception("There is a brand with this name!"); }
+            //if(brands != null) { ModelState.AddModelError("", "Bu name-də kurs mövcuddur!"); }
+
+            if(brandDto==null) { throw new Exception("Boş saxlanıla bilməz"); }
 
             var brand = _mapper.Map<Brand>(brandDto);
             await _repository.AddAsync(brand);

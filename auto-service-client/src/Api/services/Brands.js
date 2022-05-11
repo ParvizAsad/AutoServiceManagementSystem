@@ -15,7 +15,7 @@ class BrandService extends HttpClient {
     }
 
     async postBrand(body){
-      return await this.post("Brands", body)
+      return await this.post("Brands", body);
     }
 
     async putBrand(id,body){

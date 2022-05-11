@@ -13,11 +13,11 @@ namespace AutoServiceManagment.API.Controllers
 {
     [EnableCors("AllowCors"), Route("api/[controller]")]
     [ApiController]
-    public class TaxesController : ControllerBase
+    public class StaticsController : ControllerBase
     {
         private readonly ITaxService _service;
 
-        public TaxesController(ITaxService service)
+        public StaticsController(ITaxService service)
         {
             _service = service;
         }
