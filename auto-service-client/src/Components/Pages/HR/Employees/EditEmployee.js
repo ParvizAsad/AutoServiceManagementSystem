@@ -6,12 +6,14 @@ import { employeeService } from "../../../../Api/services/Employee";
 import { positionService } from "../../../../Api/services/Positions";
 import { useParams } from "react-router-dom";
 import axios, { Axios } from "axios";
+import Moment from "react-moment";
+import moment from "moment";
 
 const employees = {
   fullName: "",
   phoneNumber: "",
   orderNumber: "",
-  birthDate: "",
+  birthDate: "" & "",
   baseSalary: "",
   location: "",
   personalDetails: "",
@@ -20,7 +22,6 @@ const employees = {
 };
 
 function EditEmployee(props) {
-    let { id } = useParams();
   const url = "https://localhost:44330/api/Employees/";
   const [employee, setEmployee] = useState([]);
   const [data, setData] = useState(employees);
@@ -31,7 +32,7 @@ function EditEmployee(props) {
 
   React.useEffect(() => {
     positionService.getAllPositions().then(({ data }) => {
-    //  console.log(data);
+      //  console.log(data);
       setPosition(data);
     });
   }, []);
@@ -39,18 +40,16 @@ function EditEmployee(props) {
   const getAllPositions = useCallback(() => {
     positionService.getAllPositions().then(({ data }) => {
       setPositionData(data);
-     // console.log("data"+ data)
+      // console.log("data"+ data)
     });
   }, [setPositionData]);
 
   useEffect(() => {
     const id = props.match.params.id;
-    axios
-      .get(url + id)
-      .then((res) => {
-        setData(res.data);
-    //  console.log("res.data"+ res.data.value)
-      })
+    axios.get(url + id).then((res) => {
+      setData(res.data);
+      //  console.log("res.data"+ res.data.value)
+    });
     //   .catch((er) => console.error(err));
   }, []);
 
@@ -58,20 +57,20 @@ function EditEmployee(props) {
     const newdata = { ...data };
     newdata[e.target.id] = e.target.value;
     setNewData(newdata);
-   // console.log("newdata"+ newdata)
+    // console.log("newdata"+ newdata)
   }
 
   const updateEmployee = useCallback(
     (e) => {
       e.preventDefault();
       const id = props.match.params.id;
-     // console.log("id"+ id)
+      // console.log("id"+ id)
       //console.log("id-data put"+ data)
       employeeService.putEmployee(id, data).then(() => {
         // getAllEmployee();
         history.push("/");
       });
-    },
+    }
     // [employee, history]
   );
 
@@ -105,14 +104,20 @@ function EditEmployee(props) {
             />
           </FormGroup>
           <FormGroup>
+          <Moment format="yyyy-MM-DD">{data.birthDate}</Moment>
             <Label for="birthDate">BirthDate</Label>
             <Input
               id="birthDate"
               name="birthDate"
               placeholder="birthDate"
               onChange={(e) => handle(e)}
-              value={data.birthDate }
-              type="text"
+              // value={ `${<Moment format="yyyy-MM-DD">{data.birthDate}</Moment>}`}
+              // value={ `${data.birthDate}`}
+              //yyyy-mm-dd
+              
+              value={moment(data.birthDate).format("yyyy-MM-DD")}
+              // value={"2020-02-20"}
+              type="date"
             />
           </FormGroup>
           <FormGroup>
@@ -178,8 +183,8 @@ function EditEmployee(props) {
           <FormGroup>
             <Label for="personalDetails">Personal Detail</Label>
             <Input
-            onChange={(e) => handle(e)}
-            value={data.personalDetails}
+              onChange={(e) => handle(e)}
+              value={data.personalDetails}
               id="personalDetails"
               name="personalDetails"
               type="textarea"
