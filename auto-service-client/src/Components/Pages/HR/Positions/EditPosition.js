@@ -44,7 +44,7 @@ function EditPosition(props) {
   return (
     <>
       <div className="ForHeading">
-        <h1>Create a new position</h1>
+        <h1>Edit position</h1>
       </div>
       <div className="CreatePage">
         <Form onSubmit={editPosition}>

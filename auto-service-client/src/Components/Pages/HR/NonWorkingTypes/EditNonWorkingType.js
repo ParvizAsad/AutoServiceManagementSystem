@@ -18,7 +18,7 @@ function EditNonWorkingType(props) {
       e.preventDefault();
       const id = props.match.params.id;
       nonWorkingTypeService.putNonWorkingType(id, NonWorkingType).then(() => {
-        history.push("/editnonworkingtype");
+        history.push("/nonworkingtype");
       });
     },
     [NonWorkingType, history]
@@ -44,7 +44,7 @@ function EditNonWorkingType(props) {
   return (
     <>
       <div className="ForHeading">
-        <h1>Create a new NonWorkingType</h1>
+        <h1>Edit NonWorkingType</h1>
       </div>
       <div className="CreatePage">
         <Form onSubmit={editNonWorkingType}>

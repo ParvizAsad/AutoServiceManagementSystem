@@ -19,7 +19,8 @@ using AutoServiceManagment.Services.Services.Contracts;
 using AutoServiceManagment.Services.Services;
 using Microsoft.EntityFrameworkCore;
 using AutoServiceManagment.Infrastructure.Middlewares;
-using AutoTaxManagment.Service.Services.Contracts;
+using AutoServiceManagment.AuthenticationService.Models;
+
 using System.Text.Json.Serialization;
 
 namespace AutoServiceManagment.API
@@ -35,6 +36,7 @@ namespace AutoServiceManagment.API
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<JwtSetting>(_configuration.GetSection("JWT"));
             var connectionString = Configuration.GetConnectionString("DefaultConnection");
 
             services.AddDbContext<AppDbContext>(options =>
@@ -105,6 +107,7 @@ namespace AutoServiceManagment.API
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
             app.UseCors("AllowCors");
 

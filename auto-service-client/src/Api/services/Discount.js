@@ -18,7 +18,7 @@ class DiscountService extends HttpClient {
       return await this.post("Discounts", body)
     }
 
-    async putDiscount(id,body){
+    async putDiscount(id, body){
       return await this.put("Discounts", id, body)
     }
     

@@ -18,7 +18,7 @@ class CategoryService extends HttpClient {
       return await this.post("Categories", body)
     }
 
-    async putCategory(id,body){
+    async putCategory(id, body){
       return await this.put("Categories", id, body)
     }
     

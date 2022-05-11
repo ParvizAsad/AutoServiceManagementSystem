@@ -6,9 +6,9 @@ import Swal from "sweetalert2";
 import { useState } from "react";
 import { useCallback } from "react";
 import { Link } from "react-router-dom";
-import { employeeService } from "../../../../Api/services/Employee";
+import { employeeService } from "../../../Api/services/Employee";
 
-function Employee(props) {
+function CreateUser(props) {
 
   const [employee, setEmployee] = React.useState([]);
   const [employeeData, setEmployeeData] = useState();
@@ -28,8 +28,7 @@ function Employee(props) {
   }, []);
 
 
-function EmployeeDetail(id){
-  console.log(id)
+function MakeUser(id){
  props.history.push("/EmployeeDetail/"+id)
 } 
 
@@ -64,8 +63,7 @@ function EmployeeDetail(id){
                 <td>{item.Position}</td>
                 <td>{item.Status}</td>
                 <td className="Actions">
-                  <Button onClick={()=>EmployeeDetail(item.id)} className="Detail">Detail</Button>
-                  <Button onClick={()=>EmployeeDetail(item.id)} className="Detail">Detail</Button>
+                  <Button onClick={()=>MakeUser(item.id)} className="MakeUser">Make User</Button>
 
                 </td>
               </tr>
@@ -77,4 +75,4 @@ function EmployeeDetail(id){
   );
 }
 
-export default Employee;
+export default CreateUser;

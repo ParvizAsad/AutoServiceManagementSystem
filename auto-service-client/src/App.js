@@ -61,6 +61,7 @@ import EditAccounting from './Components/Pages/Finance/Accounting/EditAccounting
 import EditBrand from './Components/Pages/Stock/Brands/EditBrand';
 import EditCategory from './Components/Pages/Stock/Categories/EditCategory';
 import EditService from './Components/Pages/Service/EditService';
+import CreateUser from './Components/Pages/Admin/CreateUser';
 
 function App() {
   return (
@@ -116,6 +117,7 @@ function App() {
         <Route path={"/createnonworkingdetail"} exact component={CreateNonWorkingDetail} />
         <Route path={"/createsalary"} exact component={CreateSalary} />
         <Route path={"/createtax"} exact component={CreateTax} />
+        <Route path={"/createuser"} exact component={CreateUser} />
 
         <Route path={"/EditNonWorkingType/:id"} exact component={EditNonWorkingType} />
         <Route path={"/EditNonWorkingDetail/:id"} exact component={EditNonWorkingDetail} />
