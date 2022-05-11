@@ -18,7 +18,7 @@ class CustomerService extends HttpClient {
       return await this.post("Customers", body)
     }
 
-    async putCustomer(id,body){
+    async putCustomer(id, body){
       return await this.put("Customers", id, body)
     }
     

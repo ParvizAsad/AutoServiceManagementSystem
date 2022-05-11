@@ -60,8 +60,8 @@ namespace AutoServiceManagment.Services.Services
 
             if (nonWorkingType == null) { throw new Exception("NonWorkingType not found!"); }
 
-            nonWorkingType = _mapper.Map<NonWorkingType>(nonWorkingTypeDto);
 
+            nonWorkingType.Name = nonWorkingTypeDto.Name;
             DbContext.NonWorkingTypes.Update(nonWorkingType);
 
             await DbContext.SaveChangesAsync();

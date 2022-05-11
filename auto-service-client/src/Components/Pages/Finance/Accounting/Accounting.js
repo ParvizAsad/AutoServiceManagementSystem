@@ -47,7 +47,7 @@ function Accounting() {
           'success'
         )
           {financeService.deleteFinance(id) &&
-          history.push("/")};
+          history.push("/accounting")};
       } 
       else if (
         /* Read more about handling dismissals below */

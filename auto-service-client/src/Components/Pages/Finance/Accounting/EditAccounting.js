@@ -47,7 +47,7 @@ function EditAccounting(props) {
   return (
     <>
       <div className="ForHeading">
-        <h1>Create a new Accounting</h1>
+        <h1>Edit Accounting</h1>
       </div>
       <div className="CreatePage">
         <Form onSubmit={editAccounting}>

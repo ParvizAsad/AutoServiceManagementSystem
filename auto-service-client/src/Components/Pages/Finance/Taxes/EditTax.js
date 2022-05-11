@@ -33,7 +33,12 @@ function EditTax(props) {
     [tax, history]
   );
 
-
+  useEffect(() => {
+    const id = props.match.params.id;
+    taxService.getTaxById(id).then((res) => {
+      setTax(res.data);
+      })
+  }, []);
 
   function handle(e) {
     // const newtax = { ...tax };
@@ -47,7 +52,7 @@ function EditTax(props) {
   return (
     <>
       <div className="ForHeading">
-        <h1>Create a new tax</h1>
+        <h1>Edit tax</h1>
       </div>
       <div className="CreatePage">
         <Form onSubmit={editTax}>

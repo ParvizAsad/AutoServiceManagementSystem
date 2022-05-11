@@ -18,7 +18,7 @@ class FinanceService extends HttpClient {
       return await this.post("Finances", body)
     }
 
-    async putFinance(id,body){
+    async putFinance(id, body){
       return await this.put("Finances", id, body)
     }
     

@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoServiceManagment.Reposi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoServiceManagment.Services", "AutoServiceManagment.Services\AutoServiceManagment.Services.csproj", "{FCA0C59E-9A3E-4CB1-90AA-9B04A225C032}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoServiceManagment.Infrastructure", "AutoServiceManagment.Infrastructure\AutoServiceManagment.Infrastructure.csproj", "{22341830-5044-4563-88AE-68CCC7223E79}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoServiceManagment.Infrastructure", "AutoServiceManagment.Infrastructure\AutoServiceManagment.Infrastructure.csproj", "{22341830-5044-4563-88AE-68CCC7223E79}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoServiceManagment.AuthenticationService", "AutoServiceManagementAuthenticationService\AutoServiceManagment.AuthenticationService.csproj", "{49426920-DD7A-4465-B87E-134D8419B263}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{22341830-5044-4563-88AE-68CCC7223E79}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22341830-5044-4563-88AE-68CCC7223E79}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{22341830-5044-4563-88AE-68CCC7223E79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49426920-DD7A-4465-B87E-134D8419B263}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49426920-DD7A-4465-B87E-134D8419B263}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49426920-DD7A-4465-B87E-134D8419B263}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49426920-DD7A-4465-B87E-134D8419B263}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

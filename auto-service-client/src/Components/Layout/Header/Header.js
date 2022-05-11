@@ -18,6 +18,7 @@ import {
 import logo from '../../../Assets/Images/Logo/logo.webp';
 import Icon from '../../../Assets/Images/Icon/profile-icon.jpg';
 import { AiOutlineUserAdd } from 'react-icons/ai';
+import { useHistory, Link } from "react-router-dom";
 
 function Header() {
   return (
@@ -29,7 +30,9 @@ function Header() {
   <div>
     <h4>Your Profile</h4>
     <h4>@User.Identity.Name-Logout</h4>
-    <h4>Login</h4>
+    <h4>   <Link to="login">
+Login
+         </Link></h4>
 
     <div>
       <AiOutlineUserAdd/>
