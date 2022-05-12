@@ -11,7 +11,7 @@ namespace AutoServiceManagment.DomainModels.DTOs
     public class BrandDto : IDto
     {
         public int Id { get; set; }
-        [Required(ErrorMessage = "Boş saxlanıla bilməz!")]
+        [Required(ErrorMessage = "Brand name is required!")]
         public string Name { get; set; }
     }
 }

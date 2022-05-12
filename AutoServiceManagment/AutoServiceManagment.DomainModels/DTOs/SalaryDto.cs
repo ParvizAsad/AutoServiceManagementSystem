@@ -2,6 +2,7 @@
 using AutoServiceManagment.DomainModels.Entities;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ namespace AutoServiceManagment.DomainModels.DTOs
         [ForeignKey(nameof(Employee))]
         public int EmployeeID { get; set; }
         public Employee Employee { get; set; }
+        [Required(ErrorMessage = "Date is required!")]
         public DateTime Date { get; set; }
         public decimal Bonus { get; set; }
         public decimal NetSalary { get; set; }

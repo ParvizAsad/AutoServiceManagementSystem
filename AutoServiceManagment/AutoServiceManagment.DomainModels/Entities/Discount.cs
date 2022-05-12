@@ -7,8 +7,11 @@ namespace AutoServiceManagment.DomainModels.Entities
     public class Discount : TimestampableObject, IEntity
     {
         public int Id { get; set; }
+        [Required(ErrorMessage = "Discount name is required!")]
         public string Name { get; set; }
+        [Required(ErrorMessage = "Expire date is required!")]
         public string ExpireDate { get; set; } = DateTime.Now.ToString("MM/dd/yyyy");
+        [Required(ErrorMessage = "Percentage is required!")]
         public decimal Percentage { get; set; }
         public bool IsDeleted { get; set; } = false;
 

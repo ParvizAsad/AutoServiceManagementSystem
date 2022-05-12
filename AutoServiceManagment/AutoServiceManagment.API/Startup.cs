@@ -22,6 +22,7 @@ using AutoServiceManagment.Infrastructure.Middlewares;
 using AutoServiceManagment.AuthenticationService.Models;
 
 using System.Text.Json.Serialization;
+using AutoTaxManagment.Service.Services.Contracts;
 
 namespace AutoServiceManagment.API
 {
@@ -36,7 +37,7 @@ namespace AutoServiceManagment.API
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.Configure<JwtSetting>(_configuration.GetSection("JWT"));
+            services.Configure<JwtSetting>(Configuration.GetSection("JWT"));
             var connectionString = Configuration.GetConnectionString("DefaultConnection");
 
             services.AddDbContext<AppDbContext>(options =>
