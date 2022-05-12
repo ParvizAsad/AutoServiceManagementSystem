@@ -6,14 +6,13 @@ import { employeeService } from "../../../../Api/services/Employee";
 import { positionService } from "../../../../Api/services/Positions";
 import { useParams } from "react-router-dom";
 import axios, { Axios } from "axios";
-import Moment from "react-moment";
 import moment from "moment";
 
 const employees = {
   fullName: "",
   phoneNumber: "",
   orderNumber: "",
-  birthDate: "" & "",
+  birthDate: "",
   baseSalary: "",
   location: "",
   personalDetails: "",
@@ -22,17 +21,17 @@ const employees = {
 };
 
 function EditEmployee(props) {
+  let { id } = useParams();
   const url = "https://localhost:44330/api/Employees/";
   const [employee, setEmployee] = useState([]);
   const [data, setData] = useState(employees);
-  const [newData, setNewData] = useState(employees);
   const [position, setPosition] = React.useState([]);
   const [positionData, setPositionData] = useState();
   const history = useHistory();
 
   React.useEffect(() => {
     positionService.getAllPositions().then(({ data }) => {
-      //  console.log(data);
+      console.log(data);
       setPosition(data);
     });
   }, []);
@@ -40,40 +39,47 @@ function EditEmployee(props) {
   const getAllPositions = useCallback(() => {
     positionService.getAllPositions().then(({ data }) => {
       setPositionData(data);
-      // console.log("data"+ data)
     });
   }, [setPositionData]);
 
   useEffect(() => {
     const id = props.match.params.id;
-    axios.get(url + id).then((res) => {
-      setData(res.data);
-      //  console.log("res.data"+ res.data.value)
-    });
+    axios
+      .get(url + id)
+      .then((res) => {
+        setData(res.data);
+        console.log(res.data);
+      })
     //   .catch((er) => console.error(err));
   }, []);
-
-  function handle(e) {
-    const newdata = { ...data };
-    newdata[e.target.id] = e.target.value;
-    setNewData(newdata);
-    // console.log("newdata"+ newdata)
-  }
 
   const updateEmployee = useCallback(
     (e) => {
       e.preventDefault();
       const id = props.match.params.id;
-      // console.log("id"+ id)
-      //console.log("id-data put"+ data)
       employeeService.putEmployee(id, data).then(() => {
         // getAllEmployee();
-        history.push("/");
-      });
-    }
-    // [employee, history]
+        history.push("/HR");
+      }).catch(
+        e=>{
+          console.log(e.response)
+            // if(e.response.status===400){
+            //   setError(e.response.data.errors.Name[0])
+            // }
+            // else if(e.response.status===500){
+            //   setError(e.response.data)
+            // }
+      }
+      );
+    },
+    // [employee, history, getAllEmployee]
   );
 
+  function handle(e) {
+    const newdata = { ...data };
+    newdata[e.target.id] = e.target.value;
+    setData(newdata);
+  }
   return (
     <>
       <div className="ForHeading">
@@ -104,19 +110,13 @@ function EditEmployee(props) {
             />
           </FormGroup>
           <FormGroup>
-          <Moment format="yyyy-MM-DD">{data.birthDate}</Moment>
             <Label for="birthDate">BirthDate</Label>
             <Input
               id="birthDate"
               name="birthDate"
               placeholder="birthDate"
               onChange={(e) => handle(e)}
-              // value={ `${<Moment format="yyyy-MM-DD">{data.birthDate}</Moment>}`}
-              // value={ `${data.birthDate}`}
-              //yyyy-mm-dd
-              
               value={moment(data.birthDate).format("yyyy-MM-DD")}
-              // value={"2020-02-20"}
               type="date"
             />
           </FormGroup>
@@ -158,6 +158,7 @@ function EditEmployee(props) {
               type="text"
             />
           </FormGroup>
+
           <FormGroup>
             <Label for="location">Location</Label>
             <Input
@@ -169,6 +170,7 @@ function EditEmployee(props) {
               type="text"
             />
           </FormGroup>
+          
           <FormGroup>
             <Label for="educationLevel">Education Level</Label>
             <Input
