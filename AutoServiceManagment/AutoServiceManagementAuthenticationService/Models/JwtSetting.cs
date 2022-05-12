@@ -2,7 +2,7 @@
 
 namespace AutoServiceManagment.AuthenticationService.Models
 {
-    internal class JwtSetting
+    public class JwtSetting
     {
         public string Key { get; set; }
         public string Issuer { get; set; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AutoServiceManagment.AuthenticationService.Models
 {
-    internal class CredentialModel
+    public class CredentialModel
     {
     }
 }

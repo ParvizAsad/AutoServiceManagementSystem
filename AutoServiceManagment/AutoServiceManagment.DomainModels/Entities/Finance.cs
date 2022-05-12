@@ -8,6 +8,8 @@ namespace AutoServiceManagment.DomainModels.Entities
     {
         public int Id { get; set; }
         public decimal CommunalCost { get; set; }
+        [Required(ErrorMessage = "Datetime is required!")]
+
         [DataType(DataType.Date)]
         //[DisplayFormat(DataFormatString = "{mm/dd/yyyy}")]
 

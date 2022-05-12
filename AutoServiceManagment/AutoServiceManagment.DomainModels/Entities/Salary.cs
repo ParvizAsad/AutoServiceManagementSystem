@@ -10,6 +10,7 @@ namespace AutoServiceManagment.DomainModels.Entities
         [ForeignKey(nameof(Employee))]
         public int EmployeeID { get; set; }
         public Employee Employee { get; set; }
+        [Required(ErrorMessage = "Date is required!")]
         public DateTime Date { get; set; }= DateTime.Now;
         public decimal Bonus { get; set; }
         public decimal NetSalary { get; set; }

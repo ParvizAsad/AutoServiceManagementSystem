@@ -9,17 +9,22 @@ namespace AutoServiceManagment.DomainModels.Entities
     public class Employee : TimestampableObject, IEntity
     {
         public int Id { get; set; }
+        [Required(ErrorMessage = "Fullname is required!")]
         public string FullName { get; set; }
-
-        public DateTime BirthDate { get; set; } 
+        [Required(ErrorMessage = "Birthdate is required!")]
+        public DateTime BirthDate { get; set; }
+        [Required(ErrorMessage = "Base Salary is required!")]
         public int BaseSalary { get; set; }
+        [Required(ErrorMessage = "Location is required!")]
         public string Location { get; set; }
+        [Required(ErrorMessage = "Phone number is required!")]
         public string PhoneNumber { get; set; }
         public string OrderNumber { get; set; }
         [ForeignKey(nameof(Position))]
         public int PositionId { get; set; }
         public Position Position { get; set; }
         public string PersonalDetails { get; set; }
+        [Required(ErrorMessage = "Education Level is required!")]
         public string EducationLevel { get; set; }
         public ICollection<NonWorkingDetail> NonWorkingDetails { get; set; }
         public ICollection<Salary> Salaries { get; set; }
