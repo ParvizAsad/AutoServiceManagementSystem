@@ -62,11 +62,21 @@ namespace AutoServiceManagment.Services.Services
             var employee = await DbContext.Employees.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted != true);
             if (employee == null) { throw new Exception("Employee not found!"); }
 
-            var existEmployee = await DbContext.Employees.FirstOrDefaultAsync(x => x.FullName == employeeDto.FullName);
+            var existEmployee = await DbContext.Employees.FirstOrDefaultAsync(x => x.FullName == employeeDto.FullName && x.Id!=employeeDto.Id);
             if (existEmployee != null) { throw new Exception("There is an employee with this name!"); }
 
             employee.FullName = employeeDto.FullName;
             employee.BirthDate = employeeDto.BirthDate;
+            employee.EducationLevel=employeeDto.EducationLevel;
+            employee.BaseSalary=employeeDto.BaseSalary;
+            employee.Location = employeeDto.Location;
+            employee.PositionId = employeeDto.PositionId;
+            employee.OrderNumber= employeeDto.OrderNumber;
+            employee.PhoneNumber= employeeDto.PhoneNumber;
+            employee.PersonalDetails = employeeDto.PersonalDetails;
+
+
+
 
             DbContext.Employees.Update(employee);
 
