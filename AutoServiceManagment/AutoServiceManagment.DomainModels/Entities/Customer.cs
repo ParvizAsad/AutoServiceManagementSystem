@@ -15,7 +15,7 @@ namespace AutoServiceManagment.DomainModels.Entities
         public string Email { get; set; }
         public bool IsNotificationAllowed { get; set; }
         public decimal Debt { get; set; }
-        public ICollection<CustomerService> CustomerServices { get; set; }
+        public ICollection<CustomerServices> CustomerServices { get; set; }
         public ICollection<CustomerProduct> CustomerProducts { get; set; }
         public ICollection<CashBox> CashBoxes { get; set; }
         public bool IsDeleted { get; set; }=false;

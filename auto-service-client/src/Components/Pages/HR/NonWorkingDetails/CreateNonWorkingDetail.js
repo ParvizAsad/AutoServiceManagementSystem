@@ -32,7 +32,7 @@ function CreateNonWorkingDetail() {
       e.preventDefault();
       nonWorkingDetailService.postNonWorkingDetail(NonWorkingDetail).then(() => {
         getAllNonWorkingDetail();
-        history.push("/NonWorkingDetail");
+        history.push("/nonworkingdetail");
       });
     },
     [NonWorkingDetail, history, getAllNonWorkingDetail]

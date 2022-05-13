@@ -18,6 +18,7 @@ const newProduct = {
 
 function CreateProduct() {
   const [product, setProduct] = useState(newProduct);
+  const [error, setError] = useState();
 
   // const [productData, setProductData] = useState();
 
@@ -38,7 +39,16 @@ function CreateProduct() {
       productService.postProduct(product).then(() => {
         // getAllProduct();
         history.push("/product");
-      });
+      }).catch(
+        e=>{
+            if(e.response.status===400){
+              setError(e.response.data.errors.Name[2])
+            }
+            else if(e.response.status===500){
+              setError(e.response.data)
+            }
+      }
+      );
     },
     [product, history]
   );
@@ -68,6 +78,7 @@ function CreateProduct() {
       </div>
       <div className="CreatePage">
         <Form onSubmit={createProduct}>
+        {error}
           <FormGroup>
             <Label for="name">Name</Label>
             <Input
@@ -78,6 +89,7 @@ function CreateProduct() {
               type="text"
             />
           </FormGroup>
+          {error}
           <FormGroup>
             <Label for="basePrice">BasePrice</Label>
             <Input
@@ -88,6 +100,7 @@ function CreateProduct() {
               type="number"
             />
           </FormGroup>
+          {error}
           <FormGroup>
             <Label for="salePrice">SalePrice</Label>
             <Input
@@ -108,6 +121,7 @@ function CreateProduct() {
               type="number"
             />
           </FormGroup>
+                  {error}
           <FormGroup>
             <Label for="categoryId">Select Category</Label>
             <select
@@ -124,6 +138,7 @@ function CreateProduct() {
               ))}
             </select>
           </FormGroup>
+          {error}
           <FormGroup>
             <Label for="brandId">Select Brand</Label>
             <select className="form-control"

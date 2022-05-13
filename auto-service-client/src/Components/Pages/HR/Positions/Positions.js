@@ -9,19 +9,17 @@ import { INITIAL_ASYNC_VALUES } from "../../../../Consts/const";
 
 function Position() {
 
-  const [positions, setPositions] = useState(INITIAL_ASYNC_VALUES);
+  const [positions, setPositions] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   const history = useHistory();
 
   React.useEffect(() => {
-    setPositions(oldvalues=>({...oldvalues, loading:true}))
     positionService.getAllPositions().then(({ data }) => {
-      setPositions(oldvalues=>({...oldvalues, loading:false, data}))
-    }).catch((error)=>{
-      setPositions({data:undefined, loading:false, error})
-    });
+      setPositions(data);
+      setLoading(false);
+    })
   }, []);
-
-
 
 
   function editPosition(id){
@@ -81,39 +79,51 @@ function Position() {
         <input type="text" placeholder="Search.." />
       </div>
       <div>
-        <Table className="TableForItems">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Position</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
 
-          {positions.loading&&(
-               <div className="d-flex justify-content-center"><Spinner color="primary"/></div>
-            )}
-            {
-              positions.error&&(
-                  <div className="text-danger">Error occured...</div>
-              )  
-            }
-            
-            {positions?.map((item, idx) => (
-              <tr key={idx}>
-                <th scope="row">{idx}</th>
-                <td>{item.name}</td>
-                {/* <td>xx</td>
-                <td>xx</td> */}
-                <td className="Actions">
-                  <Button onClick={()=>editPosition(item.id)} className="Edit">Edit</Button>
-                  <Button onClick={()=>deleteButton(item.id) } className="Delete">Delete</Button>
-                </td>
+
+       
+
+          {loading ?(
+              //  <tr className="d-flex justify-content-center"><Spinner color="primary"/></tr>
+              <div className="d-flex justify-content-center"><Spinner color="primary"/></div>
+            ) : (  
+            <Table className="TableForItems">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Position</th>
+                <th>Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </Table>
+            </thead>
+        
+              
+              <tbody>
+  
+              {            
+                
+                (positions?.map((item, idx) => (
+                  <tr key={idx}>
+                    <th scope="row">{idx}</th>
+                    <td>{item.name}</td>
+                    {/* <td>xx</td>
+                    <td>xx</td> */}
+                    <td className="Actions">
+                      <Button onClick={()=>editPosition(item.id)} className="Edit">Edit</Button>
+                      <Button onClick={()=>deleteButton(item.id) } className="Delete">Delete</Button>
+                    </td>
+                  </tr>
+                )))}
+    
+                
+                
+              </tbody>
+  
+              
+              
+          </Table>)
+            
+
+}
       </div>
     </>
   );

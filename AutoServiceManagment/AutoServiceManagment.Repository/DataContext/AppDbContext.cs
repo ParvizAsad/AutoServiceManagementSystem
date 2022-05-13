@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoServiceManagment.DomainModels.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace AutoServiceManagment.Repository.DataContext
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<User>
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
@@ -28,5 +29,6 @@ namespace AutoServiceManagment.Repository.DataContext
         public DbSet<Salary> Salaries { get; set; }
         public DbSet<Service> Services { get; set; }
         public DbSet<Tax> Taxes { get; set; }
+
     }
 }

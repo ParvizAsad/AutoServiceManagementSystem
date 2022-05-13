@@ -67,7 +67,7 @@ namespace AutoServiceManagment.Services.Services
             if (categorys != null) { throw new Exception("There is a Category with this name!"); }
 
 
-            category = _mapper.Map<Category>(categoryDto);
+            category.Name = categoryDto.Name;
 
             DbContext.Categories.Update(category);
 
