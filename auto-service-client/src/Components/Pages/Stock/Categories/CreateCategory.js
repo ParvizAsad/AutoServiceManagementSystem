@@ -10,6 +10,7 @@ const newCategory = {
 
 function CreateCategory() {
   const [category, setCategory] = useState(newCategory);
+  const [error, setError] = useState();
 
   const [categoryData, setCategoryData] = useState();
   const history = useHistory();
@@ -26,7 +27,16 @@ function CreateCategory() {
       categoryService.postCategory(category).then(() => {
         getAllCategory();
         history.push("/Category");
-      });
+      }).catch(
+        e=>{
+            if(e.response.status===400){
+              setError(e.response.data.errors.Name[0])
+            }
+            else if(e.response.status===500){
+              setError(e.response.data)
+            }
+      }
+      );
     },
     [category, history, getAllCategory]
   );
@@ -43,6 +53,7 @@ function CreateCategory() {
       </div>
       <div className="CreatePage">
         <Form onSubmit={createCategory}>
+        {error}
           <FormGroup>
             <Label for="Name">Name</Label>
             <Input

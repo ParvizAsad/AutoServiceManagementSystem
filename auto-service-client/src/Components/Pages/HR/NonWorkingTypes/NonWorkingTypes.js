@@ -1,5 +1,5 @@
 import React from "react";
-import { Table, Button } from "reactstrap";
+import { Table, Button, Spinner} from "reactstrap";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import { useCallback } from "react";
@@ -9,11 +9,14 @@ import { nonWorkingTypeService } from "../../../../Api/services/NonWorkingTypes"
 function NonWorkingType() {
 
   const [nonWorkingTypes, setNonWorkingTypes] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   const history = useHistory();
 
   React.useEffect(() => {
     nonWorkingTypeService.getAllNonWorkingTypes().then(({ data }) => {
       setNonWorkingTypes(data);
+      setLoading(false);
     });
   }, []);
 
@@ -73,30 +76,40 @@ function NonWorkingType() {
         <Button>Export</Button>
         <input type="text" placeholder="Search.." />
       </div>
+
       <div>
-        <Table className="TableForItems">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>NonWorkingType</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {nonWorkingTypes?.map((item, idx) => (
-              <tr key={idx}>
-                <th scope="row">{idx}</th>
-                <td>{item.name}</td>
-                {/* <td>xx</td>
-                <td>xx</td> */}
-                <td className="Actions">
-                  <Button onClick={()=>editNonWorkingType(item.id)} className="Edit">Edit</Button>
-                  <Button onClick={()=>deleteButton(item.id) } className="Delete">Delete</Button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
+
+      {loading ?(
+              //  <tr className="d-flex justify-content-center"><Spinner color="primary"/></tr>
+              <div className="d-flex justify-content-center"><Spinner color="primary"/></div>
+            ) : (  
+              <Table className="TableForItems">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>NonWorkingType</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {nonWorkingTypes?.map((item, idx) => (
+                  <tr key={idx}>
+                    <th scope="row">{idx}</th>
+                    <td>{item.name}</td>
+                    {/* <td>xx</td>
+                    <td>xx</td> */}
+                    <td className="Actions">
+                      <Button onClick={()=>editNonWorkingType(item.id)} className="Edit">Edit</Button>
+                      <Button onClick={()=>deleteButton(item.id) } className="Delete">Delete</Button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>)
+            
+
+}
+
       </div>
     </>
   );

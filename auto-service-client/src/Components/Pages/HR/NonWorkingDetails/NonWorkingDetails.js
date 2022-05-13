@@ -1,5 +1,5 @@
 import React from "react";
-import { Table, Button } from "reactstrap";
+import {Table, Button, Spinner} from "reactstrap";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import { useCallback } from "react";
@@ -9,6 +9,8 @@ import { nonWorkingDetailService } from "../../../../Api/services/NonWorkingDeta
 function NonWorkingDetail() {
 
   const [nonWorkingDetails, setNonWorkingDetails] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   const history = useHistory();
 
   React.useEffect(() => {
@@ -74,31 +76,36 @@ function NonWorkingDetail() {
         <input Detail="text" placeholder="Search.." />
       </div>
       <div>
-        <Table className="TableForItems">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Start Time</th>
-              <th>End Time</th>
-              <th>Non-Working Type</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {nonWorkingDetails?.map((item, idx) => (
-              <tr key={idx}>
-                <th scope="row">{idx}</th>
-                <td>{item.starTime}</td>
-                <td>{item.endTime}</td>
-                <td>{item.nonWorkingType}</td>
-                <td className="Actions">
-                  <Button onClick={()=>editNonWorkingDetail(item.id)} className="Edit">Edit</Button>
-                  <Button onClick={()=>deleteButton(item.id) } className="Delete">Delete</Button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
+      {loading ?(
+              //  <tr className="d-flex justify-content-center"><Spinner color="primary"/></tr>
+              <div className="d-flex justify-content-center"><Spinner color="primary"/></div>
+            ) : (  
+              <Table className="TableForItems">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Start Time</th>
+                  <th>End Time</th>
+                  <th>Non-Working Type</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {nonWorkingDetails?.map((item, idx) => (
+                  <tr key={idx}>
+                    <th scope="row">{idx}</th>
+                    <td>{item.starTime}</td>
+                    <td>{item.endTime}</td>
+                    <td>{item.nonWorkingType}</td>
+                    <td className="Actions">
+                      <Button onClick={()=>editNonWorkingDetail(item.id)} className="Edit">Edit</Button>
+                      <Button onClick={()=>deleteButton(item.id) } className="Delete">Delete</Button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>)
+}
       </div>
     </>
   );

@@ -30,7 +30,12 @@
       "ProjectGuid": "22341830-5044-4563-88ae-68ccc7223e79",
       "DisplayName": "AutoServiceManagment.Infrastructure",
       "ColorIndex": 4
+    },
+    "49426920-dd7a-4465-b87e-134d8419b263": {
+      "ProjectGuid": "49426920-dd7a-4465-b87e-134d8419b263",
+      "DisplayName": "AutoServiceManagment.AuthenticationService",
+      "ColorIndex": 5
     }
   },
-  "NextColorIndex": 5
+  "NextColorIndex": 6
 }

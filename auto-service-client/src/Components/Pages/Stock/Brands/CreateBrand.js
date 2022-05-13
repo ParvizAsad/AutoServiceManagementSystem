@@ -30,7 +30,6 @@ function CreateBrand() {
         history.push("/brand");
       }).catch(
         e=>{
-          console.log(e.response)
             if(e.response.status===400){
               setError(e.response.data.errors.Name[0])
             }
