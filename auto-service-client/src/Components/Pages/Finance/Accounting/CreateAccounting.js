@@ -5,15 +5,15 @@ import { financeService } from "../../../../Api/services/Finances";
 // import "./Employees/Accountings/CreateEmployee.scss";
 
 const newAccounting = {
-  CommunalCost: " ",
+  communalCost: " ",
   AdditionalCost: " ",
   Date: " ",
 };
 
 function CreateAccounting() {
-  const [Accounting, setAccounting] = useState(newAccounting);
+  const [accounting, setAccounting] = useState(newAccounting);
 
-  const [AccountingData, setAccountingData] = useState();
+  const [accountingData, setAccountingData] = useState();
   const history = useHistory();
 
   const getAllAccounting = useCallback(() => {
@@ -25,17 +25,21 @@ function CreateAccounting() {
   const createAccounting = useCallback(
     (e) => {
       e.preventDefault();
-      financeService.postFinance(Accounting).then(() => {
+      financeService.postFinance(accounting).then(() => {
         getAllAccounting();
         history.push("/accounting");
-      });
+      }).catch(
+        e=>{
+          console.log(e.response)
+      }
+      );;
     },
-    [Accounting, history, getAllAccounting]
+    [accounting, history, getAllAccounting]
   );
 
   const getElementValues = (e) => {
     const { name, value } = e.target;
-    setAccounting({ ...Accounting, [name]: value });
+    setAccounting({ ...accounting, [name]: value });
   };
 
   return (
@@ -46,31 +50,31 @@ function CreateAccounting() {
       <div className="CreatePage">
         <Form onSubmit={createAccounting}>
           <FormGroup>
-            <Label for="CommunalCost">CommunalCost</Label>
+            <Label for="communalCost">CommunalCost</Label>
             <Input
-              id="CommunalCost"
-              name="CommunalCost"
-              placeholder="CommunalCost"
+              id="communalCost"
+              name="communalCost"
+              placeholder="communalCost"
               onChange={getElementValues}
               type="text"
             />
           </FormGroup>
           <FormGroup>
-            <Label for="AdditionalCost">AdditionalCost</Label>
+            <Label for="additionalCost">AdditionalCost</Label>
             <Input
-              id="AdditionalCost"
-              name="AdditionalCost"
-              placeholder="AdditionalCost"
+              id="additionalCost"
+              name="additionalCost"
+              placeholder="additionalCost"
               onChange={getElementValues}
               type="text"
             />
           </FormGroup>
           <FormGroup>
-            <Label for="Date">Date</Label>
+            <Label for="date">Date</Label>
             <Input
-              id="Date"
-              name="Date"
-              placeholder="Date"
+              id="date"
+              name="date"
+              placeholder="date"
               onChange={getElementValues}
               type="date"
             />

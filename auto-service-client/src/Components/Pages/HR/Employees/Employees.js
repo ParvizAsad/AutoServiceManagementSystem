@@ -7,6 +7,22 @@ import { useState } from "react";
 import { useCallback } from "react";
 import { Link } from "react-router-dom";
 import { employeeService } from "../../../../Api/services/Employee";
+import "jquery/dist/jquery.min.js";
+//Datatable Modules
+import "datatables.net-dt/js/dataTables.dataTables";
+import "datatables.net-dt/css/jquery.dataTables.min.css";
+import "datatables.net-buttons/js/dataTables.buttons.js";
+import "datatables.net-buttons/js/buttons.colVis.js";
+import "datatables.net-buttons/js/buttons.flash.js";
+import "datatables.net-buttons/js/buttons.html5.js";
+import "datatables.net-buttons/js/buttons.print.js";
+// import "datatables.net-buttons/js/buttons.excel.js";
+import "datatables.net-dt/css/jquery.dataTables.min.css";
+import $ from "jquery";
+
+
+
+
 
 function Employee(props) {
 
@@ -70,6 +86,20 @@ const deleteButton = (id) => {
   })
 }
 
+
+$(document).ready(function () {
+  setTimeout(function () {
+    $("#employeeData").DataTable({
+      pagingType: "full_numbers",
+      pageLength: 10,
+      processing: true,
+      dom: "Bfrtip",
+      buttons: [  ],
+    });
+  }, 1000);
+});
+
+
 function EditEmployee(id){
   console.log(id)
  props.history.push("/EditEmployee/"+id)
@@ -89,10 +119,9 @@ function EmployeeDetail(id){
           <Button onClick={() => history.push("/createemployee")} >Create Employee</Button>
         </div>
         <Button onClick={() => history.push("/ExportEmployee")} >Export</Button>
-        <input type="text" placeholder="Search.." />
       </div>
       <div>
-        <Table className="TableForItems">
+        <Table className="TableForItems" id="employeeData">
           <thead>
             <tr>
               <th>#</th>
