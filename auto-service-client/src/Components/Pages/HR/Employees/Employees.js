@@ -112,7 +112,7 @@ function EmployeeDetail(id){
   return (
     <>
       <div className="ForHeading">
-        <h1>Human Resourses</h1>
+        <h1>Employees</h1>
       </div>
       <div className="AddingAndSearching">
         <div className="Adding">

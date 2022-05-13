@@ -1,17 +1,26 @@
 import React, { useReducer } from "react";
-import { Table, Button } from "reactstrap";
 // import "./Employee.scss";
 import { useHistory } from "react-router-dom";
-import Swal from "sweetalert2";
 import { useState } from "react";
 import { useCallback } from "react";
 import { Link } from "react-router-dom";
 import { employeeService } from "../../../Api/services/Employee";
+import { FormGroup, Form, Label, Input, Button, FormText } from "reactstrap";
+import { userService } from "../../../Api/services/Users";
+
+const newUser = {
+  Username: " ",
+  Fullname: " ",
+  Password: " ",
+  ConfirmPassword: " ",
+};
 
 function CreateUser(props) {
 
   const [employee, setEmployee] = React.useState([]);
   const [employeeData, setEmployeeData] = useState();
+  const [User, setUser] = useState(newUser);
+
   const history = useHistory();
 
   const getAllEmployee = useCallback(() => {
@@ -27,49 +36,72 @@ function CreateUser(props) {
     });
   }, []);
 
+  const createUser = useCallback(
+    (e) => {
+      e.preventDefault();
+      userService.postUser(User).then(() => {
+        history.push("/User");
+      });
+    },
+    [User, history]
+  );
 
-function MakeUser(id){
- props.history.push("/EmployeeDetail/"+id)
-} 
+  const getElementValues = (e) => {
+    const { name, value } = e.target;
+    setUser({ ...User, [name]: value });
+    console.log(User);
+  };
+
 
   return (
     <>
       <div className="ForHeading">
-        <h1>Human Resourses</h1>
+        <h1>Create a new User</h1>
       </div>
-      <div className="AddingAndSearching">
-        <div className="Adding">
-          <Button onClick={() => history.push("/createemployee")} >Create Employee</Button>
-        </div>
-        <Button onClick={() => history.push("/ExportEmployee")} >Export</Button>
-        <input type="text" placeholder="Search.." />
-      </div>
-      <div>
-        <Table className="TableForItems">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>FullName</th>
-              <th>Position</th>
-              <th>Status</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {employee?.map((item, idx) => (
-              <tr key={idx}>
-                <th scope="row">{idx}</th>
-                <td>{item.fullName}</td>
-                <td>{item.Position}</td>
-                <td>{item.Status}</td>
-                <td className="Actions">
-                  <Button onClick={()=>MakeUser(item.id)} className="MakeUser">Make User</Button>
-
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
+      <div className="CreatePage">
+        <Form onSubmit={createUser}>
+          <FormGroup>
+            <Label for="Username">Username</Label>
+            <Input
+              id="Username"
+              name="Username"
+              placeholder="Username"
+              onChange={getElementValues}
+              type="text"
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label for="Fullname">Fullname</Label>
+            <Input
+              id="Fullname"
+              name="Fullname"
+              placeholder="Fullname"
+              onChange={getElementValues}
+              type="text"
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label for="Password">Password</Label>
+            <Input
+              id="Password"
+              name="Password"
+              placeholder="Password"
+              onChange={getElementValues}
+              type="password"
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label for="ConfirmPassword">Confirm Password</Label>
+            <Input
+              id="ConfirmPassword"
+              name="ConfirmPassword"
+              placeholder="Confirm Password"
+              onChange={getElementValues}
+              type="password"
+            />
+          </FormGroup>
+          <Button type="submit">Submit</Button>
+        </Form>
       </div>
     </>
   );

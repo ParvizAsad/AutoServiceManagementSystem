@@ -96,7 +96,7 @@ function RoleDetail(id){
   return (
     <>
       <div className="ForHeading">
-        <h1>Human Resourses</h1>
+        <h1>Roles</h1>
       </div>
       <div className="AddingAndSearching">
         <div className="Adding">
