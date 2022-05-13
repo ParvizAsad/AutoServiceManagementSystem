@@ -7,11 +7,58 @@ import { useState } from "react";
 import { useCallback } from "react";
 import { Link } from "react-router-dom";
 
-function User() {
+function User(props) {
 
   const [user, setUser] = React.useState([]);
   const [userData, setUserData] = useState();
   const history = useHistory();
+
+  const deleteButton = (id) => {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    })
+    
+    swalWithBootstrapButtons.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, cancel!',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        swalWithBootstrapButtons.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+          {userService.deleteUser(id) &&
+          // history.push("/Role") 
+          <Link to="/Role"></Link>
+        
+        };
+      } 
+      else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire(
+          'Cancelled',
+          'Your imaginary file is safe :)',
+          'error'
+        )
+      }
+    })
+  }
+
+  function editUser(id){
+   props.history.push("/EditRole/"+id)
+  } 
 
   const getAllEmployee = useCallback(() => {
     userService.getAllUsers().then(({ data }) => {
@@ -35,9 +82,9 @@ function User() {
           <thead>
             <tr>
               <th>#</th>
-              <th>FullName</th>
-              <th>Position</th>
-              <th>Status</th>
+              <th>Fullname</th>
+              <th>Username</th>
+              <th>Role</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -45,13 +92,12 @@ function User() {
             {user?.map((item, idx) => (
               <tr key={idx}>
                 <th scope="row">{idx}</th>
-                <td>{item.fullName}</td>
-                <td>{item.Position}</td>
-                <td>{item.Status}</td>
+                <td>{item.fullname}</td>
+                <td>{item.username}</td>
+                <td>{item.role}</td>
                 <td className="Actions">
-                  {/* <Button onClick={()=>EditUser(item.id)} className="Edit">Edit</Button> */}
-                  {/* <Button onClick={()=>deleteButton(item.id) } className="Delete">Delete</Button> */}
-                  {/* <Button onClick={()=>UserDetail(item.id)} className="Detail">Detail</Button> */}
+                  <Button onClick={()=>editUser(item.id)} className="Edit">Edit</Button>
+                  <Button onClick={()=>deleteButton(item.id) } className="Delete">Delete</Button>
                 </td>
               </tr>
             ))}
