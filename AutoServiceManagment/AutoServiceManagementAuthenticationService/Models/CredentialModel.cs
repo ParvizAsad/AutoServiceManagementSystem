@@ -12,9 +12,13 @@ namespace AutoServiceManagment.AuthenticationService.Models
         [Required]
         public string Username { get; set; }
 
-        [Required]
-        public string Password { get; set; }
+        [Required, DataType(DataType.Password)]
 
+        public string Password { get; set; }
+<<<<<<< Updated upstream
+
+=======
+>>>>>>> Stashed changes
         public bool RememberMe { get; set; }
 
     }

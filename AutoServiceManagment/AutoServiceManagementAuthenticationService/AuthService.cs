@@ -56,6 +56,64 @@ namespace AutoServiceManagment.AuthenticationService
             return token;
 
         }
+
+        public async Task Login(CredentialModel credentialModel)
+        {
+            var existUser = await _userManager.FindByNameAsync(credentialModel.Username);
+
+            if (existUser == null)
+            {
+                throw new Exception("Incorrect username or password");
+
+            }
+
+            var result = await _signInManager.PasswordSignInAsync(existUser, credentialModel.Password, credentialModel.RememberMe, true);
+
+            if (result != null)
+            {
+                throw new Exception("Can not be signed in");
+
+            }
+
+            //if (result.IsLockedOut)
+            //{
+            //    ModelState.AddModelError("", "You are locked out");
+
+            //    return View(loginViewModel);
+            //}
+
+        }
+
+        public async Task Register(RegisterModel registerModel)
+        {
+
+            var ExistUser = await _userManager.FindByNameAsync(registerModel.Username);
+
+            if (ExistUser != null)
+            {
+                throw new Exception("User with this username already exits");
+
+            }
+
+            var user = new User()
+            {
+                Fullname = registerModel.Fullname,
+
+                UserName = registerModel.Username,
+
+                Email = registerModel.Email,
+            };
+
+            var result = await _userManager.CreateAsync(user, registerModel.Password);
+
+            if (!result.Succeeded)
+            {
+                throw new Exception("User can not be created");
+
+            }
+
+        }
+
         private async Task<JwtSecurityToken> CreateJwtToken(User user)
         {
             var userClaims = await _userManager.GetClaimsAsync(user);
