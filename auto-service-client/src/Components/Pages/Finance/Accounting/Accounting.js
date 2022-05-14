@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback, useState } from 'react'
 import {
   Table,
   Button
@@ -10,8 +10,15 @@ import Swal from "sweetalert2";
 function Accounting() {
 
   const [finance, setFinance] = React.useState([]);
+  const [accountingData, setAccountingData] = React.useState();
   const history = useHistory();
 
+  const getAllAccounting = useCallback(() => {
+    financeService.getAllFinances().then(({ data }) => {
+      setAccountingData(data);
+    });
+  }, [setAccountingData]);
+  
   React.useEffect(() => {
     financeService.getAllFinances().then(({ data }) => {
       setFinance(data);
@@ -47,7 +54,8 @@ function Accounting() {
           'success'
         )
           {financeService.deleteFinance(id) &&
-          history.push("/accounting")};
+          getAllAccounting() &&
+          history.push("/accounting");}
       } 
       else if (
         /* Read more about handling dismissals below */
@@ -69,7 +77,7 @@ function Accounting() {
     </div>
     <div className='AddingAndSearching'>
       <div className='Adding'>
-      <Button onClick={() => history.push("/createaccounting")} >Create a new Financial Line</Button>
+      <Button onClick={() => history.push("/createaccounting")} >Create Accounting</Button>
       </div>
       <input type="text" placeholder="Search.."/>
     </div>

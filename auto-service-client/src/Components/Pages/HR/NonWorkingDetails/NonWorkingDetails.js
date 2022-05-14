@@ -85,6 +85,7 @@ function NonWorkingDetail() {
                 <tr>
                   <th>#</th>
                   <th>Start Time</th>
+                  <th>Employee</th>
                   <th>End Time</th>
                   <th>Non-Working Type</th>
                   <th>Actions</th>
@@ -95,6 +96,7 @@ function NonWorkingDetail() {
                   <tr key={idx}>
                     <th scope="row">{idx}</th>
                     <td>{item.starTime}</td>
+                    <td>{item.employee}</td>
                     <td>{item.endTime}</td>
                     <td>{item.nonWorkingType}</td>
                     <td className="Actions">

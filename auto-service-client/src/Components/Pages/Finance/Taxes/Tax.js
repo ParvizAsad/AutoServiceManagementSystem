@@ -15,11 +15,11 @@ function Tax() {
 
   const history = useHistory();
 
-  const getAllTax = useCallback(() => {
+  const getAllTaxes = useCallback(() => {
     taxService.getAllTaxes().then(({ data }) => {
-      setTaxData(data);
+      setTaxes(data);
     });
-  }, [setTaxData]);
+  }, [setTaxes]);
 
   React.useEffect(() => {
     taxService.getAllTaxes().then(({ data }) => {
@@ -55,10 +55,8 @@ function Tax() {
           'Your file has been deleted.',
           'success'
         )
-          taxService.deleteTax(id);
-          getAllTax();
-          history.push("/tax");
-          console.log("ss");
+        {taxService.deleteTax(id) &&
+          getAllTaxes()};
       } 
       else if (
         /* Read more about handling dismissals below */
@@ -80,7 +78,7 @@ function Tax() {
     </div>
     <div className='AddingAndSearching'>
       <div className='Adding'>
-      <Button onClick={() => history.push("/createtax")} >Create a new Tax</Button>
+      <Button onClick={() => history.push("/createtax")} >Create Tax</Button>
       </div>
       <input type="text" placeholder="Search.."/>
     </div>

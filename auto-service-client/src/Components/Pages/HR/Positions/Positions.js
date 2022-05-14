@@ -14,6 +14,12 @@ function Position() {
 
   const history = useHistory();
 
+  const getAllPosition = useCallback(() => {
+    positionService.getAllPositions().then(({ data }) => {
+      setPositions(data);
+    });
+  }, [setPositions]);
+
   React.useEffect(() => {
     positionService.getAllPositions().then(({ data }) => {
       setPositions(data);
@@ -50,8 +56,9 @@ function Position() {
           'Your file has been deleted.',
           'success'
         )
-          {positionService.deletePosition(id) &&
-          history.push("/")};
+          {positionService.deletePosition(id);
+            getAllPosition();
+            console.log("ss");}
       } 
       else if (
         /* Read more about handling dismissals below */

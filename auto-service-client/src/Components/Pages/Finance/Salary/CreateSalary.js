@@ -6,11 +6,11 @@ import { employeeService } from "../../../../Api/services/Employee";
 // import "./Employees/Salarys/CreateEmployee.scss";
 
 const newSalary= {
-  Employee: " ",
   Date: " ",
   Bonus: " ",
   NetSalary: " ",
   Tax: " ", 
+  EmployeeId: " ",
 };
 
 function CreateSalary() {
@@ -55,12 +55,12 @@ function CreateSalary() {
       <div className="CreatePage">
         <Form onSubmit={createSalary}>
         <FormGroup>
-            <Label for="Employee">Select Employee</Label>
-            <select className="Employee" onChange={getElementValues}  name="Employee" id="Employee">
+            <Label for="EmployeeId">Select Employee</Label>
+            <select className="EmployeeId" onChange={getElementValues}  name="EmployeeId" id="EmployeeId">
               <option value="0">--Select Employee--</option>
               {employee?.map((item, idx) => (
                 <option key={idx} value={item.id}>
-                  {item.Name}
+                  {item.fullName}
                 </option>
               ))}
             </select>

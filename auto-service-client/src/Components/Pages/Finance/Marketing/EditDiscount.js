@@ -44,7 +44,7 @@ function EditDiscount(props) {
   return (
     <>
       <div className="ForHeading">
-        <h1>Edit the Discount</h1>
+        <h1>Edit {discount.name} Discount</h1>
       </div>
       <div className="CreatePage">
         <Form onSubmit={editDiscount}>

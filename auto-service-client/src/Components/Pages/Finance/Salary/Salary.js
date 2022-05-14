@@ -111,11 +111,11 @@ function Salary() {
         {Salaries?.map((item, idx) => (
               <tr key={idx}>
                 <th scope="row">{idx}</th>
-                <th>{item.Employee}</th>
-                <th>{item.Date}</th>
-                <th>{item.Bonus}</th>
-                <th>{item.NetSalary}</th>
-                <td>{item.SalaryValue}</td>
+                <th>{item.employee}</th>
+                <th>{item.date}</th>
+                <th>{item.bonus}</th>
+                <th>{item.netSalary}</th>
+                <td>{item.salaryValue}</td>
                 <td className="Actions">
                   <Button onClick={()=>editSalary(item.id)} className="Edit">Edit</Button>
                   <Button onClick={()=>deleteButton(item.id) } className="Delete">Delete</Button>

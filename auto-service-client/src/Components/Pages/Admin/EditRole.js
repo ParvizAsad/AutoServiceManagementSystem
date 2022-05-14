@@ -37,7 +37,7 @@ function EditRole(props) {
   return (
     <>
       <div className="ForHeading">
-        <h1>Edit Role</h1>
+        <h1>Edit {role.Name} role</h1>
       </div>
       <div className="EditPage">
         <Form onSubmit={editRole}>

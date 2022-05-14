@@ -46,7 +46,7 @@ function EditCategory(props) {
   return (
     <>
       <div className="ForHeading">
-        <h1>Edit the Category</h1>
+        <h1>Edit {category.name} Category</h1>
       </div>
       <div className="CreatePage">
         <Form onSubmit={editCategory}>

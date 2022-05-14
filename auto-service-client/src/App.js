@@ -63,6 +63,8 @@ import EditCategory from './Components/Pages/Stock/Categories/EditCategory';
 import EditService from './Components/Pages/Service/EditService';
 import CreateUser from './Components/Pages/Admin/CreateUser';
 import EditRole from './Components/Pages/Admin/EditRole';
+import EditPosition from './Components/Pages/HR/Positions/EditPosition';
+import EditProduct from './Components/Pages/Stock/Products/EditProduct';
 
 function App() {
   return (
@@ -131,6 +133,8 @@ function App() {
         <Route path="/EditCategory/:id" exact component={EditCategory} />
         <Route path="/EditService/:id" exact component={EditService} />
         <Route path="/EditRole/:id" exact component={EditRole} />
+        <Route path="/EditPosition/:id" exact component={EditPosition} />
+        <Route path="/EditProduct/:id" exact component={EditProduct} />
 
         <Route path={"/error"} exact component={Error} />
         <Redirect to={"/error"} exact />

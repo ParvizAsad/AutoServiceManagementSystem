@@ -1,31 +1,57 @@
 import { FormGroup, Form, Label, Input, Button, FormText } from "reactstrap";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { salaryService } from "../../../../Api/services/Salaries";
 import { employeeService } from "../../../../Api/services/Employee";
-// import "./Employees/Salarys/UpdateEmployee.scss";
+// import "./Employees/Salarys/CreateEmployee.scss";
 
 const newSalary= {
-  Employee: " ",
-  Date: " ",
+  Date: "",
   Bonus: " ",
   NetSalary: " ",
   Tax: " ", 
+  EmployeeId: " ",
 };
 
 function EditSalary(props) {
-  const [data, setNewData] = useState(newSalary);
+  const [Salary, setSalary] = useState(newSalary);
   const [employee, setEmployee] = React.useState([]);
 
-  const [SalaryData, setSalaryData] = useState();
   const history = useHistory();
+  
+  useEffect(() => {
+    const id = props.match.params.id;
+    salaryService.getSalaryById(id).then((res) => {
+      setSalary(res.data);
+      })
+  }, []);
 
-  const getAllSalary = useCallback(() => {
-    salaryService.getAllSalaryes().then(({ data }) => {
-      setSalaryData(data);
-    });
-  }, [setSalaryData]);
+  const editSalary = useCallback(
+    (e) => {
+      e.preventDefault();
+      const id = props.match.params.id;
+      salaryService.putSalary(id, Salary).then(() => {
+        history.push("/salary");
+      });
+    },
+    [Salary, history]
+  );
 
+  useEffect(() => {
+    const id = props.match.params.id;
+    salaryService.getSalaryById(id).then((res) => {
+      setSalary(res.data);
+      })
+  }, []);
+
+  function handle(e) {
+    // const newSalary = { ...Salary };
+    // newSalary[e.target.id] = e.target.value;
+    // setSalary(newSalary);
+    const { name, value } = e.target;
+    setSalary({ ...Salary, [name]: value });
+
+  }
 
   React.useEffect(() => {
     employeeService.getAllEmployee().then(({ data }) => {
@@ -33,37 +59,20 @@ function EditSalary(props) {
     });
   }, []);
 
-  function handle(e) {
-    const newdata = { ...data };
-    newdata[e.target.id] = e.target.value;
-    setNewData(newdata);
-  }
-
-  const updateSalary = useCallback(
-    (e) => {
-      e.preventDefault();
-      const id = props.match.params.id;
-      salaryService.putSalary(id, data).then(() => {
-        history.push("/");
-      });
-    },
-    // [employee, history, getAllEmployee]
-  );
-
   return (
     <>
       <div className="ForHeading">
-        <h1>Update the Salary</h1>
+        <h1>Edit {Salary.name} Salary</h1>
       </div>
-      <div className="UpdatePage">
-        <Form onSubmit={updateSalary}>
+      <div className="CreatePage">
+        <Form onSubmit={editSalary}>
         <FormGroup>
-            <Label for="customerId">Select Customer</Label>
-            <select className="customerId" onChange={(e) => handle(e)} name="customerId" id="customerId">
-              <option value="0">--Select Category--</option>
+            <Label for="EmployeeId">Select Employee</Label>
+            <select className="EmployeeId" onChange={(e) => handle(e)}  name="EmployeeId" id="EmployeeId">
+              <option value="0">--Select Employee--</option>
               {employee?.map((item, idx) => (
-                <option key={item.id} value={item.id}>
-                  {item.name}
+                <option key={idx} value={item.id}>
+                  {item.fullName}
                 </option>
               ))}
             </select>
@@ -75,6 +84,7 @@ function EditSalary(props) {
               name="Date"
               placeholder="Date"
               onChange={(e) => handle(e)}
+              value={Salary.Date}
               type="date"
             />
           </FormGroup>
@@ -85,6 +95,7 @@ function EditSalary(props) {
               name="Bonus"
               placeholder="Bonus"
               onChange={(e) => handle(e)}
+              value={Salary.bonus}
               type="number"
             />
           </FormGroup>
@@ -95,6 +106,7 @@ function EditSalary(props) {
               name="NetSalary"
               placeholder="NetSalary"
               onChange={(e) => handle(e)}
+              value={Salary.netSalary}
               type="number"
             />
           </FormGroup>

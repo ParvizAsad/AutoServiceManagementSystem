@@ -6,8 +6,8 @@ import { financeService } from "../../../../Api/services/Finances";
 
 const newAccounting = {
   communalCost: " ",
-  AdditionalCost: " ",
-  Date: " ",
+  additionalCost: " ",
+  date: " ",
 };
 
 function CreateAccounting() {
@@ -56,7 +56,7 @@ function CreateAccounting() {
               name="communalCost"
               placeholder="communalCost"
               onChange={getElementValues}
-              type="text"
+              type="number"
             />
           </FormGroup>
           <FormGroup>
@@ -66,7 +66,7 @@ function CreateAccounting() {
               name="additionalCost"
               placeholder="additionalCost"
               onChange={getElementValues}
-              type="text"
+              type="number"
             />
           </FormGroup>
           <FormGroup>

@@ -23,7 +23,6 @@ function EditTax(props) {
 
   const editTax = useCallback(
     (e) => {
-      console.log("sdasd");
       e.preventDefault();
       const id = props.match.params.id;
       taxService.putTax(id, tax).then(() => {
@@ -52,7 +51,7 @@ function EditTax(props) {
   return (
     <>
       <div className="ForHeading">
-        <h1>Edit tax</h1>
+        <h1>Edit {tax.name} tax</h1>
       </div>
       <div className="CreatePage">
         <Form onSubmit={editTax}>
@@ -62,8 +61,8 @@ function EditTax(props) {
               id="Name"
               name="Name"
               placeholder="Name"
-              value={tax.name}
               onChange={(e) => handle(e)}
+              value={tax.name}
               type="text"
             />
           </FormGroup>
@@ -73,8 +72,8 @@ function EditTax(props) {
               id="taxValue"
               name="taxValue"
               placeholder="Tax value"
-              onChange={(e) => handle(e)}
               value={tax.taxValue}
+              onChange={(e) => handle(e)}
               type="number"
             />
           </FormGroup>

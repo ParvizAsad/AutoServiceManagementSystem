@@ -51,11 +51,11 @@ function EditNonWorkingDetail(props) {
       e.preventDefault();
       const id = props.match.params.id;
       nonWorkingDetailService.putNonWorkingDetail(id, nonWorkingDetail).then(() => {
-        // getAllEmployee();
-        history.push("/");
+        getAllNonWorkingDetail();
+        history.push("/nonworkingdetail");
       });
     },
-    // [employee, history, getAllEmployee]
+    [history, getAllNonWorkingDetail]
   );
 
   function handle(e) {
@@ -70,7 +70,7 @@ function EditNonWorkingDetail(props) {
   return (
     <>
       <div className="ForHeading">
-        <h1>Edit a new Non-Working Detail</h1>
+        <h1>Edit Non-Working Detail</h1>
       </div>
       <div className="EditPage">
         <Form onSubmit={updateNonWorkingDetail}>

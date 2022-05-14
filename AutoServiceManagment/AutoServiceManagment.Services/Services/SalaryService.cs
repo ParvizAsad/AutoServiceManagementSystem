@@ -57,11 +57,14 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task UpdateSalaryAsyncId(int? id, SalaryDto salaryDto)
         {
-            var salary = await DbContext.Salaries.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == true);
+            var salary = await DbContext.Salaries.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted != true);
 
             if (salary == null) { throw new Exception("Salary not found!"); }
 
-            salary = _mapper.Map<Salary>(salaryDto);
+            salary.NetSalary = salaryDto.NetSalary;
+            salary.Date = salaryDto.Date;
+            salary.EmployeeID = salaryDto.EmployeeID;
+            salary.TaxID = salaryDto.TaxID;
 
             DbContext.Salaries.Update(salary);
 

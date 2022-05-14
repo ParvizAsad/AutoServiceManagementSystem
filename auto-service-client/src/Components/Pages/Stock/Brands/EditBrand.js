@@ -46,7 +46,7 @@ function EditBrand(props) {
   return (
     <>
       <div className="ForHeading">
-        <h1>Edit the Brand</h1>
+        <h1>Edit {brand.name} Brand</h1>
       </div>
       <div className="CreatePage">
         <Form onSubmit={editBrand}>

@@ -51,7 +51,7 @@ function EditCustomer(props) {
   return (
     <>
       <div className="ForHeading">
-        <h1>Create a new customer</h1>
+        <h1>Edit {data.FullName} customer</h1>
       </div>
       <div className="CreatePage">
         <Form onSubmit={updateCustomer}>

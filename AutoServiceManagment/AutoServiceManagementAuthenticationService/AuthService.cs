@@ -2,7 +2,6 @@
 using AutoServiceManagment.AuthenticationService.Models;
 using AutoServiceManagment.DomainModels.Entities;
 using AutoServiceManagment.Repository.DataContext;
-using AutoServiceManagment.Repository.Repository;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -19,24 +18,25 @@ namespace AutoServiceManagment.AuthenticationService
     public class AuthService : IAuthService
     {
         private readonly JwtSetting _jwtSetting;
+
         private readonly UserManager<User> _userManager;
 
         private readonly RoleManager<IdentityRole> _roleManager;
 
+        private readonly SignInManager<User> _signInManager;
+
         private readonly AppDbContext _dbContext;
-        public AuthService(IOptions<JwtSetting> jwtSetting, UserManager<User> userManager, RoleManager<IdentityRole> roleManager, AppDbContext dbContext)
+        public AuthService(IOptions<JwtSetting> jwtSetting, UserManager<User> userManager, RoleManager<IdentityRole> roleManager, AppDbContext dbContext, SignInManager<User> signInManager)
         {
             _jwtSetting = jwtSetting.Value;
 
             _userManager = userManager;
 
             _roleManager = roleManager;
-            _dbContext = dbContext;
-        }
 
-        public string GetToken(CredentialModel credentialModel)
-        {
-            throw new NotImplementedException();
+            _dbContext = dbContext;
+
+            _signInManager = signInManager;
         }
 
         public async Task<string> GetTokenAsync(CredentialModel credentialModel)
@@ -48,12 +48,12 @@ namespace AutoServiceManagment.AuthenticationService
             }
             if (await _userManager.CheckPasswordAsync(user, credentialModel.Password))
             {
-                var jwtSecurityToken = CreateJwtToken(user);
-                var token = new JwtSecurityTokenHandler().WriteToken(await jwtSecurityToken);
-
-                return token;
+                throw new Exception("Invalid Credentials");
             }
-            throw new Exception("Invalid Credentials");
+            var jwtSecurityToken = CreateJwtToken(user);
+            var token = new JwtSecurityTokenHandler().WriteToken(await jwtSecurityToken);
+
+            return token;
 
         }
         private async Task<JwtSecurityToken> CreateJwtToken(User user)
@@ -86,6 +86,53 @@ namespace AutoServiceManagment.AuthenticationService
                 signingCredentials: signingCredentials);
             return jwtSecurityToken;
         }
+        //public async Task RegisterAsync(RegisterModel registerViewModel)
+        //{
+
+        //    var ExistUser = await _userManager.FindByNameAsync(registerViewModel.Username);
+
+        //    var user = new User()
+        //    {
+        //        Fullname = registerViewModel.Fullname,
+
+        //        UserName = registerViewModel.Username,
+
+        //        Email = registerViewModel.Email,
+        //    };
+
+        //    var result = await _userManager.CreateAsync(user, registerViewModel.Password);
+
+        //    await _signInManager.SignInAsync(user, false);
+
+        //}
+        //public async Task LoginAsync(CredentialModel credentialModel)
+        //{
+
+        //    var existUser = await _userManager.FindByNameAsync(credentialModel.Username);
+
+        //    if (existUser == null)
+        //    {
+        //        throw new Exception("Invalid Credentials");
+
+        //    }
+
+        //    var result = await _signInManager.PasswordSignInAsync(existUser, credentialModel.Password, credentialModel.RememberMe, true);
+
+        //    if (!result.Succeeded)
+        //    {
+        //        throw new Exception("Invalid Credentials");
+
+        //    }
+
+        //    if (result.IsLockedOut)
+        //    {
+        //        throw new Exception("Invalid Credentials");
+
+        //    }
+
+
+        //}
+
     }
 }
 

@@ -47,7 +47,7 @@ function EditService(props) {
   return (
     <>
       <div className="ForHeading">
-        <h1>Edit the Service</h1>
+        <h1>Edit {Service.Name} Service</h1>
       </div>
       <div className="CreatePage">
         <Form onSubmit={editService}>

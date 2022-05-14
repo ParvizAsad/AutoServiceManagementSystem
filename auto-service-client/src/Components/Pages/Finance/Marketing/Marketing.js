@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback, useState } from 'react'
 import {
   Table,
   Button
@@ -9,8 +9,15 @@ import Swal from "sweetalert2";
 
 function Marketing() {
 
-  const [discounts, setDiscount] = React.useState([]);
+  const [discounts, setDiscount] = React.useState([]);  
+  const [DiscountData, setDiscountData] = React.useState();
   const history = useHistory();
+
+  const getAllDiscount = useCallback(() => {
+    discountService.getAllDiscounts().then(({ data }) => {
+      setDiscount(data);
+    });
+  }, [setDiscount]);
 
   React.useEffect(() => {
     discountService.getAllDiscounts().then(({ data }) => {
@@ -47,7 +54,7 @@ function Marketing() {
           'success'
         )
           {discountService.deletediscount(id) &&
-          history.push("/")};
+          getAllDiscount()};
       } 
       else if (
         /* Read more about handling dismissals below */
@@ -69,7 +76,7 @@ function Marketing() {
     </div>
     <div className='AddingAndSearching'>
       <div className='Adding'>
-      <Button onClick={() => history.push("/creatediscount")} >Create a new Discount</Button>
+      <Button onClick={() => history.push("/creatediscount")} >Create Discount</Button>
       </div>
       <input type="text" placeholder="Search.."/>
     </div>

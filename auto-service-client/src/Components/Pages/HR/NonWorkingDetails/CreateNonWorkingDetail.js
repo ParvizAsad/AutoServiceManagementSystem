@@ -7,10 +7,10 @@ import { employeeService } from "../../../../Api/services/Employee";
 // import "./Employees/NonWorkingDetails/CreateEmployee.scss";
 
 const newNonWorkingDetail = {
+  EmployeeId: " ",
   StartTime: " ",
   EndTime: " ",
-  NonWokringType: " ",
-  EmployeeId: " ",
+  NonWorkingType: " ",
 };
 
 function CreateNonWorkingDetail() {

@@ -16,11 +16,32 @@ namespace AutoServiceManagment.API.Controllers
         {
             _authService = authService;
         }
+
         [HttpPost("token")]
         public async Task<IActionResult> Token([FromBody] CredentialModel credentialModel)
         {
-            var token = _authService.GetToken(credentialModel);
+            var token =await _authService.GetTokenAsync(credentialModel);
             return Ok(token);
         }
+
+        //[HttpPost]
+
+        //public async Task<IActionResult> RegisterAsync([FromBody] RegisterModel registerViewModel)
+        //{
+
+        //    await _authService.RegisterAsync(registerViewModel);
+        //    return Ok();
+
+        //}
+
+        //[HttpPost]
+        //public async Task<IActionResult> LoginAsync([FromBody] CredentialModel credentialModel)
+        //{
+
+        //    await _authService.LoginAsync(credentialModel);
+        //    return Ok();
+
+        //}
+
     }
 }

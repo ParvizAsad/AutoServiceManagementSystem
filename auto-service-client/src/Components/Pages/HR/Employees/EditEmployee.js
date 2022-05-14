@@ -59,7 +59,7 @@ function EditEmployee(props) {
       const id = props.match.params.id;
       employeeService.putEmployee(id, data).then(() => {
         // getAllEmployee();
-        history.push("/HR");
+        history.push("/employee");
       }).catch(
         e=>{
           console.log(e.response)
