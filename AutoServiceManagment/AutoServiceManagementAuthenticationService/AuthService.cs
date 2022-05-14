@@ -38,7 +38,6 @@ namespace AutoServiceManagment.AuthenticationService
 
             _signInManager = signInManager;
         }
-
         public async Task<string> GetTokenAsync(CredentialModel credentialModel)
         {
             var user = await _userManager.FindByNameAsync(credentialModel.Username);

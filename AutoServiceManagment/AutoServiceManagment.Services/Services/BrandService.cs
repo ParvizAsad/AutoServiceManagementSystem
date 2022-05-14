@@ -49,6 +49,7 @@ namespace AutoServiceManagment.Services.Services
             if(brandDto==null) { throw new Exception("Boş saxlanıla bilməz"); }
 
             var brand = _mapper.Map<Brand>(brandDto);
+
             await _repository.AddAsync(brand);
         }
 

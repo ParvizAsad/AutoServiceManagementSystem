@@ -24,7 +24,6 @@ namespace AutoServiceManagment.API.Controllers
             return Ok(token);
         }
 
-<<<<<<< Updated upstream
         //[HttpPost]
 
         //public async Task<IActionResult> RegisterAsync([FromBody] RegisterModel registerViewModel)
@@ -44,17 +43,15 @@ namespace AutoServiceManagment.API.Controllers
 
         //}
 
-=======
-        public async Task<IActionResult> Register([FromBody] RegisterModel registerModel)
-        {
-            var token = _authService.Register(registerModel);
-            return Ok();
-        }
-        public async Task<IActionResult> Login([FromBody] CredentialModel credentialModel)
-        {
-            var token = _authService.Login(credentialModel);
-            return Ok();
-        }
->>>>>>> Stashed changes
+        //public async Task<IActionResult> Register([FromBody] RegisterModel registerModel)
+        //{
+        //    var token = _authService.Register(registerModel);
+        //    return Ok();
+        //}
+        //public async Task<IActionResult> Login([FromBody] CredentialModel credentialModel)
+        //{
+        //    var token = _authService.Login(credentialModel);
+        //    return Ok();
+        //}
     }
 }

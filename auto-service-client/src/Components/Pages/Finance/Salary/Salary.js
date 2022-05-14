@@ -6,6 +6,7 @@ import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
 import React, { useCallback, useState } from "react";
 import { salaryService } from "../../../../Api/services/Salaries";
+import { employeeService } from "../../../../Api/services/Employee";
 
 
 function Salary() {
@@ -57,7 +58,6 @@ function Salary() {
           salaryService.deleteSalary(id);
           getAllSalary();
           history.push("/Salary");
-          console.log("ss");
       } 
       else if (
         /* Read more about handling dismissals below */
@@ -111,7 +111,8 @@ function Salary() {
         {Salaries?.map((item, idx) => (
               <tr key={idx}>
                 <th scope="row">{idx}</th>
-                <th>{item.employee}</th>
+                <th>{(employeeService.getEmployeeByID(6)).fullName}             
+                </th>
                 <th>{item.date}</th>
                 <th>{item.bonus}</th>
                 <th>{item.netSalary}</th>

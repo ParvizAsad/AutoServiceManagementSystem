@@ -47,7 +47,7 @@ function Category() {
           'success'
         )
           {categoryService.deleteCategory(id) &&
-          history.push("/")};
+          history.push("/category")};
       } 
       else if (
         /* Read more about handling dismissals below */

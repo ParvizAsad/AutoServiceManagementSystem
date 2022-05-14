@@ -41,6 +41,7 @@ namespace AutoServiceManagment.Services.Services
         public async Task AddProductAsync(ProductDto productDto)
         {
             var product = _mapper.Map<Product>(productDto);
+
             await _repository.AddAsync(product);
         }
 

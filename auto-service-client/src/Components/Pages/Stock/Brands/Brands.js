@@ -9,7 +9,15 @@ import { brandService } from "../../../../Api/services/Brands";
 function Brand() {
 
   const [brands, setBrands] = useState([]);
+  const [brandsData, setBrandsData] = useState([]);
+
   const history = useHistory();
+
+  const getAllBrand = useCallback(() => {
+    brandService.getAllBrands().then(({ data }) => {
+      setBrands(data);
+    });
+  }, []);
 
   React.useEffect(() => {
     brandService.getAllBrands().then(({ data }) => {
@@ -46,7 +54,7 @@ function Brand() {
           'success'
         )
           {brandService.deleteBrand(id) &&
-          history.push("/")};
+          getAllBrand()};
       } 
       else if (
         /* Read more about handling dismissals below */

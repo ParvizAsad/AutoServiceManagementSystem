@@ -8,7 +8,7 @@ import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
 import { productService } from '../../../../Api/services/Products';
 
-function Product() {
+function Product(props) {
 
   const [product, setProduct] = React.useState([]);
   const history = useHistory();
@@ -58,6 +58,11 @@ function Product() {
     })
   }
 
+  function ProductDetail(id){
+    console.log(id)
+   props.history.push("/ProductDetail/"+id)
+  } 
+
   return (
     <>
     <div className ='ForHeading'>
@@ -101,7 +106,7 @@ function Product() {
                 <td className="Actions">
                   <Button className="Edit">Edit</Button>
                   <Button onClick={()=>deleteButton(item.id) } className="Delete">Delete</Button>
-                  <Button  className="Detail">Detail</Button>
+                  <Button  onClick={()=>ProductDetail(item.id)}  className="Detail">Detail</Button>
                 </td>
               </tr>
             ))}

@@ -14,7 +14,7 @@ async getAllEmployee(){
 };
 
 async getEmployeeByID(id){
-    return await this.getProductByID("Employees", id);
+    return await this.getById("Employees", id);
 };
 
 // async postEmployee(employee){

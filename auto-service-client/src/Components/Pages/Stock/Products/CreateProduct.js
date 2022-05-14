@@ -39,16 +39,17 @@ function CreateProduct() {
       productService.postProduct(product).then(() => {
         // getAllProduct();
         history.push("/product");
-      }).catch(
-        e=>{
-            if(e.response.status===400){
-              setError(e.response.data.errors.Name[2])
-            }
-            else if(e.response.status===500){
-              setError(e.response.data)
-            }
-      }
-      );
+      })
+      // .catch(
+      //   e=>{
+      //       if(e.response.status===400){
+      //         setError(e.response.data.errors.Name[2])
+      //       }
+      //       else if(e.response.status===500){
+      //         setError(e.response.data)
+      //       }
+      // }
+      // );
     },
     [product, history]
   );
@@ -143,7 +144,7 @@ function CreateProduct() {
             <Label for="brandId">Select Brand</Label>
             <select className="form-control"
               onChange={getElementValues} name="brandId" id="brandId">
-              <option value="0">--Select Category--</option>
+              <option value="0">--Select Brand--</option>
               {brand?.map((item) => (
                 <option key={item.id} value={item.id}>
                   {item.name}

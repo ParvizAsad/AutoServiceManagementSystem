@@ -15,10 +15,7 @@ namespace AutoServiceManagment.AuthenticationService.Models
         [Required, DataType(DataType.Password)]
 
         public string Password { get; set; }
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
         public bool RememberMe { get; set; }
 
     }

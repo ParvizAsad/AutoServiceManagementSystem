@@ -62,6 +62,7 @@ namespace AutoServiceManagment.Services.Services
             if (salary == null) { throw new Exception("Salary not found!"); }
 
             salary.NetSalary = salaryDto.NetSalary;
+            salary.Bonus = salaryDto.Bonus;
             salary.Date = salaryDto.Date;
             salary.EmployeeID = salaryDto.EmployeeID;
             salary.TaxID = salaryDto.TaxID;
