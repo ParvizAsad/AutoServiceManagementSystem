@@ -29,6 +29,7 @@ const employees = {
   location: " ",
   personalDetails: " ",
   educationLevel: " ",
+  imageName: " ",
   positionId: " ",
 };
 
@@ -93,9 +94,10 @@ function EmployeeDetail(props) {
       </div>
       <div className="DetailPage">
         <Card>
-          <CardImg alt="Card image cap" src="" top width="100%" />
           <CardBody>
-            <CardTitle tag="h5">Employee FullName: {data.fullName}</CardTitle>
+            <CardTitle tag="h5">
+            <img src={data.imageName} className=" profilePicture"/>
+              Employee FullName: {data.fullName}</CardTitle>
             <CardSubtitle className="mb-2 text-muted" tag="h6">
               Position: {data.positionId}
             </CardSubtitle>

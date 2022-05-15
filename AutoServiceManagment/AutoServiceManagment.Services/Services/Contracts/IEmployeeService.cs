@@ -1,6 +1,7 @@
 ﻿using AutoServiceManagment.DomainModels.DTOs;
 using AutoServiceManagment.DomainModels.Entities;
 using AutoServiceManagment.Repository.Repository.Contracts;
+using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -17,6 +18,7 @@ namespace AutoServiceManagment.Services.Services.Contracts
         // Task UpdateEmployeesAsync(IEnumerable<EmployeeDto> employeeDtos);
         // Task UpdateEmployeesAsync(params EmployeeDto[] employeeDtos);
         Task DeleteEmployeeAsync(int? Id);
+        Task<string> SaveImage(IFormFile imageFile);
         // Task DeleteEmployeesAsync(IEnumerable<int> Id);
         //  Task DeleteEmployeesAsync(params int[] Id);
     }

@@ -1,5 +1,6 @@
 ﻿using AutoServiceManagment.Base;
 using AutoServiceManagment.DomainModels.Entities;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -30,7 +31,12 @@ namespace AutoServiceManagment.DomainModels.DTOs
 
         [ForeignKey(nameof(Position))]
         public int PositionId { get; set; }
-      //  public Position Position { get; set; }
+        //  public Position Position { get; set; }
+
+        public string ImageName { get; set; }
+
+        //[NotMapped]
+        //public IFormFile ImageFile { get; set; }
 
     }
 }

@@ -25,4 +25,8 @@
     <ProjectReference Include="..\AutoServiceManagment.Services\AutoServiceManagment.Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Images\" />
+  </ItemGroup>
+
 </Project>

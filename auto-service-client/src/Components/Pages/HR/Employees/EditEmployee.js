@@ -7,6 +7,7 @@ import { positionService } from "../../../../Api/services/Positions";
 import { useParams } from "react-router-dom";
 import axios, { Axios } from "axios";
 import moment from "moment";
+import defaultImageSrc from "../../../../Assets/Images/HR/defaultImage.png";
 
 const employees = {
   fullName: "",
@@ -18,6 +19,9 @@ const employees = {
   personalDetails: "",
   educationLevel: "",
   positionId: "",
+  imageName: "",
+  imageSrc: defaultImageSrc,
+  imageFile: null,
 };
 
 function EditEmployee(props) {
@@ -75,6 +79,30 @@ function EditEmployee(props) {
     // [employee, history, getAllEmployee]
   );
 
+  const showPreview= e=>{
+    if(e.target.files && e.target.files[0]){
+      let imageFile= e.target.files[0];
+      const reader= new FileReader();
+      reader.onload = x => {
+        setData({
+          ...data,
+          imageFile,
+          imageName: x.target.result,
+          imageSrc: x.target.result
+        })
+      }
+      reader.readAsDataURL(imageFile)
+    }
+    else{
+      setData({
+        ...data,
+        imageFile: null,
+        imageSrc: defaultImageSrc,
+        imageName:defaultImageSrc
+      })
+    }
+  }
+
   function handle(e) {
     const newdata = { ...data };
     newdata[e.target.id] = e.target.value;
@@ -96,6 +124,19 @@ function EditEmployee(props) {
               onChange={(e) => handle(e)}
               value={data.fullName}
               type="text"
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label for="imageName">Image</Label>
+            <img src={data.imageName} className=" profilePicture"
+            />
+            <Input
+              type="file"
+              name="imageName"
+              onChange={showPreview}
+              accept="image/*" 
+              id="imageName"
+              // onChange={showPreview}
             />
           </FormGroup>
           <FormGroup>
