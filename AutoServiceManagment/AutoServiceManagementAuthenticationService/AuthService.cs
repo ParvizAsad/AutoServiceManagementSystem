@@ -56,7 +56,7 @@ namespace AutoServiceManagment.AuthenticationService
 
         }
 
-        public async Task Login(CredentialModel credentialModel)
+        public async Task LoginAsync(CredentialModel credentialModel)
         {
             var existUser = await _userManager.FindByNameAsync(credentialModel.Username);
 
@@ -83,7 +83,7 @@ namespace AutoServiceManagment.AuthenticationService
 
         }
 
-        public async Task Register(RegisterModel registerModel)
+        public async Task RegisterAsync(RegisterModel registerModel)
         {
 
             var ExistUser = await _userManager.FindByNameAsync(registerModel.Username);
@@ -143,52 +143,7 @@ namespace AutoServiceManagment.AuthenticationService
                 signingCredentials: signingCredentials);
             return jwtSecurityToken;
         }
-        //public async Task RegisterAsync(RegisterModel registerViewModel)
-        //{
-
-        //    var ExistUser = await _userManager.FindByNameAsync(registerViewModel.Username);
-
-        //    var user = new User()
-        //    {
-        //        Fullname = registerViewModel.Fullname,
-
-        //        UserName = registerViewModel.Username,
-
-        //        Email = registerViewModel.Email,
-        //    };
-
-        //    var result = await _userManager.CreateAsync(user, registerViewModel.Password);
-
-        //    await _signInManager.SignInAsync(user, false);
-
-        //}
-        //public async Task LoginAsync(CredentialModel credentialModel)
-        //{
-
-        //    var existUser = await _userManager.FindByNameAsync(credentialModel.Username);
-
-        //    if (existUser == null)
-        //    {
-        //        throw new Exception("Invalid Credentials");
-
-        //    }
-
-        //    var result = await _signInManager.PasswordSignInAsync(existUser, credentialModel.Password, credentialModel.RememberMe, true);
-
-        //    if (!result.Succeeded)
-        //    {
-        //        throw new Exception("Invalid Credentials");
-
-        //    }
-
-        //    if (result.IsLockedOut)
-        //    {
-        //        throw new Exception("Invalid Credentials");
-
-        //    }
-
-
-        //}
+        
 
     }
 }

@@ -55,7 +55,7 @@ function Customer(props) {
           'success'
         )
           {customerService.deleteCustomer(id) &&
-          history.push("/")};
+          history.push("/customer")};
       } 
       else if (
         /* Read more about handling dismissals below */
@@ -73,7 +73,7 @@ function Customer(props) {
   return (
     <>
 <div className ='ForHeading'>
-    <h1>Customer</h1>
+    <h1>Customers</h1>
 </div>
 <div className="AddingAndSearching">
         <div className="Adding">
@@ -105,7 +105,7 @@ function Customer(props) {
               <tr key={idx}>
                 <th scope="row">{idx}</th>
                 <td>{item.fullName}</td>
-                <td>{item.Service}</td>
+                <td>{item.id}</td>
                 <td className="Actions">
                   <Button onClick={()=>EditCustomer(item.id)} className="Edit">Edit</Button>
                   <Button onClick={()=>deleteButton(item.id) } className="Delete">Delete</Button>

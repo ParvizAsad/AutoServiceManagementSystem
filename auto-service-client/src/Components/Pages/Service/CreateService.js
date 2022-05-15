@@ -5,9 +5,9 @@ import { useHistory } from "react-router-dom";
 import { serviceService } from "../../../Api/services/Services";
 
 const service = {
-  Name: " ",
-  Detail: " ",
-  Price: " ",
+  name: " ",
+  detail: " ",
+  price: " ",
 };
 
 function CreateService() {
@@ -47,31 +47,31 @@ function CreateService() {
       <div className="CreatePage">
         <Form onSubmit={createService}>
           <FormGroup>
-            <Label for="Name">Name</Label>
+            <Label for="name">Name</Label>
             <Input
-              id="Name"
-              name="Name"
-              placeholder="Name"
+              id="name"
+              name="name"
+              placeholder="name"
               onChange={getElementValues}
               type="text"
             />
           </FormGroup>
           <FormGroup>
-            <Label for="Detail">Detail </Label>
+            <Label for="detail">Detail </Label>
             <Input
-              id="Detail"
-              name="Detail"
-              placeholder="Detail"
+              id="detail"
+              name="detail"
+              placeholder="detail"
               onChange={getElementValues}
               type="text"
             />
           </FormGroup>
           <FormGroup>
-            <Label for="Price">Price</Label>
+            <Label for="price">Price</Label>
             <Input
-              id="Price"
-              name="Price"
-              placeholder="Price"
+              id="price"
+              name="price"
+              placeholder="price"
               onChange={getElementValues}
               type="number"
             />

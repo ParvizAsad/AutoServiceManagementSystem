@@ -48,14 +48,14 @@ function EditBrand(props) {
       <div className="ForHeading">
         <h1>Edit {brand.name} Brand</h1>
       </div>
-      <div className="CreatePage">
+      <div className="EditPage">
         <Form onSubmit={editBrand}>
           <FormGroup>
-            <Label for="Name">Name</Label>
+            <Label for="name">Name</Label>
             <Input
-              id="Name"
-              name="Name"
-              placeholder="Name"
+              id="name"
+              name="name"
+              placeholder="name"
               onChange={(e) => handle(e)}
               value={brand.name}
               type="text"

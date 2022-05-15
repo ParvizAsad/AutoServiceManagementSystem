@@ -1,4 +1,3 @@
-import React from 'react'
 import {
   CardGroup,
   Card,
@@ -9,10 +8,33 @@ import {
   CardText,
   Button
 } from "reactstrap";
+import React, { useCallback, useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import { productService } from "../../../../Api/services/Products";
+
 // import "./ProductDetail.scss";
 
-function ProductDetail() {
+const newProduct = {
+  name: " ",
+  basePrice: " ",
+  salePrice: " ",
+  count: " ",
+  categoryId: " ",
+  brandId: " ",
+};
 
+function ProductDetail(props) {
+
+  const [product, setProduct] = useState(newProduct);
+
+  const history = useHistory();
+
+  useEffect(() => {
+    const id = props.match.params.id;
+    productService.getProductById(id).then((res) => {
+      setProduct(res.data);
+      })
+  }, []);
 
   return (
     <>
@@ -29,43 +51,37 @@ function ProductDetail() {
         />
         <CardBody>
           <CardTitle tag="h5">
-            Product Name:
+            Product Name: {product.name}
           </CardTitle>
           <CardSubtitle
             className="mb-2 text-muted"
             tag="h6"
           >
-            Category: 
+            Category: {product.categoryId}
           </CardSubtitle>
           <CardSubtitle
             className="mb-2 text-muted"
             tag="h6"
           >
-            Brand: 
+            Brand: {product.categoryId}
           </CardSubtitle>
           <CardSubtitle
             className="mb-2 text-muted"
             tag="h6"
           >
-            Base Price: 
+            Base Price: {product.basePrice}
           </CardSubtitle>
           <CardSubtitle
             className="mb-2 text-muted"
             tag="h6"
           >
-            Sale Proce: 
+            Sale Proce: {product.salePrice}
           </CardSubtitle>
           <CardSubtitle
             className="mb-2 text-muted"
             tag="h6"
           >
-            Count: 
-          </CardSubtitle>
-          <CardSubtitle
-            className="mb-2 text-muted"
-            tag="h6"
-          >
-            BaseSalary: 
+            Count: {product.count}
           </CardSubtitle>
         </CardBody>
       </Card>
