@@ -8,10 +8,10 @@ import axios, { Axios } from "axios";
 import { customerService } from "../../../Api/services/Customers";
 
 const initialCustomer = {
-  FullName: " ",
-  PhoneNumber: " ",
-  Email: " ",
-  Debt: " ",
+  fullName: "",
+  phoneNumber: "",
+  email: "",
+  debt: "",
 };
 
 function EditCustomer(props) {
@@ -34,7 +34,7 @@ function EditCustomer(props) {
       const id = props.match.params.id;
       customerService.putCustomer(id, data).then(() => {
         // getAllCustomer();
-        history.push("/registration");
+        history.push("/customer");
       });
     },
     [data, history]
@@ -51,7 +51,7 @@ function EditCustomer(props) {
   return (
     <>
       <div className="ForHeading">
-        <h1>Edit {data.FullName} customer</h1>
+        <h1>Edit {data.fullName} customer</h1>
       </div>
       <div className="CreatePage">
         <Form onSubmit={updateCustomer}>
@@ -62,7 +62,7 @@ function EditCustomer(props) {
               name="fullName"
               placeholder="fullName"
               onChange={(e) => handle(e)}
-              value={data.FullName}
+              value={data.fullName}
               type="text"
             />
           </FormGroup>
@@ -73,29 +73,29 @@ function EditCustomer(props) {
               name="phoneNumber"
               placeholder="phoneNumber"
               onChange={(e) => handle(e)}
-              value={data.PhoneNumber}
+              value={data.phoneNumber}
               type="text"
             />
           </FormGroup>
           <FormGroup>
-            <Label for="Email">Email</Label>
+            <Label for="email">Email</Label>
             <Input
-              id="Email"
-              name="Email"
-              placeholder="Email"
+              id="email"
+              name="email"
+              placeholder="email"
               onChange={(e) => handle(e)}
-              value={data.Email}
+              value={data.email}
               type="email"
             />
           </FormGroup>
           <FormGroup>
-            <Label for="Debt">Debt</Label>
+            <Label for="debt">Debt</Label>
             <Input
-              id="Debt"
-              name="Debt"
-              placeholder="Debt"
+              id="debt"
+              name="debt"
+              placeholder="debt"
               onChange={(e) => handle(e)}
-              value={data.Debt}
+              value={data.debt}
               type="number"
             />
           </FormGroup>

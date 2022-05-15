@@ -46,7 +46,7 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task DeleteCustomerAsync(int? id)
         {
-            var customer = await DbContext.Customers.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == true);
+            var customer = await DbContext.Customers.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted != true);
 
             if (customer == null) { throw new Exception("Customer not found!"); }
 
@@ -57,11 +57,15 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task UpdateCustomerAsyncId(int? id, CustomerDto customerDto)
         {
-            var customer = await DbContext.Customers.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == true);
+            var customer = await DbContext.Customers.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted != true);
 
             if (customer == null) { throw new Exception("Customer not found!"); }
 
-            customer = _mapper.Map<Customer>(customerDto);
+            customer.FullName=customerDto.FullName;
+            customer.Email = customerDto.Email;
+            customer.Debt = customerDto.Debt;
+            customer.PhoneNumber = customerDto.PhoneNumber;
+
 
             DbContext.Customers.Update(customer);
 

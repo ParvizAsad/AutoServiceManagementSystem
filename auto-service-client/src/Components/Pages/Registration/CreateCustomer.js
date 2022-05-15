@@ -5,10 +5,10 @@ import { useHistory } from "react-router-dom";
 import { customerService } from "../../../Api/services/Customers";
 
 const initialCustomer = {
-  FullName: " ",
-  PhoneNumber: " ",
-  Email: " ",
-  Debt: " ",
+  fullName: "",
+  phoneNumber: "",
+  email: "",
+  debt: "",
 };
 
 function CreateCustomer() {
@@ -27,7 +27,7 @@ function CreateCustomer() {
     (e) => {
       e.preventDefault();
       customerService.postCustomer(customer).then(() => {
-        history.push("/registration");
+        history.push("/customer");
       });
     },
     [customer, history]
@@ -67,21 +67,21 @@ function CreateCustomer() {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="Email">Email</Label>
+            <Label for="email">Email</Label>
             <Input
-              id="Email"
-              name="Email"
-              placeholder="Email"
+              id="email"
+              name="email"
+              placeholder="email"
               onChange={getElementValues}
               type="email"
             />
           </FormGroup>
           <FormGroup>
-            <Label for="Debt">Debt</Label>
+            <Label for="debt">Debt</Label>
             <Input
-              id="Debt"
-              name="Debt"
-              placeholder="Debt"
+              id="debt"
+              name="debt"
+              placeholder="debt"
               onChange={getElementValues}
               type="number"
             />

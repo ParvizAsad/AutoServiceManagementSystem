@@ -51,9 +51,9 @@ function EditPosition(props) {
           <FormGroup>
             <Label for="Name">Name</Label>
             <Input
-              id="Name"
-              name="Name"
-              placeholder="Name"
+              id="name"
+              name="name"
+              placeholder="name"
               value={position.name}
               onChange={(e) => handle(e)}
               type="text"

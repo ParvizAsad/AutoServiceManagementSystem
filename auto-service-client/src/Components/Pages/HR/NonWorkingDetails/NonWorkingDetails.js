@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useCallback } from "react";
 import Swal from "sweetalert2";
 import { nonWorkingDetailService } from "../../../../Api/services/NonWorkingDetails";
+import { nonWorkingTypeService } from "../../../../Api/services/NonWorkingTypes";
 
 function NonWorkingDetail() {
 
@@ -12,10 +13,10 @@ function NonWorkingDetail() {
   const [loading, setLoading] = useState(true);
 
   const history = useHistory();
-
   React.useEffect(() => {
     nonWorkingDetailService.getAllNonWorkingDetails().then(({ data }) => {
       setNonWorkingDetails(data);
+      setLoading(false);
     });
   }, []);
 
@@ -73,7 +74,7 @@ function NonWorkingDetail() {
           <Button onClick={() => history.push("/createNonWorkingDetail")} >Create NonWorkingDetail</Button>
         </div>
         <Button>Export</Button>
-        <input Detail="text" placeholder="Search.." />
+        <input type="text" placeholder="Search.." />
       </div>
       <div>
       {loading ?(
@@ -98,7 +99,7 @@ function NonWorkingDetail() {
                     <td>{item.starTime}</td>
                     <td>{item.employee}</td>
                     <td>{item.endTime}</td>
-                    <td>{item.nonWorkingType}</td>
+                    <td>{(nonWorkingTypeService.getNonWorkingTypeById(item.nonWorkingTypeId)).Name}</td>
                     <td className="Actions">
                       <Button onClick={()=>editNonWorkingDetail(item.id)} className="Edit">Edit</Button>
                       <Button onClick={()=>deleteButton(item.id) } className="Delete">Delete</Button>

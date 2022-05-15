@@ -31,7 +31,7 @@ function Stock() {
   return (
 <>
 <div className ='ForHeading'>
-    <h1>Finance</h1>
+    <h1>Stock</h1>
 </div>
     <CardGroup id='moduleCards'>
          <Link to="product">

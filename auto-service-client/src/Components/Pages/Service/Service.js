@@ -51,7 +51,7 @@ function Service() {
           'success'
         )
           {serviceService.deleteService(id) &&
-          history.push("/")};
+          history.push("/service")};
       } 
       else if (
         /* Read more about handling dismissals below */

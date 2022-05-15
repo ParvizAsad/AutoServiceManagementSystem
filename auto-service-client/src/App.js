@@ -65,6 +65,7 @@ import CreateUser from './Components/Pages/Admin/CreateUser';
 import EditRole from './Components/Pages/Admin/EditRole';
 import EditPosition from './Components/Pages/HR/Positions/EditPosition';
 import EditProduct from './Components/Pages/Stock/Products/EditProduct';
+import EditCustomer from './Components/Pages/Registration/EditCustomer';
 
 function App() {
   return (
@@ -102,7 +103,9 @@ function App() {
         <Route path="/ExportService" exact component={ExportService} />
 
         <Route path="/EmployeeDetail/:id" exact component={EmployeeDetail} />
-        
+        <Route path="/ProductDetail/:id" exact component={ProductDetail} />
+        <Route path="/CustomerDetail/:id" exact component={CustomerDetail} />
+
         <Route path={"/login"} exact component={Login} />
         <Route path={"/accounting"} exact component={Accounting} />
         <Route path={"/marketing"} exact component={Marketing} />
@@ -134,7 +137,7 @@ function App() {
         <Route path="/EditService/:id" exact component={EditService} />
         <Route path="/EditRole/:id" exact component={EditRole} />
         <Route path="/EditPosition/:id" exact component={EditPosition} />
-        <Route path="/EditProduct/:id" exact component={EditProduct} />
+        <Route path="/EditCustomer/:id" exact component={EditCustomer} />
 
         <Route path={"/error"} exact component={Error} />
         <Redirect to={"/error"} exact />
