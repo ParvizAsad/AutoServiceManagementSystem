@@ -8,11 +8,19 @@
     <PackageReference Include="AutoMapper" Version="11.0.1" />
     <PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="5.0.16" />
   </ItemGroup>
-
+	
+	<ItemGroup>
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+	</ItemGroup>
+	
   <ItemGroup>
     <ProjectReference Include="..\AutoServiceManagment.DomainModels\AutoServiceManagment.DomainModels.csproj" />
     <ProjectReference Include="..\AutoServiceManagment.Infrastructure\AutoServiceManagment.Infrastructure.csproj" />
     <ProjectReference Include="..\AutoServiceManagment.Repository\AutoServiceManagment.Repository.csproj" />
+  </ItemGroup>
+	
+  <ItemGroup>
+    <Folder Include="Images\" />
   </ItemGroup>
 
 </Project>

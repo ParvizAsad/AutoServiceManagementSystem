@@ -5,11 +5,14 @@ using AutoServiceManagment.Repository.DataContext;
 using AutoServiceManagment.Repository.Repository;
 using AutoServiceManagment.Repository.Repository.Contracts;
 using AutoServiceManagment.Services.Services.Contracts;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 
 namespace AutoServiceManagment.Services.Services
 {
@@ -17,11 +20,13 @@ namespace AutoServiceManagment.Services.Services
     {
         private readonly IMapper _mapper;
         private readonly IRepository<Employee> _repository;
+        private readonly IWebHostEnvironment _hostEnvironment;
 
-        public EmployeeService(AppDbContext dbContext, IMapper mapper, IRepository<Employee> repository) : base(dbContext)
+        public EmployeeService(AppDbContext dbContext, IMapper mapper, IRepository<Employee> repository, IWebHostEnvironment hostEnvironment) : base(dbContext)
         {
             _mapper = mapper;
             _repository = repository;
+            _hostEnvironment = hostEnvironment;
         }
 
         public async Task<IList<EmployeeDto>> GetAllEmployeesAsync()
@@ -74,15 +79,23 @@ namespace AutoServiceManagment.Services.Services
             employee.OrderNumber= employeeDto.OrderNumber;
             employee.PhoneNumber= employeeDto.PhoneNumber;
             employee.PersonalDetails = employeeDto.PersonalDetails;
-
-
-
+            employee.ImageName= employeeDto.ImageName;
 
             DbContext.Employees.Update(employee);
 
             await DbContext.SaveChangesAsync();
         }
 
-
+        public async Task<string> SaveImage(IFormFile imageFile)
+        {
+           string imageName = new string(Path.GetFileNameWithoutExtension(imageFile.FileName).Take(10).ToArray()).Replace(' ' , '-');
+            imageName= imageName+Guid.NewGuid().ToString()+Path.GetExtension(imageFile.FileName);
+            var imagePath = Path.Combine(_hostEnvironment.ContentRootPath, "Images", imageName);
+            using (var fileStream=new FileStream(imagePath, FileMode.Create))
+            {
+                await imageFile.CopyToAsync(fileStream);
+            }
+            return imageName;
+        }
     }
 }

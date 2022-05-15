@@ -1,4 +1,5 @@
 ﻿using AutoServiceManagment.Base;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -29,5 +30,11 @@ namespace AutoServiceManagment.DomainModels.Entities
         public ICollection<NonWorkingDetail> NonWorkingDetails { get; set; }
         public ICollection<Salary> Salaries { get; set; }
         public bool IsDeleted { get; set; } = false;
+
+        public string ImageName { get; set; }
+
+        [NotMapped]
+        public IFormFile ImageFile { get; set; }
+
     }
 }

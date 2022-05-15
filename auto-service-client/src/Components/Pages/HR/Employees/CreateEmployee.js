@@ -4,6 +4,10 @@ import { useHistory } from "react-router-dom";
 import "./CreateEmployee.scss";
 import { employeeService } from "../../../../Api/services/Employee";
 import { positionService } from "../../../../Api/services/Positions";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import defaultImageSrc from "../../../../Assets/Images/HR/defaultImage.png";
+// const defaultImageSrc= '../../../../Assets/Images/HR/defaultImage.png'
 
 const employees = {
   fullName: "",
@@ -15,6 +19,9 @@ const employees = {
   personalDetails: "",
   educationLevel: "",
   positionId: "",
+  imageName: "",
+  imageSrc: defaultImageSrc,
+  imageFile: null,
 };
 
 function CreateEmployee() {
@@ -25,6 +32,18 @@ function CreateEmployee() {
   const [employeeData, setEmployeeData] = useState();
   const history = useHistory();
 
+  const notify = () => {
+    toast("evvel", {
+      position: "top-centre",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
+
   const getAllEmployee = useCallback(() => {
     employeeService.getAllEmployee().then(({ data }) => {
       setEmployeeData(data);
@@ -34,14 +53,75 @@ function CreateEmployee() {
   const createEmployee = useCallback(
     (e) => {
       e.preventDefault();
-      employeeService.postEmployee(employee).then(() => {
-        getAllEmployee();
-        history.push("/employee");
-      });
+      employeeService
+        .postEmployee(employee)
+        .then(() => {
+          // setTimeout(() => {
+          //   toast('evvel', {
+          //     position: "top-centre",
+          //     autoClose: 5000,
+          //     hideProgressBar: false,
+          //     closeOnClick: true,
+          //     pauseOnHover: true,
+          //     draggable: true,
+          //     progress: undefined,
+          //     });
+          // }, 5000);
+
+          // toast("TESTTESTTEST so easy!");
+
+          history.push("/employee");
+
+          //  toast("TEssssEST so easy!");
+          //  toast('sora1!', {
+          //   position: "top-left",
+          //   autoClose: 5000,
+          //   hideProgressBar: false,
+          //   closeOnClick: true,
+          //   pauseOnHover: true,
+          //   draggable: true,
+          //   progress: undefined,
+          //   });
+
+          //  setTimeout(() => {
+          //   toast('sora2!', {
+          //     position: "top-left",
+          //     autoClose: 5000,
+          //     hideProgressBar: false,
+          //     closeOnClick: true,
+          //     pauseOnHover: true,
+          //     draggable: true,
+          //     progress: undefined,
+          //     });
+          // }, 5000);
+        })
+        .catch((e) => {
+          console.log(e.response);
+          if (e.response.status === 400) {
+            toast.error(`${e.response.data.errors.Name[0]}`, {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+          } else if (e.response.status === 500) {
+            toast.error(`${e.response.data}`, {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+          }
+        });
     },
     [employee, history]
   );
-
   const getElementValues = (e) => {
     const { name, value } = e.target;
     setEmployee({ ...employee, [name]: value });
@@ -61,6 +141,29 @@ function CreateEmployee() {
     });
   }, [setPositionData]);
 
+const showPreview= e=>{
+  if(e.target.files && e.target.files[0]){
+    let imageFile= e.target.files[0];
+    const reader= new FileReader();
+    reader.onload = x => {
+      setEmployee({
+        ...employee,
+        imageFile,
+        imageName: x.target.result,
+        imageSrc: x.target.result
+      })
+    }
+    reader.readAsDataURL(imageFile)
+  }
+  else{
+    setEmployee({
+      ...employee,
+      imageFile: null,
+      imageSrc: defaultImageSrc
+    })
+  }
+}
+
   return (
     <>
       <div className="ForHeading">
@@ -76,6 +179,18 @@ function CreateEmployee() {
               placeholder="fullName"
               onChange={getElementValues}
               type="text"
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label for="imageName">Image</Label>
+            <img src={employee.imageSrc} className=" profilePicture"
+            />
+            <Input
+              type="file"
+              name="imageName"
+              accept="image/*" 
+              id="imageName"
+              onChange={showPreview}
             />
           </FormGroup>
           <FormGroup>
@@ -110,7 +225,12 @@ function CreateEmployee() {
           </FormGroup>
           <FormGroup>
             <Label for="positionId">Select Position</Label>
-            <select className="positionId" onChange={getElementValues}  name="positionId" id="positionId">
+            <select
+              className="positionId"
+              onChange={getElementValues}
+              name="positionId"
+              id="positionId"
+            >
               <option value="0">--Select Position--</option>
               {position?.map((item, idx) => (
                 <option key={item.id} value={item.id}>
@@ -158,7 +278,10 @@ function CreateEmployee() {
               type="textarea"
             />
           </FormGroup>
-          <Button type="submit">Submit</Button>
+          <Button onClick={notify} type="submit">
+            Submit
+          </Button>
+          <ToastContainer />
         </Form>
       </div>
     </>

@@ -193,3 +193,14 @@ C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoS
 C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
 C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\bin\Debug\net5.0\EntityFramework.SqlServer.dll
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\bin\Debug\net5.0\EntityFramework.dll
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\bin\Debug\net5.0\Microsoft.AspNet.Identity.Core.dll
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\bin\Debug\net5.0\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\bin\Debug\net5.0\AutoServiceManagment.AuthenticationService.dll
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\bin\Debug\net5.0\AutoServiceManagment.AuthenticationService.pdb
