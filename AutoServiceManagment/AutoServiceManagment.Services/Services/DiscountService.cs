@@ -27,6 +27,11 @@ namespace AutoServiceManagment.Services.Services
         public async Task<IList<DiscountDto>> GetAllDiscountsAsync()
         {
             var discounts = await DbContext.Discounts.Where(x => x.IsDeleted == false).ToListAsync();
+            foreach (var discount in discounts)
+            {
+                if(discount.ExpireDate < DateTime.Now)
+                    discount.IsExpired=true;
+            }
 
             return _mapper.Map<List<DiscountDto>>(discounts);
         }
