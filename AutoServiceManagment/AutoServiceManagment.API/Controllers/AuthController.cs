@@ -43,5 +43,14 @@ namespace AutoServiceManagment.API.Controllers
 
         //}
 
+        //[HttpPost]
+        //public async Task<IActionResult> LogoutAsync()
+        //{
+
+        //    await _authService.LogoutAsync();
+        //    return Ok();
+
+        //}
+
     }
 }

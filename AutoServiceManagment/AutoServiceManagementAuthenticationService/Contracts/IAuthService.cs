@@ -14,6 +14,8 @@ namespace AutoServiceManagment.AuthenticationService.Contracts
         public Task<string> GetTokenAsync(CredentialModel credentialModel);
         public Task RegisterAsync(RegisterModel registerViewModel);
         public Task LoginAsync(CredentialModel credentialModel);
+        public Task LogoutAsync();
+
 
     }
 }
