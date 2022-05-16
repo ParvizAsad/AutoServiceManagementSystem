@@ -99,17 +99,6 @@ function EditSalary(props) {
               type="number"
             />
           </FormGroup>
-          <FormGroup>
-            <Label for="NetSalary">NetSalary</Label>
-            <Input
-              id="NetSalary"
-              name="NetSalary"
-              placeholder="NetSalary"
-              onChange={(e) => handle(e)}
-              value={Salary.netSalary}
-              type="number"
-            />
-          </FormGroup>
           <Button type="submit">Submit</Button>
         </Form>
       </div>

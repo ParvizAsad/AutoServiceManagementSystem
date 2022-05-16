@@ -39,8 +39,38 @@ namespace AutoServiceManagment.Services.Services
         }
         public async Task AddCustomerAsync(CustomerDto customerDto)
         {
-
             var customer = _mapper.Map<Customer>(customerDto);
+
+            var customerServices = new List<CustomerServices>();
+
+            foreach (var id in customerDto.ServiceIds)
+            {
+                CustomerServices customerService = new CustomerServices
+                {
+                    ServiceID = id,
+
+                    CustomerID = customer.Id
+                };
+
+                customerServices.Add(customerService);
+            }
+
+            customer.CustomerServices = customerServices;
+            var customerProducts = new List<CustomerProduct>();
+
+            foreach (var id in customerDto.ProductIds)
+            {
+                CustomerProduct customerProduct = new CustomerProduct
+                {
+                    ProductID = id,
+
+                    CustomerID = customer.Id
+                };
+
+                customerProducts.Add(customerProduct);
+            }
+
+            customer.CustomerProducts = customerProducts;
             await _repository.AddAsync(customer);
         }
 

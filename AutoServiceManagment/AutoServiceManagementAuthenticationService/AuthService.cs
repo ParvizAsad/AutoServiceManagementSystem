@@ -113,6 +113,11 @@ namespace AutoServiceManagment.AuthenticationService
 
         }
 
+        public async Task LogoutAsync()
+        {
+            await _signInManager.SignOutAsync();
+
+        }
         private async Task<JwtSecurityToken> CreateJwtToken(User user)
         {
             var userClaims = await _userManager.GetClaimsAsync(user);

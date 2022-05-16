@@ -1,62 +1,74 @@
 import { FormGroup, Form, Label, Input, Button, FormText } from "reactstrap";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { salaryService } from "../../../../Api/services/Salaries";
 import { employeeService } from "../../../../Api/services/Employee";
-// import "./Employees/Salarys/CreateEmployee.scss";
+import { cashBoxService } from "../../../../Api/services/CashBox";
+// import "./Employees/Cashboxs/CreateEmployee.scss";
 
-const newSalary= {
-  Date: " ",
+const newCashbox= {
+  Date: "",
   Bonus: " ",
-  NetSalary: " ",
+  NetCashbox: " ",
   Tax: " ", 
   EmployeeId: " ",
 };
 
-function CreateSalary() {
-  const [Salary, setSalary] = useState(newSalary);
+function EditCashbox(props) {
+  const [Cashbox, setCashbox] = useState(newCashbox);
   const [employee, setEmployee] = React.useState([]);
 
-  const [SalaryData, setSalaryData] = useState();
   const history = useHistory();
+  
+  useEffect(() => {
+    const id = props.match.params.id;
+    cashBoxService.getCashboxById(id).then((res) => {
+      setCashbox(res.data);
+      })
+  }, []);
 
-  const getAllSalary = useCallback(() => {
-    salaryService.getAllSalaryes().then(({ data }) => {
-      setSalaryData(data);
-    });
-  }, [setSalaryData]);
-
-  const createSalary = useCallback(
+  const editCashbox = useCallback(
     (e) => {
       e.preventDefault();
-      salaryService.postSalary(Salary).then(() => {
-        getAllSalary();
-        history.push("/Salary");
+      const id = props.match.params.id;
+      CashboxService.putCashbox(id, Cashbox).then(() => {
+        history.push("/Cashbox");
       });
     },
-    [Salary, history, getAllSalary]
+    [Cashbox, history]
   );
 
-  const getElementValues = (e) => {
+  useEffect(() => {
+    const id = props.match.params.id;
+    cashboxService.getCashboxById(id).then((res) => {
+      setCashbox(res.data);
+      })
+  }, []);
+
+  function handle(e) {
+    // const newCashbox = { ...Cashbox };
+    // newCashbox[e.target.id] = e.target.value;
+    // setCashbox(newCashbox);
     const { name, value } = e.target;
-    setSalary({ ...Salary, [name]: value });
-  };
+    setCashbox({ ...Cashbox, [name]: value });
+
+  }
 
   React.useEffect(() => {
     employeeService.getAllEmployee().then(({ data }) => {
       setEmployee(data);
     });
   }, []);
+
   return (
     <>
       <div className="ForHeading">
-        <h1>Create a new Salary</h1>
+        <h1>Edit {Cashbox.name} Cashbox</h1>
       </div>
       <div className="CreatePage">
-        <Form onSubmit={createSalary}>
+        <Form onSubmit={editCashbox}>
         <FormGroup>
             <Label for="EmployeeId">Select Employee</Label>
-            <select className="EmployeeId" onChange={getElementValues}  name="EmployeeId" id="EmployeeId">
+            <select className="EmployeeId" onChange={(e) => handle(e)}  name="EmployeeId" id="EmployeeId">
               <option value="0">--Select Employee--</option>
               {employee?.map((item, idx) => (
                 <option key={idx} value={item.id}>
@@ -71,7 +83,8 @@ function CreateSalary() {
               id="Date"
               name="Date"
               placeholder="Date"
-              onChange={getElementValues}
+              onChange={(e) => handle(e)}
+              value={Cashbox.Date}
               type="date"
             />
           </FormGroup>
@@ -81,7 +94,8 @@ function CreateSalary() {
               id="Bonus"
               name="Bonus"
               placeholder="Bonus"
-              onChange={getElementValues}
+              onChange={(e) => handle(e)}
+              value={Cashbox.bonus}
               type="number"
             />
           </FormGroup>
@@ -91,4 +105,4 @@ function CreateSalary() {
     </>
   );
 }
-export default CreateSalary;
+export default EditCashbox;
