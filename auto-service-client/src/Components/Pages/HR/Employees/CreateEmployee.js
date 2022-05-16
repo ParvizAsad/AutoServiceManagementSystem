@@ -98,7 +98,7 @@ function CreateEmployee() {
         .catch((e) => {
           console.log(e.response);
           if (e.response.status === 400) {
-            toast.error(`${e.response.data.errors.Name[0]}`, {
+            toast.error(`${e.response.data.errors.Name}`, {
               position: "top-right",
               autoClose: 5000,
               hideProgressBar: false,

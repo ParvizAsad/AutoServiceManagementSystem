@@ -9,7 +9,7 @@ import { brandService } from "../../../../Api/services/Brands";
 function Brand() {
 
   const [brands, setBrands] = useState([]);
-  const [brandsData, setBrandsData] = useState([]);
+  // const [brandsData, setBrandsData] = useState([]);
 
   const history = useHistory();
 
@@ -17,13 +17,14 @@ function Brand() {
     brandService.getAllBrands().then(({ data }) => {
       setBrands(data);
     });
-  }, []);
+  }, [setBrands]);
 
   React.useEffect(() => {
     brandService.getAllBrands().then(({ data }) => {
       setBrands(data);
     });
   }, []);
+
 
   function editBrand(id){
     history.push("/EditBrand/"+id)
@@ -53,11 +54,12 @@ function Brand() {
           'Your file has been deleted.',
           'success'
         )
-          {brandService.deleteBrand(id) &&
-          getAllBrand()};
+       brandService.deleteBrand(id) && getAllBrand();
+      //   brandService.getAllBrands().then(({ data }) => {
+      //   setBrands(data);
+      // });
       } 
       else if (
-        /* Read more about handling dismissals below */
         result.dismiss === Swal.DismissReason.cancel
       ) {
         swalWithBootstrapButtons.fire(
@@ -93,7 +95,7 @@ function Brand() {
           <tbody>
             {brands?.map((item, idx) => (
               <tr key={idx}>
-                <th scope="row">{idx}</th>
+                <th scope="row">{idx + 1}</th>
                 <td>{item.name}</td>
                 <td className="Actions">
                   <Button onClick={()=>editBrand(item.id)} className="Edit">Edit</Button>

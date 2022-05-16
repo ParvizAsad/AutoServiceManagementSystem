@@ -4,9 +4,9 @@ import ".././HR.scss";
 import { useHistory } from "react-router-dom";
 import { employeeService } from "../../../../Api/services/Employee";
 import Swal from "sweetalert2";
-import { useState } from "react";
-import { useCallback } from "react";
+import { useState,useCallback,useRef } from "react";
 import { Link } from "react-router-dom";
+import { useReactToPrint } from "react-to-print";
 import "jquery/dist/jquery.min.js";
 //Datatable Modules
 import "datatables.net-dt/js/dataTables.dataTables";
@@ -19,6 +19,7 @@ import "datatables.net-buttons/js/buttons.print.js";
 // import "datatables.net-buttons/js/buttons.excel.js";
 import "datatables.net-dt/css/jquery.dataTables.min.css";
 import $ from "jquery";
+
 
 function ExportEmployee() {
   const [employee, setEmployee] = React.useState([]);
@@ -38,34 +39,33 @@ function ExportEmployee() {
     });
   }, []);
 
-  $(document).ready(function () {
-    setTimeout(function () {
-      $("#employeeData").DataTable({
-        pagingType: "full_numbers",
-        pageLength: 5,
-        processing: true,
-        dom: "Bfrtip",
-        buttons: [ 'copy', 'excel', 'csv', 'pdf', 'print' ],
-      });
-    }, 1000);
-  });
+  // $(document).ready(function () {
+  //   setTimeout(function () {
+  //     $("#employeeData").DataTable({
+  //       pagingType: "full_numbers",
+  //       pageLength: 5,
+  //       processing: true,
+  //       dom: "Bfrtip",
+  //       buttons: [ 'copy', 'excel', 'csv', 'pdf', 'print' ],
+  //     });
+  //   }, 1000);
+  // });
 
-//   $(document).ready(function() {
-//     var table = $('#employeeData').DataTable( {
-//         buttons: [ 'copy', 'excel', 'csv', 'pdf', 'print', 'colvis' ],
-//     } );
- 
-//     table.buttons().container()
-//         .appendTo( '#example_wrapper .col-md-6:eq(0)' );
-// } );
+  const componentRef = useRef();
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+  });
+  
 
   return (
     <>
       <div className="ForHeading">
         <h1>Human Resourses</h1>
       </div>
-      <div>
-        <Table className="TableForItems" id="employeeData">
+      <button >XLSX</button>
+      {/* <button onClick={handlePrint}>Print</button> */}
+      <div ref={componentRef}>
+        <Table className="TableForItems" id="table-to-xls">
           <thead>
             <tr>
               <th>#</th>
