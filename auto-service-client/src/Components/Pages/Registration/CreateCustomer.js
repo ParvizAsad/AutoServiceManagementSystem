@@ -3,16 +3,22 @@ import React, { useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
 // import "./Createcustomer.scss";
 import { customerService } from "../../../Api/services/Customers";
+import { serviceService } from "../../../Api/services/Services";
+import { productService } from "../../../Api/services/Products";
 
 const initialCustomer = {
-  FullName: " ",
-  PhoneNumber: " ",
-  Email: " ",
-  Debt: " ",
+  fullName: "",
+  phoneNumber: "",
+  email: "",
+  debt: "",
+  ServiceIds: [],
+  ProductIds: [],
 };
 
 function CreateCustomer() {
   const [customer, setCustomer] = useState(initialCustomer);
+  const [services, setServices] = useState([]);
+  const [products, setProducts] = useState([]);
 
   const [customerData, setCustomerData] = useState();
   const history = useHistory();
@@ -27,16 +33,27 @@ function CreateCustomer() {
     (e) => {
       e.preventDefault();
       customerService.postCustomer(customer).then(() => {
-        history.push("/registration");
+        history.push("/customer");
       });
     },
     [customer, history]
   );
 
+  React.useEffect(() => {
+    serviceService.getAllServices().then(({ data }) => {
+      setServices(data);
+    });
+  }, []);
+
+  React.useEffect(() => {
+    productService.getAllProducts().then(({ data }) => {
+      setProducts(data);
+    });
+  }, []);
+
   const getElementValues = (e) => {
     const { name, value } = e.target;
     setCustomer({ ...customer, [name]: value });
-    console.log(customer);
   };
 
   return (
@@ -67,26 +84,61 @@ function CreateCustomer() {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="Email">Email</Label>
+            <Label for="email">Email</Label>
             <Input
-              id="Email"
-              name="Email"
-              placeholder="Email"
+              id="email"
+              name="email"
+              placeholder="email"
               onChange={getElementValues}
               type="email"
             />
           </FormGroup>
           <FormGroup>
-            <Label for="Debt">Debt</Label>
+            <Label for="debt">Debt</Label>
             <Input
-              id="Debt"
-              name="Debt"
-              placeholder="Debt"
+              id="debt"
+              name="debt"
+              placeholder="debt"
               onChange={getElementValues}
               type="number"
             />
           </FormGroup>
+          <FormGroup>
+            <Label for="ServiceIds">Select Service</Label>
+            <select
+              multiple={true}
+              className="ServiceIds"
+              onChange={getElementValues}
+              name="ServiceIds"
+              id="ServiceIds"
 
+            >
+              <option value="0">--Select Service--</option>
+              {services?.map((item, idx) => (
+                <option key={item.id} value={item.id}>
+                  {item.name}
+                </option>
+              ))}
+            </select>
+          </FormGroup>
+          <FormGroup>
+            <Label for="ProductIds">Select Product</Label>
+            <select
+              multiple={true}
+              className="ProductIds"
+              onChange={getElementValues}
+              name="ProductIds"
+              id="ProductIds"
+
+            >
+              <option value="0">--Select Product--</option>
+              {products?.map((item, idx) => (
+                <option key={item.id} value={item.id}>
+                  {item.name}
+                </option>
+              ))}
+            </select>
+          </FormGroup>
           <Button type="submit">Submit</Button>
         </Form>
       </div>

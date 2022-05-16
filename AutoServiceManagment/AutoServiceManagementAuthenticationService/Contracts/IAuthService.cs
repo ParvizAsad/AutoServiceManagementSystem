@@ -12,10 +12,9 @@ namespace AutoServiceManagment.AuthenticationService.Contracts
     public interface IAuthService
     {
         public Task<string> GetTokenAsync(CredentialModel credentialModel);
-        //public Task RegisterAsync(RegisterModel registerViewModel);
-        //public Task LoginAsync(CredentialModel credentialModel);
-        public Task Register(RegisterModel registerModel);
-        public Task Login(CredentialModel credentialModel);
+        public Task RegisterAsync(RegisterModel registerViewModel);
+        public Task LoginAsync(CredentialModel credentialModel);
+        public Task LogoutAsync();
 
 
     }

@@ -51,11 +51,11 @@ function EditCategory(props) {
       <div className="CreatePage">
         <Form onSubmit={editCategory}>
           <FormGroup>
-            <Label for="Name">Name</Label>
+            <Label for="name">Name</Label>
             <Input
-              id="Name"
-              name="Name"
-              placeholder="Name"
+              id="name"
+              name="name"
+              placeholder="name"
               onChange={(e) => handle(e)}
               value={category.name}
               type="text"

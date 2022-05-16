@@ -31,7 +31,7 @@ function Registration(props) {
   return (
 <>
 <div className ='ForHeading'>
-    <h1>Registration</h1>
+    <h1>Reception</h1>
 </div>
     <CardGroup id='moduleCards'>
          <Link to="customer">

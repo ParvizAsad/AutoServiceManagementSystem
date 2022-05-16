@@ -58,9 +58,12 @@ function Product(props) {
     })
   }
 
-  function ProductDetail(id){
-    console.log(id)
+  function productDetail(id){
    props.history.push("/ProductDetail/"+id)
+  } 
+
+  function editProduct(id){
+   props.history.push("/EditProduct/"+id)
   } 
 
   return (
@@ -101,12 +104,12 @@ function Product(props) {
               <tr key={idx}>
                 <th scope="row">{idx}</th>
                 <td>{item.name}</td>
-                <td>{item.amount}</td>
+                <td>{item.count}</td>
                 <td>{item.Status}</td>
                 <td className="Actions">
-                  <Button className="Edit">Edit</Button>
+                  <Button onClick={()=>editProduct(item.id)} className="Edit">Edit</Button>
                   <Button onClick={()=>deleteButton(item.id) } className="Delete">Delete</Button>
-                  <Button  onClick={()=>ProductDetail(item.id)}  className="Detail">Detail</Button>
+                  <Button onClick={()=>productDetail(item.id)}  className="Detail">Detail</Button>
                 </td>
               </tr>
             ))}

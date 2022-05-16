@@ -39,14 +39,44 @@ namespace AutoServiceManagment.Services.Services
         }
         public async Task AddCustomerAsync(CustomerDto customerDto)
         {
-
             var customer = _mapper.Map<Customer>(customerDto);
+
+            var customerServices = new List<CustomerServices>();
+
+            foreach (var id in customerDto.ServiceIds)
+            {
+                CustomerServices customerService = new CustomerServices
+                {
+                    ServiceID = id,
+
+                    CustomerID = customer.Id
+                };
+
+                customerServices.Add(customerService);
+            }
+
+            customer.CustomerServices = customerServices;
+            var customerProducts = new List<CustomerProduct>();
+
+            foreach (var id in customerDto.ProductIds)
+            {
+                CustomerProduct customerProduct = new CustomerProduct
+                {
+                    ProductID = id,
+
+                    CustomerID = customer.Id
+                };
+
+                customerProducts.Add(customerProduct);
+            }
+
+            customer.CustomerProducts = customerProducts;
             await _repository.AddAsync(customer);
         }
 
         public async Task DeleteCustomerAsync(int? id)
         {
-            var customer = await DbContext.Customers.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == true);
+            var customer = await DbContext.Customers.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted != true);
 
             if (customer == null) { throw new Exception("Customer not found!"); }
 
@@ -57,11 +87,15 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task UpdateCustomerAsyncId(int? id, CustomerDto customerDto)
         {
-            var customer = await DbContext.Customers.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == true);
+            var customer = await DbContext.Customers.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted != true);
 
             if (customer == null) { throw new Exception("Customer not found!"); }
 
-            customer = _mapper.Map<Customer>(customerDto);
+            customer.FullName=customerDto.FullName;
+            customer.Email = customerDto.Email;
+            customer.Debt = customerDto.Debt;
+            customer.PhoneNumber = customerDto.PhoneNumber;
+
 
             DbContext.Customers.Update(customer);
 

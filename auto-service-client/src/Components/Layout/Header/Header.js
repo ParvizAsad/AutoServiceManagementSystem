@@ -29,10 +29,9 @@ function Header() {
   <h1>Car-Tool-Network Auto Service</h1>
   <div>
     <h4>Your Profile</h4>
-    <h4>@User.Identity.Name-Logout</h4>
-    <h4>   <Link to="login">
-Login
-         </Link></h4>
+    {/* <h4>{User.Identity.IsAuthenticated}?(
+              Logout
+            ) : ( Login )</h4> */}
 
     <div>
       <AiOutlineUserAdd/>

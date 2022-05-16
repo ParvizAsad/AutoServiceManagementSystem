@@ -43,15 +43,14 @@ namespace AutoServiceManagment.API.Controllers
 
         //}
 
-        //public async Task<IActionResult> Register([FromBody] RegisterModel registerModel)
+        //[HttpPost]
+        //public async Task<IActionResult> LogoutAsync()
         //{
-        //    var token = _authService.Register(registerModel);
+
+        //    await _authService.LogoutAsync();
         //    return Ok();
+
         //}
-        //public async Task<IActionResult> Login([FromBody] CredentialModel credentialModel)
-        //{
-        //    var token = _authService.Login(credentialModel);
-        //    return Ok();
-        //}
+
     }
 }

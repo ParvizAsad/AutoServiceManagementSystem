@@ -5,9 +5,9 @@ import { serviceService } from "../../../Api/services/Services";
 // import "./Employees/Services/CreateEmployee.scss";
 
 const service = {
-  Name: " ",
-  Detail: " ",
-  Price: " ",
+  name: " ",
+  detail: " ",
+  price: " ",
 };
 function EditService(props) {
   const [Service, setService] = useState(service);
@@ -47,38 +47,38 @@ function EditService(props) {
   return (
     <>
       <div className="ForHeading">
-        <h1>Edit {Service.Name} Service</h1>
+        <h1>Edit {Service.name} Service</h1>
       </div>
       <div className="CreatePage">
         <Form onSubmit={editService}>
           <FormGroup>
-            <Label for="Name">Name</Label>
+            <Label for="name">Name</Label>
             <Input
-              id="Name"
-              name="Name"
-              placeholder="Name"
+              id="name"
+              name="name"
+              placeholder="name"
               onChange={(e) => handle(e)}
               value={Service.name}
               type="text"
             />
           </FormGroup>
           <FormGroup>
-            <Label for="Detail">Detail</Label>
+            <Label for="detail">Detail</Label>
             <Input
-              id="Detail"
-              name="Detail"
-              placeholder="Detail"
+              id="detail"
+              name="detail"
+              placeholder="detail"
               onChange={(e) => handle(e)}
               value={Service.detail}
               type="text"
             />
           </FormGroup>
           <FormGroup>
-            <Label for="Price">Price</Label>
+            <Label for="price">Price</Label>
             <Input
-              id="Price"
-              name="Price"
-              placeholder="Price"
+              id="price"
+              name="price"
+              placeholder="price"
               onChange={(e) => handle(e)}
               value={Service.price}
               type="number"

@@ -26,6 +26,10 @@ namespace AutoServiceManagment.Services.Services
         public async Task<IList<SalaryDto>> GetAllSalarysAsync()
         {
             var salaries = await DbContext.Salaries.Where(x => x.IsDeleted == false).ToListAsync();
+            foreach (var salary in salaries)
+            {
+                salary.NetSalary = (salary.Employee.BaseSalary + salary.Bonus) * (100 - (salary.Tax.TaxValue));
+            }
 
             return _mapper.Map<List<SalaryDto>>(salaries);
         }

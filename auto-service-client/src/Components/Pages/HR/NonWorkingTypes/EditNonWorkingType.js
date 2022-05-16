@@ -49,11 +49,11 @@ function EditNonWorkingType(props) {
       <div className="CreatePage">
         <Form onSubmit={editNonWorkingType}>
           <FormGroup>
-            <Label for="Name">Name</Label>
+            <Label for="name">Name</Label>
             <Input
-              id="Name"
-              name="Name"
-              placeholder="Name"
+              id="name"
+              name="name"
+              placeholder="name"
               value={NonWorkingType.name}
               onChange={(e) => handle(e)}
               type="text"

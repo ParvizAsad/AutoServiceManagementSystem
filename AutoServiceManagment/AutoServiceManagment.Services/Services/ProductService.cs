@@ -58,11 +58,16 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task UpdateProductAsyncId(int? id, ProductDto productDto)
         {
-            var product = await DbContext.Products.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == true);
+            var product = await DbContext.Products.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted != true);
 
-            if (product == null) { throw new Exception("Finance not found!"); }
+            if (product == null) { throw new Exception("Product not found!"); }
 
-            product = _mapper.Map<Product>(productDto);
+            product.Name=productDto.Name;   
+            product.Count=productDto.Count;   
+            product.BasePrice=productDto.BasePrice;   
+            product.SalePrice=productDto.SalePrice;   
+            product.BrandID=productDto.BrandId;   
+            product.CategoryID=productDto.CategoryId;   
 
             DbContext.Products.Update(product);
 

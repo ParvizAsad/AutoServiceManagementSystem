@@ -34,31 +34,25 @@ function CustomerDetail(props) {
   return (
     <>
       <div className ='ForHeading'>
-          <h1>Customer Detail</h1>
+          <h1>Customer Detail of {data.fullName}</h1>
       </div>
       <div className='DetailPage'>
       <Card>
-        <CardImg
-          alt="Card image cap"
-          src=""
-          top
-          width="100%"
-        />
         <CardBody>
           <CardTitle tag="h5">
-            Customer FullName: {data.FullName}
+            Customer FullName: {data.fullName}
           </CardTitle>
           <CardSubtitle
             className="mb-2 text-muted"
             tag="h6"
           >
-            Phone Number: 
+            Phone Number: {data.phoneNumber}
           </CardSubtitle>
           <CardSubtitle
             className="mb-2 text-muted"
             tag="h6"
           >
-            Email: 
+            Email: {data.email}
           </CardSubtitle>
           <CardSubtitle
             className="mb-2 text-muted"
@@ -70,11 +64,8 @@ function CustomerDetail(props) {
             className="mb-2 text-muted"
             tag="h6"
           >
-            Debt: 
+            Debt: {data.debt}
           </CardSubtitle>
-          <CardText>
-          Additional: 
-          </CardText>
         </CardBody>
       </Card>
       </div>

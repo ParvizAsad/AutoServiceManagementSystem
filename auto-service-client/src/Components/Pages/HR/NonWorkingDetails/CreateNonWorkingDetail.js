@@ -7,10 +7,10 @@ import { employeeService } from "../../../../Api/services/Employee";
 // import "./Employees/NonWorkingDetails/CreateEmployee.scss";
 
 const newNonWorkingDetail = {
-  EmployeeId: " ",
   StartTime: " ",
   EndTime: " ",
-  NonWorkingType: " ",
+  EmployeeId: " ",
+  NonWorkingTypeId: " ",
 };
 
 function CreateNonWorkingDetail() {
@@ -70,7 +70,6 @@ function CreateNonWorkingDetail() {
               name="StartTime"
               placeholder="StartTime"
               onChange={getElementValues}
-              Detail="text"
               type="date"
             />
           </FormGroup>
@@ -81,13 +80,12 @@ function CreateNonWorkingDetail() {
               name="EndTime"
               placeholder="EndTime"
               onChange={getElementValues}
-              Detail="text"
               type="date"
             />
           </FormGroup>
           <FormGroup>
-            <Label for="nonWorkingTypeId">Select nonWorkingType</Label>
-            <select className="nonWorkingTypeId" onChange={getElementValues}  name="nonWorkingTypeId" id="nonWorkingTypeId">
+            <Label for="NonWorkingTypeId">Select nonWorkingType</Label>
+            <select className="NonWorkingTypeId" onChange={getElementValues}  name="NonWorkingTypeId" id="NonWorkingTypeId">
               <option value="0">--Select nonWorkingType--</option>
               {nonWorkingType?.map((item, idx) => (
                 <option key={item.id} value={item.id}>
@@ -107,7 +105,7 @@ function CreateNonWorkingDetail() {
               ))}
             </select>
           </FormGroup>
-          <Button Detail="submit">Submit</Button>
+          <Button type="submit">Submit</Button>
         </Form>
       </div>
     </>
