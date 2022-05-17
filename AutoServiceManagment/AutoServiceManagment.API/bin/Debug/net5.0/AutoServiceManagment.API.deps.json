@@ -1879,6 +1879,7 @@
       },
       "AutoServiceManagment.Infrastructure/1.0.0": {
         "dependencies": {
+          "AutoServiceManagment.AuthenticationService": "1.0.0",
           "Microsoft.AspNetCore.Diagnostics": "2.2.0",
           "Microsoft.AspNetCore.Http.Abstractions": "2.2.0"
         },
@@ -1905,6 +1906,7 @@
       "AutoServiceManagment.Services/1.0.0": {
         "dependencies": {
           "AutoMapper": "11.0.1",
+          "AutoServiceManagment.AuthenticationService": "1.0.0",
           "AutoServiceManagment.DomainModels": "1.0.0",
           "AutoServiceManagment.Infrastructure": "1.0.0",
           "AutoServiceManagment.Repository": "1.0.0",

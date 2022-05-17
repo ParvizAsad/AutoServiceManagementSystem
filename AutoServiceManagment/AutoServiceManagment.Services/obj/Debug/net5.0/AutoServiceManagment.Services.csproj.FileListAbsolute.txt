@@ -44,3 +44,5 @@ C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoS
 C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\bin\Debug\net5.0\AutoServiceManagment.Infrastructure.pdb
 D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\bin\Debug\net5.0\AutoServiceManagment.Infrastructure.dll
 D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\bin\Debug\net5.0\AutoServiceManagment.Infrastructure.pdb
+C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\bin\Debug\net5.0\AutoServiceManagment.AuthenticationService.dll
+C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Services\bin\Debug\net5.0\AutoServiceManagment.AuthenticationService.pdb

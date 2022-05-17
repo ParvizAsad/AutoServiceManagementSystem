@@ -283,7 +283,11 @@
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagementAuthenticationService\\AutoServiceManagment.AuthenticationService.csproj": {
+                "projectPath": "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagementAuthenticationService\\AutoServiceManagment.AuthenticationService.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -416,6 +420,9 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
+              "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagementAuthenticationService\\AutoServiceManagment.AuthenticationService.csproj": {
+                "projectPath": "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagementAuthenticationService\\AutoServiceManagment.AuthenticationService.csproj"
+              },
               "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\AutoServiceManagment.DomainModels.csproj": {
                 "projectPath": "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\AutoServiceManagment.DomainModels.csproj"
               },

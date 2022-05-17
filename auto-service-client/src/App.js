@@ -70,6 +70,7 @@ import CashBox from './Components/Pages/Finance/CashBoxes/CashBox';
 import CreateCashBox from './Components/Pages/Finance/CashBoxes/CreateCashBox';
 import EditCashbox from './Components/Pages/Finance/CashBoxes/EditCashBox';
 import Statistics from './Components/Pages/Director/Statistics';
+import ResetPassword from './Components/Pages/Login/ResetPassword';
 
 function App() {
   return (
@@ -101,6 +102,7 @@ function App() {
         <Route path="/salary" exact component={Salary} />
         <Route path="/cashbox" exact component={CashBox} />
         <Route path="/statistics" exact component={Statistics} />
+        <Route path="/resetpassword" exact component={ResetPassword} />
 
         <Route path="/ExportEmployee" exact component={ExportEmployee} />
         <Route path="/ExportProduct" exact component={ExportProduct} />

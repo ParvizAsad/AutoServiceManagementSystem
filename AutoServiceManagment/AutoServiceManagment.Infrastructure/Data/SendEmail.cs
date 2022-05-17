@@ -1,39 +1,39 @@
-﻿//using AutoServiceManagment.Models;
-//using System.IO;
-//using System.Net;
-//using System.Net.Mail;
+﻿using AutoServiceManagment.DomainModels.Entities;
+using System.IO;
+using System.Net;
+using System.Net.Mail;
 
-//namespace AutoServiceManagment.Infrastructure.Data
-//{
-//    public static class SendEmail
-//    {
-//        public static bool SendEmailForVerify(User user, string link)
-//        {
-//            MailMessage msg = new MailMessage();
+namespace AutoServiceManagment.Infrastructure.Data
+{
+    public static class SendEmail
+    {
+        public static bool SendEmailForNotify(Customer customer, Discount discount)
+        {
+            MailMessage msg = new MailMessage();
 
-//            msg.From = new MailAddress("", "");
+            msg.From = new MailAddress("CarToolNetwork@gmail.com", "New Discount");
 
-//            msg.To.Add(user.Email);
+            msg.To.Add(customer.Email);
 
-//            msg.Body = $"";
+            msg.Body = $"Attention! come and use the new Discount: \"{discount}\"";
 
-//            msg.Subject = "";
+            msg.Subject = "Advertisement";
 
-//            msg.IsBodyHtml = true;
+            msg.IsBodyHtml = true;
 
-//            SmtpClient smtp = new SmtpClient();
+            SmtpClient smtp = new SmtpClient();
 
-//            smtp.Host = "smtp.gmail.com";
+            smtp.Host = "smtp.gmail.com";
 
-//            smtp.Port = 587;
+            smtp.Port = 587;
 
-//            smtp.EnableSsl = true;
+            smtp.EnableSsl = true;
 
-//            smtp.Credentials = new NetworkCredential("", "");
+            smtp.Credentials = new NetworkCredential("servicecartoolnetwork@gmail.com", "servicecartoolnetwork123");
 
-//            smtp.Send(msg);
+            smtp.Send(msg);
 
-//            return true;
-//        }
-//    }
-//}
+            return true;
+        }
+    }
+}

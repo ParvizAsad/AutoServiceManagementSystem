@@ -11,10 +11,13 @@ import { accountService } from '../../../Api/services/Account';
 
   const Credentials= {
     userName: " ",
-    password: " ",
-  };
-function Login() {
+    oldPassword: " ",
+    newPassword: " ",
+    confirmNewPassword: " ",
 
+  };
+function ResetPassword() {
+  
   const [credentials, setCredentials] = useState(Credentials);
 
   const Login = useCallback(
@@ -29,11 +32,11 @@ function Login() {
     const { name, value } = e.target;
     setCredentials({ ...credentials, [name]: value });
   };
-
+  
   return (
       <>
         <div className ='ForHeading'>
-        <h1>Login</h1>
+        <h1>Reset Password</h1>
         </div>
       <div id='FormForLogin'>
 
@@ -56,26 +59,55 @@ function Login() {
         {' '}
         <FormGroup>
             <Label
-            for="examplePassword"
+            for="oldPassword"
             hidden
             >
-            Password
+            oldPassword
             </Label>
             <Input
-            id="examplePassword"
-            name="password"
+            id="oldPassword"
+            name="oldPassword"
             placeholder="Password"
             onChange={getElementValues}
             type="password"
             />
         </FormGroup>
+        <FormGroup>
+            <Label
+            for="newPassword"
+            hidden
+            >
+            New Password
+            </Label>
+            <Input
+            id="newPassword"
+            name="newPassword"
+            placeholder="New Password"
+            onChange={getElementValues}
+            type="password"
+            />
+        </FormGroup>
+        <FormGroup>
+            <Label
+            for="confirmNewPassword"
+            hidden
+            >
+            Confirm new Password
+            </Label>
+            <Input
+            id="confirmNewPassword"
+            name="confirmNewPassword"
+            placeholder="Confirm New Password"
+            onChange={getElementValues}
+            type="password"
+            />
+        </FormGroup>
         {' '}
-        <Button type="submit">Login</Button>
-
+        <Button type="submit">Change Password</Button>
         </Form>
       </div>
       </>
   )
 }
 
-export default Login
+export default ResetPassword

@@ -5,11 +5,14 @@ using AutoServiceManagment.Repository.DataContext;
 using AutoServiceManagment.Repository.Repository;
 using AutoServiceManagment.Repository.Repository.Contracts;
 using AutoServiceManagment.Services.Services.Contracts;
+using Microsoft.AspNet.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
+using AutoServiceManagment.Infrastructure.Data;
 
 namespace AutoServiceManagment.Services.Services
 {
@@ -17,11 +20,13 @@ namespace AutoServiceManagment.Services.Services
     {
         private readonly IMapper _mapper;
         private readonly IRepository<Discount> _repository;
+        private readonly IRepository<Customer> _repository1;
 
-        public DiscountService(AppDbContext dbContext, IMapper mapper, IRepository<Discount> repository) : base(dbContext)
+        public DiscountService(AppDbContext dbContext, IMapper mapper, IRepository<Discount> repository, IRepository<Customer> repository1) : base(dbContext)
         {
             _mapper = mapper;
             _repository = repository;
+            _repository1 = repository1;
         }
 
         public async Task<IList<DiscountDto>> GetAllDiscountsAsync()
@@ -47,6 +52,12 @@ namespace AutoServiceManagment.Services.Services
             var discount = _mapper.Map<Discount>(discountDto);
          
             await _repository.AddAsync(discount);
+
+            var customers = await DbContext.Customers.Where(x => x.IsNotificationAllowed == true && x.IsDeleted==false).ToListAsync();
+            foreach (var customer in customers)
+            {
+                SendEmail.SendEmailForNotify(customer, discount);
+            }
         }
 
         public async Task DeleteDiscountAsync(int? id)
