@@ -10,6 +10,9 @@ import { FaPeopleArrows } from 'react-icons/fa';
 import { GrUserAdmin } from 'react-icons/gr';
 import { GiDirectorChair } from 'react-icons/gi';
 import { Link } from "react-router-dom";
+// import { Pie, defaults } from 'react-chartjs-2'
+// import { Chart, registerables } from 'chart.js'; 
+
 
 
 function Director() {
@@ -19,7 +22,7 @@ function Director() {
     <h1>Sections for Director's Access</h1>
 </div>
 <CardGroup id='moduleCards'>
-         <Link to="">
+         <Link to="statistics">
          <Card className='moduleCard'>
       <CardBody className='moduleCardBody'>
         <CardTitle tag="h5" className='moduleCardTitle'>
