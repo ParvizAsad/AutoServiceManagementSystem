@@ -8,13 +8,10 @@ using System.Threading.Tasks;
 
 namespace AutoServiceManagment.DomainModels.DTOs
 {
-    public class ServiceDto : IDto
+    public class StatisticsDto : IDto
     {
         public int Id { get; set; }
-        [Required(ErrorMessage = "Name is required!")]
-        public string Name { get; set; }
-        public string Detail { get; set; }
-        [Required(ErrorMessage = "Price is required!")]
-        public decimal Price { get; set; }
+        public decimal Profit { get; set; }
+        public DateTime Date { get; set; }
     }
 }
