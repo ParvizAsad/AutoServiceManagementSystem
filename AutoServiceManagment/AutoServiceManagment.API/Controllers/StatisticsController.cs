@@ -22,11 +22,11 @@ namespace AutoServiceManagment.API.Controllers
             _service = service;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Get()
-        {
-            return Ok(await _service.GetAllStatisticsAsync());
-        }
+        //[HttpGet]
+        //public async Task<IActionResult> Get()
+        //{
+        //    return Ok(await _service.GetAllStatisticsAsync());
+        //}
 
         [HttpGet("{id?}")]
         public async Task<IActionResult> Get([FromRoute] int? id)
