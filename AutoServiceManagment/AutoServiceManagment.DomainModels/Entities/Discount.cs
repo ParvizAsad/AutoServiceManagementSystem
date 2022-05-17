@@ -10,10 +10,11 @@ namespace AutoServiceManagment.DomainModels.Entities
         [Required(ErrorMessage = "Discount name is required!")]
         public string Name { get; set; }
         [Required(ErrorMessage = "Expire date is required!")]
-        public string ExpireDate { get; set; } = DateTime.Now.ToString("MM/dd/yyyy");
+        public DateTime ExpireDate { get; set; } = DateTime.Now;
         [Required(ErrorMessage = "Percentage is required!")]
         public decimal Percentage { get; set; }
         public bool IsDeleted { get; set; } = false;
+        public bool IsExpired { get; set; } = false;
 
     }
 }

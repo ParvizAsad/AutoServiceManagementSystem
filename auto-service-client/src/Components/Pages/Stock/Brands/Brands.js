@@ -47,15 +47,16 @@ function Brand() {
       cancelButtonText: 'No, cancel!',
       reverseButtons: true
     }).then((result) => {
-      if (result.isConfirmed) {
+      if (result.isConfirmed) {{
         swalWithBootstrapButtons.fire(
           'Deleted!',
           'Your file has been deleted.',
           'success'
         )
-          {brandService.deleteBrand(id) &&
-          getAllBrand()};
-      } 
+          brandService.deleteBrand(id) && brandService.getAllBrands().then(({ data }) => {
+            setBrands(data);
+          });
+      }}
       else if (
         /* Read more about handling dismissals below */
         result.dismiss === Swal.DismissReason.cancel

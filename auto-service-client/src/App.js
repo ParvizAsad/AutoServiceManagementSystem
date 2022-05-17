@@ -68,6 +68,8 @@ import EditProduct from './Components/Pages/Stock/Products/EditProduct';
 import EditCustomer from './Components/Pages/Registration/EditCustomer';
 import CashBox from './Components/Pages/Finance/CashBoxes/CashBox';
 import CreateCashBox from './Components/Pages/Finance/CashBoxes/CreateCashBox';
+import EditCashbox from './Components/Pages/Finance/CashBoxes/EditCashBox';
+import Statistics from './Components/Pages/Director/Statistics';
 
 function App() {
   return (
@@ -98,6 +100,7 @@ function App() {
         <Route path="/customer" exact component={Customer} />
         <Route path="/salary" exact component={Salary} />
         <Route path="/cashbox" exact component={CashBox} />
+        <Route path="/statistics" exact component={Statistics} />
 
         <Route path="/ExportEmployee" exact component={ExportEmployee} />
         <Route path="/ExportProduct" exact component={ExportProduct} />
@@ -141,6 +144,7 @@ function App() {
         <Route path="/EditRole/:id" exact component={EditRole} />
         <Route path="/EditPosition/:id" exact component={EditPosition} />
         <Route path="/EditCustomer/:id" exact component={EditCustomer} />
+        <Route path="/EditCashBox/:id" exact component={EditCashbox} />
 
         <Route path={"/error"} exact component={Error} />
         <Redirect to={"/error"} exact />

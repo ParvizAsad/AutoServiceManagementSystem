@@ -92,9 +92,6 @@ function Product(props) {
           Amount
         </th>
         <th>
-          Status
-        </th>
-        <th>
           Actions
         </th>
       </tr>
@@ -105,7 +102,6 @@ function Product(props) {
                 <th scope="row">{idx}</th>
                 <td>{item.name}</td>
                 <td>{item.count}</td>
-                <td>{item.Status}</td>
                 <td className="Actions">
                   <Button onClick={()=>editProduct(item.id)} className="Edit">Edit</Button>
                   <Button onClick={()=>deleteButton(item.id) } className="Delete">Delete</Button>

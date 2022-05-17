@@ -6,11 +6,10 @@ import { cashBoxService } from "../../../../Api/services/CashBox";
 // import "./Customers/CashBoxs/CreateCustomer.scss";
 
 const newCashBox= {
-  Date: " ",
-  Bonus: " ",
-  NetCashBox: " ",
-  Tax: " ", 
   CustomerId: " ",
+  Service: " ",
+  Product: " ",
+  Payment: " ",
 };
 
 function CreateCashBox() {
