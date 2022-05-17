@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { Roleeducer } from "react";
 import { Table, Button } from "reactstrap";
 // import "./Role.scss";
 import { useHistory } from "react-router-dom";
@@ -12,6 +12,7 @@ function Role(props) {
 
   const [Role, setRole] = React.useState([]);
   const [RoleData, setRoleData] = useState();
+  const [searchRole, setSearchRole]=useState(" ");
   const history = useHistory();
 
   const getAllRole = useCallback(() => {
@@ -102,7 +103,7 @@ function RoleDetail(id){
         <div className="Adding">
           <Button onClick={() => history.push("/createrole")} >Create Role</Button>
         </div>
-        <input type="text" placeholder="Search.." />
+        <input type="text" placeholder="Search.." onChange={event=>{setSearchRole(event.target.value)}} />
       </div>
       <div>
         <Table className="TableForItems">
@@ -114,7 +115,14 @@ function RoleDetail(id){
             </tr>
           </thead>
           <tbody>
-            {Role?.map((item, idx) => (
+            {Role?.filter((val)=>{
+              if(searchRole==" "){
+                return val
+              } else if (val.name.toLowerCase().includes(searchRole.toLowerCase()))
+              {
+                return val
+              }
+            }).map((item, idx) => (
               <tr key={idx}>
                 <th scope="row">{idx}</th>
                 <td>{item.fullName}</td>

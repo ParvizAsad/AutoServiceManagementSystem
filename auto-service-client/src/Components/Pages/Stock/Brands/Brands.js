@@ -9,6 +9,7 @@ import { brandService } from "../../../../Api/services/Brands";
 function Brand() {
 
   const [brands, setBrands] = useState([]);
+  const [searchBrand, setSearchBrand]=useState(" ");
   // const [brandsData, setBrandsData] = useState([]);
 
   const history = useHistory();
@@ -81,7 +82,7 @@ function Brand() {
           <Button onClick={() => history.push("/createbrand")} >Create brand</Button>
         </div>
         <Button>Export</Button>
-        <input type="text" placeholder="Search.." />
+        <input type="text" placeholder="Search.." id="BrandSearch" onChange={event=>{setSearchBrand(event.target.value)}}/>
       </div>
       <div>
         <Table className="TableForItems">
@@ -93,7 +94,14 @@ function Brand() {
             </tr>
           </thead>
           <tbody>
-            {brands?.map((item, idx) => (
+            {brands?.filter((val)=>{
+              if(searchBrand==" "){
+                return val
+              } else if (val.name.toLowerCase().includes(searchBrand.toLowerCase()))
+              {
+                return val
+              }
+            }).map((item, idx) => (
               <tr key={idx}>
                 <th scope="row">{idx + 1}</th>
                 <td>{item.name}</td>

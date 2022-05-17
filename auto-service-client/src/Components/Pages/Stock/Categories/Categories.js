@@ -10,6 +10,7 @@ import { categoryService } from "../../../../Api/services/Categories";
 function Category() {
 
   const [Categories, setCategories] = useState([]);
+  const [searchCategory, setSearchCategory]=useState(" ");
   const history = useHistory();
 
   React.useEffect(() => {
@@ -72,7 +73,7 @@ function Category() {
           <Button onClick={() => history.push("/createCategory")} >Create Category</Button>
         </div>
         <Button>Export</Button>
-        <input type="text" placeholder="Search.." />
+        <input type="text" placeholder="Search.." onChange={event=>{setSearchCategory(event.target.value)}}/>
       </div>
       <div>
         <Table className="TableForItems">
@@ -84,7 +85,14 @@ function Category() {
             </tr>
           </thead>
           <tbody>
-            {Categories?.map((item, idx) => (
+            {Categories?.filter((val)=>{
+                  if(searchCategory==" "){
+                    return val
+                  } else if (val.name.toLowerCase().includes(searchCategory.toLowerCase()))
+                  {
+                    return val
+                  }
+                }).map((item, idx) => (
               <tr key={idx}>
                 <th scope="row">{idx}</th>
                 <td>{item.name}</td>

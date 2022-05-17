@@ -9,6 +9,7 @@ import { nonWorkingTypeService } from "../../../../Api/services/NonWorkingTypes"
 function NonWorkingType() {
 
   const [nonWorkingTypes, setNonWorkingTypes] = useState([]);
+  const [searchNonWorkingType, setSearchNonWorkingType]=useState(" ");
   const [loading, setLoading] = useState(true);
 
   const history = useHistory();
@@ -74,7 +75,7 @@ function NonWorkingType() {
           <Button onClick={() => history.push("/createNonWorkingType")} >Create NonWorkingType</Button>
         </div>
         <Button>Export</Button>
-        <input type="text" placeholder="Search.." />
+        <input type="text" placeholder="Search.." onChange={event=>{setSearchNonWorkingType(event.target.value)}}/>
       </div>
 
       <div>
@@ -92,7 +93,14 @@ function NonWorkingType() {
                 </tr>
               </thead>
               <tbody>
-                {nonWorkingTypes?.map((item, idx) => (
+                {nonWorkingTypes?.filter((val)=>{
+              if(searchNonWorkingType==" "){
+                return val
+              } else if (val.name.toLowerCase().includes(searchNonWorkingType.toLowerCase()))
+              {
+                return val
+              }
+            }).map((item, idx) => (
                   <tr key={idx}>
                     <th scope="row">{idx}</th>
                     <td>{item.name}</td>

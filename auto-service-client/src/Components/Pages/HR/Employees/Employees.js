@@ -24,6 +24,7 @@ import $ from "jquery";
 function Employee(props) {
   const [employee, setEmployee] = React.useState([]);
   const [employeeData, setEmployeeData] = useState();
+  const [searchEmployee, setSearchEmployee]=useState(" ");
   const history = useHistory();
 
   const getAllEmployee = useCallback(() => {
@@ -118,6 +119,8 @@ function Employee(props) {
             Create Employee
           </Button>
         </div>
+        <input type="text" placeholder="Search.." onChange={event=>{setSearchEmployee(event.target.value)}}/>
+
         <Button onClick={() => history.push("/ExportEmployee")}>Export</Button>
       </div>
       <div ref={componentRef}>
@@ -132,7 +135,14 @@ function Employee(props) {
             </tr>
           </thead>
           <tbody>
-            {employee?.map((item, idx) => (
+            {employee?.filter((val)=>{
+              if(searchEmployee==" "){
+                return val
+              } else if (val.name.toLowerCase().includes(searchEmployee.toLowerCase()))
+              {
+                return val
+              }
+            }).map((item, idx) => (
               <tr key={idx}>
                 <th scope="row">{item.id}</th>
                 <td>{item.fullName}</td>

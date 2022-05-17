@@ -8,11 +8,12 @@ import "./Service.scss";
 import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
 import EditService from './EditService';
-
+import { useState } from "react";
 
 function Service() {
 
   const [service, setService] = React.useState([]);
+  const [searchService, setSearchService]=useState(" ");
   const history = useHistory();
 
   React.useEffect(() => {
@@ -76,7 +77,7 @@ function Service() {
 <Button onClick={() => history.push("/createservice")}>Add Service</Button>
   </div>
   <Button onClick={() => history.push("/ExportService")} >Export</Button>
-  <input type="text" placeholder="Search.."/>
+  <input type="text" placeholder="Search.." onChange={event=>{setSearchService(event.target.value)}}/>
 </div>
 <div>
     <Table className='TableForItems'>
@@ -100,7 +101,14 @@ function Service() {
       </tr>
     </thead>
     <tbody>
-    {service?.map((item, idx) => (
+    {service?.filter((val)=>{
+                  if(searchService==" "){
+                    return val
+                  } else if (val.name.toLowerCase().includes(searchService.toLowerCase()))
+                  {
+                    return val
+                  }
+                }).map((item, idx) => (
               <tr key={idx}>
                 <th scope="row">{idx}</th>
                 <td>{item.name}</td>

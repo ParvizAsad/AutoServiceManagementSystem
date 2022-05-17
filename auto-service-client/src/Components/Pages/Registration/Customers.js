@@ -8,11 +8,14 @@ import Service from '../Service/Service';
 import { useHistory } from "react-router-dom";
 import { customerService } from '../../../Api/services/Customers';
 import Swal from "sweetalert2";
+import { useState } from "react";
 
 
 function Customer(props) {
 
   const [customer, setCustomer] = React.useState([]);
+  const [searchCustomer, setSearchCustomer]=useState(" ");
+
   const history = useHistory();
 
   React.useEffect(() => {
@@ -101,7 +104,14 @@ function Customer(props) {
       </tr>
     </thead>
     <tbody>
-    {customer?.map((item, idx) => (
+    {customer?.filter((val)=>{
+                  if(searchCustomer==" "){
+                    return val
+                  } else if (val.fullName.toLowerCase().includes(searchCustomer.toLowerCase()))
+                  {
+                    return val
+                  }
+                }).map((item, idx) => (
               <tr key={idx}>
                 <th scope="row">{idx}</th>
                 <td>{item.fullName}</td>

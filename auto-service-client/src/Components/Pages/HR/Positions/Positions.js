@@ -10,6 +10,8 @@ import { INITIAL_ASYNC_VALUES } from "../../../../Consts/const";
 function Position() {
 
   const [positions, setPositions] = useState([]);
+  const [searchPosition, setSearchPosition]=useState(" ");
+
   const [loading, setLoading] = useState(true);
 
   const history = useHistory();
@@ -83,7 +85,7 @@ function Position() {
           <Button onClick={() => history.push("/createposition")} >Create position</Button>
         </div>
         <Button>Export</Button>
-        <input type="text" placeholder="Search.." />
+        <input type="text" placeholder="Search.." onChange={event=>{setSearchPosition(event.target.value)}}/>
       </div>
       <div>
 
@@ -108,7 +110,14 @@ function Position() {
   
               {            
                 
-                (positions?.map((item, idx) => (
+                (positions?.filter((val)=>{
+                  if(searchPosition==" "){
+                    return val
+                  } else if (val.name.toLowerCase().includes(searchPosition.toLowerCase()))
+                  {
+                    return val
+                  }
+                }).map((item, idx) => (
                   <tr key={idx}>
                     <th scope="row">{idx}</th>
                     <td>{item.name}</td>

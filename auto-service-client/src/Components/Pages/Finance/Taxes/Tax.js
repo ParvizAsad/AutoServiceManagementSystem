@@ -12,6 +12,7 @@ function Tax() {
 
   const [taxes, setTaxes] = React.useState([]);
   const [taxData, setTaxData] = useState();
+  const [searchTax, setSearchTax]=useState(" ");
 
   const history = useHistory();
 
@@ -80,7 +81,7 @@ function Tax() {
       <div className='Adding'>
       <Button onClick={() => history.push("/createtax")} >Create Tax</Button>
       </div>
-      <input type="text" placeholder="Search.."/>
+      <input type="text" placeholder="Search.." onChange={event=>{setSearchTax(event.target.value)}}/>
     </div>
     <div>
         <Table className='TableForItems'>
@@ -101,7 +102,14 @@ function Tax() {
           </tr>
         </thead>
         <tbody>
-        {taxes?.map((item, idx) => (
+        {taxes?.filter((val)=>{
+              if(searchTax==" "){
+                return val
+              } else if (val.name.toLowerCase().includes(searchTax.toLowerCase()))
+              {
+                return val
+              }
+            }).map((item, idx) => (
               <tr key={idx}>
                 <th scope="row">{idx}</th>
                 <th>{item.name}</th>

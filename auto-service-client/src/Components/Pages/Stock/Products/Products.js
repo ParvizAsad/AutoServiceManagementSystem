@@ -7,10 +7,12 @@ Button
 import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
 import { productService } from '../../../../Api/services/Products';
+import { useState } from "react";
 
 function Product(props) {
 
   const [product, setProduct] = React.useState([]);
+  const [searchProduct, setSearchProduct]=useState(" ");
   const history = useHistory();
   React.useEffect(() => {
     productService.getAllProducts().then(({ data }) => {
@@ -76,7 +78,7 @@ function Product(props) {
           <Button onClick={() => history.push("/createproduct")} >Create Product</Button>
         </div>
         <Button onClick={() => history.push("/ExportProduct")} >Export</Button>
-        <input type="text" placeholder="Search.." />
+        <input type="text" placeholder="Search.." onChange={event=>{setSearchProduct(event.target.value)}}/>
       </div>
 <div>
     <Table className='TableForItems'>
@@ -97,7 +99,14 @@ function Product(props) {
       </tr>
     </thead>
     <tbody>
-    {product?.map((item, idx) => (
+    {product?.filter((val)=>{
+                  if(searchProduct==" "){
+                    return val
+                  } else if (val.name.toLowerCase().includes(searchProduct.toLowerCase()))
+                  {
+                    return val
+                  }
+                }).map((item, idx) => (
               <tr key={idx}>
                 <th scope="row">{idx}</th>
                 <td>{item.name}</td>

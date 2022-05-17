@@ -11,6 +11,7 @@ function Marketing() {
 
   const [discounts, setDiscount] = React.useState([]);  
   const [DiscountData, setDiscountData] = React.useState();
+  const [searchDiscount, setSearchDiscount]=useState(" ");
   const history = useHistory();
 
   const getAllDiscount = useCallback(() => {
@@ -78,7 +79,7 @@ function Marketing() {
       <div className='Adding'>
       <Button onClick={() => history.push("/creatediscount")} >Create Discount</Button>
       </div>
-      <input type="text" placeholder="Search.."/>
+      <input type="text" placeholder="Search.." onChange={event=>{setSearchDiscount(event.target.value)}}/>
     </div>
     <div>
         <Table className='TableForItems'>
@@ -102,7 +103,14 @@ function Marketing() {
           </tr>
         </thead>
         <tbody>
-        {discounts?.map((item, idx) => (
+        {discounts?.filter((val)=>{
+              if(searchDiscount==" "){
+                return val
+              } else if (val.name.toLowerCase().includes(searchDiscount.toLowerCase()))
+              {
+                return val
+              }
+            }).map((item, idx) => (
               <tr key={idx}>
                 <th scope="row">{idx}</th>
                 <td>{item.name}</td>

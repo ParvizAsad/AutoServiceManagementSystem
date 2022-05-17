@@ -11,6 +11,7 @@ function User(props) {
 
   const [user, setUser] = React.useState([]);
   const [userData, setUserData] = useState();
+  const [searchUser, setSearchUser]=useState(" ");
   const history = useHistory();
 
   const deleteButton = (id) => {
@@ -75,7 +76,7 @@ function User(props) {
         <div className="Adding">
           <Button onClick={() => history.push("/createUser")} >Create User</Button>
         </div>
-        <input type="text" placeholder="Search.." />
+        <input type="text" placeholder="Search.." onChange={event=>{setSearchUser(event.target.value)}} />
       </div>
       <div>
         <Table className="TableForItems">
@@ -89,7 +90,14 @@ function User(props) {
             </tr>
           </thead>
           <tbody>
-            {user?.map((item, idx) => (
+            {user?.filter((val)=>{
+              if(searchUser==" "){
+                return val
+              } else if (val.name.toLowerCase().includes(searchUser.toLowerCase()))
+              {
+                return val
+              }
+            }).map((item, idx) => (
               <tr key={idx}>
                 <th scope="row">{idx}</th>
                 <td>{item.fullname}</td>
