@@ -26,7 +26,7 @@ namespace AutoServiceManagment.API.Controllers
 
         //[HttpPost]
 
-        //public async Task<IActionResult> RegisterAsync([FromBody] RegisterModel registerViewModel)
+        //public async Task<IActionResult> Register([FromBody] RegisterModel registerViewModel)
         //{
 
         //    await _authService.RegisterAsync(registerViewModel);
@@ -35,7 +35,7 @@ namespace AutoServiceManagment.API.Controllers
         //}
 
         //[HttpPost]
-        //public async Task<IActionResult> LoginAsync([FromBody] CredentialModel credentialModel)
+        //public async Task<IActionResult> Login([FromBody] CredentialModel credentialModel)
         //{
 
         //    await _authService.LoginAsync(credentialModel);
@@ -44,7 +44,7 @@ namespace AutoServiceManagment.API.Controllers
         //}
 
         //[HttpPost]
-        //public async Task<IActionResult> LogoutAsync()
+        //public async Task<IActionResult> Logout()
         //{
 
         //    await _authService.LogoutAsync();
