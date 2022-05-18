@@ -12,6 +12,6 @@ namespace AutoServiceManagment.DomainModels.Entities
     public class User : IdentityUser
     {
         [Required]
-        public string Fullname { get; set; }
+        public string FullName { get; set; }
     }
 }

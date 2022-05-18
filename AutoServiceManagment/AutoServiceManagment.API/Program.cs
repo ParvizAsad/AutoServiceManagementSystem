@@ -1,5 +1,9 @@
+using AutoServiceManagment.DomainModels.Entities;
+using AutoServiceManagment.Infrastructure.Data;
+using AutoServiceManagment.Repository.DataContext;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Serilog;
@@ -9,12 +13,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+using Microsoft.AspNetCore.Identity;
+
 namespace AutoServiceManagment.API
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
+            var host = CreateHostBuilder(args).Build();
+
+            using (var scope = host.Services.CreateScope())
+            {
+                var appDbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+
+                var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
+
+                var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+                var dataInitializer = new DataInitializer(appDbContext, roleManager, userManager);
+
+                await dataInitializer.SeedDataAsync();
+            }
+
+            await host.RunAsync();
+
             Log.Logger = new LoggerConfiguration()
                   .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
                   .Enrich.FromLogContext()
@@ -42,6 +65,7 @@ namespace AutoServiceManagment.API
             {
                 Log.CloseAndFlush();
             }
+
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

@@ -90,7 +90,8 @@ namespace AutoServiceManagment.API
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IServiceService, ServiceService>();
             services.AddScoped<ITaxService, TaxService>();
-            //services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IStatisticsService, StatisticsService>();
 
             services.AddAuthentication(options =>
             {

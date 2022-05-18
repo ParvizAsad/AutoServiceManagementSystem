@@ -124,7 +124,7 @@ namespace AutoServiceManagment.AuthenticationService
 
             var user = new User()
             {
-                Fullname = registerModel.Fullname,
+                FullName = registerModel.Fullname,
 
                 UserName = registerModel.Username,
 
