@@ -2232,6 +2232,7 @@
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
           "Microsoft.AspNetCore.Http.Features": "5.0.16",
+          "Microsoft.AspNetCore.Identity": "2.2.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.17"
         },
         "compile": {
@@ -2247,7 +2248,8 @@
         "dependencies": {
           "AutoServiceManagment.AuthenticationService": "1.0.0",
           "Microsoft.AspNetCore.Diagnostics": "2.2.0",
-          "Microsoft.AspNetCore.Http.Abstractions": "2.2.0"
+          "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
+          "Microsoft.AspNetCore.Identity": "2.2.0"
         },
         "compile": {
           "bin/placeholder/AutoServiceManagment.Infrastructure.dll": {}
@@ -7367,6 +7369,7 @@
       "AutoServiceManagment.Repository >= 1.0.0",
       "AutoServiceManagment.Services >= 1.0.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 5.0.16",
+      "Microsoft.AspNetCore.Identity >= 2.2.0",
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.16",
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.16",
       "Newtonsoft.Json >= 13.0.1",
@@ -7442,6 +7445,10 @@
           "Microsoft.AspNetCore.Authentication.JwtBearer": {
             "target": "Package",
             "version": "[5.0.16, )"
+          },
+          "Microsoft.AspNetCore.Identity": {
+            "target": "Package",
+            "version": "[2.2.0, )"
           },
           "Microsoft.EntityFrameworkCore.SqlServer": {
             "target": "Package",

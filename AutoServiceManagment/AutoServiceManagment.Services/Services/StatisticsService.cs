@@ -27,13 +27,14 @@ namespace AutoServiceManagment.Services.Services
             _repository1 = repository1;
         }
 
-        public async Task AddStatisticsAsync()
+
+        public async Task<IList<StatisticsDto>> GetAllStatisticsAsync()
         {
-            var Fianances = await DbContext.Finances.ToListAsync();
-            foreach (var finance in Fianances)
+            var Finances = await DbContext.Finances.ToListAsync();
+            foreach (var finance in Finances)
             {
             var Salaries = await DbContext.Salaries.ToListAsync();
-                var salaryCosts = new Decimal();
+                decimal salaryCosts = 0;
                 foreach (var salary in Salaries)
                 {
                     if (salary.Date == finance.Date)
@@ -41,13 +42,14 @@ namespace AutoServiceManagment.Services.Services
                 }
 
 
-                var statistics = new Statistics();
-                statistics.Date = finance.Date;
-                statistics.Profit =- salaryCosts - finance.AdditionalCost - finance.CommunalCost;
+                var newStatistics = new Statistics
+                {
+                    Date = finance.Date,
+                    Profit = -salaryCosts - finance.AdditionalCost - finance.CommunalCost
+                };
+                await DbContext.Statistics.AddAsync(newStatistics);
             }
-        }
-        public async Task<IList<StatisticsDto>> GetAllStatisticsAsync()
-        {
+
             var Statisticses = await DbContext.Statistics.ToListAsync();
             return _mapper.Map<List<StatisticsDto>>(Statisticses); 
         }

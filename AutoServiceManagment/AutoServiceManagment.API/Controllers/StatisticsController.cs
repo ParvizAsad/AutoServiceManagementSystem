@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 using AutoServiceManagment.Services.Services.Contracts;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Cors;
-using AutoTaxManagment.Service.Services.Contracts;
 
 namespace AutoServiceManagment.API.Controllers
 {
@@ -15,47 +14,18 @@ namespace AutoServiceManagment.API.Controllers
     [ApiController]
     public class StatisticsController : ControllerBase
     {
-        private readonly ITaxService _service;
+        private readonly IStatisticsService _service;
 
-        public StatisticsController(ITaxService service)
+        public StatisticsController(IStatisticsService service)
         {
             _service = service;
         }
 
-        //[HttpGet]
-        //public async Task<IActionResult> Get()
-        //{
-        //    return Ok(await _service.GetAllStatisticsAsync());
-        //}
-
-        [HttpGet("{id?}")]
-        public async Task<IActionResult> Get([FromRoute] int? id)
+        [HttpGet]
+        public async Task<IActionResult> Get()
         {
-            return Ok(await _service.GetTaxAsync(id.Value));
+            return Ok(await _service.GetAllStatisticsAsync());
         }
-
-        [HttpPost]
-        public async Task<IActionResult> Post([FromBody] TaxDto taxDto)
-        {
-            await _service.AddTaxAsync(taxDto);
-            return Ok();
-        }
-
-        [HttpPut("{id?}")]
-        public async Task<IActionResult> Put([FromRoute] int? id, [FromBody] TaxDto taxDto)
-        {
-            await _service.UpdateTaxAsyncId(id, taxDto);
-            return Ok();
-        }
-
-        [HttpDelete("{id?}")]
-        public async Task<IActionResult> Delete([FromRoute] int? id)
-        {
-            await _service.DeleteTaxAsync(id.Value);
-
-            return Ok();
-        }
-
 
     }
 }

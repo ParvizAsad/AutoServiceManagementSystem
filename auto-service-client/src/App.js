@@ -18,7 +18,6 @@ import Login from './Components/Pages/Login/Login';
 import Accounting from './Components/Pages/Finance/Accounting/Accounting';
 import Marketing from './Components/Pages/Finance/Marketing/Marketing';
 import EmployeeDetail from './Components/Pages/HR/Employees/EmployeeDetail';
-import CustomerDetail from './Components/Pages/Registration/CustomerDetail';
 import CreateEmployee from './Components/Pages/HR/Employees/CreateEmployee';
 import Position from './Components/Pages/HR/Positions/Positions';
 import CreatePosition from './Components/Pages/HR/Positions/CreatePosition';
@@ -43,10 +42,7 @@ import Admin from './Components/Pages/Admin/Admin';
 import Role from './Components/Pages/Admin/Roles';
 import User from './Components/Pages/Admin/Users';
 import CreateRole from './Components/Pages/Admin/CreateRole';
-import ExportCustomer from './Components/Pages/Registration/ExportCustomer';
-import Customer from './Components/Pages/Registration/Customers';
 import CreateService from './Components/Pages/Service/CreateService';
-import CreateCustomer from './Components/Pages/Registration/CreateCustomer';
 import ExportService from './Components/Pages/Service/ExportService';
 import NonWorkingDetail from './Components/Pages/HR/NonWorkingDetails/NonWorkingDetails';
 import CreateNonWorkingDetail from './Components/Pages/HR/NonWorkingDetails/CreateNonWorkingDetail';
@@ -65,12 +61,16 @@ import CreateUser from './Components/Pages/Admin/CreateUser';
 import EditRole from './Components/Pages/Admin/EditRole';
 import EditPosition from './Components/Pages/HR/Positions/EditPosition';
 import EditProduct from './Components/Pages/Stock/Products/EditProduct';
-import EditCustomer from './Components/Pages/Registration/EditCustomer';
 import CashBox from './Components/Pages/Finance/CashBoxes/CashBox';
 import CreateCashBox from './Components/Pages/Finance/CashBoxes/CreateCashBox';
 import EditCashbox from './Components/Pages/Finance/CashBoxes/EditCashBox';
 import Statistics from './Components/Pages/Director/Statistics';
 import ResetPassword from './Components/Pages/Login/ResetPassword';
+import CreateCustomer from './Components/Pages/Customer/CreateCustomer';
+import CustomerDetail from './Components/Pages/Customer/CustomerDetail';
+import Customer from './Components/Pages/Customer/Customers';
+import ExportCustomer from './Components/Pages/Customer/ExportCustomer';
+import EditCustomer from './Components/Pages/Customer/EditCustomer';
 
 function App() {
   return (

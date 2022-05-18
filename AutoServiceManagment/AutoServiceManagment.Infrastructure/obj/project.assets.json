@@ -2001,6 +2001,7 @@
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
           "Microsoft.AspNetCore.Http.Features": "5.0.16",
+          "Microsoft.AspNetCore.Identity": "2.2.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.17"
         },
         "compile": {
@@ -6884,7 +6885,8 @@
     "net5.0": [
       "AutoServiceManagment.AuthenticationService >= 1.0.0",
       "Microsoft.AspNetCore.Diagnostics >= 2.2.0",
-      "Microsoft.AspNetCore.Http.Abstractions >= 2.2.0"
+      "Microsoft.AspNetCore.Http.Abstractions >= 2.2.0",
+      "Microsoft.AspNetCore.Identity >= 2.2.0"
     ]
   },
   "packageFolders": {
@@ -6941,6 +6943,10 @@
             "version": "[2.2.0, )"
           },
           "Microsoft.AspNetCore.Http.Abstractions": {
+            "target": "Package",
+            "version": "[2.2.0, )"
+          },
+          "Microsoft.AspNetCore.Identity": {
             "target": "Package",
             "version": "[2.2.0, )"
           }
