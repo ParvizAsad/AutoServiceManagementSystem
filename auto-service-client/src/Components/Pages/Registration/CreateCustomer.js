@@ -106,7 +106,7 @@ function CreateCustomer() {
           <FormGroup>
             <Label for="ServiceIds">Select Service</Label>
             <select
-              multiple={true}
+              // multiple={true}
               className="ServiceIds"
               onChange={getElementValues}
               name="ServiceIds"
@@ -124,7 +124,7 @@ function CreateCustomer() {
           <FormGroup>
             <Label for="ProductIds">Select Product</Label>
             <select
-              multiple={true}
+              // multiple={true}
               className="ProductIds"
               onChange={getElementValues}
               name="ProductIds"

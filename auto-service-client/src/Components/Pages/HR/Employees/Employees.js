@@ -8,18 +8,7 @@ import { Link } from "react-router-dom";
 import { useReactToPrint } from "react-to-print";
 
 import { employeeService } from "../../../../Api/services/Employee";
-import "jquery/dist/jquery.min.js";
-//Datatable Modules
-import "datatables.net-dt/js/dataTables.dataTables";
-import "datatables.net-dt/css/jquery.dataTables.min.css";
-import "datatables.net-buttons/js/dataTables.buttons.js";
-import "datatables.net-buttons/js/buttons.colVis.js";
-import "datatables.net-buttons/js/buttons.flash.js";
-import "datatables.net-buttons/js/buttons.html5.js";
-import "datatables.net-buttons/js/buttons.print.js";
-// import "datatables.net-buttons/js/buttons.excel.js";
-import "datatables.net-dt/css/jquery.dataTables.min.css";
-import $ from "jquery";
+
 
 function Employee(props) {
   const [employee, setEmployee] = React.useState([]);
@@ -80,17 +69,6 @@ function Employee(props) {
       });
   };
 
-  $(document).ready(function () {
-    setTimeout(function () {
-      $("#example").DataTable({
-        pagingType: "full_numbers",
-        pageLength: 10,
-        processing: true,
-        dom: "Bfrtip",
-        buttons: [],
-      });
-    }, 1000);
-  });
 
   function EditEmployee(id) {
     console.log(id);
@@ -120,7 +98,6 @@ function Employee(props) {
           </Button>
         </div>
         <input type="text" placeholder="Search.." onChange={event=>{setSearchEmployee(event.target.value)}}/>
-
         <Button onClick={() => history.push("/ExportEmployee")}>Export</Button>
       </div>
       <div ref={componentRef}>

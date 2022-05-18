@@ -72,5 +72,4 @@ function CreateTax() {
     </>
   );
 }
-console.log(newTax);
 export default CreateTax;

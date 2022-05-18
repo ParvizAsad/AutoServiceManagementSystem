@@ -3,11 +3,14 @@ import React, { useCallback, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { financeService } from "../../../../Api/services/Finances";
 // import "./Employees/Accountings/CreateEmployee.scss";
+import moment from "moment";
+import { ToastContainer, toast } from "react-toastify";
+
 
 const newAccounting = {
-  CommunalCost: " ",
-  AdditionalCost: " ",
-  Date: " ",
+  communalCost: " ",
+  additionalCost: " ",
+  date: " ",
 };
 
 function EditAccounting(props) {
@@ -28,6 +31,41 @@ function EditAccounting(props) {
       const id = props.match.params.id;
       financeService.putFinance(id, accounting).then(() => {
         history.push("/accounting");
+      }) .catch((e) => {
+        console.log(e.response.data.title);
+        if (e.response.status === 400) {
+          toast.error(`${e.response.data.title}`, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        } else if (e.response.status === 500) {
+          toast.error(`${e.response.data}`, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        }
+        else{
+          toast.error(`${e.response.data.title}`, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        }
+
       });
     },
     [accounting, history]
@@ -41,7 +79,6 @@ function EditAccounting(props) {
     // setAccounting(newAccounting);
     const { name, value } = e.target;
     setAccounting({ ...accounting, [name]: value });
-
   }
 
   return (
@@ -52,10 +89,10 @@ function EditAccounting(props) {
       <div className="CreatePage">
         <Form onSubmit={editAccounting}>
           <FormGroup>
-            <Label for="CommunalCost">CommunalCost</Label>
+            <Label for="communalCost">CommunalCost</Label>
             <Input
-              id="CommunalCost"
-              name="CommunalCost"
+              id="communalCost"
+              name="communalCost"
               placeholder="CommunalCost"
               onChange={(e) => handle(e)}
               value={accounting.communalCost}
@@ -63,11 +100,11 @@ function EditAccounting(props) {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="AdditionalCost">AdditionalCost</Label>
+            <Label for="additionalCost">AdditionalCost</Label>
             <Input
-              id="AdditionalCost"
-              name="AdditionalCost"
-              placeholder="AdditionalCost"
+              id="additionalCost"
+              name="additionalCost"
+              placeholder="additionalCost"
               onChange={(e) => handle(e)}
               value={accounting.additionalCost}
               type="text"
@@ -80,7 +117,7 @@ function EditAccounting(props) {
               name="Date"
               placeholder="Date"
               onChange={(e) => handle(e)}
-              value={accounting.date}
+              value={moment(accounting.date).format("yyyy-MM-DD")}
               type="date"
             />
           </FormGroup>

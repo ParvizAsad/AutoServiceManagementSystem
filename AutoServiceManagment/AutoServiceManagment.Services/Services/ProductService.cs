@@ -47,7 +47,7 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task DeleteProductAsync(int? id)
         {
-            var product = await DbContext.Products.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == true);
+            var product = await DbContext.Products.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted != true);
 
             if (product == null) { throw new Exception("Product not found!"); }
 
@@ -66,8 +66,9 @@ namespace AutoServiceManagment.Services.Services
             product.Count=productDto.Count;   
             product.BasePrice=productDto.BasePrice;   
             product.SalePrice=productDto.SalePrice;   
-            product.BrandID=productDto.BrandId;   
-            product.CategoryID=productDto.CategoryId;   
+            product.BrandID=productDto.BrandId; 
+            product.CategoryID=productDto.CategoryId;  
+          
 
             DbContext.Products.Update(product);
 

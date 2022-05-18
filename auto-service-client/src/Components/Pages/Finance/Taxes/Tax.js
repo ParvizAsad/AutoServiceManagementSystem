@@ -16,11 +16,11 @@ function Tax() {
 
   const history = useHistory();
 
-  const getAllTaxes = useCallback(() => {
-    taxService.getAllTaxes().then(({ data }) => {
-      setTaxes(data);
-    });
-  }, [setTaxes]);
+  // const getAllTaxes = useCallback(() => {
+  //   taxService.getAllTaxes().then(({ data }) => {
+  //     setTaxes(data);
+  //   });
+  // }, [setTaxes]);
 
   React.useEffect(() => {
     taxService.getAllTaxes().then(({ data }) => {
@@ -56,8 +56,7 @@ function Tax() {
           'Your file has been deleted.',
           'success'
         )
-        {taxService.deleteTax(id) &&
-          getAllTaxes()};
+        taxService.deleteTax(id)
       } 
       else if (
         /* Read more about handling dismissals below */
@@ -69,7 +68,15 @@ function Tax() {
           'error'
         )
       }
-    })
+    }).finally(() => {
+      console.log('Experiment completed');
+     setTimeout(() => {
+      taxService.getAllTaxes().then(({ data }) => {
+        setTaxes(data);
+      })
+     }, 2000);
+
+    });
   }
   
   return (

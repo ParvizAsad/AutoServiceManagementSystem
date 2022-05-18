@@ -6,6 +6,7 @@ import {
 import { financeService } from '../../../../Api/services/Finances';
 import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
+import moment from "moment";
 
 function Accounting() {
 
@@ -108,7 +109,7 @@ function Accounting() {
                 <th scope="row">{idx}</th>
                 <td>{item.communalCost}</td>
                 <td>{item.additionalCost}</td>
-                <td>{item.date}</td>
+                <td>{moment(item.date).format("yyyy-MM-DD")}</td>
                 <td className="Actions">
                   <Button onClick={()=>editAccounting(item.id) }className="Edit">Edit</Button>
                   <Button onClick={()=>deleteButton(item.id) } className="Delete">Delete</Button>

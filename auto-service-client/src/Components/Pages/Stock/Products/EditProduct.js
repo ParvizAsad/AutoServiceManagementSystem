@@ -37,7 +37,7 @@ function EditProduct(props) {
     const id = props.match.params.id;
     productService.getProductById(id).then((res) => {
       setProduct(res.data);
-      })
+    });
   }, []);
 
   const EditProduct = useCallback(
@@ -47,8 +47,8 @@ function EditProduct(props) {
       productService.putProduct(id, product).then(() => {
         getAllProduct();
         history.push("/product");
-      })
-      
+      });
+
       // .catch(
       //   e=>{
       //       if(e.response.status===400){
@@ -70,7 +70,6 @@ function EditProduct(props) {
 
     const { name, value } = e.target;
     setProduct({ ...product, [name]: value });
-
   }
 
   React.useEffect(() => {
@@ -92,7 +91,7 @@ function EditProduct(props) {
       </div>
       <div className="EditPage">
         <Form onSubmit={EditProduct}>
-        {error}
+          {error}
           <FormGroup>
             <Label for="name">Name</Label>
             <Input
@@ -139,18 +138,21 @@ function EditProduct(props) {
               type="number"
             />
           </FormGroup>
-                  {error}
+          {error}
           <FormGroup>
             <Label for="categoryId">Select Category</Label>
             <select
               className="form-control"
               onChange={(e) => handle(e)}
               name="categoryId"
+              selected={product.categoryId}
               id="categoryId"
             >
-              <option value="0">--Select Category--</option>
               {category?.map((item) => (
-                <option key={item.id} value={item.id}>
+                <option
+                  key={item.id}
+                  value={item.id}
+                >
                   {item.name}
                 </option>
               ))}
@@ -159,9 +161,13 @@ function EditProduct(props) {
           {error}
           <FormGroup>
             <Label for="brandId">Select Brand</Label>
-            <select className="form-control"
-              onChange={(e) => handle(e)} name="brandId" id="brandId">
-              <option value="0">--Select Brand--</option>
+            <select
+              className="form-control"
+              onChange={(e) => handle(e)}
+              name="brandId"
+              selected={product.brandId}
+              id="brandId"
+            >
               {brand?.map((item) => (
                 <option key={item.id} value={item.id}>
                   {item.name}

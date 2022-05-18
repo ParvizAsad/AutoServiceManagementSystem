@@ -29,3 +29,10 @@ C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoS
 C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Infrastructure\bin\Debug\net5.0\AutoServiceManagment.DomainModels.pdb
 C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Infrastructure\bin\Debug\net5.0\AutoServiceManagment.Repository.pdb
 C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Infrastructure\obj\Debug\net5.0\AutoServiceManagment.Infrastructure.csproj.CopyComplete
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Infrastructure\bin\Debug\net5.0\AutoServiceManagment.AuthenticationService.dll
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Infrastructure\bin\Debug\net5.0\AutoServiceManagment.DomainModels.dll
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Infrastructure\bin\Debug\net5.0\AutoServiceManagment.Repository.dll
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Infrastructure\bin\Debug\net5.0\AutoServiceManagment.AuthenticationService.pdb
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Infrastructure\bin\Debug\net5.0\AutoServiceManagment.DomainModels.pdb
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Infrastructure\bin\Debug\net5.0\AutoServiceManagment.Repository.pdb
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.Infrastructure\obj\Debug\net5.0\AutoServiceManagment.Infrastructure.csproj.CopyComplete

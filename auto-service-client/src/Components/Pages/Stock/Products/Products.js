@@ -44,11 +44,9 @@ function Product(props) {
           'Your file has been deleted.',
           'success'
         )
-          {productService.deleteProduct(id) &&
-          history.push("/")};
+          productService.deleteProduct(id);
       } 
       else if (
-        /* Read more about handling dismissals below */
         result.dismiss === Swal.DismissReason.cancel
       ) {
         swalWithBootstrapButtons.fire(
@@ -57,7 +55,15 @@ function Product(props) {
           'error'
         )
       }
-    })
+    }).finally(() => {
+      console.log('Experiment completed');
+     setTimeout(() => {
+      productService.getAllProducts().then(({ data }) => {
+        setProduct(data);
+      })
+     }, 2000);
+
+    });
   }
 
   function productDetail(id){

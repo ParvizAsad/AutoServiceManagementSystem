@@ -147,6 +147,7 @@ function App() {
         <Route path="/EditPosition/:id" exact component={EditPosition} />
         <Route path="/EditCustomer/:id" exact component={EditCustomer} />
         <Route path="/EditCashBox/:id" exact component={EditCashbox} />
+        <Route path="/EditProduct/:id" exact component={EditProduct} />
 
         <Route path={"/error"} exact component={Error} />
         <Redirect to={"/error"} exact />
