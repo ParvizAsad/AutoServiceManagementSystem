@@ -66,7 +66,14 @@ function Employee(props) {
             "error"
           );
         }
-      });
+      }).finally(() => {
+        setTimeout(() => {
+         employeeService.getAllEmployee().then(({ data }) => {
+           setEmployee(data);
+         })
+        }, 500);
+   
+       });
   };
 
 

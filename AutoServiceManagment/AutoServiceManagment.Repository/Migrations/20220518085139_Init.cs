@@ -26,7 +26,7 @@ namespace AutoServiceManagment.Repository.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Fullname = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FullName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -112,8 +112,8 @@ namespace AutoServiceManagment.Repository.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ExpireDate = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Percentage = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    ExpireDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsExpired = table.Column<bool>(type: "bit", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -199,6 +199,24 @@ namespace AutoServiceManagment.Repository.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Services", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Statistics",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Profit = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Statistics", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -377,6 +395,7 @@ namespace AutoServiceManagment.Repository.Migrations
                     PersonalDetails = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     EducationLevel = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    ImageName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -699,6 +718,9 @@ namespace AutoServiceManagment.Repository.Migrations
 
             migrationBuilder.DropTable(
                 name: "Salaries");
+
+            migrationBuilder.DropTable(
+                name: "Statistics");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

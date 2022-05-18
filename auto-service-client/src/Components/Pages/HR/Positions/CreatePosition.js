@@ -10,6 +10,7 @@ const newPosition = {
 
 function CreatePosition() {
   const [position, setPosition] = useState(newPosition);
+  const [error, setError] = useState();
 
   const [positionData, setPositionData] = useState();
   const history = useHistory();
@@ -26,7 +27,18 @@ function CreatePosition() {
       positionService.postPosition(position).then(() => {
         getAllPosition();
         history.push("/position");
-      });
+      }).catch(
+        e=>{
+            if(e.response.status===400){
+              setError(e.response.data.errors.Name)
+              console.log(error);
+
+            }
+            else if(e.response.status===500){
+              setError(e.response.data)
+            }
+      }
+      );
     },
     [position, history, getAllPosition]
   );
@@ -44,6 +56,7 @@ function CreatePosition() {
       </div>
       <div className="CreatePage">
         <Form onSubmit={createPosition}>
+        {error}
           <FormGroup>
             <Label for="Name">Name</Label>
             <Input

@@ -11,6 +11,7 @@ const newTax= {
 
 function CreateTax() {
   const [tax, setTax] = useState(newTax);
+  const [error, setError] = useState([]);
 
   const [taxData, setTaxData] = useState();
   const history = useHistory();
@@ -28,7 +29,18 @@ function CreateTax() {
         getAllTax();
         console.log(tax);
         history.push("/tax");
-      });
+      }).catch(
+        e=>{
+            if(e.response.status===400){
+              setError(e.response.data.errors.Name)
+              console.log(error);
+
+            }
+            else if(e.response.status===500){
+              setError(e.response.data)
+            }
+      }
+      );
     },
     [tax, history, getAllTax]
   );
@@ -46,6 +58,7 @@ function CreateTax() {
       </div>
       <div className="CreatePage">
         <Form onSubmit={createTax}>
+        {error}
           <FormGroup>
             <Label for="Name">Name</Label>
             <Input
@@ -56,6 +69,7 @@ function CreateTax() {
               type="text"
             />
           </FormGroup>
+          {error}
           <FormGroup>
             <Label for="taxValue">Tax Value</Label>
             <Input

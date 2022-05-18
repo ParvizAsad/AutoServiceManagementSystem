@@ -61,7 +61,14 @@ function NonWorkingDetail() {
           'error'
         )
       }
-    })
+    }).finally(() => {
+      setTimeout(() => {
+       nonWorkingDetailService.getAllNonWorkingDetails().then(({ data }) => {
+         setNonWorkingDetails(data);
+       })
+      }, 500);
+ 
+     });
   }
   
   return (

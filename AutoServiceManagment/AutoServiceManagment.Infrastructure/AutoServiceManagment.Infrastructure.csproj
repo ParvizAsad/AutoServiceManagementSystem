@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AutoServiceManagementAuthenticationService\AutoServiceManagment.AuthenticationService.csproj" />
+    <ProjectReference Include="..\AutoServiceManagment.DomainModels\AutoServiceManagment.DomainModels.csproj" />
   </ItemGroup>
 
 </Project>

@@ -16,6 +16,7 @@ const newSalary= {
 function CreateSalary() {
   const [Salary, setSalary] = useState(newSalary);
   const [employee, setEmployee] = React.useState([]);
+  const [error, setError] = useState([]);
 
   const [SalaryData, setSalaryData] = useState();
   const history = useHistory();
@@ -32,7 +33,18 @@ function CreateSalary() {
       salaryService.postSalary(Salary).then(() => {
         getAllSalary();
         history.push("/Salary");
-      });
+      }).catch(
+        e=>{
+            if(e.response.status===400){
+              setError(e.response.data.errors.Name)
+              console.log(error);
+
+            }
+            else if(e.response.status===500){
+              setError(e.response.data)
+            }
+      }
+      );
     },
     [Salary, history, getAllSalary]
   );

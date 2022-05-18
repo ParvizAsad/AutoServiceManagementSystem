@@ -21,22 +21,22 @@ namespace AutoServiceManagment.API
     {
         public static async Task Main(string[] args)
         {
-            var host = CreateHostBuilder(args).Build();
+            //var host = CreateHostBuilder(args).Build();
 
-            using (var scope = host.Services.CreateScope())
-            {
-                var appDbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+            //using (var scope = host.Services.CreateScope())
+            //{
+            //    var appDbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
 
-                var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
+            //    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
 
-                var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            //    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
-                var dataInitializer = new DataInitializer(appDbContext, roleManager, userManager);
+            //    var dataInitializer = new DataInitializer(appDbContext, roleManager, userManager);
 
-                await dataInitializer.SeedDataAsync();
-            }
+            //    await dataInitializer.SeedDataAsync();
+            //}
 
-            await host.RunAsync();
+            //await host.RunAsync();
 
             Log.Logger = new LoggerConfiguration()
                   .MinimumLevel.Override("Microsoft", LogEventLevel.Information)

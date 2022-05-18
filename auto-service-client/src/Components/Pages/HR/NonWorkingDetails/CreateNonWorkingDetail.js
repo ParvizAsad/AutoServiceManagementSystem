@@ -17,6 +17,7 @@ function CreateNonWorkingDetail() {
   const [NonWorkingDetail, setNonWorkingDetail] = useState(newNonWorkingDetail);
   const [nonWorkingType, setnonWorkingType] = React.useState([]);
   const [employee, setEmployee] = React.useState([]);
+  const [error, setError] = useState();
 
   const [NonWorkingDetailData, setNonWorkingDetailData] = useState();
   const history = useHistory();
@@ -33,7 +34,18 @@ function CreateNonWorkingDetail() {
       nonWorkingDetailService.postNonWorkingDetail(NonWorkingDetail).then(() => {
         getAllNonWorkingDetail();
         history.push("/nonworkingdetail");
-      });
+      }).catch(
+        e=>{
+            if(e.response.status===400){
+              setError(e.response.data.errors.Name)
+              console.log(error);
+
+            }
+            else if(e.response.status===500){
+              setError(e.response.data)
+            }
+      }
+      );
     },
     [NonWorkingDetail, history, getAllNonWorkingDetail]
   );
@@ -63,6 +75,7 @@ function CreateNonWorkingDetail() {
       </div>
       <div className="CreatePage">
         <Form onSubmit={createNonWorkingDetail}>
+          {error}
           <FormGroup>
             <Label for="StartTime">StartTime</Label>
             <Input

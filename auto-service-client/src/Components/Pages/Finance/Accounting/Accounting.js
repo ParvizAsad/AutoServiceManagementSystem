@@ -68,7 +68,14 @@ function Accounting() {
           'error'
         )
       }
-    })
+    }).finally(() => {
+      setTimeout(() => {
+      financeService.getAllFinances().then(({ data }) => {
+        setFinance(data);
+       })
+      }, 500);
+ 
+     });
   }
 
   return (
@@ -109,7 +116,7 @@ function Accounting() {
                 <th scope="row">{idx}</th>
                 <td>{item.communalCost}</td>
                 <td>{item.additionalCost}</td>
-                <td>{moment(item.date).format("yyyy-MM-DD")}</td>
+                <td>{moment(item.date).format("MM-DD-yyyy")}</td>
                 <td className="Actions">
                   <Button onClick={()=>editAccounting(item.id) }className="Edit">Edit</Button>
                   <Button onClick={()=>deleteButton(item.id) } className="Delete">Delete</Button>

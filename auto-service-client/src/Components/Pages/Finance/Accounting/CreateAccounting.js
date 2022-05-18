@@ -12,6 +12,7 @@ const newAccounting = {
 
 function CreateAccounting() {
   const [accounting, setAccounting] = useState(newAccounting);
+  const [error, setError] = useState();
 
   const [accountingData, setAccountingData] = useState();
   const history = useHistory();
@@ -30,9 +31,16 @@ function CreateAccounting() {
         history.push("/accounting");
       }).catch(
         e=>{
-          console.log(e.response)
+            if(e.response.status===400){
+              setError(e.response.data.errors.Name)
+              console.log({error});
+
+            }
+            else if(e.response.status===500){
+              setError(e.response.data)
+            }
       }
-      );;
+      );
     },
     [accounting, history, getAllAccounting]
   );
@@ -69,6 +77,7 @@ function CreateAccounting() {
               type="number"
             />
           </FormGroup>
+          {error} 
           <FormGroup>
             <Label for="date">Date</Label>
             <Input

@@ -27,6 +27,7 @@ const employees = {
 function CreateEmployee() {
   const [employee, setEmployee] = useState(employees);
   const [position, setPosition] = React.useState([]);
+  const [error, setError] = useState();
   const [positionData, setPositionData] = useState();
 
   const [employeeData, setEmployeeData] = useState();

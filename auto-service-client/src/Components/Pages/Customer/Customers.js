@@ -70,7 +70,14 @@ function Customer(props) {
           'error'
         )
       }
-    })
+    }).finally(() => {
+      setTimeout(() => {
+       customerService.getAllCustomers().then(({ data }) => {
+        setCustomer(data);
+       })
+      }, 500);
+ 
+     });
   }
 
   return (

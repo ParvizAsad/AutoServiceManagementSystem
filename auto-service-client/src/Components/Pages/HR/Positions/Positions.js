@@ -72,7 +72,14 @@ function Position() {
           'error'
         )
       }
-    })
+    }).finally(() => {
+      setTimeout(() => {
+       positionService.getAllPositions().then(({ data }) => {
+         setPositions(data);
+       })
+      }, 500);
+ 
+     });
   }
   
   return (

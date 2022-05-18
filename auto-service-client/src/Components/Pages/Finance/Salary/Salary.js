@@ -69,7 +69,14 @@ function Salary() {
           'error'
         )
       }
-    })
+    }).finally(() => {
+      setTimeout(() => {
+      salaryService.getAllSalaries().then(({ data }) => {
+        setSalaries(data);
+       })
+      }, 500);
+ 
+     });
   }
   
   return (

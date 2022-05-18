@@ -12,6 +12,7 @@ const newDiscount= {
 
 function CreateDiscount() {
   const [Discount, setDiscount] = useState(newDiscount);
+  const [error, setError] = useState();
 
   const [DiscountData, setDiscountData] = useState();
   const history = useHistory();
@@ -28,7 +29,18 @@ function CreateDiscount() {
       discountService.postDiscount(Discount).then(() => {
         getAllDiscount();
         history.push("/marketing");
-      });
+      }).catch(
+        e=>{
+            if(e.response.status===400){
+              setError(e.response.data.errors.Name)
+              console.log(error);
+
+            }
+            else if(e.response.status===500){
+              setError(e.response.data)
+            }
+      }
+      );
     },
     [Discount, history, getAllDiscount]
   );
@@ -45,6 +57,7 @@ function CreateDiscount() {
       </div>
       <div className="CreatePage">
         <Form onSubmit={createDiscount}>
+          {error}
           <FormGroup>
             <Label for="Name">Name</Label>
             <Input
@@ -55,6 +68,7 @@ function CreateDiscount() {
               type="text"
             />
           </FormGroup>
+          {error}
           <FormGroup>
             <Label for="Percentage">Percentage</Label>
             <Input
@@ -65,6 +79,7 @@ function CreateDiscount() {
               type="number"
             />
           </FormGroup>
+          {error}
           <FormGroup>
             <Label for="ExpireDate">ExpireDate</Label>
             <Input

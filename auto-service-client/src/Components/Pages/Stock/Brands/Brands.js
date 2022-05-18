@@ -67,12 +67,11 @@ function Brand() {
           );
         }
       }).finally(() => {
-        console.log('Experiment completed');
        setTimeout(() => {
         brandService.getAllBrands().then(({ data }) => {
           setBrands(data);
         })
-       }, 2000);
+       }, 500);
   
       });
   };

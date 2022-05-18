@@ -19,6 +19,7 @@ function CreateCustomer() {
   const [customer, setCustomer] = useState(initialCustomer);
   const [services, setServices] = useState([]);
   const [products, setProducts] = useState([]);
+  const [error, setError] = useState();
 
   const [customerData, setCustomerData] = useState();
   const history = useHistory();
@@ -34,7 +35,18 @@ function CreateCustomer() {
       e.preventDefault();
       customerService.postCustomer(customer).then(() => {
         history.push("/customer");
-      });
+      }).catch(
+        e=>{
+            if(e.response.status===400){
+              setError(e.response.data.errors.Name)
+              console.log({error});
+
+            }
+            else if(e.response.status===500){
+              setError(e.response.data)
+            }
+      }
+      );
     },
     [customer, history]
   );
@@ -63,6 +75,7 @@ function CreateCustomer() {
       </div>
       <div className="CreatePage">
         <Form onSubmit={createCustomer}>
+          {error}
           <FormGroup>
             <Label for="fullName">FullName</Label>
             <Input
@@ -73,6 +86,7 @@ function CreateCustomer() {
               type="text"
             />
           </FormGroup>
+          {error}
           <FormGroup>
             <Label for="phoneNumber">Phone Number</Label>
             <Input
@@ -83,6 +97,7 @@ function CreateCustomer() {
               type="text"
             />
           </FormGroup>
+          {error}
           <FormGroup>
             <Label for="email">Email</Label>
             <Input

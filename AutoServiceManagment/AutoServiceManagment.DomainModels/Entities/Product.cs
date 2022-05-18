@@ -8,6 +8,7 @@ namespace AutoServiceManagment.DomainModels.Entities
     public class Product : TimestampableObject, IEntity
     {
         public int Id { get; set; }
+        [Required(ErrorMessage = "Name is required!")]
         public string Name { get; set; }
         [Required(ErrorMessage = "Base price is required!")]
         public decimal BasePrice { get; set; }

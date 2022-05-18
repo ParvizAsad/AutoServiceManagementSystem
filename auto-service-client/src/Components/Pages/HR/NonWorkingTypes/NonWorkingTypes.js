@@ -62,7 +62,14 @@ function NonWorkingType() {
           'error'
         )
       }
-    })
+    }).finally(() => {
+      setTimeout(() => {
+       nonWorkingTypeService.getAllNonWorkingTypes().then(({ data }) => {
+         setNonWorkingTypes(data);
+       })
+      }, 500);
+ 
+     });
   }
   
   return (

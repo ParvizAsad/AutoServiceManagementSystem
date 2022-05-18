@@ -11,7 +11,7 @@ namespace AutoServiceManagment.DomainModels.Entities
 {
     public class User : IdentityUser
     {
-        [Required]
+        [Required(ErrorMessage = "FullName is required!")]
         public string FullName { get; set; }
     }
 }

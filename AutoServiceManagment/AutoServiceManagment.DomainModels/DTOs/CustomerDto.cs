@@ -19,7 +19,7 @@ namespace AutoServiceManagment.DomainModels.DTOs
         [Required(ErrorMessage = "Email is required!")]
         public string Email { get; set; }
         public decimal Debt { get; set; }
-        //public bool IsNotificationAllowed { get; set; }
+        public bool IsNotificationAllowed { get; set; } = true;
         [NotMapped]
         public List<int> ServiceIds { get; set; }
         [NotMapped]

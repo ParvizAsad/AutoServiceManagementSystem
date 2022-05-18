@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AutoServiceManagment.Repository.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220515090559_AddEmployeeImage")]
-    partial class AddEmployeeImage
+    [Migration("20220518085646_Init2")]
+    partial class Init2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -233,11 +233,13 @@ namespace AutoServiceManagment.Repository.Migrations
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ExpireDate")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("ExpireDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsExpired")
                         .HasColumnType("bit");
 
                     b.Property<string>("Name")
@@ -491,7 +493,6 @@ namespace AutoServiceManagment.Repository.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("SalePrice")
@@ -595,6 +596,36 @@ namespace AutoServiceManagment.Repository.Migrations
                     b.ToTable("Services");
                 });
 
+            modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.Statistics", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("Profit")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Statistics");
+                });
+
             modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.Tax", b =>
                 {
                     b.Property<int>("Id")
@@ -648,7 +679,7 @@ namespace AutoServiceManagment.Repository.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Fullname")
+                    b.Property<string>("FullName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

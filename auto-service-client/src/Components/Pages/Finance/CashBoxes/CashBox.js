@@ -69,7 +69,14 @@ function CashBox() {
           'error'
         )
       }
-    })
+    }).finally(() => {
+      setTimeout(() => {
+      cashBoxService.getAllCashBoxes().then(({ data }) => {
+        setCashBoxes(data);
+       })
+      }, 500);
+ 
+     });
   }
   
   return (

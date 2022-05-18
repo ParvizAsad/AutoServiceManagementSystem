@@ -17,6 +17,8 @@ namespace AutoServiceManagment.DomainModels.DTOs
         public int EmployeeID { get; set; }
         //public Employee Employee { get; set; }
         [Required(ErrorMessage = "Date is required!")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{mm/dd/yyyy}")]
         public DateTime Date { get; set; }
         public decimal Bonus { get; set; }
         public decimal NetSalary { get; set; }

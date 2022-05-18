@@ -60,7 +60,14 @@ function Category() {
           'error'
         )
       }
-    })
+    }).finally(() => {
+      setTimeout(() => {
+       categoryService.getAllCategories().then(({ data }) => {
+        setCategories(data);
+       })
+      }, 500);
+ 
+     });
   }
   
   return (

@@ -17,7 +17,6 @@ namespace AutoServiceManagment.DomainModels.DTOs
         public DateTime ExpireDate { get; set; } = DateTime.Now;
         [Required(ErrorMessage = "Percentage is required!")]
         public decimal Percentage { get; set; }
-        public bool IsExpired { get; set; } = false;
 
     }
 }

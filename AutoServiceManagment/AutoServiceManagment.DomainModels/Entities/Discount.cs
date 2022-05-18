@@ -13,8 +13,8 @@ namespace AutoServiceManagment.DomainModels.Entities
         public DateTime ExpireDate { get; set; } = DateTime.Now;
         [Required(ErrorMessage = "Percentage is required!")]
         public decimal Percentage { get; set; }
+        public bool IsExpired { get; set; } = true;
         public bool IsDeleted { get; set; } = false;
-        public bool IsExpired { get; set; } = false;
 
     }
 }

@@ -67,7 +67,14 @@ function Marketing() {
           'error'
         )
       }
-    })
+    }).finally(() => {
+      setTimeout(() => {
+      discountService.getAllDiscounts().then(({ data }) => {
+        setDiscount(data);
+       })
+      }, 500);
+ 
+     });
   }
 
   return (

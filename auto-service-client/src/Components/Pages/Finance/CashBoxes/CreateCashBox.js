@@ -17,6 +17,7 @@ function CreateCashBox() {
   const [customer, setCustomer] = React.useState([]);
   const [services, setServices] = React.useState([]);
   const [products, setProducts] = React.useState([]);
+  const [error, setError] = useState();
 
   const [CashBoxData, setCashBoxData] = useState();
   const history = useHistory();
@@ -33,7 +34,18 @@ function CreateCashBox() {
       cashBoxService.postCashBox(CashBox).then(() => {
         getAllCashBox();
         history.push("/cashbox");
-      });
+      }).catch(
+        e=>{
+            if(e.response.status===400){
+              setError(e.response.data.errors.Name)
+              console.log(error);
+
+            }
+            else if(e.response.status===500){
+              setError(e.response.data)
+            }
+      }
+      );
     },
     [CashBox, history, getAllCashBox]
   );
@@ -55,6 +67,7 @@ function CreateCashBox() {
       </div>
       <div className="CreatePage">
         <Form onSubmit={createCashBox}>
+          {error}
         <FormGroup>
             <Label for="CustomerId">Select Customer</Label>
             <select className="CustomerId" onChange={getElementValues}  name="CustomerId" id="CustomerId">
@@ -66,6 +79,7 @@ function CreateCashBox() {
               ))}
             </select>
           </FormGroup>
+          {error}
           <FormGroup>
             <Label for="Services">Select Service</Label>
             <select className="CustomerId" onChange={getElementValues}  name="CustomerId" id="CustomerId">
@@ -77,6 +91,7 @@ function CreateCashBox() {
               ))}
             </select>
           </FormGroup>
+          {error}
           <FormGroup>
             <Label for="Products">Select Product</Label>
             <select className="Products" onChange={getElementValues}  name="Products" id="Products">
@@ -88,6 +103,7 @@ function CreateCashBox() {
               ))}
             </select>
           </FormGroup>
+            {error}
           <FormGroup>
             <Label for="Payment">Payment</Label>
             <Input

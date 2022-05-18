@@ -10,6 +10,7 @@ const newNonWorkingType = {
 
 function CreateNonWorkingType() {
   const [NonWorkingType, setNonWorkingType] = useState(newNonWorkingType);
+  const [error, setError] = useState();
 
   const [NonWorkingTypeData, setNonWorkingTypeData] = useState();
   const history = useHistory();
@@ -26,7 +27,18 @@ function CreateNonWorkingType() {
       nonWorkingTypeService.postNonWorkingType(NonWorkingType).then(() => {
         getAllNonWorkingType();
         history.push("/NonWorkingType");
-      });
+      }).catch(
+        e=>{
+            if(e.response.status===400){
+              setError(e.response.data.errors.Name)
+              console.log(error);
+
+            }
+            else if(e.response.status===500){
+              setError(e.response.data)
+            }
+      }
+      );
     },
     [NonWorkingType, history, getAllNonWorkingType]
   );
@@ -43,6 +55,7 @@ function CreateNonWorkingType() {
       </div>
       <div className="CreatePage">
         <Form onSubmit={createNonWorkingType}>
+        {error}
           <FormGroup>
             <Label for="Name">Name</Label>
             <Input

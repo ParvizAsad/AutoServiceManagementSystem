@@ -32,11 +32,11 @@ namespace AutoServiceManagment.Services.Services
         public async Task<IList<DiscountDto>> GetAllDiscountsAsync()
         {
             var discounts = await DbContext.Discounts.Where(x => x.IsDeleted == false).ToListAsync();
-            foreach (var discount in discounts)
-            {
-                if(discount.ExpireDate < DateTime.Now)
-                    discount.IsExpired=true;
-            }
+            //foreach (var discount in discounts)
+            //{
+            //    if(discount.ExpireDate < DateTime.Now)
+            //        discount.IsExpired=true;
+            //}
 
             return _mapper.Map<List<DiscountDto>>(discounts);
         }
@@ -53,11 +53,11 @@ namespace AutoServiceManagment.Services.Services
          
             await _repository.AddAsync(discount);
 
-            var customers = await DbContext.Customers.Where(x => x.IsNotificationAllowed == true && x.IsDeleted==false).ToListAsync();
-            foreach (var customer in customers)
-            {
-                SendEmail.SendEmailForNotify(customer, discount);
-            }
+            //var customers = await DbContext.Customers.Where(x => x.IsNotificationAllowed == true && x.IsDeleted==false).ToListAsync();
+            //foreach (var customer in customers)
+            //{
+            //    SendEmail.SendEmailForNotify(customer, discount);
+            //}
         }
 
         public async Task DeleteDiscountAsync(int? id)
@@ -78,7 +78,7 @@ namespace AutoServiceManagment.Services.Services
             if (discount == null) { throw new Exception("Discount not found!"); }
 
             discount.Name = discountDto.Name;
-            discount.Percentage = discountDto.Percentage;
+            //discount.Percentage = discountDto.Percentage;
             discount.ExpireDate = discountDto.ExpireDate;
 
             DbContext.Discounts.Update(discount);

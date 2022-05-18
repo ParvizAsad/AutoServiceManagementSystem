@@ -61,7 +61,7 @@ function Product(props) {
       productService.getAllProducts().then(({ data }) => {
         setProduct(data);
       })
-     }, 2000);
+     }, 500);
 
     });
   }

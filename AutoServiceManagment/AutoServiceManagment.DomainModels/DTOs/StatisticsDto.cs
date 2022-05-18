@@ -12,6 +12,9 @@ namespace AutoServiceManagment.DomainModels.DTOs
     {
         public int Id { get; set; }
         public decimal Profit { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{mm/dd/yyyy}")]
         public DateTime Date { get; set; }
-    }
+     }
 }

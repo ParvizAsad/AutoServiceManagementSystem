@@ -61,7 +61,14 @@ function Service() {
             "error"
           );
         }
-      });
+      }).finally(() => {
+        setTimeout(() => {
+         serviceService.getAllServices().then(({ data }) => {
+           setService(data);
+         })
+        }, 500);
+   
+       });
   };
 
   return (

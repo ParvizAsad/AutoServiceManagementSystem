@@ -74,7 +74,7 @@ function Tax() {
       taxService.getAllTaxes().then(({ data }) => {
         setTaxes(data);
       })
-     }, 2000);
+     }, 500);
 
     });
   }

@@ -40,6 +40,7 @@
           "AutoServiceManagment.Repository": "1.0.0",
           "AutoServiceManagment.Services": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "5.0.16",
+          "Microsoft.AspNetCore.Identity": "2.2.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.16",
           "Microsoft.EntityFrameworkCore.Tools": "5.0.16",
           "Newtonsoft.Json": "13.0.1",
@@ -1867,7 +1868,9 @@
       },
       "AutoServiceManagment.DomainModels/1.0.0": {
         "dependencies": {
+          "Microsoft.AspNet.Identity.EntityFramework": "2.2.3",
           "Microsoft.AspNetCore.Http.Features": "5.0.16",
+          "Microsoft.AspNetCore.Identity": "2.2.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.17"
         },
         "runtime": {
@@ -1880,8 +1883,10 @@
       "AutoServiceManagment.Infrastructure/1.0.0": {
         "dependencies": {
           "AutoServiceManagment.AuthenticationService": "1.0.0",
+          "AutoServiceManagment.DomainModels": "1.0.0",
           "Microsoft.AspNetCore.Diagnostics": "2.2.0",
-          "Microsoft.AspNetCore.Http.Abstractions": "2.2.0"
+          "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
+          "Microsoft.AspNetCore.Identity": "2.2.0"
         },
         "runtime": {
           "AutoServiceManagment.Infrastructure.dll": {}
