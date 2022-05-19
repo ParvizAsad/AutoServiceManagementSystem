@@ -469,8 +469,8 @@ namespace AutoServiceManagment.Repository.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<decimal>("BasePrice")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<double>("BasePrice")
+                        .HasColumnType("float");
 
                     b.Property<int>("BrandID")
                         .HasColumnType("int");
@@ -491,10 +491,11 @@ namespace AutoServiceManagment.Repository.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("SalePrice")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<double>("SalePrice")
+                        .HasColumnType("float");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");

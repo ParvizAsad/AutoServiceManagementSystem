@@ -26,6 +26,7 @@ const employees = {
 
 function CreateEmployee() {
   const [employee, setEmployee] = useState(employees);
+  // const [formErrors, setFormErrors]=useState({});
   const [position, setPosition] = React.useState([]);
   const [error, setError] = useState();
   const [positionData, setPositionData] = useState();
@@ -57,44 +58,7 @@ function CreateEmployee() {
       employeeService
         .postEmployee(employee)
         .then(() => {
-          // setTimeout(() => {
-          //   toast('evvel', {
-          //     position: "top-centre",
-          //     autoClose: 5000,
-          //     hideProgressBar: false,
-          //     closeOnClick: true,
-          //     pauseOnHover: true,
-          //     draggable: true,
-          //     progress: undefined,
-          //     });
-          // }, 5000);
-
-          // toast("TESTTESTTEST so easy!");
-
           history.push("/employee");
-
-          //  toast("TEssssEST so easy!");
-          //  toast('sora1!', {
-          //   position: "top-left",
-          //   autoClose: 5000,
-          //   hideProgressBar: false,
-          //   closeOnClick: true,
-          //   pauseOnHover: true,
-          //   draggable: true,
-          //   progress: undefined,
-          //   });
-
-          //  setTimeout(() => {
-          //   toast('sora2!', {
-          //     position: "top-left",
-          //     autoClose: 5000,
-          //     hideProgressBar: false,
-          //     closeOnClick: true,
-          //     pauseOnHover: true,
-          //     draggable: true,
-          //     progress: undefined,
-          //     });
-          // }, 5000);
         })
         .catch((e) => {
           console.log(e.response);

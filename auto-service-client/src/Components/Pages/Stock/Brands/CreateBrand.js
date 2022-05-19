@@ -1,18 +1,20 @@
 import { FormGroup, Form, Label, Input, Button, FormText } from "reactstrap";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { brandService } from "../../../../Api/services/Brands";
 // import "./Employees/Brands/CreateEmployee.scss";
 
 const newBrand = {
-  Name: " ",
+  name: " ",
 };
-
+const errorValues={
+  // error: [ ] || { },
+  errorValue: [],
+}
 function CreateBrand() {
   const [brand, setBrand] = useState(newBrand);
   const [error, setError] = useState();
-
-
+  const [arrError, setArrError]=useState(errorValues);
   const [brandData, setBrandData] = useState();
   const history = useHistory();
 
@@ -30,10 +32,10 @@ function CreateBrand() {
         history.push("/brand");
       }).catch(
         e=>{
+  
             if(e.response.status===400){
-              setError(e.response.data.errors.Name)
-              console.log({error});
-
+              setError(e.response.data.errors.Name[0])
+          
             }
             else if(e.response.status===500){
               setError(e.response.data)
@@ -49,15 +51,6 @@ function CreateBrand() {
     setBrand({ ...brand, [name]: value });
   };
 
-// let error= '';
-
-// if (this.state.message) {
-//   error=(<div className="alert alert-danger" role={alert}>
-// {this.state.message}
-
-//   </div>)
-// }
-
   return (
     <>
       <div className="ForHeading">
@@ -67,10 +60,10 @@ function CreateBrand() {
         <Form onSubmit={createBrand}>
         {error}
           <FormGroup>
-            <Label for="Name">Name</Label>
+            <Label for="name">Name</Label>
             <Input
-              id="Name"
-              name="Name"
+              id="name"
+              name="name"
               placeholder="Name"
               onChange={getElementValues}
               type="text"

@@ -14,8 +14,6 @@ namespace AutoServiceManagment.DomainModels.DTOs
         public decimal CommunalCost { get; set; }
         [Required(ErrorMessage = "Datetime is required!")]
 
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{mm/dd/yyyy}")]
         public DateTime Date { get; set; }
         public decimal AdditionalCost { get; set; }
     }

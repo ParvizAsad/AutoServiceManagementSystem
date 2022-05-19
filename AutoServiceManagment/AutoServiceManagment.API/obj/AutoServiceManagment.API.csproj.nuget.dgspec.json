@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.API\\AutoServiceManagment.API.csproj": {}
+    "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.API\\AutoServiceManagment.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagementAuthenticationService\\AutoServiceManagment.AuthenticationService.csproj": {
+    "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagementAuthenticationService\\AutoServiceManagment.AuthenticationService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagementAuthenticationService\\AutoServiceManagment.AuthenticationService.csproj",
+        "projectUniqueName": "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagementAuthenticationService\\AutoServiceManagment.AuthenticationService.csproj",
         "projectName": "AutoServiceManagment.AuthenticationService",
-        "projectPath": "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagementAuthenticationService\\AutoServiceManagment.AuthenticationService.csproj",
-        "packagesPath": "C:\\Users\\AZC167387\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagementAuthenticationService\\obj\\",
+        "projectPath": "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagementAuthenticationService\\AutoServiceManagment.AuthenticationService.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagementAuthenticationService\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\AZC167387\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,17 +26,18 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\AutoServiceManagment.DomainModels.csproj": {
-                "projectPath": "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\AutoServiceManagment.DomainModels.csproj"
+              "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\AutoServiceManagment.DomainModels.csproj": {
+                "projectPath": "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\AutoServiceManagment.DomainModels.csproj"
               },
-              "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Repository\\AutoServiceManagment.Repository.csproj": {
-                "projectPath": "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Repository\\AutoServiceManagment.Repository.csproj"
+              "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Repository\\AutoServiceManagment.Repository.csproj": {
+                "projectPath": "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Repository\\AutoServiceManagment.Repository.csproj"
               }
             }
           }
@@ -87,21 +92,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300-preview.22154.4\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.API\\AutoServiceManagment.API.csproj": {
+    "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.API\\AutoServiceManagment.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.API\\AutoServiceManagment.API.csproj",
+        "projectUniqueName": "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.API\\AutoServiceManagment.API.csproj",
         "projectName": "AutoServiceManagment.API",
-        "projectPath": "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.API\\AutoServiceManagment.API.csproj",
-        "packagesPath": "C:\\Users\\AZC167387\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.API\\obj\\",
+        "projectPath": "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.API\\AutoServiceManagment.API.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.API\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\AZC167387\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -109,26 +118,27 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagementAuthenticationService\\AutoServiceManagment.AuthenticationService.csproj": {
-                "projectPath": "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagementAuthenticationService\\AutoServiceManagment.AuthenticationService.csproj"
+              "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagementAuthenticationService\\AutoServiceManagment.AuthenticationService.csproj": {
+                "projectPath": "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagementAuthenticationService\\AutoServiceManagment.AuthenticationService.csproj"
               },
-              "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\AutoServiceManagment.DomainModels.csproj": {
-                "projectPath": "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\AutoServiceManagment.DomainModels.csproj"
+              "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\AutoServiceManagment.DomainModels.csproj": {
+                "projectPath": "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\AutoServiceManagment.DomainModels.csproj"
               },
-              "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Infrastructure\\AutoServiceManagment.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Infrastructure\\AutoServiceManagment.Infrastructure.csproj"
+              "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Infrastructure\\AutoServiceManagment.Infrastructure.csproj": {
+                "projectPath": "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Infrastructure\\AutoServiceManagment.Infrastructure.csproj"
               },
-              "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Repository\\AutoServiceManagment.Repository.csproj": {
-                "projectPath": "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Repository\\AutoServiceManagment.Repository.csproj"
+              "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Repository\\AutoServiceManagment.Repository.csproj": {
+                "projectPath": "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Repository\\AutoServiceManagment.Repository.csproj"
               },
-              "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Services\\AutoServiceManagment.Services.csproj": {
-                "projectPath": "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Services\\AutoServiceManagment.Services.csproj"
+              "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Services\\AutoServiceManagment.Services.csproj": {
+                "projectPath": "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Services\\AutoServiceManagment.Services.csproj"
               }
             }
           }
@@ -196,21 +206,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300-preview.22154.4\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\AutoServiceManagment.DomainModels.csproj": {
+    "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\AutoServiceManagment.DomainModels.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\AutoServiceManagment.DomainModels.csproj",
+        "projectUniqueName": "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\AutoServiceManagment.DomainModels.csproj",
         "projectName": "AutoServiceManagment.DomainModels",
-        "projectPath": "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\AutoServiceManagment.DomainModels.csproj",
-        "packagesPath": "C:\\Users\\AZC167387\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\obj\\",
+        "projectPath": "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\AutoServiceManagment.DomainModels.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\AZC167387\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -218,6 +232,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -268,21 +283,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300-preview.22154.4\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Infrastructure\\AutoServiceManagment.Infrastructure.csproj": {
+    "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Infrastructure\\AutoServiceManagment.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Infrastructure\\AutoServiceManagment.Infrastructure.csproj",
+        "projectUniqueName": "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Infrastructure\\AutoServiceManagment.Infrastructure.csproj",
         "projectName": "AutoServiceManagment.Infrastructure",
-        "projectPath": "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Infrastructure\\AutoServiceManagment.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\AZC167387\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Infrastructure\\obj\\",
+        "projectPath": "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Infrastructure\\AutoServiceManagment.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\AZC167387\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -290,17 +309,18 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagementAuthenticationService\\AutoServiceManagment.AuthenticationService.csproj": {
-                "projectPath": "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagementAuthenticationService\\AutoServiceManagment.AuthenticationService.csproj"
+              "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagementAuthenticationService\\AutoServiceManagment.AuthenticationService.csproj": {
+                "projectPath": "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagementAuthenticationService\\AutoServiceManagment.AuthenticationService.csproj"
               },
-              "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\AutoServiceManagment.DomainModels.csproj": {
-                "projectPath": "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\AutoServiceManagment.DomainModels.csproj"
+              "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\AutoServiceManagment.DomainModels.csproj": {
+                "projectPath": "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\AutoServiceManagment.DomainModels.csproj"
               }
             }
           }
@@ -343,21 +363,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300-preview.22154.4\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Repository\\AutoServiceManagment.Repository.csproj": {
+    "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Repository\\AutoServiceManagment.Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Repository\\AutoServiceManagment.Repository.csproj",
+        "projectUniqueName": "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Repository\\AutoServiceManagment.Repository.csproj",
         "projectName": "AutoServiceManagment.Repository",
-        "projectPath": "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Repository\\AutoServiceManagment.Repository.csproj",
-        "packagesPath": "C:\\Users\\AZC167387\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Repository\\obj\\",
+        "projectPath": "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Repository\\AutoServiceManagment.Repository.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Repository\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\AZC167387\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -365,14 +389,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\AutoServiceManagment.DomainModels.csproj": {
-                "projectPath": "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\AutoServiceManagment.DomainModels.csproj"
+              "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\AutoServiceManagment.DomainModels.csproj": {
+                "projectPath": "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\AutoServiceManagment.DomainModels.csproj"
               }
             }
           }
@@ -411,21 +436,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300-preview.22154.4\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Services\\AutoServiceManagment.Services.csproj": {
+    "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Services\\AutoServiceManagment.Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Services\\AutoServiceManagment.Services.csproj",
+        "projectUniqueName": "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Services\\AutoServiceManagment.Services.csproj",
         "projectName": "AutoServiceManagment.Services",
-        "projectPath": "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Services\\AutoServiceManagment.Services.csproj",
-        "packagesPath": "C:\\Users\\AZC167387\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Services\\obj\\",
+        "projectPath": "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Services\\AutoServiceManagment.Services.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Services\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\AZC167387\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -433,23 +462,24 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagementAuthenticationService\\AutoServiceManagment.AuthenticationService.csproj": {
-                "projectPath": "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagementAuthenticationService\\AutoServiceManagment.AuthenticationService.csproj"
+              "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagementAuthenticationService\\AutoServiceManagment.AuthenticationService.csproj": {
+                "projectPath": "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagementAuthenticationService\\AutoServiceManagment.AuthenticationService.csproj"
               },
-              "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\AutoServiceManagment.DomainModels.csproj": {
-                "projectPath": "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\AutoServiceManagment.DomainModels.csproj"
+              "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\AutoServiceManagment.DomainModels.csproj": {
+                "projectPath": "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.DomainModels\\AutoServiceManagment.DomainModels.csproj"
               },
-              "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Infrastructure\\AutoServiceManagment.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Infrastructure\\AutoServiceManagment.Infrastructure.csproj"
+              "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Infrastructure\\AutoServiceManagment.Infrastructure.csproj": {
+                "projectPath": "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Infrastructure\\AutoServiceManagment.Infrastructure.csproj"
               },
-              "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Repository\\AutoServiceManagment.Repository.csproj": {
-                "projectPath": "C:\\Users\\AZC167387\\Desktop\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Repository\\AutoServiceManagment.Repository.csproj"
+              "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Repository\\AutoServiceManagment.Repository.csproj": {
+                "projectPath": "D:\\P320\\6. Project\\AutoServiceManagmentSystem\\AutoServiceManagment\\AutoServiceManagment.Repository\\AutoServiceManagment.Repository.csproj"
               }
             }
           }
@@ -491,7 +521,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300-preview.22154.4\\RuntimeIdentifierGraph.json"
         }
       }
     }
