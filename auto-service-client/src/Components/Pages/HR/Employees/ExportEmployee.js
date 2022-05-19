@@ -4,27 +4,30 @@ import ".././HR.scss";
 import { useHistory } from "react-router-dom";
 import { employeeService } from "../../../../Api/services/Employee";
 import Swal from "sweetalert2";
-import { useState,useCallback,useRef } from "react";
+import { useState, useCallback, useRef } from "react";
 import { Link } from "react-router-dom";
+// import {ExcelFile, ExcelSheet} from "react-export-excel";
+// import  DownloadTableExcel from "react-export-table-to-excel";
+import * as FileSaver from "file-saver";
+import * as XLSX from "xlsx";
 import { useReactToPrint } from "react-to-print";
-import "jquery/dist/jquery.min.js";
-//Datatable Modules
-import "datatables.net-dt/js/dataTables.dataTables";
-import "datatables.net-dt/css/jquery.dataTables.min.css";
-import "datatables.net-buttons/js/dataTables.buttons.js";
-import "datatables.net-buttons/js/buttons.colVis.js";
-import "datatables.net-buttons/js/buttons.flash.js";
-import "datatables.net-buttons/js/buttons.html5.js";
-import "datatables.net-buttons/js/buttons.print.js";
-// import "datatables.net-buttons/js/buttons.excel.js";
-import "datatables.net-dt/css/jquery.dataTables.min.css";
-import $ from "jquery";
-
 
 function ExportEmployee() {
   const [employee, setEmployee] = React.useState([]);
   const [employeeData, setEmployeeData] = useState();
   const history = useHistory();
+
+  const fileType =
+  "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8";
+const fileExtension = ".xlsx";
+
+const exportToCSV = (apiData, fileName) => {
+  const ws = XLSX.utils.json_to_sheet(apiData);
+  const wb = { Sheets: { data: ws }, SheetNames: ["data"] };
+  const excelBuffer = XLSX.write(wb, { bookType: "xlsx", type: "array" });
+  const data = new Blob([excelBuffer], { type: fileType });
+  FileSaver.saveAs(data, fileName + fileExtension);
+};
 
   const getAllEmployee = useCallback(() => {
     employeeService.getAllEmployee().then(({ data }) => {
@@ -39,30 +42,21 @@ function ExportEmployee() {
     });
   }, []);
 
-  // $(document).ready(function () {
-  //   setTimeout(function () {
-  //     $("#employeeData").DataTable({
-  //       pagingType: "full_numbers",
-  //       pageLength: 5,
-  //       processing: true,
-  //       dom: "Bfrtip",
-  //       buttons: [ 'copy', 'excel', 'csv', 'pdf', 'print' ],
-  //     });
-  //   }, 1000);
-  // });
+  const tableRef = useRef(null);
 
   const componentRef = useRef();
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
   });
-  
 
   return (
     <>
       <div className="ForHeading">
         <h1>Human Resourses</h1>
       </div>
-      <button >XLSX</button>
+        <Button onClick={(e) => exportToCSV(employee, "Employee")}> Export excel </Button>
+     
+      <button onClick={handlePrint}>Print</button>
       {/* <button onClick={handlePrint}>Print</button> */}
       <div ref={componentRef}>
         <Table className="TableForItems" id="table-to-xls">

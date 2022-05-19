@@ -3,17 +3,17 @@ import { Table, Button } from "reactstrap";
 // import "./Employee.scss";
 import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
-import { useState,useCallback,useRef } from "react";
-import { Link } from "react-router-dom";
+import { useState, useCallback, useRef } from "react";
 import { useReactToPrint } from "react-to-print";
-
 import { employeeService } from "../../../../Api/services/Employee";
+import { css } from "@emotion/react";
+import HashLoader from "react-spinners/HashLoader";
 
 
 function Employee(props) {
   const [employee, setEmployee] = React.useState([]);
   const [employeeData, setEmployeeData] = useState();
-  const [searchEmployee, setSearchEmployee]=useState(" ");
+  const [searchEmployee, setSearchEmployee] = useState(" ");
   const history = useHistory();
 
   const getAllEmployee = useCallback(() => {
@@ -55,10 +55,7 @@ function Employee(props) {
             "Your file has been deleted.",
             "success"
           );
-          employeeService.deleteEmployee(id) && getAllEmployee()
-          // employeeService.getAllEmployee().then(({ data }) => {
-          //     setEmployee(data);
-          //   });
+          employeeService.deleteEmployee(id);
         } else if (result.dismiss === Swal.DismissReason.cancel) {
           swalWithBootstrapButtons.fire(
             "Cancelled",
@@ -66,16 +63,18 @@ function Employee(props) {
             "error"
           );
         }
-      }).finally(() => {
+      })
+      .finally(() => {
         setTimeout(() => {
-         employeeService.getAllEmployee().then(({ data }) => {
-           setEmployee(data);
-         })
-        }, 500);
-   
-       });
-  };
+          employeeService.getAllEmployee().then(({ data }) => {
+            setEmployee(data);
+          });
+        }, 5000);
+      });
 
+        
+        
+  };
 
   function EditEmployee(id) {
     console.log(id);
@@ -98,17 +97,26 @@ function Employee(props) {
         <h1>Employees</h1>
       </div>
       <div className="AddingAndSearching">
-       <button onClick={handlePrint} className="print__button">  Print </button> 
+        <button onClick={handlePrint} className="print__button">
+          {" "}
+          Print{" "}
+        </button>
         <div className="Adding">
           <Button onClick={() => history.push("/createemployee")}>
             Create Employee
           </Button>
         </div>
-        <input type="text" placeholder="Search.." onChange={event=>{setSearchEmployee(event.target.value)}}/>
+        <input
+          type="text"
+          placeholder="Search.."
+          onChange={(event) => {
+            setSearchEmployee(event.target.value);
+          }}
+        />
         <Button onClick={() => history.push("/ExportEmployee")}>Export</Button>
       </div>
       <div ref={componentRef}>
-        <Table  className="TableForItems" id="example">
+        <Table className="TableForItems" id="example">
           <thead>
             <tr>
               <th>#</th>
@@ -119,41 +127,44 @@ function Employee(props) {
             </tr>
           </thead>
           <tbody>
-            {employee?.filter((val)=>{
-              if(searchEmployee==" "){
-                return val
-              } else if (val.name.toLowerCase().includes(searchEmployee.toLowerCase()))
-              {
-                return val
-              }
-            }).map((item, idx) => (
-              <tr key={idx}>
-                <th scope="row">{item.id}</th>
-                <td>{item.fullName}</td>
-                <td>{item.positionId}</td>
-                <td>{item.status}</td>
-                <td className="Actions">
-                  <Button
-                    onClick={() => EditEmployee(item.id)}
-                    className="Edit"
-                  >
-                    Edit
-                  </Button>
-                  <Button
-                    onClick={() => deleteButton(item.id)}
-                    className="Delete"
-                  >
-                    Delete
-                  </Button>
-                  <Button
-                    onClick={() => EmployeeDetail(item.id)}
-                    className="Detail"
-                  >
-                    Detail
-                  </Button>
-                </td>
-              </tr>
-            ))}
+            {employee
+              ?.filter((val) => {
+                if (searchEmployee == " ") {
+                  return val;
+                } else if (
+                  val.name.toLowerCase().includes(searchEmployee.toLowerCase())
+                ) {
+                  return val;
+                }
+              })
+              .map((item, idx) => (
+                <tr key={idx}>
+                  <th scope="row">{item.id}</th>
+                  <td>{item.fullName}</td>
+                  <td>{item.positionId}</td>
+                  <td>{item.status}</td>
+                  <td className="Actions">
+                    <Button
+                      onClick={() => EditEmployee(item.id)}
+                      className="Edit"
+                    >
+                      Edit
+                    </Button>
+                    <Button
+                      onClick={() => deleteButton(item.id)}
+                      className="Delete"
+                    >
+                      Delete
+                    </Button>
+                    <Button
+                      onClick={() => EmployeeDetail(item.id)}
+                      className="Detail"
+                    >
+                      Detail
+                    </Button>
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </Table>
       </div>

@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using AutoServiceManagment.Services.Services.Contracts;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Cors;
+using System.Net.Http;
+using System.Net;
 
 namespace AutoServiceManagment.API.Controllers
 {
@@ -36,6 +38,7 @@ namespace AutoServiceManagment.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] ProductDto productDto)
         {
+           
             await _service.AddProductAsync(productDto);
             return Ok();
         }

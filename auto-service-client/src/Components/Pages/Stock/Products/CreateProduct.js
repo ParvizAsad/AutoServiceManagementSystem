@@ -4,8 +4,9 @@ import { useHistory } from "react-router-dom";
 import { categoryService } from "../../../../Api/services/Categories";
 import { brandService } from "../../../../Api/services/Brands";
 import { productService } from "../../../../Api/services/Products";
-
-// import "./Employees/products/CreateEmployee.scss";
+import {Formik} from "formik";
+import * as Yup from "yup";
+import { useForm } from "react-hook-form";
 
 const newProduct = {
   name: " ",
@@ -19,38 +20,31 @@ const newProduct = {
 function CreateProduct() {
   const [product, setProduct] = useState(newProduct);
   const [error, setError] = useState();
-
-  // const [productData, setProductData] = useState();
-
   const [category, setCategory] = React.useState([]);
   const [brand, setBrand] = React.useState([]);
-
   const history = useHistory();
 
-  // const getAllProduct = useCallback(() => {
-  //   productService.getAllProduct().then(({ data }) => {
-  //     setProductData(data);
-  //   });
-  // }, [setProductData]);
-
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
+ 
+  const [errorHandle, setErrorHandle] = useState(null)
+  const errorDiv = errorHandle 
+      ? <div className="error">
+          <i class="material-icons error-icon">error_outline</i>
+          {errorHandle}
+        </div> 
+      : '';
   const createProduct = useCallback(
     (e) => {
       e.preventDefault();
       productService.postProduct(product).then(() => {
-        // getAllProduct();
         history.push("/product");
+      }).catch(res => {
+          setErrorHandle(res.error);
       })
-      .catch(
-        e=>{
-          if(e.response.status===400){
-            setError(e.response.data.errors.Name)
-            console.log({error});
-            }
-            else if(e.response.status===500){
-              setError(e.response.data)
-            }
-      }
-      );
     },
     [product, history]
   );
@@ -90,16 +84,57 @@ const preventPasteNegative = (e) => {
 
   return (
     <>
+    <Formik
+    initialValues={{
+      name: " ",
+    }}
+    validationSchema={
+      Yup.object({
+        name: Yup.string().required("NAme required"),
+      })}
+      onSubmit={(values,{resetForm, setSubmiting})=>{
+    console.log(values);
+    setTimeout(() => {
+      setSubmiting(false);
+      resetForm();
+    }, 2000);
+    }}
+    >
+      {({
+        values,
+        errors,
+        handleChange,handleSubmit,handleReset, dirty, isSubmitting,
+      })=>(
+        <form onSubmit={handleSubmit}>
+        <label htmlFor="name"></label>
+        <input
+        id="name"
+        type="text"
+        className="name"
+        value={values.name}
+        onchange={handleChange}
+        />
+{errors.name  &&(
+  <div className="input-feedback" >{errors.name}</div>
+)}
+        <button type="submit">submit</button>
+        </form>
+      )}
+    </Formik>
+
+
       <div className="ForHeading">
         <h1>Create a new Product</h1>
       </div>
       <div className="CreatePage">
-        <Form onSubmit={createProduct}>
+        {/* <Form onSubmit={createProduct}> */}
+        <Form onSubmit={handleSubmit(createProduct)}>
         {error}
           <FormGroup>
             <Label for="name">Name</Label>
             <Input
               id="name"
+              {...register("name", { required: true })}
               name="name"
               placeholder="name"
               onChange={getElementValues}
@@ -177,6 +212,7 @@ const preventPasteNegative = (e) => {
               ))}
             </select>
           </FormGroup>
+          {errorDiv}
           <Button type="submit">Submit</Button>
         </Form>
       </div>
