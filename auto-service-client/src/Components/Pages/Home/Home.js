@@ -8,10 +8,10 @@ import {
   } from "reactstrap";
   import "./Home.scss";
   import { useHistory, Link } from "react-router-dom";
-  import { FaPeopleArrows } from 'react-icons/fa';
-  import { GrUserAdmin } from 'react-icons/gr';
+  import { MdOutlinePeopleAlt } from 'react-icons/md';
+  import { RiAdminFill } from 'react-icons/ri';
   import { GiDirectorChair } from 'react-icons/gi';
-  import { GrMoney } from 'react-icons/gr';
+  import { FaMoneyBillAlt } from 'react-icons/fa';
   import { FaSitemap } from 'react-icons/fa';
   import { MdAppRegistration } from 'react-icons/md';
 
@@ -50,7 +50,7 @@ import {
                     Admin
                   </CardTitle>
                   <div className="Icon">
-                  <GrUserAdmin/>
+                  <RiAdminFill/>
                   </div>
                   <Button>
                     Enter
@@ -65,7 +65,7 @@ import {
                     HR
                   </CardTitle>
                   <div className="Icon">
-                  <FaPeopleArrows/>
+                  <MdOutlinePeopleAlt/>
                   </div>
                   <Button>
                     Enter
@@ -80,7 +80,7 @@ import {
                     Finance
                   </CardTitle>
                   <div className="Icon">
-                  <GrMoney/>
+                  <FaMoneyBillAlt/>
                   </div>
                   <Button>
                     Enter

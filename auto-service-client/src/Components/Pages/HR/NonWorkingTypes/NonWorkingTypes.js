@@ -50,7 +50,7 @@ function NonWorkingType() {
           'success'
         )
           {nonWorkingTypeService.deleteNonWorkingType(id) &&
-          history.push("/")};
+          history.push("/nonworkingtype")};
       } 
       else if (
         /* Read more about handling dismissals below */

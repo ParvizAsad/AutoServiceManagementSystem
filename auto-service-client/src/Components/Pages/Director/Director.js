@@ -7,8 +7,11 @@ import {
   Button,
 } from "reactstrap";
 import { FaPeopleArrows } from 'react-icons/fa';
-import { GrUserAdmin } from 'react-icons/gr';
-import { GiDirectorChair } from 'react-icons/gi';
+import { AiOutlineLineChart } from 'react-icons/ai';
+import { GiAutoRepair } from 'react-icons/gi';
+
+
+
 import { Link } from "react-router-dom";
 // import { Pie, defaults } from 'react-chartjs-2'
 // import { Chart, registerables } from 'chart.js'; 
@@ -29,7 +32,7 @@ function Director() {
           Statistics
         </CardTitle>
         <div className="Icon">
-            <GiDirectorChair/>
+            <AiOutlineLineChart/>
             </div>
         <Button>
           Enter
@@ -44,7 +47,7 @@ function Director() {
                     Employees
                   </CardTitle>
                   <div className="Icon">
-                  <GrUserAdmin/>
+                  <FaPeopleArrows/>
                   </div>
                   <Button>
                     Enter
@@ -59,7 +62,7 @@ function Director() {
                     Services
                   </CardTitle>
                   <div className="Icon">
-                  <FaPeopleArrows/>
+                  <GiAutoRepair/>
                   </div>
                   <Button>
                     Enter

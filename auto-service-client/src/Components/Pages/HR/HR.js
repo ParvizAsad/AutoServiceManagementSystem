@@ -26,6 +26,10 @@ import {
 } from "reactstrap";
 import { GiMoneyStack } from 'react-icons/gi';
 import { RiAdvertisementLine } from 'react-icons/ri';
+import { FaPeopleCarry } from 'react-icons/fa';
+import { MdOutlineNaturePeople } from 'react-icons/md';
+import { FaBed } from 'react-icons/fa';
+import { MdOutlineLocalHospital } from 'react-icons/md';
 
 function HR(props) {
   return (
@@ -41,7 +45,7 @@ function HR(props) {
           Employees
         </CardTitle>
         <div className="Icon">
-        <GiMoneyStack/>
+        <FaPeopleCarry/>
         </div>
         <Button>
           Enter
@@ -56,8 +60,8 @@ function HR(props) {
                     Positions
                   </CardTitle>
                   <div className="Icon">
-        <RiAdvertisementLine/>
-        </div>
+                <MdOutlineNaturePeople/>
+                </div>
                   <Button>
                     Enter
                   </Button>
@@ -71,7 +75,7 @@ function HR(props) {
                     Non-working types
                   </CardTitle>
                   <div className="Icon">
-        <RiAdvertisementLine/>
+        <MdOutlineLocalHospital/>
         </div>
                   <Button>
                     Enter
@@ -86,7 +90,7 @@ function HR(props) {
                     Non-working details
                   </CardTitle>
                   <div className="Icon">
-        <RiAdvertisementLine/>
+        <FaBed/>
         </div>
                   <Button>
                     Enter

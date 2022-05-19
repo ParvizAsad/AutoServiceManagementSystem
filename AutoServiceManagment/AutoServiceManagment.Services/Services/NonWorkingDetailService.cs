@@ -47,7 +47,7 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task DeleteNonWorkingDetailAsync(int? id)
         {
-            var nonWorkingDetail = await DbContext.NonWorkingDetails.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == true);
+            var nonWorkingDetail = await DbContext.NonWorkingDetails.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted != true);
 
             if (nonWorkingDetail == null) { throw new Exception("NonWorkingDetail not found!"); }
 
@@ -58,7 +58,7 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task UpdateNonWorkingDetailAsyncId(int? id, NonWorkingDetailDto nonWorkingDetailDto)
         {
-            var nonWorkingDetail = await DbContext.NonWorkingDetails.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == true);
+            var nonWorkingDetail = await DbContext.NonWorkingDetails.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted != true);
 
             if (nonWorkingDetail == null) { throw new Exception("NonWorkingDetail not found!"); }
 

@@ -6,6 +6,7 @@ import { useCallback } from "react";
 import Swal from "sweetalert2";
 import { nonWorkingDetailService } from "../../../../Api/services/NonWorkingDetails";
 import { nonWorkingTypeService } from "../../../../Api/services/NonWorkingTypes";
+import moment from "moment";
 
 function NonWorkingDetail() {
 
@@ -49,7 +50,7 @@ function NonWorkingDetail() {
           'success'
         )
           {nonWorkingDetailService.deleteNonWorkingDetail(id) &&
-          history.push("/")};
+          history.push("/nonworkingdetail")};
       } 
       else if (
         /* Read more about handling dismissals below */
@@ -103,9 +104,9 @@ function NonWorkingDetail() {
                 {nonWorkingDetails?.map((item, idx) => (
                   <tr key={idx}>
                     <th scope="row">{idx}</th>
-                    <td>{item.starTime}</td>
+                    <td>{moment(item.startTime).format("MM-DD-yyyy")}</td>
                     <td>{item.employee}</td>
-                    <td>{item.endTime}</td>
+                    <td>{moment(item.endTime).format("MM-DD-yyyy")}</td>
                     <td>{(nonWorkingTypeService.getNonWorkingTypeById(item.nonWorkingTypeId)).Name}</td>
                     <td className="Actions">
                       <Button onClick={()=>editNonWorkingDetail(item.id)} className="Edit">Edit</Button>

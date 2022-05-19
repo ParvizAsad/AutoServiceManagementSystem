@@ -3,19 +3,21 @@ import React, { useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { salaryService } from "../../../../Api/services/Salaries";
 import { employeeService } from "../../../../Api/services/Employee";
+import { taxService } from "../../../../Api/services/Taxes";
 // import "./Employees/Salarys/CreateEmployee.scss";
 
 const newSalary= {
   Date: " ",
   Bonus: " ",
   NetSalary: " ",
-  Tax: " ", 
+  TaxId: " ", 
   EmployeeId: " ",
 };
 
 function CreateSalary() {
   const [Salary, setSalary] = useState(newSalary);
   const [employee, setEmployee] = React.useState([]);
+  const [taxes, setTaxes] = React.useState([]);
   const [error, setError] = useState([]);
 
   const [SalaryData, setSalaryData] = useState();
@@ -31,8 +33,7 @@ function CreateSalary() {
     (e) => {
       e.preventDefault();
       salaryService.postSalary(Salary).then(() => {
-        getAllSalary();
-        history.push("/Salary");
+        history.push("/salary");
       }).catch(
         e=>{
             if(e.response.status===400){
@@ -59,6 +60,28 @@ function CreateSalary() {
       setEmployee(data);
     });
   }, []);
+
+  React.useEffect(() => {
+    taxService.getAllTaxes().then(({ data }) => {
+      setTaxes(data);
+    });
+  }, []);
+
+  const preventMinus = (e) => {
+    if (e.code === 'Minus') {
+        e.preventDefault();
+    }
+};
+
+const preventPasteNegative = (e) => {
+  const clipboardData = e.clipboardData || window.clipboardData;
+  const pastedData = parseFloat(clipboardData.getData('text'));
+
+  if (pastedData < 0) {
+      e.preventDefault();
+  }
+};
+
   return (
     <>
       <div className="ForHeading">
@@ -95,7 +118,21 @@ function CreateSalary() {
               placeholder="Bonus"
               onChange={getElementValues}
               type="number"
+              min="0"
+              onPaste={preventPasteNegative}
+              onKeyPress={preventMinus}
             />
+          </FormGroup>
+          <FormGroup>
+            <Label for="TaxId">Select Tax</Label>
+            <select className="TaxId" onChange={getElementValues}  name="TaxId" id="TaxId">
+              <option value="0">--Select Tax--</option>
+              {taxes?.map((item, idx) => (
+                <option key={idx} value={item.id}>
+                  {item.name}
+                </option>
+              ))}
+            </select>
           </FormGroup>
           <Button type="submit">Submit</Button>
         </Form>

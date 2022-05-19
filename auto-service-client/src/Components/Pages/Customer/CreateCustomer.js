@@ -68,6 +68,20 @@ function CreateCustomer() {
     setCustomer({ ...customer, [name]: value });
   };
 
+  const preventMinus = (e) => {
+    if (e.code === 'Minus') {
+        e.preventDefault();
+    }
+};
+
+const preventPasteNegative = (e) => {
+  const clipboardData = e.clipboardData || window.clipboardData;
+  const pastedData = parseFloat(clipboardData.getData('text'));
+
+  if (pastedData < 0) {
+      e.preventDefault();
+  }
+};
   return (
     <>
       <div className="ForHeading">
@@ -116,6 +130,9 @@ function CreateCustomer() {
               placeholder="debt"
               onChange={getElementValues}
               type="number"
+              min="0"
+              onPaste={preventPasteNegative}
+              onKeyPress={preventMinus}
             />
           </FormGroup>
           <FormGroup>

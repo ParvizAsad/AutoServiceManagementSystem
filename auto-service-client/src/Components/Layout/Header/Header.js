@@ -28,13 +28,13 @@ function Header() {
       <img src={logo} alt='Logo'/>
   <h1>Car-Tool-Network Auto Service</h1>
   <div>
-    <h4>Your Profile</h4>
+  <Link to="profile">Your Profile</Link>
+
+      <AiOutlineUserAdd/>
+    <div>
     {/* <h4>{User.Identity.IsAuthenticated}?(
               Logout
             ) : ( Login )</h4> */}
-
-    <div>
-      <AiOutlineUserAdd/>
     </div>
   </div>
     </Navbar>

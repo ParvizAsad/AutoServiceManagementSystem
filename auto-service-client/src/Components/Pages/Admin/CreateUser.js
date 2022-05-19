@@ -7,19 +7,23 @@ import { Link } from "react-router-dom";
 import { employeeService } from "../../../Api/services/Employee";
 import { FormGroup, Form, Label, Input, Button, FormText } from "reactstrap";
 import { userService } from "../../../Api/services/Users";
+import defaultImageSrc from "../../../Assets/Images/HR/defaultImage.png";
 
 const newUser = {
-  Username: " ",
-  Fullname: " ",
-  Password: " ",
-  ConfirmPassword: " ",
+  userName: " ",
+  fullName: " ",
+  password: " ",
+  confirmPassword: " ",
+  imageName: " ",
+  imageSrc: defaultImageSrc,
+  imageFile: null,
 };
 
 function CreateUser(props) {
 
   const [employee, setEmployee] = React.useState([]);
   const [employeeData, setEmployeeData] = useState();
-  const [User, setUser] = useState(newUser);
+  const [user, setUser] = useState(newUser);
 
   const history = useHistory();
 
@@ -39,20 +43,41 @@ function CreateUser(props) {
   const createUser = useCallback(
     (e) => {
       e.preventDefault();
-      userService.postUser(User).then(() => {
+      userService.postUser(user).then(() => {
         history.push("/User");
       });
     },
-    [User, history]
+    [user, history]
   );
 
   const getElementValues = (e) => {
     const { name, value } = e.target;
-    setUser({ ...User, [name]: value });
-    console.log(User);
+    setUser({ ...user, [name]: value });
+    console.log(user);
   };
 
-
+  const showPreview= e=>{
+    if(e.target.files && e.target.files[0]){
+      let imageFile= e.target.files[0];
+      const reader= new FileReader();
+      reader.onload = x => {
+        setUser({
+          ...user,
+          imageFile,
+          imageName: x.target.result,
+          imageSrc: x.target.result
+        })
+      }
+      reader.readAsDataURL(imageFile)
+    }
+    else{
+      setUser({
+        ...user,
+        imageFile: null,
+        imageSrc: defaultImageSrc
+      })
+    }
+  }
   return (
     <>
       <div className="ForHeading">
@@ -98,6 +123,18 @@ function CreateUser(props) {
               placeholder="Confirm Password"
               onChange={getElementValues}
               type="password"
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label for="imageName">Image</Label>
+            <img src={user.imageSrc} className=" profilePicture"
+            />
+            <Input
+              type="file"
+              name="imageName"
+              accept="image/*" 
+              id="imageName"
+              onChange={showPreview}
             />
           </FormGroup>
           <Button type="submit">Submit</Button>

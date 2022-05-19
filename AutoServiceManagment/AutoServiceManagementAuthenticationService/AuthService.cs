@@ -26,7 +26,7 @@ namespace AutoServiceManagment.AuthenticationService
         private readonly SignInManager<User> _signInManager;
 
         private readonly AppDbContext _dbContext;
-        public AuthService(IOptions<JwtSetting> jwtSetting, UserManager<User> userManager, RoleManager<IdentityRole> roleManager, AppDbContext dbContext, SignInManager<User> signInManager)
+        public AuthService(IOptions<JwtSetting> jwtSetting, UserManager<User> userManager, RoleManager<IdentityRole> roleManager, AppDbContext dbContext, SignInManager<User> signInManager=null)
         {
             _jwtSetting = jwtSetting.Value;
 
@@ -85,32 +85,6 @@ namespace AutoServiceManagment.AuthenticationService
                 signingCredentials: signingCredentials);
             return jwtSecurityToken;
         }
-        public async Task LoginAsync(CredentialModel credentialModel)
-        {
-            var existUser = await _userManager.FindByNameAsync(credentialModel.Username);
-
-            if (existUser == null)
-            {
-                throw new Exception("Incorrect username or password");
-
-            }
-
-            var result = await _signInManager.PasswordSignInAsync(existUser, credentialModel.Password, credentialModel.RememberMe, true);
-
-            if (result != null)
-            {
-                throw new Exception("Can not be signed in");
-
-            }
-
-            //if (result.IsLockedOut)
-            //{
-            //    ModelState.AddModelError("", "You are locked out");
-
-            //    return View(loginViewModel);
-            //}
-
-        }
         public async Task RegisterAsync(RegisterModel registerModel)
         {
 
@@ -140,6 +114,48 @@ namespace AutoServiceManagment.AuthenticationService
             }
 
         }
+        public async Task LoginAsync(CredentialModel credentialModel)
+        {
+            var existUser = await _userManager.FindByNameAsync(credentialModel.Username);
+
+            if (existUser == null)
+            {
+                throw new Exception("Incorrect username or password");
+
+            }
+
+            var result = await _signInManager.PasswordSignInAsync(existUser, credentialModel.Password, credentialModel.RememberMe, true);
+
+            if (!result.Succeeded)
+            {
+                throw new Exception("Can not be signed in");
+            }
+
+            if (result.IsLockedOut)
+            {
+                throw new Exception("You are locked out");
+            }
+
+        }
+        public async Task ResetPasswordAsync(ResetPasswordModel resetPasswordModel)
+        {
+            var existUser = await _userManager.FindByNameAsync(resetPasswordModel.Username);
+
+            if (existUser == null)
+            {
+                throw new Exception("Incorrect username or password");
+
+            }
+
+            var result = await _userManager.ChangePasswordAsync(existUser, resetPasswordModel.oldPassword, resetPasswordModel.newPassword)
+
+            if (!result.Succeeded)
+            {
+                throw new Exception("Password can not be reset");
+            }
+
+        }
+
         public async Task LogoutAsync()
         {
             await _signInManager.SignOutAsync();

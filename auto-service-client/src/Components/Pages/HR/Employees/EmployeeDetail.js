@@ -20,6 +20,7 @@ import { positionService } from "../../../../Api/services/Positions";
 import axios, { Axios } from "axios";
 import "./EmployeeDetail.scss";
 import { useReactToPrint } from "react-to-print";
+import moment from "moment";
 
 
 const employees = {
@@ -158,7 +159,7 @@ function EmployeeDetail(props) {
               Education Level: {data.educationLevel}
             </CardSubtitle>
             <CardSubtitle className="mb-2 text-muted" tag="h6">
-              Birthdate: {data.birthDate}
+              Birthdate: {moment(data.birthDate).format("MM-DD-yyyy")}
             </CardSubtitle>
             <CardText>Non-working-detail:</CardText>
           </CardBody>

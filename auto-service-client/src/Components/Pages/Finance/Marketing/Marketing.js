@@ -6,6 +6,7 @@ import {
 import { discountService} from '../../../../Api/services/Discount';
 import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
+import moment from "moment";
 
 function Marketing() {
 
@@ -122,7 +123,7 @@ function Marketing() {
                 <th scope="row">{idx}</th>
                 <td>{item.name}</td>
                 <td>{item.percentage}</td>
-                <td>{item.expireDate}</td>
+                <td>{moment(item.expireDate).format("MM-DD-yyyy")}</td>
                 <td className="Actions">
                   <Button onClick={()=>editDiscount(item.id) } className="Edit">Edit</Button>
                   <Button onClick={()=>deleteButton(item.id) } className="Delete">Delete</Button>

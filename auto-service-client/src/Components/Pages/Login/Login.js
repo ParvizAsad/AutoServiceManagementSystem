@@ -5,13 +5,17 @@ import {
     Label,
     Input,
     Button,
+    InputGroupText,
+    InputGroup,
   } from "reactstrap";
 import { accountService } from '../../../Api/services/Account';
   import "./Login.scss";
+  import { Link } from "react-router-dom";
 
   const Credentials= {
     userName: " ",
     password: " ",
+    rememberMe: " ",
   };
 function Login() {
 
@@ -46,30 +50,46 @@ function Login() {
             Username
             </Label>
             <Input
-            id="exampleUsername"
-            name="Username"
+            id="userName"
+            name="userName"
             placeholder="Username"
             onChange={getElementValues}
-            type="Username"
+            type="text"
             />
         </FormGroup>
         {' '}
         <FormGroup>
             <Label
-            for="examplePassword"
+            for="password"
             hidden
             >
             Password
             </Label>
             <Input
-            id="examplePassword"
+            id="password"
             name="password"
             placeholder="Password"
             onChange={getElementValues}
             type="password"
             />
         </FormGroup>
-        {' '}
+        
+
+        <InputGroup>
+    <InputGroupText>
+      <Input
+        addon
+        aria-label="Checkbox for following text input"
+        type="checkbox"
+        id="rememberMe"
+        name="rememberMe"
+        onChange={getElementValues}
+      />
+    </InputGroupText>
+    <Input placeholder="Remember me" />
+    <Link>Forget Password?</Link>
+  </InputGroup>
+  <br />
         <Button type="submit">Login</Button>
 
         </Form>

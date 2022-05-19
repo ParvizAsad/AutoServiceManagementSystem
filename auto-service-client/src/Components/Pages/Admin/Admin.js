@@ -12,6 +12,8 @@ import {
   CardBody,
   CardTitle,
 } from "reactstrap";
+import { MdAdminPanelSettings } from 'react-icons/md';
+import { MdOutlineAdminPanelSettings } from 'react-icons/md';
 
 function Admin() {
 
@@ -38,6 +40,7 @@ function Admin() {
           Users
         </CardTitle>
         <div className="Icon">
+          <MdAdminPanelSettings/>
         </div>
         <Button>
           Enter
@@ -52,7 +55,8 @@ function Admin() {
                     Roles
                   </CardTitle>
                   <div className="Icon">
-        </div>
+                  <MdOutlineAdminPanelSettings/>
+                  </div>
                   <Button>
                     Enter
                   </Button>

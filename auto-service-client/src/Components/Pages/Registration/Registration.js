@@ -24,8 +24,8 @@ import {
   DropdownMenu,
   NavbarText
 } from "reactstrap";
-import { GiMoneyStack } from 'react-icons/gi';
-import { RiAdvertisementLine } from 'react-icons/ri';
+import { MdOutlinePeople } from 'react-icons/md';
+import { GiAutoRepair } from 'react-icons/gi';
 
 function Registration(props) {
   return (
@@ -41,7 +41,7 @@ function Registration(props) {
           Customers
         </CardTitle>
         <div className="Icon">
-        <GiMoneyStack/>
+        <MdOutlinePeople/>
         </div>
         <Button>
           Enter
@@ -56,8 +56,8 @@ function Registration(props) {
                     Services
                   </CardTitle>
                   <div className="Icon">
-        <RiAdvertisementLine/>
-        </div>
+                  <GiAutoRepair/>
+                  </div>
                   <Button>
                     Enter
                   </Button>

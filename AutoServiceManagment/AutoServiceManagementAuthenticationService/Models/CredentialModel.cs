@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 namespace AutoServiceManagment.AuthenticationService.Models
 {
     public class CredentialModel
+
     {
         [Required]
         public string Username { get; set; }
@@ -16,7 +17,7 @@ namespace AutoServiceManagment.AuthenticationService.Models
 
         public string Password { get; set; }
 
-        public bool RememberMe { get; set; }
+        public bool RememberMe { get; set; } = false;
 
     }
 }

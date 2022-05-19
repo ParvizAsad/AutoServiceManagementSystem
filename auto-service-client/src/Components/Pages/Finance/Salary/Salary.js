@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import React, { useCallback, useState } from "react";
 import { salaryService } from "../../../../Api/services/Salaries";
 import { employeeService } from "../../../../Api/services/Employee";
+import moment from "moment";
 
 
 function Salary() {
@@ -118,9 +119,9 @@ function Salary() {
         {Salaries?.map((item, idx) => (
               <tr key={idx}>
                 <th scope="row">{idx}</th>
-                <th>{(employeeService.getEmployeeByID(6)).fullName}             
-                </th>
-                <th>{item.date}</th>
+                {/* <th>{(employeeService.getEmployeeByID(6)).fullName}             
+                </th> */}
+                <th>{moment(item.date).format("MM-DD-yyyy")}</th>
                 <th>{item.bonus}</th>
                 <th>{item.netSalary}</th>
                 <td>{item.salaryValue}</td>

@@ -24,6 +24,9 @@ import {
   NavbarText
 } from "reactstrap";
 import { Link } from "react-router-dom";
+import { MdOutlineProductionQuantityLimits } from 'react-icons/md';
+import { SiBrandfolder } from 'react-icons/si';
+import { BiCategoryAlt } from 'react-icons/bi';
 
 
 function Stock() {
@@ -41,6 +44,7 @@ function Stock() {
           Products
         </CardTitle>
         <div className="Icon">
+        <MdOutlineProductionQuantityLimits/>
         </div>
         <Button>
           Enter
@@ -55,7 +59,8 @@ function Stock() {
                     Brands
                   </CardTitle>
                   <div className="Icon">
-        </div>
+                  <SiBrandfolder/>
+                  </div>
                   <Button>
                     Enter
                   </Button>
@@ -69,6 +74,7 @@ function Stock() {
                     Categories
                   </CardTitle>
                   <div className="Icon">
+                    <BiCategoryAlt/>
         </div>
                   <Button>
                     Enter

@@ -19,8 +19,9 @@ import {
 } from "reactstrap";
 import { GiMoneyStack } from 'react-icons/gi';
 import { RiAdvertisementLine } from 'react-icons/ri';
-
-
+import { MdAttachMoney } from 'react-icons/md';
+import { FaAmazonPay } from 'react-icons/fa';
+import { GiReceiveMoney } from 'react-icons/gi';
 
 function Finance() {
   return (
@@ -66,7 +67,7 @@ function Finance() {
                     Taxes
                   </CardTitle>
                   <div className="Icon">
-        <RiAdvertisementLine/>
+        <MdAttachMoney/>
         </div>
                   <Button>
                     Enter
@@ -81,7 +82,7 @@ function Finance() {
                     CashBoxes
                   </CardTitle>
                   <div className="Icon">
-        <RiAdvertisementLine/>
+        <FaAmazonPay/>
         </div>
                   <Button>
                     Enter
@@ -96,7 +97,7 @@ function Finance() {
                     Salaries
                   </CardTitle>
                   <div className="Icon">
-        <RiAdvertisementLine/>
+        <GiReceiveMoney/>
         </div>
                   <Button>
                     Enter

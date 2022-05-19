@@ -50,7 +50,20 @@ function CreateTax() {
     setTax({ ...tax, [name]: value });
   };
 
+  const preventMinus = (e) => {
+    if (e.code === 'Minus') {
+        e.preventDefault();
+    }
+};
 
+const preventPasteNegative = (e) => {
+  const clipboardData = e.clipboardData || window.clipboardData;
+  const pastedData = parseFloat(clipboardData.getData('text'));
+
+  if (pastedData < 0) {
+      e.preventDefault();
+  }
+};
   return (
     <>
       <div className="ForHeading">
@@ -78,6 +91,9 @@ function CreateTax() {
               placeholder="Tax value"
               onChange={getElementValues}
               type="number"
+              min="0"
+              onPaste={preventPasteNegative}
+              onKeyPress={preventMinus}
             />
           </FormGroup>
           <Button type="submit">Submit</Button>
