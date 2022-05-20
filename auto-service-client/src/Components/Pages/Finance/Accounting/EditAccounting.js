@@ -117,7 +117,7 @@ function EditAccounting(props) {
               name="Date"
               placeholder="Date"
               onChange={(e) => handle(e)}
-              value={moment(accounting.date).format("yyyy-MM-DD")}
+              value={accounting.date}
               type="date"
             />
           </FormGroup>

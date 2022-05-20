@@ -20,6 +20,7 @@ namespace AutoServiceManagment.DomainModels.DTOs
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{mm/dd/yyyy}")]
         public DateTime Date { get; set; }
+        public decimal NetSalary { get; set; } = 0;
         public decimal Bonus { get; set; }
         [ForeignKey(nameof(Tax))]
         public int TaxID { get; set; }
