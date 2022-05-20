@@ -10,71 +10,82 @@ import { employeeService } from "../../../../Api/services/Employee";
 import moment from "moment";
 
 
-function Salary() {
+function Salary() 
+  {  
+    const [Salaries, setSalaries] = React.useState([]);
 
-  const [Salaries, setSalaries] = React.useState([]);
-  const [SalaryData, setSalaryData] = useState();
-
-  const history = useHistory();
-  const getAllSalary = useCallback(() => {
-    salaryService.getAllSalaries().then(({ data }) => {
-      setSalaryData(data);
-    });
-  }, [setSalaryData]);
-
-  React.useEffect(() => {
-    salaryService.getAllSalaries().then(({ data }) => {
-      setSalaries(data);
-    });
-  }, []);
-
-  function editSalary(id){
-   history.push("/EditSalary/"+id)
-  } 
-
-  const deleteButton = (id) => {
-    const swalWithBootstrapButtons = Swal.mixin({
-      customClass: {
-        confirmButton: 'btn btn-success',
-        cancelButton: 'btn btn-danger'
-      },
-      buttonsStyling: false
-    })
+    const [SalaryData, setSalaryData] = useState();
+    const [employee, setEmployee] = useState();
     
-    swalWithBootstrapButtons.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Yes, delete it!',
-      cancelButtonText: 'No, cancel!',
-      reverseButtons: true
-    }).then((result) => {
-      if (result.isConfirmed) {
-        swalWithBootstrapButtons.fire(
-          'Deleted!',
-          'Your file has been deleted.',
-          'success'
-        )
-          salaryService.deleteSalary(id);
-          getAllSalary();
-          history.push("/Salary");
-      } 
-      else if (
-        /* Read more about handling dismissals below */
-        result.dismiss === Swal.DismissReason.cancel
-      ) {
-        swalWithBootstrapButtons.fire(
-          'Cancelled',
-          'Your imaginary file is safe :)',
-          'error'
-        )
-      }
-    }).finally(() => {
-      setTimeout(() => {
+    const history = useHistory();
+
+    const getAllSalary = useCallback(() => {
+      salaryService.getAllSalaries().then(({ data }) => {
+        setSalaryData(data);
+      });
+    }, [setSalaryData]);
+    
+    const getEmployee = useCallback((id) => {
+      employeeService.getEmployeeByID(id).then(({ data }) => {
+        setEmployee(data);
+      });
+    }, [setEmployee]);
+
+    getEmployee(1);
+    React.useEffect(() => {
       salaryService.getAllSalaries().then(({ data }) => {
         setSalaries(data);
-       })
+      });
+    }, []);
+    
+
+    function editSalary(id){
+      history.push("/EditSalary/"+id)
+    } 
+    
+    const deleteButton = (id) => {
+      const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+          confirmButton: 'btn btn-success',
+          cancelButton: 'btn btn-danger'
+        },
+        buttonsStyling: false
+      })
+      
+      swalWithBootstrapButtons.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, cancel!',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.isConfirmed) {
+          swalWithBootstrapButtons.fire(
+            'Deleted!',
+            'Your file has been deleted.',
+            'success'
+            )
+            salaryService.deleteSalary(id);
+            getAllSalary();
+            history.push("/Salary");
+          } 
+          else if (
+            /* Read more about handling dismissals below */
+            result.dismiss === Swal.DismissReason.cancel
+            ) {
+              swalWithBootstrapButtons.fire(
+                'Cancelled',
+                'Your imaginary file is safe :)',
+                'error'
+                )
+              }
+            }).finally(() => {
+              setTimeout(() => {
+                salaryService.getAllSalaries().then(({ data }) => {
+                  setSalaries(data);
+                })
       }, 500);
  
      });
@@ -117,10 +128,12 @@ function Salary() {
         </thead>
         <tbody>
         {Salaries?.map((item, idx) => (
-              <tr key={idx}>
+              
+                // getEmployee(item.employeeID), 
+                // console.log(item.employeeID), 
+          <tr key={idx}>
                 <th scope="row">{idx}</th>
-                {/* <th>{(employeeService.getEmployeeByID(6)).fullName}             
-                </th> */}
+                <th>{employee.fullName}</th>
                 <th>{moment(item.date).format("MM-DD-yyyy")}</th>
                 <th>{item.bonus}</th>
                 <th>{item.netSalary}</th>

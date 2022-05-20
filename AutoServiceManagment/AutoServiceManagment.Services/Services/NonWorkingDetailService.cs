@@ -62,7 +62,11 @@ namespace AutoServiceManagment.Services.Services
 
             if (nonWorkingDetail == null) { throw new Exception("NonWorkingDetail not found!"); }
 
-            nonWorkingDetail = _mapper.Map<NonWorkingDetail>(nonWorkingDetailDto);
+            nonWorkingDetail.StartTime = nonWorkingDetailDto.StartTime;
+            nonWorkingDetail.EndTime = nonWorkingDetailDto.EndTime;
+            nonWorkingDetail.NonWorkingTypeId = nonWorkingDetailDto.NonWorkingTypeId;
+            nonWorkingDetail.EmployeeId = nonWorkingDetailDto.EmployeeId;
+
 
             DbContext.NonWorkingDetails.Update(nonWorkingDetail);
 
