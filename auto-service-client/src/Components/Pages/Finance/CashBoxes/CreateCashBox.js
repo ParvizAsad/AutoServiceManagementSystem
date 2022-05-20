@@ -3,18 +3,20 @@ import React, { useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { customerService } from "../../../../Api/services/Customers";
 import { cashBoxService } from "../../../../Api/services/CashBox";
+import { serviceService } from "../../../../Api/services/Services";
+import { productService } from "../../../../Api/services/Products";
 // import "./Customers/CashBoxs/CreateCustomer.scss";
 
 const newCashBox= {
   CustomerId: " ",
-  Service: " ",
-  Product: " ",
+  ServiceId: " ",
+  ProductId: " ",
   Payment: " ",
 };
 
 function CreateCashBox() {
   const [CashBox, setCashBox] = useState(newCashBox);
-  const [customer, setCustomer] = React.useState([]);
+  const [customers, setCustomers] = React.useState([]);
   const [services, setServices] = React.useState([]);
   const [products, setProducts] = React.useState([]);
   const [error, setError] = useState();
@@ -57,7 +59,19 @@ function CreateCashBox() {
 
   React.useEffect(() => {
     customerService.getAllCustomers().then(({ data }) => {
-      setCustomer(data);
+      setCustomers(data);
+    });
+  }, []);
+
+  React.useEffect(() => {
+    serviceService.getAllServices().then(({ data }) => {
+      setServices(data);
+    });
+  }, []);
+
+  React.useEffect(() => {
+    productService.getAllProducts().then(({ data }) => {
+      setProducts(data);
     });
   }, []);
 
@@ -88,7 +102,7 @@ const preventPasteNegative = (e) => {
             <Label for="CustomerId">Select Customer</Label>
             <select className="CustomerId" onChange={getElementValues}  name="CustomerId" id="CustomerId">
               <option value="0">--Select Customer--</option>
-              {customer?.map((item, idx) => (
+              {customers?.map((item, idx) => (
                 <option key={idx} value={item.id}>
                   {item.fullName}
                 </option>
@@ -98,11 +112,11 @@ const preventPasteNegative = (e) => {
           {error}
           <FormGroup>
             <Label for="Services">Select Service</Label>
-            <select className="CustomerId" onChange={getElementValues}  name="CustomerId" id="CustomerId">
+            <select className="ServiceId" onChange={getElementValues}  name="ServiceId" id="ServiceId">
               <option value="0">--Select Service--</option>
-              {customer?.map((item, idx) => (
+              {services?.map((item, idx) => (
                 <option key={idx} value={item.id}>
-                  {item.Name}
+                  {item.name}
                 </option>
               ))}
             </select>
@@ -112,9 +126,9 @@ const preventPasteNegative = (e) => {
             <Label for="Products">Select Product</Label>
             <select className="Products" onChange={getElementValues}  name="Products" id="Products">
               <option value="0">--Select Product--</option>
-              {customer?.map((item, idx) => (
+              {products?.map((item, idx) => (
                 <option key={idx} value={item.id}>
-                  {item.Name}
+                  {item.name}
                 </option>
               ))}
             </select>

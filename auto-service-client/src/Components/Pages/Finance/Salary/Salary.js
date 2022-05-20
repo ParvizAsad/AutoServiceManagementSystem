@@ -15,7 +15,7 @@ function Salary()
     const [Salaries, setSalaries] = React.useState([]);
 
     const [SalaryData, setSalaryData] = useState();
-    const [employee, setEmployee] = useState();
+    const [employee, setEmployee] = useState({});
     
     const history = useHistory();
 
@@ -25,13 +25,14 @@ function Salary()
       });
     }, [setSalaryData]);
     
+    const id=0;
     const getEmployee = useCallback((id) => {
       employeeService.getEmployeeByID(id).then(({ data }) => {
         setEmployee(data);
       });
-    }, [setEmployee]);
+    }, [employeeService, id, setEmployee]);
 
-    getEmployee(1);
+    // getEmployee(1);
     React.useEffect(() => {
       salaryService.getAllSalaries().then(({ data }) => {
         setSalaries(data);
@@ -129,11 +130,13 @@ function Salary()
         <tbody>
         {Salaries?.map((item, idx) => (
               
-                // getEmployee(item.employeeID), 
-                // console.log(item.employeeID), 
+          console.log(item.employeeID), 
+            // getEmployee(item.employeeID),
           <tr key={idx}>
                 <th scope="row">{idx}</th>
-                <th>{employee.fullName}</th>
+                <th>
+                  
+                  {employee.fullName}</th>
                 <th>{moment(item.date).format("MM-DD-yyyy")}</th>
                 <th>{item.bonus}</th>
                 <th>{item.netSalary}</th>

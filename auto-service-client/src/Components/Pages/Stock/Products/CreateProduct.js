@@ -112,7 +112,7 @@ const preventPasteNegative = (e) => {
         type="text"
         className="name"
         value={values.name}
-        onchange={handleChange}
+        onChange={handleChange}
         />
 {errors.name  &&(
   <div className="input-feedback" >{errors.name}</div>

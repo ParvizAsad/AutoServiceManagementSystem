@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {
     Navbar,
     NavbarBrand,
@@ -19,8 +19,20 @@ import logo from '../../../Assets/Images/Logo/logo.webp';
 import Icon from '../../../Assets/Images/Icon/profile-icon.jpg';
 import { AiOutlineUserAdd } from 'react-icons/ai';
 import { useHistory, Link } from "react-router-dom";
+import { userService } from '../../../Api/services/Users';
+import { accountService } from '../../../Api/services/Account';
 
 function Header() {
+
+  const [user, setUser] = useState();
+  const history = useHistory();
+
+  React.useEffect(() => {
+    userService.getUserById().then(({ data }) => {
+      setUser(data);
+    });
+  }, []);
+
   return (
     <div>
     <Navbar id='NavbarId'
@@ -32,9 +44,12 @@ function Header() {
 
       <AiOutlineUserAdd/>
     <div>
-    {/* <h4>{User.Identity.IsAuthenticated}?(
-              Logout
-            ) : ( Login )</h4> */}
+    <div>
+      {/* user.IsAuthenticated==true */}
+    {false?
+    (<h4><Link onClick={accountService.logout()}>Logout</Link></h4>) 
+    : (<h4><Link to="login">Login</Link></h4>)}
+    </div>
     </div>
   </div>
     </Navbar>

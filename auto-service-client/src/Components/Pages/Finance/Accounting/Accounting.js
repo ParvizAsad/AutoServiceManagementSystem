@@ -87,7 +87,6 @@ function Accounting() {
       <div className='Adding'>
       <Button onClick={() => history.push("/createaccounting")} >Create Accounting</Button>
       </div>
-      <input type="text" placeholder="Search.."/>
     </div>
     <div>
         <Table className='TableForItems'>

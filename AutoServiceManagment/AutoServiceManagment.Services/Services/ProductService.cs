@@ -42,7 +42,7 @@ namespace AutoServiceManagment.Services.Services
         public async Task AddProductAsync(ProductDto productDto)
         {
             var products = await DbContext.Brands.Where(x => x.Name == productDto.Name).FirstOrDefaultAsync();
-            if (products != null) { throw new Exception("There is a brand with this name!"); }
+            if (products != null) { throw new Exception("There is a product with this name!"); }
             var product = _mapper.Map<Product>(productDto);
 
             await _repository.AddAsync(product);

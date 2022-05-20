@@ -132,7 +132,7 @@ function Employee(props) {
                 if (searchEmployee == " ") {
                   return val;
                 } else if (
-                  val.name.toLowerCase().includes(searchEmployee.toLowerCase())
+                  val.fullName.toLowerCase().includes(searchEmployee.toLowerCase())
                 ) {
                   return val;
                 }
