@@ -147,7 +147,7 @@ namespace AutoServiceManagment.AuthenticationService
 
             }
 
-            var result = await _userManager.ChangePasswordAsync(existUser, resetPasswordModel.oldPassword, resetPasswordModel.newPassword)
+            var result = await _userManager.ChangePasswordAsync(existUser, resetPasswordModel.oldPassword, resetPasswordModel.newPassword);
 
             if (!result.Succeeded)
             {

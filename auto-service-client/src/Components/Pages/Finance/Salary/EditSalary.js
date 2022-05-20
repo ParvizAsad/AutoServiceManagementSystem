@@ -3,19 +3,22 @@ import React, { useCallback, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { salaryService } from "../../../../Api/services/Salaries";
 import { employeeService } from "../../../../Api/services/Employee";
+import { taxService } from "../../../../Api/services/Taxes";
+
 // import "./Employees/Salarys/CreateEmployee.scss";
 
 const newSalary= {
-  Date: "",
-  Bonus: " ",
-  NetSalary: " ",
-  Tax: " ", 
-  EmployeeId: " ",
+  date: " ",
+  bonus: " ",
+  netSalary: " ",
+  taxId: " ", 
+  employeeId: " ",
 };
 
 function EditSalary(props) {
   const [Salary, setSalary] = useState(newSalary);
   const [employee, setEmployee] = React.useState([]);
+  const [taxes, setTaxes] = React.useState([]);
 
   const history = useHistory();
   
@@ -59,6 +62,12 @@ function EditSalary(props) {
     });
   }, []);
 
+  React.useEffect(() => {
+    taxService.getAllTaxes().then(({ data }) => {
+      setTaxes(data);
+    });
+  }, []);
+
   return (
     <>
       <div className="ForHeading">
@@ -67,8 +76,8 @@ function EditSalary(props) {
       <div className="CreatePage">
         <Form onSubmit={editSalary}>
         <FormGroup>
-            <Label for="EmployeeId">Select Employee</Label>
-            <select className="EmployeeId" onChange={(e) => handle(e)}  name="EmployeeId" id="EmployeeId">
+            <Label for="employeeId">Select Employee</Label>
+            <select className="employeeId" onChange={(e) => handle(e)}  name="employeeId" id="employeeId">
               <option value="0">--Select Employee--</option>
               {employee?.map((item, idx) => (
                 <option key={idx} value={item.id}>
@@ -84,20 +93,31 @@ function EditSalary(props) {
               name="Date"
               placeholder="Date"
               onChange={(e) => handle(e)}
-              value={Salary.Date}
+              value={Salary.date}
               type="date"
             />
           </FormGroup>
           <FormGroup>
-            <Label for="Bonus">Bonus</Label>
+            <Label for="bonus">bonus</Label>
             <Input
-              id="Bonus"
-              name="Bonus"
-              placeholder="Bonus"
+              id="bonus"
+              name="bonus"
+              placeholder="bonus"
               onChange={(e) => handle(e)}
               value={Salary.bonus}
               type="number"
             />
+          </FormGroup>
+          <FormGroup>
+            <Label for="TaxId">Select Tax</Label>
+            <select className="TaxId" onChange={(e) => handle(e)}  name="TaxId" id="TaxId">
+              <option value="0">--Select Tax--</option>
+              {taxes?.map((item, idx) => (
+                <option key={idx} value={item.id}>
+                  {item.name}
+                </option>
+              ))}
+            </select>
           </FormGroup>
           <Button type="submit">Submit</Button>
         </Form>

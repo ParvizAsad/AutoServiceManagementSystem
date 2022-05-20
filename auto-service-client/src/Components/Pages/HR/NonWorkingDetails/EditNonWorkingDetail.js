@@ -1,22 +1,33 @@
 import { FormGroup, Form, Label, Input, Button, FormText } from "reactstrap";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { nonWorkingDetailService } from "../../../../Api/services/NonWorkingDetails";
 import { nonWorkingTypeService } from "../../../../Api/services/NonWorkingTypes";
+import { employeeService } from "../../../../Api/services/Employee";
+import moment from "moment";
 // import "./Employees/NonWorkingDetails/EditEmployee.scss";
 
 const newNonWorkingDetail = {
   StartTime: " ",
   EndTime: " ",
-  NonWokringType: " ",
+  EmployeeId: " ",
+  NonWorkingTypeId: " ",
 };
 
 function EditNonWorkingDetail(props) {
   const [nonWorkingDetail, setNonWorkingDetail] = useState(newNonWorkingDetail);
   const [nonWorkingType, setnonWorkingType] = React.useState([]);
+  const [employee, setEmployee] = React.useState([]);
 
   const [NonWorkingDetailData, setNonWorkingDetailData] = useState();
   const history = useHistory();
+
+  useEffect(() => {
+    const id = props.match.params.id;
+    nonWorkingDetailService.getNonWorkingDetailById(id).then((res) => {
+      setNonWorkingDetailData(res.data);
+      })
+  }, []);
 
   const getAllNonWorkingDetail = useCallback(() => {
     nonWorkingDetailService.getAllNonWorkingDetails().then(({ data }) => {
@@ -24,16 +35,6 @@ function EditNonWorkingDetail(props) {
     });
   }, [setNonWorkingDetailData]);
 
-  const EditNonWorkingDetail = useCallback(
-    (e) => {
-      e.preventDefault();
-      nonWorkingDetailService.postNonWorkingDetail(nonWorkingDetail).then(() => {
-        getAllNonWorkingDetail();
-        history.push("/NonWorkingDetail");
-      });
-    },
-    [nonWorkingDetail, history, getAllNonWorkingDetail]
-  );
 
   const getElementValues = (e) => {
     const { name, value } = e.target;
@@ -51,12 +52,17 @@ function EditNonWorkingDetail(props) {
       e.preventDefault();
       const id = props.match.params.id;
       nonWorkingDetailService.putNonWorkingDetail(id, nonWorkingDetail).then(() => {
-        getAllNonWorkingDetail();
         history.push("/nonworkingdetail");
       });
     },
-    [history, getAllNonWorkingDetail]
+    [history, nonWorkingDetail]
   );
+
+  React.useEffect(() => {
+    employeeService.getAllEmployee().then(({ data }) => {
+      setEmployee(data);
+    });
+  }, []);
 
   function handle(e) {
     // const newposition = { ...position };
@@ -81,7 +87,7 @@ function EditNonWorkingDetail(props) {
               name="StartTime"
               placeholder="StartTime"
               onChange={(e) => handle(e)}
-              Detail="text"
+              value={nonWorkingDetail.StartTime}
               type="date"
             />
           </FormGroup>
@@ -92,14 +98,14 @@ function EditNonWorkingDetail(props) {
               name="EndTime"
               placeholder="EndTime"
               onChange={(e) => handle(e)}
-              Detail="text"
+              value={nonWorkingDetail.EndTime}
               type="date"
             />
           </FormGroup>
           <FormGroup>
-            <Label for="positionId">Select Position</Label>
-            <select className="positionId" onChange={(e) => handle(e)}  name="positionId" id="positionId">
-              <option value="0">--Select Category--</option>
+            <Label for="NonWorkingTypeId">Select nonWorkingType</Label>
+            <select className="NonWorkingTypeId"  onChange={(e) => handle(e)}  name="NonWorkingTypeId" id="NonWorkingTypeId">
+              <option value="0">--Select nonWorkingType--</option>
               {nonWorkingType?.map((item, idx) => (
                 <option key={item.id} value={item.id}>
                   {item.name}
@@ -107,7 +113,18 @@ function EditNonWorkingDetail(props) {
               ))}
             </select>
           </FormGroup>
-          <Button Detail="submit">Submit</Button>
+          <FormGroup>
+            <Label for="EmployeeId">Select employee</Label>
+            <select className="EmployeeId" onChange={(e) => handle(e)}  name="EmployeeId" id="EmployeeId">
+              <option value="0">--Select employee--</option>
+              {employee?.map((item, idx) => (
+                <option key={item.id} value={item.id}>
+                  {item.fullName}
+                </option>
+              ))}
+            </select>
+          </FormGroup>
+          <Button type="submit">Submit</Button>
         </Form>
       </div>
     </>

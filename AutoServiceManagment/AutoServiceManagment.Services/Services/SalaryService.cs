@@ -57,7 +57,7 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task DeleteSalaryAsync(int? id)
         {
-            var salary = await DbContext.Salaries.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == true);
+            var salary = await DbContext.Salaries.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted != true);
 
             if (salary == null) { throw new Exception("Salary not found!"); }
 
