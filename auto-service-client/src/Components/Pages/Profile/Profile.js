@@ -2,28 +2,15 @@ import {
 Button
 } from "reactstrap";
 import { useHistory } from "react-router-dom";
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 
 import {
   CardGroup,
   Card,
-  CardImg,
   CardBody,
   CardSubtitle,
   CardTitle,
-  CardText,
-  NavLink,
-  NavItem,
-  UncontrolledDropdown,
-  DropdownItem,
-  DropdownToggle,
-  DropdownMenu,
-  NavbarText
 } from "reactstrap";
-import { Link } from "react-router-dom";
-import { MdOutlineProductionQuantityLimits } from 'react-icons/md';
-import { SiBrandfolder } from 'react-icons/si';
-import { BiCategoryAlt } from 'react-icons/bi';
 import { userService } from '../../../Api/services/Users';
 
 

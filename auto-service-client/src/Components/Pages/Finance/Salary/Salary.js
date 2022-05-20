@@ -16,7 +16,8 @@ function Salary()
 
     const [SalaryData, setSalaryData] = useState();
     const [employee, setEmployee] = useState({});
-    
+    const [id, setId] = useState(1);
+
     const history = useHistory();
 
     const getAllSalary = useCallback(() => {
@@ -25,25 +26,32 @@ function Salary()
       });
     }, [setSalaryData]);
     
-    const id=0;
     const getEmployee = useCallback((id) => {
       employeeService.getEmployeeByID(id).then(({ data }) => {
         setEmployee(data);
       });
-    }, [employeeService, id, setEmployee]);
+    }, [id]);
 
-    // getEmployee(1);
+    // React.useEffect(() => {
+    //   employeeService.getEmployeeByID(id).then(({ data }) => {
+    //     setEmployee(data);
+    //   });
+    // }, [id]);
     React.useEffect(() => {
       salaryService.getAllSalaries().then(({ data }) => {
         setSalaries(data);
       });
-    }, []);
+    }, [setSalaries]);
     
 
     function editSalary(id){
       history.push("/EditSalary/"+id)
     } 
     
+    // function getEmployee(id){
+    //   employeeService.getEmployeeByID(id).then(({ data }) => 
+    //   {setEmployee(data)})
+    // } 
     const deleteButton = (id) => {
       const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
@@ -129,13 +137,11 @@ function Salary()
         </thead>
         <tbody>
         {Salaries?.map((item, idx) => (
-              
-          console.log(item.employeeID), 
-            // getEmployee(item.employeeID),
+              getEmployee(item.employeeID),
+            // setId(item.employeeID),
           <tr key={idx}>
                 <th scope="row">{idx}</th>
-                <th>
-                  
+                <th>                
                   {employee.fullName}</th>
                 <th>{moment(item.date).format("MM-DD-yyyy")}</th>
                 <th>{item.bonus}</th>

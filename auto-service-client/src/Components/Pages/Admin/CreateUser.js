@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React from "react";
 // import "./Employee.scss";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";

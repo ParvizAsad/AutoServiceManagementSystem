@@ -3,7 +3,6 @@ import {
 Table,
 Button
 } from "reactstrap";
-import Service from '../Service/Service';
 // import "./Customer.scss";
 import { useHistory } from "react-router-dom";
 import { customerService } from '../../../Api/services/Customers';

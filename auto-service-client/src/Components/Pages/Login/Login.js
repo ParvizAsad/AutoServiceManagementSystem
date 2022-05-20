@@ -9,8 +9,8 @@ import {
     InputGroup,
   } from "reactstrap";
 import { accountService } from '../../../Api/services/Account';
-  import "./Login.scss";
-  import { Link } from "react-router-dom";
+import "./Login.scss";
+import { Link } from "react-router-dom";
 
   const Credentials= {
     userName: " ",

@@ -1,31 +1,13 @@
-import React, { useReducer } from "react";
-import { Table, Button } from "reactstrap";
-import { INITIAL_ASYNC_VALUES } from "../../../Consts/const";
+import React from "react";
+import { Button } from "reactstrap";
 import "./HR.scss";
-import { useHistory } from "react-router-dom";
-import { employeeService } from "../../../Api/services/Employee";
-import Swal from "sweetalert2";
-import { useState } from "react";
-import { useCallback } from "react";
 import { Link } from "react-router-dom";
 import {
   CardGroup,
   Card,
-  CardImg,
   CardBody,
-  CardSubtitle,
   CardTitle,
-  CardText,
-  NavLink,
-  NavItem,
-  UncontrolledDropdown,
-  DropdownItem,
-  DropdownToggle,
-  DropdownMenu,
-  NavbarText
 } from "reactstrap";
-import { GiMoneyStack } from 'react-icons/gi';
-import { RiAdvertisementLine } from 'react-icons/ri';
 import { FaPeopleCarry } from 'react-icons/fa';
 import { MdOutlineNaturePeople } from 'react-icons/md';
 import { FaBed } from 'react-icons/fa';

@@ -1,10 +1,11 @@
-import { FormGroup, Form, Label, Input, Button, FormText } from "reactstrap";
+import { FormGroup, Form, Label, Input, Button} from "reactstrap";
 import React, { useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
 // import "./Createcustomer.scss";
 import { customerService } from "../../../Api/services/Customers";
 import { serviceService } from "../../../Api/services/Services";
 import { productService } from "../../../Api/services/Products";
+import CurrencyInput from 'react-currency-input-field';
 
 const initialCustomer = {
   fullName: "",
@@ -124,12 +125,12 @@ const preventPasteNegative = (e) => {
           </FormGroup>
           <FormGroup>
             <Label for="debt">Debt</Label>
-            <Input
+            <CurrencyInput
               id="debt"
               name="debt"
               placeholder="debt"
               onChange={getElementValues}
-              type="number"
+              prefix='$'
               min="0"
               onPaste={preventPasteNegative}
               onKeyPress={preventMinus}

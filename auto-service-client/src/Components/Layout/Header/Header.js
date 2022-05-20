@@ -1,25 +1,12 @@
 import React, {useState} from 'react'
-import {
-    Navbar,
-    NavbarBrand,
-    NavbarToggler,
-    Collapse,
-    Nav,
-    NavLink,
-    NavItem,
-    UncontrolledDropdown,
-    DropdownItem,
-    DropdownToggle,
-    DropdownMenu,
-    NavbarText,
-    CardImg
-  } from "reactstrap";
+import {Navbar} from "reactstrap";
   import "./Header.scss";
 import logo from '../../../Assets/Images/Logo/logo.webp';
 import Icon from '../../../Assets/Images/Icon/profile-icon.jpg';
 import { AiOutlineUserAdd } from 'react-icons/ai';
 import { useHistory, Link } from "react-router-dom";
 import { userService } from '../../../Api/services/Users';
+import { bioService } from '../../../Api/services/Bios';
 import { accountService } from '../../../Api/services/Account';
 
 function Header() {
@@ -33,6 +20,7 @@ function Header() {
     });
   }, []);
 
+  // {bioServicegetBio}
   return (
     <div>
     <Navbar id='NavbarId'
@@ -47,7 +35,7 @@ function Header() {
     <div>
       {/* user.IsAuthenticated==true */}
     {false?
-    (<h4><Link onClick={accountService.logout()}>Logout</Link></h4>) 
+    (<h4><Link onClick={accountService.logout()}>Logout</Link></h4>)
     : (<h4><Link to="login">Login</Link></h4>)}
     </div>
     </div>

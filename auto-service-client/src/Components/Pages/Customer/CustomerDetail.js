@@ -1,13 +1,11 @@
 import {
   Card,
-  CardImg,
   CardBody,
   CardSubtitle,
   CardTitle,
-  CardText,
 } from "reactstrap";
 import { customerService } from '../../../Api/services/Customers';
-import React, { useCallback, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
 const customer = {

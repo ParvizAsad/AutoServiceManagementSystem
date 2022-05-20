@@ -1,23 +1,16 @@
 import React, { useCallback, useEffect, useState, useRef } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import {
-  FormGroup,
-  Form,
-  Label,
-  Input,
-  FormText,
   Card,
-  CardImg,
   CardBody,
   CardSubtitle,
   CardTitle,
   CardText,
-  Button,
 } from "reactstrap";
 import "./CreateEmployee.scss";
 import { employeeService } from "../../../../Api/services/Employee";
 import { positionService } from "../../../../Api/services/Positions";
-import axios, { Axios } from "axios";
+import axios from "axios";
 import "./EmployeeDetail.scss";
 import { useReactToPrint } from "react-to-print";
 import moment from "moment";

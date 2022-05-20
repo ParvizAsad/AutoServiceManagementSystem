@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import { salaryService } from "../../../../Api/services/Salaries";
 import { employeeService } from "../../../../Api/services/Employee";
 import { taxService } from "../../../../Api/services/Taxes";
+import CurrencyInput from 'react-currency-input-field';
 
 // import "./Employees/Salarys/CreateEmployee.scss";
 
@@ -99,13 +100,13 @@ function EditSalary(props) {
           </FormGroup>
           <FormGroup>
             <Label for="bonus">bonus</Label>
-            <Input
+            <CurrencyInput
               id="bonus"
               name="bonus"
               placeholder="bonus"
+              prefix='$'
               onChange={(e) => handle(e)}
               value={Salary.bonus}
-              type="number"
             />
           </FormGroup>
           <FormGroup>

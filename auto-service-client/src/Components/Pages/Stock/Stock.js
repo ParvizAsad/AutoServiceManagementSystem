@@ -1,27 +1,14 @@
 import React from 'react'
 import {
-Table,
 Button
 } from "reactstrap";
 import "./Stock.scss";
-import { useHistory } from "react-router-dom";
-import { productService } from '../../../Api/services/Products';
 import Swal from "sweetalert2";
 import {
   CardGroup,
   Card,
-  CardImg,
   CardBody,
-  CardSubtitle,
   CardTitle,
-  CardText,
-  NavLink,
-  NavItem,
-  UncontrolledDropdown,
-  DropdownItem,
-  DropdownToggle,
-  DropdownMenu,
-  NavbarText
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import { MdOutlineProductionQuantityLimits } from 'react-icons/md';

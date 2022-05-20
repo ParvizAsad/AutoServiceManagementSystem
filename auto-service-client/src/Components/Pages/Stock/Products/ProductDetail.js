@@ -1,14 +1,11 @@
 import {
-  CardGroup,
   Card,
   CardImg,
   CardBody,
   CardSubtitle,
   CardTitle,
-  CardText,
-  Button
 } from "reactstrap";
-import React, { useCallback, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { productService } from "../../../../Api/services/Products";
 

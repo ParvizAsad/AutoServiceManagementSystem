@@ -1,11 +1,12 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { FormGroup, Form, Label, Input, Button, FormText } from "reactstrap";
+import { FormGroup, Form, Label, Input, Button} from "reactstrap";
 // import "./CreateCustomer.scss";
 // import { positionService } from "../../../../Api/services/Positions";
 import { useParams } from "react-router-dom";
 import axios, { Axios } from "axios";
 import { customerService } from "../../../Api/services/Customers";
+import CurrencyInput from 'react-currency-input-field';
 
 const initialCustomer = {
   fullName: "",
@@ -90,13 +91,13 @@ function EditCustomer(props) {
           </FormGroup>
           <FormGroup>
             <Label for="debt">Debt</Label>
-            <Input
+            <CurrencyInput
               id="debt"
               name="debt"
               placeholder="debt"
               onChange={(e) => handle(e)}
               value={data.debt}
-              type="number"
+              prefix='$'
             />
           </FormGroup>
 

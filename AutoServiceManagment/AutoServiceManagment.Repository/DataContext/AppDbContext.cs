@@ -30,6 +30,7 @@ namespace AutoServiceManagment.Repository.DataContext
         public DbSet<Service> Services { get; set; }
         public DbSet<Statistics> Statistics { get; set; }
         public DbSet<Tax> Taxes { get; set; }
+        public DbSet<Bio> Bios { get; set; }
 
     }
 }

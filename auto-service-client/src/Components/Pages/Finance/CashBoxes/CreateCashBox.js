@@ -1,10 +1,12 @@
-import { FormGroup, Form, Label, Input, Button, FormText } from "reactstrap";
+import { FormGroup, Form, Label, Input, Button} from "reactstrap";
 import React, { useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { customerService } from "../../../../Api/services/Customers";
 import { cashBoxService } from "../../../../Api/services/CashBox";
 import { serviceService } from "../../../../Api/services/Services";
 import { productService } from "../../../../Api/services/Products";
+import CurrencyInput from 'react-currency-input-field';
+
 // import "./Customers/CashBoxs/CreateCustomer.scss";
 
 const newCashBox= {
@@ -136,12 +138,12 @@ const preventPasteNegative = (e) => {
             {error}
           <FormGroup>
             <Label for="Payment">Payment</Label>
-            <Input
+            <CurrencyInput
               id="Payment"
               name="Payment"
               placeholder="Payment"
               onChange={getElementValues}
-              type="number"
+              prefix='$'
               min="0"
               onPaste={preventPasteNegative}
               onKeyPress={preventMinus}

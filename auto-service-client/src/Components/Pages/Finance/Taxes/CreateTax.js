@@ -2,6 +2,7 @@ import { FormGroup, Form, Label, Input, Button, FormText } from "reactstrap";
 import React, { useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { taxService } from "../../../../Api/services/Taxes";
+import CurrencyInput from 'react-currency-input-field';
 // import "./Employees/taxs/CreateEmployee.scss";
 
 const newTax= {
@@ -85,12 +86,12 @@ const preventPasteNegative = (e) => {
           {error}
           <FormGroup>
             <Label for="taxValue">Tax Value</Label>
-            <Input
+            <CurrencyInput
               id="taxValue"
               name="taxValue"
               placeholder="Tax value"
               onChange={getElementValues}
-              type="number"
+              prefix='$'
               min="0"
               onPaste={preventPasteNegative}
               onKeyPress={preventMinus}

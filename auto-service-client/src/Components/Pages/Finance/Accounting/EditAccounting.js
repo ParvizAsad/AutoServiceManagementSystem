@@ -5,6 +5,7 @@ import { financeService } from "../../../../Api/services/Finances";
 // import "./Employees/Accountings/CreateEmployee.scss";
 import moment from "moment";
 import { ToastContainer, toast } from "react-toastify";
+import CurrencyInput from 'react-currency-input-field';
 
 
 const newAccounting = {
@@ -90,24 +91,24 @@ function EditAccounting(props) {
         <Form onSubmit={editAccounting}>
           <FormGroup>
             <Label for="communalCost">CommunalCost</Label>
-            <Input
+            <CurrencyInput
               id="communalCost"
               name="communalCost"
               placeholder="CommunalCost"
               onChange={(e) => handle(e)}
               value={accounting.communalCost}
-              type="text"
+              prefix='$'
             />
           </FormGroup>
           <FormGroup>
             <Label for="additionalCost">AdditionalCost</Label>
-            <Input
+            <CurrencyInput
               id="additionalCost"
               name="additionalCost"
               placeholder="additionalCost"
               onChange={(e) => handle(e)}
               value={accounting.additionalCost}
-              type="text"
+              prefix='$'
             />
           </FormGroup>
           <FormGroup>

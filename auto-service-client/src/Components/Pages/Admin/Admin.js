@@ -1,7 +1,6 @@
 import React from 'react'
 import { userService } from '../../../Api/services/Users';
-import { Table, Button } from "reactstrap";
-import { useHistory } from "react-router-dom";
+import { Button } from "reactstrap";
 import Swal from "sweetalert2";
 import { useState } from "react";
 import { useCallback } from "react";
@@ -17,9 +16,7 @@ import { MdOutlineAdminPanelSettings } from 'react-icons/md';
 
 function Admin() {
 
-  const [user, setUser] = React.useState([]);
   const [userData, setUserData] = useState();
-  const history = useHistory();
 
   const getAllEmployee = useCallback(() => {
     userService.getAllUsers().then(({ data }) => {

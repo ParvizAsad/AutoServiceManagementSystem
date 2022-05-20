@@ -1,21 +1,11 @@
 import React from 'react'
-import { useHistory, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   CardGroup,
   Card,
-  CardImg,
   CardBody,
-  CardSubtitle,
   CardTitle,
-  CardText,
   Button,
-  NavLink,
-  NavItem,
-  UncontrolledDropdown,
-  DropdownItem,
-  DropdownToggle,
-  DropdownMenu,
-  NavbarText
 } from "reactstrap";
 import { GiMoneyStack } from 'react-icons/gi';
 import { RiAdvertisementLine } from 'react-icons/ri';

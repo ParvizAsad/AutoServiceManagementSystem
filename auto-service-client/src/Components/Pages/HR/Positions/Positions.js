@@ -5,7 +5,6 @@ import { useState } from "react";
 import { useCallback } from "react";
 import { positionService } from "../../../../Api/services/Positions";
 import Swal from "sweetalert2";
-import { INITIAL_ASYNC_VALUES } from "../../../../Consts/const";
 
 function Position() {
 

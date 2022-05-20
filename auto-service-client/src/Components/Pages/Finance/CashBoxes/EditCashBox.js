@@ -1,9 +1,9 @@
-import { FormGroup, Form, Label, Input, Button, FormText } from "reactstrap";
+import { FormGroup, Form, Label, Input, Button} from "reactstrap";
 import React, { useCallback, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { employeeService } from "../../../../Api/services/Employee";
 import { customerService } from "../../../../Api/services/Customers";
 import { cashBoxService } from "../../../../Api/services/CashBox";
+import CurrencyInput from 'react-currency-input-field';
 
 // import "./Employees/Cashboxs/CreateEmployee.scss";
 
@@ -106,12 +106,12 @@ function EditCashbox(props) {
           </FormGroup>
           <FormGroup>
           <Label for="Payment">Payment</Label>
-            <Input
+            <CurrencyInput
               id="Payment"
               name="Payment"
               placeholder="Payment"
               onChange={(e) => handle(e)}
-              type="number"
+              prefix='$'
             />
           </FormGroup>
           <Button type="submit">Submit</Button>

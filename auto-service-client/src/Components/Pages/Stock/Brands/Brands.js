@@ -1,8 +1,7 @@
 import React from "react";
 import { Table, Button } from "reactstrap";
 import { useHistory } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { useCallback } from "react";
+import { useState } from "react";
 import Swal from "sweetalert2";
 import { brandService } from "../../../../Api/services/Brands";
 
@@ -109,7 +108,7 @@ function Brand() {
           <tbody>
             {brands
               ?.filter((val) => {
-                if (searchBrand == " ") {
+                if (searchBrand === " ") {
                   return val;
                 } else if (
                   val.name.toLowerCase().includes(searchBrand.toLowerCase())

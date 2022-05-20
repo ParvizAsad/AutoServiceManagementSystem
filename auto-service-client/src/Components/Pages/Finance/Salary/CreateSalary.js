@@ -4,6 +4,8 @@ import { useHistory } from "react-router-dom";
 import { salaryService } from "../../../../Api/services/Salaries";
 import { employeeService } from "../../../../Api/services/Employee";
 import { taxService } from "../../../../Api/services/Taxes";
+import CurrencyInput from 'react-currency-input-field';
+
 // import "./Employees/Salarys/CreateEmployee.scss";
 
 const newSalary= {
@@ -117,6 +119,7 @@ const preventPasteNegative = (e) => {
               name="Bonus"
               placeholder="Bonus"
               onChange={getElementValues}
+              // prefix='$'
               type="number"
               min="0"
               onPaste={preventPasteNegative}

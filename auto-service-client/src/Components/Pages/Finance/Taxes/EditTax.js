@@ -3,6 +3,7 @@ import React, { useCallback, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { taxService } from "../../../../Api/services/Taxes";
 // import "./Employees/taxs/CreateEmployee.scss";
+import CurrencyInput from 'react-currency-input-field';
 
 const NewTax= {
   name: " ",
@@ -68,13 +69,13 @@ function EditTax(props) {
           </FormGroup>
           <FormGroup>
             <Label for="taxValue">Tax Value</Label>
-            <Input
+            <CurrencyInput
               id="taxValue"
               name="taxValue"
               placeholder="Tax value"
+              prefix='$'
               value={tax.taxValue}
               onChange={(e) => handle(e)}
-              type="number"
             />
           </FormGroup>
           <Button type="submit">Submit</Button>

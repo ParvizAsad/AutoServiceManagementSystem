@@ -1,11 +1,10 @@
-import React, { useReducer } from "react";
-import { Table, Button } from "reactstrap";
+import React from "react";
+import { Table } from "reactstrap";
 // import ".././HR.scss";
 import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useState } from "react";
 import { useCallback } from "react";
-import { Link } from "react-router-dom";
 import "jquery/dist/jquery.min.js";
 //Datatable Modules
 import "datatables.net-dt/js/dataTables.dataTables";
@@ -23,7 +22,6 @@ import { productService } from "../../../../Api/services/Products";
 function ExportProduct() {
   const [Product, setProduct] = React.useState([]);
   const [ProductData, setProductData] = useState();
-  const history = useHistory();
 
   const getAllProduct = useCallback(() => {
     productService.getAllProducts().then(({ data }) => {
