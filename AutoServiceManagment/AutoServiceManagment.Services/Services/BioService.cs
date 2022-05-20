@@ -24,10 +24,10 @@ namespace AutoServiceManagment.Services.Services
             _repository = repository;
         }
 
-        async Task<IList<BioDto>> IBioService.GetAllBiosAsync()
+        public async Task<BioDto> GetBioAsync()
         {
-            var bios = await DbContext.Bios.ToListAsync();
-            return _mapper.Map<List<BioDto>>(bios);
+            var bio = await DbContext.Bios.FirstOrDefaultAsync();
+            return _mapper.Map<BioDto>(bio);
         }
     }
 }
