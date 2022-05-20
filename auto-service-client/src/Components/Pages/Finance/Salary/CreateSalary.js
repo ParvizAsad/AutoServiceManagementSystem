@@ -7,11 +7,11 @@ import { taxService } from "../../../../Api/services/Taxes";
 // import "./Employees/Salarys/CreateEmployee.scss";
 
 const newSalary= {
-  Date: " ",
-  Bonus: " ",
-  NetSalary: " ",
-  TaxId: " ", 
-  EmployeeId: " ",
+  date: " ",
+  donus: " ",
+  netSalary: " ",
+  taxId: " ", 
+  employeeId: " ",
 };
 
 function CreateSalary() {
@@ -36,14 +36,14 @@ function CreateSalary() {
         history.push("/salary");
       }).catch(
         e=>{
-            if(e.response.status===400){
-              setError(e.response.data.errors.Name)
-              console.log(error);
-
-            }
-            else if(e.response.status===500){
-              setError(e.response.data)
-            }
+          console.log(e.response.data);
+            // if(e.response.status===400){
+            //   setError(e.response.data.errors.Name)
+            //   console.log(error);
+            // }
+            // else if(e.response.status===500){
+            //   setError(e.response.data)
+            // }
       }
       );
     },
@@ -90,8 +90,8 @@ const preventPasteNegative = (e) => {
       <div className="CreatePage">
         <Form onSubmit={createSalary}>
         <FormGroup>
-            <Label for="EmployeeId">Select Employee</Label>
-            <select className="EmployeeId" onChange={getElementValues}  name="EmployeeId" id="EmployeeId">
+            <Label for="employeeId">Select Employee</Label>
+            <select className="employeeId" onChange={getElementValues}  name="employeeId" id="employeeId">
               <option value="0">--Select Employee--</option>
               {employee?.map((item, idx) => (
                 <option key={idx} value={item.id}>
@@ -101,21 +101,34 @@ const preventPasteNegative = (e) => {
             </select>
           </FormGroup>
           <FormGroup>
-            <Label for="Date">Date</Label>
+            <Label for="date">Date</Label>
             <Input
-              id="Date"
-              name="Date"
-              placeholder="Date"
+              id="date"
+              name="date"
+              placeholder="date"
               onChange={getElementValues}
               type="date"
             />
           </FormGroup>
-          <FormGroup>
-            <Label for="Bonus">Bonus</Label>
+          {/* <FormGroup>
+            <Label for="netSalary">netSalary</Label>
             <Input
-              id="Bonus"
-              name="Bonus"
-              placeholder="Bonus"
+              id="netSalary"
+              name="netSalary"
+              placeholder="netSalary"
+              onChange={getElementValues}
+              type="number"
+              min="0"
+              onPaste={preventPasteNegative}
+              onKeyPress={preventMinus}
+            />
+          </FormGroup> */}
+          <FormGroup>
+            <Label for="bonus">Bonus</Label>
+            <Input
+              id="bonus"
+              name="bonus"
+              placeholder="bonus"
               onChange={getElementValues}
               type="number"
               min="0"
@@ -124,8 +137,8 @@ const preventPasteNegative = (e) => {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="TaxId">Select Tax</Label>
-            <select className="TaxId" onChange={getElementValues}  name="TaxId" id="TaxId">
+            <Label for="taxId">Select Tax</Label>
+            <select className="taxId" onChange={getElementValues}  name="taxId" id="taxId">
               <option value="0">--Select Tax--</option>
               {taxes?.map((item, idx) => (
                 <option key={idx} value={item.id}>

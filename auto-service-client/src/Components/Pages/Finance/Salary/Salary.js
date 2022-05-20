@@ -16,6 +16,7 @@ function Salary()
 
     const [SalaryData, setSalaryData] = useState();
     const [employee, setEmployee] = useState();
+    const [employeeId, setEmployeeId] = useState();
     
     const history = useHistory();
 
@@ -25,13 +26,19 @@ function Salary()
       });
     }, [setSalaryData]);
     
-    const getEmployee = useCallback((id) => {
-      employeeService.getEmployeeByID(id).then(({ data }) => {
+    // const getEmployee = (id) => {
+    //   employeeService.getEmployeeByID(id).then(({ data }) => {
+    //     setEmployee(data);
+    //   });
+    // };
+    React.useEffect(() => {
+      employeeService.getAllEmployee().then(({ data }) => {
+        console.log(data);
         setEmployee(data);
+       
       });
-    }, [setEmployee]);
+    }, []);
 
-    getEmployee(1);
     React.useEffect(() => {
       salaryService.getAllSalaries().then(({ data }) => {
         setSalaries(data);
@@ -106,34 +113,27 @@ function Salary()
         <Table className='TableForItems'>
         <thead>
           <tr>
-            <th>
-              #
-            </th>
-            <th>
-              Employee
-            </th>
-            <th>
-            Date
-            </th>
-            <th>
-            Bonus
-            </th>
-            <th>
-            NetSalary
-            </th>
-            <th>
-              Actions
-            </th>
+            <th> # </th>
+            <th> Employee</th>
+            <th> Date </th>
+            <th> Bonus </th>
+            <th> NetSalary </th>
+            <th> Actions </th>
           </tr>
         </thead>
         <tbody>
-        {Salaries?.map((item, idx) => (
-              
-                // getEmployee(item.employeeID), 
-                // console.log(item.employeeID), 
+        {Salaries?.map((item, idx) => ( 
           <tr key={idx}>
-                <th scope="row">{idx}</th>
-                <th>{employee.fullName}</th>
+                <th scope="row">{item.id}</th>
+                {/* <th>{item.employeeID}</th> */}
+               {
+ employee?.filter(employee => employee.id === item.employeeID).map(employee => (
+  // console.log(employee.fullName)
+  <th>{employee.fullName}</th>
+))
+
+
+               }
                 <th>{moment(item.date).format("MM-DD-yyyy")}</th>
                 <th>{item.bonus}</th>
                 <th>{item.netSalary}</th>
