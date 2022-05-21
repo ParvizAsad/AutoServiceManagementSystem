@@ -11,13 +11,7 @@ namespace AutoServiceManagment.Services.Services.Contracts
         Task<IList<PositionDto>> GetAllPositionsAsync();
         Task<PositionDto> GetPositionAsync(int id);
         Task AddPositionAsync(PositionDto positionDto);
-        // Task AddPositionsAsync(IEnumerable<PositionDto> positionDtos);
-        //  Task AddPositionsAsync(params PositionDto[] positionDtos);
         Task UpdatePositionAsyncId(int? id, PositionDto positionDto);
-        // Task UpdatePositionsAsync(IEnumerable<PositionDto> positionDtos);
-        // Task UpdatePositionsAsync(params PositionDto[] positionDtos);
         Task DeletePositionAsync(int? Id);
-        // Task DeletePositionsAsync(IEnumerable<int> Id);
-        //  Task DeletePositionsAsync(params int[] Id);
     }
 }

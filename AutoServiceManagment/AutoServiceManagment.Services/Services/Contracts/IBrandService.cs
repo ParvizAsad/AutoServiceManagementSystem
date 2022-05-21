@@ -11,13 +11,7 @@ namespace AutoServiceManagment.Services.Services.Contracts
         Task<IList<BrandDto>> GetAllBrandsAsync();
         Task<BrandDto> GetBrandAsync(int id);
         Task AddBrandAsync(BrandDto brandDto);
-       // Task AddBrandsAsync(IEnumerable<BrandDto> brandDtos);
-      //  Task AddBrandsAsync(params BrandDto[] brandDtos);
         Task UpdateBrandAsyncId(int? id,BrandDto brandDto);
-        // Task UpdateBrandsAsync(IEnumerable<BrandDto> brandDtos);
-        // Task UpdateBrandsAsync(params BrandDto[] brandDtos);
         Task DeleteBrandAsync(int? Id);
-       // Task DeleteBrandsAsync(IEnumerable<int> Id);
-      //  Task DeleteBrandsAsync(params int[] Id);
     }
 }

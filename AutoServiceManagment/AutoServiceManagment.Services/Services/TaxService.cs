@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using AutoServiceManagment.DomainModels.DTOs;
 using AutoServiceManagment.DomainModels.Entities;
+using AutoServiceManagment.Infrastructure.Helpers;
 using AutoServiceManagment.Repository.DataContext;
 using AutoServiceManagment.Repository.Repository;
 using AutoServiceManagment.Repository.Repository.Contracts;
@@ -40,6 +41,10 @@ namespace AutoServiceManagment.Services.Services
         }
         public async Task AddTaxAsync(TaxDto taxDto)
         {
+            var existTax = await DbContext.Taxes.Where(x => x.Name == taxDto.Name).FirstOrDefaultAsync();
+
+            await NullCheck<Tax>.Checking(existTax);
+
             var tax = _mapper.Map<Tax>(taxDto);
             await _repository.AddAsync(tax);
         }

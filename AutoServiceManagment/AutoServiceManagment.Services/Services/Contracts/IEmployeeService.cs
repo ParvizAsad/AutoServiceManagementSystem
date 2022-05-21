@@ -12,14 +12,8 @@ namespace AutoServiceManagment.Services.Services.Contracts
         Task<IList<EmployeeDto>> GetAllEmployeesAsync();
         Task<EmployeeDto> GetEmployeeAsync(int id);
         Task AddEmployeeAsync(EmployeeDto employeeDto);
-        // Task AddEmployeesAsync(IEnumerable<EmployeeDto> employeeDtos);
-        //  Task AddEmployeesAsync(params EmployeeDto[] employeeDtos);
         Task UpdateEmployeeAsyncId(int? id, EmployeeDto employeeDto);
-        // Task UpdateEmployeesAsync(IEnumerable<EmployeeDto> employeeDtos);
-        // Task UpdateEmployeesAsync(params EmployeeDto[] employeeDtos);
         Task DeleteEmployeeAsync(int? Id);
         Task<string> SaveImage(IFormFile imageFile);
-        // Task DeleteEmployeesAsync(IEnumerable<int> Id);
-        //  Task DeleteEmployeesAsync(params int[] Id);
     }
 }

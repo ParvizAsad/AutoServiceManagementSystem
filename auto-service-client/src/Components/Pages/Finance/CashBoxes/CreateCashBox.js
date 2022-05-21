@@ -25,7 +25,7 @@ function CreateCashBox() {
 
   const [CashBoxData, setCashBoxData] = useState();
   const history = useHistory();
-
+console.log(CashBox);
   const getAllCashBox = useCallback(() => {
     cashBoxService.getAllCashBoxes().then(({ data }) => {
       setCashBoxData(data);
@@ -36,7 +36,6 @@ function CreateCashBox() {
     (e) => {
       e.preventDefault();
       cashBoxService.postCashBox(CashBox).then(() => {
-        getAllCashBox();
         history.push("/cashbox");
       }).catch(
         e=>{
@@ -51,8 +50,10 @@ function CreateCashBox() {
       }
       );
     },
-    [CashBox, history, getAllCashBox]
+    [CashBox, history]
   );
+
+
 
   const getElementValues = (e) => {
     const { name, value } = e.target;
@@ -125,8 +126,8 @@ const preventPasteNegative = (e) => {
           </FormGroup>
           {error}
           <FormGroup>
-            <Label for="Products">Select Product</Label>
-            <select className="Products" onChange={getElementValues}  name="Products" id="Products">
+            <Label for="ProductId">Select Product</Label>
+            <select className="ProductId" onChange={getElementValues}  name="ProductId" id="Productd">
               <option value="0">--Select Product--</option>
               {products?.map((item, idx) => (
                 <option key={idx} value={item.id}>
@@ -138,13 +139,14 @@ const preventPasteNegative = (e) => {
             {error}
           <FormGroup>
             <Label for="Payment">Payment</Label>
-            <CurrencyInput
+            <Input
               id="Payment"
               name="Payment"
               placeholder="Payment"
               onChange={getElementValues}
-              prefix='$'
+              // prefix='$'
               min="0"
+              type="number"
               onPaste={preventPasteNegative}
               onKeyPress={preventMinus}
             />

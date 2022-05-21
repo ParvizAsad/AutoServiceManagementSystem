@@ -11,13 +11,7 @@ namespace AutoTaxManagment.Service.Services.Contracts
         Task<IList<TaxDto>> GetAllTaxesAsync();
         Task<TaxDto> GetTaxAsync(int id);
         Task AddTaxAsync(TaxDto TaxDto);
-        // Task AddTaxsAsync(IEnumerable<TaxDto> TaxDtos);
-        //  Task AddTaxsAsync(params TaxDto[] TaxDtos);
         Task UpdateTaxAsyncId(int? id, TaxDto taxDto);
-        // Task UpdateTaxsAsync(IEnumerable<TaxDto> TaxDtos);
-        // Task UpdateTaxsAsync(params TaxDto[] TaxDtos);
         Task DeleteTaxAsync(int? Id);
-        // Task DeleteTaxsAsync(IEnumerable<int> Id);
-        //  Task DeleteTaxsAsync(params int[] Id);
     }
 }

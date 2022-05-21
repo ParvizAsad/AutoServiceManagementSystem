@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using AutoServiceManagment.DomainModels.DTOs;
 using AutoServiceManagment.DomainModels.Entities;
+using AutoServiceManagment.Infrastructure.Helpers;
 using AutoServiceManagment.Repository.DataContext;
 using AutoServiceManagment.Repository.Repository;
 using AutoServiceManagment.Repository.Repository.Contracts;
@@ -42,8 +43,9 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task AddBrandAsync(BrandDto brandDto)
         {
-            var brands = await DbContext.Brands.Where(x => x.Name == brandDto.Name).FirstOrDefaultAsync();
-            if (brands != null) { throw new Exception("There is a brand with this name!"); }
+            var existBrand = await DbContext.Brands.Where(x => x.Name == brandDto.Name).FirstOrDefaultAsync();
+
+            await NullCheck<Brand>.Checking(existBrand);
 
             if(brandDto==null) { throw new Exception("Boş saxlanıla bilməz"); }
 

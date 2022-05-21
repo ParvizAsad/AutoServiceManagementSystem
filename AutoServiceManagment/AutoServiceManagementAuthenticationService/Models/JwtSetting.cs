@@ -1,6 +1,4 @@
-﻿
-
-namespace AutoServiceManagment.AuthenticationService.Models
+﻿namespace AutoServiceManagment.AuthenticationService.Models
 {
     public class JwtSetting
     {

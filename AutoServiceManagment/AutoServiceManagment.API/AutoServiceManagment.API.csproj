@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Images\**" />
+    <Content Remove="Images\**" />
+    <EmbeddedResource Remove="Images\**" />
+    <None Remove="Images\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.16" />
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
@@ -24,10 +31,6 @@
     <ProjectReference Include="..\AutoServiceManagment.Infrastructure\AutoServiceManagment.Infrastructure.csproj" />
     <ProjectReference Include="..\AutoServiceManagment.Repository\AutoServiceManagment.Repository.csproj" />
     <ProjectReference Include="..\AutoServiceManagment.Services\AutoServiceManagment.Services.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Images\" />
   </ItemGroup>
 
 </Project>

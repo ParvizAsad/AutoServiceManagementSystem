@@ -11,13 +11,7 @@ namespace AutoServiceManagment.Services.Services.Contracts
         Task<IList<FinanceDto>> GetAllFinancesAsync();
         Task<FinanceDto> GetFinanceAsync(int id);
         Task AddFinanceAsync(FinanceDto financeDto);
-        // Task AddFinancesAsync(IEnumerable<FinanceDto> financeDtos);
-        //  Task AddFinancesAsync(params FinanceDto[] financeDtos);
         Task UpdateFinanceAsyncId(int? id, FinanceDto financeDto);
-        // Task UpdateFinancesAsync(IEnumerable<FinanceDto> financeDtos);
-        // Task UpdateFinancesAsync(params FinanceDto[] financeDtos);
         Task DeleteFinanceAsync(int? Id);
-        // Task DeleteFinancesAsync(IEnumerable<int> Id);
-        //  Task DeleteFinancesAsync(params int[] Id);
     }
 }

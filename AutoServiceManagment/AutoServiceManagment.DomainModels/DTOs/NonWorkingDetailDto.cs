@@ -1,11 +1,6 @@
 ﻿using AutoServiceManagment.Base;
-using AutoServiceManagment.DomainModels.Entities;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutoServiceManagment.DomainModels.DTOs
 {

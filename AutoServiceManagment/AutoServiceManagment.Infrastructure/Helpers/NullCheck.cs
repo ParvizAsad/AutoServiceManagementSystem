@@ -1,18 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using AutoServiceManagment.DomainModels.Entities;
+using System;
 using System.Threading.Tasks;
 
 namespace AutoServiceManagment.Infrastructure.Helpers
 {
-    public class NullCheck<T> where T : class
+    public static class NullCheck<T> where T : class
     {
-        Task Checking(T entity)
+       public static Task Checking(T entity)
         {
-            if(entity == null)
+            if(entity != null)
 
-            { throw new Exception($"{entity} not found!"); }
+            { throw new Exception($"{entity} exist with this name!"); }
 
             return Task.CompletedTask;
         }

@@ -47,7 +47,7 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task DeleteCashBoxAsync(int? id)
         {
-            var cashBox = await DbContext.CashBoxes.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == true);
+            var cashBox = await DbContext.CashBoxes.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted != true);
 
             if (cashBox == null) { throw new Exception("CashBox not found!"); }
 
@@ -59,11 +59,15 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task UpdateCashBoxAsyncId(int? id, CashBoxDto cashBoxDto)
         {
-            var cashBox = await DbContext.CashBoxes.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == true);
+            var cashBox = await DbContext.CashBoxes.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted != true);
             
             if (cashBox == null) { throw new Exception("CashBox not found!"); }
 
-            cashBox = _mapper.Map<CashBox>(cashBoxDto);
+            cashBox.ProductID = cashBoxDto.ProductID;
+            cashBox.ServiceID = cashBoxDto.ServiceID;
+            cashBox.CustomerID = cashBoxDto.CustomerID;
+            cashBox.Date = cashBoxDto.Date;
+            cashBox.Payment = cashBoxDto.Payment;
 
             DbContext.CashBoxes.Update(cashBox);
 

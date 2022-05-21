@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using AutoServiceManagment.DomainModels.DTOs;
 using AutoServiceManagment.DomainModels.Entities;
+using AutoServiceManagment.Infrastructure.Helpers;
 using AutoServiceManagment.Repository.DataContext;
 using AutoServiceManagment.Repository.Repository;
 using AutoServiceManagment.Repository.Repository.Contracts;
@@ -39,7 +40,12 @@ namespace AutoServiceManagment.Services.Services
         }
         public async Task AddPositionAsync(PositionDto positionDto)
         {
+            var existPosition = await DbContext.Positions.Where(x => x.Name == positionDto.Name).FirstOrDefaultAsync();
+
+            await NullCheck<Position>.Checking(existPosition);
+            
             var position = _mapper.Map<Position>(positionDto);
+            
             await _repository.AddAsync(position);
         }
 

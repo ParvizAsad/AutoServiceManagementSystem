@@ -34,6 +34,7 @@ namespace AutoServiceManagment.API
             //    var dataInitializer = new DataInitializer(appDbContext, roleManager, userManager);
 
             //    await dataInitializer.SeedDataAsync();
+            
             //}
 
             //await host.RunAsync();

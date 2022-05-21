@@ -13,6 +13,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
+using AutoServiceManagment.Infrastructure.Helpers;
 
 namespace AutoServiceManagment.Services.Services
 {
@@ -47,7 +48,8 @@ namespace AutoServiceManagment.Services.Services
         public async Task AddEmployeeAsync(EmployeeDto employeeDto)
         {
             var existEmployee = await DbContext.Employees.Where(x => x.FullName == employeeDto.FullName).FirstOrDefaultAsync();
-            if (existEmployee != null) { throw new Exception("There is an employee with this name!"); }
+
+            await NullCheck<Employee>.Checking(existEmployee);
 
             var employee = _mapper.Map<Employee>(employeeDto);
             await _repository.AddAsync(employee);

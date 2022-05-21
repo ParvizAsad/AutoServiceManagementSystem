@@ -1,13 +1,15 @@
-import { FormGroup, Form, Label, Input, Button} from "reactstrap";
+import { FormGroup, Form, Label, Input, Button } from "reactstrap";
 import React, { useCallback, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { customerService } from "../../../../Api/services/Customers";
 import { cashBoxService } from "../../../../Api/services/CashBox";
-import CurrencyInput from 'react-currency-input-field';
+import CurrencyInput from "react-currency-input-field";
+import { productService } from "../../../../Api/services/Products";
+import { serviceService } from "../../../../Api/services/Services";
 
 // import "./Employees/Cashboxs/CreateEmployee.scss";
 
-const newCashBox= {
+const newCashBox = {
   CustomerId: " ",
   Service: " ",
   Product: " ",
@@ -16,37 +18,29 @@ const newCashBox= {
 
 function EditCashbox(props) {
   const [CashBox, setCashBox] = useState(newCashBox);
-  const [customer, setCustomer] = React.useState([]);
+  const [customers, setCustomers] = React.useState([]);
   const [services, setServices] = React.useState([]);
   const [products, setProducts] = React.useState([]);
 
-
   const history = useHistory();
-  
+
   useEffect(() => {
     const id = props.match.params.id;
-    cashBoxService.getCashboxById(id).then((res) => {
+    cashBoxService.getCashBoxById(id).then((res) => {
       setCashBox(res.data);
-      })
+    });
   }, []);
 
   const editCashbox = useCallback(
     (e) => {
       e.preventDefault();
       const id = props.match.params.id;
-      cashBoxService.putCashbox(id, CashBox).then(() => {
+      cashBoxService.putCashBox(id, CashBox).then(() => {
         history.push("/cashbox");
       });
     },
     [CashBox, history]
   );
-
-  useEffect(() => {
-    const id = props.match.params.id;
-    cashBoxService.getCashboxById(id).then((res) => {
-      setCashBox(res.data);
-      })
-  }, []);
 
   function handle(e) {
     // const newCashbox = { ...Cashbox };
@@ -54,28 +48,62 @@ function EditCashbox(props) {
     // setCashbox(newCashbox);
     const { name, value } = e.target;
     setCashBox({ ...CashBox, [name]: value });
-
   }
 
   React.useEffect(() => {
     customerService.getAllCustomers().then(({ data }) => {
-      setCustomer(data);
+      setCustomers(data);
     });
   }, []);
 
+  React.useEffect(() => {
+    productService.getAllProducts().then(({ data }) => {
+      setProducts(data);
+    });
+  }, []);
+
+  React.useEffect(() => {
+    serviceService.getAllServices().then(({ data }) => {
+      setServices(data);
+    });
+  }, []);
+
+  const preventMinus = (e) => {
+    if (e.code === 'Minus') {
+        e.preventDefault();
+    }
+};
+
+const preventPasteNegative = (e) => {
+  const clipboardData = e.clipboardData || window.clipboardData;
+  const pastedData = parseFloat(clipboardData.getData('text'));
+
+  if (pastedData < 0) {
+      e.preventDefault();
+  }
+};
   return (
     <>
       <div className="ForHeading">
-        <h1>Edit {CashBox.name} Cashbox</h1>
+        <h1>
+          Edit payment of{" "}
+          {customers
+            ?.filter((customer) => customer.id === CashBox.customerID)
+            .map((customer) => customer.fullName)}
+        </h1>
       </div>
       <div className="CreatePage">
         <Form onSubmit={editCashbox}>
-
-        <FormGroup>
+          <FormGroup>
             <Label for="CustomerId">Select Customer</Label>
-            <select className="CustomerId" onChange={(e) => handle(e)}  name="CustomerId" id="CustomerId">
+            <select
+              className="CustomerId"
+              onChange={(e) => handle(e)}
+              name="CustomerId"
+              id="CustomerId"
+            >
               <option value="0">--Select Customer--</option>
-              {customer?.map((item, idx) => (
+              {customers?.map((item, idx) => (
                 <option key={idx} value={item.id}>
                   {item.fullName}
                 </option>
@@ -84,34 +112,48 @@ function EditCashbox(props) {
           </FormGroup>
           <FormGroup>
             <Label for="Services">Select Service</Label>
-            <select className="CustomerId" onChange={(e) => handle(e)}  name="CustomerId" id="CustomerId">
+            <select
+              className="CustomerId"
+              onChange={(e) => handle(e)}
+              name="CustomerId"
+              id="CustomerId"
+            >
               <option value="0">--Select Service--</option>
-              {customer?.map((item, idx) => (
+              {services?.map((item, idx) => (
                 <option key={idx} value={item.id}>
-                  {item.Name}
+                  {item.name}
                 </option>
               ))}
             </select>
           </FormGroup>
           <FormGroup>
             <Label for="Products">Select Product</Label>
-            <select className="Products" onChange={(e) => handle(e)}  name="Products" id="Products">
+            <select
+              className="Products"
+              onChange={(e) => handle(e)}
+              name="Products"
+              id="Products"
+            >
               <option value="0">--Select Product--</option>
-              {customer?.map((item, idx) => (
+              {products?.map((item, idx) => (
                 <option key={idx} value={item.id}>
-                  {item.Name}
+                  {item.name}
                 </option>
               ))}
             </select>
           </FormGroup>
           <FormGroup>
-          <Label for="Payment">Payment</Label>
-            <CurrencyInput
+            <Label for="Payment">Payment</Label>
+            <Input
               id="Payment"
               name="Payment"
               placeholder="Payment"
               onChange={(e) => handle(e)}
-              prefix='$'
+              // prefix='$'
+              min="0"
+              type="number"
+              onPaste={preventPasteNegative}
+              onKeyPress={preventMinus}
             />
           </FormGroup>
           <Button type="submit">Submit</Button>

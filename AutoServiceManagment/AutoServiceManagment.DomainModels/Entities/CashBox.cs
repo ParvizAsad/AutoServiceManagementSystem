@@ -1,4 +1,5 @@
 ﻿using AutoServiceManagment.Base;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -19,6 +20,9 @@ namespace AutoServiceManagment.DomainModels.Entities
 
         [Required(ErrorMessage = "Payment is required!")]
         public decimal Payment { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{mm/dd/yyyy}")]
+        public DateTime Date { get; set; } = DateTime.Now;
         public bool IsDeleted { get; set; }=false;
     }
 }

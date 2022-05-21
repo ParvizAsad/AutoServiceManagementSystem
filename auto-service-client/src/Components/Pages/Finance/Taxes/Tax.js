@@ -119,7 +119,7 @@ function Tax() {
             }).map((item, idx) => (
               <tr key={idx}>
                 <th scope="row">{idx}</th>
-                <th>{item.name}</th>
+                <td>{item.name}</td>
                 <td>{item.taxValue}</td>
                 <td className="Actions">
                   <Button onClick={()=>editTax(item.id)} className="Edit">Edit</Button>

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using AutoServiceManagment.DomainModels.DTOs;
 using AutoServiceManagment.DomainModels.Entities;
+using AutoServiceManagment.Infrastructure.Helpers;
 using AutoServiceManagment.Repository.DataContext;
 using AutoServiceManagment.Repository.Repository;
 using AutoServiceManagment.Repository.Repository.Contracts;
@@ -39,7 +40,12 @@ namespace AutoServiceManagment.Services.Services
         }
         public async Task AddNonWorkingTypeAsync(NonWorkingTypeDto nonWorkingTypeDto)
         {
+            var existnonWorkingType = await DbContext.NonWorkingTypes.Where(x => x.Name == nonWorkingTypeDto.Name).FirstOrDefaultAsync();
+
+            await NullCheck<NonWorkingType>.Checking(existnonWorkingType);
+
             var nonWorkingType = _mapper.Map<NonWorkingType>(nonWorkingTypeDto);
+
             await _repository.AddAsync(nonWorkingType);
         }
 

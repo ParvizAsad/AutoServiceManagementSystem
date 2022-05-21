@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using AutoServiceManagment.DomainModels.DTOs;
 using AutoServiceManagment.DomainModels.Entities;
+using AutoServiceManagment.Infrastructure.Helpers;
 using AutoServiceManagment.Repository.DataContext;
 using AutoServiceManagment.Repository.Repository;
 using AutoServiceManagment.Repository.Repository.Contracts;
@@ -40,7 +41,12 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task AddServiceAsync(ServiceDto serviceDto)
         {
+            var existService = await DbContext.Products.Where(x => x.Name == serviceDto.Name).FirstOrDefaultAsync();
+
+            await NullCheck<Product>.Checking(existService);
+
             var service = _mapper.Map<Service>(serviceDto);
+            
             await _repository.AddAsync(service);
         }
 

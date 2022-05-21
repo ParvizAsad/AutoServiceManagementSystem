@@ -7,10 +7,13 @@ import Swal from "sweetalert2";
 import { nonWorkingDetailService } from "../../../../Api/services/NonWorkingDetails";
 import { nonWorkingTypeService } from "../../../../Api/services/NonWorkingTypes";
 import moment from "moment";
+import { employeeService } from "../../../../Api/services/Employee";
 
 function NonWorkingDetail() {
 
   const [nonWorkingDetails, setNonWorkingDetails] = useState([]);
+  const [employee, setEmployee] = useState();
+  const [nonWorkingTypes, setnonWorkingTypes] = useState();
   const [loading, setLoading] = useState(true);
 
   const history = useHistory();
@@ -24,6 +27,21 @@ function NonWorkingDetail() {
   function editNonWorkingDetail(id){
     history.push("/EditNonWorkingDetail/"+id)
    } 
+
+   React.useEffect(() => {
+    employeeService.getAllEmployee().then(({ data }) => {
+      console.log(data);
+      setEmployee(data);
+     
+    });
+  }, []);
+
+
+  React.useEffect(() => {
+    nonWorkingTypeService.getAllNonWorkingTypes().then(({ data }) => {
+      setnonWorkingTypes(data);
+    });
+  }, []);
 
   const deleteButton = (id) => {
     const swalWithBootstrapButtons = Swal.mixin({
@@ -86,7 +104,6 @@ function NonWorkingDetail() {
       </div>
       <div>
       {loading ?(
-              //  <tr className="d-flex justify-content-center"><Spinner color="primary"/></tr>
               <div className="d-flex justify-content-center"><Spinner color="primary"/></div>
             ) : (  
               <Table className="TableForItems">
@@ -103,15 +120,25 @@ function NonWorkingDetail() {
               <tbody>
                 {nonWorkingDetails?.map((item, idx) => (
                   <tr key={idx}>
-                    <th scope="row">{idx}</th>
-                    <td>{moment(item.startTime).format("MM-DD-yyyy")}</td>
-                    <td>{item.employee}</td>
+                    <th scope="row">{item.id}</th>
+
+                    
+                    {
+                      employee?.filter(employee => employee.id === item.employeeId).map(employee => (
+                        <td>{employee.fullName}</td>))
+                        
+                      }
+                      <td>{moment(item.startTime).format("MM-DD-yyyy")}</td>
                     <td>{moment(item.endTime).format("MM-DD-yyyy")}</td>
-                    <td>{(nonWorkingTypeService.getNonWorkingTypeById(item.nonWorkingTypeId)).Name}</td>
-                    <td className="Actions">
+                    {
+                      nonWorkingTypes?.filter(nonWorkingType => nonWorkingType.id === item.nonWorkingTypeId).map(nonWorkingType => (
+                        <td>{nonWorkingType.name}</td>))
+                        
+                      }
+                    <th className="Actions">
                       <Button onClick={()=>editNonWorkingDetail(item.id)} className="Edit">Edit</Button>
                       <Button onClick={()=>deleteButton(item.id) } className="Delete">Delete</Button>
-                    </td>
+                    </th>
                   </tr>
                 ))}
               </tbody>

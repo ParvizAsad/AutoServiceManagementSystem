@@ -8,6 +8,6 @@ namespace AutoServiceManagment.Services.Services.Contracts
 {
     public interface IBioService : IRepository<Bio>
     {
-        Task <BioDto> GetBioAsync();
+        Task<IList<BioDto>> GetAllBiosAsync();
     }
 }

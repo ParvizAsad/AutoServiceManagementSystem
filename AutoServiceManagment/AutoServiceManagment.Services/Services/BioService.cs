@@ -6,9 +6,7 @@ using AutoServiceManagment.Repository.Repository;
 using AutoServiceManagment.Repository.Repository.Contracts;
 using AutoServiceManagment.Services.Services.Contracts;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace AutoServiceManagment.Services.Services
@@ -23,11 +21,12 @@ namespace AutoServiceManagment.Services.Services
             _mapper = mapper;
             _repository = repository;
         }
-
-        public async Task<BioDto> GetBioAsync()
+        public async Task<IList<BioDto>> GetAllBiosAsync()
         {
-            var bio = await DbContext.Bios.FirstOrDefaultAsync();
-            return _mapper.Map<BioDto>(bio);
+
+            var bios = await DbContext.Bios.ToListAsync();
+
+            return _mapper.Map<List<BioDto>>(bios);
         }
     }
 }
