@@ -13,9 +13,7 @@ class PositionService extends HttpClient {
   }
 
   async postPosition(position) {
-    return await this.post("Positions", position).then((response) => {
-      console.log(response);
-    });
+    return await this.post("Positions", position);
   }
 
   async putPosition(id, body){

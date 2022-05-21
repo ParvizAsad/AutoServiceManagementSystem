@@ -24,7 +24,6 @@ function Customer(props) {
   }, []);
 
   function EditCustomer(id){
-    console.log(id)
    props.history.push("/EditCustomer/"+id)
   } 
 

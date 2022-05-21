@@ -38,14 +38,12 @@ function CreateSalary() {
         history.push("/salary");
       }).catch(
         e=>{
-          console.log(e.response.data);
-            // if(e.response.status===400){
-            //   setError(e.response.data.errors.Name)
-            //   console.log(error);
-            // }
-            // else if(e.response.status===500){
-            //   setError(e.response.data)
-            // }
+            if(e.response.status===400){
+              setError(e.response.data.errors.Name)
+            }
+            else if(e.response.status===500){
+              setError(e.response.data)
+            }
       }
       );
     },

@@ -37,7 +37,6 @@ const exportToCSV = (apiData, fileName) => {
 
   React.useEffect(() => {
     employeeService.getAllEmployee().then(({ data }) => {
-      console.log(data);
       setEmployee(data);
     });
   }, []);

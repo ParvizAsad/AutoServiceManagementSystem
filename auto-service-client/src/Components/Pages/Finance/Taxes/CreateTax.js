@@ -28,14 +28,11 @@ function CreateTax() {
       e.preventDefault();
       taxService.postTax(tax).then(() => {
         getAllTax();
-        console.log(tax);
         history.push("/tax");
       }).catch(
         e=>{
             if(e.response.status===400){
               setError(e.response.data.errors.Name)
-              console.log(error);
-
             }
             else if(e.response.status===500){
               setError(e.response.data)

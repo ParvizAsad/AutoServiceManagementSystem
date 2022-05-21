@@ -32,7 +32,6 @@ function ExportCustomer() {
 
   React.useEffect(() => {
     customerService.getAllCustomers().then(({ data }) => {
-      console.log(data);
       setCustomer(data);
     });
   }, []);

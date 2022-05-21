@@ -25,7 +25,6 @@ function CreateCashBox() {
 
   const [CashBoxData, setCashBoxData] = useState();
   const history = useHistory();
-console.log(CashBox);
   const getAllCashBox = useCallback(() => {
     cashBoxService.getAllCashBoxes().then(({ data }) => {
       setCashBoxData(data);
@@ -41,8 +40,6 @@ console.log(CashBox);
         e=>{
             if(e.response.status===400){
               setError(e.response.data.errors.Name)
-              console.log(error);
-
             }
             else if(e.response.status===500){
               setError(e.response.data)

@@ -35,7 +35,6 @@ function CreateUser(props) {
 
   React.useEffect(() => {
     employeeService.getAllEmployee().then(({ data }) => {
-      console.log(data);
       setEmployee(data);
     });
   }, []);
@@ -53,7 +52,6 @@ function CreateUser(props) {
   const getElementValues = (e) => {
     const { name, value } = e.target;
     setUser({ ...user, [name]: value });
-    console.log(user);
   };
 
   const showPreview= e=>{

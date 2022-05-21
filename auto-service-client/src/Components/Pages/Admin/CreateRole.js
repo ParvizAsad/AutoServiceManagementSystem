@@ -34,7 +34,6 @@ function CreateRole() {
   const getElementValues = (e) => {
     const { name, value } = e.target;
     setRole({ ...Role, [name]: value });
-    console.log(Role);
   };
 
   return (

@@ -36,52 +36,20 @@ function EmployeeDetail(props) {
   const [data, setData] = useState(employees);
   const [newData, setNewData] = useState(employees);
   const [position, setPosition] = React.useState([]);
-  const [positionData, setPositionData] = useState();
   const history = useHistory();
 
   React.useEffect(() => {
     positionService.getAllPositions().then(({ data }) => {
-      console.log(data);
       setPosition(data);
     });
   }, []);
-
-  const getAllPositions = useCallback(() => {
-    positionService.getAllPositions().then(({ data }) => {
-      setPositionData(data);
-      console.log("data" + data);
-    });
-  }, [setPositionData]);
 
   useEffect(() => {
     const id = props.match.params.id;
     axios.get(url + id).then((res) => {
       setData(res.data);
-      console.log("res.data" + res.data.value);
     });
-    //   .catch((er) => console.error(err));
   }, []);
-
-  function handle(e) {
-    const newdata = { ...data };
-    newdata[e.target.id] = e.target.value;
-    setNewData(newdata);
-    console.log("newdata" + newdata);
-  }
-
-  const updateEmployee = useCallback(
-    (e) => {
-      e.preventDefault();
-      const id = props.match.params.id;
-      console.log("id" + id);
-      console.log("id-data put" + data);
-      employeeService.putEmployee(id, newData.value).then(() => {
-        // getAllEmployee();
-        history.push("/");
-      });
-    }
-    // [employee, history, getAllEmployee]
-  );
 
   const componentRef = useRef();
   const handlePrint = useReactToPrint({

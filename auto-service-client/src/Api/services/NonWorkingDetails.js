@@ -13,9 +13,7 @@ class NonWorkingDetailService extends HttpClient {
   }
 
   async postNonWorkingDetail(NonWorkingDetail) {
-    return await this.post("NonWorkingDetails", NonWorkingDetail).then((response) => {
-      console.log(response);
-    });
+    return await this.post("NonWorkingDetails", NonWorkingDetail);
   }
 
   async putNonWorkingDetail(id, body){

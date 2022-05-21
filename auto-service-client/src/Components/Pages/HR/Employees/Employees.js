@@ -24,7 +24,6 @@ function Employee(props) {
 
   React.useEffect(() => {
     employeeService.getAllEmployee().then(({ data }) => {
-      console.log(data);
       setEmployee(data);
     });
   }, []);
@@ -77,12 +76,10 @@ function Employee(props) {
   };
 
   function EditEmployee(id) {
-    console.log(id);
     props.history.push("/EditEmployee/" + id);
   }
 
   function EmployeeDetail(id) {
-    console.log(id);
     props.history.push("/EmployeeDetail/" + id);
   }
 

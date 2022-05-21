@@ -43,9 +43,6 @@ function EditCashbox(props) {
   );
 
   function handle(e) {
-    // const newCashbox = { ...Cashbox };
-    // newCashbox[e.target.id] = e.target.value;
-    // setCashbox(newCashbox);
     const { name, value } = e.target;
     setCashBox({ ...CashBox, [name]: value });
   }

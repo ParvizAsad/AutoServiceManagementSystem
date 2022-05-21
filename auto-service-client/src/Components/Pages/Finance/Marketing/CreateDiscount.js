@@ -34,8 +34,6 @@ function CreateDiscount() {
         e=>{
             if(e.response.status===400){
               setError(e.response.data.errors.Name)
-              console.log(error);
-
             }
             else if(e.response.status===500){
               setError(e.response.data)

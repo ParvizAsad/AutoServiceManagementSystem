@@ -33,7 +33,6 @@ function EditAccounting(props) {
       financeService.putFinance(id, accounting).then(() => {
         history.push("/accounting");
       }) .catch((e) => {
-        console.log(e.response.data.title);
         if (e.response.status === 400) {
           toast.error(`${e.response.data.title}`, {
             position: "top-right",

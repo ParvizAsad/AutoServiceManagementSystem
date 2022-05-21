@@ -61,7 +61,6 @@ function CreateEmployee() {
           history.push("/employee");
         })
         .catch((e) => {
-          console.log(e.response);
           if (e.response.status === 400) {
             toast.error(`${e.response.data.errors.Name}`, {
               position: "top-right",
@@ -90,12 +89,10 @@ function CreateEmployee() {
   const getElementValues = (e) => {
     const { name, value } = e.target;
     setEmployee({ ...employee, [name]: value });
-    console.log(employee);
   };
 
   React.useEffect(() => {
     positionService.getAllPositions().then(({ data }) => {
-      console.log(data);
       setPosition(data);
     });
   }, []);

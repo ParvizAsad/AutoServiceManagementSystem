@@ -69,7 +69,6 @@ function Tax() {
         )
       }
     }).finally(() => {
-      console.log('Experiment completed');
      setTimeout(() => {
       taxService.getAllTaxes().then(({ data }) => {
         setTaxes(data);

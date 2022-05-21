@@ -17,7 +17,6 @@ function Statistics() {
 
   React.useEffect(() => {
     statistcsService.getAllStatistics().then(({ data }) => {
-      console.log(data);
       setStatistics(data);
     });
   }, []);

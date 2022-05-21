@@ -13,9 +13,7 @@ class NonWorkingTypeService extends HttpClient {
   }
 
   async postNonWorkingType(NonWorkingType) {
-    return await this.post("NonWorkingTypes", NonWorkingType).then((response) => {
-      console.log(response);
-    });
+    return await this.post("NonWorkingTypes", NonWorkingType);
   }
 
   async putNonWorkingType(id, body){

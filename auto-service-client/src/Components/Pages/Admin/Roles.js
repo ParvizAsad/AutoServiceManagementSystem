@@ -85,12 +85,10 @@ const deleteButton = (id) => {
 //  })})}
 
 function EditRole(id){
-  console.log(id)
  props.history.push("/EditRole/"+id)
 } 
 
 function RoleDetail(id){
-  console.log(id)
  props.history.push("/RoleDetail/"+id)
 } 
 

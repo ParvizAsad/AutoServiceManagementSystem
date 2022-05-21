@@ -35,7 +35,6 @@ function EditEmployee(props) {
 
   React.useEffect(() => {
     positionService.getAllPositions().then(({ data }) => {
-      console.log(data);
       setPosition(data);
     });
   }, []);
@@ -52,7 +51,6 @@ function EditEmployee(props) {
       .get(url + id)
       .then((res) => {
         setData(res.data);
-        console.log(res.data);
       })
     //   .catch((er) => console.error(err));
   }, []);
@@ -66,7 +64,6 @@ function EditEmployee(props) {
         history.push("/employee");
       }).catch(
         e=>{
-          console.log(e.response)
             // if(e.response.status===400){
             //   setError(e.response.data.errors.Name[0])
             // }
