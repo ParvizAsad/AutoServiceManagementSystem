@@ -47,7 +47,7 @@ namespace AutoServiceManagment.Services.Services
 
             await NullCheck<Brand>.Checking(existBrand);
 
-            if(brandDto==null) { throw new Exception("Boş saxlanıla bilməz"); }
+            if(brandDto==null) { throw new Exception("Can not be empty"); }
 
             var brand = _mapper.Map<Brand>(brandDto);
 

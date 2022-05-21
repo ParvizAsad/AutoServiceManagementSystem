@@ -5,14 +5,13 @@ using AutoServiceManagment.Repository.DataContext;
 using AutoServiceManagment.Repository.Repository;
 using AutoServiceManagment.Repository.Repository.Contracts;
 using AutoServiceManagment.Services.Services.Contracts;
-using Microsoft.AspNet.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
 using AutoServiceManagment.Infrastructure.Data;
+using AutoServiceManagment.Infrastructure.Helpers;
 
 namespace AutoServiceManagment.Services.Services
 {
@@ -32,11 +31,11 @@ namespace AutoServiceManagment.Services.Services
         public async Task<IList<DiscountDto>> GetAllDiscountsAsync()
         {
             var discounts = await DbContext.Discounts.Where(x => x.IsDeleted == false).ToListAsync();
-            //foreach (var discount in discounts)
-            //{
-            //    if(discount.ExpireDate < DateTime.Now)
-            //        discount.IsExpired=true;
-            //}
+            foreach (var discount in discounts)
+            {
+                if (discount.ExpireDate < DateTime.Now)
+                    discount.IsExpired = true;
+            }
 
             return _mapper.Map<List<DiscountDto>>(discounts);
         }
@@ -49,15 +48,19 @@ namespace AutoServiceManagment.Services.Services
         }
         public async Task AddDiscountAsync(DiscountDto discountDto)
         {
+
+            var existDiscount= await DbContext.Discounts.Where(x => x.Name == discountDto.Name).FirstOrDefaultAsync();
+
+            await NullCheck<Discount>.Checking(existDiscount);
             var discount = _mapper.Map<Discount>(discountDto);
          
             await _repository.AddAsync(discount);
 
-            //var customers = await DbContext.Customers.Where(x => x.IsNotificationAllowed == true && x.IsDeleted==false).ToListAsync();
-            //foreach (var customer in customers)
-            //{
-            //    SendEmail.SendEmailForNotify(customer, discount);
-            //}
+            var customers = await DbContext.Customers.Where(x => x.IsNotificationAllowed == true && x.IsDeleted == false).ToListAsync();
+            foreach (var customer in customers)
+            {
+                SendEmail.SendEmailForNotify(customer, discount);
+            }
         }
 
         public async Task DeleteDiscountAsync(int? id)
