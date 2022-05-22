@@ -1,11 +1,11 @@
-import { FormGroup, Form, Label, Input, Button} from "reactstrap";
+import { FormGroup, Form, Label, Input, Button } from "reactstrap";
 import React, { useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
 // import "./Createcustomer.scss";
 import { customerService } from "../../../Api/services/Customers";
 import { serviceService } from "../../../Api/services/Services";
 import { productService } from "../../../Api/services/Products";
-import CurrencyInput from 'react-currency-input-field';
+import CurrencyInput from "react-currency-input-field";
 
 const initialCustomer = {
   fullName: "",
@@ -34,19 +34,18 @@ function CreateCustomer() {
   const createCustomer = useCallback(
     (e) => {
       e.preventDefault();
-      customerService.postCustomer(customer).then(() => {
-        history.push("/customer");
-      }).catch(
-        e=>{
-            if(e.response.status===400){
-              setError(e.response.data.errors.Name)
-
-            }
-            else if(e.response.status===500){
-              setError(e.response.data)
-            }
-      }
-      );
+      customerService
+        .postCustomer(customer)
+        .then(() => {
+          history.push("/customer");
+        })
+        .catch((e) => {
+          if (e.response.status === 400) {
+            setError(e.response.data.errors.Name);
+          } else if (e.response.status === 500) {
+            setError(e.response.data);
+          }
+        });
     },
     [customer, history]
   );
@@ -69,19 +68,19 @@ function CreateCustomer() {
   };
 
   const preventMinus = (e) => {
-    if (e.code === 'Minus') {
-        e.preventDefault();
-    }
-};
-
-const preventPasteNegative = (e) => {
-  const clipboardData = e.clipboardData || window.clipboardData;
-  const pastedData = parseFloat(clipboardData.getData('text'));
-
-  if (pastedData < 0) {
+    if (e.code === "Minus") {
       e.preventDefault();
-  }
-};
+    }
+  };
+
+  const preventPasteNegative = (e) => {
+    const clipboardData = e.clipboardData || window.clipboardData;
+    const pastedData = parseFloat(clipboardData.getData("text"));
+
+    if (pastedData < 0) {
+      e.preventDefault();
+    }
+  };
   return (
     <>
       <div className="ForHeading">
@@ -129,7 +128,7 @@ const preventPasteNegative = (e) => {
               name="debt"
               placeholder="debt"
               onChange={getElementValues}
-              prefix='$'
+              prefix="$"
               min="0"
               onPaste={preventPasteNegative}
               onKeyPress={preventMinus}
@@ -143,7 +142,6 @@ const preventPasteNegative = (e) => {
               onChange={getElementValues}
               name="ServiceIds"
               id="ServiceIds"
-
             >
               <option value="0">--Select Service--</option>
               {services?.map((item, idx) => (
@@ -161,7 +159,6 @@ const preventPasteNegative = (e) => {
               onChange={getElementValues}
               name="ProductIds"
               id="ProductIds"
-
             >
               <option value="0">--Select Product--</option>
               {products?.map((item, idx) => (

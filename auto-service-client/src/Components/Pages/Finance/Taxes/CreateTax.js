@@ -2,10 +2,10 @@ import { FormGroup, Form, Label, Input, Button, FormText } from "reactstrap";
 import React, { useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { taxService } from "../../../../Api/services/Taxes";
-import CurrencyInput from 'react-currency-input-field';
+import CurrencyInput from "react-currency-input-field";
 // import "./Employees/taxs/CreateEmployee.scss";
 
-const newTax= {
+const newTax = {
   Name: " ",
   taxValue: " ",
 };
@@ -26,19 +26,19 @@ function CreateTax() {
   const createTax = useCallback(
     (e) => {
       e.preventDefault();
-      taxService.postTax(tax).then(() => {
-        getAllTax();
-        history.push("/tax");
-      }).catch(
-        e=>{
-            if(e.response.status===400){
-              setError(e.response.data.errors.Name)
-            }
-            else if(e.response.status===500){
-              setError(e.response.data)
-            }
-      }
-      );
+      taxService
+        .postTax(tax)
+        .then(() => {
+          getAllTax();
+          history.push("/tax");
+        })
+        .catch((e) => {
+          if (e.response.status === 400) {
+            setError(e.response.data.errors.Name);
+          } else if (e.response.status === 500) {
+            setError(e.response.data);
+          }
+        });
     },
     [tax, history, getAllTax]
   );
@@ -49,19 +49,19 @@ function CreateTax() {
   };
 
   const preventMinus = (e) => {
-    if (e.code === 'Minus') {
-        e.preventDefault();
-    }
-};
-
-const preventPasteNegative = (e) => {
-  const clipboardData = e.clipboardData || window.clipboardData;
-  const pastedData = parseFloat(clipboardData.getData('text'));
-
-  if (pastedData < 0) {
+    if (e.code === "Minus") {
       e.preventDefault();
-  }
-};
+    }
+  };
+
+  const preventPasteNegative = (e) => {
+    const clipboardData = e.clipboardData || window.clipboardData;
+    const pastedData = parseFloat(clipboardData.getData("text"));
+
+    if (pastedData < 0) {
+      e.preventDefault();
+    }
+  };
   return (
     <>
       <div className="ForHeading">
@@ -69,7 +69,7 @@ const preventPasteNegative = (e) => {
       </div>
       <div className="CreatePage">
         <Form onSubmit={createTax}>
-        {error}
+          {error}
           <FormGroup>
             <Label for="Name">Name</Label>
             <Input
@@ -88,7 +88,7 @@ const preventPasteNegative = (e) => {
               name="taxValue"
               placeholder="Tax value"
               onChange={getElementValues}
-              prefix='$'
+              prefix="$"
               min="0"
               onPaste={preventPasteNegative}
               onKeyPress={preventMinus}

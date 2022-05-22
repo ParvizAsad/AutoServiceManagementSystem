@@ -18,16 +18,16 @@ function ExportEmployee() {
   const history = useHistory();
 
   const fileType =
-  "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8";
-const fileExtension = ".xlsx";
+    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8";
+  const fileExtension = ".xlsx";
 
-const exportToCSV = (apiData, fileName) => {
-  const ws = XLSX.utils.json_to_sheet(apiData);
-  const wb = { Sheets: { data: ws }, SheetNames: ["data"] };
-  const excelBuffer = XLSX.write(wb, { bookType: "xlsx", type: "array" });
-  const data = new Blob([excelBuffer], { type: fileType });
-  FileSaver.saveAs(data, fileName + fileExtension);
-};
+  const exportToCSV = (apiData, fileName) => {
+    const ws = XLSX.utils.json_to_sheet(apiData);
+    const wb = { Sheets: { data: ws }, SheetNames: ["data"] };
+    const excelBuffer = XLSX.write(wb, { bookType: "xlsx", type: "array" });
+    const data = new Blob([excelBuffer], { type: fileType });
+    FileSaver.saveAs(data, fileName + fileExtension);
+  };
 
   const getAllEmployee = useCallback(() => {
     employeeService.getAllEmployee().then(({ data }) => {
@@ -53,8 +53,11 @@ const exportToCSV = (apiData, fileName) => {
       <div className="ForHeading">
         <h1>Human Resourses</h1>
       </div>
-        <Button onClick={(e) => exportToCSV(employee, "Employee")}> Export excel </Button>
-     
+      <Button onClick={(e) => exportToCSV(employee, "Employee")}>
+        {" "}
+        Export excel{" "}
+      </Button>
+
       <button onClick={handlePrint}>Print</button>
       {/* <button onClick={handlePrint}>Print</button> */}
       <div ref={componentRef}>

@@ -42,19 +42,19 @@ function ExportProduct() {
         pageLength: 5,
         processing: true,
         dom: "Bfrtip",
-        buttons: [ 'copy', 'excel', 'csv', 'pdf', 'print' ],
+        buttons: ["copy", "excel", "csv", "pdf", "print"],
       });
     }, 1000);
   });
 
-//   $(document).ready(function() {
-//     var table = $('#ProductData').DataTable( {
-//         buttons: [ 'copy', 'excel', 'csv', 'pdf', 'print', 'colvis' ],
-//     } );
- 
-//     table.buttons().container()
-//         .appendTo( '#example_wrapper .col-md-6:eq(0)' );
-// } );
+  //   $(document).ready(function() {
+  //     var table = $('#ProductData').DataTable( {
+  //         buttons: [ 'copy', 'excel', 'csv', 'pdf', 'print', 'colvis' ],
+  //     } );
+
+  //     table.buttons().container()
+  //         .appendTo( '#example_wrapper .col-md-6:eq(0)' );
+  // } );
 
   return (
     <>

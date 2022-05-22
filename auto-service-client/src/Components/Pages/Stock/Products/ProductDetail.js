@@ -1,15 +1,12 @@
-import {
-  Card,
-  CardImg,
-  CardBody,
-  CardSubtitle,
-  CardTitle,
-} from "reactstrap";
+import { Card, CardImg, CardBody, CardSubtitle, CardTitle } from "reactstrap";
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { productService } from "../../../../Api/services/Products";
+import productImage from "../../../../Assets/Images/Products/productImage.jpg";
+import { categoryService } from "../../../../Api/services/Categories";
+import { brandService } from "../../../../Api/services/Brands";
 
-// import "./ProductDetail.scss";
+import "./ProductDetail.scss";
 
 const newProduct = {
   name: " ",
@@ -21,8 +18,9 @@ const newProduct = {
 };
 
 function ProductDetail(props) {
-
   const [product, setProduct] = useState(newProduct);
+  const [categories, setCategories] = useState([]);
+  const [brands, setBrands] = useState([]);
 
   const history = useHistory();
 
@@ -30,62 +28,69 @@ function ProductDetail(props) {
     const id = props.match.params.id;
     productService.getProductById(id).then((res) => {
       setProduct(res.data);
-      })
+    });
   }, []);
 
+  useEffect(() => {
+    categoryService.getAllCategories().then(({ data }) => {
+      setCategories(data);
+    });
+  }, []);
+
+  useEffect(() => {
+    brandService.getAllBrands().then(({ data }) => {
+      setBrands(data);
+    });
+  }, []);
   return (
     <>
-      <div className ='ForHeading'>
-          <h1>Product Detail</h1>
+      <div className="ForHeading">
+        <h1>Product Detail</h1>
       </div>
-      <div className='DetailPage'>
-      <Card>
-        <CardImg
-          alt="Card image cap"
-          src=""
-          top
-          width="100%"
-        />
-        <CardBody>
-          <CardTitle tag="h5">
-            Product Name: {product.name}
-          </CardTitle>
-          <CardSubtitle
-            className="mb-2 text-muted"
-            tag="h6"
-          >
-            Category: {product.categoryId}
-          </CardSubtitle>
-          <CardSubtitle
-            className="mb-2 text-muted"
-            tag="h6"
-          >
-            Brand: {product.categoryId}
-          </CardSubtitle>
-          <CardSubtitle
-            className="mb-2 text-muted"
-            tag="h6"
-          >
-            Base Price: {product.basePrice}
-          </CardSubtitle>
-          <CardSubtitle
-            className="mb-2 text-muted"
-            tag="h6"
-          >
-            Sale Proce: {product.salePrice}
-          </CardSubtitle>
-          <CardSubtitle
-            className="mb-2 text-muted"
-            tag="h6"
-          >
-            Count: {product.count}
-          </CardSubtitle>
-        </CardBody>
-      </Card>
+      <div className="DetailPage">
+        <Card className="forCard">
+          <CardImg
+            className="forImg"
+            alt="Card image cap"
+            src={productImage}
+            top
+            width="100%"
+          />
+          <CardBody>
+            <CardTitle className="Title" tag="h5">
+              Product Name:
+              {product.name}
+            </CardTitle>
+            <CardSubtitle className="forSubtitle" tag="h6">
+              Category:{" "}
+              {categories
+                ?.filter((category) => category.id === product.categoryId)
+                .map((category) => (
+                  <span>{category.name}</span>
+                ))}
+            </CardSubtitle>
+            <CardSubtitle className="forSubtitle" tag="h6">
+              Brand:{" "}
+              {brands
+                ?.filter((brand) => brand.id === product.brandId)
+                .map((brand) => (
+                  <span>{brand.name}</span>
+                ))}
+            </CardSubtitle>
+            <CardSubtitle className="forSubtitle" tag="h6">
+              Base Price: {product.basePrice}
+            </CardSubtitle>
+            <CardSubtitle className="forSubtitle" tag="h6">
+              Sale Price: {product.salePrice}
+            </CardSubtitle>
+            <CardSubtitle className="forSubtitle" tag="h6">
+              Count: {product.count}
+            </CardSubtitle>
+          </CardBody>
+        </Card>
       </div>
     </>
-
-  )
+  );
 }
 
-export default ProductDetail
+export default ProductDetail;

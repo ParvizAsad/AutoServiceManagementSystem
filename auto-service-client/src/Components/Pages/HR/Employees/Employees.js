@@ -9,8 +9,6 @@ import { css } from "@emotion/react";
 import HashLoader from "react-spinners/HashLoader";
 import { useHistory, Link } from "react-router-dom";
 
-
-
 function Employee(props) {
   const [employees, setEmployees] = React.useState([]);
   const [employeeData, setEmployeeData] = useState();
@@ -25,9 +23,9 @@ function Employee(props) {
     });
   }, []);
 
-  const maxCount=employees.length;
-  const showMoreItems=()=>{
-    setVisible((prevalue)=>prevalue+2)
+  const maxCount = employees.length;
+  const showMoreItems = () => {
+    setVisible((prevalue) => prevalue + 2);
   };
 
   const deleteButton = (id) => {
@@ -72,9 +70,6 @@ function Employee(props) {
           });
         }, 5000);
       });
-
-        
-        
   };
 
   function EditEmployee(id) {
@@ -131,11 +126,15 @@ function Employee(props) {
                 if (searchEmployee == " ") {
                   return val;
                 } else if (
-                  val.fullName.toLowerCase().includes(searchEmployee.toLowerCase())
+                  val.fullName
+                    .toLowerCase()
+                    .includes(searchEmployee.toLowerCase())
                 ) {
                   return val;
                 }
-              }).slice(0, visible).map((item, idx) => (
+              })
+              .slice(0, visible)
+              .map((item, idx) => (
                 <tr key={idx}>
                   <th scope="row">{item.id}</th>
                   <td>{item.fullName}</td>
@@ -166,9 +165,16 @@ function Employee(props) {
           </tbody>
         </Table>
       </div>
-      <div className="d-flex justify-content-center">
-      {(maxCount>visible) ?(<span><Link onClick={showMoreItems}>Load more</Link></span>
-      ):(<span></span>)}
+      <div className="loadMore d-flex justify-content-center">
+        {maxCount > visible ? (
+          <span>
+            <Link className="linkForLaodMore" onClick={showMoreItems}>
+              Load more...
+            </Link>
+          </span>
+        ) : (
+          <span></span>
+        )}
       </div>
     </>
   );

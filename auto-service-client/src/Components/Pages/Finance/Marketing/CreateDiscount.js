@@ -3,9 +3,9 @@ import React, { useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { discountService } from "../../../../Api/services/Discount";
 // import "./Employees/Discounts/CreateEmployee.scss";
-import CurrencyInput from 'react-currency-input-field';
+import CurrencyInput from "react-currency-input-field";
 
-const newDiscount= {
+const newDiscount = {
   Name: " ",
   Percentage: " ",
   ExpireDate: " ",
@@ -27,19 +27,19 @@ function CreateDiscount() {
   const createDiscount = useCallback(
     (e) => {
       e.preventDefault();
-      discountService.postDiscount(Discount).then(() => {
-        getAllDiscount();
-        history.push("/marketing");
-      }).catch(
-        e=>{
-            if(e.response.status===400){
-              setError(e.response.data.errors.Name)
-            }
-            else if(e.response.status===500){
-              setError(e.response.data)
-            }
-      }
-      );
+      discountService
+        .postDiscount(Discount)
+        .then(() => {
+          getAllDiscount();
+          history.push("/marketing");
+        })
+        .catch((e) => {
+          if (e.response.status === 400) {
+            setError(e.response.data.errors.Name);
+          } else if (e.response.status === 500) {
+            setError(e.response.data);
+          }
+        });
     },
     [Discount, history, getAllDiscount]
   );

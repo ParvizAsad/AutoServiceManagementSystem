@@ -25,7 +25,6 @@ function Header() {
         <img src={logo} alt="Logo" />
         <h1>Car-Tool-Network Auto Service</h1>
         <div className="Profile">
-
           <div>
             <div className="ForAccount">
               {/* user.IsAuthenticated==true */}
@@ -41,7 +40,7 @@ function Header() {
               ) : (
                 <h4>
                   <Link className="linkForAccount" to="login">
-                    <h1>Login</h1> 
+                    <h1 className="forLogin">Login</h1>
                   </Link>
                 </h4>
               )}

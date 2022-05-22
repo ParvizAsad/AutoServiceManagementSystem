@@ -11,14 +11,14 @@ const service = {
 };
 function EditService(props) {
   const [Service, setService] = useState(service);
-  
+
   const history = useHistory();
-  
+
   useEffect(() => {
     const id = props.match.params.id;
     serviceService.getServiceById(id).then((res) => {
       setService(res.data);
-      })
+    });
   }, []);
 
   const editService = useCallback(
@@ -32,8 +32,6 @@ function EditService(props) {
     [Service, history]
   );
 
-
-
   function handle(e) {
     const newService = { ...Service };
     newService[e.target.id] = e.target.value;
@@ -41,7 +39,6 @@ function EditService(props) {
 
     // const { name, value } = e.target;
     // setService({ ...Service, [name]: value });
-
   }
 
   return (

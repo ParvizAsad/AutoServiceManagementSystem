@@ -26,7 +26,7 @@ function EditNonWorkingDetail(props) {
     const id = props.match.params.id;
     nonWorkingDetailService.getNonWorkingDetailById(id).then((res) => {
       setNonWorkingDetailData(res.data);
-      })
+    });
   }, []);
 
   const getAllNonWorkingDetail = useCallback(() => {
@@ -34,7 +34,6 @@ function EditNonWorkingDetail(props) {
       setNonWorkingDetailData(data);
     });
   }, [setNonWorkingDetailData]);
-
 
   const getElementValues = (e) => {
     const { name, value } = e.target;
@@ -51,9 +50,11 @@ function EditNonWorkingDetail(props) {
     (e) => {
       e.preventDefault();
       const id = props.match.params.id;
-      nonWorkingDetailService.putNonWorkingDetail(id, nonWorkingDetail).then(() => {
-        history.push("/nonworkingdetail");
-      });
+      nonWorkingDetailService
+        .putNonWorkingDetail(id, nonWorkingDetail)
+        .then(() => {
+          history.push("/nonworkingdetail");
+        });
     },
     [history, nonWorkingDetail]
   );
@@ -70,7 +71,6 @@ function EditNonWorkingDetail(props) {
     // setPosition(newposition);
     const { name, value } = e.target;
     setNonWorkingDetail({ ...nonWorkingDetail, [name]: value });
-
   }
 
   return (
@@ -104,7 +104,12 @@ function EditNonWorkingDetail(props) {
           </FormGroup>
           <FormGroup>
             <Label for="NonWorkingTypeId">Select nonWorkingType</Label>
-            <select className="NonWorkingTypeId"  onChange={(e) => handle(e)}  name="NonWorkingTypeId" id="NonWorkingTypeId">
+            <select
+              className="NonWorkingTypeId"
+              onChange={(e) => handle(e)}
+              name="NonWorkingTypeId"
+              id="NonWorkingTypeId"
+            >
               <option value="0">--Select nonWorkingType--</option>
               {nonWorkingType?.map((item, idx) => (
                 <option key={item.id} value={item.id}>
@@ -115,7 +120,12 @@ function EditNonWorkingDetail(props) {
           </FormGroup>
           <FormGroup>
             <Label for="EmployeeId">Select employee</Label>
-            <select className="EmployeeId" onChange={(e) => handle(e)}  name="EmployeeId" id="EmployeeId">
+            <select
+              className="EmployeeId"
+              onChange={(e) => handle(e)}
+              name="EmployeeId"
+              id="EmployeeId"
+            >
               <option value="0">--Select employee--</option>
               {employee?.map((item, idx) => (
                 <option key={item.id} value={item.id}>

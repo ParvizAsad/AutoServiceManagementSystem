@@ -61,14 +61,14 @@ function Service() {
             "error"
           );
         }
-      }).finally(() => {
+      })
+      .finally(() => {
         setTimeout(() => {
-         serviceService.getAllServices().then(({ data }) => {
-           setService(data);
-         })
+          serviceService.getAllServices().then(({ data }) => {
+            setService(data);
+          });
         }, 500);
-   
-       });
+      });
   };
 
   return (

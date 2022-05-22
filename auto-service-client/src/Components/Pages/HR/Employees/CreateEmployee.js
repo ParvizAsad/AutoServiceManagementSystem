@@ -103,43 +103,42 @@ function CreateEmployee() {
     });
   }, [setPositionData]);
 
-const showPreview= e=>{
-  if(e.target.files && e.target.files[0]){
-    let imageFile= e.target.files[0];
-    const reader= new FileReader();
-    reader.onload = x => {
+  const showPreview = (e) => {
+    if (e.target.files && e.target.files[0]) {
+      let imageFile = e.target.files[0];
+      const reader = new FileReader();
+      reader.onload = (x) => {
+        setEmployee({
+          ...employee,
+          imageFile,
+          imageName: x.target.result,
+          imageSrc: x.target.result,
+        });
+      };
+      reader.readAsDataURL(imageFile);
+    } else {
       setEmployee({
         ...employee,
-        imageFile,
-        imageName: x.target.result,
-        imageSrc: x.target.result
-      })
+        imageFile: null,
+        imageSrc: defaultImageSrc,
+      });
     }
-    reader.readAsDataURL(imageFile)
-  }
-  else{
-    setEmployee({
-      ...employee,
-      imageFile: null,
-      imageSrc: defaultImageSrc
-    })
-  }
-}
+  };
 
-const preventMinus = (e) => {
-  if (e.code === 'Minus') {
+  const preventMinus = (e) => {
+    if (e.code === "Minus") {
       e.preventDefault();
-  }
-};
+    }
+  };
 
-const preventPasteNegative = (e) => {
-const clipboardData = e.clipboardData || window.clipboardData;
-const pastedData = parseFloat(clipboardData.getData('text'));
+  const preventPasteNegative = (e) => {
+    const clipboardData = e.clipboardData || window.clipboardData;
+    const pastedData = parseFloat(clipboardData.getData("text"));
 
-if (pastedData < 0) {
-    e.preventDefault();
-}
-};
+    if (pastedData < 0) {
+      e.preventDefault();
+    }
+  };
   return (
     <>
       <div className="ForHeading">
@@ -159,12 +158,11 @@ if (pastedData < 0) {
           </FormGroup>
           <FormGroup>
             <Label for="imageName">Image</Label>
-            <img src={employee.imageSrc} className=" profilePicture"
-            />
+            <img src={employee.imageSrc} className=" profilePicture" />
             <Input
               type="file"
               name="imageName"
-              accept="image/*" 
+              accept="image/*"
               id="imageName"
               onChange={showPreview}
             />

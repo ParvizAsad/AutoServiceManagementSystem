@@ -3,23 +3,23 @@ import React, { useCallback, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { taxService } from "../../../../Api/services/Taxes";
 // import "./Employees/taxs/CreateEmployee.scss";
-import CurrencyInput from 'react-currency-input-field';
+import CurrencyInput from "react-currency-input-field";
 
-const NewTax= {
+const NewTax = {
   name: " ",
   taxValue: " ",
 };
 
 function EditTax(props) {
   const [tax, setTax] = useState(NewTax);
-  
+
   const history = useHistory();
-  
+
   useEffect(() => {
     const id = props.match.params.id;
     taxService.getTaxById(id).then((res) => {
       setTax(res.data);
-      })
+    });
   }, []);
 
   const editTax = useCallback(
@@ -37,7 +37,7 @@ function EditTax(props) {
     const id = props.match.params.id;
     taxService.getTaxById(id).then((res) => {
       setTax(res.data);
-      })
+    });
   }, []);
 
   function handle(e) {
@@ -46,7 +46,6 @@ function EditTax(props) {
     // setTax(newtax);
     const { name, value } = e.target;
     setTax({ ...tax, [name]: value });
-
   }
 
   return (
@@ -73,7 +72,7 @@ function EditTax(props) {
               id="taxValue"
               name="taxValue"
               placeholder="Tax value"
-              prefix='$'
+              prefix="$"
               value={tax.taxValue}
               onChange={(e) => handle(e)}
             />

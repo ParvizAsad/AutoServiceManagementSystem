@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { nonWorkingTypeService } from "../../../../Api/services/NonWorkingTypes";
 // import "./Employees/taxs/CreateEmployee.scss";
 
-const NewNonWorkingType= {
+const NewNonWorkingType = {
   name: " ",
 };
 
@@ -24,12 +24,11 @@ function EditNonWorkingType(props) {
     [NonWorkingType, history]
   );
 
-
   useEffect(() => {
     const id = props.match.params.id;
     nonWorkingTypeService.getNonWorkingTypeById(id).then((res) => {
       setNonWorkingType(res.data);
-      })
+    });
   }, []);
 
   function handle(e) {
@@ -38,7 +37,6 @@ function EditNonWorkingType(props) {
     // setNonWorkingType(newNonWorkingType);
     const { name, value } = e.target;
     setNonWorkingType({ ...NonWorkingType, [name]: value });
-
   }
 
   return (

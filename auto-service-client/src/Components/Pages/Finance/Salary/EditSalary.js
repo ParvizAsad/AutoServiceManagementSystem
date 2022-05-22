@@ -4,15 +4,15 @@ import { useHistory } from "react-router-dom";
 import { salaryService } from "../../../../Api/services/Salaries";
 import { employeeService } from "../../../../Api/services/Employee";
 import { taxService } from "../../../../Api/services/Taxes";
-import CurrencyInput from 'react-currency-input-field';
+import CurrencyInput from "react-currency-input-field";
 
 // import "./Employees/Salarys/CreateEmployee.scss";
 
-const newSalary= {
+const newSalary = {
   date: " ",
   bonus: " ",
   netSalary: " ",
-  taxId: " ", 
+  taxId: " ",
   employeeId: " ",
 };
 
@@ -22,12 +22,12 @@ function EditSalary(props) {
   const [taxes, setTaxes] = React.useState([]);
 
   const history = useHistory();
-  
+
   useEffect(() => {
     const id = props.match.params.id;
     salaryService.getSalaryById(id).then((res) => {
       setSalary(res.data);
-      })
+    });
   }, []);
 
   const editSalary = useCallback(
@@ -45,7 +45,7 @@ function EditSalary(props) {
     const id = props.match.params.id;
     salaryService.getSalaryById(id).then((res) => {
       setSalary(res.data);
-      })
+    });
   }, []);
 
   function handle(e) {
@@ -54,7 +54,6 @@ function EditSalary(props) {
     // setSalary(newSalary);
     const { name, value } = e.target;
     setSalary({ ...Salary, [name]: value });
-
   }
 
   React.useEffect(() => {
@@ -76,9 +75,14 @@ function EditSalary(props) {
       </div>
       <div className="CreatePage">
         <Form onSubmit={editSalary}>
-        <FormGroup>
+          <FormGroup>
             <Label for="employeeId">Select Employee</Label>
-            <select className="employeeId" onChange={(e) => handle(e)}  name="employeeId" id="employeeId">
+            <select
+              className="employeeId"
+              onChange={(e) => handle(e)}
+              name="employeeId"
+              id="employeeId"
+            >
               <option value="0">--Select Employee--</option>
               {employee?.map((item, idx) => (
                 <option key={idx} value={item.id}>
@@ -104,14 +108,19 @@ function EditSalary(props) {
               id="bonus"
               name="bonus"
               placeholder="bonus"
-              prefix='$'
+              prefix="$"
               onChange={(e) => handle(e)}
               value={Salary.bonus}
             />
           </FormGroup>
           <FormGroup>
             <Label for="TaxId">Select Tax</Label>
-            <select className="TaxId" onChange={(e) => handle(e)}  name="TaxId" id="TaxId">
+            <select
+              className="TaxId"
+              onChange={(e) => handle(e)}
+              name="TaxId"
+              id="TaxId"
+            >
               <option value="0">--Select Tax--</option>
               {taxes?.map((item, idx) => (
                 <option key={idx} value={item.id}>

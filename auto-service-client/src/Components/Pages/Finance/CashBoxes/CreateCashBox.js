@@ -1,15 +1,15 @@
-import { FormGroup, Form, Label, Input, Button} from "reactstrap";
+import { FormGroup, Form, Label, Input, Button } from "reactstrap";
 import React, { useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { customerService } from "../../../../Api/services/Customers";
 import { cashBoxService } from "../../../../Api/services/CashBox";
 import { serviceService } from "../../../../Api/services/Services";
 import { productService } from "../../../../Api/services/Products";
-import CurrencyInput from 'react-currency-input-field';
+import CurrencyInput from "react-currency-input-field";
 
 // import "./Customers/CashBoxs/CreateCustomer.scss";
 
-const newCashBox= {
+const newCashBox = {
   CustomerId: " ",
   ServiceId: " ",
   ProductId: " ",
@@ -34,23 +34,21 @@ function CreateCashBox() {
   const createCashBox = useCallback(
     (e) => {
       e.preventDefault();
-      cashBoxService.postCashBox(CashBox).then(() => {
-        history.push("/cashbox");
-      }).catch(
-        e=>{
-            if(e.response.status===400){
-              setError(e.response.data.errors.Name)
-            }
-            else if(e.response.status===500){
-              setError(e.response.data)
-            }
-      }
-      );
+      cashBoxService
+        .postCashBox(CashBox)
+        .then(() => {
+          history.push("/cashbox");
+        })
+        .catch((e) => {
+          if (e.response.status === 400) {
+            setError(e.response.data.errors.Name);
+          } else if (e.response.status === 500) {
+            setError(e.response.data);
+          }
+        });
     },
     [CashBox, history]
   );
-
-
 
   const getElementValues = (e) => {
     const { name, value } = e.target;
@@ -76,19 +74,19 @@ function CreateCashBox() {
   }, []);
 
   const preventMinus = (e) => {
-    if (e.code === 'Minus') {
-        e.preventDefault();
-    }
-};
-
-const preventPasteNegative = (e) => {
-  const clipboardData = e.clipboardData || window.clipboardData;
-  const pastedData = parseFloat(clipboardData.getData('text'));
-
-  if (pastedData < 0) {
+    if (e.code === "Minus") {
       e.preventDefault();
-  }
-};
+    }
+  };
+
+  const preventPasteNegative = (e) => {
+    const clipboardData = e.clipboardData || window.clipboardData;
+    const pastedData = parseFloat(clipboardData.getData("text"));
+
+    if (pastedData < 0) {
+      e.preventDefault();
+    }
+  };
 
   return (
     <>
@@ -98,9 +96,14 @@ const preventPasteNegative = (e) => {
       <div className="CreatePage">
         <Form onSubmit={createCashBox}>
           {error}
-        <FormGroup>
+          <FormGroup>
             <Label for="CustomerId">Select Customer</Label>
-            <select className="CustomerId" onChange={getElementValues}  name="CustomerId" id="CustomerId">
+            <select
+              className="CustomerId"
+              onChange={getElementValues}
+              name="CustomerId"
+              id="CustomerId"
+            >
               <option value="0">--Select Customer--</option>
               {customers?.map((item, idx) => (
                 <option key={idx} value={item.id}>
@@ -112,7 +115,12 @@ const preventPasteNegative = (e) => {
           {error}
           <FormGroup>
             <Label for="Services">Select Service</Label>
-            <select className="ServiceId" onChange={getElementValues}  name="ServiceId" id="ServiceId">
+            <select
+              className="ServiceId"
+              onChange={getElementValues}
+              name="ServiceId"
+              id="ServiceId"
+            >
               <option value="0">--Select Service--</option>
               {services?.map((item, idx) => (
                 <option key={idx} value={item.id}>
@@ -124,7 +132,12 @@ const preventPasteNegative = (e) => {
           {error}
           <FormGroup>
             <Label for="ProductId">Select Product</Label>
-            <select className="ProductId" onChange={getElementValues}  name="ProductId" id="Productd">
+            <select
+              className="ProductId"
+              onChange={getElementValues}
+              name="ProductId"
+              id="Productd"
+            >
               <option value="0">--Select Product--</option>
               {products?.map((item, idx) => (
                 <option key={idx} value={item.id}>
@@ -133,7 +146,7 @@ const preventPasteNegative = (e) => {
               ))}
             </select>
           </FormGroup>
-            {error}
+          {error}
           <FormGroup>
             <Label for="Payment">Payment</Label>
             <Input

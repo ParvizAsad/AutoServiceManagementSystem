@@ -13,7 +13,7 @@ function EditRole(props) {
 
   const history = useHistory();
 
-  const editRole= useCallback(
+  const editRole = useCallback(
     (e) => {
       e.preventDefault();
       const id = props.match.params.id;
@@ -27,7 +27,6 @@ function EditRole(props) {
   function handle(e) {
     const { name, value } = e.target;
     setRole({ ...role, [name]: value });
-
   }
   const getElementValues = (e) => {
     const { name, value } = e.target;

@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { categoryService } from "../../../../Api/services/Categories";
 import { brandService } from "../../../../Api/services/Brands";
 import { productService } from "../../../../Api/services/Products";
-import {Formik} from "formik";
+import { Formik } from "formik";
 import * as Yup from "yup";
 import { useForm } from "react-hook-form";
 
@@ -29,22 +29,27 @@ function CreateProduct() {
     formState: { errors },
     handleSubmit,
   } = useForm();
- 
-  const [errorHandle, setErrorHandle] = useState(null)
-  const errorDiv = errorHandle 
-      ? <div className="error">
-          <i class="material-icons error-icon">error_outline</i>
-          {errorHandle}
-        </div> 
-      : '';
+
+  const [errorHandle, setErrorHandle] = useState(null);
+  const errorDiv = errorHandle ? (
+    <div className="error">
+      <i class="material-icons error-icon">error_outline</i>
+      {errorHandle}
+    </div>
+  ) : (
+    ""
+  );
   const createProduct = useCallback(
     (e) => {
       e.preventDefault();
-      productService.postProduct(product).then(() => {
-        history.push("/product");
-      }).catch(res => {
+      productService
+        .postProduct(product)
+        .then(() => {
+          history.push("/product");
+        })
+        .catch((res) => {
           setErrorHandle(res.error);
-      })
+        });
     },
     [product, history]
   );
@@ -67,59 +72,59 @@ function CreateProduct() {
   }, []);
 
   const preventMinus = (e) => {
-    if (e.code === 'Minus') {
-        e.preventDefault();
-    }
-};
-
-const preventPasteNegative = (e) => {
-  const clipboardData = e.clipboardData || window.clipboardData;
-  const pastedData = parseFloat(clipboardData.getData('text'));
-
-  if (pastedData < 0) {
+    if (e.code === "Minus") {
       e.preventDefault();
-  }
-};
+    }
+  };
+
+  const preventPasteNegative = (e) => {
+    const clipboardData = e.clipboardData || window.clipboardData;
+    const pastedData = parseFloat(clipboardData.getData("text"));
+
+    if (pastedData < 0) {
+      e.preventDefault();
+    }
+  };
 
   return (
     <>
-    <Formik
-    initialValues={{
-      name: " ",
-    }}
-    validationSchema={
-      Yup.object({
-        name: Yup.string().required("NAme required"),
-      })}
-      onSubmit={(values,{resetForm, setSubmiting})=>{
-    setTimeout(() => {
-      setSubmiting(false);
-      resetForm();
-    }, 2000);
-    }}
-    >
-      {({
-        values,
-        errors,
-        handleChange,handleSubmit,handleReset, dirty, isSubmitting,
-      })=>(
-        <form onSubmit={handleSubmit}>
-        <label htmlFor="name"></label>
-        <input
-        id="name"
-        type="text"
-        className="name"
-        value={values.name}
-        onChange={handleChange}
-        />
-{errors.name  &&(
-  <div className="input-feedback" >{errors.name}</div>
-)}
-        <button type="submit">submit</button>
-        </form>
-      )}
-    </Formik>
-
+      <Formik
+        initialValues={{
+          name: " ",
+        }}
+        validationSchema={Yup.object({
+          name: Yup.string().required("NAme required"),
+        })}
+        onSubmit={(values, { resetForm, setSubmiting }) => {
+          setTimeout(() => {
+            setSubmiting(false);
+            resetForm();
+          }, 2000);
+        }}
+      >
+        {({
+          values,
+          errors,
+          handleChange,
+          handleSubmit,
+          handleReset,
+          dirty,
+          isSubmitting,
+        }) => (
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="name"></label>
+            <input
+              id="name"
+              type="text"
+              className="name"
+              value={values.name}
+              onChange={handleChange}
+            />
+            {errors.name && <div className="input-feedback">{errors.name}</div>}
+            <button type="submit">submit</button>
+          </form>
+        )}
+      </Formik>
 
       <div className="ForHeading">
         <h1>Create a new Product</h1>
@@ -127,7 +132,7 @@ const preventPasteNegative = (e) => {
       <div className="CreatePage">
         {/* <Form onSubmit={createProduct}> */}
         <Form onSubmit={handleSubmit(createProduct)}>
-        {error}
+          {error}
           <FormGroup>
             <Label for="name">Name</Label>
             <Input
@@ -180,7 +185,7 @@ const preventPasteNegative = (e) => {
               onKeyPress={preventMinus}
             />
           </FormGroup>
-                  {error}
+          {error}
           <FormGroup>
             <Label for="categoryId">Select Category</Label>
             <select
@@ -200,8 +205,12 @@ const preventPasteNegative = (e) => {
           {error}
           <FormGroup>
             <Label for="brandId">Select Brand</Label>
-            <select className="form-control"
-              onChange={getElementValues} name="brandId" id="brandId">
+            <select
+              className="form-control"
+              onChange={getElementValues}
+              name="brandId"
+              id="brandId"
+            >
               <option value="0">--Select Brand--</option>
               {brand?.map((item) => (
                 <option key={item.id} value={item.id}>

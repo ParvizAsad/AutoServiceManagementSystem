@@ -5,8 +5,7 @@ import { financeService } from "../../../../Api/services/Finances";
 // import "./Employees/Accountings/CreateEmployee.scss";
 import moment from "moment";
 import { ToastContainer, toast } from "react-toastify";
-import CurrencyInput from 'react-currency-input-field';
-
+import CurrencyInput from "react-currency-input-field";
 
 const newAccounting = {
   communalCost: " ",
@@ -16,62 +15,61 @@ const newAccounting = {
 
 function EditAccounting(props) {
   const [accounting, setAccounting] = useState(newAccounting);
-  
+
   const history = useHistory();
-  
+
   useEffect(() => {
     const id = props.match.params.id;
     financeService.getFinanceById(id).then((res) => {
       setAccounting(res.data);
-      })
+    });
   }, []);
 
   const editAccounting = useCallback(
     (e) => {
       e.preventDefault();
       const id = props.match.params.id;
-      financeService.putFinance(id, accounting).then(() => {
-        history.push("/accounting");
-      }) .catch((e) => {
-        if (e.response.status === 400) {
-          toast.error(`${e.response.data.title}`, {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-        } else if (e.response.status === 500) {
-          toast.error(`${e.response.data}`, {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-        }
-        else{
-          toast.error(`${e.response.data.title}`, {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-        }
-
-      });
+      financeService
+        .putFinance(id, accounting)
+        .then(() => {
+          history.push("/accounting");
+        })
+        .catch((e) => {
+          if (e.response.status === 400) {
+            toast.error(`${e.response.data.title}`, {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+          } else if (e.response.status === 500) {
+            toast.error(`${e.response.data}`, {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+          } else {
+            toast.error(`${e.response.data.title}`, {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+          }
+        });
     },
     [accounting, history]
   );
-
-
 
   function handle(e) {
     // const newAccounting = { ...Accounting };
@@ -96,7 +94,7 @@ function EditAccounting(props) {
               placeholder="CommunalCost"
               onChange={(e) => handle(e)}
               value={accounting.communalCost}
-              prefix='$'
+              prefix="$"
             />
           </FormGroup>
           <FormGroup>
@@ -107,7 +105,7 @@ function EditAccounting(props) {
               placeholder="additionalCost"
               onChange={(e) => handle(e)}
               value={accounting.additionalCost}
-              prefix='$'
+              prefix="$"
             />
           </FormGroup>
           <FormGroup>

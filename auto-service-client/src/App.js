@@ -72,6 +72,8 @@ import Customer from './Components/Pages/Customer/Customers';
 import ExportCustomer from './Components/Pages/Customer/ExportCustomer';
 import EditCustomer from './Components/Pages/Customer/EditCustomer';
 import Profile from './Components/Pages/Profile/Profile';
+import Convertor from './Components/Pages/Convertor/Convertor';
+import CurrencyInput from 'react-currency-input-field';
 
 function App() {
   return (
@@ -105,7 +107,9 @@ function App() {
         <Route path="/statistics" exact component={Statistics} />
         <Route path="/resetpassword" exact component={ResetPassword} />
         <Route path="/profile" exact component={Profile} />
+        <Route path="/convertor" exact component={Convertor} />
 
+        
         <Route path="/ExportEmployee" exact component={ExportEmployee} />
         <Route path="/ExportProduct" exact component={ExportProduct} />
         <Route path="/ExportCustomer" exact component={ExportCustomer} />

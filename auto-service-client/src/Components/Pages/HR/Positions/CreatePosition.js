@@ -24,19 +24,19 @@ function CreatePosition() {
   const createPosition = useCallback(
     (e) => {
       e.preventDefault();
-      positionService.postPosition(position).then(() => {
-        getAllPosition();
-        history.push("/position");
-      }).catch(
-        e=>{
-            if(e.response.status===400){
-              setError(e.response.data.errors.Name)
-            }
-            else if(e.response.status===500){
-              setError(e.response.data)
-            }
-      }
-      );
+      positionService
+        .postPosition(position)
+        .then(() => {
+          getAllPosition();
+          history.push("/position");
+        })
+        .catch((e) => {
+          if (e.response.status === 400) {
+            setError(e.response.data.errors.Name);
+          } else if (e.response.status === 500) {
+            setError(e.response.data);
+          }
+        });
     },
     [position, history, getAllPosition]
   );
@@ -53,7 +53,7 @@ function CreatePosition() {
       </div>
       <div className="CreatePage">
         <Form onSubmit={createPosition}>
-        {error}
+          {error}
           <FormGroup>
             <Label for="Name">Name</Label>
             <Input

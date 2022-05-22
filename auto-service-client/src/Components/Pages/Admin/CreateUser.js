@@ -20,7 +20,6 @@ const newUser = {
 };
 
 function CreateUser(props) {
-
   const [employee, setEmployee] = React.useState([]);
   const [employeeData, setEmployeeData] = useState();
   const [user, setUser] = useState(newUser);
@@ -54,28 +53,27 @@ function CreateUser(props) {
     setUser({ ...user, [name]: value });
   };
 
-  const showPreview= e=>{
-    if(e.target.files && e.target.files[0]){
-      let imageFile= e.target.files[0];
-      const reader= new FileReader();
-      reader.onload = x => {
+  const showPreview = (e) => {
+    if (e.target.files && e.target.files[0]) {
+      let imageFile = e.target.files[0];
+      const reader = new FileReader();
+      reader.onload = (x) => {
         setUser({
           ...user,
           imageFile,
           imageName: x.target.result,
-          imageSrc: x.target.result
-        })
-      }
-      reader.readAsDataURL(imageFile)
-    }
-    else{
+          imageSrc: x.target.result,
+        });
+      };
+      reader.readAsDataURL(imageFile);
+    } else {
       setUser({
         ...user,
         imageFile: null,
-        imageSrc: defaultImageSrc
-      })
+        imageSrc: defaultImageSrc,
+      });
     }
-  }
+  };
   return (
     <>
       <div className="ForHeading">
@@ -125,12 +123,11 @@ function CreateUser(props) {
           </FormGroup>
           <FormGroup>
             <Label for="imageName">Image</Label>
-            <img src={user.imageSrc} className=" profilePicture"
-            />
+            <img src={user.imageSrc} className=" profilePicture" />
             <Input
               type="file"
               name="imageName"
-              accept="image/*" 
+              accept="image/*"
               id="imageName"
               onChange={showPreview}
             />

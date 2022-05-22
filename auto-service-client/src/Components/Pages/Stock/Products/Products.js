@@ -147,10 +147,12 @@ function Product(props) {
           </tbody>
         </Table>
       </div>
-      <div className="d-flex justify-content-center">
+      <div className="loadMore d-flex justify-content-center">
         {maxCount > visible ? (
           <span>
-            <Link onClick={showMoreItems}>Load more</Link>
+            <Link className="linkForLaodMore" onClick={showMoreItems}>
+              Load more...
+            </Link>
           </span>
         ) : (
           <span></span>

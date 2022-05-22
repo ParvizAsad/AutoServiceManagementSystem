@@ -2,7 +2,7 @@ import { FormGroup, Form, Label, Input, Button, FormText } from "reactstrap";
 import React, { useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { financeService } from "../../../../Api/services/Finances";
-import CurrencyInput from 'react-currency-input-field';
+import CurrencyInput from "react-currency-input-field";
 
 // import "./Employees/Accountings/CreateEmployee.scss";
 
@@ -28,19 +28,19 @@ function CreateAccounting() {
   const createAccounting = useCallback(
     (e) => {
       e.preventDefault();
-      financeService.postFinance(accounting).then(() => {
-        getAllAccounting();
-        history.push("/accounting");
-      }).catch(
-        e=>{
-            if(e.response.status===400){
-              setError(e.response.data.errors.Name)
-            }
-            else if(e.response.status===500){
-              setError(e.response.data)
-            }
-      }
-      );
+      financeService
+        .postFinance(accounting)
+        .then(() => {
+          getAllAccounting();
+          history.push("/accounting");
+        })
+        .catch((e) => {
+          if (e.response.status === 400) {
+            setError(e.response.data.errors.Name);
+          } else if (e.response.status === 500) {
+            setError(e.response.data);
+          }
+        });
     },
     [accounting, history, getAllAccounting]
   );
@@ -51,19 +51,19 @@ function CreateAccounting() {
   };
 
   const preventMinus = (e) => {
-    if (e.code === 'Minus') {
-        e.preventDefault();
-    }
-};
-
-const preventPasteNegative = (e) => {
-  const clipboardData = e.clipboardData || window.clipboardData;
-  const pastedData = parseFloat(clipboardData.getData('text'));
-
-  if (pastedData < 0) {
+    if (e.code === "Minus") {
       e.preventDefault();
-  }
-};
+    }
+  };
+
+  const preventPasteNegative = (e) => {
+    const clipboardData = e.clipboardData || window.clipboardData;
+    const pastedData = parseFloat(clipboardData.getData("text"));
+
+    if (pastedData < 0) {
+      e.preventDefault();
+    }
+  };
 
   return (
     <>
@@ -78,7 +78,7 @@ const preventPasteNegative = (e) => {
               id="communalCost"
               name="communalCost"
               placeholder="communalCost"
-              prefix='$'
+              prefix="$"
               onChange={getElementValues}
               min="0"
               onPaste={preventPasteNegative}
@@ -92,13 +92,13 @@ const preventPasteNegative = (e) => {
               name="additionalCost"
               placeholder="additionalCost"
               onChange={getElementValues}
-              prefix='$'
+              prefix="$"
               min="0"
               onPaste={preventPasteNegative}
               onKeyPress={preventMinus}
             />
           </FormGroup>
-          {error} 
+          {error}
           <FormGroup>
             <Label for="date">Date</Label>
             <Input

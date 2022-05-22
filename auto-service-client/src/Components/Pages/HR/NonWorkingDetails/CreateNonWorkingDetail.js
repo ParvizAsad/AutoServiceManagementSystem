@@ -31,19 +31,19 @@ function CreateNonWorkingDetail() {
   const createNonWorkingDetail = useCallback(
     (e) => {
       e.preventDefault();
-      nonWorkingDetailService.postNonWorkingDetail(NonWorkingDetail).then(() => {
-        getAllNonWorkingDetail();
-        history.push("/nonworkingdetail");
-      }).catch(
-        e=>{
-            if(e.response.status===400){
-              setError(e.response.data.errors.Name)
-            }
-            else if(e.response.status===500){
-              setError(e.response.data)
-            }
-      }
-      );
+      nonWorkingDetailService
+        .postNonWorkingDetail(NonWorkingDetail)
+        .then(() => {
+          getAllNonWorkingDetail();
+          history.push("/nonworkingdetail");
+        })
+        .catch((e) => {
+          if (e.response.status === 400) {
+            setError(e.response.data.errors.Name);
+          } else if (e.response.status === 500) {
+            setError(e.response.data);
+          }
+        });
     },
     [NonWorkingDetail, history, getAllNonWorkingDetail]
   );
@@ -66,19 +66,19 @@ function CreateNonWorkingDetail() {
   }, []);
 
   const preventMinus = (e) => {
-    if (e.code === 'Minus') {
-        e.preventDefault();
-    }
-};
-
-const preventPasteNegative = (e) => {
-  const clipboardData = e.clipboardData || window.clipboardData;
-  const pastedData = parseFloat(clipboardData.getData('text'));
-
-  if (pastedData < 0) {
+    if (e.code === "Minus") {
       e.preventDefault();
-  }
-};
+    }
+  };
+
+  const preventPasteNegative = (e) => {
+    const clipboardData = e.clipboardData || window.clipboardData;
+    const pastedData = parseFloat(clipboardData.getData("text"));
+
+    if (pastedData < 0) {
+      e.preventDefault();
+    }
+  };
 
   return (
     <>
@@ -110,7 +110,12 @@ const preventPasteNegative = (e) => {
           </FormGroup>
           <FormGroup>
             <Label for="NonWorkingTypeId">Select nonWorkingType</Label>
-            <select className="NonWorkingTypeId" onChange={getElementValues}  name="NonWorkingTypeId" id="NonWorkingTypeId">
+            <select
+              className="NonWorkingTypeId"
+              onChange={getElementValues}
+              name="NonWorkingTypeId"
+              id="NonWorkingTypeId"
+            >
               <option value="0">--Select nonWorkingType--</option>
               {nonWorkingType?.map((item, idx) => (
                 <option key={item.id} value={item.id}>
@@ -121,7 +126,12 @@ const preventPasteNegative = (e) => {
           </FormGroup>
           <FormGroup>
             <Label for="EmployeeId">Select employee</Label>
-            <select className="EmployeeId" onChange={getElementValues}  name="EmployeeId" id="EmployeeId">
+            <select
+              className="EmployeeId"
+              onChange={getElementValues}
+              name="EmployeeId"
+              id="EmployeeId"
+            >
               <option value="0">--Select employee--</option>
               {employee?.map((item, idx) => (
                 <option key={item.id} value={item.id}>

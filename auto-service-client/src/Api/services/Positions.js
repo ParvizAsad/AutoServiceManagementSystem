@@ -16,8 +16,8 @@ class PositionService extends HttpClient {
     return await this.post("Positions", position);
   }
 
-  async putPosition(id, body){
-    return await this.put("Positions", id, body)
+  async putPosition(id, body) {
+    return await this.put("Positions", id, body);
   }
 
   async deletePosition(id) {

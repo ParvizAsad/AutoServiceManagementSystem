@@ -3,9 +3,9 @@ import React, { useCallback, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { discountService } from "../../../../Api/services/Discount";
 // import "./Employees/Discounts/CreateEmployee.scss";
-import CurrencyInput from 'react-currency-input-field';
+import CurrencyInput from "react-currency-input-field";
 
-const newDiscount= {
+const newDiscount = {
   name: " ",
   percentage: " ",
   expireDate: " ",
@@ -13,14 +13,14 @@ const newDiscount= {
 
 function EditDiscount(props) {
   const [discount, setDiscount] = useState(newDiscount);
-  
+
   const history = useHistory();
-  
+
   useEffect(() => {
     const id = props.match.params.id;
     discountService.getDiscountById(id).then((res) => {
       setDiscount(res.data);
-      })
+    });
   }, []);
 
   const editDiscount = useCallback(
@@ -34,12 +34,9 @@ function EditDiscount(props) {
     [discount, history]
   );
 
-
-
   function handle(e) {
     const { name, value } = e.target;
     setDiscount({ ...discount, [name]: value });
-
   }
 
   return (

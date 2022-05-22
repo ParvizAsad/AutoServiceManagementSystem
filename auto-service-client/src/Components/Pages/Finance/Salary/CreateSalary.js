@@ -4,15 +4,15 @@ import { useHistory } from "react-router-dom";
 import { salaryService } from "../../../../Api/services/Salaries";
 import { employeeService } from "../../../../Api/services/Employee";
 import { taxService } from "../../../../Api/services/Taxes";
-import CurrencyInput from 'react-currency-input-field';
+import CurrencyInput from "react-currency-input-field";
 
 // import "./Employees/Salarys/CreateEmployee.scss";
 
-const newSalary= {
+const newSalary = {
   date: " ",
   donus: " ",
   netSalary: " ",
-  taxId: " ", 
+  taxId: " ",
   employeeId: " ",
 };
 
@@ -34,18 +34,18 @@ function CreateSalary() {
   const createSalary = useCallback(
     (e) => {
       e.preventDefault();
-      salaryService.postSalary(Salary).then(() => {
-        history.push("/salary");
-      }).catch(
-        e=>{
-            if(e.response.status===400){
-              setError(e.response.data.errors.Name)
-            }
-            else if(e.response.status===500){
-              setError(e.response.data)
-            }
-      }
-      );
+      salaryService
+        .postSalary(Salary)
+        .then(() => {
+          history.push("/salary");
+        })
+        .catch((e) => {
+          if (e.response.status === 400) {
+            setError(e.response.data.errors.Name);
+          } else if (e.response.status === 500) {
+            setError(e.response.data);
+          }
+        });
     },
     [Salary, history, getAllSalary]
   );
@@ -68,19 +68,19 @@ function CreateSalary() {
   }, []);
 
   const preventMinus = (e) => {
-    if (e.code === 'Minus') {
-        e.preventDefault();
-    }
-};
-
-const preventPasteNegative = (e) => {
-  const clipboardData = e.clipboardData || window.clipboardData;
-  const pastedData = parseFloat(clipboardData.getData('text'));
-
-  if (pastedData < 0) {
+    if (e.code === "Minus") {
       e.preventDefault();
-  }
-};
+    }
+  };
+
+  const preventPasteNegative = (e) => {
+    const clipboardData = e.clipboardData || window.clipboardData;
+    const pastedData = parseFloat(clipboardData.getData("text"));
+
+    if (pastedData < 0) {
+      e.preventDefault();
+    }
+  };
 
   return (
     <>
@@ -89,9 +89,14 @@ const preventPasteNegative = (e) => {
       </div>
       <div className="CreatePage">
         <Form onSubmit={createSalary}>
-        <FormGroup>
+          <FormGroup>
             <Label for="employeeId">Select Employee</Label>
-            <select className="employeeId" onChange={getElementValues}  name="employeeId" id="employeeId">
+            <select
+              className="employeeId"
+              onChange={getElementValues}
+              name="employeeId"
+              id="employeeId"
+            >
               <option value="0">--Select Employee--</option>
               {employee?.map((item, idx) => (
                 <option key={idx} value={item.id}>
@@ -139,7 +144,12 @@ const preventPasteNegative = (e) => {
           </FormGroup>
           <FormGroup>
             <Label for="taxId">Select Tax</Label>
-            <select className="taxId" onChange={getElementValues}  name="taxId" id="taxId">
+            <select
+              className="taxId"
+              onChange={getElementValues}
+              name="taxId"
+              id="taxId"
+            >
               <option value="0">--Select Tax--</option>
               {taxes?.map((item, idx) => (
                 <option key={idx} value={item.id}>

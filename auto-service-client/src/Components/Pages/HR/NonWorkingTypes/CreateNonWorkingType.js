@@ -24,19 +24,19 @@ function CreateNonWorkingType() {
   const createNonWorkingType = useCallback(
     (e) => {
       e.preventDefault();
-      nonWorkingTypeService.postNonWorkingType(NonWorkingType).then(() => {
-        getAllNonWorkingType();
-        history.push("/NonWorkingType");
-      }).catch(
-        e=>{
-            if(e.response.status===400){
-              setError(e.response.data.errors.Name)
-            }
-            else if(e.response.status===500){
-              setError(e.response.data)
-            }
-      }
-      );
+      nonWorkingTypeService
+        .postNonWorkingType(NonWorkingType)
+        .then(() => {
+          getAllNonWorkingType();
+          history.push("/NonWorkingType");
+        })
+        .catch((e) => {
+          if (e.response.status === 400) {
+            setError(e.response.data.errors.Name);
+          } else if (e.response.status === 500) {
+            setError(e.response.data);
+          }
+        });
     },
     [NonWorkingType, history, getAllNonWorkingType]
   );
@@ -53,7 +53,7 @@ function CreateNonWorkingType() {
       </div>
       <div className="CreatePage">
         <Form onSubmit={createNonWorkingType}>
-        {error}
+          {error}
           <FormGroup>
             <Label for="Name">Name</Label>
             <Input

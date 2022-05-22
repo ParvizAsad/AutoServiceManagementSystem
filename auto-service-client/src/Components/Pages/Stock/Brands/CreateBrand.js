@@ -7,14 +7,14 @@ import { brandService } from "../../../../Api/services/Brands";
 const newBrand = {
   name: " ",
 };
-const errorValues={
+const errorValues = {
   // error: [ ] || { },
   errorValue: [],
-}
+};
 function CreateBrand() {
   const [brand, setBrand] = useState(newBrand);
   const [error, setError] = useState();
-  const [arrError, setArrError]=useState(errorValues);
+  const [arrError, setArrError] = useState(errorValues);
   const [brandData, setBrandData] = useState();
   const history = useHistory();
 
@@ -27,21 +27,19 @@ function CreateBrand() {
   const createBrand = useCallback(
     (e) => {
       e.preventDefault();
-      brandService.postBrand(brand).then(() => {
-        getAllBrand();
-        history.push("/brand");
-      }).catch(
-        e=>{
-  
-            if(e.response.status===400){
-              setError(e.response.data.errors.Name[0])
-          
-            }
-            else if(e.response.status===500){
-              setError(e.response.data)
-            }
-      }
-      );
+      brandService
+        .postBrand(brand)
+        .then(() => {
+          getAllBrand();
+          history.push("/brand");
+        })
+        .catch((e) => {
+          if (e.response.status === 400) {
+            setError(e.response.data.errors.Name[0]);
+          } else if (e.response.status === 500) {
+            setError(e.response.data);
+          }
+        });
     },
     [brand, history, getAllBrand]
   );
@@ -58,7 +56,7 @@ function CreateBrand() {
       </div>
       <div className="CreatePage">
         <Form onSubmit={createBrand}>
-        {error}
+          {error}
           <FormGroup>
             <Label for="name">Name</Label>
             <Input

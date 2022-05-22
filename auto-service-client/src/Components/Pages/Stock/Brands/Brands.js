@@ -8,15 +8,8 @@ import { brandService } from "../../../../Api/services/Brands";
 function Brand() {
   const [brands, setBrands] = useState([]);
   const [searchBrand, setSearchBrand] = useState(" ");
-  // const [brandsData, setBrandsData] = useState([]);
 
   const history = useHistory();
-
-  // const getAllBrand =  React.useEffect(() => {
-  //   brandService.getAllBrands().then(({ data }) => {
-  //     setBrands(data);
-  //   });
-  // }, []);
 
   React.useEffect(() => {
     brandService.getAllBrands().then(({ data }) => {
@@ -56,8 +49,7 @@ function Brand() {
           );
           {
             brandService.deleteBrand(id);
-        }
-
+          }
         } else if (result.dismiss === Swal.DismissReason.cancel) {
           swalWithBootstrapButtons.fire(
             "Cancelled",
@@ -65,13 +57,13 @@ function Brand() {
             "error"
           );
         }
-      }).finally(() => {
-       setTimeout(() => {
-        brandService.getAllBrands().then(({ data }) => {
-          setBrands(data);
-        })
-       }, 500);
-  
+      })
+      .finally(() => {
+        setTimeout(() => {
+          brandService.getAllBrands().then(({ data }) => {
+            setBrands(data);
+          });
+        }, 500);
       });
   };
 

@@ -4,20 +4,20 @@ import { useHistory } from "react-router-dom";
 import { brandService } from "../../../../Api/services/Brands";
 // import "./Employees/Brands/CreateEmployee.scss";
 
-const newBrand= {
+const newBrand = {
   name: " ",
 };
 
 function EditBrand(props) {
   const [brand, setBrand] = useState(newBrand);
-  
+
   const history = useHistory();
-  
+
   useEffect(() => {
     const id = props.match.params.id;
     brandService.getBrandById(id).then((res) => {
       setBrand(res.data);
-      })
+    });
   }, []);
 
   const editBrand = useCallback(
@@ -31,8 +31,6 @@ function EditBrand(props) {
     [brand, history]
   );
 
-
-
   function handle(e) {
     const newbrand = { ...brand };
     newbrand[e.target.id] = e.target.value;
@@ -40,7 +38,6 @@ function EditBrand(props) {
 
     // const { name, value } = e.target;
     // setBrand({ ...brand, [name]: value });
-
   }
 
   return (

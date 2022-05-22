@@ -1,41 +1,39 @@
-.AddingAndSearching{
-    display: flex;
-    justify-content:space-between;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    padding-right: 20px;
-    .Adding{
-        padding-left: 20px;
-        Button{
-            margin-left: 30px;
-            background-color: rgb(3, 139, 3);
-        }
+.AddingAndSearching {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-right: 20px;
+  .Adding {
+    padding-left: 20px;
+    Button {
+      margin-left: 30px;
+      background-color: rgb(3, 139, 3);
     }
+  }
 }
 
-.TableForItems{
-    color: red;
-    th{
-        color: black;
-        text-align: center;
+.TableForItems {
+  color: red;
+  th {
+    color: black;
+    text-align: center;
+  }
+  td {
+    text-align: center;
+  }
+  .Actions {
+    Button {
+      margin-left: 20px;
     }
-    td{
-        text-align: center;
+    .Edit {
+      background-color: gray;
     }
-    .Actions{
-        Button{
-            margin-left: 20px;
-        }
-        .Edit{
-            background-color: gray;
-        }
-        .Delete{
-            background-color: rgb(209, 44, 44);
-        }
-        .Detail{
-            background-color: rgb(242, 246, 35);
-        }
+    .Delete {
+      background-color: rgb(209, 44, 44);
     }
-
+    .Detail {
+      background-color: rgb(242, 246, 35);
+    }
+  }
 }
-

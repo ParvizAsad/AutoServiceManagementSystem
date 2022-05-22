@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { positionService } from "../../../../Api/services/Positions";
 // import "./Employees/taxs/CreateEmployee.scss";
 
-const NewPosition= {
+const NewPosition = {
   name: " ",
 };
 
@@ -24,12 +24,11 @@ function EditPosition(props) {
     [position, history]
   );
 
-
   useEffect(() => {
     const id = props.match.params.id;
     positionService.getPositionById(id).then((res) => {
       setPosition(res.data);
-      })
+    });
   }, []);
 
   function handle(e) {
@@ -38,7 +37,6 @@ function EditPosition(props) {
     // setPosition(newposition);
     const { name, value } = e.target;
     setPosition({ ...position, [name]: value });
-
   }
 
   return (

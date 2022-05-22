@@ -1,115 +1,119 @@
-*{
-    background-color: rgb(213, 226, 233);
+* {
+  background-color: rgb(213, 226, 233);
 }
 
-#first{
-    animation: sliderFromTop 0.6s linear 1;
+#first {
+  animation: sliderFromTop 0.6s linear 1;
 }
-#second{
-    animation: sliderFromTop 1.5s linear 1;
+#second {
+  animation: sliderFromTop 1.5s linear 1;
 }
-#third{
-    animation: sliderFromTop 2.1s linear 1;
+#third {
+  animation: sliderFromTop 2.1s linear 1;
 }
-#fourth{
-    animation: sliderFromTop 2.1s linear 1;
+#fourth {
+  animation: sliderFromTop 2.1s linear 1;
 }
-#fifth{
-    animation: sliderFromTop 1.5s linear 1;
+#fifth {
+  animation: sliderFromTop 1.5s linear 1;
 }
-#sixth{
-    animation: sliderFromTop 0.6s linear 1;
+#sixth {
+  animation: sliderFromTop 0.6s linear 1;
 }
 
-#moduleCards{
-    margin-top: 18vh;
-    display: flex;
-    justify-content: space-evenly;
-    font-style: none;
+#moduleCards {
+  margin-top: 14vh;
+  display: flex;
+  justify-content: space-evenly;
+  font-style: none;
+  text-decoration: none;
+  .classForLink {
     text-decoration: none;
-    .classForLink{
-        text-decoration: none;
-    }
-    .moduleCard{
-        background-color: rgb(255, 255, 255);
-        // border-color: red;
-        // border-width: 2px;
-        min-width: 26vh;
-        min-height: 32vh;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        border-radius: 15px;
-        .moduleCardBody{
-            background: rgb(232,237,6);
-            background: linear-gradient(0deg, rgb(213, 226, 233) 0%, rgba(240,11,11,1) 70%);            width: 140px;
-            .moduleCardTitle{
-                background-color: rgb(233, 239, 242);
-                color: black;
-                border-radius: 5px;
-                margin-top: 10px;
-                text-decoration: none;
-                height: 30px;
-                font-size: 20px;
-            }
-            .Icon{
-                color: black;
-                background-color: rgb(213, 226, 233);
-                height: 40px;
-                font-size: 25px;
-                border-radius: 5px;
-                margin-top: 20px;
-            }
-            .text-muted{
-                background-color: rgb(220, 220, 205);
-                border-radius: 5px;
-                margin-top: 20px;
-            }
-            Button{
-                margin-top: 50px;
-                background-color: rgb(69, 156, 100);
-                color: rgb(255, 255, 255);
-                width: 90px;
-                font-size: 18px;
-                letter-spacing: 2px;
-            }
-    }
-    }
-
-
-}
-
-.ForHeading{
-    display: flex;
+  }
+  .moduleCard {
+    background-color: rgb(255, 255, 255);
+    min-width: 28vh;
+    min-height: 35vh;
     justify-content: center;
     align-items: center;
-    margin-top: 35px;
-    font-size: 40px;
-    color: rgb(255, 255, 255);
-    width: 100%;
-    z-index: 999;
-    h1{
-        background: rgb(11,66,240);
-        background: radial-gradient(circle, rgb(112, 146, 164) 50%, rgb(213, 226, 233) 75%);
-        width: 100%;
-        text-align: center;
-        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-letter-spacing: 3px;
-font-weight: normal;
-font-style: normal;
-font-variant: small-caps;
-text-transform: uppercase;
+    text-align: center;
+    border-radius: 15px;
+    .moduleCardBody {
+      background: linear-gradient(
+        0deg,
+        rgb(213, 226, 233) 0%,
+        rgba(240, 11, 11, 1) 70%
+      );
+      width: 80%;
+      .moduleCardTitle {
+        background-color: rgb(233, 239, 242);
+        color: black;
+        border-radius: 5px;
+        margin-top: 10px;
+        text-decoration: none;
+        height: 30px;
+        font-size: 20px;
+      }
+      .Icon {
+        color: black;
+        background-color: rgb(213, 226, 233);
+        height: 40px;
+        font-size: 25px;
+        border-radius: 5px;
+        margin-top: 20px;
+      }
+      .text-muted {
+        background-color: rgb(220, 220, 205);
+        border-radius: 5px;
+        margin-top: 20px;
+      }
+      Button {
+        margin-top: 50px;
+        background-color: rgb(69, 156, 100);
+        color: rgb(255, 255, 255);
+        width: 90px;
+        font-size: 18px;
+        letter-spacing: 2px;
+      }
     }
+  }
+}
+
+.ForHeading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 35px;
+  font-size: 40px;
+  color: rgb(255, 255, 255);
+  width: 100%;
+  z-index: 999;
+  h1 {
+    background: rgb(11, 66, 240);
+    background: radial-gradient(
+      circle,
+      rgb(112, 146, 164) 50%,
+      rgb(213, 226, 233) 75%
+    );
+    width: 100%;
+    text-align: center;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    letter-spacing: 3px;
+    font-weight: normal;
+    font-style: normal;
+    font-variant: small-caps;
+    text-transform: uppercase;
+  }
 }
 
 @keyframes sliderFromTop {
-    0% {
-      transform: translateY(-75px);
-      opacity: 10%;
-    }
-  
-    100% {
-      transform: translateY(0);
-      opacity: 100%;
-    }
+  0% {
+    transform: translateY(-75px);
+    opacity: 10%;
   }
+
+  100% {
+    transform: translateY(0);
+    opacity: 100%;
+  }
+}

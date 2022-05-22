@@ -4,20 +4,20 @@ import { useHistory } from "react-router-dom";
 import { categoryService } from "../../../../Api/services/Categories";
 // import "./Employees/Categorys/CreateEmployee.scss";
 
-const newCategory= {
+const newCategory = {
   name: " ",
 };
 
 function EditCategory(props) {
   const [category, setCategory] = useState(newCategory);
-  
+
   const history = useHistory();
-  
+
   useEffect(() => {
     const id = props.match.params.id;
     categoryService.getCategoryById(id).then((res) => {
       setCategory(res.data);
-      })
+    });
   }, []);
 
   const editCategory = useCallback(
@@ -31,8 +31,6 @@ function EditCategory(props) {
     [category, history]
   );
 
-
-
   function handle(e) {
     const newCategory = { ...category };
     newCategory[e.target.id] = e.target.value;
@@ -40,7 +38,6 @@ function EditCategory(props) {
 
     // const { name, value } = e.target;
     // setCategory({ ...Category, [name]: value });
-
   }
 
   return (

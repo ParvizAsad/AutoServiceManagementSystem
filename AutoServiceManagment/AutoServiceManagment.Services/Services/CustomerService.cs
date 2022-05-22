@@ -60,6 +60,8 @@ namespace AutoServiceManagment.Services.Services
 
             foreach (var id in customerDto.ProductIds)
             {
+                var usedProduct = await DbContext.Products.Where(x => x.IsDeleted == false && x.Id==id).FirstOrDefaultAsync();
+                usedProduct.Count--;
                 CustomerProduct customerProduct = new CustomerProduct
                 {
                     ProductID = id,

@@ -47,11 +47,9 @@ function EditEmployee(props) {
 
   useEffect(() => {
     const id = props.match.params.id;
-    axios
-      .get(url + id)
-      .then((res) => {
-        setData(res.data);
-      })
+    axios.get(url + id).then((res) => {
+      setData(res.data);
+    });
     //   .catch((er) => console.error(err));
   }, []);
 
@@ -59,46 +57,46 @@ function EditEmployee(props) {
     (e) => {
       e.preventDefault();
       const id = props.match.params.id;
-      employeeService.putEmployee(id, data).then(() => {
-        // getAllEmployee();
-        history.push("/employee");
-      }).catch(
-        e=>{
-            // if(e.response.status===400){
-            //   setError(e.response.data.errors.Name[0])
-            // }
-            // else if(e.response.status===500){
-            //   setError(e.response.data)
-            // }
-      }
-      );
-    },
+      employeeService
+        .putEmployee(id, data)
+        .then(() => {
+          // getAllEmployee();
+          history.push("/employee");
+        })
+        .catch((e) => {
+          // if(e.response.status===400){
+          //   setError(e.response.data.errors.Name[0])
+          // }
+          // else if(e.response.status===500){
+          //   setError(e.response.data)
+          // }
+        });
+    }
     // [employee, history, getAllEmployee]
   );
 
-  const showPreview= e=>{
-    if(e.target.files && e.target.files[0]){
-      let imageFile= e.target.files[0];
-      const reader= new FileReader();
-      reader.onload = x => {
+  const showPreview = (e) => {
+    if (e.target.files && e.target.files[0]) {
+      let imageFile = e.target.files[0];
+      const reader = new FileReader();
+      reader.onload = (x) => {
         setData({
           ...data,
           imageFile,
           imageName: x.target.result,
-          imageSrc: x.target.result
-        })
-      }
-      reader.readAsDataURL(imageFile)
-    }
-    else{
+          imageSrc: x.target.result,
+        });
+      };
+      reader.readAsDataURL(imageFile);
+    } else {
       setData({
         ...data,
         imageFile: null,
         imageSrc: defaultImageSrc,
-        imageName:defaultImageSrc
-      })
+        imageName: defaultImageSrc,
+      });
     }
-  }
+  };
 
   function handle(e) {
     const newdata = { ...data };
@@ -125,13 +123,12 @@ function EditEmployee(props) {
           </FormGroup>
           <FormGroup>
             <Label for="imageName">Image</Label>
-            <img src={data.imageName} className=" profilePicture"
-            />
+            <img src={data.imageName} className=" profilePicture" />
             <Input
               type="file"
               name="imageName"
               onChange={showPreview}
-              accept="image/*" 
+              accept="image/*"
               id="imageName"
               // onChange={showPreview}
             />
@@ -208,7 +205,7 @@ function EditEmployee(props) {
               type="text"
             />
           </FormGroup>
-          
+
           <FormGroup>
             <Label for="educationLevel">Education Level</Label>
             <Input

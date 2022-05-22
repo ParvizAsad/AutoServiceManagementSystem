@@ -24,19 +24,19 @@ function CreateCategory() {
   const createCategory = useCallback(
     (e) => {
       e.preventDefault();
-      categoryService.postCategory(category).then(() => {
-        getAllCategory();
-        history.push("/Category");
-      }).catch(
-        e=>{
-            if(e.response.status===400){
-              setError(e.response.data.errors.Name[0])
-            }
-            else if(e.response.status===500){
-              setError(e.response.data)
-            }
-      }
-      );
+      categoryService
+        .postCategory(category)
+        .then(() => {
+          getAllCategory();
+          history.push("/Category");
+        })
+        .catch((e) => {
+          if (e.response.status === 400) {
+            setError(e.response.data.errors.Name[0]);
+          } else if (e.response.status === 500) {
+            setError(e.response.data);
+          }
+        });
     },
     [category, history, getAllCategory]
   );
@@ -53,7 +53,7 @@ function CreateCategory() {
       </div>
       <div className="CreatePage">
         <Form onSubmit={createCategory}>
-        {error}
+          {error}
           <FormGroup>
             <Label for="Name">Name</Label>
             <Input
