@@ -31,8 +31,6 @@ function CreatePosition() {
         e=>{
             if(e.response.status===400){
               setError(e.response.data.errors.Name)
-              console.log(error);
-
             }
             else if(e.response.status===500){
               setError(e.response.data)
@@ -46,7 +44,6 @@ function CreatePosition() {
   const getElementValues = (e) => {
     const { name, value } = e.target;
     setPosition({ ...position, [name]: value });
-    console.log(position);
   };
 
   return (

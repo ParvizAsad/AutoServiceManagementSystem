@@ -31,7 +31,6 @@ function ExportProduct() {
 
   React.useEffect(() => {
     productService.getAllProducts().then(({ data }) => {
-      console.log(data);
       setProduct(data);
     });
   }, []);

@@ -24,7 +24,7 @@ function Stock() {
     <h1>Stock</h1>
 </div>
     <CardGroup id='moduleCards'>
-         <Link to="product">
+         <Link className='classForLink' to="product">
          <Card className='moduleCard'>
       <CardBody className='moduleCardBody'>
         <CardTitle tag="h5" className='moduleCardTitle'>
@@ -39,7 +39,7 @@ function Stock() {
       </CardBody>
     </Card>
          </Link>
-          <Link to="brand">
+          <Link className='classForLink' to="brand">
           <Card className='moduleCard'>
                 <CardBody className='moduleCardBody'>
                   <CardTitle tag="h5"  className='moduleCardTitle'>
@@ -54,7 +54,7 @@ function Stock() {
                 </CardBody>
               </Card>
           </Link>
-          <Link to="category">
+          <Link className='classForLink' to="category">
           <Card className='moduleCard'>
                 <CardBody className='moduleCardBody'>
                   <CardTitle tag="h5"  className='moduleCardTitle'>

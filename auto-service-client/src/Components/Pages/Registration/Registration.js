@@ -18,7 +18,7 @@ function Registration(props) {
     <h1>Reception</h1>
 </div>
     <CardGroup id='moduleCards'>
-         <Link to="customer">
+         <Link className='classForLink' to="customer">
          <Card className='moduleCard'>
       <CardBody className='moduleCardBody'>
         <CardTitle tag="h5" className='moduleCardTitle'>
@@ -33,7 +33,7 @@ function Registration(props) {
       </CardBody>
     </Card>
          </Link>
-          <Link to="service">
+          <Link className='classForLink' to="service">
           <Card className='moduleCard'>
                 <CardBody className='moduleCardBody'>
                   <CardTitle tag="h5"  className='moduleCardTitle'>

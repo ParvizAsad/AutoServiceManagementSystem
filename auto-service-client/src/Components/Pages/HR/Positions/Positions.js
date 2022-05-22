@@ -1,14 +1,16 @@
 import React from "react";
 import { Table, Button, Spinner } from "reactstrap";
-import { useHistory } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useCallback } from "react";
 import { positionService } from "../../../../Api/services/Positions";
 import Swal from "sweetalert2";
+import { useHistory, Link } from "react-router-dom";
 
 function Position() {
 
   const [positions, setPositions] = useState([]);
+  const [visible, setVisible] = useState(1);
+
   const [searchPosition, setSearchPosition]=useState(" ");
 
   const [loading, setLoading] = useState(true);
@@ -28,7 +30,10 @@ function Position() {
     })
   }, []);
 
-
+ const maxCount=positions.length;
+const showMoreItems=()=>{
+  setVisible((prevalue)=>prevalue+2)
+};
   function editPosition(id){
     history.push("/EditPosition/"+id)
    } 
@@ -59,7 +64,7 @@ function Position() {
         )
           {positionService.deletePosition(id);
             getAllPosition();
-            console.log("ss");}
+           }
       } 
       else if (
         result.dismiss === Swal.DismissReason.cancel
@@ -122,12 +127,10 @@ function Position() {
                   {
                     return val
                   }
-                }).map((item, idx) => (
+                }).slice(0, visible).map((item, idx) => (
                   <tr key={idx}>
                     <th scope="row">{idx}</th>
                     <td>{item.name}</td>
-                    {/* <td>xx</td>
-                    <td>xx</td> */}
                     <td className="Actions">
                       <Button onClick={()=>editPosition(item.id)} className="Edit">Edit</Button>
                       <Button onClick={()=>deleteButton(item.id) } className="Delete">Delete</Button>
@@ -138,13 +141,25 @@ function Position() {
                 
                 
               </tbody>
-  
+
+
               
-              
-          </Table>)
+          </Table>
+
+
+
+
+                
+          
+          )
             
 
+
 }
+      </div>
+      <div className="d-flex justify-content-center">
+      {(maxCount>visible) ?(<span><Link onClick={showMoreItems}>Load more</Link></span>
+      ):(<span></span>)}
       </div>
     </>
   );

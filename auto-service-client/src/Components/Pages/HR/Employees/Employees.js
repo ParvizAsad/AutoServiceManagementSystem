@@ -1,32 +1,34 @@
 import React, { useReducer } from "react";
 import { Table, Button } from "reactstrap";
 // import "./Employee.scss";
-import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useState, useCallback, useRef } from "react";
 import { useReactToPrint } from "react-to-print";
 import { employeeService } from "../../../../Api/services/Employee";
 import { css } from "@emotion/react";
 import HashLoader from "react-spinners/HashLoader";
+import { useHistory, Link } from "react-router-dom";
+
 
 
 function Employee(props) {
-  const [employee, setEmployee] = React.useState([]);
+  const [employees, setEmployees] = React.useState([]);
   const [employeeData, setEmployeeData] = useState();
+  const [visible, setVisible] = useState(2);
+
   const [searchEmployee, setSearchEmployee] = useState(" ");
   const history = useHistory();
 
-  const getAllEmployee = useCallback(() => {
-    employeeService.getAllEmployee().then(({ data }) => {
-      setEmployee(data);
-    });
-  }, [setEmployee]);
-
   React.useEffect(() => {
     employeeService.getAllEmployee().then(({ data }) => {
-      setEmployee(data);
+      setEmployees(data);
     });
   }, []);
+
+  const maxCount=employees.length;
+  const showMoreItems=()=>{
+    setVisible((prevalue)=>prevalue+2)
+  };
 
   const deleteButton = (id) => {
     const swalWithBootstrapButtons = Swal.mixin({
@@ -66,7 +68,7 @@ function Employee(props) {
       .finally(() => {
         setTimeout(() => {
           employeeService.getAllEmployee().then(({ data }) => {
-            setEmployee(data);
+            setEmployees(data);
           });
         }, 5000);
       });
@@ -124,7 +126,7 @@ function Employee(props) {
             </tr>
           </thead>
           <tbody>
-            {employee
+            {employees
               ?.filter((val) => {
                 if (searchEmployee == " ") {
                   return val;
@@ -133,8 +135,7 @@ function Employee(props) {
                 ) {
                   return val;
                 }
-              })
-              .map((item, idx) => (
+              }).slice(0, visible).map((item, idx) => (
                 <tr key={idx}>
                   <th scope="row">{item.id}</th>
                   <td>{item.fullName}</td>
@@ -164,6 +165,10 @@ function Employee(props) {
               ))}
           </tbody>
         </Table>
+      </div>
+      <div className="d-flex justify-content-center">
+      {(maxCount>visible) ?(<span><Link onClick={showMoreItems}>Load more</Link></span>
+      ):(<span></span>)}
       </div>
     </>
   );

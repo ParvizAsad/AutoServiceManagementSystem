@@ -23,6 +23,7 @@ namespace AutoServiceManagment.Services.Mapping
             CreateMap<Salary, SalaryDto>().ReverseMap();
             CreateMap<Service, ServiceDto>().ReverseMap();
             CreateMap<Tax, TaxDto>().ReverseMap();
+            CreateMap<Bio, BioDto>().ReverseMap();
 
 
         }

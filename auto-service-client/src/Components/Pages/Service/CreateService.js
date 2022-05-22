@@ -36,7 +36,6 @@ function CreateService() {
   const getElementValues = (e) => {
     const { name, value } = e.target;
     setService({ ...Service, [name]: value });
-    console.log(Service);
   };
 
   const preventMinus = (e) => {

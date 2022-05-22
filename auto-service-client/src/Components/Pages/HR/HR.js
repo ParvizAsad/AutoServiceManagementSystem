@@ -20,7 +20,7 @@ function HR(props) {
     <h1>HR module</h1>
 </div>
     <CardGroup id='moduleCards'>
-         <Link to="employee">
+         <Link className='classForLink' to="employee">
          <Card className='moduleCard'>
       <CardBody className='moduleCardBody'>
         <CardTitle tag="h5" className='moduleCardTitle'>
@@ -35,7 +35,7 @@ function HR(props) {
       </CardBody>
     </Card>
          </Link>
-          <Link to="position">
+          <Link className='classForLink' to="position">
           <Card className='moduleCard'>
                 <CardBody className='moduleCardBody'>
                   <CardTitle tag="h5"  className='moduleCardTitle'>
@@ -50,11 +50,11 @@ function HR(props) {
                 </CardBody>
               </Card>
           </Link>
-          <Link to="nonworkingtype">
+          <Link className='classForLink' to="nonworkingtype">
           <Card className='moduleCard'>
                 <CardBody className='moduleCardBody'>
                   <CardTitle tag="h5"  className='moduleCardTitle'>
-                    Non-working types
+                    NWT
                   </CardTitle>
                   <div className="Icon">
         <MdOutlineLocalHospital/>
@@ -65,11 +65,11 @@ function HR(props) {
                 </CardBody>
               </Card>
           </Link>
-          <Link to="nonworkingdetail">
+          <Link className='classForLink' to="nonworkingdetail">
           <Card className='moduleCard'>
                 <CardBody className='moduleCardBody'>
                   <CardTitle tag="h5"  className='moduleCardTitle'>
-                    Non-working details
+                    NWD
                   </CardTitle>
                   <div className="Icon">
         <FaBed/>

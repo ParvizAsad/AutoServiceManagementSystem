@@ -33,7 +33,6 @@ function ExportService() {
 
   React.useEffect(() => {
     serviceService.getAllServices().then(({ data }) => {
-      console.log(data);
       setService(data);
     });
   }, []);

@@ -17,18 +17,13 @@ import {
 
   function Home() {
 
-  const { push } = useHistory();
-  // const handleChangeDirector = React.useCallback(() => {
-  //   push("/director");
-  // }, [push]);
-
   return (
 <>
 <div className ='ForHeading'>
     <h1>Auto Service System Modules</h1>
 </div>
 <CardGroup id='moduleCards'>
-         <Link to="director">
+         <Link className='classForLink' id='first' to="director">
          <Card className='moduleCard'>
       <CardBody className='moduleCardBody'>
         <CardTitle tag="h5" className='moduleCardTitle'>
@@ -43,7 +38,7 @@ import {
       </CardBody>
     </Card>
          </Link>
-          <Link to={"/admin"}>
+          <Link className='classForLink' id='second' to={"/admin"}>
           <Card className='moduleCard'>
                 <CardBody className='moduleCardBody'>
                   <CardTitle tag="h5"  className='moduleCardTitle'>
@@ -58,7 +53,7 @@ import {
                 </CardBody>
               </Card>
           </Link>
-          <Link to="/HR">
+          <Link className='classForLink' id='third' to="/HR">
           <Card className='moduleCard'>
                 <CardBody className='moduleCardBody'>
                   <CardTitle tag="h5"  className='moduleCardTitle'>
@@ -73,7 +68,7 @@ import {
                 </CardBody>
               </Card>
           </Link>
-          <Link to={"finance"} >
+          <Link className='classForLink' id='fourth' to={"finance"} >
           <Card className='moduleCard'>
                 <CardBody className='moduleCardBody'>
                   <CardTitle tag="h5"  className='moduleCardTitle'>
@@ -88,7 +83,7 @@ import {
                 </CardBody>
               </Card>
           </Link>
-          <Link to="stock">
+          <Link className='classForLink' id='fifth' to="stock">
           <Card className='moduleCard'>
                 <CardBody className='moduleCardBody'>
                   <CardTitle tag="h5"  className='moduleCardTitle'>
@@ -103,7 +98,7 @@ import {
                 </CardBody>
               </Card>
           </Link>
-          <Link to="registration">
+          <Link className='classForLink' id='sixth' to="registration">
           <Card className='moduleCard'>
                 <CardBody className='moduleCardBody'>
                   <CardTitle tag="h5"  className='moduleCardTitle'>

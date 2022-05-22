@@ -13,10 +13,6 @@ import { GiAutoRepair } from 'react-icons/gi';
 
 
 import { Link } from "react-router-dom";
-// import { Pie, defaults } from 'react-chartjs-2'
-// import { Chart, registerables } from 'chart.js'; 
-
-
 
 function Director() {
   return (
@@ -25,7 +21,8 @@ function Director() {
     <h1>Sections for Director's Access</h1>
 </div>
 <CardGroup id='moduleCards'>
-         <Link to="statistics">
+
+         <Link className='classForLink' to="statistics">
          <Card className='moduleCard'>
       <CardBody className='moduleCardBody'>
         <CardTitle tag="h5" className='moduleCardTitle'>
@@ -40,7 +37,7 @@ function Director() {
       </CardBody>
     </Card>
          </Link>
-          <Link to="employee">
+          <Link className='classForLink' to="employee">
           <Card className='moduleCard'>
                 <CardBody className='moduleCardBody'>
                   <CardTitle tag="h5"  className='moduleCardTitle'>
@@ -55,7 +52,7 @@ function Director() {
                 </CardBody>
               </Card>
           </Link>
-          <Link to="service">
+          <Link className='classForLink' to="service">
           <Card className='moduleCard'>
                 <CardBody className='moduleCardBody'>
                   <CardTitle tag="h5"  className='moduleCardTitle'>

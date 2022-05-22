@@ -4,7 +4,7 @@ Table,
 Button
 } from "reactstrap";
 // import "./Customer.scss";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { customerService } from '../../../Api/services/Customers';
 import Swal from "sweetalert2";
 import { useState } from "react";
@@ -12,14 +12,19 @@ import { useState } from "react";
 
 function Customer(props) {
 
-  const [customer, setCustomer] = React.useState([]);
+  const [customers, setCustomers] = React.useState([]);
   const [searchCustomer, setSearchCustomer]=useState(" ");
+  const [visible, setVisible] = useState(2);
 
   const history = useHistory();
+  const maxCount = customers.length;
+  const showMoreItems = () => {
+    setVisible((prevalue) => prevalue + 2);
+  };
 
   React.useEffect(() => {
     customerService.getAllCustomers().then(({ data }) => {
-      setCustomer(data);
+      setCustomers(data);
     });
   }, []);
 
@@ -71,7 +76,7 @@ function Customer(props) {
     }).finally(() => {
       setTimeout(() => {
        customerService.getAllCustomers().then(({ data }) => {
-        setCustomer(data);
+        setCustomers(data);
        })
       }, 500);
  
@@ -109,7 +114,7 @@ function Customer(props) {
       </tr>
     </thead>
     <tbody>
-    {customer?.filter((val)=>{
+    {customers?.filter((val)=>{
                   if(searchCustomer==" "){
                     return val
                   } else if (val.fullName.toLowerCase().includes(searchCustomer.toLowerCase()))
@@ -131,6 +136,15 @@ function Customer(props) {
     </tbody>
     </Table>
 </div>
+<div className="d-flex justify-content-center">
+        {maxCount > visible ? (
+          <span>
+            <Link onClick={showMoreItems}>Load more</Link>
+          </span>
+        ) : (
+          <span></span>
+        )}
+      </div>
 </>
 
   )

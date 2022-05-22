@@ -30,7 +30,7 @@ function Admin() {
     <h1>Admin</h1>
 </div>
     <CardGroup id='moduleCards'>
-         <Link to="user">
+         <Link className='classForLink' to="user">
          <Card className='moduleCard'>
       <CardBody className='moduleCardBody'>
         <CardTitle tag="h5" className='moduleCardTitle'>
@@ -45,7 +45,7 @@ function Admin() {
       </CardBody>
     </Card>
          </Link>
-          <Link to="role">
+          <Link className='classForLink' to="role">
           <Card className='moduleCard'>
                 <CardBody className='moduleCardBody'>
                   <CardTitle tag="h5"  className='moduleCardTitle'>

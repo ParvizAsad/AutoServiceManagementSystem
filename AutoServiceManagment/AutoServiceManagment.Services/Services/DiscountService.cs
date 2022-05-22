@@ -30,12 +30,13 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task<IList<DiscountDto>> GetAllDiscountsAsync()
         {
-            var discounts = await DbContext.Discounts.Where(x => x.IsDeleted == false).ToListAsync();
-            foreach (var discount in discounts)
+            var existDiscounts = await DbContext.Discounts.Where(x => x.IsDeleted == false).ToListAsync();
+            foreach (var discount in existDiscounts)
             {
                 if (discount.ExpireDate < DateTime.Now)
                     discount.IsExpired = true;
             }
+            var discounts = await DbContext.Discounts.Where(x => x.IsDeleted == false && x.IsExpired==false).ToListAsync();
 
             return _mapper.Map<List<DiscountDto>>(discounts);
         }
@@ -81,7 +82,7 @@ namespace AutoServiceManagment.Services.Services
             if (discount == null) { throw new Exception("Discount not found!"); }
 
             discount.Name = discountDto.Name;
-            //discount.Percentage = discountDto.Percentage;
+            discount.Percentage = discountDto.Percentage;
             discount.ExpireDate = discountDto.ExpireDate;
 
             DbContext.Discounts.Update(discount);

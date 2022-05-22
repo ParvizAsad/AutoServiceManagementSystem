@@ -38,8 +38,6 @@ function CreateNonWorkingDetail() {
         e=>{
             if(e.response.status===400){
               setError(e.response.data.errors.Name)
-              console.log(error);
-
             }
             else if(e.response.status===500){
               setError(e.response.data)
@@ -53,7 +51,6 @@ function CreateNonWorkingDetail() {
   const getElementValues = (e) => {
     const { name, value } = e.target;
     setNonWorkingDetail({ ...NonWorkingDetail, [name]: value });
-    console.log(NonWorkingDetail);
   };
 
   React.useEffect(() => {

@@ -52,7 +52,6 @@ function CreateProduct() {
   const getElementValues = (e) => {
     const { name, value } = e.target;
     setProduct({ ...product, [name]: value });
-    console.log(product);
   };
 
   React.useEffect(() => {
@@ -93,7 +92,6 @@ const preventPasteNegative = (e) => {
         name: Yup.string().required("NAme required"),
       })}
       onSubmit={(values,{resetForm, setSubmiting})=>{
-    console.log(values);
     setTimeout(() => {
       setSubmiting(false);
       resetForm();

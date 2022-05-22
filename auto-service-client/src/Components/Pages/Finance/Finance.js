@@ -20,7 +20,7 @@ function Finance() {
     <h1>Finance</h1>
 </div>
     <CardGroup id='moduleCards'>
-         <Link to="accounting">
+         <Link className='classForLink' to="accounting">
          <Card className='moduleCard'>
       <CardBody className='moduleCardBody'>
         <CardTitle tag="h5" className='moduleCardTitle'>
@@ -35,7 +35,7 @@ function Finance() {
       </CardBody>
     </Card>
          </Link>
-          <Link to="marketing">
+          <Link className='classForLink' to="marketing">
           <Card className='moduleCard'>
                 <CardBody className='moduleCardBody'>
                   <CardTitle tag="h5"  className='moduleCardTitle'>
@@ -50,7 +50,7 @@ function Finance() {
                 </CardBody>
               </Card>
           </Link>
-          <Link to="tax">
+          <Link className='classForLink' to="tax">
           <Card className='moduleCard'>
                 <CardBody className='moduleCardBody'>
                   <CardTitle tag="h5"  className='moduleCardTitle'>
@@ -65,7 +65,7 @@ function Finance() {
                 </CardBody>
               </Card>
           </Link>
-          <Link to="cashbox">
+          <Link className='classForLink' to="cashbox">
           <Card className='moduleCard'>
                 <CardBody className='moduleCardBody'>
                   <CardTitle tag="h5"  className='moduleCardTitle'>
@@ -80,7 +80,7 @@ function Finance() {
                 </CardBody>
               </Card>
           </Link>
-          <Link to="salary">
+          <Link className='classForLink' to="salary">
           <Card className='moduleCard'>
                 <CardBody className='moduleCardBody'>
                   <CardTitle tag="h5"  className='moduleCardTitle'>

@@ -1,5 +1,5 @@
 import { Table, Button } from "reactstrap";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import React, { useCallback, useState } from "react";
 import { salaryService } from "../../../../Api/services/Salaries";
@@ -7,11 +7,12 @@ import { employeeService } from "../../../../Api/services/Employee";
 import moment from "moment";
 
 function Salary() {
-  const [Salaries, setSalaries] = React.useState([]);
+  const [salaries, setSalaries] = React.useState([]);
 
   const [SalaryData, setSalaryData] = useState();
   const [employee, setEmployee] = useState();
   const [employeeId, setEmployeeId] = useState();
+  const [visible, setVisible] = useState(2);
 
   const history = useHistory();
 
@@ -21,11 +22,11 @@ function Salary() {
     });
   }, [setSalaryData]);
 
-  // const getEmployee = (id) => {
-  //   employeeService.getEmployeeByID(id).then(({ data }) => {
-  //     setEmployee(data);
-  //   });
-  // };
+  const maxCount = salaries.length;
+  const showMoreItems = () => {
+    setVisible((prevalue) => prevalue + 2);
+  };
+
   React.useEffect(() => {
     employeeService.getAllEmployee().then(({ data }) => {
       setEmployee(data);
@@ -117,7 +118,7 @@ function Salary() {
             </tr>
           </thead>
           <tbody>
-            {Salaries?.map((item, idx) => (
+            {salaries?.map((item, idx) => (
               <tr key={idx}>
                 <th scope="row">{item.id}</th>
                 {employee
@@ -144,6 +145,15 @@ function Salary() {
             ))}
           </tbody>
         </Table>
+      </div>
+      <div className="d-flex justify-content-center">
+        {maxCount > visible ? (
+          <span>
+            <Link onClick={showMoreItems}>Load more</Link>
+          </span>
+        ) : (
+          <span></span>
+        )}
       </div>
     </>
   );

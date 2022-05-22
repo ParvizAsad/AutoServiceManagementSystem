@@ -16,14 +16,13 @@ namespace AutoServiceManagment.Services.Services
         private readonly IMapper _mapper;
         private readonly IRepository<Bio> _repository;
 
-        public BioService(AppDbContext dbContext, IMapper mapper, IRepository<Bio> repository) : base(dbContext)
+        public BioService(AppDbContext dbContext, IRepository<Bio> repository, IMapper mapper) : base(dbContext)
         {
-            _mapper = mapper;
             _repository = repository;
+            _mapper = mapper;
         }
         public async Task<IList<BioDto>> GetAllBiosAsync()
         {
-
             var bios = await DbContext.Bios.ToListAsync();
 
             return _mapper.Map<List<BioDto>>(bios);
