@@ -52,9 +52,9 @@ function EditCustomer(props) {
         <h1>Edit {data.fullName} customer</h1>
       </div>
       <div className="CreatePage">
-        <Form onSubmit={updateCustomer}>
+        <Form className="forForm" onSubmit={updateCustomer}>
           <FormGroup>
-            <Label for="fullName">FullName</Label>
+            <Label className="forLabel" for="fullName">FullName</Label>
             <Input
               id="fullName"
               name="fullName"
@@ -65,7 +65,7 @@ function EditCustomer(props) {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="phoneNumber">Phone Number</Label>
+            <Label className="forLabel" for="phoneNumber">Phone Number</Label>
             <Input
               id="phoneNumber"
               name="phoneNumber"
@@ -76,7 +76,7 @@ function EditCustomer(props) {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="email">Email</Label>
+            <Label className="forLabel" for="email">Email</Label>
             <Input
               id="email"
               name="email"
@@ -87,18 +87,17 @@ function EditCustomer(props) {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="debt">Debt</Label>
-            <CurrencyInput
+            <Label className="forLabel" for="debt">Debt AZN</Label>
+            <Input
               id="debt"
               name="debt"
               placeholder="debt"
               onChange={(e) => handle(e)}
               value={data.debt}
-              prefix="$"
             />
           </FormGroup>
 
-          <Button type="submit">Submit</Button>
+          <Button className="forSubmit" type="submit">Submit</Button>
         </Form>
       </div>
     </>

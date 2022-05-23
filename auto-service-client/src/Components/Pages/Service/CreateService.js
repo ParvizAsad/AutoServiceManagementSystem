@@ -81,7 +81,7 @@ function CreateService() {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="price">Price</Label>
+            <Label for="price">Price AZN</Label>
             <Input
               id="price"
               name="price"

@@ -108,6 +108,9 @@ function CashBox() {
           <Button onClick={() => history.push("/createcashbox")}>
             Create a new CashBox
           </Button>
+          <Button onClick={() => history.push("/convertor")}>
+            Currency Calculator
+          </Button>
         </div>
       </div>
       <div>
@@ -134,12 +137,12 @@ function CashBox() {
                 {services
                   ?.filter((service) => service.id === item.serviceID)
                   .map((service) => (
-                    <td>{service.name}a</td>
+                    <td>{service.name}</td>
                   ))}
                 {products
                   ?.filter((product) => product.id === item.productID)
                   .map((product) => (
-                    <td>{product.name}a</td>
+                    <td>{product.name}</td>
                   ))}{" "}
                 <td>{item.payment}</td>
                 <td className="Actions">

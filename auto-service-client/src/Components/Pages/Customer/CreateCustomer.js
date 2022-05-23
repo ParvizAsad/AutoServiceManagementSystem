@@ -1,11 +1,11 @@
 import { FormGroup, Form, Label, Input, Button } from "reactstrap";
 import React, { useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
-// import "./Createcustomer.scss";
 import { customerService } from "../../../Api/services/Customers";
 import { serviceService } from "../../../Api/services/Services";
 import { productService } from "../../../Api/services/Products";
 import CurrencyInput from "react-currency-input-field";
+import "./Create.scss";
 
 const initialCustomer = {
   fullName: "",
@@ -14,12 +14,15 @@ const initialCustomer = {
   debt: "",
   ServiceIds: [],
   ProductIds: [],
+  isNotificationAllowed: false,
 };
 
 function CreateCustomer() {
   const [customer, setCustomer] = useState(initialCustomer);
   const [services, setServices] = useState([]);
   const [products, setProducts] = useState([]);
+  const [checked, setChecked] = useState(false);
+
   const [error, setError] = useState();
 
   const [customerData, setCustomerData] = useState();
@@ -87,10 +90,10 @@ function CreateCustomer() {
         <h1>Create a new customer</h1>
       </div>
       <div className="CreatePage">
-        <Form onSubmit={createCustomer}>
+        <Form className="forForm" onSubmit={createCustomer}>
           {error}
           <FormGroup>
-            <Label for="fullName">FullName</Label>
+            <Label className="forLabel" for="fullName">FullName</Label>
             <Input
               id="fullName"
               name="fullName"
@@ -101,7 +104,7 @@ function CreateCustomer() {
           </FormGroup>
           {error}
           <FormGroup>
-            <Label for="phoneNumber">Phone Number</Label>
+            <Label className="forLabel" for="phoneNumber">Phone Number</Label>
             <Input
               id="phoneNumber"
               name="phoneNumber"
@@ -112,7 +115,7 @@ function CreateCustomer() {
           </FormGroup>
           {error}
           <FormGroup>
-            <Label for="email">Email</Label>
+            <Label className="forLabel" for="email">Email</Label>
             <Input
               id="email"
               name="email"
@@ -122,20 +125,19 @@ function CreateCustomer() {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="debt">Debt</Label>
-            <CurrencyInput
+            <Label className="forLabel" for="debt">Debt</Label>
+            <Input
               id="debt"
               name="debt"
               placeholder="debt"
               onChange={getElementValues}
-              prefix="$"
               min="0"
               onPaste={preventPasteNegative}
               onKeyPress={preventMinus}
             />
           </FormGroup>
           <FormGroup>
-            <Label for="ServiceIds">Select Service</Label>
+            <Label className="forLabel" for="ServiceIds">Service</Label>
             <select
               multiple={true}
               className="ServiceIds"
@@ -152,7 +154,7 @@ function CreateCustomer() {
             </select>
           </FormGroup>
           <FormGroup>
-            <Label for="ProductIds">Select Product</Label>
+            <Label className="forLabel" for="ProductIds">Product</Label>
             <select
               multiple={true}
               className="ProductIds"
@@ -168,7 +170,18 @@ function CreateCustomer() {
               ))}
             </select>
           </FormGroup>
-          <Button type="submit">Submit</Button>
+          <FormGroup check>
+            <Label className="forLabel" check for="exampleCheck">
+              Allow notificiation
+            </Label>
+            <Input
+              id="exampleCheck"
+              name="check"
+              type="checkbox"
+              onChange={() => setChecked(!checked) && { getElementValues }}
+            />
+          </FormGroup>
+          <Button className="forSubmit" type="submit">Submit</Button>
         </Form>
       </div>
     </>

@@ -51,6 +51,8 @@ namespace AutoServiceManagment.Services.Services
 
             await NullCheck<Employee>.Checking(existEmployee);
 
+            if((DateTime.Now.Year- employeeDto.BirthDate.Year) >18) { throw new Exception("Employee should be at least 18 years old!"); }
+
             var employee = _mapper.Map<Employee>(employeeDto);
             await _repository.AddAsync(employee);
         }

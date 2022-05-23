@@ -145,9 +145,9 @@ function CreateEmployee() {
         <h1>Create a new Employee</h1>
       </div>
       <div className="CreatePage">
-        <Form onSubmit={createEmployee}>
+        <Form className="forForm" onSubmit={createEmployee}>
           <FormGroup>
-            <Label for="fullName">FullName</Label>
+            <Label className="forLabel" for="fullName">FullName</Label>
             <Input
               id="fullName"
               name="fullName"
@@ -157,7 +157,7 @@ function CreateEmployee() {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="imageName">Image</Label>
+            <Label className="forLabel" for="imageName">Image</Label>
             <img src={employee.imageSrc} className=" profilePicture" />
             <Input
               type="file"
@@ -168,7 +168,7 @@ function CreateEmployee() {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="phoneNumber">Phone Number</Label>
+            <Label className="forLabel" for="phoneNumber">Phone Number</Label>
             <Input
               id="phoneNumber"
               name="phoneNumber"
@@ -178,7 +178,7 @@ function CreateEmployee() {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="birthDate">BirthDate</Label>
+            <Label className="forLabel" for="birthDate">BirthDate</Label>
             <Input
               id="birthDate"
               name="birthDate"
@@ -188,7 +188,7 @@ function CreateEmployee() {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="baseSalary">Base Salary</Label>
+            <Label className="forLabel" for="baseSalary">Base Salary AZN</Label>
             <Input
               id="baseSalary"
               name="baseSalary"
@@ -201,7 +201,7 @@ function CreateEmployee() {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="positionId">Select Position</Label>
+            <Label className="forLabel" for="positionId">Select Position</Label>
             <select
               className="positionId"
               onChange={getElementValues}
@@ -217,7 +217,7 @@ function CreateEmployee() {
             </select>
           </FormGroup>
           <FormGroup>
-            <Label for="orderNumber">Order Number</Label>
+            <Label className="forLabel" for="orderNumber">Order Number</Label>
             <Input
               id="orderNumber"
               name="orderNumber"
@@ -227,7 +227,7 @@ function CreateEmployee() {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="location">Location</Label>
+            <Label className="forLabel" for="location">Location</Label>
             <Input
               id="location"
               name="location"
@@ -237,7 +237,7 @@ function CreateEmployee() {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="educationLevel">Education Level</Label>
+            <Label className="forLabel" for="educationLevel">Education Level</Label>
             <Input
               id="educationLevel"
               name="educationLevel"
@@ -247,7 +247,7 @@ function CreateEmployee() {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="personalDetails">Personal Detail</Label>
+            <Label className="forLabel" for="personalDetails">Personal Detail</Label>
             <Input
               onChange={getElementValues}
               id="personalDetails"
@@ -255,7 +255,8 @@ function CreateEmployee() {
               type="textarea"
             />
           </FormGroup>
-          <Button onClick={notify} type="submit">
+
+          <Button className="forSubmit" onClick={notify} type="submit">
             Submit
           </Button>
           <ToastContainer />

@@ -88,9 +88,11 @@ function CreateSalary() {
         <h1>Create a new Salary</h1>
       </div>
       <div className="CreatePage">
-        <Form onSubmit={createSalary}>
+        <Form className="forForm" onSubmit={createSalary}>
           <FormGroup>
-            <Label for="employeeId">Select Employee</Label>
+            <Label className="forLabel" for="employeeId">
+              Select Employee
+            </Label>
             <select
               className="employeeId"
               onChange={getElementValues}
@@ -106,7 +108,9 @@ function CreateSalary() {
             </select>
           </FormGroup>
           <FormGroup>
-            <Label for="date">Date</Label>
+            <Label className="forLabel" for="date">
+              Date
+            </Label>
             <Input
               id="date"
               name="date"
@@ -115,27 +119,15 @@ function CreateSalary() {
               type="date"
             />
           </FormGroup>
-          {/* <FormGroup>
-            <Label for="netSalary">netSalary</Label>
-            <Input
-              id="netSalary"
-              name="netSalary"
-              placeholder="netSalary"
-              onChange={getElementValues}
-              type="number"
-              min="0"
-              onPaste={preventPasteNegative}
-              onKeyPress={preventMinus}
-            />
-          </FormGroup> */}
           <FormGroup>
-            <Label for="bonus">Bonus</Label>
+            <Label className="forLabel" for="bonus">
+              Bonus AZN
+            </Label>
             <Input
               id="bonus"
               name="bonus"
               placeholder="bonus"
               onChange={getElementValues}
-              // prefix='$'
               type="number"
               min="0"
               onPaste={preventPasteNegative}
@@ -143,7 +135,9 @@ function CreateSalary() {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="taxId">Select Tax</Label>
+            <Label className="forLabel" for="taxId">
+              Select Tax
+            </Label>
             <select
               className="taxId"
               onChange={getElementValues}
@@ -158,7 +152,9 @@ function CreateSalary() {
               ))}
             </select>
           </FormGroup>
-          <Button type="submit">Submit</Button>
+          <Button className="forSubmit" type="submit">
+            Submit
+          </Button>
         </Form>
       </div>
     </>

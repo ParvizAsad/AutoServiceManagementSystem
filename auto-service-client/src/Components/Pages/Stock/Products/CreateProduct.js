@@ -146,7 +146,7 @@ function CreateProduct() {
           </FormGroup>
           {error}
           <FormGroup>
-            <Label for="basePrice">BasePrice</Label>
+            <Label for="basePrice">Base Price AZN</Label>
             <Input
               id="basePrice"
               name="basePrice"
@@ -160,7 +160,7 @@ function CreateProduct() {
           </FormGroup>
           {error}
           <FormGroup>
-            <Label for="salePrice">SalePrice</Label>
+            <Label for="salePrice">Sale Price AZN</Label>
             <Input
               id="salePrice"
               name="salePrice"

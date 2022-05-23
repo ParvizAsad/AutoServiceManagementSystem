@@ -45,9 +45,9 @@ function EditPosition(props) {
         <h1>Edit {position.name} position</h1>
       </div>
       <div className="CreatePage">
-        <Form onSubmit={editPosition}>
+        <Form className="forForm" onSubmit={editPosition}>
           <FormGroup>
-            <Label for="Name">Name</Label>
+            <Label className="forLabel" for="Name">Name</Label>
             <Input
               id="name"
               name="name"
@@ -57,7 +57,7 @@ function EditPosition(props) {
               type="text"
             />
           </FormGroup>
-          <Button type="submit">Submit</Button>
+          <Button className="forSubmit" type="submit">Submit</Button>
         </Form>
       </div>
     </>

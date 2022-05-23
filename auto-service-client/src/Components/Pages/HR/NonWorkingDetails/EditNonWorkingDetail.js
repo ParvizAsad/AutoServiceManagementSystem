@@ -78,10 +78,10 @@ function EditNonWorkingDetail(props) {
       <div className="ForHeading">
         <h1>Edit Non-Working Detail</h1>
       </div>
-      <div className="EditPage">
-        <Form onSubmit={updateNonWorkingDetail}>
+      <div className="CreatePage">
+        <Form className="forForm" onSubmit={updateNonWorkingDetail}>
           <FormGroup>
-            <Label for="StartTime">StartTime</Label>
+            <Label className="forLabel" for="StartTime">StartTime</Label>
             <Input
               id="StartTime"
               name="StartTime"
@@ -92,7 +92,7 @@ function EditNonWorkingDetail(props) {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="EndTime">EndTime</Label>
+            <Label className="forLabel" for="EndTime">EndTime</Label>
             <Input
               id="EndTime"
               name="EndTime"
@@ -103,7 +103,7 @@ function EditNonWorkingDetail(props) {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="NonWorkingTypeId">Select nonWorkingType</Label>
+            <Label className="forLabel" for="NonWorkingTypeId">Select nonWorkingType</Label>
             <select
               className="NonWorkingTypeId"
               onChange={(e) => handle(e)}
@@ -119,7 +119,7 @@ function EditNonWorkingDetail(props) {
             </select>
           </FormGroup>
           <FormGroup>
-            <Label for="EmployeeId">Select employee</Label>
+            <Label className="forLabel" for="EmployeeId">Select employee</Label>
             <select
               className="EmployeeId"
               onChange={(e) => handle(e)}
@@ -134,7 +134,7 @@ function EditNonWorkingDetail(props) {
               ))}
             </select>
           </FormGroup>
-          <Button type="submit">Submit</Button>
+          <Button className="forSubmit" type="submit">Submit</Button>
         </Form>
       </div>
     </>

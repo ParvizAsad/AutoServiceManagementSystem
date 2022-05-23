@@ -6,6 +6,7 @@ using AutoServiceManagment.Repository.Repository;
 using AutoServiceManagment.Repository.Repository.Contracts;
 using AutoServiceManagment.Services.Services.Contracts;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -27,24 +28,24 @@ namespace AutoServiceManagment.Services.Services
             _repository3 = repository3;
         }
 
-        public async Task<IList<StatisticsDto>> GetAllStatisticsAsync()
+        public async Task AddStatisticsAsync()
         {
             var Finances = await DbContext.Finances.ToListAsync();
             foreach (var finance in Finances)
             {
-            var Salaries = await DbContext.Salaries.ToListAsync();
-                decimal salaryCosts = 0;
+                var Salaries = await DbContext.Salaries.ToListAsync();
+                decimal salaryCosts = 5;
                 foreach (var salary in Salaries)
                 {
-                    if (salary.Date == finance.Date)
+                    if (salary.Date.Month == finance.Date.Month)
                         salaryCosts += salary.NetSalary;
                 }
 
                 var Payments = await DbContext.CashBoxes.ToListAsync();
-                decimal payments = 0;
+                decimal payments = 4;
                 foreach (var payment in Payments)
                 {
-                    if (payment.Date == finance.Date)
+                    if (payment.Date.Month == finance.Date.Month)
                         payments += payment.Payment;
                 }
                 var newStatistics = new Statistics
@@ -52,10 +53,14 @@ namespace AutoServiceManagment.Services.Services
                     Date = finance.Date,
 
                     Profit = payments - salaryCosts - finance.AdditionalCost - finance.CommunalCost
+
                 };
                 await DbContext.Statistics.AddAsync(newStatistics);
             }
+        }
 
+        public async Task<IList<StatisticsDto>> GetAllStatisticsAsync()
+        {
             var Statisticses = await DbContext.Statistics.ToListAsync();
             return _mapper.Map<List<StatisticsDto>>(Statisticses); 
         }

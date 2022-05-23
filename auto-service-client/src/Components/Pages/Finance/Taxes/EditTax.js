@@ -54,9 +54,9 @@ function EditTax(props) {
         <h1>Edit {tax.name} tax</h1>
       </div>
       <div className="CreatePage">
-        <Form onSubmit={editTax}>
+        <Form className="forForm" onSubmit={editTax}>
           <FormGroup>
-            <Label for="name">Name</Label>
+            <Label className="forLabel" for="name">Name</Label>
             <Input
               id="name"
               name="name"
@@ -67,17 +67,16 @@ function EditTax(props) {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="taxValue">Tax Value</Label>
-            <CurrencyInput
+            <Label className="forLabel" for="taxValue">Tax Value</Label>
+            <Input
               id="taxValue"
               name="taxValue"
               placeholder="Tax value"
-              prefix="$"
               value={tax.taxValue}
               onChange={(e) => handle(e)}
             />
           </FormGroup>
-          <Button type="submit">Submit</Button>
+          <Button className="forSubmit" type="submit">Submit</Button>
         </Form>
       </div>
     </>
