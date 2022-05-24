@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using AutoServiceManagment.DomainModels.DTOs;
 using AutoServiceManagment.DomainModels.Entities;
+using AutoServiceManagment.Infrastructure.Helpers;
 using AutoServiceManagment.Repository.DataContext;
 using AutoServiceManagment.Repository.Repository;
 using AutoServiceManagment.Repository.Repository.Contracts;
@@ -40,8 +41,8 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task AddCategoryAsync(CategoryDto categoryDto)
         {
-            var categories = await DbContext.Categories.Where(x => x.Name == categoryDto.Name).FirstOrDefaultAsync();
-            if (categories != null) { throw new Exception("There is a category with this name!"); }
+            var existCategory = await DbContext.Categories.Where(x => x.Name == categoryDto.Name).FirstOrDefaultAsync();
+            await NullCheck<Category>.Checking(existCategory);
 
             var category = _mapper.Map<Category>(categoryDto);
             await _repository.AddAsync(category);

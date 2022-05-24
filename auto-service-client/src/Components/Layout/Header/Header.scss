@@ -17,7 +17,7 @@
       max-width: 60%;
       color: #ffffff;
       font-family: "Trocchi", serif;
-      font-size: 60px;
+      font-size: 55px;
       font-weight: bold;
       margin: 0;
       background-color: rgb(173, 33, 28);
@@ -62,6 +62,158 @@
             font-size: 25px;
             max-width: 120px;
             background-color: rgb(213, 226, 233);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 992px) {
+}
+
+@media screen and (max-width: 1400px) {
+  .forHeading {
+    height: 20vh;
+    margin-top: 0;
+  }
+  #NavbarId {
+    margin-top: 0;
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    background-color: rgb(173, 33, 28);
+    height: 100%;
+    .container-fluid {
+      background-color: rgb(173, 33, 28);
+      height: 100%;
+
+      h1 {
+        max-width: 60%;
+        color: #ffffff;
+        font-family: "Trocchi", serif;
+        font-size: 40px;
+        font-weight: bold;
+        margin: 0;
+        background-color: rgb(173, 33, 28);
+      }
+
+      img {
+        width: 100px;
+        height: 80px;
+        border-radius: 100%;
+        padding: 1px;
+      }
+      .Profile {
+        font-size: 20px;
+        min-height: 80px;
+        min-width: 80px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-radius: 20px;
+        .forProfile {
+          .linkForProfile {
+            text-decoration: none;
+            color: black;
+          }
+        }
+        .ForAccount {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          margin-top: 20px;
+          .linkForAccount {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            .forLogin {
+              border-radius: 10%;
+              color: black;
+              font-size: 25px;
+              max-width: 120px;
+              background-color: rgb(213, 226, 233);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+}
+
+@media screen and (max-width: 576px) {
+  .forHeading {
+    height: 20vh;
+    margin-top: 0;
+  }
+  #NavbarId {
+    margin-top: 0;
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    background-color: rgb(173, 33, 28);
+    height: 100%;
+    .container-fluid {
+      background-color: rgb(173, 33, 28);
+      height: 100%;
+
+      h1 {
+        max-width: 60%;
+        color: #ffffff;
+        font-family: "Trocchi", serif;
+        font-size: 30px;
+        font-weight: bold;
+        margin: 0;
+        background-color: rgb(173, 33, 28);
+      }
+
+      img {
+        width: 100px;
+        height: 80px;
+        border-radius: 100%;
+        padding: 1px;
+      }
+      .Profile {
+        font-size: 20px;
+        min-height: 80px;
+        min-width: 80px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-radius: 20px;
+        .forProfile {
+          .linkForProfile {
+            text-decoration: none;
+            color: black;
+          }
+        }
+        .ForAccount {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          margin-top: 20px;
+          .linkForAccount {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            .forLogin {
+              border-radius: 10%;
+              color: black;
+              font-size: 25px;
+              max-width: 120px;
+              background-color: rgb(213, 226, 233);
+            }
           }
         }
       }

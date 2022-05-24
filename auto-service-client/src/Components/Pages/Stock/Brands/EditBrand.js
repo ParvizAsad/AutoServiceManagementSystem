@@ -2,7 +2,6 @@ import { FormGroup, Form, Label, Input, Button, FormText } from "reactstrap";
 import React, { useCallback, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { brandService } from "../../../../Api/services/Brands";
-// import "./Employees/Brands/CreateEmployee.scss";
 
 const newBrand = {
   name: " ",
@@ -35,9 +34,6 @@ function EditBrand(props) {
     const newbrand = { ...brand };
     newbrand[e.target.id] = e.target.value;
     setBrand(newbrand);
-
-    // const { name, value } = e.target;
-    // setBrand({ ...brand, [name]: value });
   }
 
   return (

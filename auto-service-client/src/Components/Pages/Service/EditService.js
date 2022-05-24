@@ -2,7 +2,6 @@ import { FormGroup, Form, Label, Input, Button, FormText } from "reactstrap";
 import React, { useCallback, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { serviceService } from "../../../Api/services/Services";
-// import "./Employees/Services/CreateEmployee.scss";
 
 const service = {
   name: " ",
@@ -36,9 +35,6 @@ function EditService(props) {
     const newService = { ...Service };
     newService[e.target.id] = e.target.value;
     setService(newService);
-
-    // const { name, value } = e.target;
-    // setService({ ...Service, [name]: value });
   }
 
   return (

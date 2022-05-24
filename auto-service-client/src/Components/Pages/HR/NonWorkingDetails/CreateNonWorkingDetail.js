@@ -4,7 +4,6 @@ import { useHistory } from "react-router-dom";
 import { nonWorkingDetailService } from "../../../../Api/services/NonWorkingDetails";
 import { nonWorkingTypeService } from "../../../../Api/services/NonWorkingTypes";
 import { employeeService } from "../../../../Api/services/Employee";
-// import "./Employees/NonWorkingDetails/CreateEmployee.scss";
 
 const newNonWorkingDetail = {
   StartTime: " ",

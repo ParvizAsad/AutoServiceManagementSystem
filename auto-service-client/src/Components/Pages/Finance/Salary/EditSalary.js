@@ -6,8 +6,6 @@ import { employeeService } from "../../../../Api/services/Employee";
 import { taxService } from "../../../../Api/services/Taxes";
 import CurrencyInput from "react-currency-input-field";
 
-// import "./Employees/Salarys/CreateEmployee.scss";
-
 const newSalary = {
   date: " ",
   bonus: " ",

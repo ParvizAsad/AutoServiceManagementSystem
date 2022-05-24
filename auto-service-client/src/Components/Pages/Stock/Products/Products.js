@@ -1,6 +1,5 @@
 import React from "react";
-import { Table, Button } from "reactstrap";
-// import "./Product.scss";
+import { Table, Button, Spinner } from "reactstrap";
 import { useHistory, Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { productService } from "../../../../Api/services/Products";
@@ -9,12 +8,14 @@ import { useState } from "react";
 function Product(props) {
   const [products, setProducts] = React.useState([]);
   const [searchProduct, setSearchProduct] = useState(" ");
+  const [loading, setLoading] = useState(true);
   const [visible, setVisible] = useState(2);
 
   const history = useHistory();
   React.useEffect(() => {
     productService.getAllProducts().then(({ data }) => {
       setProducts(data);
+      setLoading(false);
     });
   }, []);
 
@@ -96,6 +97,11 @@ function Product(props) {
         />
       </div>
       <div>
+      {loading ? (
+          <div className="d-flex justify-content-center">
+            <Spinner color="primary" />
+          </div>
+        ) : (
         <Table className="TableForItems">
           <thead>
             <tr>
@@ -145,7 +151,7 @@ function Product(props) {
                 </tr>
               ))}
           </tbody>
-        </Table>
+        </Table>)}
       </div>
       <div className="loadMore d-flex justify-content-center">
         {maxCount > visible ? (

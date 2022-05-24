@@ -5,8 +5,6 @@ import { categoryService } from "../../../../Api/services/Categories";
 import { brandService } from "../../../../Api/services/Brands";
 import { productService } from "../../../../Api/services/Products";
 
-// import "./Employees/products/EditEmployee.scss";
-
 const newProduct = {
   name: " ",
   basePrice: " ",
@@ -64,10 +62,6 @@ function EditProduct(props) {
   );
 
   function handle(e) {
-    // const newProduct = { ...product };
-    // newProduct[e.target.id] = e.target.value;
-    // setBrand(newProduct);
-
     const { name, value } = e.target;
     setProduct({ ...product, [name]: value });
   }

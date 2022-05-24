@@ -2,7 +2,6 @@ import { FormGroup, Form, Label, Input, Button, FormText } from "reactstrap";
 import React, { useCallback, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { categoryService } from "../../../../Api/services/Categories";
-// import "./Employees/Categorys/CreateEmployee.scss";
 
 const newCategory = {
   name: " ",
@@ -35,9 +34,6 @@ function EditCategory(props) {
     const newCategory = { ...category };
     newCategory[e.target.id] = e.target.value;
     setCategory(newCategory);
-
-    // const { name, value } = e.target;
-    // setCategory({ ...Category, [name]: value });
   }
 
   return (

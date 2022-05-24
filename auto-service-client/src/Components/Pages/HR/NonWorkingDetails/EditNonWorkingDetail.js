@@ -5,7 +5,6 @@ import { nonWorkingDetailService } from "../../../../Api/services/NonWorkingDeta
 import { nonWorkingTypeService } from "../../../../Api/services/NonWorkingTypes";
 import { employeeService } from "../../../../Api/services/Employee";
 import moment from "moment";
-// import "./Employees/NonWorkingDetails/EditEmployee.scss";
 
 const newNonWorkingDetail = {
   StartTime: " ",

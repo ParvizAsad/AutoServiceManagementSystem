@@ -10,7 +10,7 @@ namespace AutoServiceManagment.DomainModels.DTOs
         [Required(ErrorMessage = "Discount name is required!")]
         public string Name { get; set; }
         [Required(ErrorMessage = "Expire date is required!")]
-        public DateTime ExpireDate { get; set; } = DateTime.Now;
+        public DateTime ExpireDate { get; set; } = DateTime.Today;
         [Required(ErrorMessage = "Percentage is required!")]
         public decimal Percentage { get; set; }
 

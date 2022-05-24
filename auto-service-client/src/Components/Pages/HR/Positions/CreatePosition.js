@@ -1,7 +1,6 @@
 import { FormGroup, Form, Label, Input, Button, FormText } from "reactstrap";
 import React, { useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
-// import "./Employees/Positions/CreateEmployee.scss";
 import { positionService } from "../../../../Api/services/Positions";
 
 const newPosition = {

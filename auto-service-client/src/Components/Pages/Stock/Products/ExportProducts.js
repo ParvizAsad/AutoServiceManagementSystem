@@ -1,6 +1,5 @@
 import React from "react";
 import { Table } from "reactstrap";
-// import ".././HR.scss";
 import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useState } from "react";

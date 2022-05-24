@@ -1,8 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { FormGroup, Form, Label, Input, Button } from "reactstrap";
-// import "./CreateCustomer.scss";
-// import { positionService } from "../../../../Api/services/Positions";
 import { useParams } from "react-router-dom";
 import axios, { Axios } from "axios";
 import { customerService } from "../../../Api/services/Customers";
@@ -31,7 +29,6 @@ function EditCustomer(props) {
       e.preventDefault();
       const id = props.match.params.id;
       customerService.putCustomer(id, data).then(() => {
-        // getAllCustomer();
         history.push("/customer");
       });
     },
@@ -39,9 +36,6 @@ function EditCustomer(props) {
   );
 
   function handle(e) {
-    // const newdata = { ...data };
-    // newdata[e.target.id] = e.target.value;
-    // setData(newdata);
     const { name, value } = e.target;
     setData({ ...data, [name]: value });
   }

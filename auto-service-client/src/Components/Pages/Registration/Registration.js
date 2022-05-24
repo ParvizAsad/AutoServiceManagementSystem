@@ -1,6 +1,5 @@
 import React from "react";
 import { Button } from "reactstrap";
-// import "./HR.scss";
 import { Link } from "react-router-dom";
 import { CardGroup, Card, CardBody, CardTitle } from "reactstrap";
 import { MdOutlinePeople } from "react-icons/md";

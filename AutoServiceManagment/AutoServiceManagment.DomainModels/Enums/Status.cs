@@ -2,9 +2,9 @@
 {
     public enum Status 
     {
-        Free,
-        Busy,
-        InVacation,
-        InSickLeave
+        Free=1,
+        Busy=2,
+        InVacation=3,
+        InSickLeave=4,
     }
 }

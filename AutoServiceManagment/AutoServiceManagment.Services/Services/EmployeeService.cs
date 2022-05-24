@@ -49,9 +49,7 @@ namespace AutoServiceManagment.Services.Services
         {
             var existEmployee = await DbContext.Employees.Where(x => x.FullName == employeeDto.FullName).FirstOrDefaultAsync();
 
-            await NullCheck<Employee>.Checking(existEmployee);
-
-            if((DateTime.Now.Year- employeeDto.BirthDate.Year) >18) { throw new Exception("Employee should be at least 18 years old!"); }
+            if((DateTime.Today.Year- employeeDto.BirthDate.Year) >18) { throw new Exception("Employee should be at least 18 years old!"); }
 
             var employee = _mapper.Map<Employee>(employeeDto);
             await _repository.AddAsync(employee);

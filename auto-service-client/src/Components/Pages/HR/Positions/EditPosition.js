@@ -2,7 +2,6 @@ import { FormGroup, Form, Label, Input, Button, FormText } from "reactstrap";
 import React, { useCallback, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { positionService } from "../../../../Api/services/Positions";
-// import "./Employees/taxs/CreateEmployee.scss";
 
 const NewPosition = {
   name: " ",
@@ -32,9 +31,6 @@ function EditPosition(props) {
   }, []);
 
   function handle(e) {
-    // const newposition = { ...position };
-    // newposition[e.target.id] = e.target.value;
-    // setPosition(newposition);
     const { name, value } = e.target;
     setPosition({ ...position, [name]: value });
   }

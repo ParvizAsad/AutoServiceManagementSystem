@@ -34,6 +34,7 @@
     background-color: rgb(255, 255, 255);
     min-width: 28vh;
     min-height: 35vh;
+    margin-bottom: 15px;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -115,5 +116,81 @@
   100% {
     transform: translateY(0);
     opacity: 100%;
+  }
+}
+
+@media screen and (min-width: 992px) {
+
+}
+
+@media screen and (max-width: 992px) {
+
+}
+
+@media screen and (max-width: 768px) {
+
+}
+
+@media screen and (max-width: 576px) {
+  #moduleCards {
+    margin-top: 14vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    font-style: none;
+    text-decoration: none;
+    .classForLink {
+      text-decoration: none;
+    }
+    .moduleCard {
+      background-color: rgb(255, 255, 255);
+      min-width: 20vh;
+      max-width: 80vh;
+      min-height: 35vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      border-radius: 15px;
+      margin-bottom: 20px;
+      .moduleCardBody {
+        background: linear-gradient(
+          0deg,
+          rgb(213, 226, 233) 0%,
+          rgba(240, 11, 11, 1) 70%
+        );
+        width: 80%;
+        .moduleCardTitle {
+          background-color: rgb(233, 239, 242);
+          color: black;
+          border-radius: 5px;
+          margin-top: 10px;
+          text-decoration: none;
+          height: 30px;
+          font-size: 20px;
+        }
+        .Icon {
+          color: black;
+          background-color: rgb(213, 226, 233);
+          height: 40px;
+          font-size: 25px;
+          border-radius: 5px;
+          margin-top: 20px;
+        }
+        .text-muted {
+          background-color: rgb(220, 220, 205);
+          border-radius: 5px;
+          margin-top: 20px;
+        }
+        Button {
+          margin-top: 50px;
+          background-color: rgb(69, 156, 100);
+          color: rgb(255, 255, 255);
+          width: 90px;
+          font-size: 18px;
+          letter-spacing: 2px;
+        }
+      }
+    }
   }
 }

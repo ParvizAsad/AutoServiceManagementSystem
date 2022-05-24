@@ -50,7 +50,6 @@ function EditEmployee(props) {
     axios.get(url + id).then((res) => {
       setData(res.data);
     });
-    //   .catch((er) => console.error(err));
   }, []);
 
   const updateEmployee = useCallback(
@@ -60,7 +59,6 @@ function EditEmployee(props) {
       employeeService
         .putEmployee(id, data)
         .then(() => {
-          // getAllEmployee();
           history.push("/employee");
         })
         .catch((e) => {
@@ -130,7 +128,6 @@ function EditEmployee(props) {
               onChange={showPreview}
               accept="image/*"
               id="imageName"
-              // onChange={showPreview}
             />
           </FormGroup>
           <FormGroup>

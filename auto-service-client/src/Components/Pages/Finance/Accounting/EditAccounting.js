@@ -2,7 +2,6 @@ import { FormGroup, Form, Label, Input, Button, FormText } from "reactstrap";
 import React, { useCallback, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { financeService } from "../../../../Api/services/Finances";
-// import "./Employees/Accountings/CreateEmployee.scss";
 import moment from "moment";
 import { ToastContainer, toast } from "react-toastify";
 import CurrencyInput from "react-currency-input-field";

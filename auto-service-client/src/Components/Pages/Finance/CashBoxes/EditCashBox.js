@@ -7,8 +7,6 @@ import CurrencyInput from "react-currency-input-field";
 import { productService } from "../../../../Api/services/Products";
 import { serviceService } from "../../../../Api/services/Services";
 
-// import "./Employees/Cashboxs/CreateEmployee.scss";
-
 const newCashBox = {
   customerId: " ",
   serviceId: " ",

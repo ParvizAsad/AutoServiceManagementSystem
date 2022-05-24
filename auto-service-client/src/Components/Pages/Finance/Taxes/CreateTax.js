@@ -3,7 +3,6 @@ import React, { useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { taxService } from "../../../../Api/services/Taxes";
 import CurrencyInput from "react-currency-input-field";
-// import "./Employees/taxs/CreateEmployee.scss";
 
 const newTax = {
   Name: " ",
