@@ -44,8 +44,8 @@ function CreateEmployee() {
     });
   };
 
-  const getAllEmployee = useCallback(() => {
-    employeeService.getAllEmployee().then(({ data }) => {
+  const getAllEmployees = useCallback(() => {
+    employeeService.getAllEmployees().then(({ data }) => {
       setEmployeeData(data);
     });
   }, [setEmployeeData]);

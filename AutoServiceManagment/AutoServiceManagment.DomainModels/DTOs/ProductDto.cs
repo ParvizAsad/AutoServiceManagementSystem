@@ -11,9 +11,9 @@ namespace AutoServiceManagment.DomainModels.DTOs
         [Required(ErrorMessage = "Name is required!")]
         public string Name { get; set; }
         [Required(ErrorMessage = "Base price is required!")]
-        public double BasePrice { get; set; }
+        public decimal BasePrice { get; set; }
         [Required(ErrorMessage = "Sale price is required!")]
-        public double SalePrice { get; set; }
+        public decimal SalePrice { get; set; }
         public double Count { get; set; }
         [Required(ErrorMessage = "Category is required!")]
         [ForeignKey(nameof(Category))]

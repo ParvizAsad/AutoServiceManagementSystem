@@ -7,7 +7,7 @@ class EmployeeService extends HttpClient {
     super("https://localhost:44330/api");
   }
 
-  async getAllEmployee() {
+  async getAllEmployees() {
     return await this.get("Employees");
   }
 

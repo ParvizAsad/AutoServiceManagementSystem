@@ -30,12 +30,13 @@ namespace AutoServiceManagment.Services.Services
         public async Task<IList<SalaryDto>> GetAllSalarysAsync()
         {
             var salaries = await DbContext.Salaries.Where(x => x.IsDeleted == false).ToListAsync();
+
             foreach (var salary in salaries)
             {
-            var employee = await DbContext.Employees.Where(x => x.Id==salary.EmployeeID).FirstOrDefaultAsync();
-            var tax = await DbContext.Taxes.Where(x => x.Id==salary.TaxID).FirstOrDefaultAsync();
+                var employee = await DbContext.Employees.Where(x => x.Id == salary.EmployeeID).FirstOrDefaultAsync();
+                var tax = await DbContext.Taxes.Where(x => x.Id == salary.TaxID).FirstOrDefaultAsync();
 
-                salary.NetSalary = (employee.BaseSalary + salary.Bonus) * (100 - (tax.TaxValue));
+                salary.NetSalary = (employee.BaseSalary + salary.Bonus) * (1 - (tax.TaxValue) / 100);
             }
 
             return _mapper.Map<List<SalaryDto>>(salaries);
@@ -50,8 +51,11 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task AddSalaryAsync(SalaryDto salaryDto)
         {
+            
             var salary = _mapper.Map<Salary>(salaryDto);
-            await _repository.AddAsync(salary);
+
+           await _repository.AddAsync(salary);
+
 
         }
 
@@ -73,6 +77,7 @@ namespace AutoServiceManagment.Services.Services
             if (salary == null) { throw new Exception("Salary not found!"); }
 
             salary.Bonus = salaryDto.Bonus;
+            salary.OverTime = salaryDto.Overtime;
             salary.Date = salaryDto.Date;
             salary.EmployeeID = salaryDto.EmployeeID;
             salary.TaxID = salaryDto.TaxID;

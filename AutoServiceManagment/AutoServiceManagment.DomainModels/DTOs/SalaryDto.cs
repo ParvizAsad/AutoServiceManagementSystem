@@ -18,6 +18,7 @@ namespace AutoServiceManagment.DomainModels.DTOs
         public DateTime Date { get; set; }
         public decimal NetSalary { get; set; } = 0;
         public decimal Bonus { get; set; }
+        public decimal Overtime { get; set; }
         [ForeignKey(nameof(Tax))]
         public int TaxID { get; set; }
         //public Tax Tax { get; set; }

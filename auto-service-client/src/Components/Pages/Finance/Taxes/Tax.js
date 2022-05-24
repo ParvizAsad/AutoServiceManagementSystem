@@ -97,7 +97,7 @@ function Tax() {
             <tr>
               <th>#</th>
               <th>Name</th>
-              <th>TaxValue</th>
+              <th>TaxValue %</th>
               <th>Actions</th>
             </tr>
           </thead>

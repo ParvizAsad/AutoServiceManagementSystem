@@ -45,7 +45,7 @@ namespace AutoServiceManagment.Services.Services
 
             foreach (var id in customerDto.ServiceIds)
             {
-                CustomerServices customerService = new CustomerServices
+                CustomerServices customerService = new()
                 {
                     ServiceID = id,
 
@@ -53,6 +53,8 @@ namespace AutoServiceManagment.Services.Services
                 };
 
                 customerServices.Add(customerService);
+                var service = await DbContext.Services.Where(x => x.Id == id).FirstOrDefaultAsync();
+                customer.Debt += service.Price;
             }
 
             customer.CustomerServices = customerServices;
@@ -62,7 +64,7 @@ namespace AutoServiceManagment.Services.Services
             {
                 var usedProduct = await DbContext.Products.Where(x => x.IsDeleted == false && x.Id==id).FirstOrDefaultAsync();
                 usedProduct.Count--;
-                CustomerProduct customerProduct = new CustomerProduct
+                CustomerProduct customerProduct = new()
                 {
                     ProductID = id,
 
@@ -70,6 +72,8 @@ namespace AutoServiceManagment.Services.Services
                 };
 
                 customerProducts.Add(customerProduct);
+                var product = await DbContext.Products.Where(x => x.Id == id).FirstOrDefaultAsync();
+                customer.Debt += product.SalePrice;
             }
 
             customer.CustomerProducts = customerProducts;
