@@ -8,6 +8,7 @@ using AutoServiceManagment.Services.Services.Contracts;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace AutoServiceManagment.Services.Services
@@ -30,19 +31,19 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task AddStatisticsAsync()
         {
-            var Finances = await DbContext.Finances.ToListAsync();
+            var Finances = await DbContext.Finances.Where(x => x.IsDeleted == false).ToListAsync();
+                var Salaries = await DbContext.Salaries.Where(x => x.IsDeleted == false).ToListAsync();
             foreach (var finance in Finances)
             {
-                var Salaries = await DbContext.Salaries.ToListAsync();
-                decimal salaryCosts = 5;
+                decimal salaryCosts = 0;
                 foreach (var salary in Salaries)
                 {
                     if (salary.Date.Month == finance.Date.Month)
                         salaryCosts += salary.NetSalary;
                 }
 
-                var Payments = await DbContext.CashBoxes.ToListAsync();
-                decimal payments = 4;
+                var Payments = await DbContext.CashBoxes.Where(x => x.IsDeleted == false).ToListAsync();
+                decimal payments = 0;
                 foreach (var payment in Payments)
                 {
                     if (payment.Date.Month == finance.Date.Month)

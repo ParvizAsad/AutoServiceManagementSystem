@@ -20,7 +20,7 @@ namespace AutoServiceManagment.API.Controllers
         public async Task<IActionResult> Get()
         {
             await _service.AddStatisticsAsync();
-            return Ok(await _service.GetAllStatisticsAsync());
+            return Ok();
         }
 
     }
