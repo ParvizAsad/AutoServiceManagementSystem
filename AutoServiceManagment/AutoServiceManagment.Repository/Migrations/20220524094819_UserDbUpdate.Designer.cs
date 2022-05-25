@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AutoServiceManagment.Repository.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220523181201_forEmployee")]
-    partial class forEmployee
+    [Migration("20220524094819_UserDbUpdate")]
+    partial class UserDbUpdate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -296,9 +296,6 @@ namespace AutoServiceManagment.Repository.Migrations
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<byte>("EMployeeStatus")
-                        .HasColumnType("tinyint");
 
                     b.Property<string>("EducationLevel")
                         .IsRequired()
@@ -701,9 +698,11 @@ namespace AutoServiceManagment.Repository.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<string>("FullName")
-                        .IsRequired()
+                    b.Property<string>("Fullname")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");

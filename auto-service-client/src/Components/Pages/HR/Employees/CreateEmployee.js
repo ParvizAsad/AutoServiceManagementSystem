@@ -7,6 +7,7 @@ import { positionService } from "../../../../Api/services/Positions";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import defaultImageSrc from "../../../../Assets/Images/HR/defaultImage.png";
+// const defaultImageSrc= '../../../../Assets/Images/HR/defaultImage.png'
 
 const employees = {
   fullName: "",
@@ -25,6 +26,7 @@ const employees = {
 
 function CreateEmployee() {
   const [employee, setEmployee] = useState(employees);
+  // const [formErrors, setFormErrors]=useState({});
   const [position, setPosition] = React.useState([]);
   const [error, setError] = useState();
   const [positionData, setPositionData] = useState();
@@ -143,9 +145,9 @@ function CreateEmployee() {
         <h1>Create a new Employee</h1>
       </div>
       <div className="CreatePage">
-        <Form className="forForm" onSubmit={createEmployee}>
+        <Form onSubmit={createEmployee}>
           <FormGroup>
-            <Label className="forLabel" for="fullName">FullName</Label>
+            <Label for="fullName">FullName</Label>
             <Input
               id="fullName"
               name="fullName"
@@ -155,7 +157,7 @@ function CreateEmployee() {
             />
           </FormGroup>
           <FormGroup>
-            <Label className="forLabel" for="imageName">Image</Label>
+            <Label for="imageName">Image</Label>
             <img src={employee.imageSrc} className=" profilePicture" />
             <Input
               type="file"
@@ -166,7 +168,7 @@ function CreateEmployee() {
             />
           </FormGroup>
           <FormGroup>
-            <Label className="forLabel" for="phoneNumber">Phone Number</Label>
+            <Label for="phoneNumber">Phone Number</Label>
             <Input
               id="phoneNumber"
               name="phoneNumber"
@@ -176,7 +178,7 @@ function CreateEmployee() {
             />
           </FormGroup>
           <FormGroup>
-            <Label className="forLabel" for="birthDate">BirthDate</Label>
+            <Label for="birthDate">BirthDate</Label>
             <Input
               id="birthDate"
               name="birthDate"
@@ -186,7 +188,7 @@ function CreateEmployee() {
             />
           </FormGroup>
           <FormGroup>
-            <Label className="forLabel" for="baseSalary">Base Salary AZN</Label>
+            <Label for="baseSalary">Base Salary</Label>
             <Input
               id="baseSalary"
               name="baseSalary"
@@ -199,7 +201,7 @@ function CreateEmployee() {
             />
           </FormGroup>
           <FormGroup>
-            <Label className="forLabel" for="positionId">Select Position</Label>
+            <Label for="positionId">Select Position</Label>
             <select
               className="positionId"
               onChange={getElementValues}
@@ -215,7 +217,7 @@ function CreateEmployee() {
             </select>
           </FormGroup>
           <FormGroup>
-            <Label className="forLabel" for="orderNumber">Order Number</Label>
+            <Label for="orderNumber">Order Number</Label>
             <Input
               id="orderNumber"
               name="orderNumber"
@@ -225,7 +227,7 @@ function CreateEmployee() {
             />
           </FormGroup>
           <FormGroup>
-            <Label className="forLabel" for="location">Location</Label>
+            <Label for="location">Location</Label>
             <Input
               id="location"
               name="location"
@@ -235,7 +237,7 @@ function CreateEmployee() {
             />
           </FormGroup>
           <FormGroup>
-            <Label className="forLabel" for="educationLevel">Education Level</Label>
+            <Label for="educationLevel">Education Level</Label>
             <Input
               id="educationLevel"
               name="educationLevel"
@@ -245,7 +247,7 @@ function CreateEmployee() {
             />
           </FormGroup>
           <FormGroup>
-            <Label className="forLabel" for="personalDetails">Personal Detail</Label>
+            <Label for="personalDetails">Personal Detail</Label>
             <Input
               onChange={getElementValues}
               id="personalDetails"
@@ -253,8 +255,7 @@ function CreateEmployee() {
               type="textarea"
             />
           </FormGroup>
-
-          <Button className="forSubmit" onClick={notify} type="submit">
+          <Button onClick={notify} type="submit">
             Submit
           </Button>
           <ToastContainer />

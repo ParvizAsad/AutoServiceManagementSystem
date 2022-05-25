@@ -1,4 +1,4 @@
-import { Table, Button, Spinner } from "reactstrap";
+import { Table, Button } from "reactstrap";
 import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
 import React, { useCallback, useState } from "react";
@@ -11,7 +11,6 @@ function CashBox() {
   const [cashBoxes, setCashBoxes] = React.useState([]);
   const [customers, setCustomers] = useState();
   const [services, setServices] = useState();
-  const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState();
 
   const history = useHistory();
@@ -24,7 +23,6 @@ function CashBox() {
   React.useEffect(() => {
     cashBoxService.getAllCashBoxes().then(({ data }) => {
       setCashBoxes(data);
-      setLoading(false);
     });
   }, []);
 
@@ -80,6 +78,7 @@ function CashBox() {
           getAllCashBox();
           history.push("/CashBox");
         } else if (
+          /* Read more about handling dismissals below */
           result.dismiss === Swal.DismissReason.cancel
         ) {
           swalWithBootstrapButtons.fire(
@@ -108,17 +107,9 @@ function CashBox() {
           <Button onClick={() => history.push("/createcashbox")}>
             Create a new CashBox
           </Button>
-          <Button onClick={() => history.push("/convertor")}>
-            Currency Calculator
-          </Button>
         </div>
       </div>
       <div>
-      {loading ? (
-          <div className="d-flex justify-content-center">
-            <Spinner color="primary" />
-          </div>
-        ) : (
         <Table className="TableForItems">
           <thead>
             <tr>
@@ -142,12 +133,12 @@ function CashBox() {
                 {services
                   ?.filter((service) => service.id === item.serviceID)
                   .map((service) => (
-                    <td>{service.name}</td>
+                    <td>{service.name}a</td>
                   ))}
                 {products
                   ?.filter((product) => product.id === item.productID)
                   .map((product) => (
-                    <td>{product.name}</td>
+                    <td>{product.name}a</td>
                   ))}{" "}
                 <td>{item.payment}</td>
                 <td className="Actions">
@@ -164,7 +155,7 @@ function CashBox() {
               </tr>
             ))}
           </tbody>
-        </Table>)}
+        </Table>
       </div>
     </>
   );

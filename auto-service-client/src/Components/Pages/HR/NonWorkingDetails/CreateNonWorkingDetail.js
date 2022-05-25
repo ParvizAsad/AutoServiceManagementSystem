@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import { nonWorkingDetailService } from "../../../../Api/services/NonWorkingDetails";
 import { nonWorkingTypeService } from "../../../../Api/services/NonWorkingTypes";
 import { employeeService } from "../../../../Api/services/Employee";
+// import "./Employees/NonWorkingDetails/CreateEmployee.scss";
 
 const newNonWorkingDetail = {
   StartTime: " ",
@@ -70,10 +71,10 @@ function CreateNonWorkingDetail() {
         <h1>Create a new Non-Working Detail</h1>
       </div>
       <div className="CreatePage">
-        <Form className="forForm" onSubmit={createNonWorkingDetail}>
+        <Form onSubmit={createNonWorkingDetail}>
           {error}
           <FormGroup>
-            <Label className="forLabel" for="StartTime">StartTime</Label>
+            <Label for="StartTime">StartTime</Label>
             <Input
               id="StartTime"
               name="StartTime"
@@ -83,7 +84,7 @@ function CreateNonWorkingDetail() {
             />
           </FormGroup>
           <FormGroup>
-            <Label className="forLabel" for="EndTime">EndTime</Label>
+            <Label for="EndTime">EndTime</Label>
             <Input
               id="EndTime"
               name="EndTime"
@@ -93,7 +94,7 @@ function CreateNonWorkingDetail() {
             />
           </FormGroup>
           <FormGroup>
-            <Label className="forLabel" for="NonWorkingTypeId">Select nonWorkingType</Label>
+            <Label for="NonWorkingTypeId">Select nonWorkingType</Label>
             <select
               className="NonWorkingTypeId"
               onChange={getElementValues}
@@ -109,7 +110,7 @@ function CreateNonWorkingDetail() {
             </select>
           </FormGroup>
           <FormGroup>
-            <Label className="forLabel" for="EmployeeId">Select employee</Label>
+            <Label for="EmployeeId">Select employee</Label>
             <select
               className="EmployeeId"
               onChange={getElementValues}
@@ -124,7 +125,7 @@ function CreateNonWorkingDetail() {
               ))}
             </select>
           </FormGroup>
-          <Button className="forSubmit" type="submit">Submit</Button>
+          <Button type="submit">Submit</Button>
         </Form>
       </div>
     </>

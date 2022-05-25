@@ -1,42 +1,33 @@
+using AutoServiceManagment.AuthenticationService.Models;
+using AutoServiceManagment.DomainModels.Entities;
+using AutoServiceManagment.Infrastructure.Middlewares;
+using AutoServiceManagment.Repository.DataContext;
+using AutoServiceManagment.Repository.Repository;
+using AutoServiceManagment.Repository.Repository.Contracts;
+using AutoServiceManagment.Services.Mapping;
+using AutoServiceManagment.Services.Services;
+using AutoServiceManagment.Services.Services.Contracts;
+using AutoTaxManagment.Service.Services.Contracts;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoServiceManagment.Repository.DataContext;
-using AutoServiceManagment.Services.Mapping;
-using AutoServiceManagment.Repository.Repository.Contracts;
-using AutoServiceManagment.Repository.Repository;
-using AutoServiceManagment.Services.Services.Contracts;
-using AutoServiceManagment.Services.Services;
-using Microsoft.EntityFrameworkCore;
-using AutoServiceManagment.Infrastructure.Middlewares;
-using AutoServiceManagment.AuthenticationService.Models;
-
-using System.Text.Json.Serialization;
-using AutoTaxManagment.Service.Services.Contracts;
-using AutoServiceManagment.AuthenticationService.Contracts;
-using AutoServiceManagment.AuthenticationService;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
+using System.Security.Claims;
 using System.Text;
-using AutoServiceManagment.DomainModels.Entities;
-using Microsoft.AspNetCore.Identity;
 
 namespace AutoServiceManagment.API
 {
     public class Startup
     {
         public IConfiguration Configuration { get; }
-        private readonly IWebHostEnvironment _environment;
+       private readonly IWebHostEnvironment _environment;
 
         public Startup(IConfiguration configuration, IWebHostEnvironment environment)
         {
@@ -90,31 +81,43 @@ namespace AutoServiceManagment.API
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IServiceService, ServiceService>();
             services.AddScoped<ITaxService, TaxService>();
-            services.AddScoped<IAuthService, AuthService>();
+            //services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IBioService, BioService>();
             services.AddScoped<IStatisticsService, StatisticsService>();
 
-            services.AddAuthentication(options =>
-            {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
-                .AddJwtBearer(o =>
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
                 {
-                    o.RequireHttpsMetadata = false;
-                    o.SaveToken = false;
-                    o.TokenValidationParameters = new TokenValidationParameters
+                    options.TokenValidationParameters = new TokenValidationParameters
                     {
-                        ValidateIssuerSigningKey = true,
                         ValidateIssuer = true,
                         ValidateAudience = true,
                         ValidateLifetime = true,
-                        ClockSkew = TimeSpan.Zero,
-                        ValidIssuer = Configuration["JWT:Issuer"],
-                        ValidAudience = Configuration["JWT:Audience"],
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT:Key"]))
+                        ValidateIssuerSigningKey = true,
+                        ValidIssuer = "example.com",
+                        ValidAudience = "example.com",
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:SigningKey"]))
                     };
                 });
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("AdminOnly", policy => policy.RequireClaim(ClaimTypes.Role, "Admin"));
+
+                options.AddPolicy("SuperUser",
+                    policy => policy.RequireClaim(ClaimTypes.Role, "Admin")
+                                    .RequireClaim(ClaimTypes.Role, "User"));
+
+                options.AddPolicy(
+                    "OneOfTheRoles",
+                    policy => policy.RequireAssertion(
+                        context => context.User.HasClaim(claim => claim.Type == ClaimTypes.Role &&
+                                                                  claim.Value is "Admin" or "User"))
+                );
+            });
+
+
             services.AddCors(
                 options => options.AddPolicy("AllowCors",
                      builder =>

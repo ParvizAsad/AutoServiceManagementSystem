@@ -50,6 +50,7 @@ function EditEmployee(props) {
     axios.get(url + id).then((res) => {
       setData(res.data);
     });
+    //   .catch((er) => console.error(err));
   }, []);
 
   const updateEmployee = useCallback(
@@ -59,6 +60,7 @@ function EditEmployee(props) {
       employeeService
         .putEmployee(id, data)
         .then(() => {
+          // getAllEmployee();
           history.push("/employee");
         })
         .catch((e) => {
@@ -107,9 +109,9 @@ function EditEmployee(props) {
         <h1>Edit {data.fullName}</h1>
       </div>
       <div className="CreatePage">
-        <Form className="forForm" onSubmit={updateEmployee}>
+        <Form onSubmit={updateEmployee}>
           <FormGroup>
-            <Label className="forLabel" for="fullName">FullName</Label>
+            <Label for="fullName">FullName</Label>
             <Input
               id="fullName"
               name="fullName"
@@ -120,7 +122,7 @@ function EditEmployee(props) {
             />
           </FormGroup>
           <FormGroup>
-            <Label className="forLabel" for="imageName">Image</Label>
+            <Label for="imageName">Image</Label>
             <img src={data.imageName} className=" profilePicture" />
             <Input
               type="file"
@@ -128,10 +130,11 @@ function EditEmployee(props) {
               onChange={showPreview}
               accept="image/*"
               id="imageName"
+              // onChange={showPreview}
             />
           </FormGroup>
           <FormGroup>
-            <Label className="forLabel" for="phoneNumber">Phone Number</Label>
+            <Label for="phoneNumber">Phone Number</Label>
             <Input
               id="phoneNumber"
               name="phoneNumber"
@@ -142,7 +145,7 @@ function EditEmployee(props) {
             />
           </FormGroup>
           <FormGroup>
-            <Label className="forLabel" for="birthDate">BirthDate</Label>
+            <Label for="birthDate">BirthDate</Label>
             <Input
               id="birthDate"
               name="birthDate"
@@ -153,7 +156,7 @@ function EditEmployee(props) {
             />
           </FormGroup>
           <FormGroup>
-            <Label className="forLabel" for="baseSalary">Base Salary AZN</Label>
+            <Label for="baseSalary">Base Salary</Label>
             <Input
               id="baseSalary"
               name="baseSalary"
@@ -164,7 +167,7 @@ function EditEmployee(props) {
             />
           </FormGroup>
           <FormGroup>
-            <Label className="forLabel" for="positionId">Select Position</Label>
+            <Label for="positionId">Select Position</Label>
             <select
               className="positionId"
               onChange={(e) => handle(e)}
@@ -180,7 +183,7 @@ function EditEmployee(props) {
             </select>
           </FormGroup>
           <FormGroup>
-            <Label className="forLabel" for="orderNumber">Order Number</Label>
+            <Label for="orderNumber">Order Number</Label>
             <Input
               id="orderNumber"
               name="orderNumber"
@@ -192,7 +195,7 @@ function EditEmployee(props) {
           </FormGroup>
 
           <FormGroup>
-            <Label className="forLabel" for="location">Location</Label>
+            <Label for="location">Location</Label>
             <Input
               id="location"
               name="location"
@@ -204,7 +207,7 @@ function EditEmployee(props) {
           </FormGroup>
 
           <FormGroup>
-            <Label className="forLabel" for="educationLevel">Education Level</Label>
+            <Label for="educationLevel">Education Level</Label>
             <Input
               id="educationLevel"
               name="educationLevel"
@@ -215,7 +218,7 @@ function EditEmployee(props) {
             />
           </FormGroup>
           <FormGroup>
-            <Label className="forLabel" for="personalDetails">Personal Detail</Label>
+            <Label for="personalDetails">Personal Detail</Label>
             <Input
               onChange={(e) => handle(e)}
               value={data.personalDetails}
@@ -224,7 +227,7 @@ function EditEmployee(props) {
               type="textarea"
             />
           </FormGroup>
-          <Button className="forSubmit" type="submit">Submit</Button>
+          <Button type="submit">Submit</Button>
         </Form>
       </div>
     </>

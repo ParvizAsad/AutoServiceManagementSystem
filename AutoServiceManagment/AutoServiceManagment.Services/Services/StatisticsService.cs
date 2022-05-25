@@ -6,9 +6,7 @@ using AutoServiceManagment.Repository.Repository;
 using AutoServiceManagment.Repository.Repository.Contracts;
 using AutoServiceManagment.Services.Services.Contracts;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace AutoServiceManagment.Services.Services
@@ -29,24 +27,24 @@ namespace AutoServiceManagment.Services.Services
             _repository3 = repository3;
         }
 
-        public async Task AddStatisticsAsync()
+        public async Task<IList<StatisticsDto>> GetAllStatisticsAsync()
         {
-            var Finances = await DbContext.Finances.Where(x => x.IsDeleted == false).ToListAsync();
-                var Salaries = await DbContext.Salaries.Where(x => x.IsDeleted == false).ToListAsync();
+            var Finances = await DbContext.Finances.ToListAsync();
             foreach (var finance in Finances)
             {
+            var Salaries = await DbContext.Salaries.ToListAsync();
                 decimal salaryCosts = 0;
                 foreach (var salary in Salaries)
                 {
-                    if (salary.Date.Month == finance.Date.Month)
+                    if (salary.Date == finance.Date)
                         salaryCosts += salary.NetSalary;
                 }
 
-                var Payments = await DbContext.CashBoxes.Where(x => x.IsDeleted == false).ToListAsync();
+                var Payments = await DbContext.CashBoxes.ToListAsync();
                 decimal payments = 0;
                 foreach (var payment in Payments)
                 {
-                    if (payment.Date.Month == finance.Date.Month)
+                    if (payment.Date == finance.Date)
                         payments += payment.Payment;
                 }
                 var newStatistics = new Statistics
@@ -54,14 +52,10 @@ namespace AutoServiceManagment.Services.Services
                     Date = finance.Date,
 
                     Profit = payments - salaryCosts - finance.AdditionalCost - finance.CommunalCost
-
                 };
                 await DbContext.Statistics.AddAsync(newStatistics);
             }
-        }
 
-        public async Task<IList<StatisticsDto>> GetAllStatisticsAsync()
-        {
             var Statisticses = await DbContext.Statistics.ToListAsync();
             return _mapper.Map<List<StatisticsDto>>(Statisticses); 
         }

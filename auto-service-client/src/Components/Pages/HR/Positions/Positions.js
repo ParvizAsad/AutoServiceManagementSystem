@@ -106,6 +106,7 @@ function Position() {
       </div>
       <div>
         {loading ? (
+          //  <tr className="d-flex justify-content-center"><Spinner color="primary"/></tr>
           <div className="d-flex justify-content-center">
             <Spinner color="primary" />
           </div>

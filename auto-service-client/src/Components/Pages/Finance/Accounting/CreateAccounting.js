@@ -3,7 +3,7 @@ import React, { useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { financeService } from "../../../../Api/services/Finances";
 
-import "../../Customer/Create.scss";
+// import "./Employees/Accountings/CreateEmployee.scss";
 
 const newAccounting = {
   communalCost: " ",
@@ -70,13 +70,14 @@ function CreateAccounting() {
         <h1>Create a new Accounting</h1>
       </div>
       <div className="CreatePage">
-        <Form className="forForm" onSubmit={createAccounting}>
+        <Form onSubmit={createAccounting}>
           <FormGroup>
-            <Label className="forLabel" for="communalCost">Communal Cost AZN</Label>
-            <Input
+            <Label for="communalCost">CommunalCost</Label>
+            <CurrencyInput
               id="communalCost"
               name="communalCost"
               placeholder="communalCost"
+              prefix="$"
               onChange={getElementValues}
               min="0"
               onPaste={preventPasteNegative}
@@ -84,12 +85,13 @@ function CreateAccounting() {
             />
           </FormGroup>
           <FormGroup>
-            <Label className="forLabel" for="additionalCost">Additional Cost AZN</Label>
-            <Input
+            <Label for="additionalCost">AdditionalCost</Label>
+            <CurrencyInput
               id="additionalCost"
               name="additionalCost"
               placeholder="additionalCost"
               onChange={getElementValues}
+              prefix="$"
               min="0"
               onPaste={preventPasteNegative}
               onKeyPress={preventMinus}
@@ -97,7 +99,7 @@ function CreateAccounting() {
           </FormGroup>
           {error}
           <FormGroup>
-            <Label className="forLabel" for="date">Date</Label>
+            <Label for="date">Date</Label>
             <Input
               id="date"
               name="date"
@@ -106,7 +108,7 @@ function CreateAccounting() {
               type="date"
             />
           </FormGroup>
-          <Button className="forSubmit" type="submit">Submit</Button>
+          <Button type="submit">Submit</Button>
         </Form>
       </div>
     </>

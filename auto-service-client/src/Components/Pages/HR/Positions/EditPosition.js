@@ -2,6 +2,7 @@ import { FormGroup, Form, Label, Input, Button } from "reactstrap";
 import React, { useCallback, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { positionService } from "../../../../Api/services/Positions";
+// import "./Employees/taxs/CreateEmployee.scss";
 
 const NewPosition = {
   name: " ",
@@ -31,6 +32,9 @@ function EditPosition(props) {
   }, []);
 
   function handle(e) {
+    // const newposition = { ...position };
+    // newposition[e.target.id] = e.target.value;
+    // setPosition(newposition);
     const { name, value } = e.target;
     setPosition({ ...position, [name]: value });
   }
@@ -41,9 +45,9 @@ function EditPosition(props) {
         <h1>Edit {position.name} position</h1>
       </div>
       <div className="CreatePage">
-        <Form className="forForm" onSubmit={editPosition}>
+        <Form onSubmit={editPosition}>
           <FormGroup>
-            <Label className="forLabel" for="Name">Name</Label>
+            <Label for="Name">Name</Label>
             <Input
               id="name"
               name="name"
@@ -53,7 +57,7 @@ function EditPosition(props) {
               type="text"
             />
           </FormGroup>
-          <Button className="forSubmit" type="submit">Submit</Button>
+          <Button type="submit">Submit</Button>
         </Form>
       </div>
     </>

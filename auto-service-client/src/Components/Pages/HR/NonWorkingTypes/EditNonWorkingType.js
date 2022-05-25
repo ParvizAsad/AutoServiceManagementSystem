@@ -2,6 +2,7 @@ import { FormGroup, Form, Label, Input, Button } from "reactstrap";
 import React, { useCallback, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { nonWorkingTypeService } from "../../../../Api/services/NonWorkingTypes";
+// import "./Employees/taxs/CreateEmployee.scss";
 
 const NewNonWorkingType = {
   name: " ",
@@ -31,6 +32,9 @@ function EditNonWorkingType(props) {
   }, []);
 
   function handle(e) {
+    // const newNonWorkingType = { ...NonWorkingType };
+    // newNonWorkingType[e.target.id] = e.target.value;
+    // setNonWorkingType(newNonWorkingType);
     const { name, value } = e.target;
     setNonWorkingType({ ...NonWorkingType, [name]: value });
   }
@@ -41,9 +45,9 @@ function EditNonWorkingType(props) {
         <h1>Edit {NonWorkingType.name} nonWorkingType</h1>
       </div>
       <div className="CreatePage">
-        <Form className="forForm" onSubmit={editNonWorkingType}>
+        <Form onSubmit={editNonWorkingType}>
           <FormGroup>
-            <Label className="forLabel" for="name">Name</Label>
+            <Label for="name">Name</Label>
             <Input
               id="name"
               name="name"
@@ -53,7 +57,7 @@ function EditNonWorkingType(props) {
               type="text"
             />
           </FormGroup>
-          <Button className="forSubmit" type="submit">Submit</Button>
+          <Button type="submit">Submit</Button>
         </Form>
       </div>
     </>

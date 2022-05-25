@@ -12,9 +12,9 @@ function Convertor() {
   const [currencyInUSD, setCurrencyInUSD] = useState(newCurrencyInUSD);
   const [state, setState] = useState(true);
 
-  function changeCurrency() {
-    setState(!state);
-  }
+  // React.useEffect(() => {
+  //   setState(!state);
+  // }, []);
 
   const getElementValues = (e) => {
     const { name, value } = e.target;
@@ -38,62 +38,32 @@ function Convertor() {
 
   return (
     <>
-      <div className="ForHeading">
+       <div className="ForHeading">
         <h1>Make currency conversion</h1>
       </div>
       {state ? (
-        <div className="CurrencyDiv">
-          <Form className="forFrom">
-            <Label className="forLabel" for="currencyValue">
-              Input in USD
-            </Label>
-            <Input
-              id="currencyValue"
-              name="currencyValue"
-              onChange={getElementValues}
-              min="0"
-              onPaste={preventPasteNegative}
-              onKeyPress={preventMinus}
-            />
-          </Form>
-          <Button
-            onClick={changeCurrency}
-            className="changeCurrency"
-            type="submit"
-          >
-            from AZN to USD
-          </Button>
-          <div className="Result">
-            <h2> Result: {currencyInUSD.currencyValue / 1.7}</h2>
-          </div>
-        </div>
-      ) : (
-        <div className="CurrencyDiv">
-          <Form className="forFrom">
-            <Label className="forLabel" for="currencyValue">
-              Input in AZN
-            </Label>
-            <Input
-              id="currencyValue"
-              name="currencyValue"
-              onChange={getElementValues}
-              min="0"
-              onPaste={preventPasteNegative}
-              onKeyPress={preventMinus}
-            />
-          </Form>
-          <Button
-            onClick={changeCurrency}
-            className="changeCurrency"
-            type="submit"
-          >
-            from USD to AZN
-          </Button>
-          <div className="Result">
-            <h2>Result: {currencyInUSD.currencyValue * 1.7}</h2>
-          </div>
-        </div>
-      )}
+               <div className="CurrencyDiv">
+               <Form >
+                   <Label  for="currencyValue">Input in USD</Label>
+                   <Input
+                     id="currencyValue"
+                     name="currencyValue"
+                     placeholder="input In USD"
+                     onChange={getElementValues}
+                     min="0"
+                     onPaste={preventPasteNegative}
+                     onKeyPress={preventMinus}
+                   />
+               </Form>
+                 <Button className="changeCurrency" type="submit">from USD to AZN</Button>
+             </div>
+        ) : (
+          <span></span>
+        )}
+
+      <div className="Result">
+        <h2>{currencyInUSD.currencyValue}</h2>
+      </div>
     </>
   );
 }

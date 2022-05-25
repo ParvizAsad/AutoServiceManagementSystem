@@ -1,5 +1,5 @@
 import React from "react";
-import { Table, Button, Spinner } from "reactstrap";
+import { Table, Button } from "reactstrap";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import Swal from "sweetalert2";
@@ -8,14 +8,12 @@ import { brandService } from "../../../../Api/services/Brands";
 function Brand() {
   const [brands, setBrands] = useState([]);
   const [searchBrand, setSearchBrand] = useState(" ");
-  const [loading, setLoading] = useState(true);
 
   const history = useHistory();
 
   React.useEffect(() => {
     brandService.getAllBrands().then(({ data }) => {
       setBrands(data);
-      setLoading(false);
     });
   }, []);
 
@@ -91,11 +89,6 @@ function Brand() {
         />
       </div>
       <div>
-      {loading ? (
-          <div className="d-flex justify-content-center">
-            <Spinner color="primary" />
-          </div>
-        ) : (
         <Table className="TableForItems">
           <thead>
             <tr>
@@ -133,7 +126,7 @@ function Brand() {
                 </tr>
               ))}
           </tbody>
-        </Table>)}
+        </Table>
       </div>
     </>
   );

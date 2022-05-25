@@ -1,5 +1,5 @@
 import React from "react";
-import { Table, Button, Spinner } from "reactstrap";
+import { Table, Button } from "reactstrap";
 import { serviceService } from "../../../Api/services/Services";
 import "./Service.scss";
 import { useHistory } from "react-router-dom";
@@ -9,13 +9,11 @@ import { useState } from "react";
 function Service() {
   const [service, setService] = React.useState([]);
   const [searchService, setSearchService] = useState(" ");
-  const [loading, setLoading] = useState(true);
   const history = useHistory();
 
   React.useEffect(() => {
     serviceService.getAllServices().then(({ data }) => {
       setService(data);
-      setLoading(false);
     });
   }, []);
 
@@ -53,6 +51,7 @@ function Service() {
             serviceService.deleteService(id) && history.push("/service");
           }
         } else if (
+          /* Read more about handling dismissals below */
           result.dismiss === Swal.DismissReason.cancel
         ) {
           swalWithBootstrapButtons.fire(
@@ -92,11 +91,6 @@ function Service() {
         />
       </div>
       <div>
-      {loading ? (
-          <div className="d-flex justify-content-center">
-            <Spinner color="primary" />
-          </div>
-        ) : (
         <Table className="TableForItems">
           <thead>
             <tr>
@@ -141,7 +135,7 @@ function Service() {
                 </tr>
               ))}
           </tbody>
-        </Table>)}
+        </Table>
       </div>
     </>
   );

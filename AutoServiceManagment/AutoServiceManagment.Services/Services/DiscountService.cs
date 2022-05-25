@@ -33,7 +33,7 @@ namespace AutoServiceManagment.Services.Services
             var existDiscounts = await DbContext.Discounts.Where(x => x.IsDeleted == false).ToListAsync();
             foreach (var discount in existDiscounts)
             {
-                if (discount.ExpireDate < DateTime.Today)
+                if (discount.ExpireDate < DateTime.Now)
                     discount.IsExpired = true;
             }
             var discounts = await DbContext.Discounts.Where(x => x.IsDeleted == false && x.IsExpired==false).ToListAsync();

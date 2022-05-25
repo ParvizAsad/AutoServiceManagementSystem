@@ -2,6 +2,7 @@ import { FormGroup, Form, Label, Input, Button } from "reactstrap";
 import React, { useCallback, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { financeService } from "../../../../Api/services/Finances";
+// import "./Employees/Accountings/CreateEmployee.scss";
 import moment from "moment";
 import { toast } from "react-toastify";
 
@@ -83,29 +84,31 @@ function EditAccounting(props) {
         <h1>Edit Accounting</h1>
       </div>
       <div className="CreatePage">
-        <Form className="forForm" onSubmit={editAccounting}>
+        <Form onSubmit={editAccounting}>
           <FormGroup>
-            <Label  className="forLabel" for="communalCost">Communal Cost AZN</Label>
-            <Input
+            <Label for="communalCost">CommunalCost</Label>
+            <CurrencyInput
               id="communalCost"
               name="communalCost"
               placeholder="CommunalCost"
               onChange={(e) => handle(e)}
               value={accounting.communalCost}
+              prefix="$"
             />
           </FormGroup>
           <FormGroup>
-            <Label className="forLabel" for="additionalCost">Additional Cost AZN</Label>
-            <Input
+            <Label for="additionalCost">AdditionalCost</Label>
+            <CurrencyInput
               id="additionalCost"
               name="additionalCost"
               placeholder="additionalCost"
               onChange={(e) => handle(e)}
               value={accounting.additionalCost}
+              prefix="$"
             />
           </FormGroup>
           <FormGroup>
-            <Label className="forLabel" for="Date">Date</Label>
+            <Label for="Date">Date</Label>
             <Input
               id="Date"
               name="Date"
@@ -115,7 +118,7 @@ function EditAccounting(props) {
               type="date"
             />
           </FormGroup>
-          <Button className="forSubmit" type="submit">Submit</Button>
+          <Button type="submit">Submit</Button>
         </Form>
       </div>
     </>

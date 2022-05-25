@@ -54,6 +54,7 @@ function NonWorkingType() {
               history.push("/nonworkingtype");
           }
         } else if (
+          /* Read more about handling dismissals below */
           result.dismiss === Swal.DismissReason.cancel
         ) {
           swalWithBootstrapButtons.fire(
@@ -95,6 +96,7 @@ function NonWorkingType() {
 
       <div>
         {loading ? (
+          //  <tr className="d-flex justify-content-center"><Spinner color="primary"/></tr>
           <div className="d-flex justify-content-center">
             <Spinner color="primary" />
           </div>
@@ -124,6 +126,8 @@ function NonWorkingType() {
                   <tr key={idx}>
                     <th scope="row">{idx}</th>
                     <td>{item.name}</td>
+                    {/* <td>xx</td>
+                    <td>xx</td> */}
                     <td className="Actions">
                       <Button
                         onClick={() => editNonWorkingType(item.id)}

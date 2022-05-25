@@ -1,5 +1,5 @@
-import React, { useCallback, useState } from "react";
-import { Table, Button, Spinner } from "reactstrap";
+import React, { useCallback } from "react";
+import { Table, Button } from "reactstrap";
 import { financeService } from "../../../../Api/services/Finances";
 import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -8,8 +8,6 @@ import moment from "moment";
 function Accounting() {
   const [finance, setFinance] = React.useState([]);
   const [accountingData, setAccountingData] = React.useState();
-  const [loading, setLoading] = useState(true);
-
   const history = useHistory();
 
   const getAllAccounting = useCallback(() => {
@@ -21,7 +19,6 @@ function Accounting() {
   React.useEffect(() => {
     financeService.getAllFinances().then(({ data }) => {
       setFinance(data);
-      setLoading(false);
     });
   }, []);
 
@@ -61,6 +58,7 @@ function Accounting() {
               history.push("/accounting");
           }
         } else if (
+          /* Read more about handling dismissals below */
           result.dismiss === Swal.DismissReason.cancel
         ) {
           swalWithBootstrapButtons.fire(
@@ -92,11 +90,6 @@ function Accounting() {
         </div>
       </div>
       <div>
-      {loading ? (
-          <div className="d-flex justify-content-center">
-            <Spinner color="primary" />
-          </div>
-        ) : (
         <Table className="TableForItems">
           <thead>
             <tr>
@@ -131,7 +124,7 @@ function Accounting() {
               </tr>
             ))}
           </tbody>
-        </Table>)}
+        </Table>
       </div>
     </>
   );

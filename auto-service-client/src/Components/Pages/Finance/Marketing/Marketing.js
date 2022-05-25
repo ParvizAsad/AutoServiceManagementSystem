@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-import { Table, Button, Spinner} from "reactstrap";
+import { Table, Button } from "reactstrap";
 import { discountService } from "../../../../Api/services/Discount";
 import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -8,8 +8,6 @@ import moment from "moment";
 function Marketing() {
   const [discounts, setDiscount] = React.useState([]);
   const [searchDiscount, setSearchDiscount] = useState(" ");
-  const [loading, setLoading] = useState(true);
-
   const history = useHistory();
 
   const getAllDiscount = useCallback(() => {
@@ -21,7 +19,6 @@ function Marketing() {
   React.useEffect(() => {
     discountService.getAllDiscounts().then(({ data }) => {
       setDiscount(data);
-      setLoading(false);
     });
   }, []);
 
@@ -59,6 +56,7 @@ function Marketing() {
             discountService.deletediscount(id) && getAllDiscount();
           }
         } else if (
+          /* Read more about handling dismissals below */
           result.dismiss === Swal.DismissReason.cancel
         ) {
           swalWithBootstrapButtons.fire(
@@ -97,11 +95,6 @@ function Marketing() {
         />
       </div>
       <div>
-      {loading ? (
-          <div className="d-flex justify-content-center">
-            <Spinner color="primary" />
-          </div>
-        ) : (
         <Table className="TableForItems">
           <thead>
             <tr>
@@ -146,7 +139,7 @@ function Marketing() {
                 </tr>
               ))}
           </tbody>
-        </Table>)}
+        </Table>
       </div>
     </>
   );
