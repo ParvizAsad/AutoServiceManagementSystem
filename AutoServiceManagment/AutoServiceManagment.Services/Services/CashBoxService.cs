@@ -44,7 +44,7 @@ namespace AutoServiceManagment.Services.Services
 
             var customer = await DbContext.Customers.Where(x => x.Id == cashBoxDto.CustomerID).FirstOrDefaultAsync();
 
-            customer.Debt = customer.Debt - cashBox.Payment;
+            customer.Debt -= cashBox.Payment;
 
             await _repository.AddAsync(cashBox);
         }

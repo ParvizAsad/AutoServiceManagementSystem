@@ -1,22 +1,22 @@
 import React from "react";
-import { userService } from "../../../Api/services/Users";
 import { Button } from "reactstrap";
-import Swal from "sweetalert2";
-import { useState } from "react";
-import { useCallback } from "react";
+// import { userService } from "../../../Api/services/Users";
+// import Swal from "sweetalert2";
+// import { useState } from "react";
+// import { useCallback } from "react";
 import { Link } from "react-router-dom";
 import { CardGroup, Card, CardBody, CardTitle } from "reactstrap";
 import { MdAdminPanelSettings } from "react-icons/md";
 import { MdOutlineAdminPanelSettings } from "react-icons/md";
 
 function Admin() {
-  const [userData, setUserData] = useState();
+  // const [userData, setUserData] = useState();
 
-  const getAllEmployee = useCallback(() => {
-    userService.getAllUsers().then(({ data }) => {
-      setUserData(data);
-    });
-  }, [setUserData]);
+  // const getAllEmployee = useCallback(() => {
+  //   userService.getAllUsers().then(({ data }) => {
+  //     setUserData(data);
+  //   });
+  // }, [setUserData]);
 
   return (
     <>

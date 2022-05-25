@@ -4,7 +4,6 @@ import { serviceService } from "../../../Api/services/Services";
 import "./Service.scss";
 import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
-import EditService from "./EditService";
 import { useState } from "react";
 
 function Service() {
@@ -111,7 +110,7 @@ function Service() {
           <tbody>
             {service
               ?.filter((val) => {
-                if (searchService == " ") {
+                if (searchService === " ") {
                   return val;
                 } else if (
                   val.name.toLowerCase().includes(searchService.toLowerCase())

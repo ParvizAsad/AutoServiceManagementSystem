@@ -7,7 +7,6 @@ import moment from "moment";
 
 function Marketing() {
   const [discounts, setDiscount] = React.useState([]);
-  const [DiscountData, setDiscountData] = React.useState();
   const [searchDiscount, setSearchDiscount] = useState(" ");
   const [loading, setLoading] = useState(true);
 
@@ -116,7 +115,7 @@ function Marketing() {
           <tbody>
             {discounts
               ?.filter((val) => {
-                if (searchDiscount == " ") {
+                if (searchDiscount === " ") {
                   return val;
                 } else if (
                   val.name.toLowerCase().includes(searchDiscount.toLowerCase())

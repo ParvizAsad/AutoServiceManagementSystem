@@ -1,10 +1,9 @@
-import { FormGroup, Form, Label, Input, Button, FormText } from "reactstrap";
+import { FormGroup, Form, Label, Input, Button } from "reactstrap";
 import React, { useCallback, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { financeService } from "../../../../Api/services/Finances";
 import moment from "moment";
-import { ToastContainer, toast } from "react-toastify";
-import CurrencyInput from "react-currency-input-field";
+import { toast } from "react-toastify";
 
 const newAccounting = {
   communalCost: " ",

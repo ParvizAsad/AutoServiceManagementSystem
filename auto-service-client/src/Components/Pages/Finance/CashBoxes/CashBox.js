@@ -9,7 +9,6 @@ import { productService } from "../../../../Api/services/Products";
 
 function CashBox() {
   const [cashBoxes, setCashBoxes] = React.useState([]);
-  const [CashBoxData, setCashBoxData] = useState();
   const [customers, setCustomers] = useState();
   const [services, setServices] = useState();
   const [loading, setLoading] = useState(true);
