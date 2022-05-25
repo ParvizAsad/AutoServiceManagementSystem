@@ -21,23 +21,7 @@ namespace AutoServiceManagment.API
     {
         public static async Task Main(string[] args)
         {
-            //var host = CreateHostBuilder(args).Build();
-
-            //using (var scope = host.Services.CreateScope())
-            //{
-            //    var appDbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-
-            //    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
-
-            //    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-
-            //    var dataInitializer = new DataInitializer(appDbContext, roleManager, userManager);
-
-            //    await dataInitializer.SeedDataAsync();
-            
-            //}
-
-            //await host.RunAsync();
+         
 
             Log.Logger = new LoggerConfiguration()
                   .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
@@ -57,6 +41,20 @@ namespace AutoServiceManagment.API
             {
                 Log.Information("Starting web host");
                 CreateHostBuilder(args).Build().Run();
+                var host = CreateHostBuilder(args).Build();
+
+                using (var scope = host.Services.CreateScope())
+                {
+                    var appDbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+                    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
+                    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+                    var dataInitializer = new DataInitializer(appDbContext, roleManager, userManager);
+                    await dataInitializer.SeedDataAsync();
+                }
+
+                await host.RunAsync();
+
             }
             catch (Exception ex)
             {
