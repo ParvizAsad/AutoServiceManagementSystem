@@ -12,6 +12,6 @@ namespace AutoServiceManagment.DomainModels.Entities
         public int CustomerID { get; set; }
         public Customer Customer { get; set; }
 
-        public DateTime date=DateTime.Today;
+        public DateTime date=DateTime.Now;
     }
 }

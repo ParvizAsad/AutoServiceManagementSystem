@@ -2,6 +2,7 @@ import { FormGroup, Form, Label, Input, Button, FormText } from "reactstrap";
 import React, { useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { nonWorkingTypeService } from "../../../../Api/services/NonWorkingTypes";
+// import "./Employees/NonWorkingTypes/CreateEmployee.scss";
 
 const newNonWorkingType = {
   Name: " ",
@@ -51,10 +52,10 @@ function CreateNonWorkingType() {
         <h1>Create a new NonWorkingType</h1>
       </div>
       <div className="CreatePage">
-        <Form className="forForm" onSubmit={createNonWorkingType}>
+        <Form onSubmit={createNonWorkingType}>
           {error}
           <FormGroup>
-            <Label className="forLabel" for="Name">Name</Label>
+            <Label for="Name">Name</Label>
             <Input
               id="Name"
               name="Name"
@@ -63,7 +64,7 @@ function CreateNonWorkingType() {
               type="text"
             />
           </FormGroup>
-          <Button className="forSubmit" type="submit">Submit</Button>
+          <Button type="submit">Submit</Button>
         </Form>
       </div>
     </>

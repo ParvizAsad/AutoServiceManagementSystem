@@ -13,13 +13,13 @@ namespace AutoServiceManagment.DomainModels.Entities
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{mm/dd/yyyy}")]
-        public DateTime StartTime { get; set; }=DateTime.Today;
+        public DateTime StartTime { get; set; }=DateTime.Now;
 
         [Required(ErrorMessage = "EndTime is required!")]
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{mm/dd/yyyy}")]
-        public DateTime EndTime { get; set; }= DateTime.Today;
+        public DateTime EndTime { get; set; }= DateTime.Now;
         public int EmployeeId { get; set; }
         public Employee Employee { get; set; }
         public int NonWorkingTypeId { get; set; }

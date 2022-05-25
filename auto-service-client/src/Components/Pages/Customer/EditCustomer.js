@@ -1,6 +1,8 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { FormGroup, Form, Label, Input, Button } from "reactstrap";
+// import "./CreateCustomer.scss";
+// import { positionService } from "../../../../Api/services/Positions";
 import { useParams } from "react-router-dom";
 import axios, { Axios } from "axios";
 import { customerService } from "../../../Api/services/Customers";
@@ -29,6 +31,7 @@ function EditCustomer(props) {
       e.preventDefault();
       const id = props.match.params.id;
       customerService.putCustomer(id, data).then(() => {
+        // getAllCustomer();
         history.push("/customer");
       });
     },
@@ -36,6 +39,9 @@ function EditCustomer(props) {
   );
 
   function handle(e) {
+    // const newdata = { ...data };
+    // newdata[e.target.id] = e.target.value;
+    // setData(newdata);
     const { name, value } = e.target;
     setData({ ...data, [name]: value });
   }
@@ -46,9 +52,9 @@ function EditCustomer(props) {
         <h1>Edit {data.fullName} customer</h1>
       </div>
       <div className="CreatePage">
-        <Form className="forForm" onSubmit={updateCustomer}>
+        <Form onSubmit={updateCustomer}>
           <FormGroup>
-            <Label className="forLabel" for="fullName">FullName</Label>
+            <Label for="fullName">FullName</Label>
             <Input
               id="fullName"
               name="fullName"
@@ -59,7 +65,7 @@ function EditCustomer(props) {
             />
           </FormGroup>
           <FormGroup>
-            <Label className="forLabel" for="phoneNumber">Phone Number</Label>
+            <Label for="phoneNumber">Phone Number</Label>
             <Input
               id="phoneNumber"
               name="phoneNumber"
@@ -70,7 +76,7 @@ function EditCustomer(props) {
             />
           </FormGroup>
           <FormGroup>
-            <Label className="forLabel" for="email">Email</Label>
+            <Label for="email">Email</Label>
             <Input
               id="email"
               name="email"
@@ -81,17 +87,18 @@ function EditCustomer(props) {
             />
           </FormGroup>
           <FormGroup>
-            <Label className="forLabel" for="debt">Debt AZN</Label>
-            <Input
+            <Label for="debt">Debt</Label>
+            <CurrencyInput
               id="debt"
               name="debt"
               placeholder="debt"
               onChange={(e) => handle(e)}
               value={data.debt}
+              prefix="$"
             />
           </FormGroup>
 
-          <Button className="forSubmit" type="submit">Submit</Button>
+          <Button type="submit">Submit</Button>
         </Form>
       </div>
     </>

@@ -1,5 +1,6 @@
 import React from "react";
-import { Table, Button, Spinner } from "reactstrap";
+import { Table, Button } from "reactstrap";
+// import "./Customer.scss";
 import { useHistory, Link } from "react-router-dom";
 import { customerService } from "../../../Api/services/Customers";
 import Swal from "sweetalert2";
@@ -9,7 +10,6 @@ function Customer(props) {
   const [customers, setCustomers] = React.useState([]);
   const [searchCustomer, setSearchCustomer] = useState(" ");
   const [visible, setVisible] = useState(2);
-  const [loading, setLoading] = useState(true);
 
   const history = useHistory();
   const maxCount = customers.length;
@@ -20,7 +20,6 @@ function Customer(props) {
   React.useEffect(() => {
     customerService.getAllCustomers().then(({ data }) => {
       setCustomers(data);
-      setLoading(false);
     });
   }, []);
 
@@ -62,6 +61,7 @@ function Customer(props) {
             customerService.deleteCustomer(id) && history.push("/customer");
           }
         } else if (
+          /* Read more about handling dismissals below */
           result.dismiss === Swal.DismissReason.cancel
         ) {
           swalWithBootstrapButtons.fire(
@@ -95,11 +95,6 @@ function Customer(props) {
         <input type="text" placeholder="Search.." />
       </div>
       <div>
-      {loading ? (
-          <div className="d-flex justify-content-center">
-            <Spinner color="primary" />
-          </div>
-        ) : (
         <Table className="TableForItems">
           <thead>
             <tr>
@@ -150,7 +145,7 @@ function Customer(props) {
                 </tr>
               ))}
           </tbody>
-        </Table>)}
+        </Table>
       </div>
       <div className="loadMore d-flex justify-content-center">
         {maxCount > visible ? (

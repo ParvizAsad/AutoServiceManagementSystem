@@ -6,6 +6,8 @@ import { employeeService } from "../../../../Api/services/Employee";
 import { taxService } from "../../../../Api/services/Taxes";
 import CurrencyInput from "react-currency-input-field";
 
+// import "./Employees/Salarys/CreateEmployee.scss";
+
 const newSalary = {
   date: " ",
   donus: " ",
@@ -86,11 +88,9 @@ function CreateSalary() {
         <h1>Create a new Salary</h1>
       </div>
       <div className="CreatePage">
-        <Form className="forForm" onSubmit={createSalary}>
+        <Form onSubmit={createSalary}>
           <FormGroup>
-            <Label className="forLabel" for="employeeId">
-              Select Employee
-            </Label>
+            <Label for="employeeId">Select Employee</Label>
             <select
               className="employeeId"
               onChange={getElementValues}
@@ -106,9 +106,7 @@ function CreateSalary() {
             </select>
           </FormGroup>
           <FormGroup>
-            <Label className="forLabel" for="date">
-              Date
-            </Label>
+            <Label for="date">Date</Label>
             <Input
               id="date"
               name="date"
@@ -117,15 +115,27 @@ function CreateSalary() {
               type="date"
             />
           </FormGroup>
+          {/* <FormGroup>
+            <Label for="netSalary">netSalary</Label>
+            <Input
+              id="netSalary"
+              name="netSalary"
+              placeholder="netSalary"
+              onChange={getElementValues}
+              type="number"
+              min="0"
+              onPaste={preventPasteNegative}
+              onKeyPress={preventMinus}
+            />
+          </FormGroup> */}
           <FormGroup>
-            <Label className="forLabel" for="bonus">
-              Bonus AZN
-            </Label>
+            <Label for="bonus">Bonus</Label>
             <Input
               id="bonus"
               name="bonus"
               placeholder="bonus"
               onChange={getElementValues}
+              // prefix='$'
               type="number"
               min="0"
               onPaste={preventPasteNegative}
@@ -133,9 +143,7 @@ function CreateSalary() {
             />
           </FormGroup>
           <FormGroup>
-            <Label className="forLabel" for="taxId">
-              Select Tax
-            </Label>
+            <Label for="taxId">Select Tax</Label>
             <select
               className="taxId"
               onChange={getElementValues}
@@ -150,9 +158,7 @@ function CreateSalary() {
               ))}
             </select>
           </FormGroup>
-          <Button className="forSubmit" type="submit">
-            Submit
-          </Button>
+          <Button type="submit">Submit</Button>
         </Form>
       </div>
     </>

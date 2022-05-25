@@ -1,5 +1,6 @@
 import React, { useReducer } from "react";
 import { Table, Button } from "reactstrap";
+// import ".././HR.scss";
 import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useState } from "react";

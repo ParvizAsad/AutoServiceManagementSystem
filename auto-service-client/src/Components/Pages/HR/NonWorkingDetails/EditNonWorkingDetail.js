@@ -5,6 +5,7 @@ import { nonWorkingDetailService } from "../../../../Api/services/NonWorkingDeta
 import { nonWorkingTypeService } from "../../../../Api/services/NonWorkingTypes";
 import { employeeService } from "../../../../Api/services/Employee";
 import moment from "moment";
+// import "./Employees/NonWorkingDetails/EditEmployee.scss";
 
 const newNonWorkingDetail = {
   StartTime: " ",
@@ -77,10 +78,10 @@ function EditNonWorkingDetail(props) {
       <div className="ForHeading">
         <h1>Edit Non-Working Detail</h1>
       </div>
-      <div className="CreatePage">
-        <Form className="forForm" onSubmit={updateNonWorkingDetail}>
+      <div className="EditPage">
+        <Form onSubmit={updateNonWorkingDetail}>
           <FormGroup>
-            <Label className="forLabel" for="StartTime">StartTime</Label>
+            <Label for="StartTime">StartTime</Label>
             <Input
               id="StartTime"
               name="StartTime"
@@ -91,7 +92,7 @@ function EditNonWorkingDetail(props) {
             />
           </FormGroup>
           <FormGroup>
-            <Label className="forLabel" for="EndTime">EndTime</Label>
+            <Label for="EndTime">EndTime</Label>
             <Input
               id="EndTime"
               name="EndTime"
@@ -102,7 +103,7 @@ function EditNonWorkingDetail(props) {
             />
           </FormGroup>
           <FormGroup>
-            <Label className="forLabel" for="NonWorkingTypeId">Select nonWorkingType</Label>
+            <Label for="NonWorkingTypeId">Select nonWorkingType</Label>
             <select
               className="NonWorkingTypeId"
               onChange={(e) => handle(e)}
@@ -118,7 +119,7 @@ function EditNonWorkingDetail(props) {
             </select>
           </FormGroup>
           <FormGroup>
-            <Label className="forLabel" for="EmployeeId">Select employee</Label>
+            <Label for="EmployeeId">Select employee</Label>
             <select
               className="EmployeeId"
               onChange={(e) => handle(e)}
@@ -133,7 +134,7 @@ function EditNonWorkingDetail(props) {
               ))}
             </select>
           </FormGroup>
-          <Button className="forSubmit" type="submit">Submit</Button>
+          <Button type="submit">Submit</Button>
         </Form>
       </div>
     </>

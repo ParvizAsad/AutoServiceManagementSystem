@@ -1,4 +1,4 @@
-import { Table, Button, Spinner } from "reactstrap";
+import { Table, Button } from "reactstrap";
 import { useHistory } from "react-router-dom";
 import { taxService } from "../../../../Api/services/Taxes";
 import Swal from "sweetalert2";
@@ -7,15 +7,19 @@ import React, { useCallback, useState } from "react";
 function Tax() {
   const [taxes, setTaxes] = React.useState([]);
   const [taxData, setTaxData] = useState();
-  const [loading, setLoading] = useState(true);
   const [searchTax, setSearchTax] = useState(" ");
 
   const history = useHistory();
 
+  // const getAllTaxes = useCallback(() => {
+  //   taxService.getAllTaxes().then(({ data }) => {
+  //     setTaxes(data);
+  //   });
+  // }, [setTaxes]);
+
   React.useEffect(() => {
     taxService.getAllTaxes().then(({ data }) => {
       setTaxes(data);
-      setLoading(false);
     });
   }, []);
 
@@ -51,6 +55,7 @@ function Tax() {
           );
           taxService.deleteTax(id);
         } else if (
+          /* Read more about handling dismissals below */
           result.dismiss === Swal.DismissReason.cancel
         ) {
           swalWithBootstrapButtons.fire(
@@ -87,11 +92,6 @@ function Tax() {
         />
       </div>
       <div>
-      {loading ? (
-          <div className="d-flex justify-content-center">
-            <Spinner color="primary" />
-          </div>
-        ) : (
         <Table className="TableForItems">
           <thead>
             <tr>
@@ -131,7 +131,7 @@ function Tax() {
                 </tr>
               ))}
           </tbody>
-        </Table>)}
+        </Table>
       </div>
     </>
   );

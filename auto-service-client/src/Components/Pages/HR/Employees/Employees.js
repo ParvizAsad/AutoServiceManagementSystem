@@ -1,5 +1,6 @@
 import React, { useReducer } from "react";
 import { Table, Button } from "reactstrap";
+// import "./Employee.scss";
 import Swal from "sweetalert2";
 import { useState, useCallback, useRef } from "react";
 import { useReactToPrint } from "react-to-print";

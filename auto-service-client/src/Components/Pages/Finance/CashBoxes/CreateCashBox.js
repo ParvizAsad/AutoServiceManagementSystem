@@ -7,6 +7,8 @@ import { serviceService } from "../../../../Api/services/Services";
 import { productService } from "../../../../Api/services/Products";
 import CurrencyInput from "react-currency-input-field";
 
+// import "./Customers/CashBoxs/CreateCustomer.scss";
+
 const newCashBox = {
   CustomerId: " ",
   ServiceId: " ",
@@ -92,10 +94,10 @@ function CreateCashBox() {
         <h1>Create a new CashBox</h1>
       </div>
       <div className="CreatePage">
-        <Form className="forForm" onSubmit={createCashBox}>
+        <Form onSubmit={createCashBox}>
           {error}
           <FormGroup>
-            <Label className="forLabel" for="CustomerId">Select Customer</Label>
+            <Label for="CustomerId">Select Customer</Label>
             <select
               className="CustomerId"
               onChange={getElementValues}
@@ -112,7 +114,7 @@ function CreateCashBox() {
           </FormGroup>
           {error}
           <FormGroup>
-            <Label className="forLabel" for="Services">Select Service</Label>
+            <Label for="Services">Select Service</Label>
             <select
               className="ServiceId"
               onChange={getElementValues}
@@ -129,7 +131,7 @@ function CreateCashBox() {
           </FormGroup>
           {error}
           <FormGroup>
-            <Label className="forLabel" for="ProductId">Select Product</Label>
+            <Label for="ProductId">Select Product</Label>
             <select
               className="ProductId"
               onChange={getElementValues}
@@ -146,19 +148,20 @@ function CreateCashBox() {
           </FormGroup>
           {error}
           <FormGroup>
-            <Label className="forLabel" for="Payment">Payment AZN</Label>
+            <Label for="Payment">Payment</Label>
             <Input
               id="Payment"
               name="Payment"
               placeholder="Payment"
               onChange={getElementValues}
+              // prefix='$'
               min="0"
               type="number"
               onPaste={preventPasteNegative}
               onKeyPress={preventMinus}
             />
           </FormGroup>
-          <Button className="forSubmit" type="submit">Submit</Button>
+          <Button type="submit">Submit</Button>
         </Form>
       </div>
     </>

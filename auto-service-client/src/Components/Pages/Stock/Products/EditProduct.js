@@ -5,6 +5,8 @@ import { categoryService } from "../../../../Api/services/Categories";
 import { brandService } from "../../../../Api/services/Brands";
 import { productService } from "../../../../Api/services/Products";
 
+// import "./Employees/products/EditEmployee.scss";
+
 const newProduct = {
   name: " ",
   basePrice: " ",
@@ -62,6 +64,10 @@ function EditProduct(props) {
   );
 
   function handle(e) {
+    // const newProduct = { ...product };
+    // newProduct[e.target.id] = e.target.value;
+    // setBrand(newProduct);
+
     const { name, value } = e.target;
     setProduct({ ...product, [name]: value });
   }
@@ -83,11 +89,11 @@ function EditProduct(props) {
       <div className="ForHeading">
         <h1>Edit {product.name} Product</h1>
       </div>
-      <div className="CreatePage">
-        <Form className="forForm" onSubmit={EditProduct}>
+      <div className="EditPage">
+        <Form onSubmit={EditProduct}>
           {error}
           <FormGroup>
-            <Label className="forLabel" for="name">Name</Label>
+            <Label for="name">Name</Label>
             <Input
               id="name"
               name="name"
@@ -99,7 +105,7 @@ function EditProduct(props) {
           </FormGroup>
           {error}
           <FormGroup>
-            <Label className="forLabel" for="basePrice">Base Price AZN</Label>
+            <Label for="basePrice">BasePrice</Label>
             <Input
               id="basePrice"
               name="basePrice"
@@ -111,7 +117,7 @@ function EditProduct(props) {
           </FormGroup>
           {error}
           <FormGroup>
-            <Label className="forLabel" for="salePrice">Sale Price AZN</Label>
+            <Label for="salePrice">SalePrice</Label>
             <Input
               id="salePrice"
               name="salePrice"
@@ -122,7 +128,7 @@ function EditProduct(props) {
             />
           </FormGroup>
           <FormGroup>
-            <Label className="forLabel" for="count">Count</Label>
+            <Label for="count">Count</Label>
             <Input
               id="count"
               name="count"
@@ -134,7 +140,7 @@ function EditProduct(props) {
           </FormGroup>
           {error}
           <FormGroup>
-            <Label className="forLabel" for="categoryId">Select Category</Label>
+            <Label for="categoryId">Select Category</Label>
             <select
               className="form-control"
               onChange={(e) => handle(e)}
@@ -151,7 +157,7 @@ function EditProduct(props) {
           </FormGroup>
           {error}
           <FormGroup>
-            <Label className="forLabel" for="brandId">Select Brand</Label>
+            <Label for="brandId">Select Brand</Label>
             <select
               className="form-control"
               onChange={(e) => handle(e)}
@@ -166,7 +172,7 @@ function EditProduct(props) {
               ))}
             </select>
           </FormGroup>
-          <Button className="forSubmit" type="submit">Submit</Button>
+          <Button type="submit">Submit</Button>
         </Form>
       </div>
     </>

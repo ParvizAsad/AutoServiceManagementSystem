@@ -295,9 +295,6 @@ namespace AutoServiceManagment.Repository.Migrations
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<byte>("EMployeeStatus")
-                        .HasColumnType("tinyint");
-
                     b.Property<string>("EducationLevel")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");

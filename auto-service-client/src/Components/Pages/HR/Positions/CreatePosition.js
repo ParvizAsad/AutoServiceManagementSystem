@@ -1,6 +1,7 @@
 import { FormGroup, Form, Label, Input, Button, FormText } from "reactstrap";
 import React, { useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
+// import "./Employees/Positions/CreateEmployee.scss";
 import { positionService } from "../../../../Api/services/Positions";
 
 const newPosition = {
@@ -51,10 +52,10 @@ function CreatePosition() {
         <h1>Create a new position</h1>
       </div>
       <div className="CreatePage">
-        <Form className="forForm" onSubmit={createPosition}>
+        <Form onSubmit={createPosition}>
           {error}
           <FormGroup>
-            <Label className="forLabel" for="Name">Name</Label>
+            <Label for="Name">Name</Label>
             <Input
               id="Name"
               name="Name"
@@ -63,7 +64,7 @@ function CreatePosition() {
               type="text"
             />
           </FormGroup>
-          <Button className="forSubmit" type="submit">Submit</Button>
+          <Button type="submit">Submit</Button>
         </Form>
       </div>
     </>

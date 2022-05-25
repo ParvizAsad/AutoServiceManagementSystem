@@ -1,5 +1,6 @@
 import React, { Roleeducer } from "react";
 import { Table, Button } from "reactstrap";
+// import "./Role.scss";
 import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useState } from "react";

@@ -2,6 +2,7 @@ import { FormGroup, Form, Label, Input, Button, FormText } from "reactstrap";
 import React, { useCallback, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { brandService } from "../../../../Api/services/Brands";
+// import "./Employees/Brands/CreateEmployee.scss";
 
 const newBrand = {
   name: " ",
@@ -34,6 +35,9 @@ function EditBrand(props) {
     const newbrand = { ...brand };
     newbrand[e.target.id] = e.target.value;
     setBrand(newbrand);
+
+    // const { name, value } = e.target;
+    // setBrand({ ...brand, [name]: value });
   }
 
   return (
@@ -41,10 +45,10 @@ function EditBrand(props) {
       <div className="ForHeading">
         <h1>Edit {brand.name} Brand</h1>
       </div>
-      <div className="CreatePage">
-        <Form className="forForm" onSubmit={editBrand}>
+      <div className="EditPage">
+        <Form onSubmit={editBrand}>
           <FormGroup>
-            <Label className="forLabel" for="name">Name</Label>
+            <Label for="name">Name</Label>
             <Input
               id="name"
               name="name"
@@ -54,7 +58,7 @@ function EditBrand(props) {
               type="text"
             />
           </FormGroup>
-          <Button className="forSubmit" type="submit">Submit</Button>
+          <Button type="submit">Submit</Button>
         </Form>
       </div>
     </>
