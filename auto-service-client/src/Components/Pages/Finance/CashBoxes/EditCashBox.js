@@ -7,20 +7,19 @@ import CurrencyInput from "react-currency-input-field";
 import { productService } from "../../../../Api/services/Products";
 import { serviceService } from "../../../../Api/services/Services";
 
-// import "./Employees/Cashboxs/CreateEmployee.scss";
-
 const newCashBox = {
-  CustomerId: " ",
-  Service: " ",
-  Product: " ",
-  Payment: " ",
+  customerId: " ",
+  serviceId: " ",
+  productId: " ",
+  payment: " ",
 };
 
 function EditCashbox(props) {
-  const [CashBox, setCashBox] = useState(newCashBox);
+  const [cashBox, setCashBox] = useState(newCashBox);
   const [customers, setCustomers] = React.useState([]);
   const [services, setServices] = React.useState([]);
   const [products, setProducts] = React.useState([]);
+  const [name, setName] = React.useState("hhh");
 
   const history = useHistory();
 
@@ -35,16 +34,16 @@ function EditCashbox(props) {
     (e) => {
       e.preventDefault();
       const id = props.match.params.id;
-      cashBoxService.putCashBox(id, CashBox).then(() => {
+      cashBoxService.putCashBox(id, cashBox).then(() => {
         history.push("/cashbox");
       });
     },
-    [CashBox, history]
+    [cashBox, history]
   );
 
   function handle(e) {
     const { name, value } = e.target;
-    setCashBox({ ...CashBox, [name]: value });
+    setCashBox({ ...cashBox, [name]: value });
   }
 
   React.useEffect(() => {
@@ -83,21 +82,21 @@ function EditCashbox(props) {
     <>
       <div className="ForHeading">
         <h1>
-          Edit payment of{" "}
+          Edit payment of <span> </span>
           {customers
-            ?.filter((customer) => customer.id === CashBox.customerID)
+            ?.filter((customer) => customer.id === cashBox.customerId)
             .map((customer) => customer.fullName)}
         </h1>
       </div>
       <div className="CreatePage">
-        <Form onSubmit={editCashbox}>
+        <Form className="forForm" onSubmit={editCashbox}>
           <FormGroup>
-            <Label for="CustomerId">Select Customer</Label>
+            <Label className="forLabel" for="customerId">Select Customer</Label>
             <select
-              className="CustomerId"
+              className="customerId"
               onChange={(e) => handle(e)}
-              name="CustomerId"
-              id="CustomerId"
+              name="customerId"
+              id="customerId"
             >
               <option value="0">--Select Customer--</option>
               {customers?.map((item, idx) => (
@@ -108,12 +107,12 @@ function EditCashbox(props) {
             </select>
           </FormGroup>
           <FormGroup>
-            <Label for="Services">Select Service</Label>
+            <Label className="forLabel" for="serviceId">Select Service</Label>
             <select
-              className="CustomerId"
+              className="serviceId"
               onChange={(e) => handle(e)}
-              name="CustomerId"
-              id="CustomerId"
+              name="serviceId"
+              id="serviceId"
             >
               <option value="0">--Select Service--</option>
               {services?.map((item, idx) => (
@@ -124,12 +123,12 @@ function EditCashbox(props) {
             </select>
           </FormGroup>
           <FormGroup>
-            <Label for="Products">Select Product</Label>
+            <Label className="forLabel" for="productId">Select Product</Label>
             <select
-              className="Products"
+              className="productId"
               onChange={(e) => handle(e)}
-              name="Products"
-              id="Products"
+              name="productId"
+              id="productId"
             >
               <option value="0">--Select Product--</option>
               {products?.map((item, idx) => (
@@ -140,20 +139,19 @@ function EditCashbox(props) {
             </select>
           </FormGroup>
           <FormGroup>
-            <Label for="Payment">Payment</Label>
+            <Label className="forLabel" for="payment">Payment AZN</Label>
             <Input
-              id="Payment"
-              name="Payment"
-              placeholder="Payment"
+              id="payment"
+              name="payment"
+              placeholder="payment"
               onChange={(e) => handle(e)}
-              // prefix='$'
               min="0"
-              type="number"
+              value={cashBox.payment}
               onPaste={preventPasteNegative}
               onKeyPress={preventMinus}
             />
           </FormGroup>
-          <Button type="submit">Submit</Button>
+          <Button className="forSubmit" type="submit">Submit</Button>
         </Form>
       </div>
     </>

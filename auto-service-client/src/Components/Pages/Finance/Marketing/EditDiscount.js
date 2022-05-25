@@ -2,7 +2,6 @@ import { FormGroup, Form, Label, Input, Button, FormText } from "reactstrap";
 import React, { useCallback, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { discountService } from "../../../../Api/services/Discount";
-// import "./Employees/Discounts/CreateEmployee.scss";
 import CurrencyInput from "react-currency-input-field";
 
 const newDiscount = {
@@ -45,9 +44,9 @@ function EditDiscount(props) {
         <h1>Edit {discount.name} Discount</h1>
       </div>
       <div className="CreatePage">
-        <Form onSubmit={editDiscount}>
+        <Form className="forForm" onSubmit={editDiscount}>
           <FormGroup>
-            <Label for="Name">Name</Label>
+            <Label className="forLabel" for="Name">Name</Label>
             <Input
               id="Name"
               name="Name"
@@ -58,7 +57,7 @@ function EditDiscount(props) {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="Percentage">Percentage</Label>
+            <Label className="forLabel" for="Percentage">Percentage</Label>
             <Input
               id="Percentage"
               name="Percentage"
@@ -69,7 +68,7 @@ function EditDiscount(props) {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="ExpireDate">ExpireDate</Label>
+            <Label className="forLabel" for="ExpireDate">ExpireDate</Label>
             <Input
               id="ExpireDate"
               name="ExpireDate"
@@ -79,7 +78,7 @@ function EditDiscount(props) {
               type="Date"
             />
           </FormGroup>
-          <Button type="submit">Submit</Button>
+          <Button className="forSubmit" type="submit">Submit</Button>
         </Form>
       </div>
     </>

@@ -17,6 +17,6 @@ namespace AutoServiceManagment.DomainModels.DTOs
         public decimal Payment { get; set; }
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{mm/dd/yyyy}")]
-        public DateTime Date { get; set; } = DateTime.Now;
+        public DateTime Date { get; set; } = DateTime.Today;
     }
 }

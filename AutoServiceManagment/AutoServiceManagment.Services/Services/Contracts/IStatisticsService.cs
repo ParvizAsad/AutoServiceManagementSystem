@@ -9,5 +9,6 @@ namespace AutoServiceManagment.Services.Services.Contracts
     public interface IStatisticsService : IRepository<Statistics>
     {
         Task<IList<StatisticsDto>> GetAllStatisticsAsync();
+        Task AddStatisticsAsync();
     }
 }

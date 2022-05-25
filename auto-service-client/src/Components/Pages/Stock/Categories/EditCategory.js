@@ -2,7 +2,6 @@ import { FormGroup, Form, Label, Input, Button, FormText } from "reactstrap";
 import React, { useCallback, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { categoryService } from "../../../../Api/services/Categories";
-// import "./Employees/Categorys/CreateEmployee.scss";
 
 const newCategory = {
   name: " ",
@@ -35,9 +34,6 @@ function EditCategory(props) {
     const newCategory = { ...category };
     newCategory[e.target.id] = e.target.value;
     setCategory(newCategory);
-
-    // const { name, value } = e.target;
-    // setCategory({ ...Category, [name]: value });
   }
 
   return (
@@ -46,9 +42,9 @@ function EditCategory(props) {
         <h1>Edit {category.name} Category</h1>
       </div>
       <div className="CreatePage">
-        <Form onSubmit={editCategory}>
+        <Form className="forForm" onSubmit={editCategory}>
           <FormGroup>
-            <Label for="name">Name</Label>
+            <Label className="forLabel" for="name">Name</Label>
             <Input
               id="name"
               name="name"
@@ -58,7 +54,7 @@ function EditCategory(props) {
               type="text"
             />
           </FormGroup>
-          <Button type="submit">Submit</Button>
+          <Button className="forSubmit" type="submit">Submit</Button>
         </Form>
       </div>
     </>

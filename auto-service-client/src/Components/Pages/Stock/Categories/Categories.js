@@ -1,5 +1,5 @@
 import React from "react";
-import { Table, Button } from "reactstrap";
+import { Table, Button, Spinner } from "reactstrap";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import { useCallback } from "react";
@@ -9,11 +9,14 @@ import { categoryService } from "../../../../Api/services/Categories";
 function Category() {
   const [Categories, setCategories] = useState([]);
   const [searchCategory, setSearchCategory] = useState(" ");
+  const [loading, setLoading] = useState(true);
+
   const history = useHistory();
 
   React.useEffect(() => {
     categoryService.getAllCategories().then(({ data }) => {
       setCategories(data);
+      setLoading(false);
     });
   }, []);
 
@@ -51,7 +54,6 @@ function Category() {
             categoryService.deleteCategory(id) && history.push("/category");
           }
         } else if (
-          /* Read more about handling dismissals below */
           result.dismiss === Swal.DismissReason.cancel
         ) {
           swalWithBootstrapButtons.fire(
@@ -91,6 +93,11 @@ function Category() {
         />
       </div>
       <div>
+      {loading ? (
+          <div className="d-flex justify-content-center">
+            <Spinner color="primary" />
+          </div>
+        ) : (
         <Table className="TableForItems">
           <thead>
             <tr>
@@ -129,7 +136,7 @@ function Category() {
               </tr>
             ))}
           </tbody>
-        </Table>
+        </Table>)}
       </div>
     </>
   );

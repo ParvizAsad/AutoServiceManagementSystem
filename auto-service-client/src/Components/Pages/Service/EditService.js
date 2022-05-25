@@ -2,7 +2,6 @@ import { FormGroup, Form, Label, Input, Button, FormText } from "reactstrap";
 import React, { useCallback, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { serviceService } from "../../../Api/services/Services";
-// import "./Employees/Services/CreateEmployee.scss";
 
 const service = {
   name: " ",
@@ -36,9 +35,6 @@ function EditService(props) {
     const newService = { ...Service };
     newService[e.target.id] = e.target.value;
     setService(newService);
-
-    // const { name, value } = e.target;
-    // setService({ ...Service, [name]: value });
   }
 
   return (
@@ -47,9 +43,9 @@ function EditService(props) {
         <h1>Edit {Service.name} Service</h1>
       </div>
       <div className="CreatePage">
-        <Form onSubmit={editService}>
+        <Form className="forForm" onSubmit={editService}>
           <FormGroup>
-            <Label for="name">Name</Label>
+            <Label className="forLabel" for="name">Name</Label>
             <Input
               id="name"
               name="name"
@@ -60,7 +56,7 @@ function EditService(props) {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="detail">Detail</Label>
+            <Label className="forLabel" for="detail">Detail</Label>
             <Input
               id="detail"
               name="detail"
@@ -71,7 +67,7 @@ function EditService(props) {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="price">Price</Label>
+            <Label className="forLabel" for="price">Price AZN</Label>
             <Input
               id="price"
               name="price"
@@ -81,7 +77,7 @@ function EditService(props) {
               type="number"
             />
           </FormGroup>
-          <Button type="submit">Submit</Button>
+          <Button className="forSubmit" type="submit">Submit</Button>
         </Form>
       </div>
     </>

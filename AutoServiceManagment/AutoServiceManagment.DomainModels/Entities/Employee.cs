@@ -30,7 +30,6 @@ namespace AutoServiceManagment.DomainModels.Entities
         public ICollection<NonWorkingDetail> NonWorkingDetails { get; set; }
         public ICollection<Salary> Salaries { get; set; }
         public bool IsDeleted { get; set; } = false;
-
         public string ImageName { get; set; }
 
         [NotMapped]

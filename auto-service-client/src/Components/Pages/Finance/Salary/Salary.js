@@ -1,4 +1,4 @@
-import { Table, Button } from "reactstrap";
+import { Table, Button, Spinner } from "reactstrap";
 import { useHistory, Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import React, { useCallback, useState } from "react";
@@ -12,6 +12,7 @@ function Salary() {
   const [SalaryData, setSalaryData] = useState();
   const [employee, setEmployee] = useState();
   const [employeeId, setEmployeeId] = useState();
+  const [loading, setLoading] = useState(true);
   const [visible, setVisible] = useState(2);
 
   const history = useHistory();
@@ -36,6 +37,7 @@ function Salary() {
   React.useEffect(() => {
     salaryService.getAllSalaries().then(({ data }) => {
       setSalaries(data);
+      setLoading(false);
     });
   }, []);
 
@@ -73,7 +75,6 @@ function Salary() {
           getAllSalary();
           history.push("/Salary");
         } else if (
-          /* Read more about handling dismissals below */
           result.dismiss === Swal.DismissReason.cancel
         ) {
           swalWithBootstrapButtons.fire(
@@ -106,6 +107,11 @@ function Salary() {
         <input type="text" placeholder="Search.." />
       </div>
       <div>
+      {loading ? (
+          <div className="d-flex justify-content-center">
+            <Spinner color="primary" />
+          </div>
+        ) : (
         <Table className="TableForItems">
           <thead>
             <tr>
@@ -144,7 +150,7 @@ function Salary() {
               </tr>
             ))}
           </tbody>
-        </Table>
+        </Table>)}
       </div>
       <div className="d-flex justify-content-center">
         {maxCount > visible ? (

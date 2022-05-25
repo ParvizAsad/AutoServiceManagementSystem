@@ -6,8 +6,6 @@ import { employeeService } from "../../../../Api/services/Employee";
 import { taxService } from "../../../../Api/services/Taxes";
 import CurrencyInput from "react-currency-input-field";
 
-// import "./Employees/Salarys/CreateEmployee.scss";
-
 const newSalary = {
   date: " ",
   bonus: " ",
@@ -74,9 +72,9 @@ function EditSalary(props) {
         <h1>Edit {Salary.name} Salary</h1>
       </div>
       <div className="CreatePage">
-        <Form onSubmit={editSalary}>
+        <Form className="forForm" onSubmit={editSalary}>
           <FormGroup>
-            <Label for="employeeId">Select Employee</Label>
+            <Label className="forLabel" for="employeeId">Select Employee</Label>
             <select
               className="employeeId"
               onChange={(e) => handle(e)}
@@ -92,7 +90,7 @@ function EditSalary(props) {
             </select>
           </FormGroup>
           <FormGroup>
-            <Label for="Date">Date</Label>
+            <Label className="forLabel" for="Date">Date</Label>
             <Input
               id="Date"
               name="Date"
@@ -103,18 +101,17 @@ function EditSalary(props) {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="bonus">bonus</Label>
-            <CurrencyInput
+            <Label className="forLabel" for="bonus">Bonus AZN</Label>
+            <Input
               id="bonus"
               name="bonus"
               placeholder="bonus"
-              prefix="$"
               onChange={(e) => handle(e)}
               value={Salary.bonus}
             />
           </FormGroup>
           <FormGroup>
-            <Label for="TaxId">Select Tax</Label>
+            <Label className="forLabel" for="TaxId">Select Tax</Label>
             <select
               className="TaxId"
               onChange={(e) => handle(e)}
@@ -129,7 +126,7 @@ function EditSalary(props) {
               ))}
             </select>
           </FormGroup>
-          <Button type="submit">Submit</Button>
+          <Button className="forSubmit" type="submit">Submit</Button>
         </Form>
       </div>
     </>

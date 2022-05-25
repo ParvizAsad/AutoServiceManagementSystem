@@ -22,7 +22,7 @@ namespace AutoServiceManagment.DomainModels.Entities
         public decimal Payment { get; set; }
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{mm/dd/yyyy}")]
-        public DateTime Date { get; set; } = DateTime.Now;
+        public DateTime Date { get; set; } = DateTime.Today;
         public bool IsDeleted { get; set; }=false;
     }
 }

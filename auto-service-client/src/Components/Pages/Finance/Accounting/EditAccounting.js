@@ -2,7 +2,6 @@ import { FormGroup, Form, Label, Input, Button, FormText } from "reactstrap";
 import React, { useCallback, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { financeService } from "../../../../Api/services/Finances";
-// import "./Employees/Accountings/CreateEmployee.scss";
 import moment from "moment";
 import { ToastContainer, toast } from "react-toastify";
 import CurrencyInput from "react-currency-input-field";
@@ -85,31 +84,29 @@ function EditAccounting(props) {
         <h1>Edit Accounting</h1>
       </div>
       <div className="CreatePage">
-        <Form onSubmit={editAccounting}>
+        <Form className="forForm" onSubmit={editAccounting}>
           <FormGroup>
-            <Label for="communalCost">CommunalCost</Label>
-            <CurrencyInput
+            <Label  className="forLabel" for="communalCost">Communal Cost AZN</Label>
+            <Input
               id="communalCost"
               name="communalCost"
               placeholder="CommunalCost"
               onChange={(e) => handle(e)}
               value={accounting.communalCost}
-              prefix="$"
             />
           </FormGroup>
           <FormGroup>
-            <Label for="additionalCost">AdditionalCost</Label>
-            <CurrencyInput
+            <Label className="forLabel" for="additionalCost">Additional Cost AZN</Label>
+            <Input
               id="additionalCost"
               name="additionalCost"
               placeholder="additionalCost"
               onChange={(e) => handle(e)}
               value={accounting.additionalCost}
-              prefix="$"
             />
           </FormGroup>
           <FormGroup>
-            <Label for="Date">Date</Label>
+            <Label className="forLabel" for="Date">Date</Label>
             <Input
               id="Date"
               name="Date"
@@ -119,7 +116,7 @@ function EditAccounting(props) {
               type="date"
             />
           </FormGroup>
-          <Button type="submit">Submit</Button>
+          <Button className="forSubmit" type="submit">Submit</Button>
         </Form>
       </div>
     </>

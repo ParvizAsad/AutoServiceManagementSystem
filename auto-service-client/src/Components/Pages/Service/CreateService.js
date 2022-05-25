@@ -1,7 +1,6 @@
 import { FormGroup, Form, Label, Input, Button, FormText } from "reactstrap";
 import React, { useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
-// import "./CreateService.scss";
 import { serviceService } from "../../../Api/services/Services";
 
 const service = {
@@ -81,7 +80,7 @@ function CreateService() {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="price">Price</Label>
+            <Label for="price">Price AZN</Label>
             <Input
               id="price"
               name="price"

@@ -3,7 +3,6 @@ import React, { useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { taxService } from "../../../../Api/services/Taxes";
 import CurrencyInput from "react-currency-input-field";
-// import "./Employees/taxs/CreateEmployee.scss";
 
 const newTax = {
   Name: " ",
@@ -68,10 +67,10 @@ function CreateTax() {
         <h1>Create a new tax</h1>
       </div>
       <div className="CreatePage">
-        <Form onSubmit={createTax}>
+        <Form className="forForm" onSubmit={createTax}>
           {error}
           <FormGroup>
-            <Label for="Name">Name</Label>
+            <Label className="forLabel" for="Name">Name</Label>
             <Input
               id="Name"
               name="Name"
@@ -82,19 +81,18 @@ function CreateTax() {
           </FormGroup>
           {error}
           <FormGroup>
-            <Label for="taxValue">Tax Value</Label>
-            <CurrencyInput
+            <Label className="forLabel" for="taxValue">Tax Value</Label>
+            <Input
               id="taxValue"
               name="taxValue"
               placeholder="Tax value"
               onChange={getElementValues}
-              prefix="$"
               min="0"
               onPaste={preventPasteNegative}
               onKeyPress={preventMinus}
             />
           </FormGroup>
-          <Button type="submit">Submit</Button>
+          <Button className="forSubmit" type="submit">Submit</Button>
         </Form>
       </div>
     </>

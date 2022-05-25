@@ -19,7 +19,8 @@ namespace AutoServiceManagment.API.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            return Ok(await _service.GetAllStatisticsAsync());
+            await _service.AddStatisticsAsync();
+            return Ok();
         }
 
     }
