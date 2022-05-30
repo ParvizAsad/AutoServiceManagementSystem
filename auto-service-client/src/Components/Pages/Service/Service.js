@@ -97,7 +97,7 @@ function Service() {
             <tr>
               <th>#</th>
               <th>Name</th>
-              <th>Price (AZN)</th>
+              <th>Price</th>
               <th>Detail</th>
               <th>Actions</th>
             </tr>

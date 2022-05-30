@@ -118,7 +118,7 @@ function CashBox() {
               <th>Customer</th>
               <th>Service</th>
               <th>Product</th>
-              <th>Payment (AZN)</th>
+              <th>Payment</th>
               <th>Actions</th>
             </tr>
           </thead>

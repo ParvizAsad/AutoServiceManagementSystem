@@ -18,7 +18,7 @@ function Employee(props) {
   const history = useHistory();
 
   React.useEffect(() => {
-    employeeService.getAllEmployees().then(({ data }) => {
+    employeeService.getAllEmployee().then(({ data }) => {
       setEmployees(data);
     });
   }, []);
@@ -65,7 +65,7 @@ function Employee(props) {
       })
       .finally(() => {
         setTimeout(() => {
-          employeeService.getAllEmployees().then(({ data }) => {
+          employeeService.getAllEmployee().then(({ data }) => {
             setEmployees(data);
           });
         }, 5000);

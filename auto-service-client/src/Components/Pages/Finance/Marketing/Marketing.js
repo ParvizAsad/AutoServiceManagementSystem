@@ -101,7 +101,7 @@ function Marketing() {
             <tr>
               <th>#</th>
               <th>Name</th>
-              <th>Percentage %</th>
+              <th>Percentage</th>
               <th>Expire Date</th>
               <th>Actions</th>
             </tr>

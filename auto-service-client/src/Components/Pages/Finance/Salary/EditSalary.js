@@ -47,12 +47,15 @@ function EditSalary(props) {
   }, []);
 
   function handle(e) {
+    // const newSalary = { ...Salary };
+    // newSalary[e.target.id] = e.target.value;
+    // setSalary(newSalary);
     const { name, value } = e.target;
     setSalary({ ...Salary, [name]: value });
   }
 
   React.useEffect(() => {
-    employeeService.getAllEmployees().then(({ data }) => {
+    employeeService.getAllEmployee().then(({ data }) => {
       setEmployee(data);
     });
   }, []);
@@ -105,17 +108,6 @@ function EditSalary(props) {
               placeholder="bonus"
               onChange={(e) => handle(e)}
               value={Salary.bonus}
-            />
-          </FormGroup>
-          <FormGroup>
-            <Label className="forLabel" for="overTime">OverTime (hours)</Label>
-            <Input
-              id="overTime"
-              name="overTime"
-              placeholder="overTime"
-              type="number"
-              onChange={(e) => handle(e)}
-              value={Salary.overTime}
             />
           </FormGroup>
           <FormGroup>

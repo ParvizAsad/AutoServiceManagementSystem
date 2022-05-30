@@ -94,8 +94,8 @@ function Accounting() {
           <thead>
             <tr>
               <th>#</th>
-              <th>Communal Cost (AZN)</th>
-              <th>Additional Cost (AZN)</th>
+              <th>Communal Cost</th>
+              <th>Additional Cost</th>
               <th>Date</th>
               <th>Actions</th>
             </tr>

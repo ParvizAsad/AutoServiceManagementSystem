@@ -28,7 +28,7 @@ function Salary() {
   };
 
   React.useEffect(() => {
-    employeeService.getAllEmployees().then(({ data }) => {
+    employeeService.getAllEmployee().then(({ data }) => {
       setEmployee(data);
     });
   }, []);
@@ -112,15 +112,13 @@ function Salary() {
               <th> # </th>
               <th> Employee</th>
               <th> Date </th>
-              <th> Bonus (AZN)</th>
-              <th> OverTime (hours)</th>
-              <th> NetSalary (AZN)</th>
+              <th> Bonus </th>
+              <th> NetSalary </th>
               <th> Actions </th>
             </tr>
           </thead>
           <tbody>
             {salaries?.map((item, idx) => (
-              console.log(item),
               <tr key={idx}>
                 <th scope="row">{item.id}</th>
                 {employee
@@ -130,7 +128,6 @@ function Salary() {
                   ))}
                 <td>{moment(item.date).format("MM-DD-yyyy")}</td>
                 <td>{item.bonus}</td>
-                <td>{item.overtime}</td>
                 <td>{item.netSalary}</td>
                 <td>{item.salaryValue}</td>
                 <td className="Actions">
@@ -149,10 +146,10 @@ function Salary() {
           </tbody>
         </Table>
       </div>
-      <div className="loadMore d-flex justify-content-center">
+      <div className="d-flex justify-content-center">
         {maxCount > visible ? (
           <span>
-            <Link className="linkForLaodMore" onClick={showMoreItems}>Load more...</Link>
+            <Link onClick={showMoreItems}>Load more</Link>
           </span>
         ) : (
           <span></span>

@@ -8,8 +8,7 @@ import CurrencyInput from "react-currency-input-field";
 
 const newSalary = {
   date: " ",
-  bonus: " ",
-  overTime: " ",
+  donus: " ",
   netSalary: " ",
   taxId: " ",
   employeeId: " ",
@@ -55,7 +54,7 @@ function CreateSalary() {
   };
 
   React.useEffect(() => {
-    employeeService.getAllEmployees().then(({ data }) => {
+    employeeService.getAllEmployee().then(({ data }) => {
       setEmployee(data);
     });
   }, []);
@@ -126,21 +125,6 @@ function CreateSalary() {
               id="bonus"
               name="bonus"
               placeholder="bonus"
-              onChange={getElementValues}
-              type="number"
-              min="0"
-              onPaste={preventPasteNegative}
-              onKeyPress={preventMinus}
-            />
-          </FormGroup>
-          <FormGroup>
-            <Label className="forLabel" for="overTime">
-              OverTime (hours)
-            </Label>
-            <Input
-              id="overTime"
-              name="overTime"
-              placeholder="overTime"
               onChange={getElementValues}
               type="number"
               min="0"
