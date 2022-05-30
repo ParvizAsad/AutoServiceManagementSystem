@@ -1,9 +1,31 @@
-.CurrencyDiv{
-    background-color: red;
+.CurrencyDiv {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  .forFrom {
+    width: 30%;
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    .forLabel {
+      text-align: center;
+      font-size: 25px;
+      font-weight: 500;
+      color: rgb(74, 70, 70);
+    }
+  }
+  .changeCurrency {
+    margin-top: 20px;
+    background-color: green;
+  }
+  h2 {
+    margin-top: 20px;
+  }
 }
-.Result{
-    display: flex;
-    justify-content: center;
+.Result {
+  display: flex;
+  justify-content: center;
 }
+// TESTTEST
