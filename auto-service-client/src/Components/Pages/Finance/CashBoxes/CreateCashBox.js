@@ -5,6 +5,7 @@ import { customerService } from "../../../../Api/services/Customers";
 import { cashBoxService } from "../../../../Api/services/CashBox";
 import { serviceService } from "../../../../Api/services/Services";
 import { productService } from "../../../../Api/services/Products";
+import CurrencyInput from "react-currency-input-field";
 
 // import "./Customers/CashBoxs/CreateCustomer.scss";
 
@@ -22,7 +23,13 @@ function CreateCashBox() {
   const [products, setProducts] = React.useState([]);
   const [error, setError] = useState();
 
+  const [CashBoxData, setCashBoxData] = useState();
   const history = useHistory();
+  const getAllCashBox = useCallback(() => {
+    cashBoxService.getAllCashBoxes().then(({ data }) => {
+      setCashBoxData(data);
+    });
+  }, [setCashBoxData]);
 
   const createCashBox = useCallback(
     (e) => {

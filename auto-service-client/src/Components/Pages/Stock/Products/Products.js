@@ -108,7 +108,7 @@ function Product(props) {
           <tbody>
             {products
               ?.filter((val) => {
-                if (searchProduct === " ") {
+                if (searchProduct == " ") {
                   return val;
                 } else if (
                   val.name.toLowerCase().includes(searchProduct.toLowerCase())

@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useReducer } from "react";
 import { Table, Button } from "reactstrap";
 // import "./Employee.scss";
 import Swal from "sweetalert2";
-import { useState, useRef } from "react";
+import { useState, useCallback, useRef } from "react";
 import { useReactToPrint } from "react-to-print";
 import { employeeService } from "../../../../Api/services/Employee";
 import { css } from "@emotion/react";
@@ -11,6 +11,7 @@ import { useHistory, Link } from "react-router-dom";
 
 function Employee(props) {
   const [employees, setEmployees] = React.useState([]);
+  const [employeeData, setEmployeeData] = useState();
   const [visible, setVisible] = useState(2);
 
   const [searchEmployee, setSearchEmployee] = useState(" ");
@@ -122,7 +123,7 @@ function Employee(props) {
           <tbody>
             {employees
               ?.filter((val) => {
-                if (searchEmployee === " ") {
+                if (searchEmployee == " ") {
                   return val;
                 } else if (
                   val.fullName

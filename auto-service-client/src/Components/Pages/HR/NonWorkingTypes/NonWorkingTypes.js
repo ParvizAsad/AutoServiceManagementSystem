@@ -2,6 +2,7 @@ import React from "react";
 import { Table, Button, Spinner } from "reactstrap";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
+import { useCallback } from "react";
 import Swal from "sweetalert2";
 import { nonWorkingTypeService } from "../../../../Api/services/NonWorkingTypes";
 
@@ -112,7 +113,7 @@ function NonWorkingType() {
             <tbody>
               {nonWorkingTypes
                 ?.filter((val) => {
-                  if (searchNonWorkingType === " ") {
+                  if (searchNonWorkingType == " ") {
                     return val;
                   } else if (
                     val.name

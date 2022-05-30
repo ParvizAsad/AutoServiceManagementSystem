@@ -1,7 +1,8 @@
-import { FormGroup, Form, Label, Input, Button } from "reactstrap";
+import { FormGroup, Form, Label, Input, Button, FormText } from "reactstrap";
 import React, { useCallback, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { discountService } from "../../../../Api/services/Discount";
+import CurrencyInput from "react-currency-input-field";
 
 const newDiscount = {
   name: " ",

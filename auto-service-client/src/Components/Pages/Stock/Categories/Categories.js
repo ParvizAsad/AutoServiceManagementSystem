@@ -2,6 +2,7 @@ import React from "react";
 import { Table, Button } from "reactstrap";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
+import { useCallback } from "react";
 import Swal from "sweetalert2";
 import { categoryService } from "../../../../Api/services/Categories";
 
@@ -100,7 +101,7 @@ function Category() {
           </thead>
           <tbody>
             {Categories?.filter((val) => {
-              if (searchCategory === " ") {
+              if (searchCategory == " ") {
                 return val;
               } else if (
                 val.name.toLowerCase().includes(searchCategory.toLowerCase())

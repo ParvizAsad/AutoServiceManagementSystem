@@ -1,6 +1,6 @@
 import React from "react";
 import { Table, Button, Spinner } from "reactstrap";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useCallback } from "react";
 import { positionService } from "../../../../Api/services/Positions";
 import Swal from "sweetalert2";
@@ -123,7 +123,7 @@ function Position() {
             <tbody>
               {positions
                 ?.filter((val) => {
-                  if (searchPosition === " ") {
+                  if (searchPosition == " ") {
                     return val;
                   } else if (
                     val.name

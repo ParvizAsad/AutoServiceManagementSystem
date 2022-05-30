@@ -3,6 +3,7 @@ import { Navbar } from "reactstrap";
 import "./Header.scss";
 import logo from "../../../Assets/Images/Logo/logo.webp";
 import Icon from "../../../Assets/Images/Icon/profile-icon.jpg";
+import { AiOutlineUserAdd } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { userService } from "../../../Api/services/Users";
 import { bioService } from "../../../Api/services/Bios";

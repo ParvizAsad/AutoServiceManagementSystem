@@ -22,6 +22,8 @@ function ProductDetail(props) {
   const [categories, setCategories] = useState([]);
   const [brands, setBrands] = useState([]);
 
+  const history = useHistory();
+
   useEffect(() => {
     const id = props.match.params.id;
     productService.getProductById(id).then((res) => {

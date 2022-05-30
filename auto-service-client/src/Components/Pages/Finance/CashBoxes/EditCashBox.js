@@ -3,6 +3,7 @@ import React, { useCallback, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { customerService } from "../../../../Api/services/Customers";
 import { cashBoxService } from "../../../../Api/services/CashBox";
+import CurrencyInput from "react-currency-input-field";
 import { productService } from "../../../../Api/services/Products";
 import { serviceService } from "../../../../Api/services/Services";
 

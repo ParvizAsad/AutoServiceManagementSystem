@@ -1,9 +1,10 @@
-import { FormGroup, Form, Label, Input, Button } from "reactstrap";
+import { FormGroup, Form, Label, Input, Button, FormText } from "reactstrap";
 import React, { useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { salaryService } from "../../../../Api/services/Salaries";
 import { employeeService } from "../../../../Api/services/Employee";
 import { taxService } from "../../../../Api/services/Taxes";
+import CurrencyInput from "react-currency-input-field";
 
 const newSalary = {
   date: " ",

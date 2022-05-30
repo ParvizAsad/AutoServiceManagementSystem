@@ -49,7 +49,6 @@ function CreateProduct() {
         })
         .catch((res) => {
           setErrorHandle(res.error);
-          setError(3)
         });
     },
     [product, history]
@@ -131,6 +130,7 @@ function CreateProduct() {
         <h1>Create a new Product</h1>
       </div>
       <div className="CreatePage">
+        {/* <Form onSubmit={createProduct}> */}
         <Form onSubmit={handleSubmit(createProduct)}>
           {error}
           <FormGroup>

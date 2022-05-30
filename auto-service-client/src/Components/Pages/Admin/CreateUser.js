@@ -3,8 +3,9 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import { useCallback } from "react";
+import { Link } from "react-router-dom";
 import { employeeService } from "../../../Api/services/Employee";
-import { FormGroup, Form, Label, Input, Button } from "reactstrap";
+import { FormGroup, Form, Label, Input, Button, FormText } from "reactstrap";
 import { userService } from "../../../Api/services/Users";
 import defaultImageSrc from "../../../Assets/Images/HR/defaultImage.png";
 

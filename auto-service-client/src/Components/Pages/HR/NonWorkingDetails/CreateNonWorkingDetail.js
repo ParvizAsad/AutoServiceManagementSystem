@@ -1,4 +1,4 @@
-import { FormGroup, Form, Label, Input, Button } from "reactstrap";
+import { FormGroup, Form, Label, Input, Button, FormText } from "reactstrap";
 import React, { useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { nonWorkingDetailService } from "../../../../Api/services/NonWorkingDetails";
@@ -64,6 +64,21 @@ function CreateNonWorkingDetail() {
       setEmployee(data);
     });
   }, []);
+
+  const preventMinus = (e) => {
+    if (e.code === "Minus") {
+      e.preventDefault();
+    }
+  };
+
+  const preventPasteNegative = (e) => {
+    const clipboardData = e.clipboardData || window.clipboardData;
+    const pastedData = parseFloat(clipboardData.getData("text"));
+
+    if (pastedData < 0) {
+      e.preventDefault();
+    }
+  };
 
   return (
     <>

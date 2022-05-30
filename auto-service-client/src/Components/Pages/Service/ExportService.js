@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useReducer } from "react";
 import { Table, Button } from "reactstrap";
 // import ".././HR.scss";
 import { useHistory } from "react-router-dom";
+import Swal from "sweetalert2";
 import { useState } from "react";
 import { useCallback } from "react";
+import { Link } from "react-router-dom";
 import "jquery/dist/jquery.min.js";
 //Datatable Modules
 import "datatables.net-dt/js/dataTables.dataTables";
@@ -20,6 +22,14 @@ import { serviceService } from "../../../Api/services/Services";
 
 function ExportService() {
   const [Service, setService] = React.useState([]);
+  const [ServiceData, setServiceData] = useState();
+  const history = useHistory();
+
+  const getAllService = useCallback(() => {
+    serviceService.getAllServices().then(({ data }) => {
+      setServiceData(data);
+    });
+  }, [setServiceData]);
 
   React.useEffect(() => {
     serviceService.getAllServices().then(({ data }) => {
