@@ -1,31 +1,42 @@
-.CurrencyDiv {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
+
+.CreatePage {
   .forFrom {
-    width: 30%;
+    width: 100%;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    .forLabel {
-      text-align: center;
-      font-size: 25px;
-      font-weight: 500;
-      color: rgb(74, 70, 70);
-    }
+    background-color: red;
+    color: red;
+  
   }
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  
+
   .changeCurrency {
     margin-top: 20px;
     background-color: green;
-  }
-  h2 {
-    margin-top: 20px;
   }
 }
 .Result {
   display: flex;
   justify-content: center;
+}
+.forLabel {
+  text-align: center;
+  font-size: 25px;
+  color: red;
+  font-weight: 500;
+  color: rgb(74, 70, 70);
+}
+h2 {
+  margin-top: 20px;
+}
+
+.forSubmit{
+  width: 80px;
 }
 // TESTTEST

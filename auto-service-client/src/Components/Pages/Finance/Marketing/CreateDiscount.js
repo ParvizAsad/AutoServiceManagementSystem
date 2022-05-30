@@ -54,7 +54,7 @@ function CreateDiscount() {
         <h1>Create a new Discount</h1>
       </div>
       <div className="CreatePage">
-        <Form className="forForm" onSubmit={createDiscount}>
+        <Form className="sss" onSubmit={createDiscount}>
           {error}
           <FormGroup>
             <Label className="forLabel" for="Name">Name</Label>

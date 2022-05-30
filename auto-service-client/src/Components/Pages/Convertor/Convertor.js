@@ -42,9 +42,9 @@ function Convertor() {
         <h1>Make currency conversion</h1>
       </div>
       {state ? (
-               <div className="CurrencyDiv">
-               <Form >
-                   <Label  for="currencyValue">Input in USD</Label>
+               <div className="CreatePage">
+               <Form className="forForm">
+                   <Label className="forLabel" for="currencyValue">Input in USD</Label>
                    <Input
                      id="currencyValue"
                      name="currencyValue"

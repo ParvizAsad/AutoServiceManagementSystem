@@ -2,7 +2,7 @@ import { FormGroup, Form, Label, Input, Button } from "reactstrap";
 import React, { useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { financeService } from "../../../../Api/services/Finances";
-import "../../Customer/Create.scss";
+// import "../../Customer/Create.scss";
 
 const newAccounting = {
   communalCost: " ",
@@ -69,7 +69,7 @@ function CreateAccounting() {
         <h1>Create a new Accounting</h1>
       </div>
       <div className="CreatePage">
-        <Form className="forForm" onSubmit={createAccounting}>
+        <Form id="forForm" onSubmit={createAccounting}>
           <FormGroup>
             <Label className="forLabel" for="communalCost">Communal Cost AZN</Label>
             <Input
