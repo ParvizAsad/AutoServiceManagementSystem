@@ -88,7 +88,7 @@ function EditAccounting(props) {
         <Form onSubmit={editAccounting}>
           <FormGroup>
             <Label for="communalCost">CommunalCost</Label>
-            <CurrencyInput
+            <Input
               id="communalCost"
               name="communalCost"
               placeholder="CommunalCost"
@@ -99,7 +99,7 @@ function EditAccounting(props) {
           </FormGroup>
           <FormGroup>
             <Label for="additionalCost">AdditionalCost</Label>
-            <CurrencyInput
+            <Input
               id="additionalCost"
               name="additionalCost"
               placeholder="additionalCost"

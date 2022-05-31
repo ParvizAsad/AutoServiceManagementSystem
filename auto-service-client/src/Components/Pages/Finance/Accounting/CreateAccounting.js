@@ -1,10 +1,8 @@
-import { FormGroup, Form, Label, Input, Button, FormText } from "reactstrap";
+import { FormGroup, Form, Label, Input, Button } from "reactstrap";
 import React, { useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { financeService } from "../../../../Api/services/Finances";
-import CurrencyInput from "react-currency-input-field";
-
-// import "./Employees/Accountings/CreateEmployee.scss";
+// import "../../Customer/Create.scss";
 
 const newAccounting = {
   communalCost: " ",
@@ -71,14 +69,13 @@ function CreateAccounting() {
         <h1>Create a new Accounting</h1>
       </div>
       <div className="CreatePage">
-        <Form onSubmit={createAccounting}>
+        <Form id="forForm" onSubmit={createAccounting}>
           <FormGroup>
-            <Label for="communalCost">CommunalCost</Label>
-            <CurrencyInput
+            <Label className="forLabel" for="communalCost">Communal Cost AZN</Label>
+            <Input
               id="communalCost"
               name="communalCost"
               placeholder="communalCost"
-              prefix="$"
               onChange={getElementValues}
               min="0"
               onPaste={preventPasteNegative}
@@ -86,13 +83,12 @@ function CreateAccounting() {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="additionalCost">AdditionalCost</Label>
-            <CurrencyInput
+            <Label className="forLabel" for="additionalCost">Additional Cost AZN</Label>
+            <Input
               id="additionalCost"
               name="additionalCost"
               placeholder="additionalCost"
               onChange={getElementValues}
-              prefix="$"
               min="0"
               onPaste={preventPasteNegative}
               onKeyPress={preventMinus}
@@ -100,7 +96,7 @@ function CreateAccounting() {
           </FormGroup>
           {error}
           <FormGroup>
-            <Label for="date">Date</Label>
+            <Label className="forLabel" for="date">Date</Label>
             <Input
               id="date"
               name="date"
@@ -109,7 +105,7 @@ function CreateAccounting() {
               type="date"
             />
           </FormGroup>
-          <Button type="submit">Submit</Button>
+          <Button className="forSubmit" type="submit">Submit</Button>
         </Form>
       </div>
     </>
