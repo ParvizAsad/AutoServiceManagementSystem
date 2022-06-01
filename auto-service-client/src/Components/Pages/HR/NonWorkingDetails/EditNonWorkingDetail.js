@@ -1,10 +1,9 @@
-import { FormGroup, Form, Label, Input, Button, FormText } from "reactstrap";
+import { FormGroup, Form, Label, Input, Button } from "reactstrap";
 import React, { useCallback, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { nonWorkingDetailService } from "../../../../Api/services/NonWorkingDetails";
 import { nonWorkingTypeService } from "../../../../Api/services/NonWorkingTypes";
 import { employeeService } from "../../../../Api/services/Employee";
-import moment from "moment";
 
 const newNonWorkingDetail = {
   StartTime: " ",
@@ -27,12 +26,6 @@ function EditNonWorkingDetail(props) {
       setNonWorkingDetailData(res.data);
     });
   }, []);
-
-  const getAllNonWorkingDetail = useCallback(() => {
-    nonWorkingDetailService.getAllNonWorkingDetails().then(({ data }) => {
-      setNonWorkingDetailData(data);
-    });
-  }, [setNonWorkingDetailData]);
 
   const getElementValues = (e) => {
     const { name, value } = e.target;

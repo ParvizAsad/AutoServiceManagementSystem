@@ -1,7 +1,7 @@
 import React from "react";
 import { CardGroup, Card, CardBody, CardTitle, Button } from "reactstrap";
 import "./Home.scss";
-import { useHistory, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { MdOutlinePeopleAlt } from "react-icons/md";
 import { RiAdminFill } from "react-icons/ri";
 import { GiDirectorChair } from "react-icons/gi";

@@ -69,7 +69,7 @@ function CreateAccounting() {
         <h1>Create a new Accounting</h1>
       </div>
       <div className="CreatePage">
-        <Form id="forForm" onSubmit={createAccounting}>
+        <Form className="sss" onSubmit={createAccounting}>
           <FormGroup>
             <Label className="forLabel" for="communalCost">Communal Cost AZN</Label>
             <Input

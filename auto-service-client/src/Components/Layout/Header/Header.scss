@@ -1,18 +1,28 @@
 .forHeading {
-  height: 20vh;
+  height: 13vh;
   margin-top: 0;
 }
 #NavbarId {
   margin-top: 0;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   text-align: center;
   background-color: rgb(173, 33, 28);
   height: 100%;
   .container-fluid {
     background-color: rgb(173, 33, 28);
     height: 100%;
-
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    width: 100%;
+    .forHome{
+      width: 55px;
+      height: 55px;
+      border-radius: 20px;
+      font-size: 36px;
+      color: rgb(0, 0, 0);
+    }
     h1 {
       max-width: 60%;
       color: #ffffff;
@@ -31,13 +41,15 @@
     }
     .Profile {
       font-size: 20px;
-      height: 80%;
+      height: 70%;
       min-width: 100px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       border-radius: 20px;
+      // margin-left: 400px;
+      background-color: rgb(213, 226, 233);
       .forProfile {
         .linkForProfile {
           text-decoration: none;
@@ -50,17 +62,20 @@
         align-items: center;
         justify-content: center;
         margin-top: 20px;
+
+
         .linkForAccount {
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: center;
           text-decoration: none;
+          
           .forLogin {
             border-radius: 10%;
             color: black;
-            font-size: 30px;
-            width: 120px;
+            font-size: 25px;
+            min-width: 100%;
             background-color: rgb(213, 226, 233);
           }
         }

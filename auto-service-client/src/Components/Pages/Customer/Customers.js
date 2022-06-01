@@ -92,7 +92,13 @@ function Customer(props) {
           </Button>
         </div>
         <Button onClick={() => history.push("/ExportCustomer")}>Export</Button>
-        <input type="text" placeholder="Search.." />
+        <input
+          type="text"
+          placeholder="Search.."
+          onChange={(event) => {
+            setSearchCustomer(event.target.value);
+          }}
+        />
       </div>
       <div>
         <Table className="TableForItems">
@@ -107,7 +113,7 @@ function Customer(props) {
           <tbody>
             {customers
               ?.filter((val) => {
-                if (searchCustomer == " ") {
+                if (searchCustomer === " ") {
                   return val;
                 } else if (
                   val.fullName

@@ -1,18 +1,17 @@
-import React, { useReducer } from "react";
-import { Table, Button } from "reactstrap";
+import React from "react";
+import { Table, Button, Spinner } from "reactstrap";
 // import "./Employee.scss";
 import Swal from "sweetalert2";
-import { useState, useCallback, useRef } from "react";
+import { useState, useRef } from "react";
 import { useReactToPrint } from "react-to-print";
 import { employeeService } from "../../../../Api/services/Employee";
-import { css } from "@emotion/react";
-import HashLoader from "react-spinners/HashLoader";
 import { useHistory, Link } from "react-router-dom";
 
 function Employee(props) {
   const [employees, setEmployees] = React.useState([]);
-  const [employeeData, setEmployeeData] = useState();
   const [visible, setVisible] = useState(2);
+
+  const [loading, setLoading] = useState(true);
 
   const [searchEmployee, setSearchEmployee] = useState(" ");
   const history = useHistory();
@@ -20,6 +19,13 @@ function Employee(props) {
   React.useEffect(() => {
     employeeService.getAllEmployee().then(({ data }) => {
       setEmployees(data);
+    });
+  }, []);
+
+  React.useEffect(() => {
+    employeeService.getAllEmployee().then(({ data }) => {
+      setEmployees(data);
+      setLoading(false);
     });
   }, []);
 
@@ -109,6 +115,14 @@ function Employee(props) {
         />
         <Button onClick={() => history.push("/ExportEmployee")}>Export</Button>
       </div>
+
+      {loading ? (
+          //  <tr className="d-flex justify-content-center"><Spinner color="primary"/></tr>
+          <div className="d-flex justify-content-center">
+            <Spinner color="primary" />
+          </div>
+        ) : ( <div>
+
       <div ref={componentRef}>
         <Table className="TableForItems" id="example">
           <thead>
@@ -123,7 +137,7 @@ function Employee(props) {
           <tbody>
             {employees
               ?.filter((val) => {
-                if (searchEmployee == " ") {
+                if (searchEmployee = " ") {
                   return val;
                 } else if (
                   val.fullName
@@ -176,6 +190,7 @@ function Employee(props) {
           <span></span>
         )}
       </div>
+      </div>)}
     </>
   );
 }

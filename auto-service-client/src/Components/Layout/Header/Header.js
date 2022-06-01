@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import { Navbar } from "reactstrap";
 import "./Header.scss";
-import logo from "../../../Assets/Images/Logo/logo.webp";
-import Icon from "../../../Assets/Images/Icon/profile-icon.jpg";
-import { AiOutlineUserAdd } from "react-icons/ai";
+import { AiOutlineHome } from "react-icons/ai";
+
 import { Link } from "react-router-dom";
 import { userService } from "../../../Api/services/Users";
-import { bioService } from "../../../Api/services/Bios";
 import { accountService } from "../../../Api/services/Account";
 
 function Header() {
@@ -22,7 +20,12 @@ function Header() {
   return (
     <div className="forHeading">
       <Navbar id="NavbarId">
-        <img src={logo} alt="Logo" />
+
+      <Link className="forHome" to="/">
+        <div>
+        <AiOutlineHome/>
+        </div>
+      </Link>
         <h1>Car-Tool-Network Auto Service</h1>
         <div className="Profile">
           <div>

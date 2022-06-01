@@ -2,11 +2,10 @@ import { Table, Button, Spinner } from "reactstrap";
 import { useHistory } from "react-router-dom";
 import { taxService } from "../../../../Api/services/Taxes";
 import Swal from "sweetalert2";
-import React, { useCallback, useState } from "react";
+import React, {useState } from "react";
 
 function Tax() {
   const [taxes, setTaxes] = React.useState([]);
-  const [taxData, setTaxData] = useState();
   const [loading, setLoading] = useState(true);
   const [searchTax, setSearchTax] = useState(" ");
 
@@ -104,7 +103,7 @@ function Tax() {
           <tbody>
             {taxes
               ?.filter((val) => {
-                if (searchTax == " ") {
+                if (searchTax === " ") {
                   return val;
                 } else if (
                   val.name.toLowerCase().includes(searchTax.toLowerCase())

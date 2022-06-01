@@ -76,10 +76,10 @@ function Login() {
               />
             </InputGroupText>
             <Input placeholder="Remember me" />
-            <Link>Forget Password?</Link>
+            <Link className="forForgetPassword">Forget Password?</Link>
           </InputGroup>
           <br />
-          <Button type="submit">Login</Button>
+          <Button className="forButton" type="submit">Login</Button>
         </Form>
       </div>
     </>

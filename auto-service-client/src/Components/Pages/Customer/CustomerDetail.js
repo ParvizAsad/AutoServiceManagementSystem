@@ -1,7 +1,6 @@
 import { Card, CardBody, CardSubtitle, CardTitle } from "reactstrap";
 import { customerService } from "../../../Api/services/Customers";
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
 
 const customer = {
   FullName: " ",
@@ -14,7 +13,6 @@ const customer = {
 };
 function CustomerDetail(props) {
   const [data, setData] = useState(customer);
-  const history = useHistory();
 
   useEffect(() => {
     const id = props.match.params.id;

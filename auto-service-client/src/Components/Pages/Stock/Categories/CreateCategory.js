@@ -55,7 +55,7 @@ function CreateCategory() {
         <Form onSubmit={createCategory}>
           {error}
           <FormGroup>
-            <Label for="Name">Name</Label>
+            <Label  className="forLabel" for="Name">Name</Label>
             <Input
               id="Name"
               name="Name"
@@ -64,7 +64,7 @@ function CreateCategory() {
               type="text"
             />
           </FormGroup>
-          <Button type="submit">Submit</Button>
+          <Button className="forSubmit" type="submit">Submit</Button>
         </Form>
       </div>
     </>

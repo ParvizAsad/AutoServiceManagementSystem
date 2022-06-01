@@ -1,8 +1,6 @@
 import React from "react";
 import { Table } from "reactstrap";
 // import ".././HR.scss";
-import { useHistory } from "react-router-dom";
-import Swal from "sweetalert2";
 import { useState } from "react";
 import { useCallback } from "react";
 import "jquery/dist/jquery.min.js";
@@ -21,14 +19,6 @@ import { customerService } from "../../../Api/services/Customers";
 
 function ExportCustomer() {
   const [Customer, setCustomer] = React.useState([]);
-  const [CustomerData, setCustomerData] = useState();
-  const history = useHistory();
-
-  const getAllCustomer = useCallback(() => {
-    customerService.getAllCustomers().then(({ data }) => {
-      setCustomerData(data);
-    });
-  }, [setCustomerData]);
 
   React.useEffect(() => {
     customerService.getAllCustomers().then(({ data }) => {

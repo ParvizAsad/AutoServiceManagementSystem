@@ -109,6 +109,11 @@ function CashBox() {
             Create a new CashBox
           </Button>
         </div>
+        <div className="Adding">
+          <Button onClick={() => history.push("/convertor")}>
+           Convertor
+          </Button>
+        </div>
       </div>
       <div>
         <Table className="TableForItems">

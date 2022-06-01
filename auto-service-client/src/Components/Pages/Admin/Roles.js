@@ -1,10 +1,9 @@
-import React, { Roleeducer } from "react";
+import React from "react";
 import { Table, Button } from "reactstrap";
 // import "./Role.scss";
 import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useState } from "react";
-import { useCallback } from "react";
 import { Link } from "react-router-dom";
 import { roleService } from "../../../Api/services/Roles";
 
@@ -13,12 +12,6 @@ function Role(props) {
   const [RoleData, setRoleData] = useState();
   const [searchRole, setSearchRole] = useState(" ");
   const history = useHistory();
-
-  const getAllRole = useCallback(() => {
-    roleService.getAllRoles().then(({ data }) => {
-      setRoleData(data);
-    });
-  }, [setRoleData]);
 
   const deleteButton = (id) => {
     const swalWithBootstrapButtons = Swal.mixin({
@@ -48,7 +41,6 @@ function Role(props) {
           );
           {
             roleService.deleteRole(id) && (
-              // history.push("/Role")
               <Link to="/Role"></Link>
             );
           }
@@ -88,10 +80,6 @@ function Role(props) {
     props.history.push("/EditRole/" + id);
   }
 
-  function RoleDetail(id) {
-    props.history.push("/RoleDetail/" + id);
-  }
-
   return (
     <>
       <div className="ForHeading">
@@ -122,7 +110,7 @@ function Role(props) {
           </thead>
           <tbody>
             {Role?.filter((val) => {
-              if (searchRole == " ") {
+              if (searchRole === " ") {
                 return val;
               } else if (
                 val.name.toLowerCase().includes(searchRole.toLowerCase())

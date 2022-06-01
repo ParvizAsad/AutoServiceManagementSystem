@@ -1,4 +1,4 @@
-import { Table, Button } from "reactstrap";
+import { Table, Button, Spinner } from "reactstrap";
 import { useHistory, Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import React, { useCallback, useState } from "react";
@@ -13,6 +13,7 @@ function Salary() {
   const [employee, setEmployee] = useState();
   const [employeeId, setEmployeeId] = useState();
   const [visible, setVisible] = useState(2);
+  const [loading, setLoading] = useState(true);
 
   const history = useHistory();
 
@@ -32,6 +33,14 @@ function Salary() {
       setEmployee(data);
     });
   }, []);
+
+  React.useEffect(() => {
+    salaryService.getAllSalaries().then(({ data }) => {
+      setSalaries(data);
+      setLoading(false);
+    });
+  }, []);
+
 
   React.useEffect(() => {
     salaryService.getAllSalaries().then(({ data }) => {
@@ -105,6 +114,14 @@ function Salary() {
         </div>
         <input type="text" placeholder="Search.." />
       </div>
+
+      {loading ? (
+          //  <tr className="d-flex justify-content-center"><Spinner color="primary"/></tr>
+          <div className="d-flex justify-content-center">
+            <Spinner color="primary" />
+          </div>
+        ) : ( <div>
+
       <div>
         <Table className="TableForItems">
           <thead>
@@ -146,15 +163,18 @@ function Salary() {
           </tbody>
         </Table>
       </div>
-      <div className="d-flex justify-content-center">
+      <div className="loadMore d-flex justify-content-center">
         {maxCount > visible ? (
           <span>
-            <Link onClick={showMoreItems}>Load more</Link>
-          </span>
+            <Link className="linkForLaodMore" onClick={showMoreItems}>
+              Load more...
+            </Link>          </span>
         ) : (
           <span></span>
         )}
       </div>
+      
+      </div>)}
     </>
   );
 }

@@ -101,7 +101,7 @@ function User(props) {
           <tbody>
             {user
               ?.filter((val) => {
-                if (searchUser == " ") {
+                if (searchUser === " ") {
                   return val;
                 } else if (
                   val.name.toLowerCase().includes(searchUser.toLowerCase())

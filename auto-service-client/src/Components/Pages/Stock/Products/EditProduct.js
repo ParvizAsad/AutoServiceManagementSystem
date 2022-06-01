@@ -93,7 +93,7 @@ function EditProduct(props) {
         <Form onSubmit={EditProduct}>
           {error}
           <FormGroup>
-            <Label for="name">Name</Label>
+            <Label className="forLabel" for="name">Name</Label>
             <Input
               id="name"
               name="name"
@@ -105,7 +105,7 @@ function EditProduct(props) {
           </FormGroup>
           {error}
           <FormGroup>
-            <Label for="basePrice">BasePrice</Label>
+            <Label className="forLabel" for="basePrice">BasePrice</Label>
             <Input
               id="basePrice"
               name="basePrice"
@@ -117,7 +117,7 @@ function EditProduct(props) {
           </FormGroup>
           {error}
           <FormGroup>
-            <Label for="salePrice">SalePrice</Label>
+            <Label className="forLabel" for="salePrice">SalePrice</Label>
             <Input
               id="salePrice"
               name="salePrice"
@@ -128,7 +128,7 @@ function EditProduct(props) {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="count">Count</Label>
+            <Label className="forLabel" for="count">Count</Label>
             <Input
               id="count"
               name="count"
@@ -140,7 +140,7 @@ function EditProduct(props) {
           </FormGroup>
           {error}
           <FormGroup>
-            <Label for="categoryId">Select Category</Label>
+            <Label className="forLabel" for="categoryId">Select Category</Label>
             <select
               className="form-control"
               onChange={(e) => handle(e)}
@@ -157,7 +157,7 @@ function EditProduct(props) {
           </FormGroup>
           {error}
           <FormGroup>
-            <Label for="brandId">Select Brand</Label>
+            <Label className="forLabel" for="brandId">Select Brand</Label>
             <select
               className="form-control"
               onChange={(e) => handle(e)}
@@ -172,7 +172,7 @@ function EditProduct(props) {
               ))}
             </select>
           </FormGroup>
-          <Button type="submit">Submit</Button>
+          <Button className="forSubmit" type="submit">Submit</Button>
         </Form>
       </div>
     </>

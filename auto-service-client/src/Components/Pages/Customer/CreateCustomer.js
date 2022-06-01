@@ -5,7 +5,6 @@ import { useHistory } from "react-router-dom";
 import { customerService } from "../../../Api/services/Customers";
 import { serviceService } from "../../../Api/services/Services";
 import { productService } from "../../../Api/services/Products";
-import CurrencyInput from "react-currency-input-field";
 
 const initialCustomer = {
   fullName: "",
@@ -22,14 +21,8 @@ function CreateCustomer() {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState();
 
-  const [customerData, setCustomerData] = useState();
   const history = useHistory();
 
-  const getAllCustomer = useCallback(() => {
-    customerService.getAllCustomer().then(({ data }) => {
-      setCustomerData(data);
-    });
-  }, [setCustomerData]);
 
   const createCustomer = useCallback(
     (e) => {
@@ -87,10 +80,10 @@ function CreateCustomer() {
         <h1>Create a new customer</h1>
       </div>
       <div className="CreatePage">
-        <Form onSubmit={createCustomer}>
+        <Form className="forForm" onSubmit={createCustomer}>
           {error}
           <FormGroup>
-            <Label for="fullName">FullName</Label>
+            <Label className="forLabel" for="fullName">FullName</Label>
             <Input
               id="fullName"
               name="fullName"
@@ -101,7 +94,7 @@ function CreateCustomer() {
           </FormGroup>
           {error}
           <FormGroup>
-            <Label for="phoneNumber">Phone Number</Label>
+            <Label className="forLabel" for="phoneNumber">Phone Number</Label>
             <Input
               id="phoneNumber"
               name="phoneNumber"
@@ -112,7 +105,7 @@ function CreateCustomer() {
           </FormGroup>
           {error}
           <FormGroup>
-            <Label for="email">Email</Label>
+            <Label className="forLabel" for="email">Email</Label>
             <Input
               id="email"
               name="email"
@@ -122,20 +115,20 @@ function CreateCustomer() {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="debt">Debt</Label>
-            <CurrencyInput
+            <Label className="forLabel" for="debt">Debt</Label>
+            <Input
               id="debt"
               name="debt"
               placeholder="debt"
               onChange={getElementValues}
-              prefix="$"
+              // prefix="$"
               min="0"
               onPaste={preventPasteNegative}
               onKeyPress={preventMinus}
             />
           </FormGroup>
           <FormGroup>
-            <Label for="ServiceIds">Select Service</Label>
+            <Label className="forLabel" for="ServiceIds">Select Service</Label>
             <select
               multiple={true}
               className="ServiceIds"
@@ -152,7 +145,7 @@ function CreateCustomer() {
             </select>
           </FormGroup>
           <FormGroup>
-            <Label for="ProductIds">Select Product</Label>
+            <Label className="forLabel" for="ProductIds">Select Product</Label>
             <select
               multiple={true}
               className="ProductIds"
@@ -168,7 +161,7 @@ function CreateCustomer() {
               ))}
             </select>
           </FormGroup>
-          <Button type="submit">Submit</Button>
+          <Button className="forSubmit" type="submit">Submit</Button>
         </Form>
       </div>
     </>

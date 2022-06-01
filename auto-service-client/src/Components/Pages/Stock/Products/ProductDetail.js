@@ -1,6 +1,5 @@
 import { Card, CardImg, CardBody, CardSubtitle, CardTitle } from "reactstrap";
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
 import { productService } from "../../../../Api/services/Products";
 import productImage from "../../../../Assets/Images/Products/productImage.jpg";
 import { categoryService } from "../../../../Api/services/Categories";
@@ -21,8 +20,6 @@ function ProductDetail(props) {
   const [product, setProduct] = useState(newProduct);
   const [categories, setCategories] = useState([]);
   const [brands, setBrands] = useState([]);
-
-  const history = useHistory();
 
   useEffect(() => {
     const id = props.match.params.id;

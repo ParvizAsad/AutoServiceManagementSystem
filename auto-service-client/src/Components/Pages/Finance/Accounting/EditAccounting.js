@@ -1,11 +1,9 @@
-import { FormGroup, Form, Label, Input, Button, FormText } from "reactstrap";
+import { FormGroup, Form, Label, Input, Button } from "reactstrap";
 import React, { useCallback, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { financeService } from "../../../../Api/services/Finances";
 // import "./Employees/Accountings/CreateEmployee.scss";
-import moment from "moment";
-import { ToastContainer, toast } from "react-toastify";
-import CurrencyInput from "react-currency-input-field";
+import { toast } from "react-toastify";
 
 const newAccounting = {
   communalCost: " ",
@@ -87,7 +85,7 @@ function EditAccounting(props) {
       <div className="CreatePage">
         <Form onSubmit={editAccounting}>
           <FormGroup>
-            <Label for="communalCost">CommunalCost</Label>
+            <Label className="forLabel" for="communalCost">CommunalCost</Label>
             <Input
               id="communalCost"
               name="communalCost"
@@ -98,7 +96,7 @@ function EditAccounting(props) {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="additionalCost">AdditionalCost</Label>
+            <Label className="forLabel" for="additionalCost">AdditionalCost</Label>
             <Input
               id="additionalCost"
               name="additionalCost"
@@ -109,7 +107,7 @@ function EditAccounting(props) {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="Date">Date</Label>
+            <Label className="forLabel" for="Date">Date</Label>
             <Input
               id="Date"
               name="Date"
@@ -119,7 +117,7 @@ function EditAccounting(props) {
               type="date"
             />
           </FormGroup>
-          <Button type="submit">Submit</Button>
+          <Button className="forSubmit" type="submit">Submit</Button>
         </Form>
       </div>
     </>

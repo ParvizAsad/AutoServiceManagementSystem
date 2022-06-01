@@ -1,7 +1,6 @@
 import React from "react";
 import { Button } from "reactstrap";
 import "./Stock.scss";
-import Swal from "sweetalert2";
 import { CardGroup, Card, CardBody, CardTitle } from "reactstrap";
 import { Link } from "react-router-dom";
 import { MdOutlineProductionQuantityLimits } from "react-icons/md";

@@ -20,23 +20,31 @@
     margin-top: 20px;
     background-color: green;
   }
+  .forSubmit{
+    width: 80px;
+    background-color: green;
+  }
 }
+
+
 .Result {
   display: flex;
   justify-content: center;
+  margin-top: 20px;
 }
+
 .forLabel {
   text-align: center;
   font-size: 25px;
   color: red;
   font-weight: 500;
   color: rgb(74, 70, 70);
+  margin-right: 10px;
 }
+
 h2 {
   margin-top: 20px;
 }
 
-.forSubmit{
-  width: 80px;
-}
+
 // TESTTEST

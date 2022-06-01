@@ -90,9 +90,9 @@ function EditCashbox(props) {
         </h1>
       </div>
       <div className="CreatePage">
-        <Form onSubmit={editCashbox}>
+        <Form className="sss" onSubmit={editCashbox}>
           <FormGroup>
-            <Label for="CustomerId">Select Customer</Label>
+            <Label className="forLabel" for="CustomerId">Select Customer</Label>
             <select
               className="CustomerId"
               onChange={(e) => handle(e)}
@@ -108,7 +108,7 @@ function EditCashbox(props) {
             </select>
           </FormGroup>
           <FormGroup>
-            <Label for="Services">Select Service</Label>
+            <Label className="forLabel" for="Services">Select Service</Label>
             <select
               className="CustomerId"
               onChange={(e) => handle(e)}
@@ -124,7 +124,7 @@ function EditCashbox(props) {
             </select>
           </FormGroup>
           <FormGroup>
-            <Label for="Products">Select Product</Label>
+            <Label className="forLabel" for="Products">Select Product</Label>
             <select
               className="Products"
               onChange={(e) => handle(e)}
@@ -140,7 +140,7 @@ function EditCashbox(props) {
             </select>
           </FormGroup>
           <FormGroup>
-            <Label for="Payment">Payment</Label>
+            <Label className="forLabel" for="Payment">Payment</Label>
             <Input
               id="Payment"
               name="Payment"
@@ -153,7 +153,7 @@ function EditCashbox(props) {
               onKeyPress={preventMinus}
             />
           </FormGroup>
-          <Button type="submit">Submit</Button>
+          <Button className="forSubmit" type="submit">Submit</Button>
         </Form>
       </div>
     </>

@@ -94,10 +94,10 @@ function CreateCashBox() {
         <h1>Create a new CashBox</h1>
       </div>
       <div className="CreatePage">
-        <Form onSubmit={createCashBox}>
+        <Form className="sss" onSubmit={createCashBox}>
           {error}
           <FormGroup>
-            <Label for="CustomerId">Select Customer</Label>
+            <Label className="forLabel" for="CustomerId">Select Customer</Label>
             <select
               className="CustomerId"
               onChange={getElementValues}
@@ -114,7 +114,7 @@ function CreateCashBox() {
           </FormGroup>
           {error}
           <FormGroup>
-            <Label for="Services">Select Service</Label>
+            <Label className="forLabel" for="Services">Select Service</Label>
             <select
               className="ServiceId"
               onChange={getElementValues}
@@ -131,7 +131,7 @@ function CreateCashBox() {
           </FormGroup>
           {error}
           <FormGroup>
-            <Label for="ProductId">Select Product</Label>
+            <Label className="forLabel" for="ProductId">Select Product</Label>
             <select
               className="ProductId"
               onChange={getElementValues}
@@ -148,7 +148,7 @@ function CreateCashBox() {
           </FormGroup>
           {error}
           <FormGroup>
-            <Label for="Payment">Payment</Label>
+            <Label className="forLabel" for="Payment">Payment</Label>
             <Input
               id="Payment"
               name="Payment"
@@ -161,7 +161,7 @@ function CreateCashBox() {
               onKeyPress={preventMinus}
             />
           </FormGroup>
-          <Button type="submit">Submit</Button>
+          <Button className="forSubmit" type="submit">Submit</Button>
         </Form>
       </div>
     </>

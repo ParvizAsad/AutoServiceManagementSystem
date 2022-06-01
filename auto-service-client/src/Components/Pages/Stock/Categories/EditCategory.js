@@ -48,7 +48,7 @@ function EditCategory(props) {
       <div className="CreatePage">
         <Form onSubmit={editCategory}>
           <FormGroup>
-            <Label for="name">Name</Label>
+            <Label className="forLabel" for="name">Name</Label>
             <Input
               id="name"
               name="name"
@@ -58,7 +58,7 @@ function EditCategory(props) {
               type="text"
             />
           </FormGroup>
-          <Button type="submit">Submit</Button>
+          <Button className="forSubmit" type="submit">Submit</Button>
         </Form>
       </div>
     </>

@@ -10,6 +10,7 @@ import { UserData } from "./Data";
 import { useState } from "react";
 // import { Chart as ChartJS } from "chart.js/auto";
 import { statistcsService } from "../../../Api/services/Statistics";
+import "./Statistics.scss";
 
 // Chart.register(ArcElement);
 function Statistics() {
@@ -28,14 +29,10 @@ function Statistics() {
         label: "Company Profit",
         data: UserData.map((data) => data.userGain),
         backgroundColor: [
-          "rgba(75,192,192,1)",
-          "#ecf0f1",
-          "#50AF95",
-          "#f3ba2f",
-          "#2a71d0",
+          "rgba(8, 4, 220, 0.3)",
         ],
-        borderColor: "green",
-        borderWidth: 2,
+        borderColor: "rgba(8, 4, 220, 1)",
+        borderWidth: 3,
       },
     ],
   });
@@ -45,8 +42,12 @@ function Statistics() {
       <div className="ForHeading">
         <h1>Statistics</h1>
       </div>
-      <Line data={userData} />;
-    </>
+      <div className="forFraphic">
+        <div id="graphic">
+          <Line id="Line" data={userData} />;
+        </div>
+      </div>
+          </>
   );
 }
 

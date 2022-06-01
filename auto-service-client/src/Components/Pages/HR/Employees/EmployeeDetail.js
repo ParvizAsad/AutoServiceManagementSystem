@@ -1,15 +1,13 @@
-import React, { useCallback, useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import {
   Card,
   CardBody,
   CardSubtitle,
   CardTitle,
-  CardText,
   CardImg,
 } from "reactstrap";
 import "./CreateEmployee.scss";
-import { employeeService } from "../../../../Api/services/Employee";
 import { positionService } from "../../../../Api/services/Positions";
 import axios from "axios";
 import "./EmployeeDetail.scss";

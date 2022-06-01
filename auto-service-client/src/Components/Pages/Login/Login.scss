@@ -2,8 +2,19 @@
   display: flex;
   justify-content: center;
   color: red;
+  margin-top: 40px;
+  
   #Form {
     max-width: 300px;
     justify-content: center;
+    .forButton{
+      background-color: green;
+    }
+    .forForgetPassword{
+      margin-left: 20px;
+      margin-top: 10px;
+      color: black;
+      font-size: 15px;
+    }
   }
 }
