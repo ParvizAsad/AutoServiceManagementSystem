@@ -6,12 +6,10 @@ using AutoServiceManagment.Repository.DataContext;
 using AutoServiceManagment.Repository.Repository;
 using AutoServiceManagment.Repository.Repository.Contracts;
 using AutoServiceManagment.Services.Services.Contracts;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
-using Microsoft.EntityFrameworkCore;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace AutoServiceManagment.Services.Services
@@ -43,15 +41,15 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task AddCustomerProductAsync(CustomerProductDto customerProductDto)
         {
-            var existCustomerProduct = await DbContext.CustomerProducts.FirstOrDefaultAsync();
+            var existProduct = await DbContext.CustomerProducts.FirstOrDefaultAsync();
 
-            await NullCheck<CustomerProduct>.Checking(existCustomerProduct);
+            await NullCheck<CustomerProduct>.Checking(existProduct);
 
             if (customerProductDto == null) { throw new Exception("Can not be empty"); }
 
-            var customerProduct = _mapper.Map<CustomerProduct>(customerProductDto);
+            var products = _mapper.Map<CustomerProduct>(customerProductDto);
 
-            await _repository.AddAsync(customerProduct);
+            await _repository.AddAsync(products);
         }
 
         public async Task DeleteCustomerProductAsync(int? Id)

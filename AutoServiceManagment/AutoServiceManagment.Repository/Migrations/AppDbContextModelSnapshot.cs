@@ -224,6 +224,12 @@ namespace AutoServiceManagment.Repository.Migrations
                     b.Property<double>("Count")
                         .HasColumnType("float");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("CustomerID")
                         .HasColumnType("int");
 
@@ -232,6 +238,12 @@ namespace AutoServiceManagment.Repository.Migrations
 
                     b.Property<int>("ProductID")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

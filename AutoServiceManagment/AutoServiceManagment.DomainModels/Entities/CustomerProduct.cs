@@ -1,5 +1,6 @@
 ﻿using AutoServiceManagment.Base;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace AutoServiceManagment.DomainModels.Entities
 {

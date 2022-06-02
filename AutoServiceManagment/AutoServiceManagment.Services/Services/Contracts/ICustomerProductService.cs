@@ -1,10 +1,7 @@
 ﻿using AutoServiceManagment.DomainModels.DTOs;
 using AutoServiceManagment.DomainModels.Entities;
 using AutoServiceManagment.Repository.Repository.Contracts;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace AutoServiceManagment.Services.Services.Contracts
@@ -14,7 +11,6 @@ namespace AutoServiceManagment.Services.Services.Contracts
         Task<IList<CustomerProductDto>> GetAllCustomersProductAsync();
         Task<CustomerProductDto> GetCustomersProductAsync(int id);
         Task AddCustomerProductAsync(CustomerProductDto customerProductDto);
-
         Task UpdateCustomersProductAsyncId(int? id, CustomerProductDto customerProductDto);
         Task DeleteCustomerProductAsync(int? Id);
     }

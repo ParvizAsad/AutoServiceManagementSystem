@@ -15,7 +15,7 @@ namespace AutoServiceManagment.DomainModels.Entities
         [Required(ErrorMessage = "Sale price is required!")]
         public double SalePrice { get; set; }
         public double Count { get; set; }
-        [Required(ErrorMessage = "Category is required!")]
+        [Required]
         [ForeignKey(nameof(Category))]
         public int CategoryID { get; set; }
         public Category Category { get; set; }

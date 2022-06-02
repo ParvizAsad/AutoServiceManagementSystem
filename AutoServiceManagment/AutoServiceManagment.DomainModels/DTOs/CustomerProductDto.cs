@@ -1,17 +1,14 @@
 ﻿using AutoServiceManagment.Base;
 using AutoServiceManagment.DomainModels.Entities;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace AutoServiceManagment.DomainModels.DTOs
 {
     public class CustomerProductDto : IDto
     {
+        public int Id { get; set; }
 
         [Required(ErrorMessage = "Product is required!")]
         [ForeignKey(nameof(Product))]
@@ -23,6 +20,6 @@ namespace AutoServiceManagment.DomainModels.DTOs
 
         public double Count { get; set; }
         public bool IsDeleted { get; set; } = false;
-        public int Id { get; set; }
+     
     }
 }

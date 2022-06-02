@@ -6,13 +6,11 @@ using AutoServiceManagment.Repository.DataContext;
 using AutoServiceManagment.Repository.Repository;
 using AutoServiceManagment.Repository.Repository.Contracts;
 using AutoServiceManagment.Services.Services.Contracts;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-
 namespace AutoServiceManagment.Services.Services
 {
     public class CustomerAddServiceService : EfCoreRepository<CustomerAddServices>, ICustomerAddServiceService
@@ -26,6 +24,7 @@ namespace AutoServiceManagment.Services.Services
             _mapper = mapper;
             _repository = repository;
         }
+       
         public async Task<IList<CustomerAddServiceDto>> GetAllCustomersAddServiceAsync()
         {
             var customerService = await DbContext.CustomerAddServicess.Where(x => x.IsDeleted == false).ToListAsync();

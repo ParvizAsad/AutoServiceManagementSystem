@@ -82,6 +82,7 @@ namespace AutoServiceManagment.API
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IServiceService, ServiceService>();
             services.AddScoped<ITaxService, TaxService>();
+            services.AddScoped<ICustomerService, CustomerService>();
             //services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IBioService, BioService>();
             services.AddScoped<IStatisticsService, StatisticsService>();
