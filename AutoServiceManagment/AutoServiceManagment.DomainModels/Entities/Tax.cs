@@ -11,7 +11,7 @@ namespace AutoServiceManagment.DomainModels.Entities
         [Required(ErrorMessage = "Name is required!")]
         public string Name { get; set; }
         [Required(ErrorMessage = "TaxValue is required!")]
-        public decimal TaxValue { get; set; }
+        public double TaxValue { get; set; }
         public ICollection<Salary> Salaries { get; set; }
         public bool IsDeleted { get; set; } = false;
     }

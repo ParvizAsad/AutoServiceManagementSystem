@@ -55,10 +55,10 @@ function CreateBrand() {
         <h1>Create a new Brand</h1>
       </div>
       <div className="CreatePage">
-        <Form onSubmit={createBrand}>
+        <Form className="sss" onSubmit={createBrand}>
           {error}
           <FormGroup>
-            <Label for="name">Name</Label>
+            <Label className="forLabel" for="name">Name</Label>
             <Input
               id="name"
               name="name"
@@ -67,7 +67,7 @@ function CreateBrand() {
               type="text"
             />
           </FormGroup>
-          <Button type="submit">Submit</Button>
+          <Button className="forSubmit" type="submit">Submit</Button>
         </Form>
       </div>
     </>

@@ -130,8 +130,8 @@ function CreateProduct() {
         <h1>Create a new Product</h1>
       </div>
       <div className="CreatePage">
-        {/* <Form onSubmit={createProduct}> */}
-        <Form onSubmit={handleSubmit(createProduct)}>
+        <Form onSubmit={createProduct}>
+        {/* <Form onSubmit={handleSubmit(createProduct)}> */}
           {error}
           <FormGroup>
             <Label className="forLabel" for="name">Name</Label>

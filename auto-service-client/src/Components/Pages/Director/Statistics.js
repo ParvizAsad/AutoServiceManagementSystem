@@ -1,11 +1,5 @@
 import React from "react";
-import { CardGroup, Card, CardBody, CardTitle, Button } from "reactstrap";
-import { FaPeopleArrows } from "react-icons/fa";
-import { GrUserAdmin } from "react-icons/gr";
-import { GiDirectorChair } from "react-icons/gi";
-import { Link } from "react-router-dom";
-import { Pie, Line, Doughnut, Bar } from "react-chartjs-2";
-import { Chart, ArcElement } from "chart.js";
+import { Line } from "react-chartjs-2";
 import { UserData } from "./Data";
 import { useState } from "react";
 // import { Chart as ChartJS } from "chart.js/auto";
@@ -28,9 +22,7 @@ function Statistics() {
       {
         label: "Company Profit",
         data: UserData.map((data) => data.userGain),
-        backgroundColor: [
-          "rgba(8, 4, 220, 0.3)",
-        ],
+        backgroundColor: ["rgba(8, 4, 220, 0.3)"],
         borderColor: "rgba(8, 4, 220, 1)",
         borderWidth: 3,
       },
@@ -47,7 +39,7 @@ function Statistics() {
           <Line id="Line" data={userData} />;
         </div>
       </div>
-          </>
+    </>
   );
 }
 

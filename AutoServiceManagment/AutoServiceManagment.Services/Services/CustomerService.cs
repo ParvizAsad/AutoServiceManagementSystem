@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using AutoServiceManagment.DomainModels.DTOs;
 using AutoServiceManagment.DomainModels.Entities;
+using AutoServiceManagment.Infrastructure.Helpers;
 using AutoServiceManagment.Repository.DataContext;
 using AutoServiceManagment.Repository.Repository;
 using AutoServiceManagment.Repository.Repository.Contracts;
@@ -66,7 +67,8 @@ namespace AutoServiceManagment.Services.Services
                 {
                     ProductID = id,
 
-                    CustomerID = customer.Id
+                    CustomerID = customer.Id,
+
                 };
 
                 customerProducts.Add(customerProduct);
@@ -80,7 +82,7 @@ namespace AutoServiceManagment.Services.Services
         {
             var customer = await DbContext.Customers.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted != true);
 
-            if (customer == null) { throw new Exception("Customer not found!"); }
+            await NullCheck<Customer>.Checking(customer);
 
             customer.IsDeleted = true;
 

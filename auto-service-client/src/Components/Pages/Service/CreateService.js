@@ -59,9 +59,9 @@ function CreateService() {
         <h1>Create a new Service</h1>
       </div>
       <div className="CreatePage">
-        <Form onSubmit={createService}>
+        <Form className="sss" onSubmit={createService}>
           <FormGroup>
-            <Label for="name">Name</Label>
+            <Label className="forLabel" for="name">Name</Label>
             <Input
               id="name"
               name="name"
@@ -71,7 +71,7 @@ function CreateService() {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="detail">Detail </Label>
+            <Label className="forLabel" for="detail">Detail </Label>
             <Input
               id="detail"
               name="detail"
@@ -81,7 +81,7 @@ function CreateService() {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="price">Price</Label>
+            <Label className="forLabel" for="price">Price</Label>
             <Input
               id="price"
               name="price"

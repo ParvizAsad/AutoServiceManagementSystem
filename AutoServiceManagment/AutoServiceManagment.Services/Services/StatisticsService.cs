@@ -7,6 +7,7 @@ using AutoServiceManagment.Repository.Repository.Contracts;
 using AutoServiceManagment.Services.Services.Contracts;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace AutoServiceManagment.Services.Services
@@ -15,36 +16,35 @@ namespace AutoServiceManagment.Services.Services
     {
         private readonly IMapper _mapper;
         private readonly IRepository<Statistics> _repository;
-        private readonly IRepository<Finance> _repository1;
-        private readonly IRepository<Service> _repository2;
-        private readonly IRepository<CashBox> _repository3;
+        private readonly IRepository<Finance> _repositoryFinance;
+        private readonly IRepository<CashBox> _repositoryCashbox;
 
-        public StatisticsService(AppDbContext dbContext, IMapper mapper, IRepository<Statistics> repository, IRepository<Finance> repository1, IRepository<CashBox> repository3) : base(dbContext)
+        public StatisticsService(AppDbContext dbContext, IMapper mapper, IRepository<Statistics> repository, IRepository<Finance> repositoryFinance, IRepository<CashBox> repositoryCashbox) : base(dbContext)
         {
             _mapper = mapper;
             _repository = repository;
-            _repository1 = repository1;
-            _repository3 = repository3;
+            _repositoryFinance = repositoryFinance;
+            _repositoryCashbox = repositoryCashbox;
         }
 
         public async Task<IList<StatisticsDto>> GetAllStatisticsAsync()
         {
-            var Finances = await DbContext.Finances.ToListAsync();
+            var Finances = await DbContext.Finances.Where(x => x.IsDeleted == false).ToListAsync();
             foreach (var finance in Finances)
             {
-            var Salaries = await DbContext.Salaries.ToListAsync();
-                decimal salaryCosts = 0;
+            var Salaries = await DbContext.Salaries.Where(x => x.IsDeleted == false).ToListAsync();
+                double salaryCosts = 0;
                 foreach (var salary in Salaries)
                 {
-                    if (salary.Date == finance.Date)
+                    if (salary.Date.Month == finance.Date.Month)
                         salaryCosts += salary.NetSalary;
                 }
 
-                var Payments = await DbContext.CashBoxes.ToListAsync();
-                decimal payments = 0;
+                var Payments = await DbContext.CashBoxes.Where(x => x.IsDeleted == false).ToListAsync();
+                double payments = 0;
                 foreach (var payment in Payments)
                 {
-                    if (payment.Date == finance.Date)
+                    if (payment.Date.Month == finance.Date.Month)
                         payments += payment.Payment;
                 }
                 var newStatistics = new Statistics

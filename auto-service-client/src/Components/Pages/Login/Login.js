@@ -12,13 +12,19 @@ import { accountService } from "../../../Api/services/Account";
 import "./Login.scss";
 import { Link } from "react-router-dom";
 
-const Credentials = {
-  userName: " ",
-  password: " ",
-  rememberMe: " ",
-};
+
 function Login() {
+  const [state, setState] = useState(false);
+  
+  const Credentials = {
+    userName: " ",
+    password: " ",
+    rememberMe: state,
+  };
+  
   const [credentials, setCredentials] = useState(Credentials);
+
+
 
   const Login = useCallback(
     (e) => {
@@ -28,6 +34,9 @@ function Login() {
     [credentials]
   );
 
+  function rememberMe(){
+    setState(!state);
+  }
   const getElementValues = (e) => {
     const { name, value } = e.target;
     setCredentials({ ...credentials, [name]: value });
@@ -72,7 +81,7 @@ function Login() {
                 type="checkbox"
                 id="rememberMe"
                 name="rememberMe"
-                onChange={getElementValues}
+                onChange={rememberMe}
               />
             </InputGroupText>
             <Input placeholder="Remember me" />

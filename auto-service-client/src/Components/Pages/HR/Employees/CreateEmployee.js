@@ -28,10 +28,9 @@ function CreateEmployee() {
   const [employee, setEmployee] = useState(employees);
   // const [formErrors, setFormErrors]=useState({});
   const [position, setPosition] = React.useState([]);
-  const [error, setError] = useState();
+  // const [error, setError] = useState();
   const [positionData, setPositionData] = useState();
 
-  const [employeeData, setEmployeeData] = useState();
   const history = useHistory();
 
   const notify = () => {

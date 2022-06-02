@@ -21,6 +21,5 @@ namespace AutoServiceManagment.DomainModels.DTOs
         [NotMapped]
         public List<int> ProductIds { get; set; }
 
-
     }
 }
