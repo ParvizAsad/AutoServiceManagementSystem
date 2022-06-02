@@ -10,13 +10,11 @@ namespace AutoServiceManagment.DomainModels.Entities
         public int Id { get; set; }
 
         [Required(ErrorMessage = "StartTIme is required!")]
-
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{mm/dd/yyyy}")]
         public DateTime StartTime { get; set; }=DateTime.Now;
 
         [Required(ErrorMessage = "EndTime is required!")]
-
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{mm/dd/yyyy}")]
         public DateTime EndTime { get; set; }= DateTime.Now;

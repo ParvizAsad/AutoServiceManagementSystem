@@ -33,7 +33,7 @@ namespace AutoServiceManagment.Services.Services
             foreach (var finance in Finances)
             {
             var Salaries = await DbContext.Salaries.ToListAsync();
-                decimal salaryCosts = 0;
+                double salaryCosts = 0;
                 foreach (var salary in Salaries)
                 {
                     if (salary.Date == finance.Date)
@@ -41,7 +41,7 @@ namespace AutoServiceManagment.Services.Services
                 }
 
                 var Payments = await DbContext.CashBoxes.ToListAsync();
-                decimal payments = 0;
+                double payments = 0;
                 foreach (var payment in Payments)
                 {
                     if (payment.Date == finance.Date)

@@ -27,6 +27,10 @@ function Customer(props) {
     props.history.push("/EditCustomer/" + id);
   }
 
+  function AddServiceCustomer(id) {
+    props.history.push("/AddServiceCustomer/" + id);
+  }
+
   function CustomerDetail(id) {
     props.history.push("/CustomerDetail/" + id);
   }
@@ -92,7 +96,14 @@ function Customer(props) {
           </Button>
         </div>
         <Button onClick={() => history.push("/ExportCustomer")}>Export</Button>
-        <input type="text" placeholder="Search.." />
+        <input
+          type="text"
+          placeholder="Search.."
+          id="BrandSearch"
+          onChange={(event) => {
+            setSearchCustomer(event.target.value);
+          }}
+        />
       </div>
       <div>
         <Table className="TableForItems">
@@ -119,7 +130,7 @@ function Customer(props) {
               })
               .map((item, idx) => (
                 <tr key={idx}>
-                  <th scope="row">{idx}</th>
+                  <th scope="row">{item.id}</th>
                   <td>{item.fullName}</td>
                   <td>{item.id}</td>
                   <td className="Actions">
@@ -135,6 +146,14 @@ function Customer(props) {
                     >
                       Delete
                     </Button>
+
+                    <Button
+                      onClick={() => AddServiceCustomer(item.id)}
+                      className="Service"
+                    >
+                      Service
+                    </Button>
+
                     <Button
                       onClick={() => CustomerDetail(item.id)}
                       className="Detail"

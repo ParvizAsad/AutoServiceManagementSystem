@@ -14,7 +14,7 @@ namespace AutoServiceManagment.DomainModels.DTOs
         public int ServiceID { get; set; }
 
         [Required(ErrorMessage = "Payment is required!")]
-        public decimal Payment { get; set; }
+        public double Payment { get; set; }
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{mm/dd/yyyy}")]
         public DateTime Date { get; set; } = DateTime.Now;

@@ -1,0 +1,36 @@
+.forLabel{
+    color: rgb(0, 0, 0);
+    font-weight: 400;
+    font-size: 20px;
+  }
+  
+  .ProductIds, .ServiceIds{
+    margin-left: 15px;
+  }
+  
+  .CreatePage{
+    .forForm{
+      border-color: rgb(228, 8, 8);
+      border-width: 2px;
+      background-color: rgba(31, 63, 224, 0.074);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      .forSubmit{
+        background-color: green;
+        color: rgb(255, 255, 255);
+        font-size: 15px;
+        margin-top: 13px;
+        margin-bottom: 15px;
+      }
+      .profilePicture{
+        width: 180px;
+        height: 180px;
+        margin: 5px 5px 5px 35px;
+      }
+      .TaxId, .employeeId, .productId, .serviceId, .customerId{
+        margin-left: 10px;
+      }
+    }
+  }

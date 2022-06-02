@@ -4,9 +4,7 @@ import { useHistory } from "react-router-dom";
 import { categoryService } from "../../../../Api/services/Categories";
 import { brandService } from "../../../../Api/services/Brands";
 import { productService } from "../../../../Api/services/Products";
-import { Formik } from "formik";
-import * as Yup from "yup";
-import { useForm } from "react-hook-form";
+
 
 const newProduct = {
   name: " ",
@@ -24,21 +22,7 @@ function CreateProduct() {
   const [brand, setBrand] = React.useState([]);
   const history = useHistory();
 
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-  } = useForm();
 
-  const [errorHandle, setErrorHandle] = useState(null);
-  const errorDiv = errorHandle ? (
-    <div className="error">
-      <i class="material-icons error-icon">error_outline</i>
-      {errorHandle}
-    </div>
-  ) : (
-    ""
-  );
   const createProduct = useCallback(
     (e) => {
       e.preventDefault();
@@ -48,7 +32,7 @@ function CreateProduct() {
           history.push("/product");
         })
         .catch((res) => {
-          setErrorHandle(res.error);
+console.log(res);
         });
     },
     [product, history]
@@ -88,63 +72,22 @@ function CreateProduct() {
 
   return (
     <>
-      <Formik
-        initialValues={{
-          name: " ",
-        }}
-        validationSchema={Yup.object({
-          name: Yup.string().required("NAme required"),
-        })}
-        onSubmit={(values, { resetForm, setSubmiting }) => {
-          setTimeout(() => {
-            setSubmiting(false);
-            resetForm();
-          }, 2000);
-        }}
-      >
-        {({
-          values,
-          errors,
-          handleChange,
-          handleSubmit,
-          handleReset,
-          dirty,
-          isSubmitting,
-        }) => (
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="name"></label>
-            <input
-              id="name"
-              type="text"
-              className="name"
-              value={values.name}
-              onChange={handleChange}
-            />
-            {errors.name && <div className="input-feedback">{errors.name}</div>}
-            <button type="submit">submit</button>
-          </form>
-        )}
-      </Formik>
-
       <div className="ForHeading">
         <h1>Create a new Product</h1>
       </div>
       <div className="CreatePage">
-        {/* <Form onSubmit={createProduct}> */}
-        <Form onSubmit={handleSubmit(createProduct)}>
-          {error}
+        <Form onSubmit={createProduct}>
           <FormGroup>
             <Label for="name">Name</Label>
             <Input
               id="name"
-              {...register("name", { required: true })}
               name="name"
               placeholder="name"
               onChange={getElementValues}
               type="text"
             />
           </FormGroup>
-          {error}
+          {/* {error} */}
           <FormGroup>
             <Label for="basePrice">BasePrice</Label>
             <Input
@@ -158,7 +101,6 @@ function CreateProduct() {
               onKeyPress={preventMinus}
             />
           </FormGroup>
-          {error}
           <FormGroup>
             <Label for="salePrice">SalePrice</Label>
             <Input
@@ -185,7 +127,6 @@ function CreateProduct() {
               onKeyPress={preventMinus}
             />
           </FormGroup>
-          {error}
           <FormGroup>
             <Label for="categoryId">Select Category</Label>
             <select
@@ -202,7 +143,6 @@ function CreateProduct() {
               ))}
             </select>
           </FormGroup>
-          {error}
           <FormGroup>
             <Label for="brandId">Select Brand</Label>
             <select
@@ -219,7 +159,6 @@ function CreateProduct() {
               ))}
             </select>
           </FormGroup>
-          {errorDiv}
           <Button type="submit">Submit</Button>
         </Form>
       </div>

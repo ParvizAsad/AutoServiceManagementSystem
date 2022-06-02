@@ -12,8 +12,8 @@ const initialCustomer = {
   phoneNumber: "",
   email: "",
   debt: "",
-  ServiceIds: [],
-  ProductIds: [],
+  // ServiceIds: [],
+  // ProductIds: [],
 };
 
 function CreateCustomer() {
@@ -39,12 +39,13 @@ function CreateCustomer() {
         .then(() => {
           history.push("/customer");
         })
-        .catch((e) => {
-          if (e.response.status === 400) {
-            setError(e.response.data.errors.Name);
-          } else if (e.response.status === 500) {
-            setError(e.response.data);
-          }
+        .catch(e => {
+          console.log(e.response);
+          // if (e.response.status === 400) {
+          //   setError(e.response.data.errors.Name);
+          // } else if (e.response.status === 500) {
+          //   setError(e.response.data);
+          // }
         });
     },
     [customer, history]
@@ -123,7 +124,7 @@ function CreateCustomer() {
           </FormGroup>
           <FormGroup>
             <Label for="debt">Debt</Label>
-            <CurrencyInput
+            <Input
               id="debt"
               name="debt"
               placeholder="debt"
@@ -134,7 +135,7 @@ function CreateCustomer() {
               onKeyPress={preventMinus}
             />
           </FormGroup>
-          <FormGroup>
+          {/* <FormGroup>
             <Label for="ServiceIds">Select Service</Label>
             <select
               multiple={true}
@@ -167,7 +168,7 @@ function CreateCustomer() {
                 </option>
               ))}
             </select>
-          </FormGroup>
+          </FormGroup> */}
           <Button type="submit">Submit</Button>
         </Form>
       </div>

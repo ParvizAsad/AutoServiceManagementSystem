@@ -10,6 +10,6 @@ namespace AutoServiceManagment.DomainModels.DTOs
         public string Name { get; set; }
         public string Detail { get; set; }
         [Required(ErrorMessage = "Price is required!")]
-        public decimal Price { get; set; }
+        public double Price { get; set; }
     }
 }

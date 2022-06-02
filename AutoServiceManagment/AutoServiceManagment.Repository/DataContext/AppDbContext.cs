@@ -26,6 +26,8 @@ namespace AutoServiceManagment.Repository.DataContext
         public DbSet<Statistics> Statistics { get; set; }
         public DbSet<Tax> Taxes { get; set; }
         public DbSet<Bio> Bios { get; set; }
+        public DbSet<CustomerProduct> CustomerProducts { get; set; }
+        public DbSet<CustomerAddServices> CustomerAddServicess { get; set; }
 
     }
 }

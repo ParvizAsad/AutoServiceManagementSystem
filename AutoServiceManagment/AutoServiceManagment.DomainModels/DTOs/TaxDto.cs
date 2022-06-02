@@ -9,6 +9,6 @@ namespace AutoServiceManagment.DomainModels.DTOs
         [Required(ErrorMessage = "Name is required!")]
         public string Name { get; set; }
         [Required(ErrorMessage = "TaxValue is required!")]
-        public decimal TaxValue { get; set; }
+        public double TaxValue { get; set; }
     }
 }

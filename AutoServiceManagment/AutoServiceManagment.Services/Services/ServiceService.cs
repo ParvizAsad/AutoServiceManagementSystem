@@ -41,9 +41,9 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task AddServiceAsync(ServiceDto serviceDto)
         {
-            var existService = await DbContext.Products.Where(x => x.Name == serviceDto.Name).FirstOrDefaultAsync();
+            var existService = await DbContext.Services.Where(x => x.Name == serviceDto.Name).FirstOrDefaultAsync();
 
-            await NullCheck<Product>.Checking(existService);
+            await NullCheck<Service>.Checking(existService);
 
             var service = _mapper.Map<Service>(serviceDto);
             

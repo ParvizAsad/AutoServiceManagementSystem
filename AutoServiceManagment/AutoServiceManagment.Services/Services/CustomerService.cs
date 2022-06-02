@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using AutoServiceManagment.DomainModels.DTOs;
 using AutoServiceManagment.DomainModels.Entities;
+using AutoServiceManagment.Infrastructure.Helpers;
 using AutoServiceManagment.Repository.DataContext;
 using AutoServiceManagment.Repository.Repository;
 using AutoServiceManagment.Repository.Repository.Contracts;
@@ -39,45 +40,16 @@ namespace AutoServiceManagment.Services.Services
         }
         public async Task AddCustomerAsync(CustomerDto customerDto)
         {
+            var customers = await DbContext.Customers.Where(x => x.FullName == customerDto.FullName).FirstOrDefaultAsync();
+
+            await NullCheck<Customer>.Checking(customers);
+
+            if (customerDto == null) { throw new Exception("Can not be empty"); }
+
             var customer = _mapper.Map<Customer>(customerDto);
 
-            var customerServices = new List<CustomerServices>();
-
-            foreach (var id in customerDto.ServiceIds)
-            {
-                CustomerServices customerService = new()
-                {
-                    ServiceID = id,
-
-                    CustomerID = customer.Id
-                };
-
-                customerServices.Add(customerService);
-                var service = await DbContext.Services.Where(x => x.Id == id).FirstOrDefaultAsync();
-                customer.Debt += service.Price;
-            }
-
-            customer.CustomerServices = customerServices;
-            var customerProducts = new List<CustomerProduct>();
-
-            foreach (var id in customerDto.ProductIds)
-            {
-                var usedProduct = await DbContext.Products.Where(x => x.IsDeleted == false && x.Id==id).FirstOrDefaultAsync();
-                usedProduct.Count--;
-                CustomerProduct customerProduct = new()
-                {
-                    ProductID = id,
-
-                    CustomerID = customer.Id
-                };
-
-                customerProducts.Add(customerProduct);
-                var product = await DbContext.Products.Where(x => x.Id == id).FirstOrDefaultAsync();
-                customer.Debt += product.SalePrice;
-            }
-
-            customer.CustomerProducts = customerProducts;
             await _repository.AddAsync(customer);
+
         }
 
         public async Task DeleteCustomerAsync(int? id)
@@ -107,5 +79,6 @@ namespace AutoServiceManagment.Services.Services
 
             await DbContext.SaveChangesAsync();
         }
+
     }
 }

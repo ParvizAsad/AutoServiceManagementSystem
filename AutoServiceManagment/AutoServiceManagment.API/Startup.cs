@@ -71,7 +71,8 @@ namespace AutoServiceManagment.API
             services.AddScoped<IBrandService, BrandService>();
             services.AddScoped<ICashBoxService, CashBoxService>();
             services.AddScoped<ICategoryService, CategoryService>();
-            services.AddScoped<ICustomerService, CustomerService>();
+            services.AddScoped<ICustomerProductService, CustomerProductService>();
+            services.AddScoped<ICustomerAddServiceService, CustomerAddServiceService>();
             services.AddScoped<IDiscountService, DiscountService>();
             services.AddScoped<IEmployeeService, EmployeeService>();
             services.AddScoped<IFinanceService, FinanceService>();

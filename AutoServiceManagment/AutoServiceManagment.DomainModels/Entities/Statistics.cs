@@ -8,7 +8,7 @@ namespace AutoServiceManagment.DomainModels.Entities
     public class Statistics : TimestampableObject, IEntity
     {
         public int Id { get; set; }
-        public decimal Profit { get; set; }
+        public double Profit { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{mm/dd/yyyy}")]

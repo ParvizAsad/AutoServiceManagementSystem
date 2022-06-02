@@ -81,7 +81,7 @@ function Home() {
             </CardBody>
           </Card>
         </Link>
-        <Link className="classForLink" id="sixth" to="registration">
+        <Link className="classForLink" id="sixth" to="customer">
           <Card className="moduleCard">
             <CardBody className="moduleCardBody">
               <CardTitle tag="h5" className="moduleCardTitle">
