@@ -27,7 +27,7 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task<IList<CustomerDto>> GetAllCustomersAsync()
         {
-            var customers = await DbContext.Customers.Where(x => x.IsDeleted == false).Include(x => x.CustomerServices).ThenInclude(x => x.Service).ToListAsync();
+            var customers = await DbContext.Customers.Where(x => x.IsDeleted == false).ToListAsync();
 
             return _mapper.Map<List<CustomerDto>>(customers);
         }
@@ -40,49 +40,23 @@ namespace AutoServiceManagment.Services.Services
         }
         public async Task AddCustomerAsync(CustomerDto customerDto)
         {
+            var customers = await DbContext.Customers.Where(x => x.FullName == customerDto.FullName).FirstOrDefaultAsync();
+
+            await NullCheck<Customer>.Checking(customers);
+
+            if (customerDto == null) { throw new Exception("Can not be empty"); }
+
             var customer = _mapper.Map<Customer>(customerDto);
 
-            var customerServices = new List<CustomerServices>();
-
-            foreach (var id in customerDto.ServiceIds)
-            {
-                CustomerServices customerService = new CustomerServices
-                {
-                    ServiceID = id,
-
-                    CustomerID = customer.Id
-                };
-
-                customerServices.Add(customerService);
-            }
-
-            customer.CustomerServices = customerServices;
-            var customerProducts = new List<CustomerProduct>();
-
-            foreach (var id in customerDto.ProductIds)
-            {
-                var usedProduct = await DbContext.Products.Where(x => x.IsDeleted == false && x.Id==id).FirstOrDefaultAsync();
-                usedProduct.Count--;
-                CustomerProduct customerProduct = new CustomerProduct
-                {
-                    ProductID = id,
-
-                    CustomerID = customer.Id,
-
-                };
-
-                customerProducts.Add(customerProduct);
-            }
-
-            customer.CustomerProducts = customerProducts;
             await _repository.AddAsync(customer);
+
         }
 
         public async Task DeleteCustomerAsync(int? id)
         {
             var customer = await DbContext.Customers.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted != true);
 
-            await NullCheck<Customer>.Checking(customer);
+            if (customer == null) { throw new Exception("Customer not found!"); }
 
             customer.IsDeleted = true;
 
@@ -105,5 +79,6 @@ namespace AutoServiceManagment.Services.Services
 
             await DbContext.SaveChangesAsync();
         }
+
     }
 }

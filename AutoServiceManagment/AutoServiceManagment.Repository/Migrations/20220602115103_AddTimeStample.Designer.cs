@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AutoServiceManagment.Repository.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220521091809_forBioTable")]
-    partial class forBioTable
+    [Migration("20220602115103_AddTimeStample")]
+    partial class AddTimeStample
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -89,8 +89,8 @@ namespace AutoServiceManagment.Repository.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<decimal>("Payment")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<double>("Payment")
+                        .HasColumnType("float");
 
                     b.Property<int>("ProductID")
                         .HasColumnType("int");
@@ -159,8 +159,8 @@ namespace AutoServiceManagment.Repository.Migrations
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("Debt")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<double>("Debt")
+                        .HasColumnType("float");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -191,32 +191,7 @@ namespace AutoServiceManagment.Repository.Migrations
                     b.ToTable("Customers");
                 });
 
-            modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.CustomerProduct", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<double>("Count")
-                        .HasColumnType("float");
-
-                    b.Property<int>("CustomerID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductID")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CustomerID");
-
-                    b.HasIndex("ProductID");
-
-                    b.ToTable("CustomerProduct");
-                });
-
-            modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.CustomerServices", b =>
+            modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.CustomerAddServices", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -225,6 +200,9 @@ namespace AutoServiceManagment.Repository.Migrations
 
                     b.Property<int>("CustomerID")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<int>("ServiceID")
                         .HasColumnType("int");
@@ -235,7 +213,47 @@ namespace AutoServiceManagment.Repository.Migrations
 
                     b.HasIndex("ServiceID");
 
-                    b.ToTable("CustomerServices");
+                    b.ToTable("CustomerAddServicess");
+                });
+
+            modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.CustomerProduct", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<double>("Count")
+                        .HasColumnType("float");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CustomerID")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("ProductID")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CustomerID");
+
+                    b.HasIndex("ProductID");
+
+                    b.ToTable("CustomerProducts");
                 });
 
             modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.Discount", b =>
@@ -264,8 +282,8 @@ namespace AutoServiceManagment.Repository.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("Percentage")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<double>("Percentage")
+                        .HasColumnType("float");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
@@ -348,11 +366,11 @@ namespace AutoServiceManagment.Repository.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<decimal>("AdditionalCost")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<double>("AdditionalCost")
+                        .HasColumnType("float");
 
-                    b.Property<decimal>("CommunalCost")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<double>("CommunalCost")
+                        .HasColumnType("float");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -539,8 +557,8 @@ namespace AutoServiceManagment.Repository.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<decimal>("Bonus")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<double>("Bonus")
+                        .HasColumnType("float");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -557,8 +575,11 @@ namespace AutoServiceManagment.Repository.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<decimal>("NetSalary")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<double>("NetSalary")
+                        .HasColumnType("float");
+
+                    b.Property<double>("OverTime")
+                        .HasColumnType("float");
 
                     b.Property<int>("TaxID")
                         .HasColumnType("int");
@@ -601,8 +622,8 @@ namespace AutoServiceManagment.Repository.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
@@ -631,8 +652,8 @@ namespace AutoServiceManagment.Repository.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<decimal>("Profit")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<double>("Profit")
+                        .HasColumnType("float");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
@@ -665,8 +686,8 @@ namespace AutoServiceManagment.Repository.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("TaxValue")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<double>("TaxValue")
+                        .HasColumnType("float");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
@@ -701,6 +722,12 @@ namespace AutoServiceManagment.Repository.Migrations
                     b.Property<string>("FullName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsSubscribe")
+                        .HasColumnType("bit");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -906,6 +933,25 @@ namespace AutoServiceManagment.Repository.Migrations
                     b.Navigation("Service");
                 });
 
+            modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.CustomerAddServices", b =>
+                {
+                    b.HasOne("AutoServiceManagment.DomainModels.Entities.Customer", "Customer")
+                        .WithMany("CustomerServices")
+                        .HasForeignKey("CustomerID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("AutoServiceManagment.DomainModels.Entities.Service", "Service")
+                        .WithMany("CustomerServices")
+                        .HasForeignKey("ServiceID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
+
+                    b.Navigation("Service");
+                });
+
             modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.CustomerProduct", b =>
                 {
                     b.HasOne("AutoServiceManagment.DomainModels.Entities.Customer", "Customer")
@@ -923,25 +969,6 @@ namespace AutoServiceManagment.Repository.Migrations
                     b.Navigation("Customer");
 
                     b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.CustomerServices", b =>
-                {
-                    b.HasOne("AutoServiceManagment.DomainModels.Entities.Customer", "Customer")
-                        .WithMany("CustomerServices")
-                        .HasForeignKey("CustomerID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("AutoServiceManagment.DomainModels.Entities.Service", "Service")
-                        .WithMany("CustomerServices")
-                        .HasForeignKey("ServiceID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Customer");
-
-                    b.Navigation("Service");
                 });
 
             modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.Employee", b =>

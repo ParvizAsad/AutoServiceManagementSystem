@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AutoServiceManagment.DomainModels.Entities
 {
-    public class CustomerServices : IEntity
+    public class CustomerAddServices : IEntity
     {
         public int Id { get; set; }
         public int ServiceID { get; set; }
@@ -13,5 +13,6 @@ namespace AutoServiceManagment.DomainModels.Entities
         public Customer Customer { get; set; }
 
         public DateTime date=DateTime.Now;
+        public bool IsDeleted { get; set; } = false;
     }
 }

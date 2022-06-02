@@ -2,7 +2,7 @@
 
 namespace AutoServiceManagment.Repository.Migrations
 {
-    public partial class ProductTable : Migration
+    public partial class updatedatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

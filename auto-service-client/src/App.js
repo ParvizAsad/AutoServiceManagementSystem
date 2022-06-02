@@ -29,6 +29,7 @@ import NonWorkingType from './Components/Pages/HR/NonWorkingTypes/NonWorkingType
 import Employee from './Components/Pages/HR/Employees/Employees';
 import CreateNonWorkingType from './Components/Pages/HR/NonWorkingTypes/CreateNonWorkingType';
 import EditNonWorkingType from './Components/Pages/HR/NonWorkingTypes/EditNonWorkingType';
+import AddServiceCustomer from './Components/Pages/Customer/AddServiceCustomer';
 import Tax from './Components/Pages/Finance/Taxes/Tax';
 import Brand from './Components/Pages/Stock/Brands/Brands';
 import CreateProduct from './Components/Pages/Stock/Products/CreateProduct';
@@ -118,6 +119,7 @@ function App() {
         <Route path="/EmployeeDetail/:id" exact component={EmployeeDetail} />
         <Route path="/ProductDetail/:id" exact component={ProductDetail} />
         <Route path="/CustomerDetail/:id" exact component={CustomerDetail} />
+        <Route path="/AddServiceCustomer/:id" exact component={AddServiceCustomer} />
 
         <Route path={"/login"} exact component={Login} />
         <Route path={"/accounting"} exact component={Accounting} />

@@ -15,7 +15,6 @@ namespace AutoServiceManagment.DomainModels.DTOs
         public DateTime StartTime { get; set; }
 
         [Required(ErrorMessage = "EndTime is required!")]
-
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{mm/dd/yyyy}")]
         public DateTime EndTime { get; set; }

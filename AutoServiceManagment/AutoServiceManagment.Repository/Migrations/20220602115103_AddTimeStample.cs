@@ -3,54 +3,54 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AutoServiceManagment.Repository.Migrations
 {
-    public partial class forBioTable : Migration
+    public partial class AddTimeStample : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
+            migrationBuilder.AddColumn<DateTime>(
                 name: "CreatedAt",
-                table: "Bios");
+                table: "CustomerProducts",
+                type: "datetime2",
+                nullable: false,
+                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
 
-            migrationBuilder.DropColumn(
+            migrationBuilder.AddColumn<string>(
                 name: "CreatedBy",
-                table: "Bios");
+                table: "CustomerProducts",
+                type: "nvarchar(max)",
+                nullable: true);
 
-            migrationBuilder.DropColumn(
+            migrationBuilder.AddColumn<DateTime>(
                 name: "UpdatedAt",
-                table: "Bios");
+                table: "CustomerProducts",
+                type: "datetime2",
+                nullable: false,
+                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
 
-            migrationBuilder.DropColumn(
+            migrationBuilder.AddColumn<string>(
                 name: "UpdatedBy",
-                table: "Bios");
+                table: "CustomerProducts",
+                type: "nvarchar(max)",
+                nullable: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<DateTime>(
+            migrationBuilder.DropColumn(
                 name: "CreatedAt",
-                table: "Bios",
-                type: "datetime2",
-                nullable: false,
-                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
+                table: "CustomerProducts");
 
-            migrationBuilder.AddColumn<string>(
+            migrationBuilder.DropColumn(
                 name: "CreatedBy",
-                table: "Bios",
-                type: "nvarchar(max)",
-                nullable: true);
+                table: "CustomerProducts");
 
-            migrationBuilder.AddColumn<DateTime>(
+            migrationBuilder.DropColumn(
                 name: "UpdatedAt",
-                table: "Bios",
-                type: "datetime2",
-                nullable: false,
-                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
+                table: "CustomerProducts");
 
-            migrationBuilder.AddColumn<string>(
+            migrationBuilder.DropColumn(
                 name: "UpdatedBy",
-                table: "Bios",
-                type: "nvarchar(max)",
-                nullable: true);
+                table: "CustomerProducts");
         }
     }
 }

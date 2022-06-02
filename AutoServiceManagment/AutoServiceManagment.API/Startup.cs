@@ -24,7 +24,7 @@ using System.Text;
 
 namespace AutoServiceManagment.API
 {
-    public class Startup   
+    public class Startup
     {
         public IConfiguration Configuration { get; }
        private readonly IWebHostEnvironment _environment;
@@ -71,7 +71,8 @@ namespace AutoServiceManagment.API
             services.AddScoped<IBrandService, BrandService>();
             services.AddScoped<ICashBoxService, CashBoxService>();
             services.AddScoped<ICategoryService, CategoryService>();
-            services.AddScoped<ICustomerService, CustomerService>();
+            services.AddScoped<ICustomerProductService, CustomerProductService>();
+            services.AddScoped<ICustomerAddServiceService, CustomerAddServiceService>();
             services.AddScoped<IDiscountService, DiscountService>();
             services.AddScoped<IEmployeeService, EmployeeService>();
             services.AddScoped<IFinanceService, FinanceService>();
@@ -81,7 +82,8 @@ namespace AutoServiceManagment.API
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IServiceService, ServiceService>();
             services.AddScoped<ITaxService, TaxService>();
-            services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<ICustomerService, CustomerService>();
+            //services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IBioService, BioService>();
             services.AddScoped<IStatisticsService, StatisticsService>();
 

@@ -17,6 +17,7 @@ namespace AutoServiceManagment.DomainModels.Entities
         [DisplayFormat(DataFormatString = "{mm/dd/yyyy}")]
         public DateTime Date { get; set; }= DateTime.Now;
         public double Bonus { get; set; }
+        public double OverTime { get; set; }
         public double NetSalary { get; set; }
         [ForeignKey(nameof(Tax))]
         public int TaxID { get; set; }

@@ -12,7 +12,7 @@ namespace AutoServiceManagment.DomainModels.Entities
         public string Detail { get; set; }
         [Required(ErrorMessage = "Price is required!")]
         public double Price { get; set; }
-        public ICollection<CustomerServices> CustomerServices { get; set; }
+        public ICollection<CustomerAddServices> CustomerServices { get; set; }
         public ICollection<CashBox> CashBoxes { get; set; }
         public bool IsDeleted { get; set; }=false;
     }
