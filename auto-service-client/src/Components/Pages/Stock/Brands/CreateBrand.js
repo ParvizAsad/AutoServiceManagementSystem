@@ -3,6 +3,9 @@ import React, { useCallback, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { brandService } from "../../../../Api/services/Brands";
 // import "./Employees/Brands/CreateEmployee.scss";
+import {toast, ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const newBrand = {
   name: " ",
@@ -24,6 +27,7 @@ function CreateBrand() {
     });
   }, [setBrandData]);
 
+
   const createBrand = useCallback(
     (e) => {
       e.preventDefault();
@@ -34,10 +38,33 @@ function CreateBrand() {
           history.push("/brand");
         })
         .catch((e) => {
-          if (e.response.status === 400) {
-            setError(e.response.data.errors.Name[0]);
-          } else if (e.response.status === 500) {
-            setError(e.response.data);
+          let errorCode = e.response.status;
+          console.log(e.response.status);
+          console.log(errorCode);
+
+          switch (errorCode) {
+            case 400:
+              console.log("test");
+              toast.error(`* marked inputs must be filled`)
+
+
+              break;
+              case 402:
+
+  
+                break;
+            case 403:
+
+              break;
+            case 404:
+
+              break;
+              case 500:
+                toast.error(`There are already`)
+                break;
+            default:
+            
+              break;
           }
         });
     },
@@ -54,11 +81,14 @@ function CreateBrand() {
       <div className="ForHeading">
         <h1>Create a new Brand</h1>
       </div>
+      <ToastContainer />
       <div className="CreatePage">
         <Form className="sss" onSubmit={createBrand}>
           {error}
           <FormGroup>
-            <Label className="forLabel" for="name">Name</Label>
+            <Label className="forLabel" for="name">
+              Name *
+            </Label>
             <Input
               id="name"
               name="name"
@@ -67,7 +97,9 @@ function CreateBrand() {
               type="text"
             />
           </FormGroup>
-          <Button className="forSubmit" type="submit">Submit</Button>
+          <Button className="forSubmit" type="submit">
+            Submit
+          </Button>
         </Form>
       </div>
     </>

@@ -1,6 +1,9 @@
 import { Form, Label, Input, Button } from "reactstrap";
 import React, { useState } from "react";
 import "./convertor.scss";
+import axios, { Axios } from "axios";
+import moment from "moment";
+import XMLParser from 'react-xml-parser';
 
 const newCurrency = {
   currencyValue: 0,
@@ -9,10 +12,21 @@ const newCurrency = {
 function Convertor() {
   const [currency, setCurrency] = useState(newCurrency);
   const [state, setState] = useState(true);
-
+  const [dollarValue, setDollarValue]=useState();
   function changeCurrencyValue(){
     setState(!state);
   };
+
+  let newDate = new Date()
+ let today =moment(newDate).format("DD.MM.yyyy");
+ const cbarUrl= "https://www.cbar.az/currencies";
+ 
+  React.useEffect(() => {
+   axios.get(`${cbarUrl}/${today}.xml`).then(resp => {
+    const jsonDataFromXml = new XMLParser().parseFromString(resp.data);
+    setDollarValue(jsonDataFromXml.children[1].children[0].children[2].value)
+      });
+  }, [setDollarValue]);
 
   const getElementValues = (e) => {
     const { name, value } = e.target;
@@ -28,7 +42,6 @@ function Convertor() {
   const preventPasteNegative = (e) => {
     const clipboardData = e.clipboardData || window.clipboardData;
     const pastedData = parseFloat(clipboardData.getData("text"));
-
     if (pastedData < 0) {
       e.preventDefault();
     }
@@ -60,7 +73,7 @@ function Convertor() {
           </Button>
 
           <div className="Result">
-            <h2>{currency.currencyValue*1.7}</h2>
+            <h2>{currency.currencyValue*dollarValue}</h2>
           </div>
         </div>
       ) : (
@@ -84,7 +97,7 @@ function Convertor() {
           </Button>
 
           <div className="Result">
-            <h2>{currency.currencyValue/1.7}</h2>
+            <h2>{currency.currencyValue/dollarValue}</h2>
           </div>
         </div>
       )}

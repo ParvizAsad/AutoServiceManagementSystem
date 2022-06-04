@@ -10,8 +10,6 @@ namespace AutoServiceManagment.DomainModels.Entities
         public int Id { get; set; }
         public double Profit { get; set; }
 
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{mm/dd/yyyy}")]
         public DateTime Date { get; set; } 
     }
 }

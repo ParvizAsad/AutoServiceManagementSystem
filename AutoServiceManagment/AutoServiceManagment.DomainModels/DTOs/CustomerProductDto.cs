@@ -1,5 +1,6 @@
 ﻿using AutoServiceManagment.Base;
 using AutoServiceManagment.DomainModels.Entities;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -17,7 +18,6 @@ namespace AutoServiceManagment.DomainModels.DTOs
         [Required(ErrorMessage = "Customer is required!")]
         [ForeignKey(nameof(Customer))]
         public int CustomerID { get; set; }
-
         public double Count { get; set; }
         public bool IsDeleted { get; set; } = false;
      

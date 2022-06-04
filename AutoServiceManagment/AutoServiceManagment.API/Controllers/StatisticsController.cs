@@ -10,7 +10,6 @@ namespace AutoServiceManagment.API.Controllers
     public class StatisticsController : ControllerBase
     {
         private readonly IStatisticsService _service;
-
         public StatisticsController(IStatisticsService service)
         {
             _service = service;

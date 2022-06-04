@@ -5,7 +5,6 @@ import { categoryService } from "../../../../Api/services/Categories";
 import { brandService } from "../../../../Api/services/Brands";
 import { productService } from "../../../../Api/services/Products";
 
-
 const newProduct = {
   name: " ",
   basePrice: " ",
@@ -22,7 +21,6 @@ function CreateProduct() {
   const [brand, setBrand] = React.useState([]);
   const history = useHistory();
 
-
   const createProduct = useCallback(
     (e) => {
       e.preventDefault();
@@ -32,7 +30,7 @@ function CreateProduct() {
           history.push("/product");
         })
         .catch((res) => {
-console.log(res);
+          console.log(res);
         });
     },
     [product, history]
