@@ -1,0 +1,29 @@
+#mainDivAutoStatus{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+#mainAutoStatus{
+    width: 750px;
+    height: 550px;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#mainAutoStatusImage{
+    width: 100%;
+    height: 100%;
+}
+
+.active{
+    background-color: red;
+}
+
+.inactive{
+    background-color: yellow;
+}

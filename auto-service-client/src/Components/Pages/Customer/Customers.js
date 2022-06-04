@@ -31,6 +31,10 @@ function Customer(props) {
     props.history.push("/AddServiceCustomer/" + id);
   }
 
+  function AddProductCustomer(id) {
+    props.history.push("/AddProductCustomer/" + id);
+  }
+
   function CustomerDetail(id) {
     props.history.push("/CustomerDetail/" + id);
   }
@@ -151,7 +155,14 @@ function Customer(props) {
                       onClick={() => AddServiceCustomer(item.id)}
                       className="Service"
                     >
-                      Service
+                      AddService
+                    </Button>
+
+                    <Button
+                      onClick={() => AddProductCustomer(item.id)}
+                      className="Product"
+                    >
+                      AddProduct
                     </Button>
 
                     <Button

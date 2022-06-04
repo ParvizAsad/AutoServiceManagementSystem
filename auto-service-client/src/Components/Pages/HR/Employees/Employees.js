@@ -137,7 +137,7 @@ function Employee(props) {
           <tbody>
             {employees
               ?.filter((val) => {
-                if (searchEmployee = " ") {
+                if (searchEmployee === " ") {
                   return val;
                 } else if (
                   val.fullName

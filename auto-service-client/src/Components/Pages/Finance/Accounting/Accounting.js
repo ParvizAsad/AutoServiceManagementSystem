@@ -1,7 +1,7 @@
-import React, { useCallback } from "react";
-import { Table, Button } from "reactstrap";
+import React, {useState, useCallback } from "react";
+import { Table, Button, Spinner } from "reactstrap";
 import { financeService } from "../../../../Api/services/Finances";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import moment from "moment";
 
@@ -9,6 +9,8 @@ function Accounting() {
   const [finance, setFinance] = React.useState([]);
   const [accountingData, setAccountingData] = React.useState();
   const history = useHistory();
+  const [loading, setLoading] = useState(true);
+  const [visible, setVisible] = useState(1);
 
   const getAllAccounting = useCallback(() => {
     financeService.getAllFinances().then(({ data }) => {
@@ -16,9 +18,15 @@ function Accounting() {
     });
   }, [setAccountingData]);
 
+  const maxCount = finance.length;
+  const showMoreItems = () => {
+    setVisible((prevalue) => prevalue + 2);
+  };
+
   React.useEffect(() => {
     financeService.getAllFinances().then(({ data }) => {
       setFinance(data);
+      setLoading(false);
     });
   }, []);
 
@@ -90,6 +98,12 @@ function Accounting() {
         </div>
       </div>
       <div>
+      {loading ? (
+          //  <tr className="d-flex justify-content-center"><Spinner color="primary"/></tr>
+          <div className="d-flex justify-content-center">
+            <Spinner color="primary" />
+          </div>
+        ) : (
         <Table className="TableForItems">
           <thead>
             <tr>
@@ -125,6 +139,18 @@ function Accounting() {
             ))}
           </tbody>
         </Table>
+)}
+      </div>
+      <div className="loadMore d-flex justify-content-center">
+        {maxCount > visible ? (
+          <span>
+            <Link className="linkForLaodMore" onClick={showMoreItems}>
+              Load more...
+            </Link>
+          </span>
+        ) : (
+          <span></span>
+        )}
       </div>
     </>
   );

@@ -101,7 +101,6 @@ function NonWorkingDetail() {
           </Button>
         </div>
         <Button>Export</Button>
-        <input type="text" placeholder="Search.." />
       </div>
       <div>
         {loading ? (
@@ -113,8 +112,8 @@ function NonWorkingDetail() {
             <thead>
               <tr>
                 <th>#</th>
-                <th>Start Time</th>
                 <th>Employee</th>
+                <th>Start Time</th>
                 <th>End Time</th>
                 <th>Non-Working Type</th>
                 <th>Actions</th>
