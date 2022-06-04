@@ -1,4 +1,4 @@
-import { FormGroup, Form, Label, Input, Button, FormText } from "reactstrap";
+import { FormGroup, Form, Label, Input, Button } from "reactstrap";
 import React, { useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { nonWorkingTypeService } from "../../../../Api/services/NonWorkingTypes";
@@ -12,14 +12,7 @@ function CreateNonWorkingType() {
   const [NonWorkingType, setNonWorkingType] = useState(newNonWorkingType);
   const [error, setError] = useState();
 
-  const [NonWorkingTypeData, setNonWorkingTypeData] = useState();
   const history = useHistory();
-
-  const getAllNonWorkingType = useCallback(() => {
-    nonWorkingTypeService.getAllNonWorkingTypes().then(({ data }) => {
-      setNonWorkingTypeData(data);
-    });
-  }, [setNonWorkingTypeData]);
 
   const createNonWorkingType = useCallback(
     (e) => {
@@ -27,7 +20,6 @@ function CreateNonWorkingType() {
       nonWorkingTypeService
         .postNonWorkingType(NonWorkingType)
         .then(() => {
-          getAllNonWorkingType();
           history.push("/NonWorkingType");
         })
         .catch((e) => {
@@ -38,7 +30,7 @@ function CreateNonWorkingType() {
           }
         });
     },
-    [NonWorkingType, history, getAllNonWorkingType]
+    [NonWorkingType, history]
   );
 
   const getElementValues = (e) => {

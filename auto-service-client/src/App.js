@@ -75,6 +75,8 @@ import EditCustomer from './Components/Pages/Customer/EditCustomer';
 import Profile from './Components/Pages/Profile/Profile';
 import Convertor from './Components/Pages/Convertor/Convertor';
 import CurrencyInput from 'react-currency-input-field';
+import AddProductCustomer from './Components/Pages/Customer/AddProductCustomer';
+import AutoStatus from './Components/Pages/Service/AutoStatus';
 
 function App() {
   return (
@@ -109,7 +111,8 @@ function App() {
         <Route path="/resetpassword" exact component={ResetPassword} />
         <Route path="/profile" exact component={Profile} />
         <Route path="/convertor" exact component={Convertor} />
-
+        <Route path="/autostatus" exact component={AutoStatus} />
+        
         
         <Route path="/ExportEmployee" exact component={ExportEmployee} />
         <Route path="/ExportProduct" exact component={ExportProduct} />
@@ -120,6 +123,7 @@ function App() {
         <Route path="/ProductDetail/:id" exact component={ProductDetail} />
         <Route path="/CustomerDetail/:id" exact component={CustomerDetail} />
         <Route path="/AddServiceCustomer/:id" exact component={AddServiceCustomer} />
+        <Route path="/AddProductCustomer/:id" exact component={AddProductCustomer} />
 
         <Route path={"/login"} exact component={Login} />
         <Route path={"/accounting"} exact component={Accounting} />

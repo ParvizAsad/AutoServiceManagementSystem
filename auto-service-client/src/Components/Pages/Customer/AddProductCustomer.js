@@ -1,31 +1,27 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { FormGroup, Form, Label, Button } from "reactstrap";
-import { useParams } from "react-router-dom";
+import { addProductCustomerService } from "../../../Api/services/AddProductCustomer";
 import { customerService } from "../../../Api/services/Customers";
-import { addServiceCustomerService } from "../../../Api/services/AddServiceCustomer";
-import { serviceService } from "../../../Api/services/Services";
+import { productService } from "../../../Api/services/Products";
 
 
 
 const initialCustomer = {
   fullName: "",
 };
-
-function AddServiceCustomer(props) {
-
+function AddProductCustomer(props) {
   const [data, setData] = useState(initialCustomer);
-  
-  const newServiceForCustomer = {
+
+  const newProductForCustomer = {
     id: " ",
     CustomerId: data.fullName,
-    ServiceIds: [],
+    ProductIds: [],
   };
-  const [serviceForCustomer, setServiceForCustomer] = useState(newServiceForCustomer);
-  const [error, setError] = useState();
-  const [services, setServices] = React.useState([]);
-
+  const [productForCustomer, setProductForCustomer] = useState(newProductForCustomer);
   
+  const [error, setError] = useState();
+  const [products, setProducts] = React.useState([]);
 
   const history = useHistory();
 
@@ -36,11 +32,10 @@ function AddServiceCustomer(props) {
     });
   }, []);
   
-
-  const createAddServiceCustomer = useCallback(
+  const createAddProductCustomer = useCallback(
     (e) => {
       e.preventDefault();
-      addServiceCustomerService.postAddServiceCustomer(serviceForCustomer)
+      addProductCustomerService.postAddProductCustomer(productForCustomer)
         .then(() => {
           history.push("/customer");
         })
@@ -52,45 +47,45 @@ function AddServiceCustomer(props) {
           }
         });
     },
-    [serviceForCustomer, history]
+    [productForCustomer, history]
   );
 
   useEffect(() => {
     const id = props.match.params.id;
-    addServiceCustomerService.getAddServiceCustomerById(id).then((res) => {
-      setServiceForCustomer(res.data);
+    addProductCustomerService.getAddProductCustomerById(id).then((res) => {
+      setProductForCustomer(res.data);
     });
   }, []);
 
   React.useEffect(() => {
-    serviceService.getAllServices().then(({ data }) => {
-      setServices(data);
+    productService.getAllProducts().then(({ data }) => {
+      setProducts(data);
     });
   }, []);
 
   const getElementValues = (e) => {
     const { name, value } = e.target;
-    setServiceForCustomer({ ...serviceForCustomer, [name]: value });
+    setProductForCustomer({ ...productForCustomer, [name]: value });
   };
 
   return (
     <>
       <div className="ForHeading">
-        <h1>Add service to {data.fullName} customer</h1>
+        <h1>Add product to {data.fullName} customer</h1>
       </div>
       <div className="CreatePage">
-        <Form className="sss" onSubmit={createAddServiceCustomer}>
+        <Form className="sss" onSubmit={createAddProductCustomer}>
           {error}
           <FormGroup>
-            <Label className="forLabel" for="Services">Select Service</Label>
+            <Label className="forLabel" for="Products">Select Product</Label>
             <select
-              className="ServiceId"
+              className="ProductId"
               onChange={getElementValues}
-              name="ServiceId"
-              id="ServiceId"
+              name="ProductId"
+              id="ProductId"
             >
-              <option value="0">--Select Service--</option>
-              {services?.map((item, idx) => (
+              <option value="0">--Select Product--</option>
+              {products?.map((item, idx) => (
                 <option key={idx} value={item.id}>
                   {item.name}
                 </option>
@@ -105,4 +100,4 @@ function AddServiceCustomer(props) {
   )
 }
 
-export default AddServiceCustomer
+export default AddProductCustomer

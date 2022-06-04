@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AutoServiceManagment.Repository.Migrations
 {
-    public partial class updateModels : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -429,25 +429,26 @@ namespace AutoServiceManagment.Repository.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "CustomerServices",
+                name: "CustomerAddServicess",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ServiceID = table.Column<int>(type: "int", nullable: false),
-                    CustomerID = table.Column<int>(type: "int", nullable: false)
+                    CustomerID = table.Column<int>(type: "int", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CustomerServices", x => x.Id);
+                    table.PrimaryKey("PK_CustomerAddServicess", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_CustomerServices_Customers_CustomerID",
+                        name: "FK_CustomerAddServicess_Customers_CustomerID",
                         column: x => x.CustomerID,
                         principalTable: "Customers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_CustomerServices_Services_ServiceID",
+                        name: "FK_CustomerAddServicess_Services_ServiceID",
                         column: x => x.ServiceID,
                         principalTable: "Services",
                         principalColumn: "Id",
@@ -495,26 +496,31 @@ namespace AutoServiceManagment.Repository.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "CustomerProduct",
+                name: "CustomerProducts",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ProductID = table.Column<int>(type: "int", nullable: false),
                     CustomerID = table.Column<int>(type: "int", nullable: false),
-                    Count = table.Column<double>(type: "float", nullable: false)
+                    Count = table.Column<double>(type: "float", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CustomerProduct", x => x.Id);
+                    table.PrimaryKey("PK_CustomerProducts", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_CustomerProduct_Customers_CustomerID",
+                        name: "FK_CustomerProducts_Customers_CustomerID",
                         column: x => x.CustomerID,
                         principalTable: "Customers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_CustomerProduct_Products_ProductID",
+                        name: "FK_CustomerProducts_Products_ProductID",
                         column: x => x.ProductID,
                         principalTable: "Products",
                         principalColumn: "Id",
@@ -644,24 +650,24 @@ namespace AutoServiceManagment.Repository.Migrations
                 column: "ServiceID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CustomerProduct_CustomerID",
-                table: "CustomerProduct",
+                name: "IX_CustomerAddServicess_CustomerID",
+                table: "CustomerAddServicess",
                 column: "CustomerID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CustomerProduct_ProductID",
-                table: "CustomerProduct",
-                column: "ProductID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_CustomerServices_CustomerID",
-                table: "CustomerServices",
-                column: "CustomerID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_CustomerServices_ServiceID",
-                table: "CustomerServices",
+                name: "IX_CustomerAddServicess_ServiceID",
+                table: "CustomerAddServicess",
                 column: "ServiceID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CustomerProducts_CustomerID",
+                table: "CustomerProducts",
+                column: "CustomerID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CustomerProducts_ProductID",
+                table: "CustomerProducts",
+                column: "ProductID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Employees_PositionId",
@@ -723,10 +729,10 @@ namespace AutoServiceManagment.Repository.Migrations
                 name: "CashBoxes");
 
             migrationBuilder.DropTable(
-                name: "CustomerProduct");
+                name: "CustomerAddServicess");
 
             migrationBuilder.DropTable(
-                name: "CustomerServices");
+                name: "CustomerProducts");
 
             migrationBuilder.DropTable(
                 name: "Discounts");
@@ -750,13 +756,13 @@ namespace AutoServiceManagment.Repository.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "Products");
+                name: "Services");
 
             migrationBuilder.DropTable(
                 name: "Customers");
 
             migrationBuilder.DropTable(
-                name: "Services");
+                name: "Products");
 
             migrationBuilder.DropTable(
                 name: "NonWorkingTypes");
