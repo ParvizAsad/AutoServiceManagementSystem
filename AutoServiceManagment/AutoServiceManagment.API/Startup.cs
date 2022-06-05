@@ -13,14 +13,17 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json.Converters;
 using System;
 using System.Security.Claims;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace AutoServiceManagment.API
 {
@@ -130,16 +133,12 @@ namespace AutoServiceManagment.API
                      })
              );
 
-            //            services.AddControllersWithViews()
-            //    .AddNewtonsoftJson(options =>
-            //    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
-            //);
-
-            //         services.AddControllers().AddJsonOptions(x =>
-            //x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
-
             services.AddControllers();
-            //.AddNewtonsoftJson();
+           //.AddNewtonsoftJson(jsonOptions =>
+           //{
+           //    jsonOptions.SerializerSettings.Converters.Add(new StringEnumConverter());
+           //});
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "AutoServiceManagment.API", Version = "v1" });

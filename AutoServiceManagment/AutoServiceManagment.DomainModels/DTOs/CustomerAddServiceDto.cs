@@ -20,7 +20,7 @@ namespace AutoServiceManagment.DomainModels.DTOs
         [ForeignKey(nameof(Customer))]
         public int CustomerID { get; set; }
 
-        public bool IsDeleted { get; set; } = false;
+        //public bool IsDeleted { get; set; } = false;
 
     }
 }

@@ -6,61 +6,29 @@ import { customerService } from "../../../Api/services/Customers";
 import { addServiceCustomerService } from "../../../Api/services/AddServiceCustomer";
 import { serviceService } from "../../../Api/services/Services";
 
-
-
-const initialCustomer = {
-  fullName: "",
-};
-
 function AddServiceCustomer(props) {
-
-  const [data, setData] = useState(initialCustomer);
-  
-  const newServiceForCustomer = {
-    id: " ",
-    CustomerId: data.fullName,
-    ServiceIds: [],
+  const initialCustomer = {
+    serviceID: "",
+    customerID: props.match.params.id,
   };
-  const [serviceForCustomer, setServiceForCustomer] = useState(newServiceForCustomer);
-  const [error, setError] = useState();
-  const [services, setServices] = React.useState([]);
-
-  
-
+  const [customerService, setCustomerService] = useState(initialCustomer);
+  const [services, setServices] = React.useState();
   const history = useHistory();
-
-  useEffect(() => {
-    const id = props.match.params.id;
-    customerService.getCustomerById(id).then((res) => {
-      setData(res.data);
-    });
-  }, []);
-  
 
   const createAddServiceCustomer = useCallback(
     (e) => {
       e.preventDefault();
-      addServiceCustomerService.postAddServiceCustomer(serviceForCustomer)
+      addServiceCustomerService
+        .postAddServiceCustomer(customerService)
         .then(() => {
-          history.push("/customer");
+          props.history.push("/CustumerService/" + props.match.params.id);
         })
         .catch((e) => {
-          if (e.response.status === 400) {
-            setError(e.response.data.errors.Name);
-          } else if (e.response.status === 500) {
-            setError(e.response.data);
-          }
+          console.log(e.response);
         });
     },
-    [serviceForCustomer, history]
+    [customerService, history]
   );
-
-  useEffect(() => {
-    const id = props.match.params.id;
-    addServiceCustomerService.getAddServiceCustomerById(id).then((res) => {
-      setServiceForCustomer(res.data);
-    });
-  }, []);
 
   React.useEffect(() => {
     serviceService.getAllServices().then(({ data }) => {
@@ -70,39 +38,41 @@ function AddServiceCustomer(props) {
 
   const getElementValues = (e) => {
     const { name, value } = e.target;
-    setServiceForCustomer({ ...serviceForCustomer, [name]: value });
+    setCustomerService({ ...customerService, [name]: value });
   };
 
   return (
     <>
       <div className="ForHeading">
-        <h1>Add service to {data.fullName} customer</h1>
+        <h1>Add service to customer</h1>
       </div>
       <div className="CreatePage">
         <Form className="sss" onSubmit={createAddServiceCustomer}>
-          {error}
           <FormGroup>
-            <Label className="forLabel" for="Services">Select Service</Label>
+            <Label className="forLabel" for="Services">
+              Select Service
+            </Label>
             <select
-              className="ServiceId"
+              className="serviceID"
               onChange={getElementValues}
-              name="ServiceId"
-              id="ServiceId"
+              name="serviceID"
+              id="serviceID"
             >
               <option value="0">--Select Service--</option>
-              {services?.map((item, idx) => (
-                <option key={idx} value={item.id}>
-                  {item.name}
+              {services?.map((item) => (
+                <option key={item.id} value={item.id}>
+                  Service :{item.name} || Price: {item.price}
                 </option>
               ))}
             </select>
           </FormGroup>
-
-          <Button className="forSubmit" type="submit">Submit</Button>
+          <Button className="forSubmit" type="submit">
+            Submit
+          </Button>
         </Form>
       </div>
     </>
-  )
+  );
 }
 
-export default AddServiceCustomer
+export default AddServiceCustomer;

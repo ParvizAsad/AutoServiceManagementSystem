@@ -1,28 +1,19 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { FormGroup, Form, Label, Button } from "reactstrap";
+import { FormGroup, Form, Label, Button, Input } from "reactstrap";
 import { addProductCustomerService } from "../../../Api/services/AddProductCustomer";
 import { customerService } from "../../../Api/services/Customers";
 import { productService } from "../../../Api/services/Products";
 
-
-
-const initialCustomer = {
-  fullName: "",
-};
 function AddProductCustomer(props) {
-  const [data, setData] = useState(initialCustomer);
-
-  const newProductForCustomer = {
-    id: " ",
-    CustomerId: data.fullName,
-    ProductIds: [],
+  const initialCustomer = {
+    productID: "",
+    customerID: props.match.params.id,
+    count: " ",
   };
-  const [productForCustomer, setProductForCustomer] = useState(newProductForCustomer);
-  
-  const [error, setError] = useState();
-  const [products, setProducts] = React.useState([]);
-
+  const [customersProduct, setCustomersProduct] = useState(initialCustomer);
+  const [products, setProducts] = React.useState();
+  const [data, setData] = React.useState([]);
   const history = useHistory();
 
   useEffect(() => {
@@ -31,31 +22,21 @@ function AddProductCustomer(props) {
       setData(res.data);
     });
   }, []);
-  
+
   const createAddProductCustomer = useCallback(
     (e) => {
       e.preventDefault();
-      addProductCustomerService.postAddProductCustomer(productForCustomer)
+      addProductCustomerService
+        .postAddProductCustomer(customersProduct)
         .then(() => {
-          history.push("/customer");
+          props.history.push("/CustumerService/" + props.match.params.id);
         })
         .catch((e) => {
-          if (e.response.status === 400) {
-            setError(e.response.data.errors.Name);
-          } else if (e.response.status === 500) {
-            setError(e.response.data);
-          }
+          console.log(e.response);
         });
     },
-    [productForCustomer, history]
+    [customersProduct, history]
   );
-
-  useEffect(() => {
-    const id = props.match.params.id;
-    addProductCustomerService.getAddProductCustomerById(id).then((res) => {
-      setProductForCustomer(res.data);
-    });
-  }, []);
 
   React.useEffect(() => {
     productService.getAllProducts().then(({ data }) => {
@@ -65,7 +46,8 @@ function AddProductCustomer(props) {
 
   const getElementValues = (e) => {
     const { name, value } = e.target;
-    setProductForCustomer({ ...productForCustomer, [name]: value });
+    setCustomersProduct({ ...customersProduct, [name]: value });
+    console.log(customersProduct);
   };
 
   return (
@@ -75,29 +57,41 @@ function AddProductCustomer(props) {
       </div>
       <div className="CreatePage">
         <Form className="sss" onSubmit={createAddProductCustomer}>
-          {error}
           <FormGroup>
-            <Label className="forLabel" for="Products">Select Product</Label>
+            <Label className="forLabel" for="Products">
+              Select Product
+            </Label>
             <select
-              className="ProductId"
+              className="productID"
               onChange={getElementValues}
-              name="ProductId"
-              id="ProductId"
+              name="productID"
+              id="productID"
             >
               <option value="0">--Select Product--</option>
-              {products?.map((item, idx) => (
-                <option key={idx} value={item.id}>
-                  {item.name}
+              {products?.map((item) => (
+                <option key={item.id} value={item.id}>
+                    Product :{item.name} || Price: {item.salePrice} || Stock Count: {item.count}
                 </option>
               ))}
             </select>
           </FormGroup>
-
-          <Button className="forSubmit" type="submit">Submit</Button>
+          <FormGroup>
+            <Label for="count">Count</Label>
+            <Input
+              id="count"
+              name="count"
+              placeholder="count"
+              onChange={getElementValues}
+              type="text"
+            />
+          </FormGroup>
+          <Button className="forSubmit" type="submit">
+            Submit
+          </Button>
         </Form>
       </div>
     </>
-  )
+  );
 }
 
-export default AddProductCustomer
+export default AddProductCustomer;

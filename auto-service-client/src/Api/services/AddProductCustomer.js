@@ -6,23 +6,23 @@ class AddProductCustomerService extends HttpClient {
   }
 
   async getAllAddProductCustomeres() {
-    return await this.get("AddProductCustomers");
+    return await this.get("CustomersProduct");
   }
 
   async getAddProductCustomerById(id) {
-    return await this.getById("AddProductCustomers", id);
+    return await this.getById("CustomersProduct", id);
   }
 
   async postAddProductCustomer(body) {
-    return await this.post("AddProductCustomers", body);
+    return await this.post("CustomersProduct", body);
   }
 
   async putAddProductCustomer(id, body) {
-    return await this.put("AddProductCustomers", id, body);
+    return await this.put("CustomersProduct", id, body);
   }
 
   async deleteAddProductCustomer(id) {
-    return await this.delete("AddProductCustomers", id);
+    return await this.delete("CustomersProduct", id);
   }
 }
 

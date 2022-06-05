@@ -77,6 +77,7 @@ import Convertor from './Components/Pages/Convertor/Convertor';
 import CurrencyInput from 'react-currency-input-field';
 import AddProductCustomer from './Components/Pages/Customer/AddProductCustomer';
 import AutoStatus from './Components/Pages/Service/AutoStatus';
+import CustumerService from './Components/Pages/Customer/CustumerService'
 
 function App() {
   return (
@@ -124,6 +125,7 @@ function App() {
         <Route path="/CustomerDetail/:id" exact component={CustomerDetail} />
         <Route path="/AddServiceCustomer/:id" exact component={AddServiceCustomer} />
         <Route path="/AddProductCustomer/:id" exact component={AddProductCustomer} />
+        <Route path={"/CustumerService/:id"} exact component={CustumerService} />
 
         <Route path={"/login"} exact component={Login} />
         <Route path={"/accounting"} exact component={Accounting} />

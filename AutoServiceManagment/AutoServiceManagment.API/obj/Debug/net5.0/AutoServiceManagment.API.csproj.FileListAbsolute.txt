@@ -194,3 +194,6 @@ C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoS
 C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\obj\Debug\net5.0\ref\AutoServiceManagment.API.dll
 C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\obj\Debug\net5.0\AutoServiceManagment.API.pdb
 C:\Users\AZC167387\Desktop\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\obj\Debug\net5.0\AutoServiceManagment.API.genruntimeconfig.cache
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+D:\P320\6. Project\AutoServiceManagmentSystem\AutoServiceManagment\AutoServiceManagment.API\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll

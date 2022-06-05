@@ -18,11 +18,13 @@ namespace AutoServiceManagment.Services.Services
 
         private readonly IMapper _mapper;
         private readonly IRepository<CustomerAddServices> _repository;
+        private readonly IRepository<Customer> _repositoryCustomer;
 
-        public CustomerAddServiceService(AppDbContext dbContext, IMapper mapper, IRepository<CustomerAddServices> repository) : base(dbContext)
+        public CustomerAddServiceService(AppDbContext dbContext, IMapper mapper, IRepository<CustomerAddServices> repository, IRepository<Customer> repositoryCustomer) : base(dbContext)
         {
             _mapper = mapper;
             _repository = repository;
+            _repositoryCustomer = repositoryCustomer;
         }
        
         public async Task<IList<CustomerAddServiceDto>> GetAllCustomersAddServiceAsync()
@@ -42,9 +44,9 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task AddCustomersAddServiceAsync(CustomerAddServiceDto customerServiceDto)
         {
-            var existCustomerService = await DbContext.CustomerAddServicess.FirstOrDefaultAsync();
-
-            await NullCheck<CustomerAddServices>.Checking(existCustomerService);
+            var customer = await DbContext.Customers.Where(x=>x.Id==customerServiceDto.CustomerID).FirstOrDefaultAsync();
+            var service = await DbContext.Services.Where(x=>x.Id==customerServiceDto.ServiceID).FirstOrDefaultAsync();
+            customer.Debt -= service.Price;
 
             if (customerServiceDto == null) { throw new Exception("Can not be empty"); }
 

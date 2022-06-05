@@ -27,8 +27,8 @@ function Customer(props) {
     props.history.push("/EditCustomer/" + id);
   }
 
-  function AddServiceCustomer(id) {
-    props.history.push("/AddServiceCustomer/" + id);
+  function CustumerService(id) {
+    props.history.push("/CustumerService/" + id);
   }
 
   function AddProductCustomer(id) {
@@ -115,7 +115,7 @@ function Customer(props) {
             <tr>
               <th>#</th>
               <th>Customer Name</th>
-              <th>Service</th>
+              <th>Debt</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -136,7 +136,7 @@ function Customer(props) {
                 <tr key={idx}>
                   <th scope="row">{item.id}</th>
                   <td>{item.fullName}</td>
-                  <td>{item.id}</td>
+                  <td>{item.debt}</td>
                   <td className="Actions">
                     <Button
                       onClick={() => EditCustomer(item.id)}
@@ -152,19 +152,11 @@ function Customer(props) {
                     </Button>
 
                     <Button
-                      onClick={() => AddServiceCustomer(item.id)}
+                      onClick={() => CustumerService(item.id)}
                       className="Service"
                     >
-                      AddService
+                      Service
                     </Button>
-
-                    <Button
-                      onClick={() => AddProductCustomer(item.id)}
-                      className="Product"
-                    >
-                      AddProduct
-                    </Button>
-
                     <Button
                       onClick={() => CustomerDetail(item.id)}
                       className="Detail"

@@ -41,9 +41,9 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task AddCustomerProductAsync(CustomerProductDto customerProductDto)
         {
-            var existProduct = await DbContext.CustomerProducts.FirstOrDefaultAsync();
-
-            await NullCheck<CustomerProduct>.Checking(existProduct);
+            var customer = await DbContext.Customers.Where(x => x.Id == customerProductDto.CustomerID).FirstOrDefaultAsync();
+            var product = await DbContext.Products.Where(x => x.Id == customerProductDto.ProductID).FirstOrDefaultAsync();
+            customer.Debt -= product.SalePrice * customerProductDto.Count;
 
             if (customerProductDto == null) { throw new Exception("Can not be empty"); }
             
