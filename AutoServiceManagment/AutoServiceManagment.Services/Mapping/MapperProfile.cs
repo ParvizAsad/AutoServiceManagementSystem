@@ -26,6 +26,8 @@ namespace AutoServiceManagment.Services.Mapping
             CreateMap<Bio, BioDto>().ReverseMap();
             CreateMap<CustomerProduct, CustomerProductDto>().ReverseMap();
             CreateMap<CustomerAddServices, CustomerAddServiceDto>().ReverseMap();
+            CreateMap<RegularCustomerPayment, RegularCustomerPaymentDto>().ReverseMap();
+            CreateMap<OtherCustomerPayment, OtherCustomerPaymentDto>().ReverseMap();
 
 
         }

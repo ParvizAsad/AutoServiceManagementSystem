@@ -44,7 +44,7 @@ namespace AutoServiceManagment.Services.Services
                 double payments = 0;
                 foreach (var payment in Payments)
                 {
-                    if (payment.Date == finance.Date)
+                    if (payment.CreatedAt == finance.Date)
                         payments += payment.Payment;
                 }
                 var newStatistics = new Statistics

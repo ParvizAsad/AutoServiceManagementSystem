@@ -26,7 +26,7 @@ namespace AutoServiceManagment.DomainModels.Entities
        
         public ICollection<CustomerProduct> CustomerProducts { get; set; }
        
-        public ICollection<CashBox> CashBoxes { get; set; }
+        public ICollection<RegularCustomerPayment> RegularCustomerPayments { get; set; }
        
         public bool IsDeleted { get; set; }=false;
        

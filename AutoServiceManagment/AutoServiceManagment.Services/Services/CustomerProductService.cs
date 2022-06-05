@@ -43,8 +43,9 @@ namespace AutoServiceManagment.Services.Services
         {
             var customer = await DbContext.Customers.Where(x => x.Id == customerProductDto.CustomerID).FirstOrDefaultAsync();
             var product = await DbContext.Products.Where(x => x.Id == customerProductDto.ProductID).FirstOrDefaultAsync();
+            if (product.Count < customerProductDto.Count) { throw new Exception("There are not so many products"); }
             customer.Debt -= product.SalePrice * customerProductDto.Count;
-
+            product.Count-=customerProductDto.Count;
             if (customerProductDto == null) { throw new Exception("Can not be empty"); }
             
             var products = _mapper.Map<CustomerProduct>(customerProductDto);

@@ -81,8 +81,8 @@ namespace AutoServiceManagment.Repository.Migrations
                     b.Property<int>("CustomerID")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("CustomerName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -467,6 +467,44 @@ namespace AutoServiceManagment.Repository.Migrations
                     b.ToTable("NonWorkingTypes");
                 });
 
+            modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.OtherCustomerPayment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CustomerName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<double>("Payment")
+                        .HasColumnType("float");
+
+                    b.Property<int>("ProductID")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductID");
+
+                    b.ToTable("OtherCustomerPayments");
+                });
+
             modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.Position", b =>
                 {
                     b.Property<int>("Id")
@@ -546,6 +584,41 @@ namespace AutoServiceManagment.Repository.Migrations
                     b.HasIndex("CategoryID");
 
                     b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.RegularCustomerPayment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CustomerID")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<double>("Payment")
+                        .HasColumnType("float");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CustomerID");
+
+                    b.ToTable("RegularCustomerPayments");
                 });
 
             modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.Salary", b =>
@@ -907,7 +980,7 @@ namespace AutoServiceManagment.Repository.Migrations
             modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.CashBox", b =>
                 {
                     b.HasOne("AutoServiceManagment.DomainModels.Entities.Customer", "Customer")
-                        .WithMany("CashBoxes")
+                        .WithMany()
                         .HasForeignKey("CustomerID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -999,6 +1072,17 @@ namespace AutoServiceManagment.Repository.Migrations
                     b.Navigation("NonWorkingType");
                 });
 
+            modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.OtherCustomerPayment", b =>
+                {
+                    b.HasOne("AutoServiceManagment.DomainModels.Entities.Product", "Product")
+                        .WithMany("OtherCustomerPayments")
+                        .HasForeignKey("ProductID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.Product", b =>
                 {
                     b.HasOne("AutoServiceManagment.DomainModels.Entities.Brand", "Brand")
@@ -1016,6 +1100,17 @@ namespace AutoServiceManagment.Repository.Migrations
                     b.Navigation("Brand");
 
                     b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.RegularCustomerPayment", b =>
+                {
+                    b.HasOne("AutoServiceManagment.DomainModels.Entities.Customer", "Customer")
+                        .WithMany("RegularCustomerPayments")
+                        .HasForeignKey("CustomerID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
                 });
 
             modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.Salary", b =>
@@ -1100,11 +1195,11 @@ namespace AutoServiceManagment.Repository.Migrations
 
             modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.Customer", b =>
                 {
-                    b.Navigation("CashBoxes");
-
                     b.Navigation("CustomerProducts");
 
                     b.Navigation("CustomerServices");
+
+                    b.Navigation("RegularCustomerPayments");
                 });
 
             modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.Employee", b =>
@@ -1129,6 +1224,8 @@ namespace AutoServiceManagment.Repository.Migrations
                     b.Navigation("CashBoxes");
 
                     b.Navigation("CustomerProducts");
+
+                    b.Navigation("OtherCustomerPayments");
                 });
 
             modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.Service", b =>

@@ -89,7 +89,8 @@ namespace AutoServiceManagment.API
             //services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IBioService, BioService>();
             services.AddScoped<IStatisticsService, StatisticsService>();
-
+            services.AddScoped<IRegularCustomerPaymentService, RegularCustomerPaymentService>();
+            services.AddScoped<IOtherCustomerPaymentService, OtherCustomerPaymentService>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>

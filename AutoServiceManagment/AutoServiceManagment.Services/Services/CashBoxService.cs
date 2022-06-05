@@ -40,8 +40,13 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task AddCashBoxAsync(CashBoxDto cashBoxDto)
         {
+            //var customer = await DbContext.Customers.Where(x => x.Id == cashBoxDto.CustomerID).FirstOrDefaultAsync();
+            //if (customer!=null)
+            //{
+            //    customer.Debt += cashBoxDto.Payment;
+            //}
             var cashBox = _mapper.Map<CashBox>(cashBoxDto);
-            
+           
             await _repository.AddAsync(cashBox);
         }
 
@@ -63,10 +68,9 @@ namespace AutoServiceManagment.Services.Services
             
             if (cashBox == null) { throw new Exception("CashBox not found!"); }
 
-            cashBox.ProductID = cashBoxDto.ProductID;
+            //cashBox.ProductID = cashBoxDto.ProductID;
             cashBox.ServiceID = cashBoxDto.ServiceID;
-            cashBox.CustomerID = cashBoxDto.CustomerID;
-            cashBox.Date = cashBoxDto.Date;
+            //cashBox.CustomerID = cashBoxDto.CustomerID;
             cashBox.Payment = cashBoxDto.Payment;
 
             DbContext.CashBoxes.Update(cashBox);

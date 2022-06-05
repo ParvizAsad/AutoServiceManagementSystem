@@ -28,6 +28,8 @@ namespace AutoServiceManagment.Repository.DataContext
         public DbSet<Bio> Bios { get; set; }
         public DbSet<CustomerProduct> CustomerProducts { get; set; }
         public DbSet<CustomerAddServices> CustomerAddServicess { get; set; }
+        public DbSet<RegularCustomerPayment> RegularCustomerPayments { get; set; }
+        public DbSet<OtherCustomerPayment> OtherCustomerPayments { get; set; }
 
     }
 }

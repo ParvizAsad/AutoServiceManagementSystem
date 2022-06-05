@@ -8,15 +8,13 @@ namespace AutoServiceManagment.DomainModels.DTOs
     {
         public int Id { get; set; }
         public int ProductID { get; set; }
-
-        [Required(ErrorMessage = "Customer is required!")]
+        public string CustomerName { get; set; }
+        //[Required(ErrorMessage = "Customer is required!")]
         public int CustomerID { get; set; }
         public int ServiceID { get; set; }
 
         [Required(ErrorMessage = "Payment is required!")]
         public double Payment { get; set; }
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{mm/dd/yyyy}")]
-        public DateTime Date { get; set; } = DateTime.Today;
+     
     }
 }

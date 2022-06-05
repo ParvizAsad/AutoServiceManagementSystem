@@ -25,6 +25,7 @@ namespace AutoServiceManagment.DomainModels.Entities
         public Brand Brand { get; set; }
         public ICollection<CustomerProduct> CustomerProducts { get; set; }
         public ICollection<CashBox> CashBoxes { get; set; }
+        public ICollection<OtherCustomerPayment> OtherCustomerPayments { get; set; }
         public bool IsDeleted { get; set; } = false;
 
     }

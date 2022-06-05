@@ -108,6 +108,12 @@ function CashBox() {
           <Button onClick={() => history.push("/createcashbox")}>
             Create a new CashBox
           </Button>
+          <Button onClick={() => history.push("/regularCustomer")}>
+         Regular Customer Payment
+        </Button>
+        <Button onClick={() => history.push("/otherSale")}>
+        Other Sale Payment
+      </Button>
         </div>
         <div className="Adding">
           <Button onClick={() => history.push("/convertor")}>

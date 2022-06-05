@@ -64,6 +64,8 @@ import EditPosition from './Components/Pages/HR/Positions/EditPosition';
 import EditProduct from './Components/Pages/Stock/Products/EditProduct';
 import CashBox from './Components/Pages/Finance/CashBoxes/CashBox';
 import CreateCashBox from './Components/Pages/Finance/CashBoxes/CreateCashBox';
+import RegularCustomer from './Components/Pages/Finance/CashBoxes/RegularCustomer';
+import OtherSale from './Components/Pages/Finance/CashBoxes/OtherSale';
 import EditCashbox from './Components/Pages/Finance/CashBoxes/EditCashBox';
 import Statistics from './Components/Pages/Director/Statistics';
 import ResetPassword from './Components/Pages/Login/ResetPassword';
@@ -108,6 +110,8 @@ function App() {
         <Route path="/customer" exact component={Customer} />
         <Route path="/salary" exact component={Salary} />
         <Route path="/cashbox" exact component={CashBox} />
+        <Route path="/regularCustomer" exact component={RegularCustomer} />
+        <Route path="/otherSale" exact component={OtherSale} />
         <Route path="/statistics" exact component={Statistics} />
         <Route path="/resetpassword" exact component={ResetPassword} />
         <Route path="/profile" exact component={Profile} />
