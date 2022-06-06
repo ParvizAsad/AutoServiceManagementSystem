@@ -44,9 +44,12 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task AddOtherCustomerPaymentAsync(OtherCustomerPaymentDto otherCustomerPaymentDto)
         {
-            
-            var otherCustomerPayment = _mapper.Map<OtherCustomerPayment>(otherCustomerPaymentDto);
+            var products = await DbContext.Products.Where(x => x.Id == otherCustomerPaymentDto.ProductID).FirstOrDefaultAsync();
+            if (products.SalePrice < otherCustomerPaymentDto.Payment) { throw new Exception("dont enought payment");  }
+            if (products.Count < otherCustomerPaymentDto.ProductCount) { throw new Exception("dont enought products");  }
 
+            var otherCustomerPayment = _mapper.Map<OtherCustomerPayment>(otherCustomerPaymentDto);
+            products.Count -= otherCustomerPaymentDto.ProductCount;
             await _repository.AddAsync(otherCustomerPayment);
         }
 

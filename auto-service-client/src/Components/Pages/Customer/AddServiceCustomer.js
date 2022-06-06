@@ -66,6 +66,7 @@ function AddServiceCustomer(props) {
               ))}
             </select>
           </FormGroup>
+         
           <Button className="forSubmit" type="submit">
             Submit
           </Button>

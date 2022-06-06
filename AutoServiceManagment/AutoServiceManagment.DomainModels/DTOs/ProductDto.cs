@@ -27,5 +27,6 @@ namespace AutoServiceManagment.DomainModels.DTOs
         [Required(ErrorMessage = "Brand is required!")]
         [ForeignKey(nameof(Brand))]
         public int BrandId { get; set; }
+        public string Detail { get; set; }
     }
 }

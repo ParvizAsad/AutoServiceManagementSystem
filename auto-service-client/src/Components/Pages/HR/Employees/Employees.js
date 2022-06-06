@@ -5,20 +5,26 @@ import Swal from "sweetalert2";
 import { useState, useRef } from "react";
 import { useReactToPrint } from "react-to-print";
 import { employeeService } from "../../../../Api/services/Employee";
+import { positionService } from "../../../../Api/services/Positions";
 import { useHistory, Link } from "react-router-dom";
 
 function Employee(props) {
   const [employees, setEmployees] = React.useState([]);
   const [visible, setVisible] = useState(2);
-
   const [loading, setLoading] = useState(true);
-
+  const [position, setPosition] = useState();
   const [searchEmployee, setSearchEmployee] = useState(" ");
   const history = useHistory();
 
   React.useEffect(() => {
     employeeService.getAllEmployee().then(({ data }) => {
       setEmployees(data);
+    });
+  }, []);
+
+  React.useEffect(() => {
+    positionService.getAllPositions().then(({ data }) => {
+      setPosition(data);
     });
   }, []);
 
@@ -152,7 +158,9 @@ function Employee(props) {
                 <tr key={idx}>
                   <th scope="row">{item.id}</th>
                   <td>{item.fullName}</td>
-                  <td>{item.positionId}</td>
+{position?.filter((position)=>position.id==item.positionId).map((position)=>
+                  <td>{position.name}</td>
+)}
                   <td>{item.status}</td>
                   <td className="Actions">
                     <Button

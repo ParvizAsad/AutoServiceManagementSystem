@@ -489,6 +489,9 @@ namespace AutoServiceManagment.Repository.Migrations
                     b.Property<double>("Payment")
                         .HasColumnType("float");
 
+                    b.Property<int>("ProductCount")
+                        .HasColumnType("int");
+
                     b.Property<int>("ProductID")
                         .HasColumnType("int");
 
@@ -559,6 +562,9 @@ namespace AutoServiceManagment.Repository.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Detail")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")

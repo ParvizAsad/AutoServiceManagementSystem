@@ -6,24 +6,29 @@ import { cashBoxService } from "../../../../Api/services/CashBox";
 import { customerService } from "../../../../Api/services/Customers";
 import { serviceService } from "../../../../Api/services/Services";
 import { productService } from "../../../../Api/services/Products";
+import { regularCustomerService } from "../../../../Api/services/RegularCustomer";
+import { otherCustomerService } from "../../../../Api/services/OtherCustomer";
+import moment from "moment";
 
 function CashBox() {
   const [cashBoxes, setCashBoxes] = React.useState([]);
-  const [CashBoxData, setCashBoxData] = useState();
   const [customers, setCustomers] = useState();
   const [services, setServices] = useState();
   const [products, setProducts] = useState();
+  const [regularCustomer, setRegularCustomer] = useState();
+  const [otherCustomer, setOtherCustomer] = useState();
 
   const history = useHistory();
-  const getAllCashBox = useCallback(() => {
-    cashBoxService.getAllCashBoxes().then(({ data }) => {
-      setCashBoxes(data);
-    });
-  }, [setCashBoxes]);
 
   React.useEffect(() => {
-    cashBoxService.getAllCashBoxes().then(({ data }) => {
-      setCashBoxes(data);
+    regularCustomerService.getAllRegularCustomers().then(({ data }) => {
+      setRegularCustomer(data);
+    });
+  }, []);
+
+  React.useEffect(() => {
+    otherCustomerService.getAllOtherCustomers().then(({ data }) => {
+      setOtherCustomer(data);
     });
   }, []);
 
@@ -76,7 +81,7 @@ function CashBox() {
             "success"
           );
           cashBoxService.deleteCashBox(id);
-          getAllCashBox();
+       
           history.push("/CashBox");
         } else if (
           /* Read more about handling dismissals below */
@@ -105,20 +110,15 @@ function CashBox() {
       </div>
       <div className="AddingAndSearching">
         <div className="Adding">
-          <Button onClick={() => history.push("/createcashbox")}>
-            Create a new CashBox
-          </Button>
           <Button onClick={() => history.push("/regularCustomer")}>
-         Regular Customer Payment
-        </Button>
-        <Button onClick={() => history.push("/otherSale")}>
-        Other Sale Payment
-      </Button>
+            Regular Customer Payment
+          </Button>
+          <Button onClick={() => history.push("/otherCustomer")}>
+            Other Customer Payment
+          </Button>
         </div>
         <div className="Adding">
-          <Button onClick={() => history.push("/convertor")}>
-           Convertor
-          </Button>
+          <Button onClick={() => history.push("/convertor")}>Convertor</Button>
         </div>
       </div>
       <div>
@@ -127,45 +127,37 @@ function CashBox() {
             <tr>
               <th>#</th>
               <th>Customer</th>
-              <th>Service</th>
-              <th>Product</th>
+              <th>Date</th>
               <th>Payment</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-            {cashBoxes?.map((item, idx) => (
-              <tr key={idx}>
-                <td scope="row">{item.id}</td>
-                {customers
-                  ?.filter((customer) => customer.id === item.customerID)
-                  .map((customer) => (
-                    <td>{customer.fullName}</td>
-                  ))}
-                {services
-                  ?.filter((service) => service.id === item.serviceID)
-                  .map((service) => (
-                    <td>{service.name}a</td>
-                  ))}
-                {products
-                  ?.filter((product) => product.id === item.productID)
-                  .map((product) => (
-                    <td>{product.name}a</td>
-                  ))}{" "}
-                <td>{item.payment}</td>
-                <td className="Actions">
-                  <Button onClick={() => editCashBox(item.id)} className="Edit">
-                    Edit
-                  </Button>
-                  <Button
-                    onClick={() => deleteButton(item.id)}
-                    className="Delete"
-                  >
-                    Delete
-                  </Button>
-                </td>
-              </tr>
-            ))}
+          {regularCustomer?.map((item)=>(
+
+<tr key={item.id}>
+<td>{item.id}</td>
+{customers?.filter((x)=> x.id==item.customerID).map((customers)=>
+  <td>{customers.fullName}</td>
+  )}
+ <td> {moment(item.createdAt).format("MM-DD-yyyy hh:mm")}
+ </td>
+ <td>{item.payment}</td>
+</tr>
+          ))}
+          
+          {otherCustomer?.map((item)=>(
+
+            <tr key={item.id}>
+            <td>{item.id}</td>
+              <td>{item.customerName}</td>
+             <td> {moment(item.createdAt).format("MM-DD-yyyy hh:mm")}
+             </td>
+             <td>{item.payment}</td>
+            </tr>
+                      ))}
+
+          
           </tbody>
         </Table>
       </div>
