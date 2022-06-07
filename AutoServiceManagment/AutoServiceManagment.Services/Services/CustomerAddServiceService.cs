@@ -58,7 +58,7 @@ namespace AutoServiceManagment.Services.Services
         public async Task UpdateCustomersAddServiceAsyncId(int? id, CustomerAddServiceDto customerServiceDto)
         {
             var customerService = await DbContext.CustomerAddServicess.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted != true);
-            if (customerService == null) { throw new Exception("CustomerProduct not found!"); }
+            if (customerService == null) { throw new Exception("Customer Service not found!"); }
 
             customerService.ServiceID = customerServiceDto.ServiceID;
 
@@ -70,7 +70,7 @@ namespace AutoServiceManagment.Services.Services
         public async Task DeleteCustomersAddServiceAsync(int? Id)
         {
             var customerService = await DbContext.CustomerAddServicess.FirstOrDefaultAsync(x => x.Id == Id && x.IsDeleted != true);
-            if (customerService == null) { throw new Exception("CustomerProduct not found!"); }
+            if (customerService == null) { throw new Exception("Customer Service not found!"); }
             customerService.IsDeleted = true;
 
             await DbContext.SaveChangesAsync();

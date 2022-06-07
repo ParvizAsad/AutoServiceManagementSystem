@@ -76,7 +76,7 @@ function AddProductCustomer(props) {
             </select>
           </FormGroup>
           <FormGroup>
-            <Label for="count">Count</Label>
+            <Label className="forLabel" for="count">Count</Label>
             <Input
               id="count"
               name="count"

@@ -77,7 +77,7 @@ function NonWorkingType() {
   return (
     <>
       <div className="ForHeading">
-        <h1>NonWorkingTypes</h1>
+        <h1>Non-Working Types</h1>
       </div>
       <div className="AddingAndSearching">
         <div className="Adding">
@@ -113,7 +113,7 @@ function NonWorkingType() {
             <tbody>
               {nonWorkingTypes
                 ?.filter((val) => {
-                  if (searchNonWorkingType == " ") {
+                  if (searchNonWorkingType === " ") {
                     return val;
                   } else if (
                     val.name

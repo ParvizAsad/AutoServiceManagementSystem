@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using AutoServiceManagment.DomainModels.DTOs;
 using AutoServiceManagment.DomainModels.Entities;
+using AutoServiceManagment.Infrastructure.Helpers;
 using AutoServiceManagment.Repository.DataContext;
 using AutoServiceManagment.Repository.Repository;
 using AutoServiceManagment.Repository.Repository.Contracts;
@@ -64,7 +65,7 @@ namespace AutoServiceManagment.Services.Services
             if (category == null) { throw new Exception("Category not found!"); }
 
             var categorys = await DbContext.Categories.FirstOrDefaultAsync(x => x.Name == categoryDto.Name);
-            if (categorys != null) { throw new Exception("There is a Category with this name!"); }
+            await NullCheck<Category>.Checking(category);
 
 
             category.Name = categoryDto.Name;

@@ -129,8 +129,8 @@ function NonWorkingDetail() {
                     .map((employee) => (
                       <td>{employee.fullName}</td>
                     ))}
-                  <td>{moment(item.startTime).format("MM-DD-yyyy")}</td>
-                  <td>{moment(item.endTime).format("MM-DD-yyyy")}</td>
+                  <td>{moment(item.startTime).format("YYYY-MM-DD")}</td>
+                  <td>{moment(item.endTime).format("YYYY-MM-DD")}</td>
                   {nonWorkingTypes
                     ?.filter(
                       (nonWorkingType) =>

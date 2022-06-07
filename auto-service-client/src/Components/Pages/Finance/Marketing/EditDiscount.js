@@ -1,8 +1,8 @@
-import { FormGroup, Form, Label, Input, Button, FormText } from "reactstrap";
+import { FormGroup, Form, Label, Input, Button } from "reactstrap";
 import React, { useCallback, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { discountService } from "../../../../Api/services/Discount";
-import CurrencyInput from "react-currency-input-field";
+import moment from "moment";
 
 const newDiscount = {
   name: " ",
@@ -46,22 +46,22 @@ function EditDiscount(props) {
       <div className="CreatePage">
         <Form className="forForm" onSubmit={editDiscount}>
           <FormGroup>
-            <Label className="forLabel" for="Name">Name</Label>
+            <Label className="forLabel" for="name">Name</Label>
             <Input
-              id="Name"
-              name="Name"
-              placeholder="Name"
+              id="name"
+              name="name"
+              placeholder="name"
               onChange={(e) => handle(e)}
               value={discount.name}
               type="text"
             />
           </FormGroup>
           <FormGroup>
-            <Label className="forLabel" for="Percentage">Percentage</Label>
+            <Label className="forLabel" for="percentage">Percentage</Label>
             <Input
-              id="Percentage"
-              name="Percentage"
-              placeholder="Percentage"
+              id="percentage"
+              name="percentage"
+              placeholder="percentage"
               onChange={(e) => handle(e)}
               value={discount.percentage}
               type="number"
@@ -74,8 +74,8 @@ function EditDiscount(props) {
               name="ExpireDate"
               placeholder="ExpireDate"
               onChange={(e) => handle(e)}
-              value={discount.expireDate}
-              type="Date"
+              value={moment(discount.expireDate).format("yyyy-MM-DD")}
+              type="date"
             />
           </FormGroup>
           <Button className="forSubmit" type="submit">Submit</Button>

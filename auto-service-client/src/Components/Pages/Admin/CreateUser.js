@@ -3,9 +3,8 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import { useCallback } from "react";
-import { Link } from "react-router-dom";
 import { employeeService } from "../../../Api/services/Employee";
-import { FormGroup, Form, Label, Input, Button, FormText } from "reactstrap";
+import { FormGroup, Form, Label, Input, Button } from "reactstrap";
 import { userService } from "../../../Api/services/Users";
 import defaultImageSrc from "../../../Assets/Images/HR/defaultImage.png";
 
@@ -80,9 +79,9 @@ function CreateUser(props) {
         <h1>Create a new User</h1>
       </div>
       <div className="CreatePage">
-        <Form onSubmit={createUser}>
+        <Form className="sss" onSubmit={createUser}>
           <FormGroup>
-            <Label for="Username">Username</Label>
+            <Label className="forLabel" for="Username">Username</Label>
             <Input
               id="Username"
               name="Username"
@@ -92,7 +91,7 @@ function CreateUser(props) {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="Fullname">Fullname</Label>
+            <Label className="forLabel" for="Fullname">Fullname</Label>
             <Input
               id="Fullname"
               name="Fullname"
@@ -102,7 +101,7 @@ function CreateUser(props) {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="Password">Password</Label>
+            <Label className="forLabel" for="Password">Password</Label>
             <Input
               id="Password"
               name="Password"
@@ -112,7 +111,7 @@ function CreateUser(props) {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="ConfirmPassword">Confirm Password</Label>
+            <Label className="forLabel" for="ConfirmPassword">Confirm Password</Label>
             <Input
               id="ConfirmPassword"
               name="ConfirmPassword"
@@ -122,7 +121,7 @@ function CreateUser(props) {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="imageName">Image</Label>
+            <Label className="forLabel" for="imageName">Image</Label>
             <img src={user.imageSrc} className=" profilePicture" />
             <Input
               type="file"
@@ -132,7 +131,7 @@ function CreateUser(props) {
               onChange={showPreview}
             />
           </FormGroup>
-          <Button type="submit">Submit</Button>
+          <Button className="forSubmit" type="submit">Submit</Button>
         </Form>
       </div>
     </>

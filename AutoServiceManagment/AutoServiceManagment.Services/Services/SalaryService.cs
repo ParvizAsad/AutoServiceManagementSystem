@@ -36,10 +36,10 @@ namespace AutoServiceManagment.Services.Services
             {
             var employee = await DbContext.Employees.Where(x => x.Id==salary.EmployeeID).FirstOrDefaultAsync();
             var nonWorkingDetail = await DbContext.NonWorkingDetails.Where(x => x.EmployeeId==salary.EmployeeID && x.StartTime.Month== salary.Date.Month).FirstOrDefaultAsync();
-            var days = nonWorkingDetail.StartTime.Day - nonWorkingDetail.EndTime.Day;
+            var days = nonWorkingDetail.EndTime.Day - nonWorkingDetail.StartTime.Day;
             var tax = await DbContext.Taxes.Where(x => x.Id==salary.TaxID).FirstOrDefaultAsync();
 
-                salary.NetSalary = (employee.BaseSalary + salary.Bonus) * (100 - (tax.TaxValue))*30/days;
+                salary.NetSalary = (employee.BaseSalary + salary.Bonus) * (100 - (tax.TaxValue))*(30-days)/(100*30);
             }
 
             return _mapper.Map<List<SalaryDto>>(salaries);

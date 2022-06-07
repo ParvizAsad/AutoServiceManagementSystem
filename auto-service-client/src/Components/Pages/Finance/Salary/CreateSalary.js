@@ -7,7 +7,8 @@ import { taxService } from "../../../../Api/services/Taxes";
 
 const newSalary = {
   date: " ",
-  donus: " ",
+  bonus: " ",
+  overTime: " ",
   netSalary: " ",
   taxId: " ",
   employeeId: " ",
@@ -124,6 +125,21 @@ function CreateSalary() {
               id="bonus"
               name="bonus"
               placeholder="bonus"
+              onChange={getElementValues}
+              type="number"
+              min="0"
+              onPaste={preventPasteNegative}
+              onKeyPress={preventMinus}
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label className="forLabel" for="overTime">
+              Overtime (hours)
+            </Label>
+            <Input
+              id="overTime"
+              name="overTime"
+              placeholder="overTime"
               onChange={getElementValues}
               type="number"
               min="0"

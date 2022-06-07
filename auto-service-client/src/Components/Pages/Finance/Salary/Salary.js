@@ -130,6 +130,7 @@ function Salary() {
               <th> Employee</th>
               <th> Date </th>
               <th> Bonus </th>
+              <th> Overtime </th>
               <th> NetSalary </th>
               <th> Actions </th>
             </tr>
@@ -145,6 +146,7 @@ function Salary() {
                   ))}
                 <td>{moment(item.date).format("MM-DD-yyyy")}</td>
                 <td>{item.bonus}</td>
+                <td>{item.overtime}</td>
                 <td>{item.netSalary}</td>
                 <td>{item.salaryValue}</td>
                 <td className="Actions">

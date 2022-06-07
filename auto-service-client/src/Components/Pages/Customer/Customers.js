@@ -27,8 +27,8 @@ function Customer(props) {
     props.history.push("/EditCustomer/" + id);
   }
 
-  function CustumerService(id) {
-    props.history.push("/CustumerService/" + id);
+  function AddServiceCustomer(id) {
+    props.history.push("/AddServiceCustomer/" + id);
   }
 
   function AddProductCustomer(id) {
@@ -103,7 +103,7 @@ function Customer(props) {
         <input
           type="text"
           placeholder="Search.."
-          id="BrandSearch"
+          id="CustomerSearch"
           onChange={(event) => {
             setSearchCustomer(event.target.value);
           }}
@@ -122,7 +122,7 @@ function Customer(props) {
           <tbody>
             {customers
               ?.filter((val) => {
-                if (searchCustomer == " ") {
+                if (searchCustomer === " ") {
                   return val;
                 } else if (
                   val.fullName
@@ -152,16 +152,22 @@ function Customer(props) {
                     </Button>
 
                     <Button
-                      onClick={() => CustumerService(item.id)}
-                      className="Service"
-                    >
-                      Service
-                    </Button>
-                    <Button
                       onClick={() => CustomerDetail(item.id)}
                       className="Detail"
                     >
                       Detail
+                    </Button>
+                    <Button
+                      onClick={() => AddServiceCustomer(item.id)}
+                      className="addService"
+                    >
+                      Add Service
+                    </Button>
+                    <Button
+                      onClick={() => AddProductCustomer(item.id)}
+                      className="addProduct"
+                    >
+                      Add Product
                     </Button>
                   </td>
                 </tr>

@@ -18,7 +18,7 @@ namespace AutoServiceManagment.DomainModels.Entities
         public DateTime Date { get; set; }= DateTime.Now;
         public double Bonus { get; set; }
         public double OverTime { get; set; }
-        public double NetSalary { get; set; }
+        public double NetSalary { get; set; } = 0;
         [ForeignKey(nameof(Tax))]
         public int TaxID { get; set; }
         public Tax Tax { get; set; }

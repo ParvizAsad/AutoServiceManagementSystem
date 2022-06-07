@@ -11,12 +11,12 @@ namespace AutoServiceManagment.DomainModels.DTOs
         [Required(ErrorMessage = "StartTIme is required!")]
 
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{mm/dd/yyyy}")]
+        //[DisplayFormat(DataFormatString = "{mm/dd/yyyy}")]
         public DateTime StartTime { get; set; }
 
         [Required(ErrorMessage = "EndTime is required!")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{mm/dd/yyyy}")]
+        //[DisplayFormat(DataFormatString = "{mm/dd/yyyy}")]
         public DateTime EndTime { get; set; }
         public int EmployeeId { get; set; }
         public int NonWorkingTypeId { get; set; }

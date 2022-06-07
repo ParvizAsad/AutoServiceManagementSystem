@@ -42,9 +42,9 @@ function CreateRole() {
         <h1>Create a new Role</h1>
       </div>
       <div className="CreatePage">
-        <Form onSubmit={createRole}>
+        <Form className="sss" onSubmit={createRole}>
           <FormGroup>
-            <Label for="Name">Name</Label>
+            <Label className="forLabel" for="Name">Name</Label>
             <Input
               id="Name"
               name="Name"
@@ -53,7 +53,7 @@ function CreateRole() {
               type="text"
             />
           </FormGroup>
-          <Button type="submit">Submit</Button>
+          <Button className="forSubmit" type="submit">Submit</Button>
         </Form>
       </div>
     </>

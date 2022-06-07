@@ -4,10 +4,11 @@ import { useHistory } from "react-router-dom";
 import { nonWorkingDetailService } from "../../../../Api/services/NonWorkingDetails";
 import { nonWorkingTypeService } from "../../../../Api/services/NonWorkingTypes";
 import { employeeService } from "../../../../Api/services/Employee";
+import moment from "moment";
 
 const newNonWorkingDetail = {
-  StartTime: " ",
-  EndTime: " ",
+  StartTime: "",
+  EndTime: "",
   EmployeeId: " ",
   NonWorkingTypeId: " ",
 };
@@ -79,7 +80,7 @@ function EditNonWorkingDetail(props) {
               name="StartTime"
               placeholder="StartTime"
               onChange={(e) => handle(e)}
-              value={nonWorkingDetail.StartTime}
+              value={moment(nonWorkingDetail.StartTime).format("YYYY-MM-DD")}
               type="date"
             />
           </FormGroup>
@@ -90,7 +91,7 @@ function EditNonWorkingDetail(props) {
               name="EndTime"
               placeholder="EndTime"
               onChange={(e) => handle(e)}
-              value={nonWorkingDetail.EndTime}
+              value={moment(nonWorkingDetail.EndTime).format("YYYY-MM-DD")}
               type="date"
             />
           </FormGroup>
@@ -102,8 +103,7 @@ function EditNonWorkingDetail(props) {
               name="NonWorkingTypeId"
               id="NonWorkingTypeId"
             >
-              <option value="0">--Select nonWorkingType--</option>
-              {nonWorkingType?.map((item, idx) => (
+              {nonWorkingType?.map((item) => (
                 <option key={item.id} value={item.id}>
                   {item.name}
                 </option>
@@ -118,8 +118,7 @@ function EditNonWorkingDetail(props) {
               name="EmployeeId"
               id="EmployeeId"
             >
-              <option value="0">--Select employee--</option>
-              {employee?.map((item, idx) => (
+              {employee?.map((item) => (
                 <option key={item.id} value={item.id}>
                   {item.fullName}
                 </option>

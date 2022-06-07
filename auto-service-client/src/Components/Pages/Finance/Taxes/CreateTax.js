@@ -80,7 +80,7 @@ function CreateTax() {
           </FormGroup>
           {error}
           <FormGroup>
-            <Label className="forLabel" for="taxValue">Tax Value</Label>
+            <Label className="forLabel" for="taxValue">Tax Value %</Label>
             <Input
               id="taxValue"
               name="taxValue"

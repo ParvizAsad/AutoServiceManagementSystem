@@ -19,6 +19,7 @@ namespace AutoServiceManagment.DomainModels.DTOs
         public double SalePrice { get; set; }
        
         public double Count { get; set; }
+        public string Detail { get; set; }
         
         [Required(ErrorMessage = "Category is required!")]
         [ForeignKey(nameof(Category))]
@@ -27,6 +28,5 @@ namespace AutoServiceManagment.DomainModels.DTOs
         [Required(ErrorMessage = "Brand is required!")]
         [ForeignKey(nameof(Brand))]
         public int BrandId { get; set; }
-        public string Detail { get; set; }
     }
 }

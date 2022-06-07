@@ -53,7 +53,7 @@ namespace AutoServiceManagment.Services.Services
         {
             var nonWorkingType = await DbContext.NonWorkingTypes.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted != true);
 
-            if (nonWorkingType == null) { throw new Exception("NonWorkingType not found!"); }
+            if (nonWorkingType == null) { throw new Exception("Non-Working Type not found!"); }
 
             nonWorkingType.IsDeleted = true;
 
@@ -64,7 +64,7 @@ namespace AutoServiceManagment.Services.Services
         {
             var nonWorkingType = await DbContext.NonWorkingTypes.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted != true);
 
-            if (nonWorkingType == null) { throw new Exception("NonWorkingType not found!"); }
+            if (nonWorkingType == null) { throw new Exception("Non-Working Type not found!"); }
 
 
             nonWorkingType.Name = nonWorkingTypeDto.Name;

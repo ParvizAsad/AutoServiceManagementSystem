@@ -1,7 +1,6 @@
 ﻿using AutoServiceManagment.Base;
 using System;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AutoServiceManagment.DomainModels.Entities
 {
@@ -11,12 +10,12 @@ namespace AutoServiceManagment.DomainModels.Entities
 
         [Required(ErrorMessage = "StartTIme is required!")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{mm/dd/yyyy}")]
+        //[DisplayFormat(DataFormatString = "{mm/dd/yyyy}")]
         public DateTime StartTime { get; set; }=DateTime.Now;
 
         [Required(ErrorMessage = "EndTime is required!")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{mm/dd/yyyy}")]
+        //[DisplayFormat(DataFormatString = "{mm/dd/yyyy}")]
         public DateTime EndTime { get; set; }= DateTime.Now;
         public int EmployeeId { get; set; }
         public Employee Employee { get; set; }

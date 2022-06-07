@@ -28,7 +28,6 @@ function CreateDiscount() {
       discountService
         .postDiscount(Discount)
         .then(() => {
-          getAllDiscount();
           history.push("/marketing");
         })
         .catch((e) => {
@@ -39,7 +38,7 @@ function CreateDiscount() {
           }
         });
     },
-    [Discount, history, getAllDiscount]
+    [Discount, history]
   );
 
   const getElementValues = (e) => {

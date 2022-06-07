@@ -15,6 +15,7 @@ namespace AutoServiceManagment.DomainModels.Entities
         [Required(ErrorMessage = "Sale price is required!")]
         public double SalePrice { get; set; }
         public double Count { get; set; }
+        public string Detail { get; set; }
         [Required]
         [ForeignKey(nameof(Category))]
         public int CategoryID { get; set; }
@@ -27,6 +28,5 @@ namespace AutoServiceManagment.DomainModels.Entities
         public ICollection<CashBox> CashBoxes { get; set; }
         public ICollection<OtherCustomerPayment> OtherCustomerPayments { get; set; }
         public bool IsDeleted { get; set; } = false;
-        public string Detail { get; set; }
     }
 }

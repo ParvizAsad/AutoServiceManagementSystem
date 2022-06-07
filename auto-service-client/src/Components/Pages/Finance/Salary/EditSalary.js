@@ -8,6 +8,7 @@ import { taxService } from "../../../../Api/services/Taxes";
 const newSalary = {
   date: " ",
   bonus: " ",
+  overTime: " ",
   netSalary: " ",
   taxId: " ",
   employeeId: " ",
@@ -27,6 +28,7 @@ function EditSalary(props) {
     });
   }, []);
 
+  console.log(Salary);
   const editSalary = useCallback(
     (e) => {
       e.preventDefault();
@@ -80,7 +82,6 @@ function EditSalary(props) {
               name="employeeId"
               id="employeeId"
             >
-              <option value="0">--Select Employee--</option>
               {employee?.map((item, idx) => (
                 <option key={idx} value={item.id}>
                   {item.fullName}
@@ -110,6 +111,16 @@ function EditSalary(props) {
             />
           </FormGroup>
           <FormGroup>
+            <Label className="forLabel" for="overTime">Overtime (hours)</Label>
+            <Input
+              id="overTime"
+              name="overTime"
+              placeholder="overTime"
+              onChange={(e) => handle(e)}
+              value={Salary.overtime}
+            />
+          </FormGroup>
+          <FormGroup>
             <Label className="forLabel" for="TaxId">Select Tax</Label>
             <select
               className="TaxId"
@@ -117,7 +128,6 @@ function EditSalary(props) {
               name="TaxId"
               id="TaxId"
             >
-              <option value="0">--Select Tax--</option>
               {taxes?.map((item, idx) => (
                 <option key={idx} value={item.id}>
                   {item.name}

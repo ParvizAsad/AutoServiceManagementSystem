@@ -1,7 +1,7 @@
 import { Table, Button } from "reactstrap";
 import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 import { cashBoxService } from "../../../../Api/services/CashBox";
 import { customerService } from "../../../../Api/services/Customers";
 import { serviceService } from "../../../../Api/services/Services";
@@ -81,7 +81,7 @@ function CashBox() {
             "success"
           );
           cashBoxService.deleteCashBox(id);
-       
+
           history.push("/CashBox");
         } else if (
           /* Read more about handling dismissals below */
@@ -133,31 +133,49 @@ function CashBox() {
             </tr>
           </thead>
           <tbody>
-          {regularCustomer?.map((item)=>(
+            {regularCustomer?.map((item) => (
+              <tr key={item.id}>
+                <td>{item.id}</td>
+                {customers
+                  ?.filter((x) => x.id === item.customerID)
+                  .map((customers) => (
+                    <td>{customers.fullName}</td>
+                  ))}
+                <td> {moment(item.createdAt).format("MM-DD-yyyy hh:mm")}</td>
+                <td>{item.payment}</td>
+                <td className="Actions">
+                  <Button onClick={() => editCashBox(item.id)} className="Edit">
+                    Edit
+                  </Button>
+                  <Button
+                    onClick={() => deleteButton(item.id)}
+                    className="Delete"
+                  >
+                    Delete
+                  </Button>
+                </td>
+              </tr>
+            ))}
 
-<tr key={item.id}>
-<td>{item.id}</td>
-{customers?.filter((x)=> x.id==item.customerID).map((customers)=>
-  <td>{customers.fullName}</td>
-  )}
- <td> {moment(item.createdAt).format("MM-DD-yyyy hh:mm")}
- </td>
- <td>{item.payment}</td>
-</tr>
-          ))}
-          
-          {otherCustomer?.map((item)=>(
-
-            <tr key={item.id}>
-            <td>{item.id}</td>
-              <td>{item.customerName}</td>
-             <td> {moment(item.createdAt).format("MM-DD-yyyy hh:mm")}
-             </td>
-             <td>{item.payment}</td>
-            </tr>
-                      ))}
-
-          
+            {otherCustomer?.map((item) => (
+              <tr key={item.id}>
+                <td>{item.id}</td>
+                <td>{item.customerName}</td>
+                <td> {moment(item.createdAt).format("MM-DD-yyyy hh:mm")}</td>
+                <td>{item.payment}</td>
+                <td className="Actions">
+                  <Button onClick={() => editCashBox(item.id)} className="Edit">
+                    Edit
+                  </Button>
+                  <Button
+                    onClick={() => deleteButton(item.id)}
+                    className="Delete"
+                  >
+                    Delete
+                  </Button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </Table>
       </div>

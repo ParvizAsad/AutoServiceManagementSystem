@@ -1,11 +1,11 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { FormGroup, Form, Label, Input, Button, FormText } from "reactstrap";
+import { FormGroup, Form, Label, Input, Button } from "reactstrap";
 import "./CreateEmployee.scss";
 import { employeeService } from "../../../../Api/services/Employee";
 import { positionService } from "../../../../Api/services/Positions";
 import { useParams } from "react-router-dom";
-import axios, { Axios } from "axios";
+import axios from "axios";
 import moment from "moment";
 import defaultImageSrc from "../../../../Assets/Images/HR/defaultImage.png";
 

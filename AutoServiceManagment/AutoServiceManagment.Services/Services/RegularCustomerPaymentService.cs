@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using AutoServiceManagment.DomainModels.DTOs;
 using AutoServiceManagment.DomainModels.Entities;
-using AutoServiceManagment.Infrastructure.Helpers;
 using AutoServiceManagment.Repository.DataContext;
 using AutoServiceManagment.Repository.Repository;
 using AutoServiceManagment.Repository.Repository.Contracts;
@@ -55,7 +54,7 @@ namespace AutoServiceManagment.Services.Services
         {
             var regularCustomerPayment = await DbContext.RegularCustomerPayments.FirstOrDefaultAsync(x => x.Id == Id && x.IsDeleted != true);
 
-            if (regularCustomerPayment == null) { throw new Exception("RegularCustomerPayments not found!"); }
+            if (regularCustomerPayment == null) { throw new Exception("Regular Customer Payment not found!"); }
 
             regularCustomerPayment.IsDeleted = true;
 
@@ -66,7 +65,7 @@ namespace AutoServiceManagment.Services.Services
         {
             var regularCustomerPayment = await DbContext.RegularCustomerPayments.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted != true);
 
-            if (regularCustomerPayment == null) { throw new Exception("RegularCustomerPayments not found!"); }
+            if (regularCustomerPayment == null) { throw new Exception("Regular Customer Payment not found!"); }
 
             regularCustomerPayment.CustomerID = regularCustomerPaymentDto.CustomerID;
             regularCustomerPayment.Payment = regularCustomerPaymentDto.Payment;

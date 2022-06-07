@@ -5,7 +5,6 @@ using AutoServiceManagment.Infrastructure.Helpers;
 using AutoServiceManagment.Repository.DataContext;
 using AutoServiceManagment.Repository.Repository;
 using AutoServiceManagment.Repository.Repository.Contracts;
-using AutoServiceManagment.Services.Services.Contracts;
 using AutoTaxManagment.Service.Services.Contracts;
 using Microsoft.EntityFrameworkCore;
 using System;

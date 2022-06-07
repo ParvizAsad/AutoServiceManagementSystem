@@ -373,6 +373,7 @@ namespace AutoServiceManagment.Repository.Migrations
                     CategoryID = table.Column<int>(type: "int", nullable: false),
                     BrandID = table.Column<int>(type: "int", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    Detail = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -391,6 +392,31 @@ namespace AutoServiceManagment.Repository.Migrations
                         name: "FK_Products_Categories_CategoryID",
                         column: x => x.CategoryID,
                         principalTable: "Categories",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RegularCustomerPayments",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CustomerID = table.Column<int>(type: "int", nullable: false),
+                    Payment = table.Column<double>(type: "float", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RegularCustomerPayments", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_RegularCustomerPayments_Customers_CustomerID",
+                        column: x => x.CustomerID,
+                        principalTable: "Customers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -461,11 +487,11 @@ namespace AutoServiceManagment.Repository.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    CustomerName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ProductID = table.Column<int>(type: "int", nullable: false),
                     CustomerID = table.Column<int>(type: "int", nullable: false),
                     ServiceID = table.Column<int>(type: "int", nullable: false),
                     Payment = table.Column<double>(type: "float", nullable: false),
-                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -521,6 +547,33 @@ namespace AutoServiceManagment.Repository.Migrations
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_CustomerProducts_Products_ProductID",
+                        column: x => x.ProductID,
+                        principalTable: "Products",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "OtherCustomerPayments",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CustomerName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ProductID = table.Column<int>(type: "int", nullable: false),
+                    ProductCount = table.Column<int>(type: "int", nullable: false),
+                    Payment = table.Column<double>(type: "float", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OtherCustomerPayments", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_OtherCustomerPayments_Products_ProductID",
                         column: x => x.ProductID,
                         principalTable: "Products",
                         principalColumn: "Id",
@@ -685,6 +738,11 @@ namespace AutoServiceManagment.Repository.Migrations
                 column: "NonWorkingTypeId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_OtherCustomerPayments_ProductID",
+                table: "OtherCustomerPayments",
+                column: "ProductID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Products_BrandID",
                 table: "Products",
                 column: "BrandID");
@@ -693,6 +751,11 @@ namespace AutoServiceManagment.Repository.Migrations
                 name: "IX_Products_CategoryID",
                 table: "Products",
                 column: "CategoryID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_RegularCustomerPayments_CustomerID",
+                table: "RegularCustomerPayments",
+                column: "CustomerID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Salaries_EmployeeID",
@@ -744,6 +807,12 @@ namespace AutoServiceManagment.Repository.Migrations
                 name: "NonWorkingDetails");
 
             migrationBuilder.DropTable(
+                name: "OtherCustomerPayments");
+
+            migrationBuilder.DropTable(
+                name: "RegularCustomerPayments");
+
+            migrationBuilder.DropTable(
                 name: "Salaries");
 
             migrationBuilder.DropTable(
@@ -759,13 +828,13 @@ namespace AutoServiceManagment.Repository.Migrations
                 name: "Services");
 
             migrationBuilder.DropTable(
-                name: "Customers");
+                name: "NonWorkingTypes");
 
             migrationBuilder.DropTable(
                 name: "Products");
 
             migrationBuilder.DropTable(
-                name: "NonWorkingTypes");
+                name: "Customers");
 
             migrationBuilder.DropTable(
                 name: "Employees");

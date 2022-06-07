@@ -68,6 +68,7 @@ namespace AutoServiceManagment.Services.Services
             if (product == null) { throw new Exception("Product not found!"); }
 
             product.Name=productDto.Name;   
+            product.Detail=productDto.Detail;   
             product.Count=productDto.Count;   
             product.BasePrice=productDto.BasePrice;   
             product.SalePrice=productDto.SalePrice;   

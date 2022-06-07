@@ -1,7 +1,5 @@
 import React from "react";
-import { Table, Button, Card, ListGroup } from "reactstrap";
-import { useHistory, Link } from "react-router-dom";
-import Swal from "sweetalert2";
+import { Table, Button, } from "reactstrap";
 import { useState } from "react";
 import { addServiceCustomerService } from "../../../Api/services/AddServiceCustomer";
 import { serviceService } from "../../../Api/services/Services";
@@ -10,7 +8,7 @@ import { productService } from "../../../Api/services/Products";
 import { addProductCustomerService } from "../../../Api/services/AddProductCustomer";
 import moment from "moment";
 
-function CustumerService(props) {
+function CustomerService(props) {
   const [customer, setCustomer] = useState();
   const [service, setService] = useState();
   const [product, setProduct] = useState();
@@ -26,8 +24,8 @@ function CustumerService(props) {
 
   React.useEffect(() => {
     customerService.getAllCustomers().then(({ data }) => {
-      setCustomer(data?.filter((x) => x.id == props.match.params.id));
-      console.log(data?.filter((x) => x.id == props.match.params.id));
+      setCustomer(data?.filter((x) => x.id === props.match.params.id));
+      console.log(data?.filter((x) => x.id === props.match.params.id));
     });
   }, []);
 
@@ -46,7 +44,7 @@ function CustumerService(props) {
   React.useEffect(() => {
     addServiceCustomerService.getAllAddServiceCustomeres().then(({ data }) => {
       setCustomersService(
-        data.filter((service) => service.customerID == props.match.params.id)
+        data.filter((service) => service.customerID === props.match.params.id)
       );
     });
   }, []);
@@ -54,7 +52,7 @@ function CustumerService(props) {
   React.useEffect(() => {
     addProductCustomerService.getAllAddProductCustomeres().then(({ data }) => {
       setCustomersProduct(
-        data.filter((product) => product.customerID == props.match.params.id)
+        data.filter((product) => product.customerID === props.match.params.id)
       );
     });
   }, []);
@@ -140,4 +138,4 @@ function CustumerService(props) {
   );
 }
 
-export default CustumerService;
+export default CustomerService;

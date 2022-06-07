@@ -5,26 +5,21 @@ import {
   Label,
   Input,
   Button,
-  InputGroupText,
-  InputGroup,
 } from "reactstrap";
 import { accountService } from "../../../Api/services/Account";
 import "./Login.scss";
 import { Link } from "react-router-dom";
 
-
 function Login() {
   const [state, setState] = useState(false);
-  
+
   const Credentials = {
     userName: " ",
     password: " ",
     rememberMe: state,
   };
-  
+
   const [credentials, setCredentials] = useState(Credentials);
-
-
 
   const Login = useCallback(
     (e) => {
@@ -34,7 +29,7 @@ function Login() {
     [credentials]
   );
 
-  function rememberMe(){
+  function rememberMe() {
     setState(!state);
   }
   const getElementValues = (e) => {
@@ -73,22 +68,25 @@ function Login() {
               type="password"
             />
           </FormGroup>
-          <InputGroup>
-            <InputGroupText>
-              <Input
-                addon
-                aria-label="Checkbox for following text input"
-                type="checkbox"
-                id="rememberMe"
-                name="rememberMe"
-                onChange={rememberMe}
-              />
-            </InputGroupText>
-            <Input placeholder="Remember me" />
+          <FormGroup>
+            <Label className="remeberMeLabel" for="rememberMe">
+              Remember Me
+            </Label>
+            <Input
+              addon
+              aria-label="Checkbox for following text input"
+              type="checkbox"
+              disabled="true"
+              id="rememberMe"
+              name="rememberMe"
+              onChange={rememberMe}
+            />
             <Link className="forForgetPassword">Forget Password?</Link>
-          </InputGroup>
+          </FormGroup>
           <br />
-          <Button className="forButton" type="submit">Login</Button>
+          <Button className="forButton" type="submit">
+            Login
+          </Button>
         </Form>
       </div>
     </>

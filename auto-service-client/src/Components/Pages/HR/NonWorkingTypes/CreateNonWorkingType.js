@@ -41,7 +41,7 @@ function CreateNonWorkingType() {
   return (
     <>
       <div className="ForHeading">
-        <h1>Create a new NonWorkingType</h1>
+        <h1>Create a new Non-Working Type</h1>
       </div>
       <div className="CreatePage">
         <Form className="sss" onSubmit={createNonWorkingType}>

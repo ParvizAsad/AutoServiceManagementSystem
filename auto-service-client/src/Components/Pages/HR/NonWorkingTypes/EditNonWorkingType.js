@@ -42,7 +42,7 @@ function EditNonWorkingType(props) {
   return (
     <>
       <div className="ForHeading">
-        <h1>Edit {NonWorkingType.name} nonWorkingType</h1>
+        <h1>Edit {NonWorkingType.name} non-Working Type</h1>
       </div>
       <div className="CreatePage">
         <Form className="sss" onSubmit={editNonWorkingType}>
