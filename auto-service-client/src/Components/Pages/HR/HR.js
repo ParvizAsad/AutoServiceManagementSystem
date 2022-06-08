@@ -8,7 +8,7 @@ import { MdOutlineNaturePeople } from "react-icons/md";
 import { FaBed } from "react-icons/fa";
 import { MdOutlineLocalHospital } from "react-icons/md";
 
-function HR(props) {
+function HR() {
   return (
     <>
       <div className="ForHeading">

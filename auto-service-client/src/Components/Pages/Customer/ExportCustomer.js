@@ -1,6 +1,5 @@
 import React from "react";
 import { Table } from "reactstrap";
-// import ".././HR.scss";
 import { useState } from "react";
 import { useCallback } from "react";
 import "jquery/dist/jquery.min.js";
@@ -12,7 +11,6 @@ import "datatables.net-buttons/js/buttons.colVis.js";
 import "datatables.net-buttons/js/buttons.flash.js";
 import "datatables.net-buttons/js/buttons.html5.js";
 import "datatables.net-buttons/js/buttons.print.js";
-// import "datatables.net-buttons/js/buttons.excel.js";
 import "datatables.net-dt/css/jquery.dataTables.min.css";
 import $ from "jquery";
 import { customerService } from "../../../Api/services/Customers";

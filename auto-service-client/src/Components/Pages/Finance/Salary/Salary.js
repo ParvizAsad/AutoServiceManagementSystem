@@ -11,7 +11,6 @@ function Salary() {
 
   const [SalaryData, setSalaryData] = useState();
   const [employee, setEmployee] = useState();
-  const [employeeId, setEmployeeId] = useState();
   const [visible, setVisible] = useState(2);
   const [loading, setLoading] = useState(true);
 

@@ -1,6 +1,5 @@
 import React from "react";
 import { Table, Button, Spinner } from "reactstrap";
-// import "./Employee.scss";
 import Swal from "sweetalert2";
 import { useState, useRef } from "react";
 import { useReactToPrint } from "react-to-print";
@@ -103,7 +102,7 @@ function Employee(props) {
         <h1>Employees</h1>
       </div>
       <div className="AddingAndSearching">
-        <button onClick={handlePrint} className="print__button">
+        <button onClick={handlePrint} className="forPrint">
           {" "}
           Print{" "}
         </button>
@@ -123,82 +122,85 @@ function Employee(props) {
       </div>
 
       {loading ? (
-          //  <tr className="d-flex justify-content-center"><Spinner color="primary"/></tr>
-          <div className="d-flex justify-content-center">
-            <Spinner color="primary" />
-          </div>
-        ) : ( <div>
-
-      <div ref={componentRef}>
-        <Table className="TableForItems" id="example">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>FullName</th>
-              <th>Position</th>
-              <th>Status</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {employees
-              ?.filter((val) => {
-                if (searchEmployee === " ") {
-                  return val;
-                } else if (
-                  val.fullName
-                    .toLowerCase()
-                    .includes(searchEmployee.toLowerCase())
-                ) {
-                  return val;
-                }
-              })
-              .slice(0, visible)
-              .map((item, idx) => (
-                <tr key={idx}>
-                  <th scope="row">{item.id}</th>
-                  <td>{item.fullName}</td>
-{position?.filter((position)=>position.id==item.positionId).map((position)=>
-                  <td>{position.name}</td>
-)}
-                  <td>{item.status}</td>
-                  <td className="Actions">
-                    <Button
-                      onClick={() => EditEmployee(item.id)}
-                      className="Edit"
-                    >
-                      Edit
-                    </Button>
-                    <Button
-                      onClick={() => deleteButton(item.id)}
-                      className="Delete"
-                    >
-                      Delete
-                    </Button>
-                    <Button
-                      onClick={() => EmployeeDetail(item.id)}
-                      className="Detail"
-                    >
-                      Detail
-                    </Button>
-                  </td>
+        //  <tr className="d-flex justify-content-center"><Spinner color="primary"/></tr>
+        <div className="d-flex justify-content-center">
+          <Spinner color="primary" />
+        </div>
+      ) : (
+        <div>
+          <div ref={componentRef}>
+            <Table className="TableForItems" id="example">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>FullName</th>
+                  <th>Position</th>
+                  <th>Status</th>
+                  <th>Actions</th>
                 </tr>
-              ))}
-          </tbody>
-        </Table>
-      </div>
-      <div className="loadMore d-flex justify-content-center">
-        {maxCount > visible ? (
-          <span>
-            <Link className="linkForLaodMore" onClick={showMoreItems}>
-              Load more...
-            </Link>
-          </span>
-        ) : (
-          <span></span>
-        )}
-      </div>
-      </div>)}
+              </thead>
+              <tbody>
+                {employees
+                  ?.filter((val) => {
+                    if (searchEmployee === " ") {
+                      return val;
+                    } else if (
+                      val.fullName
+                        .toLowerCase()
+                        .includes(searchEmployee.toLowerCase())
+                    ) {
+                      return val;
+                    }
+                  })
+                  .slice(0, visible)
+                  .map((item, idx) => (
+                    <tr key={idx}>
+                      <th scope="row">{item.id}</th>
+                      <td>{item.fullName}</td>
+                      {position
+                        ?.filter((position) => position.id === item.positionId)
+                        .map((position) => (
+                          <td>{position.name}</td>
+                        ))}
+                      <td>{item.status}</td>
+                      <td className="Actions">
+                        <Button
+                          onClick={() => EditEmployee(item.id)}
+                          className="Edit"
+                        >
+                          Edit
+                        </Button>
+                        <Button
+                          onClick={() => deleteButton(item.id)}
+                          className="Delete"
+                        >
+                          Delete
+                        </Button>
+                        <Button
+                          onClick={() => EmployeeDetail(item.id)}
+                          className="Detail"
+                        >
+                          Detail
+                        </Button>
+                      </td>
+                    </tr>
+                  ))}
+              </tbody>
+            </Table>
+          </div>
+          <div className="loadMore d-flex justify-content-center">
+            {maxCount > visible ? (
+              <span>
+                <Link className="linkForLaodMore" onClick={showMoreItems}>
+                  Load more...
+                </Link>
+              </span>
+            ) : (
+              <span></span>
+            )}
+          </div>
+        </div>
+      )}
     </>
   );
 }

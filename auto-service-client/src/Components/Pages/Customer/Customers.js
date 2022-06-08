@@ -1,6 +1,5 @@
 import React from "react";
 import { Table, Button } from "reactstrap";
-// import "./Customer.scss";
 import { useHistory, Link } from "react-router-dom";
 import { customerService } from "../../../Api/services/Customers";
 import Swal from "sweetalert2";

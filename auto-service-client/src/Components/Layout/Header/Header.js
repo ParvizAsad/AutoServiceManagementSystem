@@ -21,11 +21,11 @@ function Header() {
     <div className="forHeading">
       <Navbar id="NavbarId">
 
-      <Link className="forHome" to="/">
-        <div>
+        <div  className="forHome">
+      <Link className="linkForHome" to="/">
         <AiOutlineHome/>
-        </div>
       </Link>
+        </div>
         <h1>Car-Tool-Network Auto Service</h1>
         <div className="Profile">
           <div>

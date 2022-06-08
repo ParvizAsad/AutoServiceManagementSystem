@@ -1,13 +1,22 @@
 .DetailPage {
   width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 70px;
+  .profilePicture {
+    width: 100px;
+    height: 100px;
+  }  
   .forCard {
     width: 360px;
     min-height: 400px;
     max-height: 600px;
     margin-bottom: 40px;
     border-color: aliceblue;
-    border-width: 3px;
-    background-color: white;
+    border-width: 1px;
+    .forBody{
+      background-color: rgb(232, 245, 245);
+    }
     .forImg {
       height: 40%;
     }

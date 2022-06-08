@@ -2,7 +2,6 @@ import { FormGroup, Form, Label, Input, Button } from "reactstrap";
 import React, { useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { financeService } from "../../../../Api/services/Finances";
-// import "../../Customer/Create.scss";
 
 const newAccounting = {
   communalCost: " ",

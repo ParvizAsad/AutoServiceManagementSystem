@@ -40,11 +40,6 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task AddCashBoxAsync(CashBoxDto cashBoxDto)
         {
-            //var customer = await DbContext.Customers.Where(x => x.Id == cashBoxDto.CustomerID).FirstOrDefaultAsync();
-            //if (customer!=null)
-            //{
-            //    customer.Debt += cashBoxDto.Payment;
-            //}
             var cashBox = _mapper.Map<CashBox>(cashBoxDto);
            
             await _repository.AddAsync(cashBox);

@@ -1,21 +1,23 @@
 import { FormGroup, Form, Label, Input, Button } from "reactstrap";
 import React, { useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
-// import "./Createcustomer.scss";
 import { customerService } from "../../../Api/services/Customers";
 import { serviceService } from "../../../Api/services/Services";
 import { productService } from "../../../Api/services/Products";
 
-const initialCustomer = {
-  fullName: "",
-  phoneNumber: "",
-  email: "",
-  debt: "",
-  // ServiceIds: [],
-  // ProductIds: [],
-};
+
 
 function CreateCustomer() {
+  const [state, setState] = useState(true);
+
+  const initialCustomer = {
+    fullName: "",
+    phoneNumber: "",
+    email: "",
+    debt: "",
+    isNotificationAllowed: state
+  };
+
   const [customer, setCustomer] = useState(initialCustomer);
   const [services, setServices] = useState([]);
   const [products, setProducts] = useState([]);
@@ -42,6 +44,10 @@ function CreateCustomer() {
     },
     [customer, history]
   );
+
+  function allowNotification() {
+    setState(!state);
+  }
 
   React.useEffect(() => {
     serviceService.getAllServices().then(({ data }) => {
@@ -142,7 +148,20 @@ function CreateCustomer() {
               onKeyPress={preventMinus}
             />
           </FormGroup>
-
+          <FormGroup>
+            <Label className="forLabel" for="rememberMe">
+              Allow Notification
+            </Label>
+            <Input
+              addon
+              aria-label="Checkbox for following text input"
+              type="checkbox"
+              id="rememberMe"
+              name="rememberMe"
+              defaultChecked= "checked"
+              onChange={allowNotification}
+            />
+          </FormGroup>
           <Button className="forSubmit" type="submit">
             Submit
           </Button>

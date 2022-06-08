@@ -7,7 +7,6 @@ import { positionService } from "../../../../Api/services/Positions";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import defaultImageSrc from "../../../../Assets/Images/HR/defaultImage.png";
-// const defaultImageSrc= '../../../../Assets/Images/HR/defaultImage.png'
 
 const employees = {
   fullName: "",

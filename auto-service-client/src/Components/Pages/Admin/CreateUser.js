@@ -1,5 +1,4 @@
 import React from "react";
-// import "./Employee.scss";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import { useCallback } from "react";

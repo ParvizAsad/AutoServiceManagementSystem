@@ -25,12 +25,9 @@ const employees = {
 };
 
 function EditEmployee(props) {
-  let { id } = useParams();
   const url = "https://localhost:44330/api/Employees/";
-  const [employee, setEmployee] = useState([]);
   const [data, setData] = useState(employees);
   const [position, setPosition] = React.useState([]);
-  const [positionData, setPositionData] = useState();
   const history = useHistory();
 
   React.useEffect(() => {
@@ -38,12 +35,6 @@ function EditEmployee(props) {
       setPosition(data);
     });
   }, []);
-
-  const getAllPositions = useCallback(() => {
-    positionService.getAllPositions().then(({ data }) => {
-      setPositionData(data);
-    });
-  }, [setPositionData]);
 
   useEffect(() => {
     const id = props.match.params.id;

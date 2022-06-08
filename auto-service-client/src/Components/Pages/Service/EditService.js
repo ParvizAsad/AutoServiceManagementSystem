@@ -2,7 +2,6 @@ import { FormGroup, Form, Label, Input, Button } from "reactstrap";
 import React, { useCallback, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { serviceService } from "../../../Api/services/Services";
-// import "./Employees/Services/CreateEmployee.scss";
 
 const service = {
   name: " ",

@@ -1,8 +1,7 @@
-import { FormGroup, Form, Label, Input, Button, FormText } from "reactstrap";
-import React, { useCallback, useState, useEffect } from "react";
+import { FormGroup, Form, Label, Input, Button } from "reactstrap";
+import React, { useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { brandService } from "../../../../Api/services/Brands";
-// import "./Employees/Brands/CreateEmployee.scss";
 import {toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -17,7 +16,6 @@ const errorValues = {
 function CreateBrand() {
   const [brand, setBrand] = useState(newBrand);
   const [error, setError] = useState();
-  const [arrError, setArrError] = useState(errorValues);
   const [brandData, setBrandData] = useState();
   const history = useHistory();
 

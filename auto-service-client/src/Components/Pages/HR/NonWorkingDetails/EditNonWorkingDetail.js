@@ -18,20 +18,14 @@ function EditNonWorkingDetail(props) {
   const [nonWorkingType, setnonWorkingType] = React.useState([]);
   const [employee, setEmployee] = React.useState([]);
 
-  const [NonWorkingDetailData, setNonWorkingDetailData] = useState();
   const history = useHistory();
 
   useEffect(() => {
     const id = props.match.params.id;
     nonWorkingDetailService.getNonWorkingDetailById(id).then((res) => {
-      setNonWorkingDetailData(res.data);
+      setNonWorkingDetail(res.data);
     });
   }, []);
-
-  const getElementValues = (e) => {
-    const { name, value } = e.target;
-    setNonWorkingDetail({ ...nonWorkingDetail, [name]: value });
-  };
 
   React.useEffect(() => {
     nonWorkingTypeService.getAllNonWorkingTypes().then(({ data }) => {
@@ -59,9 +53,6 @@ function EditNonWorkingDetail(props) {
   }, []);
 
   function handle(e) {
-    // const newposition = { ...position };
-    // newposition[e.target.id] = e.target.value;
-    // setPosition(newposition);
     const { name, value } = e.target;
     setNonWorkingDetail({ ...nonWorkingDetail, [name]: value });
   }
