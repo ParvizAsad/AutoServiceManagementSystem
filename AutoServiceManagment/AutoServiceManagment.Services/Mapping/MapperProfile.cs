@@ -18,6 +18,9 @@ namespace AutoServiceManagment.Services.Mapping
             CreateMap<Finance, FinanceDto>().ReverseMap();
             CreateMap<NonWorkingDetail, NonWorkingDetailDto>().ReverseMap();
             CreateMap<NonWorkingType, NonWorkingTypeDto>().ReverseMap();
+            CreateMap<User, User>().ReverseMap();
+            //CreateMap<Roles, Roles>().ReverseMap();
+            //CreateMap<User, User>().ReverseMap();
             CreateMap<Position, PositionDto>().ReverseMap();
             CreateMap<Product, ProductDto>().ReverseMap();
             CreateMap<Salary, SalaryDto>().ReverseMap();

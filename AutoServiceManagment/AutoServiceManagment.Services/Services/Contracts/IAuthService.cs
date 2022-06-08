@@ -12,13 +12,13 @@ namespace AutoServiceManagment.Services.Services.Contracts
 {
     public interface IAuthService
     {
-        Task LoginAsync(CredentialModel credentialModel);
-        Task<string> GetTokenAsync(CredentialModel credentialModel);
-        Task LogoutAsync();
-        Task ResetPasswordAsync(ResetPasswordModel resetPasswordModel);
-        Task RegisterAsync(RegisterModel registerModel);
-        Task<IList<User>> GetAllUsersAsync();
-        Task<JwtSecurityToken> CreateJwtToken(User user);
+        //Task LoginAsync(CredentialModel credentialModel);
+        //Task<string> GetTokenAsync(CredentialModel credentialModel);
+        //Task LogoutAsync();
+        //Task ResetPasswordAsync(ResetPasswordModel resetPasswordModel);
+        //Task RegisterAsync(RegisterModel registerModel);
+        //Task<IList<User>> GetAllUsersAsync();
+        //Task<JwtSecurityToken> CreateJwtToken(User user);
 
     }
 }

@@ -11,27 +11,33 @@ import {
 import { accountService } from "../../../Api/services/Account";
 import "./Login.scss";
 import { Link } from "react-router-dom";
-
+import { userService } from "../../../Api/services/Users";
+import { useHistory } from "react-router-dom";
 
 function Login() {
   const [state, setState] = useState(false);
   
   const Credentials = {
-    userName: " ",
-    password: " ",
+    username: " ",
+    passWord: " ",
     rememberMe: state,
   };
   
   const [credentials, setCredentials] = useState(Credentials);
-
-
+  const history = useHistory();
 
   const Login = useCallback(
     (e) => {
       e.preventDefault();
-      accountService.login(credentials);
+      userService.loginUser(credentials).then((response) => {
+      //  history.push("/User");
+        localStorage.setItem("userToken", JSON.stringify(response.data.authToken.result));
+        localStorage.setItem("userId", JSON.stringify(response.data.userId));
+        console.log(localStorage.userToken);
+        console.log(localStorage.userId);
+      });
     },
-    [credentials]
+    [credentials, history]
   );
 
   function rememberMe(){
@@ -50,24 +56,24 @@ function Login() {
       <div id="FormForLogin">
         <Form inline id="Form" onSubmit={Login}>
           <FormGroup>
-            <Label for="exampleUsername" hidden>
+            <Label for="username" hidden>
               Username
             </Label>
             <Input
-              id="userName"
-              name="userName"
+              id="username"
+              name="username"
               placeholder="Username"
               onChange={getElementValues}
               type="text"
             />
           </FormGroup>{" "}
           <FormGroup>
-            <Label for="password" hidden>
+            <Label for="passWord" hidden>
               Password
             </Label>
             <Input
-              id="password"
-              name="password"
+              id="passWord"
+              name="passWord"
               placeholder="Password"
               onChange={getElementValues}
               type="password"

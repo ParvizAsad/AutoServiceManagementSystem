@@ -10,13 +10,14 @@ import { userService } from "../../../Api/services/Users";
 import defaultImageSrc from "../../../Assets/Images/HR/defaultImage.png";
 
 const newUser = {
-  userName: " ",
+  username: " ",
   fullName: " ",
-  password: " ",
-  confirmPassword: " ",
-  imageName: " ",
-  imageSrc: defaultImageSrc,
-  imageFile: null,
+  passWord: " ",
+  confirmPassWord: " ",
+  email:" ",
+  // imageName: " ",
+  // imageSrc: defaultImageSrc,
+  // imageFile: null,
 };
 
 function CreateUser(props) {
@@ -26,17 +27,17 @@ function CreateUser(props) {
 
   const history = useHistory();
 
-  const getAllEmployee = useCallback(() => {
-    employeeService.getAllEmployee().then(({ data }) => {
-      setEmployeeData(data);
-    });
-  }, [setEmployeeData]);
+  // const getAllEmployee = useCallback(() => {
+  //   employeeService.getAllEmployee().then(({ data }) => {
+  //     setEmployeeData(data);
+  //   });
+  // }, [setEmployeeData]);
 
-  React.useEffect(() => {
-    employeeService.getAllEmployee().then(({ data }) => {
-      setEmployee(data);
-    });
-  }, []);
+  // React.useEffect(() => {
+  //   employeeService.getAllEmployee().then(({ data }) => {
+  //     setEmployee(data);
+  //   });
+  // }, []);
 
   const createUser = useCallback(
     (e) => {
@@ -81,47 +82,57 @@ function CreateUser(props) {
       </div>
       <div className="CreatePage">
         <Form onSubmit={createUser}>
-          <FormGroup>
-            <Label for="Username">Username</Label>
+        <FormGroup>
+            <Label for="fullName">Fullname</Label>
             <Input
-              id="Username"
-              name="Username"
+              id="fullName"
+              name="fullName"
+              placeholder="fullName"
+              onChange={getElementValues}
+              type="text"
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label for="username">Username</Label>
+            <Input
+              id="username"
+              name="username"
               placeholder="Username"
               onChange={getElementValues}
               type="text"
             />
           </FormGroup>
           <FormGroup>
-            <Label for="Fullname">Fullname</Label>
+            <Label for="email">Email</Label>
             <Input
-              id="Fullname"
-              name="Fullname"
-              placeholder="Fullname"
+              id="email"
+              name="email"
+              placeholder="email"
               onChange={getElementValues}
-              type="text"
+              type="email"
             />
           </FormGroup>
           <FormGroup>
-            <Label for="Password">Password</Label>
+            <Label for="passWord">Password</Label>
             <Input
-              id="Password"
-              name="Password"
-              placeholder="Password"
+              id="passWord"
+              name="passWord"
+              placeholder="password"
               onChange={getElementValues}
               type="password"
             />
           </FormGroup>
           <FormGroup>
-            <Label for="ConfirmPassword">Confirm Password</Label>
+            <Label for="confirmPassWord">Confirm Password</Label>
             <Input
-              id="ConfirmPassword"
-              name="ConfirmPassword"
+              id="confirmPassWord"
+              name="confirmPassWord"
               placeholder="Confirm Password"
               onChange={getElementValues}
               type="password"
             />
           </FormGroup>
-          <FormGroup>
+          {/* <FormGroup>
             <Label for="imageName">Image</Label>
             <img src={user.imageSrc} className=" profilePicture" />
             <Input
@@ -131,7 +142,7 @@ function CreateUser(props) {
               id="imageName"
               onChange={showPreview}
             />
-          </FormGroup>
+          </FormGroup> */}
           <Button type="submit">Submit</Button>
         </Form>
       </div>

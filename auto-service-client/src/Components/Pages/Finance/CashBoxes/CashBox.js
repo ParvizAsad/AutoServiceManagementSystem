@@ -140,18 +140,18 @@ function CashBox() {
 {customers?.filter((x)=> x.id==item.customerID).map((customers)=>
   <td>{customers.fullName}</td>
   )}
- <td> {moment(item.createdAt).format("MM-DD-yyyy hh:mm")}
+  
+ <td> {moment(item.createdAt).format("MM-DD-yyyy, hh:mm")}
  </td>
  <td>{item.payment}</td>
 </tr>
           ))}
           
           {otherCustomer?.map((item)=>(
-
             <tr key={item.id}>
             <td>{item.id}</td>
               <td>{item.customerName}</td>
-             <td> {moment(item.createdAt).format("MM-DD-yyyy hh:mm")}
+             <td> {console.log(item.createAt)}
              </td>
              <td>{item.payment}</td>
             </tr>

@@ -9,6 +9,6 @@ namespace AutoServiceManagment.AuthenticationService.Models
     public class LoginResult
     {
         public string UserId { get; set; }
-        public string AuthToken { get; set; }
+        public Task<string> AuthToken { get; set; }
     }
 }

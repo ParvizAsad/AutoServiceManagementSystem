@@ -7,11 +7,35 @@ import { useState } from "react";
 import { useCallback } from "react";
 import { Link } from "react-router-dom";
 
+
 function User(props) {
   const [user, setUser] = React.useState([]);
+  const [role, setRole] = React.useState([]);
+  const [userRole, setUserRole] = React.useState([]);
   const [userData, setUserData] = useState();
   const [searchUser, setSearchUser] = useState(" ");
   const history = useHistory();
+
+  React.useEffect(() => {
+    userService.getAllUsers().then(({ data }) => {
+      setUser(data);
+      // console.log(data);
+    });
+  }, []);
+
+  React.useEffect(() => {
+    userService.getAllRole().then(({ data }) => {
+      // console.log(data);
+      setRole(data);
+    });
+  }, []);
+
+  React.useEffect(() => {
+    userService.GetAllUserRole().then(({ data }) => {
+      // console.log(data);
+      setUserRole(data);
+    });
+  }, []);
 
   const deleteButton = (id) => {
     const swalWithBootstrapButtons = Swal.mixin({
@@ -28,25 +52,21 @@ function User(props) {
         text: "You won't be able to revert this!",
         icon: "warning",
         showCancelButton: true,
-        confirmButtonText: "Yes, delete it!",
+        confirmButtonText: "Yes, Block User!",
         cancelButtonText: "No, cancel!",
         reverseButtons: true,
       })
       .then((result) => {
         if (result.isConfirmed) {
           swalWithBootstrapButtons.fire(
-            "Deleted!",
-            "Your file has been deleted.",
+            "Blocked!",
+            "Your file has been blocked.",
             "success"
           );
           {
-            userService.deleteUser(id) && (
-              // history.push("/Role")
-              <Link to="/Role"></Link>
-            );
+            userService.deleteUser(id);
           }
         } else if (
-          /* Read more about handling dismissals below */
           result.dismiss === Swal.DismissReason.cancel
         ) {
           swalWithBootstrapButtons.fire(
@@ -55,19 +75,16 @@ function User(props) {
             "error"
           );
         }
+      }).finally(() => {
+        setTimeout(() => {
+          userService.getAllUsers().then(({ data }) => {
+            setUser(data);
+          });
+        }, 3000);
       });
   };
 
-  function editUser(id) {
-    props.history.push("/EditRole/" + id);
-  }
-
-  const getAllEmployee = useCallback(() => {
-    userService.getAllUsers().then(({ data }) => {
-      setUserData(data);
-    });
-  }, [setUserData]);
-
+ 
   return (
     <>
       <div className="ForHeading">
@@ -112,19 +129,35 @@ function User(props) {
               .map((item, idx) => (
                 <tr key={idx}>
                   <th scope="row">{idx}</th>
-                  <td>{item.fullname}</td>
-                  <td>{item.username}</td>
-                  <td>{item.role}</td>
+                  <td>{item.fullName}</td>
+                  <td>{item.userName}</td>
+           {userRole?.filter((userRol)=>userRol.userId==item.id).map((userRol)=>
+             //   {role?.filter((role)=>role.id==userRoles.roleId).map((role)=>
+                  <td>{console.log(userRol)}</td>
+ // )}
+)}
                   <td className="Actions">
-                    <Button onClick={() => editUser(item.id)} className="Edit">
-                      Edit
+                    <Button 
+                    // onClick={() => editUser(item.id)} 
+                    className="Edit">
+                      Edit 
                     </Button>
+                    {
+                    item.isDeleted ? 
                     <Button
+                    style={{background: "red"}}
                       onClick={() => deleteButton(item.id)}
                       className="Delete"
                     >
-                      Delete
+                      Block
                     </Button>
+                    :  <Button
+                    style={{background: "green"}}
+                      onClick={() => deleteButton(item.id)}
+                      className="Delete"
+                    >
+                      Block
+                    </Button>}
                   </td>
                 </tr>
               ))}

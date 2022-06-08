@@ -13,36 +13,33 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using Newtonsoft.Json.Converters;
 using System;
 using System.Security.Claims;
 using System.Text;
-using System.Text.Json.Serialization;
 
 namespace AutoServiceManagment.API
 {
     public class Startup
     {
-        public IConfiguration Configuration { get; }
+        public IConfiguration _configuration { get; }
        private readonly IWebHostEnvironment _environment;
 
         public Startup(IConfiguration configuration, IWebHostEnvironment environment)
         {
-            Configuration = configuration;
+            _configuration = configuration;
             _environment = environment;
         }
 
-
         public void ConfigureServices(IServiceCollection services)
         {
-            services.Configure<JwtSetting>(Configuration.GetSection("JWT"));
-            var connectionString = Configuration.GetConnectionString("DefaultConnection");
+            services.Configure<JwtSetting>(_configuration.GetSection("JWT"));
+            var connectionString = _configuration.GetConnectionString("DefaultConnection");
+
 
             services.AddDbContext<AppDbContext>(options =>
             {
@@ -51,6 +48,7 @@ namespace AutoServiceManagment.API
                     builder.MigrationsAssembly("AutoServiceManagment.Repository");
                 });
             });
+
 
             services.AddAutoMapper(typeof(MapperProfile));
             services.AddIdentity<User, IdentityRole>(options =>
@@ -86,43 +84,33 @@ namespace AutoServiceManagment.API
             services.AddScoped<IServiceService, ServiceService>();
             services.AddScoped<ITaxService, TaxService>();
             services.AddScoped<ICustomerService, CustomerService>();
-            //services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IBioService, BioService>();
             services.AddScoped<IStatisticsService, StatisticsService>();
             services.AddScoped<IRegularCustomerPaymentService, RegularCustomerPaymentService>();
             services.AddScoped<IOtherCustomerPaymentService, OtherCustomerPaymentService>();
 
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
-                {
-                    options.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidateIssuer = true,
-                        ValidateAudience = true,
-                        ValidateLifetime = true,
-                        ValidateIssuerSigningKey = true,
-                        ValidIssuer = "example.com",
-                        ValidAudience = "example.com",
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:SigningKey"]))
-                    };
-                });
-
-            services.AddAuthorization(options =>
+            services.AddAuthentication(options =>
             {
-                options.AddPolicy("AdminOnly", policy => policy.RequireClaim(ClaimTypes.Role, "Admin"));
-
-                options.AddPolicy("SuperUser",
-                    policy => policy.RequireClaim(ClaimTypes.Role, "Admin")
-                                    .RequireClaim(ClaimTypes.Role, "User"));
-
-                options.AddPolicy(
-                    "OneOfTheRoles",
-                    policy => policy.RequireAssertion(
-                        context => context.User.HasClaim(claim => claim.Type == ClaimTypes.Role &&
-                                                                  claim.Value is "Admin" or "User"))
-                );
-            });
-
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(o =>
+            {
+                o.RequireHttpsMetadata = false;
+                o.SaveToken = false;
+                o.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ClockSkew = TimeSpan.Zero,
+                    ValidIssuer = _configuration["JWT:Issuer"],
+                    ValidAudience = _configuration["JWT:Audience"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Key"]))
+                };
+            }).AddCookie();
 
             services.AddCors(
                 options => options.AddPolicy("AllowCors",
@@ -135,10 +123,6 @@ namespace AutoServiceManagment.API
              );
 
             services.AddControllers();
-           //.AddNewtonsoftJson(jsonOptions =>
-           //{
-           //    jsonOptions.SerializerSettings.Converters.Add(new StringEnumConverter());
-           //});
 
             services.AddSwaggerGen(c =>
             {
@@ -157,13 +141,11 @@ namespace AutoServiceManagment.API
 
             app.UseHttpsRedirection();
             app.ConfigureExceptionHandler();
-
+            app.UseMiddleware<JwtMiddleware>();
             app.UseRouting();
-
             app.UseAuthentication();
             app.UseAuthorization();
             app.UseCors("AllowCors");
-
 
             app.UseEndpoints(endpoints =>
             {
