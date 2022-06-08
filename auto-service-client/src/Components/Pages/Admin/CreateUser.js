@@ -1,20 +1,23 @@
 import React from "react";
+// import "./Employee.scss";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import { useCallback } from "react";
+import { Link } from "react-router-dom";
 import { employeeService } from "../../../Api/services/Employee";
-import { FormGroup, Form, Label, Input, Button } from "reactstrap";
+import { FormGroup, Form, Label, Input, Button, FormText } from "reactstrap";
 import { userService } from "../../../Api/services/Users";
 import defaultImageSrc from "../../../Assets/Images/HR/defaultImage.png";
 
 const newUser = {
-  userName: " ",
+  username: " ",
   fullName: " ",
-  password: " ",
-  confirmPassword: " ",
-  imageName: " ",
-  imageSrc: defaultImageSrc,
-  imageFile: null,
+  passWord: " ",
+  confirmPassWord: " ",
+  email:" ",
+  // imageName: " ",
+  // imageSrc: defaultImageSrc,
+  // imageFile: null,
 };
 
 function CreateUser(props) {
@@ -24,17 +27,17 @@ function CreateUser(props) {
 
   const history = useHistory();
 
-  const getAllEmployee = useCallback(() => {
-    employeeService.getAllEmployee().then(({ data }) => {
-      setEmployeeData(data);
-    });
-  }, [setEmployeeData]);
+  // const getAllEmployee = useCallback(() => {
+  //   employeeService.getAllEmployee().then(({ data }) => {
+  //     setEmployeeData(data);
+  //   });
+  // }, [setEmployeeData]);
 
-  React.useEffect(() => {
-    employeeService.getAllEmployee().then(({ data }) => {
-      setEmployee(data);
-    });
-  }, []);
+  // React.useEffect(() => {
+  //   employeeService.getAllEmployee().then(({ data }) => {
+  //     setEmployee(data);
+  //   });
+  // }, []);
 
   const createUser = useCallback(
     (e) => {
@@ -78,49 +81,59 @@ function CreateUser(props) {
         <h1>Create a new User</h1>
       </div>
       <div className="CreatePage">
-        <Form className="sss" onSubmit={createUser}>
-          <FormGroup>
-            <Label className="forLabel" for="Username">Username</Label>
+        <Form onSubmit={createUser}>
+        <FormGroup>
+            <Label for="fullName">Fullname</Label>
             <Input
-              id="Username"
-              name="Username"
+              id="fullName"
+              name="fullName"
+              placeholder="fullName"
+              onChange={getElementValues}
+              type="text"
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label for="username">Username</Label>
+            <Input
+              id="username"
+              name="username"
               placeholder="Username"
               onChange={getElementValues}
               type="text"
             />
           </FormGroup>
           <FormGroup>
-            <Label className="forLabel" for="Fullname">Fullname</Label>
+            <Label for="email">Email</Label>
             <Input
-              id="Fullname"
-              name="Fullname"
-              placeholder="Fullname"
+              id="email"
+              name="email"
+              placeholder="email"
               onChange={getElementValues}
-              type="text"
+              type="email"
             />
           </FormGroup>
           <FormGroup>
-            <Label className="forLabel" for="Password">Password</Label>
+            <Label for="passWord">Password</Label>
             <Input
-              id="Password"
-              name="Password"
-              placeholder="Password"
+              id="passWord"
+              name="passWord"
+              placeholder="password"
               onChange={getElementValues}
               type="password"
             />
           </FormGroup>
           <FormGroup>
-            <Label className="forLabel" for="ConfirmPassword">Confirm Password</Label>
+            <Label for="confirmPassWord">Confirm Password</Label>
             <Input
-              id="ConfirmPassword"
-              name="ConfirmPassword"
+              id="confirmPassWord"
+              name="confirmPassWord"
               placeholder="Confirm Password"
               onChange={getElementValues}
               type="password"
             />
           </FormGroup>
-          <FormGroup>
-            <Label className="forLabel" for="imageName">Image</Label>
+          {/* <FormGroup>
+            <Label for="imageName">Image</Label>
             <img src={user.imageSrc} className=" profilePicture" />
             <Input
               type="file"
@@ -129,8 +142,8 @@ function CreateUser(props) {
               id="imageName"
               onChange={showPreview}
             />
-          </FormGroup>
-          <Button className="forSubmit" type="submit">Submit</Button>
+          </FormGroup> */}
+          <Button type="submit">Submit</Button>
         </Form>
       </div>
     </>

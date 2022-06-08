@@ -8,130 +8,157 @@ using Microsoft.AspNetCore.Identity;
 using AutoServiceManagment.Repository.DataContext;
 using Microsoft.Extensions.Options;
 using System.IdentityModel.Tokens.Jwt;
+using Microsoft.Extensions.Configuration;
+using System.Text;
+using System.Security.Claims;
+using Microsoft.IdentityModel.Tokens;
 
 namespace AutoServiceManagment.Services.Services
 {
     public class AuthService : IAuthService
     {
-        private readonly JwtSetting _jwtSetting;
+    //    private readonly JwtSetting _jwtSetting;
 
-        private readonly UserManager<User> _userManager;
+    //    private readonly UserManager<User> _userManager;
 
-        private readonly RoleManager<IdentityRole> _roleManager;
+    //    private readonly RoleManager<IdentityRole> _roleManager;
 
-        private readonly SignInManager<User> _signInManager;
+    //    private readonly SignInManager<User> _signInManager;
+    //    private readonly IConfiguration _configuration;
 
-        private readonly AppDbContext _dbContext;
+    //    private readonly AppDbContext _dbContext;
 
-        public AuthService()
-        {
-        }
+    //    public AuthService(IConfiguration configuration, IOptions<JwtSetting> jwtSetting, UserManager<User> userManager, RoleManager<IdentityRole> roleManager, AppDbContext dbContext, SignInManager<User> signInManager = null)
+    //    {
+    //        _jwtSetting = jwtSetting.Value;
 
-        public AuthService(IOptions<JwtSetting> jwtSetting, UserManager<User> userManager, RoleManager<IdentityRole> roleManager, AppDbContext dbContext, SignInManager<User> signInManager = null)
-        {
-            _jwtSetting = jwtSetting.Value;
+    //        _userManager = userManager;
+    //        _configuration = configuration;
 
-            _userManager = userManager;
+    //        _roleManager = roleManager;
 
-            _roleManager = roleManager;
+    //        _dbContext = dbContext;
 
-            _dbContext = dbContext;
+    //        _signInManager = signInManager;
+    //    }
 
-            _signInManager = signInManager;
-        }
+    //    public Task<IList<User>> GetAllUsersAsync()
+    //    {
+    //        throw new NotImplementedException();
+    //    }
 
-        public Task<IList<User>> GetAllUsersAsync()
-        {
-            throw new NotImplementedException();
-        }
+    //    public Task<string> GetTokenAsync(CredentialModel credentialModel)
+    //    {
+    //        throw new NotImplementedException();
+    //    }
 
-        public Task<string> GetTokenAsync(CredentialModel credentialModel)
-        {
-            throw new NotImplementedException();
-        }
+    //    public Task<string> CreateJwtToken(User user)
+    //    {
+    //        var tokenHandler = new JwtSecurityTokenHandler();
+    //        var key = Encoding.ASCII.GetBytes(_configuration["Jwt:SigningKey"]);
 
-        public Task<JwtSecurityToken> CreateJwtToken(User user)
-        {
-            throw new NotImplementedException();
-        }
-        public async Task LoginAsync(CredentialModel credentialModel)
-        {
-            var existUser = await _userManager.FindByNameAsync(credentialModel.Username);
+    //        var claims = new List<Claim>
+    //        {
+    //            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+    //            new Claim(ClaimTypes.Email, user.Email),
+    //        };
 
-            if (existUser == null)
-            {
-                throw new Exception("Incorrect username or password");
+    //        //if (user.rol.Count > 0)
+    //        //{
+    //        //    claims.AddRange(user.Roles.Select(role => new Claim(ClaimTypes.Role, role)));
+    //        //}
 
-            }
+    //        var tokenDescriptor = new SecurityTokenDescriptor
+    //        {
+    //            Subject = new ClaimsIdentity(claims),
+    //            Issuer = "example.com",
+    //            Audience = "example.com",
+    //            Expires = DateTime.UtcNow.AddHours(1),
+    //            SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+    //        };
 
-            var result = await _signInManager.PasswordSignInAsync(existUser, credentialModel.Password, credentialModel.RememberMe, true);
+    //        var token = tokenHandler.CreateToken(tokenDescriptor);
+    //        return tokenHandler.WriteToken(token);
+    //    }
 
-            if (!result.Succeeded)
-            {
-                throw new Exception("Can not be signed in");
-            }
+    //    public async Task LoginAsync(CredentialModel credentialModel)
+    //    {
+    //        var existUser = await _userManager.FindByNameAsync(credentialModel.Username);
 
-            if (result.IsLockedOut)
-            {
-                throw new Exception("You are locked out");
-            }
+    //        if (existUser == null)
+    //        {
+    //            throw new Exception("Incorrect username or password");
 
-        }
+    //        }
 
-        public async Task LogoutAsync()
-        {
-            await _signInManager.SignOutAsync();
+    //        var result = await _signInManager.PasswordSignInAsync(existUser, credentialModel.Password, credentialModel.RememberMe, true);
 
-        }
+    //        if (!result.Succeeded)
+    //        {
+    //            throw new Exception("Can not be signed in");
+    //        }
 
-        public async Task ResetPasswordAsync(ResetPasswordModel resetPasswordModel)
-        {
-            var existUser = await _userManager.FindByNameAsync(resetPasswordModel.Username);
+    //        if (result.IsLockedOut)
+    //        {
+    //            throw new Exception("You are locked out");
+    //        }
 
-            if (existUser == null)
-            {
-                throw new Exception("Incorrect username or password");
+    //    }
 
-            }
+    //    public async Task LogoutAsync()
+    //    {
+    //        await _signInManager.SignOutAsync();
 
-            var result = await _userManager.ChangePasswordAsync(existUser, resetPasswordModel.oldPassword, resetPasswordModel.newPassword);
+    //    }
 
-            if (!result.Succeeded)
-            {
-                throw new Exception("Password can not be reset");
-            }
+    //    public async Task ResetPasswordAsync(ResetPasswordModel resetPasswordModel)
+    //    {
+    //        var existUser = await _userManager.FindByNameAsync(resetPasswordModel.Username);
 
-        }
+    //        if (existUser == null)
+    //        {
+    //            throw new Exception("Incorrect username or password");
 
-        public async Task RegisterAsync(RegisterModel registerModel)
-        {
+    //        }
 
-            var ExistUser = await _userManager.FindByNameAsync(registerModel.Username);
+    //        var result = await _userManager.ChangePasswordAsync(existUser, resetPasswordModel.oldPassword, resetPasswordModel.newPassword);
 
-            if (ExistUser != null)
-            {
-                throw new Exception("User with this username already exits");
+    //        if (!result.Succeeded)
+    //        {
+    //            throw new Exception("Password can not be reset");
+    //        }
 
-            }
+    //    }
 
-            var user = new User()
-            {
-                FullName = registerModel.FullName,
+    //    public async Task RegisterAsync(RegisterModel registerModel)
+    //    {
 
-                UserName = registerModel.Username,
+    //        var ExistUser = await _userManager.FindByNameAsync(registerModel.Username);
 
-                Email = registerModel.Email,
-            };
+    //        if (ExistUser != null)
+    //        {
+    //            throw new Exception("User with this username already exits");
 
-            var result = await _userManager.CreateAsync(user, registerModel.PassWord);
+    //        }
 
-            if (!result.Succeeded)
-            {
-                throw new Exception("User can not be created");
+    //        var user = new User()
+    //        {
+    //            FullName = registerModel.FullName,
 
-            }
+    //            UserName = registerModel.Username,
 
-        }
+    //            Email = registerModel.Email,
+    //        };
+
+    //        var result = await _userManager.CreateAsync(user, registerModel.PassWord);
+
+    //        if (!result.Succeeded)
+    //        {
+    //            throw new Exception("User can not be created");
+
+    //        }
+
+    //    }
 
         #region MyRegion
 

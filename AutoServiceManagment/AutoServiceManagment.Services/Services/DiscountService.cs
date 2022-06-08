@@ -10,7 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AutoServiceManagment.Infrastructure.Data;
+using AutoServiceManagment.Repository.Data;
 using AutoServiceManagment.Infrastructure.Helpers;
 
 namespace AutoServiceManagment.Services.Services
