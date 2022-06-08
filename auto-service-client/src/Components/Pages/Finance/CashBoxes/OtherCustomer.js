@@ -47,6 +47,8 @@ function OtherCustomer() {
         <h1>Add service to customer</h1>
       </div>
       <div className="CreatePage">
+
+        <Form className="sss" onSubmit={createOtherCustomerPayment}>
         <FormGroup>
           <Label className="forLabel" for="customerName">
             Customer Name
@@ -59,7 +61,6 @@ function OtherCustomer() {
             type="text"
           />
         </FormGroup>
-        <Form className="sss" onSubmit={createOtherCustomerPayment}>
           <FormGroup>
             <Label className="forLabel" for="productID">
               Select Product
@@ -70,7 +71,7 @@ function OtherCustomer() {
               name="productID"
               id="productID"
             >
-              <option value="0">--Select Service--</option>
+              <option value="0">--Select Product--</option>
               {product?.map((item) => (
                 <option key={item.id} value={item.id}>
                   Product :{item.name} || Price: {item.salePrice}

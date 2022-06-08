@@ -9,7 +9,6 @@ namespace AutoServiceManagment.DomainModels.DTOs
         public int Id { get; set; }
         public int ProductID { get; set; }
         public string CustomerName { get; set; }
-        //[Required(ErrorMessage = "Customer is required!")]
         public int CustomerID { get; set; }
         public int ServiceID { get; set; }
 

@@ -68,8 +68,8 @@ namespace AutoServiceManagment.Services.Services
             var brand = await DbContext.Brands.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted != true);
             if (brand == null) { throw new Exception("Brand not found!"); }
 
-            var brands = await DbContext.Brands.FirstOrDefaultAsync(x => x.Name == brandDto.Name);
-            if (brands != null) { throw new Exception("There is a brand with this name!"); }
+            var existBrand = await DbContext.Brands.FirstOrDefaultAsync(x => x.Name == brandDto.Name);
+            await NullCheck<Brand>.Checking(existBrand);
 
             brand.Name = brandDto.Name;
 

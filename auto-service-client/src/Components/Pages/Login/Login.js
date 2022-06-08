@@ -76,7 +76,6 @@ function Login() {
               addon
               aria-label="Checkbox for following text input"
               type="checkbox"
-              disabled="true"
               id="rememberMe"
               name="rememberMe"
               onChange={rememberMe}

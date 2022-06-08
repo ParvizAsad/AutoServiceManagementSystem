@@ -2,7 +2,6 @@ import { FormGroup, Form, Label, Input, Button } from "reactstrap";
 import React, { useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { nonWorkingTypeService } from "../../../../Api/services/NonWorkingTypes";
-// import "./Employees/NonWorkingTypes/CreateEmployee.scss";
 
 const newNonWorkingType = {
   Name: " ",

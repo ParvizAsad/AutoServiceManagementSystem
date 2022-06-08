@@ -19,9 +19,15 @@
     .forHome{
       width: 55px;
       height: 55px;
-      border-radius: 20px;
+      border-radius: 10px;
       font-size: 36px;
-      color: rgb(0, 0, 0);
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      .linkForHome{
+        color: rgb(0, 0, 0);
+
+      }
     }
     h1 {
       max-width: 60%;

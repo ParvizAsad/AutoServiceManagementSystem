@@ -1,4 +1,4 @@
-import { FormGroup, Form, Label, Input, Button, FormText } from "reactstrap";
+import { FormGroup, Form, Label, Input, Button } from "reactstrap";
 import React, { useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
 // import "./CreateService.scss";
@@ -12,16 +12,8 @@ const service = {
 
 function CreateService() {
   const [Service, setService] = useState(service);
-  const [position, setPosition] = React.useState([]);
 
-  const [ServiceData, setServiceData] = useState();
   const history = useHistory();
-
-  const getAllService = useCallback(() => {
-    serviceService.getAllServices().then(({ data }) => {
-      setServiceData(data);
-    });
-  }, [setServiceData]);
 
   const createService = useCallback(
     (e) => {

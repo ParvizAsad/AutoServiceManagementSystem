@@ -19,7 +19,6 @@ namespace AutoServiceManagment.DomainModels.DTOs
         [ForeignKey(nameof(Customer))]
         public int CustomerID { get; set; }
         public double Count { get; set; }
-        //public bool IsDeleted { get; set; } = false;
      
     }
 }

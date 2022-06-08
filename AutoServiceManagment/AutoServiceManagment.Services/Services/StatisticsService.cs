@@ -16,16 +16,15 @@ namespace AutoServiceManagment.Services.Services
     {
         private readonly IMapper _mapper;
         private readonly IRepository<Statistics> _repository;
-        private readonly IRepository<Finance> _repository1;
-        private readonly IRepository<Service> _repository2;
-        private readonly IRepository<CashBox> _repository3;
+        private readonly IRepository<Finance> _repositoryFinance;
+        private readonly IRepository<CashBox> _repositoryCashbox;
 
-        public StatisticsService(AppDbContext dbContext, IMapper mapper, IRepository<Statistics> repository, IRepository<Finance> repository1, IRepository<CashBox> repository3) : base(dbContext)
+        public StatisticsService(AppDbContext dbContext, IMapper mapper, IRepository<Statistics> repository, IRepository<Finance> repositoryFinance, IRepository<CashBox> repositoryCashbox) : base(dbContext)
         {
             _mapper = mapper;
             _repository = repository;
-            _repository1 = repository1;
-            _repository3 = repository3;
+            _repositoryFinance = repositoryFinance;
+            _repositoryCashbox = repositoryCashbox;
         }
 
         public async Task<IList<StatisticsDto>> GetAllStatisticsAsync()
@@ -48,11 +47,20 @@ namespace AutoServiceManagment.Services.Services
                     if (payment.CreatedAt.Month == finance.Date.Month)
                         payments += payment.Payment;
                 }
+                var otherCustomerPayments = await DbContext.OtherCustomerPayments.Where(x => x.IsDeleted == false && x.CreatedAt.Month == finance.Date.Month).ToListAsync();
+
+                double productBasePrices = 0;
+                foreach (var otherCustomerPayment in otherCustomerPayments)
+                {
+                var product = await DbContext.Products.Where(x => x.IsDeleted == false && x.Id == otherCustomerPayment.ProductID).FirstOrDefaultAsync();
+                    productBasePrices += product.BasePrice;
+                }
+
                 var newStatistics = new Statistics
                 {
                     Date = finance.Date,
 
-                    Profit = payments - salaryCosts - finance.AdditionalCost - finance.CommunalCost
+                    Profit = payments - productBasePrices - salaryCosts - finance.AdditionalCost - finance.CommunalCost
                 };
                 await DbContext.Statistics.AddAsync(newStatistics);
             }

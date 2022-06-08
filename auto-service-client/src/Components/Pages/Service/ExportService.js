@@ -1,6 +1,5 @@
 import React from "react";
 import { Table } from "reactstrap";
-// import ".././HR.scss";
 import { useState } from "react";
 import "jquery/dist/jquery.min.js";
 //Datatable Modules

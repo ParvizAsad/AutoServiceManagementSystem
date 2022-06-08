@@ -2,7 +2,6 @@ import { FormGroup, Form, Label, Input, Button } from "reactstrap";
 import React, { useCallback, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { financeService } from "../../../../Api/services/Finances";
-// import "./Employees/Accountings/CreateEmployee.scss";
 import { toast } from "react-toastify";
 
 const newAccounting = {

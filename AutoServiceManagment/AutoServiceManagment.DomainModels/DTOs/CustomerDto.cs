@@ -21,12 +21,6 @@ namespace AutoServiceManagment.DomainModels.DTOs
         public double Debt { get; set; }
        
         public bool IsNotificationAllowed { get; set; } = true;
-       
-        //[NotMapped]
-        //public List<int> ServiceIds { get; set; }
-        
-        //[NotMapped]
-        //public List<int> ProductIds { get; set; }
 
     }
 }

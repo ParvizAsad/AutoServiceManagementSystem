@@ -1,10 +1,9 @@
-import { FormGroup, Form, Label, Input, Button, FormText } from "reactstrap";
+import { FormGroup, Form, Label, Input, Button } from "reactstrap";
 import React, { useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { nonWorkingDetailService } from "../../../../Api/services/NonWorkingDetails";
 import { nonWorkingTypeService } from "../../../../Api/services/NonWorkingTypes";
 import { employeeService } from "../../../../Api/services/Employee";
-// import "./Employees/NonWorkingDetails/CreateEmployee.scss";
 
 const newNonWorkingDetail = {
   StartTime: " ",
@@ -65,20 +64,6 @@ function CreateNonWorkingDetail() {
     });
   }, []);
 
-  const preventMinus = (e) => {
-    if (e.code === "Minus") {
-      e.preventDefault();
-    }
-  };
-
-  const preventPasteNegative = (e) => {
-    const clipboardData = e.clipboardData || window.clipboardData;
-    const pastedData = parseFloat(clipboardData.getData("text"));
-
-    if (pastedData < 0) {
-      e.preventDefault();
-    }
-  };
 
   return (
     <>

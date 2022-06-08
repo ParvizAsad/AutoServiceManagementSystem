@@ -1,13 +1,8 @@
-import React, { useReducer } from "react";
+import React from "react";
 import { Table, Button } from "reactstrap";
 import ".././HR.scss";
-import { useHistory } from "react-router-dom";
 import { employeeService } from "../../../../Api/services/Employee";
-import Swal from "sweetalert2";
 import { useState, useCallback, useRef } from "react";
-import { Link } from "react-router-dom";
-// import {ExcelFile, ExcelSheet} from "react-export-excel";
-// import  DownloadTableExcel from "react-export-table-to-excel";
 import * as FileSaver from "file-saver";
 import * as XLSX from "xlsx";
 import { useReactToPrint } from "react-to-print";
@@ -15,7 +10,6 @@ import { useReactToPrint } from "react-to-print";
 function ExportEmployee() {
   const [employee, setEmployee] = React.useState([]);
   const [employeeData, setEmployeeData] = useState();
-  const history = useHistory();
 
   const fileType =
     "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8";
@@ -28,12 +22,6 @@ function ExportEmployee() {
     const data = new Blob([excelBuffer], { type: fileType });
     FileSaver.saveAs(data, fileName + fileExtension);
   };
-
-  const getAllEmployee = useCallback(() => {
-    employeeService.getAllEmployee().then(({ data }) => {
-      setEmployeeData(data);
-    });
-  }, [setEmployeeData]);
 
   React.useEffect(() => {
     employeeService.getAllEmployee().then(({ data }) => {

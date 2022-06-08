@@ -15,7 +15,7 @@ namespace AutoServiceManagment.DomainModels.Entities
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{mm/dd/yyyy}")]
-        public DateTime Date { get; set; }= DateTime.Now;
+        public DateTime Date { get; set; }= DateTime.Today;
         public double Bonus { get; set; }
         public double OverTime { get; set; }
         public double NetSalary { get; set; } = 0;

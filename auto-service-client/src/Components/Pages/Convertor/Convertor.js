@@ -1,7 +1,7 @@
 import { Form, Label, Input, Button } from "reactstrap";
 import React, { useState } from "react";
 import "./convertor.scss";
-import axios, { Axios } from "axios";
+import axios from "axios";
 import moment from "moment";
 import XMLParser from 'react-xml-parser';
 
@@ -12,17 +12,18 @@ const newCurrency = {
 function Convertor() {
   const [currency, setCurrency] = useState(newCurrency);
   const [state, setState] = useState(true);
-  const [dollarValue, setDollarValue]=useState();
+  const [dollarValue, setDollarValue]=useState(1);
   function changeCurrencyValue(){
     setState(!state);
   };
 
   let newDate = new Date()
- let today =moment(newDate).format("DD.MM.yyyy");
+ let today =moment(newDate).format("DD.MM.YYYY");
  const cbarUrl= "https://www.cbar.az/currencies";
  
   React.useEffect(() => {
    axios.get(`${cbarUrl}/${today}.xml`).then(resp => {
+     console.log(resp);
     const jsonDataFromXml = new XMLParser().parseFromString(resp.data);
     setDollarValue(jsonDataFromXml.children[1].children[0].children[2].value)
       });
