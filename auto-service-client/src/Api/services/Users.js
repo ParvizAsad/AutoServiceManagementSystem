@@ -18,7 +18,7 @@ class UserService extends HttpClient {
   }
 
   async getUserById(id) {
-    return await this.getById("Users", id);
+    return await this.getById("GetUser", id);
   }
 
   async postUser(body) {
@@ -30,7 +30,11 @@ class UserService extends HttpClient {
   }
   
   async putUser(id, body) {
-    return await this.put("Users", id, body);
+    return await this.put("UpdateUser", id, body);
+  }
+
+  async putRole(id, body) {
+    return await this.put("ChangeRol", id, body);
   }
 
   async deleteUser(id) {

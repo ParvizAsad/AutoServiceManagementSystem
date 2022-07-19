@@ -51,7 +51,7 @@ function Admin() {
             </CardBody>
           </Card>
         </Link>
-        <Link className="classForLink" to="role">
+        {/* <Link className="classForLink" to="role">
           <Card className="moduleCard">
             <CardBody className="moduleCardBody">
               <CardTitle tag="h5" className="moduleCardTitle">
@@ -63,7 +63,7 @@ function Admin() {
               <Button>Enter</Button>
             </CardBody>
           </Card>
-        </Link>
+        </Link> */}
       </CardGroup>
     </>
   );

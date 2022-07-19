@@ -19,9 +19,7 @@ const newProduct = {
 function EditProduct(props) {
   const [product, setProduct] = useState(newProduct);
   const [error, setError] = useState();
-
   const [productData, setProductData] = useState();
-
   const [category, setCategory] = React.useState([]);
   const [brand, setBrand] = React.useState([]);
 

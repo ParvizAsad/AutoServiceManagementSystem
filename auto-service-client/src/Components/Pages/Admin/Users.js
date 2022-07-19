@@ -7,7 +7,6 @@ import { useState } from "react";
 import { useCallback } from "react";
 import { Link } from "react-router-dom";
 
-
 function User(props) {
   const [user, setUser] = React.useState([]);
   const [role, setRole] = React.useState([]);
@@ -66,16 +65,15 @@ function User(props) {
           {
             userService.deleteUser(id);
           }
-        } else if (
-          result.dismiss === Swal.DismissReason.cancel
-        ) {
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
           swalWithBootstrapButtons.fire(
             "Cancelled",
             "Your imaginary file is safe :)",
             "error"
           );
         }
-      }).finally(() => {
+      })
+      .finally(() => {
         setTimeout(() => {
           userService.getAllUsers().then(({ data }) => {
             setUser(data);
@@ -84,7 +82,14 @@ function User(props) {
       });
   };
 
- 
+  function editUser(id) {
+    props.history.push("/EditUser/" + id);
+  }
+
+  function changeRol(id) {
+    props.history.push("/ChangeRole/" + id);
+  }
+
   return (
     <>
       <div className="ForHeading">
@@ -131,33 +136,37 @@ function User(props) {
                   <th scope="row">{idx}</th>
                   <td>{item.fullName}</td>
                   <td>{item.userName}</td>
-           {userRole?.filter((userRol)=>userRol.userId==item.id).map((userRol)=>
-             //   {role?.filter((role)=>role.id==userRoles.roleId).map((role)=>
-                  <td>{console.log(userRol)}</td>
- // )}
-)}
+                  {userRole
+                    ?.filter((val) => val.userId == item.id)
+                    .map((x) =>
+                      role
+                        ?.filter((val) => val.id == x.roleId)
+                        .map((x) => <td>{x.name}</td>)
+                    )}
                   <td className="Actions">
-                    <Button 
-                    // onClick={() => editUser(item.id)} 
-                    className="Edit">
-                      Edit 
+                  <Button onClick={() => editUser(item.id)} className="Edit">
+                      Edit
                     </Button>
-                    {
-                    item.isDeleted ? 
-                    <Button
-                    style={{background: "red"}}
-                      onClick={() => deleteButton(item.id)}
-                      className="Delete"
-                    >
-                      Block
+                    <Button onClick={() => changeRol(item.id)} className="Rol">
+                      Change Role
                     </Button>
-                    :  <Button
-                    style={{background: "green"}}
-                      onClick={() => deleteButton(item.id)}
-                      className="Delete"
-                    >
-                      Block
-                    </Button>}
+                    {item.isDeleted ? (
+                      <Button
+                        style={{ background: "red" }}
+                        onClick={() => deleteButton(item.id)}
+                        className="Delete"
+                      >
+                        Block
+                      </Button>
+                    ) : (
+                      <Button
+                        style={{ background: "green" }}
+                        onClick={() => deleteButton(item.id)}
+                        className="Delete"
+                      >
+                        Block
+                      </Button>
+                    )}
                   </td>
                 </tr>
               ))}

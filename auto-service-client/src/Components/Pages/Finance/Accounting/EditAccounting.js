@@ -3,10 +3,12 @@ import React, { useCallback, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { financeService } from "../../../../Api/services/Finances";
 import { toast } from "react-toastify";
+import moment from "moment";
 
 const newAccounting = {
   communalCost: " ",
   additionalCost: " ",
+  detail:" ",
   date: " ",
 };
 
@@ -106,13 +108,23 @@ function EditAccounting(props) {
             />
           </FormGroup>
           <FormGroup>
+            <Label className="forLabel" for="detail">Detail</Label>
+            <Input
+              id="detail"
+              name="detail"
+              placeholder="detail"
+              onChange={(e) => handle(e)}
+              value={accounting.detail}
+            />
+          </FormGroup>
+          <FormGroup>
             <Label className="forLabel" for="Date">Date</Label>
             <Input
               id="Date"
               name="Date"
               placeholder="Date"
               onChange={(e) => handle(e)}
-              value={accounting.date}
+              value={moment(accounting.date).format("yyyy-MM-DD")}
               type="date"
             />
           </FormGroup>

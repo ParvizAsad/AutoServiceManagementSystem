@@ -24,7 +24,7 @@ namespace AutoServiceManagment.DomainModels.Entities
         [ForeignKey(nameof(Brand))]
         public int BrandID { get; set; }
         public Brand Brand { get; set; }
-        public ICollection<CustomerProduct> CustomerProducts { get; set; }
+        public ICollection<CustomerProduct> CustomerProducts { get; set; } 
         public ICollection<CashBox> CashBoxes { get; set; }
         public ICollection<OtherCustomerPayment> OtherCustomerPayments { get; set; }
         public bool IsDeleted { get; set; } = false;

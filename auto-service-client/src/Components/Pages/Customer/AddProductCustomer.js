@@ -4,15 +4,19 @@ import { FormGroup, Form, Label, Button, Input } from "reactstrap";
 import { addProductCustomerService } from "../../../Api/services/AddProductCustomer";
 import { customerService } from "../../../Api/services/Customers";
 import { productService } from "../../../Api/services/Products";
+import {discountService } from "../../../Api/services/Discount"
 
 function AddProductCustomer(props) {
   const initialCustomer = {
     productID: "",
     customerID: props.match.params.id,
     count: " ",
+    discountID: "",
+
   };
   const [customersProduct, setCustomersProduct] = useState(initialCustomer);
   const [products, setProducts] = React.useState();
+  const [discount, setDiscount] = React.useState();
   const [data, setData] = React.useState([]);
   const history = useHistory();
 
@@ -41,6 +45,12 @@ function AddProductCustomer(props) {
   React.useEffect(() => {
     productService.getAllProducts().then(({ data }) => {
       setProducts(data);
+    });
+  }, []);
+
+  React.useEffect(() => {
+    discountService.getAllDiscounts().then(({ data }) => {
+      setDiscount(data);
     });
   }, []);
 
@@ -75,6 +85,25 @@ function AddProductCustomer(props) {
               ))}
             </select>
           </FormGroup>
+          <FormGroup>
+            <Label className="forLabel" for="Discount">
+              Select discount
+            </Label>
+            <select
+              className="discountID"
+              onChange={getElementValues}
+              name="discountID"
+              id="discountID"
+            >
+              <option value="0">--Select discount--</option>
+              {discount?.map((item) => (
+                <option key={item.id} value={item.id}>
+                  Service :{item.name} || Percentage: {item.percentage}
+                </option>
+              ))}
+            </select>
+          </FormGroup>
+
           <FormGroup>
             <Label className="forLabel" for="count">Count</Label>
             <Input

@@ -10,8 +10,8 @@ namespace AutoServiceManagment.Services.Services.Contracts
     {
         Task<IList<CustomerProductDto>> GetAllCustomersProductAsync();
         Task<CustomerProductDto> GetCustomersProductAsync(int id);
-        Task AddCustomerProductAsync(CustomerProductDto customerProductDto);
-        Task UpdateCustomersProductAsyncId(int? id, CustomerProductDto customerProductDto);
+        Task AddCustomerProductAsync(CustomerProductDto customerProductDto/*, DiscountDto discountDto*/);
+        Task UpdateCustomersProductAsyncId(int? id, CustomerProductDto customerProductDto/*, DiscountDto discountDto*/);
         Task DeleteCustomerProductAsync(int? Id);
     }
 }

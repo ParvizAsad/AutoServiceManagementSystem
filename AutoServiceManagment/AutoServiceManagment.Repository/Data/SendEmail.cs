@@ -15,7 +15,7 @@ namespace AutoServiceManagment.Repository.Data
 
             msg.To.Add(customer.Email);
 
-            msg.Body = $"Attention! come and use the new Discount: \"{discount}\"";
+            msg.Body = $"Attention! come and use the new Discount: Name - \"{discount.Name}\"; Percentage - \"{discount.Percentage}\"";
 
             msg.Subject = "Advertisement";
 
@@ -27,10 +27,11 @@ namespace AutoServiceManagment.Repository.Data
 
             smtp.Port = 587;
 
-            smtp.EnableSsl = true;
+            //smtp.EnableSsl = true;
 
+            smtp.UseDefaultCredentials = false;
             smtp.Credentials = new NetworkCredential("servicecartoolnetwork@gmail.com", "servicecartoolnetwork123");
-
+            smtp.EnableSsl = true;
             smtp.Send(msg);
 
             return true;

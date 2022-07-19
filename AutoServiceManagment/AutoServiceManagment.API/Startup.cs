@@ -27,7 +27,7 @@ namespace AutoServiceManagment.API
     public class Startup
     {
         public IConfiguration _configuration { get; }
-       private readonly IWebHostEnvironment _environment;
+        private readonly IWebHostEnvironment _environment;
 
         public Startup(IConfiguration configuration, IWebHostEnvironment environment)
         {
@@ -141,7 +141,7 @@ namespace AutoServiceManagment.API
 
             app.UseHttpsRedirection();
             app.ConfigureExceptionHandler();
-            app.UseMiddleware<JwtMiddleware>();
+          //  app.UseMiddleware<JwtMiddleware>();
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();

@@ -19,6 +19,9 @@ namespace AutoServiceManagment.DomainModels.DTOs
         [ForeignKey(nameof(Customer))]
         public int CustomerID { get; set; }
         public double Count { get; set; }
-     
+
+        [ForeignKey(nameof(Discount))]
+        public int? DiscountID { get; set; }
+
     }
 }

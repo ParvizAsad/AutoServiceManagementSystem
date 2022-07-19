@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace AutoServiceManagment.API.Controllers
 {
-    //[Authorize]
+   [Authorize]
     [EnableCors("AllowCors"), Route("api/[controller]")]
     [ApiController]
     public class BrandsController : ControllerBase
@@ -19,7 +19,6 @@ namespace AutoServiceManagment.API.Controllers
             _service = service;
         }
 
-        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<IActionResult> Get()
         {
@@ -27,7 +26,6 @@ namespace AutoServiceManagment.API.Controllers
             return Ok(await _service.GetAllBrandsAsync());
         }
         
-        //[Authorize]
         [HttpGet("{id?}")]
         public async Task<IActionResult> Get([FromRoute] int? id)
         {

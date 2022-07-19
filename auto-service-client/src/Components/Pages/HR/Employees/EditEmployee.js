@@ -84,7 +84,7 @@ function EditEmployee(props) {
         ...data,
         imageFile: null,
         imageSrc: defaultImageSrc,
-        imageName: defaultImageSrc,
+        // imageName: defaultImageSrc,
       });
     }
   };
@@ -112,9 +112,10 @@ function EditEmployee(props) {
               type="text"
             />
           </FormGroup>
+
           <FormGroup>
             <Label for="imageName">Image</Label>
-            <img src={data.imageName} className=" profilePicture" />
+            <img src={data.imageSrc} className=" profilePicture" />
             <Input
               type="file"
               name="imageName"

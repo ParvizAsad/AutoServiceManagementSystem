@@ -9,6 +9,7 @@ namespace AutoServiceManagment.DomainModels.Entities
         public int Id { get; set; }
         public double CommunalCost { get; set; }
         public double AdditionalCost { get; set; }
+        public string Detail { get; set; }
         [Required(ErrorMessage = "Datetime is required!")]
         public DateTime Date { get; set; }
         public bool IsDeleted { get; set; }=false;

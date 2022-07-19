@@ -9,7 +9,7 @@ namespace AutoServiceManagment.DomainModels.DTOs
         public int Id { get; set; }
         public double CommunalCost { get; set; }
         [Required(ErrorMessage = "Datetime is required!")]
-
+        public string Detail { get; set; }
         public DateTime Date { get; set; }
         public double AdditionalCost { get; set; }
     }

@@ -31,16 +31,16 @@ namespace AutoServiceManagment.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] CustomerAddServiceDto customerAddServiceDto)
+        public async Task<IActionResult> Post([FromBody] CustomerAddServiceDto customerAddServiceDto/*, [FromBody] DiscountDto discountDto*/)
         {
-            await _service.AddCustomersAddServiceAsync(customerAddServiceDto);
+            await _service.AddCustomersAddServiceAsync(customerAddServiceDto/*, discountDto*/);
             return Ok();
         }
 
         [HttpPut("{id?}")]
-        public async Task<IActionResult> Put([FromRoute] int? id, [FromBody] CustomerAddServiceDto customerAddServiceDto)
+        public async Task<IActionResult> Put([FromRoute] int? id, [FromBody] CustomerAddServiceDto customerAddServiceDto/*, [FromBody] DiscountDto discountDto*/)
         {
-            await _service.UpdateCustomersAddServiceAsyncId(id, customerAddServiceDto);
+            await _service.UpdateCustomersAddServiceAsyncId(id, customerAddServiceDto/*, discountDto*/);
             return Ok();
         }
 

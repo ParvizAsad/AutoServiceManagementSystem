@@ -42,6 +42,7 @@ import ExportProduct from './Components/Pages/Stock/Products/ExportProducts';
 import Admin from './Components/Pages/Admin/Admin';
 import Role from './Components/Pages/Admin/Roles';
 import User from './Components/Pages/Admin/Users';
+import EditUser from './Components/Pages/Admin/EditUser';
 import CreateRole from './Components/Pages/Admin/CreateRole';
 import CreateService from './Components/Pages/Service/CreateService';
 import ExportService from './Components/Pages/Service/ExportService';
@@ -60,6 +61,7 @@ import EditCategory from './Components/Pages/Stock/Categories/EditCategory';
 import EditService from './Components/Pages/Service/EditService';
 import CreateUser from './Components/Pages/Admin/CreateUser';
 import EditRole from './Components/Pages/Admin/EditRole';
+import ChangeRole from './Components/Pages/Admin/ChangeRole';
 import EditPosition from './Components/Pages/HR/Positions/EditPosition';
 import EditProduct from './Components/Pages/Stock/Products/EditProduct';
 import CashBox from './Components/Pages/Finance/CashBoxes/CashBox';
@@ -158,9 +160,11 @@ function App() {
         <Route path="/EditDiscount/:id" exact component={EditDiscount} />
         <Route path="/EditAccounting/:id" exact component={EditAccounting} />
         <Route path="/EditBrand/:id" exact component={EditBrand} />
+        <Route path="/EditUser/:id" exact component={EditUser} />
         <Route path="/EditCategory/:id" exact component={EditCategory} />
         <Route path="/EditService/:id" exact component={EditService} />
         <Route path="/EditRole/:id" exact component={EditRole} />
+        <Route path="/ChangeRole/:id" exact component={ChangeRole} />
         <Route path="/EditPosition/:id" exact component={EditPosition} />
         <Route path="/EditCustomer/:id" exact component={EditCustomer} />
         <Route path="/EditCashBox/:id" exact component={EditCashbox} />

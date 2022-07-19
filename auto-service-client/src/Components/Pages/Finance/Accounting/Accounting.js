@@ -110,6 +110,7 @@ function Accounting() {
               <th>#</th>
               <th>Communal Cost</th>
               <th>Additional Cost</th>
+              <th>detail</th>
               <th>Date</th>
               <th>Actions</th>
             </tr>
@@ -120,6 +121,7 @@ function Accounting() {
                 <th scope="row">{idx}</th>
                 <td>{item.communalCost}</td>
                 <td>{item.additionalCost}</td>
+                <td>{item.detail}</td>
                 <td>{moment(item.date).format("MM-DD-yyyy")}</td>
                 <td className="Actions">
                   <Button

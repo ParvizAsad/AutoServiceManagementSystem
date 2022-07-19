@@ -5,14 +5,20 @@ import { useParams } from "react-router-dom";
 import { customerService } from "../../../Api/services/Customers";
 import { addServiceCustomerService } from "../../../Api/services/AddServiceCustomer";
 import { serviceService } from "../../../Api/services/Services";
+import {discountService } from "../../../Api/services/Discount"
 
 function AddServiceCustomer(props) {
   const initialCustomer = {
     serviceID: "",
+    discountID: "",
     customerID: props.match.params.id,
   };
   const [customerService, setCustomerService] = useState(initialCustomer);
   const [services, setServices] = React.useState();
+  const [discount, setDiscount] = React.useState();
+  const [defaultValue, setDefaultValue] = useState(0);
+  // const [defaultValue] = useState(0);
+  // const defaultValue=0;
   const history = useHistory();
 
   const createAddServiceCustomer = useCallback(
@@ -36,9 +42,16 @@ function AddServiceCustomer(props) {
     });
   }, []);
 
+  React.useEffect(() => {
+    discountService.getAllDiscounts().then(({ data }) => {
+      setDiscount(data);
+    });
+  }, []);
+
   const getElementValues = (e) => {
     const { name, value } = e.target;
     setCustomerService({ ...customerService, [name]: value });
+    console.log(customerService);
   };
 
   return (
@@ -67,6 +80,25 @@ function AddServiceCustomer(props) {
             </select>
           </FormGroup>
          
+          <FormGroup>
+            <Label className="forLabel" for="Discount">
+              Select discount
+            </Label>
+            <select
+              className="discountID"
+              onChange={getElementValues}
+              name="discountID"
+              id="discountID"
+            >
+              <option value="0">--Select discount--</option>
+              {discount?.map((item) => (
+                <option key={item.id} value={item.id}>
+                  Service :{item.name} || Percentage: {item.percentage}
+                </option>
+              ))}
+            </select>
+          </FormGroup>
+
           <Button className="forSubmit" type="submit">
             Submit
           </Button>

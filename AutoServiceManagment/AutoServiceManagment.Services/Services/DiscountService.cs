@@ -30,13 +30,13 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task<IList<DiscountDto>> GetAllDiscountsAsync()
         {
-            var existDiscounts = await DbContext.Discounts.Where(x => x.IsDeleted == false).ToListAsync();
+            var existDiscounts = await DbContext.Discounts.ToListAsync();
             foreach (var discount in existDiscounts)
             {
                 if (discount.ExpireDate < DateTime.Today)
                     discount.IsExpired = true;
             }
-            var discounts = await DbContext.Discounts.Where(x => x.IsDeleted == false && x.IsExpired==false).ToListAsync();
+            var discounts = await DbContext.Discounts.ToListAsync();
 
             return _mapper.Map<List<DiscountDto>>(discounts);
         }
@@ -66,7 +66,7 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task DeleteDiscountAsync(int? id)
         {
-            var discount = await DbContext.Discounts.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted != true);
+            var discount = await DbContext.Discounts.FirstOrDefaultAsync(x => x.Id == id);
 
             if (discount == null) { throw new Exception("Discount not found!"); }
 
@@ -77,7 +77,7 @@ namespace AutoServiceManagment.Services.Services
 
         public async Task UpdateDiscountAsyncId(int? id, DiscountDto discountDto)
         {
-            var discount = await DbContext.Discounts.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted != true);
+            var discount = await DbContext.Discounts.FirstOrDefaultAsync(x => x.Id == id);
 
             if (discount == null) { throw new Exception("Discount not found!"); }
 

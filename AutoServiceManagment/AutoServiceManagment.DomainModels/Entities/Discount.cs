@@ -1,5 +1,6 @@
 ﻿using AutoServiceManagment.Base;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace AutoServiceManagment.DomainModels.Entities
@@ -15,6 +16,9 @@ namespace AutoServiceManagment.DomainModels.Entities
         public double Percentage { get; set; }
         public bool IsExpired { get; set; } = false;
         public bool IsDeleted { get; set; } = false;
+        public ICollection<CustomerAddServices> CustomerAddServices { get; set; }
+        public ICollection<CustomerProduct> CustomerProduct { get; set; }
+
 
     }
 }

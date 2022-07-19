@@ -19,6 +19,7 @@ using Microsoft.EntityFrameworkCore;
 using AutoServiceManagment.Repository.Data;
 using AutoServiceManagment.Repository.DataContext;
 using Microsoft.AspNetCore.Cors;
+using Microsoft.Extensions.Options;
 
 namespace AutoServiceManagment.API.Controllers
 {
@@ -31,9 +32,11 @@ namespace AutoServiceManagment.API.Controllers
         private readonly SignInManager<User> _signInManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IMapper _mapper;
+        private readonly JwtSetting _jwtSetting;
         private readonly AppDbContext _dbContext;
-        public AuthController(IConfiguration configuration, IMapper mapper, RoleManager<IdentityRole> roleManager, AppDbContext dbContext, UserManager<User> userManager, SignInManager<User> signInManager)
+        public AuthController(IOptions<JwtSetting> jwtSetting, IConfiguration configuration, IMapper mapper, RoleManager<IdentityRole> roleManager, AppDbContext dbContext, UserManager<User> userManager, SignInManager<User> signInManager)
         {
+            _jwtSetting = jwtSetting.Value;
             _configuration = configuration;
             _signInManager = signInManager;
             _userManager = userManager;
@@ -48,6 +51,13 @@ namespace AutoServiceManagment.API.Controllers
         {
             var users = await _userManager.Users.ToListAsync();
             return _mapper.Map<List<User>>(users);
+        }
+
+        [HttpGet("GetUser/{id?}")]
+        public async Task<IActionResult> GetUser([FromRoute] string? id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            return Ok(user);
         }
 
         [HttpPost]
@@ -130,11 +140,48 @@ namespace AutoServiceManagment.API.Controllers
             }
 
         }
-        
+
+        [HttpPut("UpdateUser/{id?}")]
+        public async Task<IActionResult> UpdateUser([FromRoute] string? id, [FromBody] UpdateUser updateUser)
+        {
+            var existUser = await _userManager.FindByIdAsync(id);
+
+            if (existUser == null) { throw new Exception("Product not found!"); }
+
+            existUser.FullName= updateUser.FullName;
+            existUser.UserName= updateUser.UserName;
+            existUser.Email = updateUser.Email;
+
+            await _userManager.UpdateAsync(existUser);
+
+            return Ok();
+        }
+
+        [HttpPut("ChangeRol/{id?}")]
+        public async Task<IActionResult> ChangeRol([FromRoute] string? id, [FromBody] ChangeRoleModel changeRoleModel)
+        {
+            var existUser = await _userManager.FindByIdAsync(id);
+
+            if (existUser == null) { throw new Exception("Product not found!"); }
+            string exRole = (await _userManager.GetRolesAsync(existUser)).FirstOrDefault();
+            var RemoveRole = await _userManager.RemoveFromRoleAsync(existUser, exRole);
+
+            var role = await _roleManager.FindByIdAsync(changeRoleModel.RoleId);
+
+            var result = await _userManager.AddToRoleAsync(existUser, role.Name);
+
+            await _userManager.UpdateAsync(existUser);
+
+            return Ok();
+        }
+
+
         private async Task<string> GenerateJwtToken(User user)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_configuration["JWT:Key"]);
+            var issuer = Encoding.ASCII.GetBytes(_configuration["JWT:Issuer"]);
+            var audience = Encoding.ASCII.GetBytes(_configuration["JWT:Audience"]);
             var roles = await _userManager.GetRolesAsync(user);
 
             var claims = new List<Claim>
@@ -143,17 +190,17 @@ namespace AutoServiceManagment.API.Controllers
               new Claim(ClaimTypes.Sid, user.Id.ToString()),
             };
             foreach (var role in roles)
-                 {
-                        claims.Add(new Claim(ClaimTypes.Role, role));
-                }
+            {
+                claims.Add(new Claim(ClaimTypes.Role, role));
+            }
 
             var symmetricSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Key"]));
             var signingCredentials = new SigningCredentials(symmetricSecurityKey, SecurityAlgorithms.HmacSha256);
-                var tokenDescriptor = new SecurityTokenDescriptor
+            var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
-                Issuer = "AutoServiceManagementApi",
-                Audience = "AutoServiceManagementApi",
+                Issuer = _jwtSetting.Issuer,
+                Audience = _jwtSetting.Audience,
                 Expires = DateTime.UtcNow.AddDays(1),
                 SigningCredentials = signingCredentials
             };
@@ -162,7 +209,7 @@ namespace AutoServiceManagment.API.Controllers
             return tokenHandler.WriteToken(token);
         }
 
-       [HttpDelete("BlockUser/{id?}")]
+        [HttpDelete("BlockUser/{id?}")]
         public async Task<IActionResult> DeleteUserAsync([FromRoute] string id)
         {
             var users = await _userManager.FindByIdAsync(id);
@@ -188,10 +235,10 @@ namespace AutoServiceManagment.API.Controllers
         [Route("GetAllUserRole")]
         public async Task<IList<IdentityUserRole<string>>> GetAllUserRole()
         {
-            //var userRoles = await _dbContext.UserRoles.ToListAsync();
-            var roles = await _roleManager.Roles.ToListAsync();
-            var users = await _userManager.Users.ToListAsync();
-            var userRoles = await _dbContext.UserRoles.Include(x => x.UserId).Include(x=>x.RoleId).ToListAsync();
+           var userRoles = await _dbContext.UserRoles.ToListAsync();
+           // var roles = await _roleManager.Roles.ToListAsync();
+           // var users = await _userManager.Users.ToListAsync();
+            //var userRoles = await _dbContext.UserRoles.Include(x => x.UserId).Include(x=>x.RoleId).ToListAsync();
             return userRoles;
         }
 

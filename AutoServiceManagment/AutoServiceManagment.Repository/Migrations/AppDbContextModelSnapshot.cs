@@ -199,6 +199,9 @@ namespace AutoServiceManagment.Repository.Migrations
                     b.Property<int>("CustomerID")
                         .HasColumnType("int");
 
+                    b.Property<int?>("DiscountID")
+                        .HasColumnType("int");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -208,6 +211,8 @@ namespace AutoServiceManagment.Repository.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CustomerID");
+
+                    b.HasIndex("DiscountID");
 
                     b.HasIndex("ServiceID");
 
@@ -233,6 +238,9 @@ namespace AutoServiceManagment.Repository.Migrations
                     b.Property<int>("CustomerID")
                         .HasColumnType("int");
 
+                    b.Property<int?>("DiscountID")
+                        .HasColumnType("int");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -248,6 +256,8 @@ namespace AutoServiceManagment.Repository.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CustomerID");
+
+                    b.HasIndex("DiscountID");
 
                     b.HasIndex("ProductID");
 
@@ -378,6 +388,9 @@ namespace AutoServiceManagment.Repository.Migrations
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Detail")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -1018,6 +1031,10 @@ namespace AutoServiceManagment.Repository.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("AutoServiceManagment.DomainModels.Entities.Discount", "Discount")
+                        .WithMany("CustomerAddServices")
+                        .HasForeignKey("DiscountID");
+
                     b.HasOne("AutoServiceManagment.DomainModels.Entities.Service", "Service")
                         .WithMany("CustomerServices")
                         .HasForeignKey("ServiceID")
@@ -1025,6 +1042,8 @@ namespace AutoServiceManagment.Repository.Migrations
                         .IsRequired();
 
                     b.Navigation("Customer");
+
+                    b.Navigation("Discount");
 
                     b.Navigation("Service");
                 });
@@ -1037,6 +1056,10 @@ namespace AutoServiceManagment.Repository.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("AutoServiceManagment.DomainModels.Entities.Discount", "Discount")
+                        .WithMany("CustomerProduct")
+                        .HasForeignKey("DiscountID");
+
                     b.HasOne("AutoServiceManagment.DomainModels.Entities.Product", "Product")
                         .WithMany("CustomerProducts")
                         .HasForeignKey("ProductID")
@@ -1044,6 +1067,8 @@ namespace AutoServiceManagment.Repository.Migrations
                         .IsRequired();
 
                     b.Navigation("Customer");
+
+                    b.Navigation("Discount");
 
                     b.Navigation("Product");
                 });
@@ -1206,6 +1231,13 @@ namespace AutoServiceManagment.Repository.Migrations
                     b.Navigation("CustomerServices");
 
                     b.Navigation("RegularCustomerPayments");
+                });
+
+            modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.Discount", b =>
+                {
+                    b.Navigation("CustomerAddServices");
+
+                    b.Navigation("CustomerProduct");
                 });
 
             modelBuilder.Entity("AutoServiceManagment.DomainModels.Entities.Employee", b =>

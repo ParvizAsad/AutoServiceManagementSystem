@@ -6,6 +6,7 @@ import { financeService } from "../../../../Api/services/Finances";
 const newAccounting = {
   communalCost: " ",
   additionalCost: " ",
+  detail:" ",
   date: " ",
 };
 
@@ -91,6 +92,16 @@ function CreateAccounting() {
               min="0"
               onPaste={preventPasteNegative}
               onKeyPress={preventMinus}
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label className="forLabel" for="detail">Detail </Label>
+            <Input
+              id="detail"
+              name="detail"
+              placeholder="detail"
+              onChange={getElementValues}
+              type="text"
             />
           </FormGroup>
           {error}

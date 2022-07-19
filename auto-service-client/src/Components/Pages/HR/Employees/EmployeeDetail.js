@@ -12,6 +12,7 @@ import { positionService } from "../../../../Api/services/Positions";
 import axios from "axios";
 import { useReactToPrint } from "react-to-print";
 import moment from "moment";
+import defaultImageSrc from "../../../../Assets/Images/HR/defaultImage.png";
 
 const employees = {
   fullName: " ",
@@ -39,8 +40,17 @@ function EmployeeDetail(props) {
     const id = props.match.params.id;
     axios.get(url + id).then((res) => {
       setData(res.data);
+      
     });
   }, []);
+
+
+  useEffect(() => {
+    if (data.imageName===null) {
+      data.imageName=defaultImageSrc
+    }
+  }, []);
+
 
   const componentRef = useRef();
   const handlePrint = useReactToPrint({
@@ -69,7 +79,7 @@ function EmployeeDetail(props) {
           <CardImg
             className="forImg"
             alt="Card image cap"
-            src={data.imageName}
+              src={ data.imageName}
             top
             width="100%"
           />
