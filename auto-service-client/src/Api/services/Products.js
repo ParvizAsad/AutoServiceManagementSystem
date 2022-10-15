@@ -24,6 +24,10 @@ class ProductService extends HttpClient {
   async deleteProduct(id) {
     return await this.delete("Products", id);
   }
+  async exportToExcell() {
+    return await this.get("Products/ExportToExcell");
+    
+  }
 }
 
 export const productService = new ProductService();

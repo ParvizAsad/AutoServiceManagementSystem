@@ -1,15 +1,17 @@
+/* eslint-disable array-callback-return */
 import React from "react";
 import { Table, Button } from "reactstrap";
 // import "./Product.scss";
 import { useHistory, Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { productService } from "../../../../Api/services/Products";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 
 function Product(props) {
   const [products, setProducts] = React.useState([]);
   const [searchProduct, setSearchProduct] = useState(" ");
   const [visible, setVisible] = useState(2);
+  // const FileDownload = require('js-file-download');
 
   const history = useHistory();
   React.useEffect(() => {
@@ -75,6 +77,50 @@ function Product(props) {
     props.history.push("/EditProduct/" + id);
   }
 
+const	fetchexportToExcell = () => {
+		fetch('https://localhost:44330/api/Products/ExportToExcell')
+			.then(response => {
+        console.log(response)
+				response.blob().then(blob => {
+					let url = window.URL.createObjectURL(blob);
+					let a = document.createElement('a');
+					a.href = url;
+					a.download = response.data;
+					a.click();
+				});
+				//window.location.href = response.url;
+		});
+	}
+
+  
+
+  const exportToExcell = useCallback(
+    (e) => {
+      e.preventDefault();
+      
+      productService
+        .exportToExcell({responseType: 'blob'})
+        .then((response) => {
+    //       const href = URL.createObjectURL(response.data);
+
+    // // create "a" HTML element with href to file & click
+    // const link = document.createElement('a');
+    // link.href = href;
+    // link.setAttribute('download', 'file.xlsx'); //or any other extension
+    // document.body.appendChild(link);
+    // link.click();
+
+    // // clean up "a" element & remove ObjectURL
+    // document.body.removeChild(link);
+    // URL.revokeObjectURL(href);
+      })
+        .catch((res) => {
+          console.log(res);
+        });
+    },
+    [history]
+  );
+
   return (
     <>
       <div className="ForHeading">
@@ -86,7 +132,13 @@ function Product(props) {
             Create Product
           </Button>
         </div>
-        <Button onClick={() => history.push("/ExportProduct")}>Export</Button>
+        {/* <Button onClick={() => history.push("/ExportProduct")}>Export</Button>  */}
+        <Button onClick={fetchexportToExcell} className="btn btn-secondary">
+          <i className="fas fa-download" /> fetch Export
+        </Button>
+        <Button onClick={exportToExcell} className="btn btn-secondary">
+          axios Export
+        </Button>
         <input
           type="text"
           placeholder="Search.."
@@ -108,7 +160,7 @@ function Product(props) {
           <tbody>
             {products
               ?.filter((val) => {
-                if (searchProduct == " ") {
+                if (searchProduct === " ") {
                   return val;
                 } else if (
                   val.name.toLowerCase().includes(searchProduct.toLowerCase())

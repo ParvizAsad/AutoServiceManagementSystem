@@ -27,7 +27,8 @@ function AddServiceCustomer(props) {
       addServiceCustomerService
         .postAddServiceCustomer(customerService)
         .then(() => {
-          props.history.push("/CustumerService/" + props.match.params.id);
+          // props.history.push("/CustumerService/" + props.match.params.id);
+          props.history.push("/HR");
         })
         .catch((e) => {
           console.log(e.response);

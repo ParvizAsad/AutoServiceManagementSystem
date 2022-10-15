@@ -16,7 +16,7 @@ const newProduct = {
 
 function CreateProduct() {
   const [product, setProduct] = useState(newProduct);
-  const [error, setError] = useState();
+ // const [error, setError] = useState();
   const [category, setCategory] = React.useState([]);
   const [brand, setBrand] = React.useState([]);
   const history = useHistory();

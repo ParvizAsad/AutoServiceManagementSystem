@@ -2,6 +2,7 @@
 using AutoServiceManagment.DomainModels.Entities;
 using AutoServiceManagment.Repository.Repository.Contracts;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace AutoServiceManagment.Services.Services.Contracts

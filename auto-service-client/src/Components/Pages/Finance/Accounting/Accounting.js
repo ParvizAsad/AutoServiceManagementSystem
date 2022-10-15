@@ -10,7 +10,7 @@ function Accounting() {
   const [accountingData, setAccountingData] = React.useState();
   const history = useHistory();
   const [loading, setLoading] = useState(true);
-  const [visible, setVisible] = useState(1);
+  const [visible, setVisible] = useState(10);
 
   const getAllAccounting = useCallback(() => {
     financeService.getAllFinances().then(({ data }) => {

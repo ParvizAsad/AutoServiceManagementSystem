@@ -8,7 +8,7 @@ import { useHistory, Link } from "react-router-dom";
 
 function Position() {
   const [positions, setPositions] = useState([]);
-  const [visible, setVisible] = useState(1);
+  const [visible, setVisible] = useState(5);
 
   const [searchPosition, setSearchPosition] = useState(" ");
 
@@ -136,7 +136,7 @@ function Position() {
                 .slice(0, visible)
                 .map((item, idx) => (
                   <tr key={idx}>
-                    <th scope="row">{idx}</th>
+                    <th scope="row">{item.id}</th>
                     <td>{item.name}</td>
                     <td className="Actions">
                       <Button
